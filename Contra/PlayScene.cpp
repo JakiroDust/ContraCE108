@@ -102,7 +102,6 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	float y = (float)atof(tokens[2].c_str());
 
 	CGameObject *obj = NULL;
-
 	switch (object_type)
 	{
 	case OBJECT_TYPE_MARIO:
@@ -112,6 +111,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 			return;
 		}
 		obj = new CMario(x,y); 
+		
 		player = (CMario*)obj;  
 
 		DebugOut(L"[INFO] Player object has been created!\n");
@@ -153,10 +153,8 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		DebugOut(L"[ERROR] Invalid object type: %d\n", object_type);
 		return;
 	}
-
 	// General object setup
 	obj->SetPosition(x, y);
-
 
 	objects.push_back(obj);
 }
