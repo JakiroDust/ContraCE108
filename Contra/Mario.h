@@ -1,6 +1,6 @@
 #pragma once
 #include "GameObject.h"
-
+#include "CGameCharacter.h"
 #include "Animation.h"
 #include "Animations.h"
 
@@ -61,16 +61,13 @@
 
 #define MARIO_UNTOUCHABLE_TIME 2500
 
-class CMario : public CGameObject
+class CMario : public CGameCharacter
 {
 	BOOLEAN isSitting;
-	//float maxVx;
-	//float ax;				// acceleration on x 
-	float ay;				// acceleration on y 
+	float ay;				
 
 	int level; 
-	int untouchable; 
-	ULONGLONG untouchable_start;
+	
 	BOOLEAN isOnPlatform;
 	int coin; 
 
@@ -81,7 +78,7 @@ class CMario : public CGameObject
 	int GetAniIdBig();
 
 public:
-	CMario(float x, float y) : CGameObject(x, y)
+	CMario(float x, float y) : CGameCharacter(x, y)
 	{
 		isSitting = false;
 		//maxVx = 0.0f;
@@ -99,7 +96,7 @@ public:
 
 	int IsCollidable()
 	{ 
-		return (state != MARIO_STATE_DIE); 
+		return true; 
 	}
 
 	int IsBlocking() { return (state != MARIO_STATE_DIE && untouchable==0); }
