@@ -9,17 +9,17 @@
 #include "Sprites.h"
 #include "Collision.h"
 #include "CGameObjectBase.h"
+#include "GravityHandler.h"
 using namespace std;
 
 #define ID_TEX_BBOX -100		// special texture to draw object bounding box
 #define BBOX_ALPHA 0.25f		// Bounding box transparency
 
-class CGameObject : public CGameObjectBase
+class CGameObject : public CGameObjectBase, virtual public GravityHandlerBase
 {
 protected:
 
 	float vx;
-	float vy;
 	int nx;	 
 
 	int state;
@@ -38,7 +38,7 @@ public:
 	CGameObject(float x, float y) : CGameObject() { this->x = x; this->y = y; }
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom) = 0;
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL) {};
-	virtual void Render() = 0;
+	
 	virtual void SetState(int state) { this->state = state; }
 
 	//

@@ -1,0 +1,2 @@
+
+#include "CGamePlayer.h"

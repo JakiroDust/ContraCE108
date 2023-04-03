@@ -1,18 +1,21 @@
 #pragma once
+
+
+
 #include "GameObject.h"
+
 #include "CGameCharacter.h"
+#include "CGamePlayer.h"
+
 #include "Animation.h"
 #include "Animations.h"
 
 #include "debug.h"
-
+#include "GravityHandler.h"
 #define MARIO_RUNNING_SPEED		0.2f
 
 
-#define MARIO_JUMP_SPEED_Y		0.5f
-#define MARIO_JUMP_RUN_SPEED_Y	0.6f
 
-#define MARIO_GRAVITY			0.002f
 #define MARIO_JUMP_DEFLECT_SPEED  0.4f
 
 #define MARIO_STATE_DIE				-10
@@ -61,10 +64,9 @@
 
 #define MARIO_UNTOUCHABLE_TIME 2500
 
-class CMario : public CGameCharacter
+class CMario : public CGamePlayer
 {
-	BOOLEAN isSitting;
-	float ay;				
+	BOOLEAN isSitting;			
 
 	int level; 
 	
@@ -74,15 +76,13 @@ class CMario : public CGameCharacter
 	void OnCollisionWithGoomba(LPCOLLISIONEVENT e);
 	void OnCollisionWithCoin(LPCOLLISIONEVENT e);
 	void OnCollisionWithPortal(LPCOLLISIONEVENT e);
-
 	int GetAniIdBig();
 
 public:
-	CMario(float x, float y) : CGameCharacter(x, y)
+	CMario(float x, float y) : CGamePlayer(x, y)
 	{
 		isSitting = false;
 		//maxVx = 0.0f;
-		ay = MARIO_GRAVITY; 
 
 		level = MARIO_LEVEL_BIG;
 		untouchable = 0;
