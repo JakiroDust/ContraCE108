@@ -1,7 +1,7 @@
 #include "Game_ObjectBase.h"
 using namespace std;
 
-Game_ObjectBase::Game_ObjectBase(int x, int y, int z, int width, int height)
+Game_ObjectBase::Game_ObjectBase(float x, float y, int z, int width, int height)
 {
 	_x = x;
 	_y = y;
@@ -10,60 +10,19 @@ Game_ObjectBase::Game_ObjectBase(int x, int y, int z, int width, int height)
 	_height = height;
 }
 
-int Game_ObjectBase::x()
+void Game_ObjectBase::Render()
 {
-	return _x;
+	if (!_needRender) return;
+	CAnimations* animations = CAnimations::GetInstance();
+	float x, y;
+	GetCenterPoint(x, y);
+	animations->Get(_SpriteId)->Render(x, y);
 }
 
-int Game_ObjectBase::y()
+void Game_ObjectBase::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
-	return _y;
-}
-
-int Game_ObjectBase::z()
-{
-	return _z;
-}
-
-void Game_ObjectBase::teleport(int x, int y)
-{
-	_x = x;
-	_y = y;
-}
-
-void Game_ObjectBase::updateSprite()
-{
-	updateFrame();
-}
-
-void Game_ObjectBase::updateFrame()
-{
-	if (_frameMax == 0)
-	{
-		return;
-	}
-	// check frame interval
-	if (_frameTimer != _frameInterval)
-	{
-		_frameTimer++;
-	} 
-	else
-	{
-		// finish frame CD
-		_frameTimer = 0;
-		// check frame
-		if (_frameCurrent != _frameMax)
-		{
-			_frameCurrent++;
-		}
-		else
-		{
-			_frameCurrent = 0;
-		}
-	}
-}
-
-void Game_ObjectBase::draw()
-{
-	//sprite->draw(_x,_y,_frameCurrent);
+	left = _x;
+	top = _y;
+	right = _x + _width;
+	bottom = _y + _height;
 }

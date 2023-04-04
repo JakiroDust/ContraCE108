@@ -75,28 +75,49 @@
     <ClCompile Include="Portal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BattleManager.cpp">
+    <ClCompile Include="Game_ObjectBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Collision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_MovableObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_StaticObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Screen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo_Layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game_Character.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game_Entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_Object.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_ObjectBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Game_Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Base.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Battle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game_Terrain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ScreenManager.cpp">
+    <ClCompile Include="Game_Platform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Blocker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -170,28 +191,49 @@
     <ClInclude Include="Portal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BattleManager.h">
+    <ClInclude Include="Game_ObjectBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Collision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_MovableObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_StaticObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Screen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Demo_Layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game_Character.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game_Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game_Object.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game_ObjectBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Game_Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Battle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game_Terrain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ScreenManager.h">
+    <ClInclude Include="Game_Platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Blocker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

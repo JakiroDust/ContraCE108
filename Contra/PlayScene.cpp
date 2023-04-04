@@ -12,6 +12,8 @@
 
 #include "SampleKeyEventHandler.h"
 
+#include "Demo_Layer.h"
+
 using namespace std;
 
 CPlayScene::CPlayScene(int id, LPCWSTR filePath):
@@ -269,6 +271,10 @@ void CPlayScene::Render()
 {
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
+	
+	// Demo
+	Demo_Layer a(0,0,0,52,52);
+	a.Render();
 }
 
 /*

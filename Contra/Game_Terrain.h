@@ -1,8 +1,12 @@
 #pragma once
-#include "Game_Object.h"
-class Game_Terrain : public Game_Object
+#include "Game_StaticObject.h"
+
+class Game_Terrain : public Game_StaticObject
 {
 	public:
-		int objectType();
+		int objectType() { return TYPE_TERRAIN; }
+		virtual bool IsBlocking() { return 1; }
+		void SetNeedRender(bool) { _needRender = false; }
+		bool NeedRender() { return false; }
 };
 

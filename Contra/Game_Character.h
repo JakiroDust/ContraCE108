@@ -1,8 +1,12 @@
 #pragma once
-#include "Game_Entity.h"
-class Game_Character :
-    public Game_Entity
-{
+#include "Game_MovableObject.h"
+using namespace std;
 
+class Game_Character : public Game_MovableObject
+{
+	protected:
+		int _hp = 1;
+	public:
+		//
 };
 

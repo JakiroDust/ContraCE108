@@ -1,75 +1,92 @@
 #pragma once
+
+#define TYPE_STATIC 0
+#define TYPE_MOVABLE 1
+
 using namespace std;
+#include "Game_Collision.h"
+#include "Animations.h"
+#include "debug.h"
 
 class Game_ObjectBase
 {
-	protected:
-		/// POS
+protected:
+	/// POS
 
-		// horizonal position, base on current map
-		int _x;
-		// vertical position, base on current map
-		int _y;
-		// Value use to determine with object will be draw first
-		// Object with lowest value will be drawn first.
-		int _z;
-		
-		/// PROPERTIES
-		
-		int _width;
-		int _height;
-		
-		/// FRAME CONTROL
-		
-		// First frame in charset (when frameCurrent at 0).
-		// Use when there're multiple motions in one sprite.
-		int _startFrame = 0;
-		// max value of frameCurrent
-		int _frameMax = 0;
-		// Use to control which frame will be showed.
-		int _frameCurrent = 0;
-		// Interval for changing frame.
-		int _frameInterval = 0;
-		// Timer value for changing frame.
-		// When reaching Interval value, frame will be changed.
-		int _frameTimer = 0;
+	// horizonal position, base on current map
+	float _x;
+	// vertical position, base on current map
+	float _y;
+	// Value use to determine with object will be draw first
+	// Object with lowest value will be drawn first.
+	int _z;
 
-		// LOGIC
-		
-		// Game_Sprite *_sprite;
-		// Rectangle realHitbox;
-		// Rectangle visualHitbox;
-		//
+	float _vx = 0;
+	float _vy = 0;
 
-		/// PROTECTED FUNCTIONS
-		
-		// update frame control parameter
-		virtual void updateFrame();
+	/// PROPERTIES
 
-	public:
-		Game_ObjectBase(int x = 0, int y = 0, int z = 0, int width = 0, int height = 0);
-		
-		// GET SET FUNCTIONS
+	int _width;
+	int _height;
 
-		int x();
-		int y();
-		int z();
+	// LOGIC
 
-		// Teleport this object to destination.
-		// Ignore collision detection phase.
-		virtual void teleport(int x, int y);
-		
-		virtual bool isEntity() = 0;
-		virtual bool isObject() = 0;
-		
-		/// UPDATE SPRITE
-		
-		// update sprite control parameter and sprite reference if needed
-		virtual void updateSprite();
-		
-		/// FRAME CONTROL
+	bool _isDeleted = false;
 
-		// draw this object's sprite
-		virtual void draw();
+	// RENDER 
+
+	int _SpriteId = 0;
+	bool _needRender = true;
+
+	/// PROTECTED FUNCTIONS
+
+public:
+	Game_ObjectBase(float x = 0, float y = 0, int z = 0, int width = 0, int height = 0);
+
+	// GET SET FUNCTIONS
+
+	float x() { return _x; }
+	float y() { return _y; }
+	int z() { return _z; }
+	void SetPosition(float x, float y) { this->_x = x, this->_y = y; }
+	void SetSpeed(float vx, float vy) { this->_vx = vx, this->_vy = vy; }
+	void GetPosition(float& x, float& y) { x = this->_x; y = this->_y; }
+	void GetSpeed(float& vx, float& vy) { vx = this->_vx; vy = this->_vy; }
+	void GetCenterPoint(float& x, float& y) { x = _x + _width / 2; y = _y + _height / 2; }
+
+	// Draw object to screen
+	virtual void Render();
+	virtual void SetNeedRender(bool b) { _needRender = b; }
+	virtual bool NeedRender() { return _needRender; }
+
+	// Movable object or Static Object
+	virtual int baseType() = 0;
+
+	// UPDATE
+
+	virtual void Update(DWORD dt) {}
+	virtual void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) {}
+
+	// COLLISION
+
+	// Get hitbox
+	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
+	// Collision ON or OFF ? This can change depending on object's state. For example: die
+	virtual int IsCollidable() { return 0; }
+	// When no collision has been detected (triggered by CCollision::Process)
+	virtual void OnNoCollision(DWORD dt) {}
+	// When collision with an object has been detected (triggered by CCollision::Process)
+	virtual void OnCollisionWith(PCOLLISIONEVENT e) {}
+	// Is this object blocking other object? If YES, collision framework will automatically push the other object
+	virtual bool IsBlocking() { return 0; }
+
+
+	// Key event handler
+	virtual void KeyDownEventHandler(int KeyCode) {}
+	// Key event handler
+	virtual void KeyUpEventHandler(int KeyCode) {}
+
+	virtual void DeleteThis() { _isDeleted = true; }
+	bool IsDeleted() { return _isDeleted; }
 };
 

@@ -1,22 +1,24 @@
 #include "ScreenManager.h"
-using namespace std;
 
-void ScreenManager::draw()
+ScreenManager* ScreenManager::__instance = NULL;
+
+ScreenManager* ScreenManager::GetInstance()
 {
-	// These codes will be moved to Game_SceneBattle later!
-
-	//vector<Game_Terrain> *terrains = &BattleManager::terrains;
-	//for (auto x : *terrains)
-	//{
-	//	x.draw();
-	//}
-
-	//BattleManager::p1.draw();
-	//
+	if (__instance == NULL) __instance = new ScreenManager();
+	return __instance;
 }
 
-void ScreenManager::get_DrawCollection()
+ScreenManager::ScreenManager()
 {
-	// if (object.hitbox.intersectWith(screen.hitbox)) get to collection
-	// sort collection base on z property.
+	_screen = new Game_Screen(0, 0);
+}
+
+void ScreenManager::Update(DWORD dt)
+{
+	_scene->Update(dt);
+}
+
+void ScreenManager::Render()
+{
+	_scene->Render();
 }
