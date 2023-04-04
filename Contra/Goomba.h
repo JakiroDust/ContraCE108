@@ -1,9 +1,7 @@
 #pragma once
 #include "GameObject.h"
-#include "GravityHandler.h"
-#include "CGameCharacter.h"
-#include "CGameFoe.h"
-#include "GravityHandler.h"
+
+#define GOOMBA_GRAVITY 0.002f
 #define GOOMBA_WALKING_SPEED 0.05f
 
 
@@ -19,11 +17,12 @@
 #define ID_ANI_GOOMBA_WALKING 5000
 #define ID_ANI_GOOMBA_DIE 5001
 
-class CGoomba : public CGameFoe,public GravityHandlerOn
+class CGoomba : public CGameObject
 {
 protected:
-	//float ax;				
-	//float ay; 
+	float ax;				
+	float ay; 
+
 	ULONGLONG die_start;
 
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);

@@ -1,20 +1,19 @@
 #pragma once
-
-
-
 #include "GameObject.h"
-
-#include "CGameCharacter.h"
-#include "CGamePlayer.h"
 
 #include "Animation.h"
 #include "Animations.h"
 
 #include "debug.h"
-#include "GravityHandler.h"
+
 #define MARIO_RUNNING_SPEED		0.2f
 
+#define MARIO_ACCEL_RUN_X	0.0007f
 
+#define MARIO_JUMP_SPEED_Y		0.5f
+#define MARIO_JUMP_RUN_SPEED_Y	0.6f
+
+#define MARIO_GRAVITY			0.002f
 
 #define MARIO_JUMP_DEFLECT_SPEED  0.4f
 
@@ -64,25 +63,33 @@
 
 #define MARIO_UNTOUCHABLE_TIME 2500
 
-class CMario : public CGamePlayer
+class CMario : public CGameObject
 {
-	BOOLEAN isSitting;			
+	BOOLEAN isSitting;
+	float maxVx;
+	float ax;				// acceleration on x 
+	float ay;				// acceleration on y 
 
 	int level; 
-	
+	int untouchable; 
+	ULONGLONG untouchable_start;
 	BOOLEAN isOnPlatform;
 	int coin; 
 
 	void OnCollisionWithGoomba(LPCOLLISIONEVENT e);
 	void OnCollisionWithCoin(LPCOLLISIONEVENT e);
 	void OnCollisionWithPortal(LPCOLLISIONEVENT e);
+
 	int GetAniIdBig();
+	int GetAniIdSmall();
 
 public:
-	CMario(float x, float y) : CGamePlayer(x, y)
+	CMario(float x, float y) : CGameObject(x, y)
 	{
 		isSitting = false;
-		//maxVx = 0.0f;
+		maxVx = 0.0f;
+		ax = 0.0f;
+		ay = MARIO_GRAVITY; 
 
 		level = MARIO_LEVEL_BIG;
 		untouchable = 0;
@@ -96,7 +103,7 @@ public:
 
 	int IsCollidable()
 	{ 
-		return true; 
+		return (state != MARIO_STATE_DIE); 
 	}
 
 	int IsBlocking() { return (state != MARIO_STATE_DIE && untouchable==0); }

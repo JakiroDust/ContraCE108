@@ -144,35 +144,39 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Animations.cpp" />
     <ClCompile Include="Brick.cpp" />
-    <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="CGameBackground.cpp" />
-    <ClCompile Include="CGameCharacter.cpp" />
-    <ClCompile Include="CGameFoe.cpp" />
-    <ClCompile Include="CGameObjectBase.cpp" />
-    <ClCompile Include="CGamePlayer.cpp" />
-    <ClCompile Include="CGroundFoe.cpp" />
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="debug.cpp" />
+    <ClCompile Include="Demo_Layer.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Game_Blocker.cpp" />
+    <ClCompile Include="Game_Character.cpp" />
+    <ClCompile Include="Game_Collision.cpp" />
+    <ClCompile Include="Game_Layer.cpp" />
+    <ClCompile Include="Game_MovableObject.cpp" />
+    <ClCompile Include="Game_ObjectBase.cpp" />
+    <ClCompile Include="Game_Platform.cpp" />
+    <ClCompile Include="Game_Player.cpp" />
+    <ClCompile Include="Game_Screen.cpp" />
+    <ClCompile Include="Game_StaticObject.cpp" />
+    <ClCompile Include="Game_Terrain.cpp" />
     <ClCompile Include="Goomba.cpp" />
-    <ClCompile Include="GravityHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mario.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="Portal.cpp" />
     <ClCompile Include="SampleKeyEventHandler.cpp" />
+    <ClCompile Include="Scene_Base.cpp" />
+    <ClCompile Include="Scene_Battle.cpp" />
+    <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Sprites.cpp" />
     <ClCompile Include="Textures.cpp" />
@@ -184,21 +188,24 @@
     <ClInclude Include="Animations.h" />
     <ClInclude Include="AssetIDs.h" />
     <ClInclude Include="Brick.h" />
-    <ClInclude Include="Bullet.h" />
-    <ClInclude Include="CConst.h" />
-    <ClInclude Include="CGameBackground.h" />
-    <ClInclude Include="CGameCharacter.h" />
-    <ClInclude Include="CGameFoe.h" />
-    <ClInclude Include="CGameObjectBase.h" />
-    <ClInclude Include="CGamePlayer.h" />
-    <ClInclude Include="CGroundFoe.h" />
     <ClInclude Include="Coin.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="debug.h" />
+    <ClInclude Include="Demo_Layer.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Game_Blocker.h" />
+    <ClInclude Include="Game_Character.h" />
+    <ClInclude Include="Game_Collision.h" />
+    <ClInclude Include="Game_Layer.h" />
+    <ClInclude Include="Game_MovableObject.h" />
+    <ClInclude Include="Game_ObjectBase.h" />
+    <ClInclude Include="Game_Platform.h" />
+    <ClInclude Include="Game_Player.h" />
+    <ClInclude Include="Game_Screen.h" />
+    <ClInclude Include="Game_StaticObject.h" />
+    <ClInclude Include="Game_Terrain.h" />
     <ClInclude Include="Goomba.h" />
-    <ClInclude Include="GravityHandler.h" />
     <ClInclude Include="KeyEventHandler.h" />
     <ClInclude Include="Mario.h" />
     <ClInclude Include="Platform.h" />
@@ -206,6 +213,9 @@
     <ClInclude Include="Portal.h" />
     <ClInclude Include="SampleKeyEventHandler.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Scene_Base.h" />
+    <ClInclude Include="Scene_Battle.h" />
+    <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Sprites.h" />
     <ClInclude Include="Texture.h" />
@@ -225,10 +235,6 @@
     <Text Include="scene0005.txt" />
     <Text Include="scene01.txt" />
     <Text Include="scene02.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="textures\contra-misc.png" />
-    <Image Include="textures\contra2-transparent.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

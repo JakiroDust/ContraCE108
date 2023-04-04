@@ -1,8 +1,9 @@
 #include "Goomba.h"
 
-CGoomba::CGoomba(float x, float y):CGameFoe(x, y)
+CGoomba::CGoomba(float x, float y):CGameObject(x, y)
 {
-	//this->ax = 0;
+	this->ax = 0;
+	this->ay = GOOMBA_GRAVITY;
 	die_start = -1;
 	SetState(GOOMBA_STATE_WALKING);
 }
@@ -38,7 +39,7 @@ void CGoomba::OnCollisionWith(LPCOLLISIONEVENT e)
 
 	if (e->ny != 0 )
 	{
-		isOnPlatform_Y();
+		vy = 0;
 	}
 	else if (e->nx != 0)
 	{
@@ -48,8 +49,8 @@ void CGoomba::OnCollisionWith(LPCOLLISIONEVENT e)
 
 void CGoomba::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
-	update_vy(dt);
-	//vx += ax * dt;
+	vy += ay * dt;
+	vx += ax * dt;
 
 	if ( (state==GOOMBA_STATE_DIE) && (GetTickCount64() - die_start > GOOMBA_DIE_TIMEOUT) )
 	{
@@ -83,7 +84,8 @@ void CGoomba::SetState(int state)
 			die_start = GetTickCount64();
 			y += (GOOMBA_BBOX_HEIGHT - GOOMBA_BBOX_HEIGHT_DIE)/2;
 			vx = 0;
-			isOnPlatform_Y();
+			vy = 0;
+			ay = 0; 
 			break;
 		case GOOMBA_STATE_WALKING: 
 			vx = -GOOMBA_WALKING_SPEED;

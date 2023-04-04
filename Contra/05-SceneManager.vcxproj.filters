@@ -16,9 +16,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="ClassDiagram.cd" />
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -78,28 +75,49 @@
     <ClCompile Include="Portal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet.cpp">
+    <ClCompile Include="Game_ObjectBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CGameObjectBase.cpp">
+    <ClCompile Include="Game_Collision.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CGameCharacter.cpp">
+    <ClCompile Include="Game_MovableObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CGamePlayer.cpp">
+    <ClCompile Include="Game_StaticObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CGameFoe.cpp">
+    <ClCompile Include="Game_Layer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CGroundFoe.cpp">
+    <ClCompile Include="Game_Screen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GravityHandler.cpp">
+    <ClCompile Include="Demo_Layer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CGameBackground.cpp">
+    <ClCompile Include="ScreenManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Character.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Base.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Battle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Terrain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Platform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Blocker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -173,31 +191,49 @@
     <ClInclude Include="Portal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet.h">
+    <ClInclude Include="Game_ObjectBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CGameObjectBase.h">
+    <ClInclude Include="Game_Collision.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CGameCharacter.h">
+    <ClInclude Include="Game_MovableObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CGamePlayer.h">
+    <ClInclude Include="Game_StaticObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CGameFoe.h">
+    <ClInclude Include="Game_Layer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CGroundFoe.h">
+    <ClInclude Include="Game_Screen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CConst.h">
+    <ClInclude Include="Demo_Layer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GravityHandler.h">
+    <ClInclude Include="ScreenManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CGameBackground.h">
+    <ClInclude Include="Game_Character.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Battle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Terrain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Blocker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -238,13 +274,5 @@
     <Text Include="contra-level.txt">
       <Filter>Resource Files</Filter>
     </Text>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="textures\contra2-transparent.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="textures\contra-misc.png">
-      <Filter>Resource Files</Filter>
-    </Image>
   </ItemGroup>
 </Project>

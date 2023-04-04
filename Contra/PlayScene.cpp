@@ -12,6 +12,8 @@
 
 #include "SampleKeyEventHandler.h"
 
+#include "Demo_Layer.h"
+
 using namespace std;
 
 CPlayScene::CPlayScene(int id, LPCWSTR filePath):
@@ -102,6 +104,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	float y = (float)atof(tokens[2].c_str());
 
 	CGameObject *obj = NULL;
+
 	switch (object_type)
 	{
 	case OBJECT_TYPE_MARIO:
@@ -111,14 +114,13 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 			return;
 		}
 		obj = new CMario(x,y); 
-		
 		player = (CMario*)obj;  
 
 		DebugOut(L"[INFO] Player object has been created!\n");
 		break;
 	case OBJECT_TYPE_GOOMBA: obj = new CGoomba(x,y); break;
 	case OBJECT_TYPE_BRICK: obj = new CBrick(x,y); break;
-	case OBJECT_TYPE_COIN: obj = new CGameProjectile(x, y); break;
+	case OBJECT_TYPE_COIN: obj = new CCoin(x, y); break;
 
 	case OBJECT_TYPE_PLATFORM:
 	{
@@ -153,8 +155,10 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		DebugOut(L"[ERROR] Invalid object type: %d\n", object_type);
 		return;
 	}
+
 	// General object setup
 	obj->SetPosition(x, y);
+
 
 	objects.push_back(obj);
 }
@@ -267,6 +271,10 @@ void CPlayScene::Render()
 {
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
+	
+	// Demo
+	Demo_Layer a(0,0,0,52,52);
+	a.Render();
 }
 
 /*

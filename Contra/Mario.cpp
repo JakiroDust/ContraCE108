@@ -12,8 +12,10 @@
 
 void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
+	vy += ay * dt;
+	vx += ax * dt;
 
-	update_vy(dt);
+	if (abs(vx) > abs(maxVx)) vx = maxVx;
 
 	// reset untouchable timer if untouchable time has passed
 	if ( GetTickCount64() - untouchable_start > MARIO_UNTOUCHABLE_TIME) 
@@ -37,7 +39,7 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 {
 	if (e->ny != 0 && e->obj->IsBlocking())
 	{
-		isOnPlatform_Y();
+		vy = 0;
 		if (e->ny < 0) isOnPlatform = true;
 	}
 	else 
@@ -48,7 +50,7 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 
 	if (dynamic_cast<CGoomba*>(e->obj))
 		OnCollisionWithGoomba(e);
-	else if (dynamic_cast<CGameProjectile*>(e->obj))
+	else if (dynamic_cast<CCoin*>(e->obj))
 		OnCollisionWithCoin(e);
 	else if (dynamic_cast<CPortal*>(e->obj))
 		OnCollisionWithPortal(e);
@@ -56,15 +58,26 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 
 void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
 {
-	//return;
 	CGoomba* goomba = dynamic_cast<CGoomba*>(e->obj);
 
-	if (untouchable == 0)
+	// jump on top >> kill Goomba and deflect a bit 
+	if (e->ny < 0)
 	{
 		if (goomba->GetState() != GOOMBA_STATE_DIE)
 		{
-			DebugOut(L">>> Mario DIE >>> \n");
-			SetState(MARIO_STATE_DIE);
+			goomba->SetState(GOOMBA_STATE_DIE);
+			vy = -MARIO_JUMP_DEFLECT_SPEED;
+		}
+	}
+	else // hit by Goomba
+	{
+		if (untouchable == 0)
+		{
+			if (goomba->GetState() != GOOMBA_STATE_DIE)
+			{
+				DebugOut(L">>> Mario DIE >>> \n");
+				SetState(MARIO_STATE_DIE);
+			}
 		}
 	}
 }
@@ -135,7 +148,7 @@ void CMario::Render()
 
 	animations->Get(aniId)->Render(x, y);
 
-	RenderBoundingBox();
+	//RenderBoundingBox();
 	
 	DebugOutTitle(L"Coins: %d", coin);
 }
@@ -149,27 +162,30 @@ void CMario::SetState(int state)
 	{
 	case MARIO_STATE_RUNNING_RIGHT:
 		if (isSitting) break;
-		vx = MARIO_RUNNING_SPEED;
+		maxVx = MARIO_RUNNING_SPEED;
+		ax = MARIO_ACCEL_RUN_X;
 		nx = 1;
 		break;
 	case MARIO_STATE_RUNNING_LEFT:
 		if (isSitting) break;
-		vx = -MARIO_RUNNING_SPEED;
+		maxVx = -MARIO_RUNNING_SPEED;
+		ax = -MARIO_ACCEL_RUN_X;
 		nx = -1;
 		break;
 	case MARIO_STATE_JUMP:
 		if (isSitting) break;
 		if (isOnPlatform)
 		{
-			jumped_Y();
-
+			if (abs(this->vx) == MARIO_RUNNING_SPEED)
+				vy = -MARIO_JUMP_RUN_SPEED_Y;
+			else
+				vy = -MARIO_JUMP_SPEED_Y;
 		}
 		break;
-	/*
+
 	case MARIO_STATE_RELEASE_JUMP:
 		if (vy < 0) vy += MARIO_JUMP_SPEED_Y / 2;
 		break;
-	*/
 
 	case MARIO_STATE_SIT:
 		if (isOnPlatform )//&& level != MARIO_LEVEL_SMALL)
@@ -191,13 +207,14 @@ void CMario::SetState(int state)
 		break;
 
 	case MARIO_STATE_IDLE:
+		ax = 0.0f;
 		vx = 0.0f;
 		break;
 
 	case MARIO_STATE_DIE:
 		vy = -MARIO_JUMP_DEFLECT_SPEED;
 		vx = 0;
-		untouchable = 1;
+		ax = 0;
 		break;
 	}
 
