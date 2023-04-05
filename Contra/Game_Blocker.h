@@ -4,6 +4,9 @@
 class Game_Blocker : public Game_Terrain
 {
 	public:
+		Game_Blocker(float x, float y, int z, int width, int height) : Game_Terrain(x, y, z, width, height) {}
+		
 		bool IsBlocking() { return 1; }
+
 };
 

@@ -9,6 +9,8 @@
 #include "Game_Blocker.h"
 #include "Game_Terrain.h"
 #include "Game_Collision.h"
+// DEMO
+#include "Demo_Layer.h"
 
 using namespace std;
 
@@ -18,19 +20,24 @@ class Scene_Battle : public Scene_Base
 	private: 
 		Game_Player* _p1 = NULL;
 		Game_Player* _p2 = NULL;
-		vector<Game_Layer*>* _layers = NULL;
-		vector<Game_ObjectBase*>* _objects = NULL;
+		vector<Game_Layer*> _layers;
+		vector<Game_ObjectBase*> _objects;
 		int _mapWidth = 1;
 		int _mapHeight = 1;
-
+		// DEMO
+		void Demo_Camera_Action();
 	public:
 		~Scene_Battle();
-		vector<Game_ObjectBase*>* objects() { return _objects; }
+		vector<Game_ObjectBase*>* objects() { return &_objects; }
 		Game_Player* p1() { return _p1; }
 		Game_Player* p2() { return _p2; }
+		int MapWidth() { return _mapWidth; }
+		int MapHeight() { return _mapHeight; }
 		void SetMapSize(int width, int height) { _mapWidth = width; _mapHeight = height; }
 
-		void Render();
-		void Update(DWORD dt);
+		void Render() override;
+		void Update(DWORD dt) override;
+
+		void Create_Stage_Demo();
 };
 

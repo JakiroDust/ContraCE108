@@ -273,7 +273,7 @@ void CPlayScene::Render()
 		objects[i]->Render();
 	
 	// Demo
-	Demo_Layer a(0,0,0,52,52);
+	Demo_Layer a(50,50,0,22,32);
 	a.Render();
 }
 

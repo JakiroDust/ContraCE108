@@ -58,6 +58,8 @@ public:
 	virtual void Render();
 	virtual void SetNeedRender(bool b) { _needRender = b; }
 	virtual bool NeedRender() { return _needRender; }
+	// For debug
+	virtual void RenderHitbox();
 
 	// Movable object or Static Object
 	virtual int baseType() = 0;
@@ -74,9 +76,9 @@ public:
 	// Collision ON or OFF ? This can change depending on object's state. For example: die
 	virtual int IsCollidable() { return 0; }
 	// When no collision has been detected (triggered by CCollision::Process)
-	virtual void OnNoCollision(DWORD dt) {}
+	virtual void OnNoCollision(DWORD dt);
 	// When collision with an object has been detected (triggered by CCollision::Process)
-	virtual void OnCollisionWith(PCOLLISIONEVENT e) {}
+	virtual void OnCollisionWith(PCOLLISIONEVENT e);
 	// Is this object blocking other object? If YES, collision framework will automatically push the other object
 	virtual bool IsBlocking() { return 0; }
 

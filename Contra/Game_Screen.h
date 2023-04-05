@@ -3,6 +3,8 @@
 
 #define GAMESCREEN_WIDTH 320
 #define GAMESCREEN_HEIGHT 240
+#define WINDOW_WIDTH 336
+#define WINDOW_HEIGHT 279
 
 class Game_Screen : public Game_MovableObject
 {

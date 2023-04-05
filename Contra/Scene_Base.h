@@ -20,7 +20,7 @@ class Scene_Base
 		// Key event handler
 		virtual void KeyUpEventHandler(int KeyCode) {};
 
-		virtual void Render();
-		virtual void Update(DWORD dt);
+		virtual void Render() {}
+		virtual void Update(DWORD dt) {}
 };
 
