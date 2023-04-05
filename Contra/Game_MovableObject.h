@@ -21,6 +21,7 @@ protected:
 	bool _ghost = false;
 	bool _onAir = false;
 	bool _die = false;
+	bool _gravity = true;
 	string _state = "idle";
 
 	/// function
@@ -78,8 +79,8 @@ public:
 
 	/// UPDATE
 	
-	void Update(DWORD dt) override{}
-	void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override {}
+	void Update(DWORD dt) override;
+	void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;
 
 	// Render
 
