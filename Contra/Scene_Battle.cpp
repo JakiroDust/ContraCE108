@@ -91,18 +91,14 @@ void Scene_Battle::Create_Stage_Demo()
 {
     _mapWidth = GAMESCREEN_WIDTH * 2;
     _mapHeight = GAMESCREEN_HEIGHT;
-    Game_Blocker* block1 = new Game_Blocker(0,32,0,20,GAMESCREEN_HEIGHT - 52);
-    Game_Blocker* block2 = new Game_Blocker(0, GAMESCREEN_HEIGHT - 20, 0, GAMESCREEN_WIDTH * 2, 20);
-    Game_Blocker* block3 = new Game_Blocker(GAMESCREEN_WIDTH * 2 - 20, 0, 0, 20, GAMESCREEN_HEIGHT - 20);
-    Demo_Layer* demo = new Demo_Layer(0, 0, 1, 20, 32);
-    Demo_Layer* demo2 = new Demo_Layer(300, 120, 1, 20, 32);
-    Demo_Layer* demo3 = new Demo_Layer(600, 180, 1, 20, 32);
+    Game_Blocker* block1 = new Game_Blocker(0,32,1,20,GAMESCREEN_HEIGHT - 52);
+    Game_Blocker* block2 = new Game_Blocker(0, GAMESCREEN_HEIGHT - 20, 1, GAMESCREEN_WIDTH * 2, 20);
+    Game_Blocker* block3 = new Game_Blocker(GAMESCREEN_WIDTH * 2 - 20, 1, 0, 20, GAMESCREEN_HEIGHT - 20);
+    Demo_Layer* demo = new Demo_Layer(0, 0, 0, 3328, 239);
     _objects.push_back(block1);
     _objects.push_back(block2);
     _objects.push_back(block3);
     _objects.push_back(demo);
-    _objects.push_back(demo2);
-    _objects.push_back(demo3);
     ScreenManager::GetInstance()->Screen()->focusToPoint(GAMESCREEN_WIDTH/2,GAMESCREEN_HEIGHT/2, _mapWidth, _mapHeight);
 }
 

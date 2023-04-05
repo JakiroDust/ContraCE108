@@ -58,14 +58,7 @@ void Game_MovableObject::UpdateJumpState()
 	}
 	else
 	{
-		if (_state != "falling" && _onAir)
-		{
-			_state = "falling";
-		}
-		if (_state == "falling")
-		{
-			_vy = _y + jumpVector;
-		}
+		_vy = jumpVector;
 	}
 }
 
@@ -73,4 +66,17 @@ void Game_MovableObject::teleport(float x, float y)
 {
 	_x = realX(x);
 	_y = realY(y);
+}
+
+void Game_MovableObject::Update(DWORD dt)
+{
+	if (_gravity) {
+		UpdateJumpState();
+	}
+}
+void Game_MovableObject::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
+{
+	if (_gravity) {
+		UpdateJumpState();
+	}
 }
