@@ -43,6 +43,8 @@ HOW TO INSTALL Microsoft.DXSDK.D3DX
 
 #include "AssetIDs.h"
 
+#include "ScreenManager.h"
+
 #define WINDOW_CLASS_NAME L"SampleWindow"
 #define MAIN_WINDOW_TITLE L"04 - Collision"
 #define WINDOW_ICON_PATH L"mario.ico"
@@ -71,7 +73,9 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 */
 void Update(DWORD dt)
 {
-	CGame::GetInstance()->GetCurrentScene()->Update(dt);
+	//CGame::GetInstance()->GetCurrentScene()->Update(dt);
+	// Demo
+	ScreenManager::GetInstance()->Update(dt);
 }
 
 /*
@@ -93,7 +97,9 @@ void Render()
 	FLOAT NewBlendFactor[4] = { 0,0,0,0 };
 	pD3DDevice->OMSetBlendState(g->GetAlphaBlending(), NewBlendFactor, 0xffffffff);
 
-	CGame::GetInstance()->GetCurrentScene()->Render();
+	//CGame::GetInstance()->GetCurrentScene()->Render();
+	// Demo
+	ScreenManager::GetInstance()->Render();
 
 	spriteHandler->End();
 	pSwapChain->Present(0, 0);
@@ -192,7 +198,7 @@ int WINAPI WinMain(
 	_In_ LPSTR lpCmdLine,
 	_In_ int nCmdShow
 ) {
-	HWND hWnd = CreateGameWindow(hInstance, nCmdShow, SCREEN_WIDTH, SCREEN_HEIGHT);
+	HWND hWnd = CreateGameWindow(hInstance, nCmdShow, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 	SetDebugWindow(hWnd);
 
@@ -204,7 +210,11 @@ int WINAPI WinMain(
 	//IMPORTANT: this is the only place where a hardcoded file name is allowed ! 
 	//game->Load(L"mario-sample.txt");  
 	game->Load(L"contra-level.txt");
-	SetWindowPos(hWnd, 0, 0, 0, SCREEN_WIDTH*2, SCREEN_HEIGHT*2, SWP_NOMOVE | SWP_NOOWNERZORDER | SWP_NOZORDER);
+
+	// Demo
+	ScreenManager::GetInstance()->Load(L"contra-level.txt");
+
+	SetWindowPos(hWnd, 0, 0, 0, WINDOW_WIDTH*2, WINDOW_HEIGHT*2, SWP_NOMOVE | SWP_NOOWNERZORDER | SWP_NOZORDER);
 
 	Run();
 

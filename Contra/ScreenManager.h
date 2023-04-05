@@ -1,4 +1,5 @@
 #pragma once
+
 #include <vector>
 
 using namespace std;
@@ -18,6 +19,9 @@ private:
 	Game_Screen* _screen = NULL;
 	Scene_Base* _scene = NULL;
 
+	// Test
+	void Create_Scene_Demo();
+
 public:
 	static ScreenManager* GetInstance();
 	ScreenManager();
@@ -25,5 +29,6 @@ public:
 	Scene_Base* Scene() { return _scene; }
 	void Render();
 	void Update(DWORD dt);
+	void Load(LPCWSTR gameFile);
 };
 
