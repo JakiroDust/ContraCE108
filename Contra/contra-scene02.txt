@@ -4,11 +4,16 @@ contra.txt
 coin.txt
 cloud.txt
 brick.txt
+ContraMapStage1BG.txt
 #
 [OBJECTS]
 # type	x	y	extra_settings per object type
 # type: 0 = Contra , 1 = Brick, 2 = Goomba, 3 = Koopas
+# type 100=BG1
 # See OBJECT_TYPE constants in AssetIDs.h
+
+#BG1
+100 0 0
 
 # Contra
 0	120	10

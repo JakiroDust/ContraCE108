@@ -7,6 +7,14 @@
 #define ID_TEX_MARIO 0
 #define ID_TEX_ENEMY 10
 #define ID_TEX_MISC 20
+#define ID_TEX_BG_1 1
+#define ID_TEX_BG_2 2
+#define ID_TEX_BG_3 3
+#define ID_TEX_BG_4 4
+
+#define OBJECT_TYPE_BG_1 101
+#define OBJECT_TYPE_BG_2 102
+#define OBJECT_TYPE_BG_3 103
 
 
 #define OBJECT_TYPE_MARIO	0
