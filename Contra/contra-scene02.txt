@@ -12,8 +12,6 @@ ContraMapStage1BG.txt
 # type 100=BG1
 # See OBJECT_TYPE constants in AssetIDs.h
 
-#BG1
-100 0 0
 
 # Contra
 0	120	10
