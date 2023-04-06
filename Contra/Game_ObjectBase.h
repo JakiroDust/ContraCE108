@@ -40,6 +40,9 @@ protected:
 
 	/// PROTECTED FUNCTIONS
 
+	void UpdatePosition(DWORD dt);
+	void ResetVector();
+
 public:
 	Game_ObjectBase(float x = 0, float y = 0, int z = 0, int width = 0, int height = 0);
 
@@ -48,12 +51,14 @@ public:
 	float x() { return _x; }
 	float y() { return _y; }
 	int z() { return _z; }
+	int width() { return _width; }
+	int height() { return _height; }
 	void SetPosition(float x, float y) { this->_x = x, this->_y = y; }
 	void SetSpeed(float vx, float vy) { this->_vx = vx, this->_vy = vy; }
 	void GetPosition(float& x, float& y) { x = this->_x; y = this->_y; }
 	void GetSpeed(float& vx, float& vy) { vx = this->_vx; vy = this->_vy; }
 	void GetCenterPoint(float& x, float& y) { x = _x + _width / 2; y = _y + _height / 2; }
-
+	void SetCenterPoint(float x, float y) { this->_x = x - _width/2, this->_y = y - _height / 2; }
 	// Draw object to screen
 	virtual void Render();
 	virtual void SetNeedRender(bool b) { _needRender = b; }
@@ -81,12 +86,17 @@ public:
 	virtual void OnCollisionWith(PCOLLISIONEVENT e);
 	// Is this object blocking other object? If YES, collision framework will automatically push the other object
 	virtual bool IsBlocking() { return 0; }
+	// Can this object ingore blocking object and move through it?
+	// If YES, collision framework will skip this collision event.
+	virtual bool IgnoreBlocking() { return 1; }
 
 
 	// Key event handler
 	virtual void KeyDownEventHandler(int KeyCode) {}
 	// Key event handler
 	virtual void KeyUpEventHandler(int KeyCode) {}
+	// Key state handler
+	virtual void KeyStateHandler(BYTE* state) {}
 
 	virtual void DeleteThis() { _isDeleted = true; }
 	bool IsDeleted() { return _isDeleted; }

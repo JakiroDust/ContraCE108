@@ -236,12 +236,14 @@ void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* 
 	{
 		objSrc->OnNoCollision(dt);
 	}
-	else
+	// Process blocking collision. If src object having IgnoreBlocking = 1, skip this.
+	else if (!objSrc->IgnoreBlocking())
 	{
 		Filter(objSrc, coEvents, colX, colY);
 
 		float x, y, vx, vy, dx, dy;
-		objSrc->GetPosition(x, y);
+		// Fixed
+		objSrc->GetCenterPoint(x, y);
 		objSrc->GetSpeed(vx, vy);
 		dx = vx * dt;
 		dy = vy * dt;
@@ -251,7 +253,8 @@ void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* 
 			if (colY->t < colX->t)	// was collision on Y first ?
 			{
 				y += colY->t * dy + colY->ny * BLOCK_PUSH_FACTOR;
-				objSrc->SetPosition(x, y);
+				// Fixed
+				objSrc->SetCenterPoint(x, y);
 
 				objSrc->OnCollisionWith(colY);
 
@@ -284,7 +287,8 @@ void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* 
 			else // collision on X first
 			{
 				x += colX->t * dx + colX->nx * BLOCK_PUSH_FACTOR;
-				objSrc->SetPosition(x, y);
+				// Fixed
+				objSrc->SetCenterPoint(x, y);
 
 				objSrc->OnCollisionWith(colX);
 
@@ -334,8 +338,8 @@ void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* 
 					x += dx;
 					y += dy;
 				}
-
-		objSrc->SetPosition(x, y);
+		// Fixed
+		objSrc->SetCenterPoint(x, y);
 	}
 
 	//

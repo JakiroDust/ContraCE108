@@ -14,13 +14,12 @@ ScreenManager::ScreenManager()
 }
 
 
-
 void ScreenManager::Update(DWORD dt)
 {
 	_scene->Update(dt);
 	// Camera Update
-	if (dynamic_cast<Scene_Battle*>(_scene))
-		_screen->Update(dt, ((Scene_Battle*)_scene)->objects());
+	//if (dynamic_cast<Scene_Battle*>(_scene))
+	//	_screen->Update(dt, ((Scene_Battle*)_scene)->objects());
 }
 
 void ScreenManager::Render()

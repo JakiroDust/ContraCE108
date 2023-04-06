@@ -11,7 +11,7 @@ class Game_Screen : public Game_MovableObject
 private:
 
 public:
-	Game_Screen(float x, float y) : Game_MovableObject(x, y, 0, GAMESCREEN_WIDTH, GAMESCREEN_HEIGHT) {}
+	Game_Screen(float x, float y) : Game_MovableObject(x, y, 0, GAMESCREEN_WIDTH, GAMESCREEN_HEIGHT) { _gravity = false; }
 	// Focus point will be center of screen
 	void focusToPoint(float x, float y, int MapWidth, int MapHeight);
 	void DeleteThis();
