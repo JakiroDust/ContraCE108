@@ -183,7 +183,10 @@
     <ClCompile Include="Sprites.cpp" />
     <ClCompile Include="State_Base.cpp" />
     <ClCompile Include="State_Contra_Base.cpp" />
+    <ClCompile Include="State_Contra_Fall.cpp" />
     <ClCompile Include="State_Contra_Idle.cpp" />
+    <ClCompile Include="State_Contra_Jump.cpp" />
+    <ClCompile Include="State_Contra_Swim.cpp" />
     <ClCompile Include="State_Contra_Walk.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="Utils.cpp" />
@@ -229,7 +232,10 @@
     <ClInclude Include="Sprites.h" />
     <ClInclude Include="State_Base.h" />
     <ClInclude Include="State_Contra_Base.h" />
+    <ClInclude Include="State_Contra_Fall.h" />
     <ClInclude Include="State_Contra_Idle.h" />
+    <ClInclude Include="State_Contra_Jump.h" />
+    <ClInclude Include="State_Contra_Swim.h" />
     <ClInclude Include="State_Contra_Walk.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Textures.h" />

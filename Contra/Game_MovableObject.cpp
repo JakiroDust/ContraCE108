@@ -1,18 +1,18 @@
 #include "Game_MovableObject.h"
 
-const float Game_MovableObject::jumpVector = 0.4f;
+const float Game_MovableObject::jumpVector = 0.25f;
 
 bool Game_MovableObject::isDie()
 {
 	return _die;
 }
 
-float Game_MovableObject::mapX()
+float Game_MovableObject::footerX()
 {
 	return _x + _width / 2;
 }
 
-float Game_MovableObject::mapY()
+float Game_MovableObject::footerY()
 {
 	return _y + _height;
 }
@@ -41,7 +41,7 @@ void Game_MovableObject::moveRight()
 
 void Game_MovableObject::jump()
 {
-	_jumpForce = 150;
+	_jumpForce = 30;
 }
 
 void Game_MovableObject::forceDie()
@@ -67,6 +67,13 @@ void Game_MovableObject::teleport(float x, float y)
 {
 	_x = realX(x);
 	_y = realY(y);
+}
+
+void Game_MovableObject::ResetStateParams()
+{
+	Game_ObjectBase::ResetStateParams();
+	_swim = false;
+	_onGround = false;
 }
 
 void Game_MovableObject::Update(DWORD dt)
@@ -102,6 +109,7 @@ void Game_MovableObject::UpdateDefault()
 void Game_MovableObject::OnNoCollision(DWORD dt)
 {
 	Game_ObjectBase::OnNoCollision(dt);
+	_onGround = false;
 }
 
 void Game_MovableObject::OnCollisionWith(PCOLLISIONEVENT e) 
@@ -110,5 +118,6 @@ void Game_MovableObject::OnCollisionWith(PCOLLISIONEVENT e)
 	if (e->ny != 0 && e->obj->IsBlocking())
 	{
 		if (e->ny < 0) _onGround = true;
+		if (e->ny > 0) _jumpForce = 0;
 	}
 }

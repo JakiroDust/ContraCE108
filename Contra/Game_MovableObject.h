@@ -17,6 +17,7 @@ protected:
 	/// state
 
 	bool _faceLeft = false;
+	bool _lockFace = false;
 	bool _swim = false;
 	bool _immortal = false;
 	bool _ghost = false;
@@ -29,6 +30,7 @@ protected:
 	
 	void UpdateJumpState();
 	void UpdateDefault();
+	void ResetStateParams() override;
 public:
 	/// STATIC
 
@@ -76,25 +78,27 @@ public:
 
 	// alternative horizonal position.
 	// It will be determine based on the point in the middle of sprite footer.
-	float mapX();
+	float footerX();
 	// alternative vertical position.
 	// It will be determine based on the point in the middle of sprite footer.
-	float mapY();
+	float footerY();
 	// Convert mapX to real x.
 	float realX(float x);
 	// Convert mapY to real y.
 	float realY(float y);
 
 	bool IsFaceLeft() { return _faceLeft; }
+	bool IsOnGround() { return _onGround; }
 
-	// Trigger by Blocking object or other platform object.
-	void SetOnGround(bool b) { _onGround = b; }
+	void SetLockFace(bool b) { _lockFace = b; }
+	bool LockFace() { return _lockFace; }
 
 	/// STATE
 
 	virtual bool isDie();
 	int StateId() { return _state->StateId(); }
 	bool IsSwimming() { return _swim; }
+	bool IsJumping() { return _jumpForce > 0; }
 
 	/// UPDATE
 	

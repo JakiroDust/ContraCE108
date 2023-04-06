@@ -138,6 +138,15 @@
     <ClCompile Include="Game_Water.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="State_Contra_Swim.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Contra_Fall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Contra_Jump.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -270,6 +279,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game_Water.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Contra_Swim.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Contra_Fall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Contra_Jump.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

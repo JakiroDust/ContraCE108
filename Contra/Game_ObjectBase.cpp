@@ -77,7 +77,7 @@ void Game_ObjectBase::UpdatePosition(DWORD dt)
 	_y += _vy * dt;
 }
 
-void Game_ObjectBase::ResetVector()
+void Game_ObjectBase::ResetStateParams()
 {
 	_vx = 0;
 	_vy = 0;

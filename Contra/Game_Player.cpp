@@ -2,16 +2,20 @@
 #include "Game.h"
 #include "State_Contra_Idle.h"
 #include "State_Contra_Walk.h"
+#include "State_Contra_Fall.h"
+#include "State_Contra_Swim.h"
+#include "State_Contra_Jump.h"
 
 void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 	Game_MovableObject::Update(dt, coObjects);
+	Game_Collision::GetInstance()->Process(this, dt, coObjects);
+	
 	if (_state != NULL)
 		_state->Update(dt);
 	UpdateState();
 
-	Game_Collision::GetInstance()->Process(this, dt, coObjects);
-	ResetVector();
+	ResetStateParams();
 }
 
 void Game_Player::Render()
@@ -36,6 +40,15 @@ void Game_Player::UpdateState()
 		break;
 	case STATE_WALK:
 		_state = new State_Contra_Walk(this);
+		break;
+	case STATE_FALL:
+		_state = new State_Contra_Fall(this);
+		break;
+	case STATE_SWIM:
+		_state = new State_Contra_Swim(this);
+		break;
+	case STATE_JUMP:
+		_state = new State_Contra_Jump(this);
 		break;
 	}
 }
