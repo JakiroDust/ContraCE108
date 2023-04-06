@@ -41,7 +41,7 @@ protected:
 	/// PROTECTED FUNCTIONS
 
 	void UpdatePosition(DWORD dt);
-	void ResetVector();
+	virtual void ResetStateParams();
 
 public:
 	Game_ObjectBase(float x = 0, float y = 0, int z = 0, int width = 0, int height = 0);

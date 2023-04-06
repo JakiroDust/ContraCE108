@@ -8,9 +8,10 @@ class State_Contra_Idle : public State_Contra_Base
 
 		int StateId() override { return STATE_IDLE; }
 		void Render() override;
+		void Update(DWORD dt) override;
 
 		void KeyHold_Left() override;
 		void KeyHold_Right() override;
-		void KeyPressed_Jump() override {}
+		void KeyPressed_Jump() override;
 };
 

@@ -20,7 +20,10 @@ class Game_Player : public Game_Character
 	protected:
 		void UpdateState();
 	public:
-		Game_Player(float x, float y, int z) : Game_Character(x, y, z, PLAYER_BASE_WIDTH, PLAYER_BASE_HEIGHT) {}
+		Game_Player(float x, float y, int z) : Game_Character(x, y, z, PLAYER_BASE_WIDTH, PLAYER_BASE_HEIGHT)
+		{
+			_moveSpd = 0.1f;
+		}
 
 		void Render() override;
 		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;
