@@ -2,19 +2,20 @@
 #include "debug.h"
 
 CAnimations* CAnimations::__instance = NULL;
-
 CAnimations* CAnimations::GetInstance()
 {
 	if (__instance == NULL) __instance = new CAnimations();
 	return __instance;
 }
 
-void CAnimations::Add(int id, LPANIMATION ani)
+void CAnimations::Add(int id, LPANIMATION ani,int isOneDirect)
 {
+//	if (isOneDirect == 0)
+//		LPANIMATION left_ani = ani->Clone_Flip();
 	if (animations[id] != NULL)
 		DebugOut(L"[WARNING] Animation %d already exists\n", id);
 
-	animations[id] = ani;
+	animations[id] = ani;// ->Clone_Flip();
 }
 
 LPANIMATION CAnimations::Get(int id)

@@ -16,7 +16,7 @@ height	240
 -100	textures\bbox.png
 0	textures\contra2-transparent.png
 10	textures\enemies.png
-20	textures\misc.png
+#20	textures\misc.png
 1	textures\ContraMapStage1BG.png
 2	textures\ContraMapStage2BG.png
 3	textures\ContraMapStage3BG.png

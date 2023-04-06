@@ -1,10 +1,10 @@
 # list of object assets to load in this scene
 [ASSETS]
 contra.txt
-brick.txt
-coin.txt
-goomba.txt
-cloud.txt
+#brick.txt
+#coin.txt
+#goomba.txt
+#cloud.txt
 ContraMapStage1BG.txt
 #
 [OBJECTS]

@@ -1,6 +1,21 @@
 #include "Animation.h"
 #include "debug.h"
 
+LPSPRITE _Clone_Flip_CSprite(LPSPRITE target,int new_id=-1111111)
+{	
+	
+
+	int id, left, top, right, bottom;
+	LPTEXTURE tex;
+	target->getAll(id, left, top, right, bottom, tex);
+	if (new_id == -1111111)
+		new_id = id + 10;
+		
+	LPSPRITE clone = new CSprite(new_id, left, top, right, bottom, tex,true);
+	return clone;
+
+}
+
 void CAnimation::Add(int spriteId, DWORD time)
 {
 	int t = time;
@@ -35,5 +50,20 @@ void CAnimation::Render(float x, float y)
 	}
 
 	frames[currentFrame]->GetSprite()->Draw(x, y);
+}
+
+LPANIMATION CAnimation::Clone_Flip()
+{
+
+	LPANIMATION clone = new CAnimation(this->defaultTime); // create a new instance of the CAnimation class with the same default time
+
+	// copy the frames vector
+	for (auto& frame : this->frames)
+	{
+		LPANIMATION_FRAME cloneFrame = new CAnimationFrame(_Clone_Flip_CSprite(frame->GetSprite()), frame->GetTime());
+		clone->frames.push_back(cloneFrame);
+	}
+
+	return clone;
 }
 

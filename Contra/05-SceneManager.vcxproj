@@ -196,6 +196,7 @@
     <ClInclude Include="Brick.h" />
     <ClInclude Include="Coin.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="Contra_ANI_ID.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="Demo_Layer.h" />
     <ClInclude Include="Game.h" />
@@ -245,7 +246,6 @@
     <Text Include="ContraMapStage1BG.txt" />
     <Text Include="goomba.txt" />
     <Text Include="mario-sample.txt" />
-    <Text Include="mario.txt" />
     <Text Include="scene0005.txt" />
     <Text Include="scene01.txt" />
     <Text Include="scene02.txt" />
