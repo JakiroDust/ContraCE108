@@ -45,7 +45,7 @@
 #define ID_ANI_MARIO_SIT_RIGHT 900
 #define ID_ANI_MARIO_SIT_LEFT 901
 
-#define ID_ANI_MARIO_DIE 999
+#define ID_ANI_MARIO_DIE 10900
 
 #pragma endregion
 

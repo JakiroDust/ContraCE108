@@ -13,7 +13,7 @@ void State_Contra_Swim::Render()
 	}
 	else
 	{
-		animations->Get(ANI_IDLE_RIGHT)->Render(x, y);
+		animations->Get(ANI_SWIM_RIGHT)->Render(x, y);
 	}
 }
 

@@ -6,12 +6,7 @@
 #define STATE_JUMP 2
 #define STATE_SWIM 3
 #define STATE_FALL 4
-#define STATE_JUMP 5
 
-#define ANI_IDLE_RIGHT 400
-#define ANI_IDLE_LEFT 401
-#define ANI_WALK_RIGHT 600
-#define ANI_WALK_LEFT 601
 
 class State_Contra_Base : public State_Base
 {
