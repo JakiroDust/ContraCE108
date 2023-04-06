@@ -9,11 +9,11 @@ void State_Contra_Fall::Render()
 	obj->GetCenterPoint(x, y);
 	if (obj->IsFaceLeft())
 	{
-		animations->Get(ANI_IDLE_LEFT)->Render(x, y);
+		animations->Get(ANI_FALL_LEFT)->Render(x, y);
 	}
 	else
 	{
-		animations->Get(ANI_IDLE_RIGHT)->Render(x, y);
+		animations->Get(ANI_FALL_RIGHT)->Render(x, y);
 	}
 }
 
