@@ -9,6 +9,7 @@
 #include "Game_Blocker.h"
 #include "Game_Terrain.h"
 #include "Game_Collision.h"
+#include "Game_Water.h"
 // DEMO
 #include "Demo_Layer.h"
 
@@ -24,6 +25,7 @@ class Scene_Battle : public Scene_Base
 		vector<Game_ObjectBase*> _objects;
 		int _mapWidth = 1;
 		int _mapHeight = 1;
+		void checkObjectNeedRender(Game_ObjectBase* obj);
 		// DEMO
 		void Demo_Camera_Action();
 	public:

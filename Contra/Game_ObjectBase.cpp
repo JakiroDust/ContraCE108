@@ -19,10 +19,14 @@ Game_ObjectBase::Game_ObjectBase(float x, float y, int z, int width, int height)
 void Game_ObjectBase::Render()
 {
 	RenderHitbox();
-	CAnimations* animations = CAnimations::GetInstance();
-	float x, y;
-	GetCenterPoint(x, y);
-	animations->Get(_SpriteId)->Render(x, y);
+	if (_SpriteId > 0)
+	{
+		CAnimations* animations = CAnimations::GetInstance();
+		float x, y;
+		GetCenterPoint(x, y);
+		animations->Get(_SpriteId)->Render(x, y);
+	}
+
 }
 
 void Game_ObjectBase::RenderHitbox()
@@ -59,13 +63,22 @@ void Game_ObjectBase::GetBoundingBox(float& left, float& top, float& right, floa
 
 void Game_ObjectBase::OnNoCollision(DWORD dt)
 {
-	_needRender = false;
+	UpdatePosition(dt);
 }
 
 void Game_ObjectBase::OnCollisionWith(PCOLLISIONEVENT e)
 {
-	if (dynamic_cast<Game_Screen*>(e->obj))
-	{
-		_needRender = true;
-	}
+
+}
+
+void Game_ObjectBase::UpdatePosition(DWORD dt)
+{
+	_x += _vx * dt;
+	_y += _vy * dt;
+}
+
+void Game_ObjectBase::ResetVector()
+{
+	_vx = 0;
+	_vy = 0;
 }

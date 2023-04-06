@@ -159,6 +159,7 @@
     <ClCompile Include="Game_Blocker.cpp" />
     <ClCompile Include="Game_Character.cpp" />
     <ClCompile Include="Game_Collision.cpp" />
+    <ClCompile Include="Game_KeyInput.cpp" />
     <ClCompile Include="Game_Layer.cpp" />
     <ClCompile Include="Game_MovableObject.cpp" />
     <ClCompile Include="Game_ObjectBase.cpp" />
@@ -167,6 +168,7 @@
     <ClCompile Include="Game_Screen.cpp" />
     <ClCompile Include="Game_StaticObject.cpp" />
     <ClCompile Include="Game_Terrain.cpp" />
+    <ClCompile Include="Game_Water.cpp" />
     <ClCompile Include="Goomba.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mario.cpp" />
@@ -179,6 +181,10 @@
     <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Sprites.cpp" />
+    <ClCompile Include="State_Base.cpp" />
+    <ClCompile Include="State_Contra_Base.cpp" />
+    <ClCompile Include="State_Contra_Idle.cpp" />
+    <ClCompile Include="State_Contra_Walk.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
@@ -197,6 +203,7 @@
     <ClInclude Include="Game_Blocker.h" />
     <ClInclude Include="Game_Character.h" />
     <ClInclude Include="Game_Collision.h" />
+    <ClInclude Include="Game_KeyInput.h" />
     <ClInclude Include="Game_Layer.h" />
     <ClInclude Include="Game_MovableObject.h" />
     <ClInclude Include="Game_ObjectBase.h" />
@@ -205,6 +212,7 @@
     <ClInclude Include="Game_Screen.h" />
     <ClInclude Include="Game_StaticObject.h" />
     <ClInclude Include="Game_Terrain.h" />
+    <ClInclude Include="Game_Water.h" />
     <ClInclude Include="Goomba.h" />
     <ClInclude Include="KeyEventHandler.h" />
     <ClInclude Include="Mario.h" />
@@ -218,6 +226,10 @@
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Sprites.h" />
+    <ClInclude Include="State_Base.h" />
+    <ClInclude Include="State_Contra_Base.h" />
+    <ClInclude Include="State_Contra_Idle.h" />
+    <ClInclude Include="State_Contra_Walk.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Textures.h" />
     <ClInclude Include="Utils.h" />

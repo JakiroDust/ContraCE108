@@ -1,6 +1,6 @@
 #include "Game_MovableObject.h"
 
-
+const float Game_MovableObject::jumpVector = 0.4f;
 
 bool Game_MovableObject::isDie()
 {
@@ -54,10 +54,11 @@ void Game_MovableObject::UpdateJumpState()
 	if (_jumpForce > 0)
 	{
 		_vy = -jumpVector;
-		_jumpForce -= jumpVector;
+		_jumpForce --;
 	}
 	else
 	{
+		_jumpForce = 0;
 		_vy = jumpVector;
 	}
 }
@@ -70,13 +71,44 @@ void Game_MovableObject::teleport(float x, float y)
 
 void Game_MovableObject::Update(DWORD dt)
 {
-	if (_gravity) {
-		UpdateJumpState();
-	}
+	UpdateDefault();
 }
 void Game_MovableObject::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
-	if (_gravity) {
+	UpdateDefault();
+}
+
+void Game_MovableObject::UpdateDefault()
+{
+	if (_gravity)
+	{
 		UpdateJumpState();
+	}
+	if (_ForceX != 0)
+	{
+		if (_ForceX > 0)
+		{
+			_ForceX--;
+			moveLeft();
+		}
+		else
+		{
+			_ForceX++;
+			moveRight();
+		}
+	}
+}
+
+void Game_MovableObject::OnNoCollision(DWORD dt)
+{
+	Game_ObjectBase::OnNoCollision(dt);
+}
+
+void Game_MovableObject::OnCollisionWith(PCOLLISIONEVENT e) 
+{
+	Game_ObjectBase::OnCollisionWith(e);
+	if (e->ny != 0 && e->obj->IsBlocking())
+	{
+		if (e->ny < 0) _onGround = true;
 	}
 }
