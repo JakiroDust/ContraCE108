@@ -30,7 +30,7 @@ protected:
 	int _height;
 
 	// LOGIC
-
+	int _id = -1;
 	bool _isDeleted = false;
 
 	// RENDER 
@@ -47,12 +47,13 @@ public:
 	Game_ObjectBase(float x = 0, float y = 0, int z = 0, int width = 0, int height = 0);
 
 	// GET SET FUNCTIONS
-
+	int id() { return _id; }
 	float x() { return _x; }
 	float y() { return _y; }
 	int z() { return _z; }
 	int width() { return _width; }
 	int height() { return _height; }
+	void SetId(int id) { _id = id; }
 	void SetPosition(float x, float y) { this->_x = x, this->_y = y; }
 	void SetSpeed(float vx, float vy) { this->_vx = vx, this->_vy = vy; }
 	void GetPosition(float& x, float& y) { x = this->_x; y = this->_y; }
@@ -67,6 +68,7 @@ public:
 	// 1 - center aligment
 	// 2 - bottom aligment
 	void SetHeight(int height, int mode = 0);
+
 	// Draw object to screen
 	virtual void Render();
 	virtual void SetNeedRender(bool b) { _needRender = b; }

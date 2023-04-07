@@ -75,6 +75,12 @@ void Scene_Battle::Render()
 
 void Scene_Battle::Update(DWORD dt)
 {
+    for (int i = 0; i < _layers.size(); i++)
+    {
+        Game_ObjectBase* obj = _layers[i];
+        checkObjectNeedRender(obj);
+    }
+
     for (int i = 0; i < _objects.size(); i++)
     {
         Game_ObjectBase* obj = _objects.at(i);
@@ -109,16 +115,16 @@ void Scene_Battle::checkObjectNeedRender(Game_ObjectBase* obj)
 // DEMO
 void Scene_Battle::Create_Stage_Demo()
 {
-    _mapWidth = GAMESCREEN_WIDTH * 2;
+    _mapWidth = 3328;
     _mapHeight = GAMESCREEN_HEIGHT;
     _p1 = new Game_Player(40,40,2);
 
 
     Game_Blocker* block1 = new Game_Blocker(0, 0, 1, 20, GAMESCREEN_HEIGHT - 20);
-    Game_Blocker* block2 = new Game_Blocker(GAMESCREEN_WIDTH * 2 - 20, 1, 0, 20, GAMESCREEN_HEIGHT - 20);
+    Game_Blocker* block2 = new Game_Blocker(_mapWidth - 20, 1, 0, 20, GAMESCREEN_HEIGHT - 20);
 
     Game_Water* water1 = new Game_Water(0, GAMESCREEN_HEIGHT - 20, 1, 288, 20);
-    Game_Water* water2 = new Game_Water(352, GAMESCREEN_HEIGHT - 20, 1, 288, 20);
+    Game_Water* water2 = new Game_Water(352, GAMESCREEN_HEIGHT - 20, 1, 2976, 20);
 
     Game_Blocker* plat1 = new Game_Blocker(160, 150, 1, 96, 1);
     Game_Blocker* plat2 = new Game_Blocker(256, 178, 1, 32, 1);
@@ -139,7 +145,7 @@ void Scene_Battle::Create_Stage_Demo()
     _objects.push_back(plat3);
     _objects.push_back(plat4);
     _objects.push_back(plat5);
-    _objects.push_back(demo);
+    _layers.push_back(demo);
     ScreenManager::GetInstance()->Screen()->focusToPoint(GAMESCREEN_WIDTH/2,GAMESCREEN_HEIGHT/2, _mapWidth, _mapHeight);
     Game_KeyInput::GetInstance()->AddObjectControl(_p1);
 }

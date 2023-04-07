@@ -23,6 +23,8 @@ void State_Contra_Walk::Update(DWORD dt)
 	if (_nextState != -1)
 		return;
 	Game_Player* obj = (Game_Player*)_srcObj;
+	if (obj->height() != PLAYER_BASE_HEIGHT)
+		obj->SetHeight(PLAYER_BASE_HEIGHT, 2);
 
 	if (obj->LockFace())
 		obj->SetLockFace(false);

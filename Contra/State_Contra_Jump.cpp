@@ -23,7 +23,8 @@ void State_Contra_Jump::Update(DWORD dt)
 		return;
 
 	Game_Player* obj = (Game_Player*)_srcObj;
-	obj->SetHeight(PLAYER_JUMP_HEIGHT, 1);
+	if (obj->height() != PLAYER_JUMP_HEIGHT)
+		obj->SetHeight(PLAYER_JUMP_HEIGHT, 1);
 
 	if (obj->IsJumping())
 		return;
