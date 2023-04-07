@@ -24,6 +24,8 @@ void State_Contra_Idle::Update(DWORD dt)
 		return;
 
 	Game_Player* obj = (Game_Player*)_srcObj;
+	obj->SetHeight(PLAYER_BASE_HEIGHT, 2);
+
 	if (obj->LockFace())
 		obj->SetLockFace(false);
 
