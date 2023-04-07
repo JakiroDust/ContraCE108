@@ -112,6 +112,8 @@ void Scene_Battle::Create_Stage_Demo()
     _mapWidth = GAMESCREEN_WIDTH * 2;
     _mapHeight = GAMESCREEN_HEIGHT;
     _p1 = new Game_Player(40,40,2);
+
+
     Game_Blocker* block1 = new Game_Blocker(0, 0, 1, 20, GAMESCREEN_HEIGHT - 20);
     Game_Blocker* block2 = new Game_Blocker(GAMESCREEN_WIDTH * 2 - 20, 1, 0, 20, GAMESCREEN_HEIGHT - 20);
 
@@ -127,6 +129,7 @@ void Scene_Battle::Create_Stage_Demo()
 
     Demo_Layer* demo = new Demo_Layer(0, 0, 0, 3328, 239);
     _objects.push_back(_p1);
+
     _objects.push_back(water1);
     _objects.push_back(water2);
     _objects.push_back(block1);
