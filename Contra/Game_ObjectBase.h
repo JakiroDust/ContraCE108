@@ -59,6 +59,14 @@ public:
 	void GetSpeed(float& vx, float& vy) { vx = this->_vx; vy = this->_vy; }
 	void GetCenterPoint(float& x, float& y) { x = _x + _width / 2; y = _y + _height / 2; }
 	void SetCenterPoint(float x, float y) { this->_x = x - _width/2, this->_y = y - _height / 2; }
+	// 0 - left alignment
+	// 1 - center aligment
+	// 2 - right aligment
+	void SetWidth(int width, int mode = 0);
+	// 0 - top alignment
+	// 1 - center aligment
+	// 2 - bottom aligment
+	void SetHeight(int height, int mode = 0);
 	// Draw object to screen
 	virtual void Render();
 	virtual void SetNeedRender(bool b) { _needRender = b; }

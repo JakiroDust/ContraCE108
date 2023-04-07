@@ -16,6 +16,40 @@ Game_ObjectBase::Game_ObjectBase(float x, float y, int z, int width, int height)
 	_height = height;
 }
 
+void Game_ObjectBase::SetWidth(int width, int mode)
+{
+	
+	switch (mode)
+	{
+	case 0: // left alignment
+		break;
+	case 1: // center alignment
+		_x += (_width - width) / 2;
+		break;
+	case 2: // right alignment
+		_x += (_width - width);
+		break;
+	}
+	_width = width;
+}
+
+void Game_ObjectBase::SetHeight(int height, int mode)
+{
+
+	switch (mode)
+	{
+	case 0: // top alignment
+		break;
+	case 1: // center alignment
+		_y += (_height - height) / 2;
+		break;
+	case 2: // bottom alignment
+		_y += (_height - height);
+		break;
+	}
+	_height = height;
+}
+
 void Game_ObjectBase::Render()
 {
 	RenderHitbox();
