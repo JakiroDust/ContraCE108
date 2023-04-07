@@ -10,12 +10,20 @@ CAnimations* CAnimations::GetInstance()
 
 void CAnimations::Add(int id, LPANIMATION ani,int isOneDirect)
 {
-//	if (isOneDirect == 0)
-//		LPANIMATION left_ani = ani->Clone_Flip();
-	if (animations[id] != NULL)
+if (isOneDirect == 0)
+{
+	LPANIMATION left_ani = ani->Clone_Flip();
+
+	if (animations[id+1] != NULL)
 		DebugOut(L"[WARNING] Animation %d already exists\n", id);
 
-	animations[id] = ani;// ->Clone_Flip();
+	animations[id+1] = left_ani;
+}
+if (animations[id] != NULL)
+DebugOut(L"[WARNING] Animation %d already exists\n", id);
+animations[id] = ani;
+if (animations[id] == NULL)
+DebugOut(L"[WARNING] Animation %d error!\n", id);
 }
 
 LPANIMATION CAnimations::Get(int id)

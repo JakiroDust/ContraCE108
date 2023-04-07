@@ -6,11 +6,10 @@ LPSPRITE _Clone_Flip_CSprite(LPSPRITE target,int new_id=-1111111)
 	
 
 	int id, left, top, right, bottom;
+	
 	LPTEXTURE tex;
 	target->getAll(id, left, top, right, bottom, tex);
-	if (new_id == -1111111)
-		new_id = id + 10;
-		
+	new_id = id + 10;
 	LPSPRITE clone = new CSprite(new_id, left, top, right, bottom, tex,true);
 	return clone;
 
