@@ -41,10 +41,10 @@ void Game_ObjectBase::SetHeight(int height, int mode)
 	case 0: // top alignment
 		break;
 	case 1: // center alignment
-		_y += (_height - height) / 2;
+		_y += (float)(_height - height) / 2;
 		break;
 	case 2: // bottom alignment
-		_y += (_height - height);
+		_y += (float)(_height - height);
 		break;
 	}
 	_height = height;

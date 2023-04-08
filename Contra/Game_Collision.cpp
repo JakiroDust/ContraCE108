@@ -3,8 +3,6 @@
 
 #include "debug.h"
 
-#define BLOCK_PUSH_FACTOR 0.4f
-
 Game_Collision* Game_Collision::__instance = NULL;
 
 Game_Collision* Game_Collision::GetInstance()
@@ -247,6 +245,16 @@ void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* 
 		objSrc->GetSpeed(vx, vy);
 		dx = vx * dt;
 		dy = vy * dt;
+
+		// Checking col blocking object Condition
+		if (colX != NULL && !colX->obj->BlockingCondition(dt, colX))
+		{
+			colX = NULL;
+		}
+		if (colY != NULL && !colY->obj->BlockingCondition(dt, colY))
+		{
+			colY = NULL;
+		}
 
 		if (colX != NULL && colY != NULL)
 		{
