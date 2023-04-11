@@ -55,6 +55,7 @@ private:
 public:
 	Spatial *spatial;
 	vector<int> getNearByID(int n, int m);
+	vector<int> getNearbyIDFast();
 	void add_object(Game_ObjectBase* object);
 };
 

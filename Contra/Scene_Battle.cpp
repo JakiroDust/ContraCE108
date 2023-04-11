@@ -47,10 +47,7 @@ void Scene_Battle::Render()
         RenderQueue.insert(it + j, obj);
     }
     // other game objects
-    float x, y;
-    Game_Screen* screen = ScreenManager::GetInstance()->Screen();
-    screen->GetCenterPoint(x, y);
-    vector<int> id_list = getNearByIDyx(y, x);
+    vector<int> id_list = getNearbyIDFast();
     for (auto&i :id_list)
     {
         Game_ObjectBase* obj = __objects[i];
@@ -89,10 +86,7 @@ void Scene_Battle::Update(DWORD dt)
     }
     float y, x;
 
-
-    Game_Screen* screen = ScreenManager::GetInstance()->Screen();
-    screen->GetCenterPoint(x, y);
-    vector<int> id_list=getNearByIDyx(y, x);
+    vector<int> id_list= getNearbyIDFast();
     //for (int i = 0; i < _objects.size(); i++)
     float old_l, old_right, old_bottom, old_top,
         new_l, new_right, new_bottom, new_top;
@@ -180,6 +174,7 @@ void Scene_Battle::Create_Stage_Demo()
     add_object(plat3);//7
     add_object(plat4);//8
     add_object(plat5);//9
+    add_object(plat6);
     _layers.push_back(demo);
     ScreenManager::GetInstance()->Screen()->focusToPoint(GAMESCREEN_WIDTH/2,GAMESCREEN_HEIGHT/2, _mapWidth, _mapHeight);
     Game_KeyInput::GetInstance()->AddObjectControl(_p1);
@@ -210,6 +205,14 @@ void Scene_Battle::_init_spatial()
 vector<int> Scene_Battle::getNearByID(int n, int m)
 {
     return spatial->getNearByID(n, m);
+}
+
+vector<int> Scene_Battle::getNearbyIDFast()
+{
+    float x, y;
+    Game_Screen* screen = ScreenManager::GetInstance()->Screen();
+    screen->GetCenterPoint(x, y);
+    return  getNearByIDyx(y, x);
 }
 
 void Scene_Battle::_delete_spatial()
