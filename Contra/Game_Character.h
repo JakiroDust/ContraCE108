@@ -1,5 +1,6 @@
 #pragma once
 #include "Game_MovableObject.h"
+//#include "Contra_GET_ANI.h"
 
 using namespace std;
 
@@ -8,9 +9,13 @@ class Game_Character : public Game_MovableObject
 	protected:
 		int _hp = 1;
 		bool _jumpDown = false;
+
 	public:
 
-		Game_Character(float x, float y, int z, int width, int height) : Game_MovableObject(x, y, z, width, height) {}
+		Game_Character(float x, float y, int z, int width, int height) : Game_MovableObject(x, y, z, width, height)
+		{
+			_needScanCollision = true;
+		}
 		//-------------------------------------------------------------------------------
 		/// INHERITED
 
@@ -41,5 +46,10 @@ class Game_Character : public Game_MovableObject
 
 		bool IsJumpDown() { return _jumpDown; }
 		void SetJumpDown(bool b) { _jumpDown = b; }
+		virtual int CharID() { return -1; }
 };
+
+
+
+
 

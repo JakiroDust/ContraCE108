@@ -2,6 +2,7 @@
 #include "ScreenManager.h"
 #include "Game_KeyInput.h"
 #include "Game_Platform.h"
+#include "Obj_ContraBot.h"
 
 Scene_Battle::~Scene_Battle()
 {

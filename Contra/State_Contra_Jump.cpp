@@ -1,5 +1,6 @@
 #include "State_Contra_Jump.h"
 #include "Game_Player.h"
+#include "Contra_GET_ANI.h"
 
 void State_Contra_Jump::Render()
 {
@@ -9,11 +10,11 @@ void State_Contra_Jump::Render()
 	obj->GetCenterPoint(x, y);
 	if (obj->IsFaceLeft())
 	{
-		animations->Get(ANI_JUMP_LEFT)->Render(x, y);
+		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_JUMP_LEFT))->Render(x, y);
 	}
 	else
 	{
-		animations->Get(ANI_JUMP_RIGHT)->Render(x, y);
+		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_JUMP_RIGHT))->Render(x, y);
 	}
 }
 

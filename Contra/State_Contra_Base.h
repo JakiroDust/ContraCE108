@@ -1,6 +1,7 @@
 #pragma once
 #include "State_Base.h"
 #include "Contra_ANI_ID.h"
+
 #define STATE_IDLE 0
 #define STATE_WALK 1
 #define STATE_JUMP 2

@@ -13,7 +13,7 @@
 #define PLAYER_JUMP_WIDTH 20
 #define PLAYER_JUMP_HEIGHT 20
 #define PLAYER_SWIM_WIDTH 20
-#define PLAYER_SWIM_HEIGHT 16
+#define PLAYER_SWIM_HEIGHT 8
 
 class Game_Player : public Game_Character
 {
@@ -41,5 +41,7 @@ class Game_Player : public Game_Character
 		void OnNoCollision(DWORD dt);
 		// When collision with an object has been detected (triggered by CCollision::Process)
 		void OnCollisionWith(PCOLLISIONEVENT e) override;
+
+		int CharID();
 };
 

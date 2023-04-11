@@ -1,6 +1,7 @@
 #include "State_Contra_Idle.h"
 #include "Game_Player.h"
 #include "Animations.h"
+#include "Contra_GET_ANI.h"
 
 void State_Contra_Idle::Render()
 {
@@ -10,11 +11,11 @@ void State_Contra_Idle::Render()
 	obj->GetCenterPoint(x, y);
 	if (obj->IsFaceLeft())
 	{
-		animations->Get(ANI_IDLE_LEFT)->Render(x, y);
+		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_IDLE_LEFT))->Render(x, y);
 	}
 	else
 	{
-		animations->Get(ANI_IDLE_RIGHT)->Render(x, y);
+		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_IDLE_RIGHT))->Render(x, y);
 	}
 }
 

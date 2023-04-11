@@ -1,6 +1,7 @@
 #include "State_Contra_Walk.h"
 #include "Game_Player.h"
 #include "Animations.h"
+#include "Contra_GET_ANI.h"
 
 void State_Contra_Walk::Render()
 {
@@ -10,11 +11,11 @@ void State_Contra_Walk::Render()
 	obj->GetCenterPoint(x, y);
 	if (obj->IsFaceLeft())
 	{
-		animations->Get(ANI_WALK_LEFT)->Render(x, y);
+		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_WALK_LEFT))->Render(x, y);
 	}
 	else
 	{
-		animations->Get(ANI_WALK_RIGHT)->Render(x, y);
+		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_WALK_RIGHT))->Render(x, y);
 	}
 }
 
@@ -39,7 +40,6 @@ void State_Contra_Walk::Update(DWORD dt)
 
 	if (_nextState != STATE_JUMP && !obj->IsOnGround())
 	{
-		obj->SetLockFace(true);
 		_nextState = STATE_FALL;
 	}
 }

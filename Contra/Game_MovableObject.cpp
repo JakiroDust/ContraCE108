@@ -41,7 +41,7 @@ void Game_MovableObject::moveRight()
 
 void Game_MovableObject::jump()
 {
-	_jumpForce = ceilf(40.0 / (jumpVector * 8));
+	_jumpForce = ceilf(40.0 / (jumpVector * 14));
 }
 
 void Game_MovableObject::forceDie()
