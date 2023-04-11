@@ -58,8 +58,9 @@ public:
 	void SetSpeed(float vx, float vy) { this->_vx = vx, this->_vy = vy; }
 	void GetPosition(float& x, float& y) { x = this->_x; y = this->_y; }
 	void GetSpeed(float& vx, float& vy) { vx = this->_vx; vy = this->_vy; }
-	void GetCenterPoint(float& x, float& y) { x = _x + _width / 2; y = _y + _height / 2; }
-	void SetCenterPoint(float x, float y) { this->_x = x - _width/2, this->_y = y - _height / 2; }
+	void GetCenterPoint(float& x, float& y) { x = _x + _width / 2.0f; y = _y + _height / 2.0f; }
+	void SetCenterPoint(float x, float y) { this->_x = x - _width/2.0f, this->_y = y - _height / 2.0f; }
+	void GetLTRB(float& l, float& t, float& r, float& b);
 	// 0 - left alignment
 	// 1 - center aligment
 	// 2 - right aligment
@@ -82,7 +83,8 @@ public:
 	// UPDATE
 
 	virtual void Update(DWORD dt) {}
-	virtual void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) {}
+	virtual void Update(DWORD dt, vector< Game_ObjectBase*>* coObjects) {}
+	virtual void Update(DWORD dt, unordered_map<int, Game_ObjectBase*>* coObjects) {}
 
 	// COLLISION
 

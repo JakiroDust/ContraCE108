@@ -12,7 +12,7 @@
 #include "Game_Water.h"
 // DEMO
 #include "Demo_Layer.h"
-
+#include "Spatial.h"
 using namespace std;
 
 
@@ -23,9 +23,11 @@ class Scene_Battle : public Scene_Base
 		Game_Player* _p2 = NULL;
 		vector<Game_Layer*> _layers;
 		vector<Game_ObjectBase*> _objects;
+		unordered_map<int, Game_ObjectBase*> __objects;
 		int _mapWidth = 1;
 		int _mapHeight = 1;
 		void checkObjectNeedRender(Game_ObjectBase* obj);
+		vector<int> getNearByIDyx(int y, int x);
 		// DEMO
 		void Demo_Camera_Action();
 	public:
@@ -41,5 +43,18 @@ class Scene_Battle : public Scene_Base
 		void Update(DWORD dt) override;
 
 		void Create_Stage_Demo();
+
+
+		/// from this is protype
+
+private:
+	int id_nth = 0;
+	
+	void _init_spatial();
+	void _delete_spatial();
+public:
+	Spatial *spatial;
+	vector<int> getNearByID(int n, int m);
+	void add_object(Game_ObjectBase* object);
 };
 

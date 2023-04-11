@@ -179,6 +179,7 @@
     <ClCompile Include="Scene_Base.cpp" />
     <ClCompile Include="Scene_Battle.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
+    <ClCompile Include="Spatial.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Sprites.cpp" />
     <ClCompile Include="State_Base.cpp" />
@@ -228,6 +229,7 @@
     <ClInclude Include="Scene_Base.h" />
     <ClInclude Include="Scene_Battle.h" />
     <ClInclude Include="ScreenManager.h" />
+    <ClInclude Include="Spatial.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Sprites.h" />
     <ClInclude Include="State_Base.h" />

@@ -147,6 +147,9 @@
     <ClCompile Include="State_Contra_Jump.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Spatial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -290,11 +293,14 @@
     <ClInclude Include="State_Contra_Jump.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Contra_ANI_ID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spatial.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="mario.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
     <Text Include="scene01.txt">
       <Filter>Resource Files</Filter>
     </Text>

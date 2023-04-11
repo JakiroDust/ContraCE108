@@ -18,6 +18,8 @@ Scene_Battle::~Scene_Battle()
         delete  _objects.at(i);
     }
     _objects.clear();
+    _delete_spatial();
+    __objects.clear();
 }
 
 void Scene_Battle::Render()
@@ -35,7 +37,7 @@ void Scene_Battle::Render()
             RenderQueue.push_back(obj);
             continue;
         }
-        int j = RenderQueue.size();
+        int j = int(RenderQueue.size());
         while (j > 0 && obj->z() < RenderQueue[j-1]->z())
         {
             j--;
@@ -44,9 +46,13 @@ void Scene_Battle::Render()
         RenderQueue.insert(it + j, obj);
     }
     // other game objects
-    for (int i = 0; i < _objects.size(); i++)
+    float x, y;
+    Game_Screen* screen = ScreenManager::GetInstance()->Screen();
+    screen->GetCenterPoint(x, y);
+    vector<int> id_list = getNearByIDyx(y, x);
+    for (auto&i :id_list)
     {
-        Game_ObjectBase* obj = _objects[i];
+        Game_ObjectBase* obj = __objects[i];
         if (obj->NeedRender() == false) {
             continue;
         }
@@ -55,7 +61,7 @@ void Scene_Battle::Render()
             RenderQueue.push_back(obj);
             continue;
         }
-        int j = RenderQueue.size();
+        int j =int( RenderQueue.size());
         while (j > 0 && obj->z() < RenderQueue[j-1]->z())
         {
             j--;
@@ -80,34 +86,61 @@ void Scene_Battle::Update(DWORD dt)
         Game_ObjectBase* obj = _layers[i];
         checkObjectNeedRender(obj);
     }
+    float y, x;
 
-    for (int i = 0; i < _objects.size(); i++)
+
+    Game_Screen* screen = ScreenManager::GetInstance()->Screen();
+    screen->GetCenterPoint(x, y);
+    vector<int> id_list=getNearByIDyx(y, x);
+    //for (int i = 0; i < _objects.size(); i++)
+    float old_l, old_right, old_bottom, old_top,
+        new_l, new_right, new_bottom, new_top;
+    for(auto& i : id_list)
     {
-        Game_ObjectBase* obj = _objects.at(i);
-        obj->Update(dt);
-        obj->Update(dt, objects());
+        Game_ObjectBase* obj = __objects[i];
+        //obj->Update(dt);
+
+
+        if (obj->baseType() == TYPE_STATIC)
+        {
+            obj->Update(dt, objects());
+
+        }
+        else {
+
+            obj->GetLTRB(old_l, old_top, old_right, old_bottom);
+            obj->Update(dt, objects());
+            obj->GetLTRB(new_l, new_top, new_right, new_bottom);
+            spatial->update(i, old_l, old_top, old_right, old_bottom, new_l, new_top, new_right, new_bottom);
+           
+        }
         checkObjectNeedRender(obj);
     }
 
     // Test
     Demo_Camera_Action();
 }
-
+vector<int> Scene_Battle::getNearByIDyx(int y, int x)
+{
+    return spatial->getNearByIDyx(y, x);
+}
 void Scene_Battle::checkObjectNeedRender(Game_ObjectBase* obj)
 {
-    for (int i = 0; i < _objects.size(); i++)
+    float y, x;
+
+    
+    Game_Screen* screen = ScreenManager::GetInstance()->Screen();
+    screen->GetCenterPoint(x, y);
+    getNearByIDyx(y, x);
+    if (obj->x() + obj->width() < screen->x()
+        || obj->x() > screen->x() + screen->width()
+        || obj->y() + obj->height() < screen->y()
+        || obj->y() > screen->y() + screen->height())
     {
-        Game_ObjectBase* obj = _objects[i];
-        Game_Screen* screen = ScreenManager::GetInstance()->Screen();
-        if (obj->x() + obj->width() < screen->x()
-            || obj->x() > screen->x() + screen->width()
-            || obj->y() + obj->height() < screen->y()
-            || obj->y() > screen->y() + screen->height())
-        {
-            obj->SetNeedRender(false);
-        } else {
-            obj->SetNeedRender(true);
-        }
+        obj->SetNeedRender(false);
+    }
+    else {
+        obj->SetNeedRender(true);
     }
 }
 
@@ -117,11 +150,13 @@ void Scene_Battle::Create_Stage_Demo()
 {
     _mapWidth = 3328;
     _mapHeight = GAMESCREEN_HEIGHT;
+    _init_spatial();
+
     _p1 = new Game_Player(40,40,2);
 
 
     Game_Blocker* block1 = new Game_Blocker(0, 0, 1, 20, GAMESCREEN_HEIGHT - 20);
-    Game_Blocker* block2 = new Game_Blocker(_mapWidth - 20, 1, 0, 20, GAMESCREEN_HEIGHT - 20);
+    Game_Blocker* block2 = new Game_Blocker(float(_mapWidth - 20), 1, 0, 20, GAMESCREEN_HEIGHT - 20);
 
     Game_Water* water1 = new Game_Water(0, GAMESCREEN_HEIGHT - 20, 1, 288, 20);
     Game_Water* water2 = new Game_Water(352, GAMESCREEN_HEIGHT - 20, 1, 2976, 20);
@@ -134,20 +169,51 @@ void Scene_Battle::Create_Stage_Demo()
 
 
     Demo_Layer* demo = new Demo_Layer(0, 0, 0, 3328, 239);
-    _objects.push_back(_p1);
-
-    _objects.push_back(water1);
-    _objects.push_back(water2);
-    _objects.push_back(block1);
-    _objects.push_back(block2);
-    _objects.push_back(plat1);
-    _objects.push_back(plat2);
-    _objects.push_back(plat3);
-    _objects.push_back(plat4);
-    _objects.push_back(plat5);
+    add_object(_p1);//0
+    add_object(water1);//1
+    add_object(water2);//2
+    add_object(block1);//3
+    add_object(block2);//4
+    add_object(plat1);//5
+    add_object(plat2);//6
+    add_object(plat3);//7
+    add_object(plat4);//8
+    add_object(plat5);//9
     _layers.push_back(demo);
     ScreenManager::GetInstance()->Screen()->focusToPoint(GAMESCREEN_WIDTH/2,GAMESCREEN_HEIGHT/2, _mapWidth, _mapHeight);
     Game_KeyInput::GetInstance()->AddObjectControl(_p1);
+}
+void Scene_Battle::add_object(Game_ObjectBase*object)
+{
+    _objects.push_back(object);
+    __objects[id_nth] = object;
+    float l, t, r, b;
+    object->GetLTRB(l, t, r, b);
+    DebugOut(L"id %d l=%d t=%d r=%d b=%d\n", id_nth, l, t, r, b);
+    spatial->init_object(id_nth, l, t, r, b);
+    id_nth++;
+    
+
+}
+void Scene_Battle::_init_spatial()
+{
+    int width = int(GAMESCREEN_WIDTH * 1.1),
+        height= int(GAMESCREEN_HEIGHT*1.1),
+        n= _mapHeight / width+1,
+        m= _mapWidth/ height+1;
+    
+    spatial = new Spatial(n, m, width, height);
+
+}
+
+vector<int> Scene_Battle::getNearByID(int n, int m)
+{
+    return spatial->getNearByID(n, m);
+}
+
+void Scene_Battle::_delete_spatial()
+{
+    delete spatial;
 }
 
 int moveRange = 0;
@@ -182,3 +248,5 @@ void Scene_Battle::Demo_Camera_Action()
 
 
 }
+
+///PROTYPE
