@@ -22,7 +22,7 @@ void State_Contra_Idle::Update(DWORD dt)
 {
 	if (_nextState != -1)
 		return;
-
+	
 	Game_Player* obj = (Game_Player*)_srcObj;
 	if (obj->height() != PLAYER_BASE_HEIGHT)
 		obj->SetHeight(PLAYER_BASE_HEIGHT, 2);
@@ -53,12 +53,34 @@ void State_Contra_Idle::KeyHold_Right()
 		_nextState = STATE_WALK;
 }
 
+void State_Contra_Idle::KeyHold_Down()
+{
+	HoldKeyDown = true;
+}
+
+void State_Contra_Idle::KeyReleased_Down()
+{
+	HoldKeyDown = false;
+}
+
 void State_Contra_Idle::KeyPressed_Jump()
 {
+	//
+	DebugOut(L"[INFO] IDLE Jump key is pressed\n");
+	//
 	Game_Player* obj = (Game_Player*)_srcObj;
-	obj->jump();
+	if (obj->IsJumping())
+		return;
+
+	if (HoldKeyDown)
+	{
+		obj->SetJumpDown(true);
+		return;
+	}
+
 	if (_nextState == -1)
 	{
+		obj->jump();
 		obj->SetLockFace(true);
 		_nextState = STATE_JUMP;
 	}

@@ -1,6 +1,6 @@
 #include "Game_MovableObject.h"
 
-const float Game_MovableObject::jumpVector = 0.25f;
+const float Game_MovableObject::jumpVector = 0.15f;
 
 bool Game_MovableObject::isDie()
 {
@@ -9,17 +9,17 @@ bool Game_MovableObject::isDie()
 
 float Game_MovableObject::footerX()
 {
-	return _x + _width / 2;
+	return _x + ceilf((float)_width / 2) - 1;
 }
 
 float Game_MovableObject::footerY()
 {
-	return _y + _height;
+	return _y + _height - 1;
 }
 
 float Game_MovableObject::realX(float x)
 {
-	return x - _width / 2;
+	return floorf(x - ceilf((float)_width / 2));
 }
 
 float Game_MovableObject::realY(float y)
@@ -41,7 +41,7 @@ void Game_MovableObject::moveRight()
 
 void Game_MovableObject::jump()
 {
-	_jumpForce = 30;
+	_jumpForce = ceilf(40.0 / (jumpVector * 8));
 }
 
 void Game_MovableObject::forceDie()

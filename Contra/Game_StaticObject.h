@@ -30,7 +30,9 @@ public:
 	void OnCollisionWith(PCOLLISIONEVENT e) override { Game_ObjectBase::OnCollisionWith(e); }
 	// Is this object blocking other object? If YES, collision framework will automatically push the other object
 	bool IsBlocking() override { return 0; }
-
+	// Aditional condition for blocking object. This condition will check if object has IsBlocking = 1.
+	// If NO, this Blocking object will be skip while processing collision framework.
+	bool BlockingCondition(DWORD dt, PCOLLISIONEVENT e) override { return 1; }
 	//-------------------------------------------------------------------------------
 
 	virtual int objectType() = 0;

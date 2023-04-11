@@ -68,12 +68,22 @@ void State_Contra_Walk::KeyReleased_Right()
 	right_release = true;
 }
 
+int press = 0;
+
 void State_Contra_Walk ::KeyPressed_Jump()
 {
+	press++;
+	//
+	DebugOut(L"[INFO] WALK Jump key is pressed %d\n", press);
+	//
 	Game_Player* obj = (Game_Player*)_srcObj;
-	obj->jump();
+	
+	if (obj->IsJumping())
+		return;
+
 	if (_nextState == -1)
 	{
+		obj->jump();
 		obj->SetLockFace(true);
 		_nextState = STATE_JUMP;
 	}

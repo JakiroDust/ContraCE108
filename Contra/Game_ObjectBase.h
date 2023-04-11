@@ -98,6 +98,9 @@ public:
 	virtual void OnCollisionWith(PCOLLISIONEVENT e);
 	// Is this object blocking other object? If YES, collision framework will automatically push the other object
 	virtual bool IsBlocking() { return 0; }
+	// Aditional condition for blocking object. This condition will check if object has IsBlocking = 1.
+	// If NO, this Blocking object will be skip while processing collision framework.
+	virtual bool BlockingCondition(DWORD dt, PCOLLISIONEVENT e) { return 1; }
 	// Can this object ingore blocking object and move through it?
 	// If YES, collision framework will skip this collision event.
 	virtual bool IgnoreBlocking() { return 1; }

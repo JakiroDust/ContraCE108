@@ -4,6 +4,8 @@
 #include <vector>
 #include <algorithm>
 
+#define BLOCK_PUSH_FACTOR 0.4f
+
 using namespace std;
 
 class Game_ObjectBase;

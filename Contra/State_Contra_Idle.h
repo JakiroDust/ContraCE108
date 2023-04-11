@@ -3,6 +3,8 @@
 
 class State_Contra_Idle : public State_Contra_Base
 {
+	private:
+		bool HoldKeyDown = false;
 	public:
 		State_Contra_Idle(Game_ObjectBase* obj) : State_Contra_Base(obj) {}
 
@@ -12,6 +14,9 @@ class State_Contra_Idle : public State_Contra_Base
 
 		void KeyHold_Left() override;
 		void KeyHold_Right() override;
+		void KeyHold_Down() override;
+		void KeyReleased_Down() override;
 		void KeyPressed_Jump() override;
+
 };
 

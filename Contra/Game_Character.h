@@ -7,7 +7,7 @@ class Game_Character : public Game_MovableObject
 {
 	protected:
 		int _hp = 1;
-		
+		bool _jumpDown = false;
 	public:
 
 		Game_Character(float x, float y, int z, int width, int height) : Game_MovableObject(x, y, z, width, height) {}
@@ -36,5 +36,10 @@ class Game_Character : public Game_MovableObject
 		void Update(DWORD dt) override { Game_MovableObject::Update(dt); }
 		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override { Game_MovableObject::Update(dt, coObjects); }
 		//-------------------------------------------------------------------------------
+
+		// GET & SET
+
+		bool IsJumpDown() { return _jumpDown; }
+		void SetJumpDown(bool b) { _jumpDown = b; }
 };
 

@@ -1,6 +1,7 @@
 #include "Scene_Battle.h"
 #include "ScreenManager.h"
 #include "Game_KeyInput.h"
+#include "Game_Platform.h"
 
 Scene_Battle::~Scene_Battle()
 {
@@ -155,18 +156,18 @@ void Scene_Battle::Create_Stage_Demo()
     _p1 = new Game_Player(40,40,2);
 
 
-    Game_Blocker* block1 = new Game_Blocker(0, 0, 1, 20, GAMESCREEN_HEIGHT - 20);
-    Game_Blocker* block2 = new Game_Blocker(float(_mapWidth - 20), 1, 0, 20, GAMESCREEN_HEIGHT - 20);
+    Game_Blocker* block1 = new Game_Blocker(-18, 0, 1, 20, GAMESCREEN_HEIGHT - 20);
+    Game_Blocker* block2 = new Game_Blocker(_mapWidth - 20, 1, 0, 20, GAMESCREEN_HEIGHT - 20);
 
     Game_Water* water1 = new Game_Water(0, GAMESCREEN_HEIGHT - 20, 1, 288, 20);
     Game_Water* water2 = new Game_Water(352, GAMESCREEN_HEIGHT - 20, 1, 2976, 20);
 
-    Game_Blocker* plat1 = new Game_Blocker(160, 150, 1, 96, 1);
-    Game_Blocker* plat2 = new Game_Blocker(256, 178, 1, 32, 1);
-    Game_Blocker* plat3 = new Game_Blocker(352, 178, 1, 32, 1);
-    Game_Blocker* plat4 = new Game_Blocker(416, 151, 1, 64, 1);
+    Game_Platform* plat1 = new Game_Platform(160, 150, 1, 96, 10);
+    Game_Platform* plat2 = new Game_Platform(256, 178, 1, 32, 10);
+    Game_Platform* plat3 = new Game_Platform(352, 178, 1, 32, 10);
+    Game_Platform* plat4 = new Game_Platform(416, 150, 1, 64, 10);
     Game_Blocker* plat5 = new Game_Blocker(288, 215, 1, 64, 32);
-
+    Game_Platform* plat6 = new Game_Platform(32, 118, 1, 704, 10);
 
     Demo_Layer* demo = new Demo_Layer(0, 0, 0, 3328, 239);
     add_object(_p1);//0

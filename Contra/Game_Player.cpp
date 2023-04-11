@@ -6,6 +6,7 @@
 #include "State_Contra_Swim.h"
 #include "State_Contra_Jump.h"
 
+
 void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 	Game_MovableObject::Update(dt, coObjects);
