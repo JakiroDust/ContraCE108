@@ -97,6 +97,9 @@ void Scene_Battle::Update(DWORD dt)
     //for (int i = 0; i < _objects.size(); i++)
     float old_l, old_right, old_bottom, old_top,
         new_l, new_right, new_bottom, new_top;
+
+    vector<Game_ObjectBase*>* colObjects = objects();
+
     for(auto& i : id_list)
     {
         Game_ObjectBase* obj = __objects[i];
@@ -105,13 +108,13 @@ void Scene_Battle::Update(DWORD dt)
 
         if (obj->baseType() == TYPE_STATIC)
         {
-            obj->Update(dt, objects());
+            obj->Update(dt, colObjects);
 
         }
         else {
 
             obj->GetLTRB(old_l, old_top, old_right, old_bottom);
-            obj->Update(dt, objects());
+            obj->Update(dt, colObjects);
             obj->GetLTRB(new_l, new_top, new_right, new_bottom);
             spatial->update(i, old_l, old_top, old_right, old_bottom, new_l, new_top, new_right, new_bottom);
            
