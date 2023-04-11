@@ -158,7 +158,7 @@ void Scene_Battle::Create_Stage_Demo()
     _init_spatial();
 
     _p1 = new Game_Player(40,40,2);
-
+    Obj_ContraBot* bot = new Obj_ContraBot(80, 40, 2);
 
     Game_Blocker* block1 = new Game_Blocker(-18, 0, 1, 20, GAMESCREEN_HEIGHT - 20);
     Game_Blocker* block2 = new Game_Blocker(_mapWidth - 20, 1, 0, 20, GAMESCREEN_HEIGHT - 20);
@@ -184,6 +184,7 @@ void Scene_Battle::Create_Stage_Demo()
     add_object(plat3);//7
     add_object(plat4);//8
     add_object(plat5);//9
+    add_object(plat6);//10
     _layers.push_back(demo);
     ScreenManager::GetInstance()->Screen()->focusToPoint(GAMESCREEN_WIDTH/2,GAMESCREEN_HEIGHT/2, _mapWidth, _mapHeight);
     Game_KeyInput::GetInstance()->AddObjectControl(_p1);
