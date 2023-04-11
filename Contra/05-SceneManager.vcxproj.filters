@@ -1,26 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -36,10 +16,58 @@
     <ClCompile Include="Collision.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Contra_GET_ANI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="debug.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Demo_Layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Blocker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Character.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Collision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_KeyInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_MovableObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_ObjectBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Platform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Screen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_StaticObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Terrain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Water.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
@@ -48,61 +76,25 @@
     <ClCompile Include="Goomba.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Mario.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_ContraBot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Platform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SampleKeyEventHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprites.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Textures.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PlayScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Portal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game_ObjectBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_Collision.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_MovableObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_StaticObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_Layer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_Screen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Demo_Layer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ScreenManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_Character.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_Player.cpp">
+    <ClCompile Include="SampleKeyEventHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Scene_Base.cpp">
@@ -111,13 +103,16 @@
     <ClCompile Include="Scene_Battle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game_Terrain.cpp">
+    <ClCompile Include="ScreenManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game_Platform.cpp">
+    <ClCompile Include="Spatial.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game_Blocker.cpp">
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprites.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="State_Base.cpp">
@@ -126,36 +121,25 @@
     <ClCompile Include="State_Contra_Base.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="State_Contra_Idle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="State_Contra_Walk.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_KeyInput.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_Water.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="State_Contra_Swim.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="State_Contra_Fall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Contra_Idle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="State_Contra_Jump.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game_Enemy.cpp">
+    <ClCompile Include="State_Contra_Swim.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Contra_GET_ANI.cpp">
+    <ClCompile Include="State_Contra_Walk.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Obj_ContraBot.cpp">
+    <ClCompile Include="Textures.cpp">
       <Filter>Source Files</Filter>
-    <ClCompile Include="Spatial.cpp">
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -181,10 +165,61 @@
     <ClInclude Include="Collision.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Contra_ANI_ID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Contra_GET_ANI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="debug.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Demo_Layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Blocker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Character.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Collision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Enemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_KeyInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_MovableObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_ObjectBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Screen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_StaticObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Terrain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Water.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
@@ -199,64 +234,22 @@
     <ClInclude Include="Mario.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Obj_ContraBot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Platform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SampleKeyEventHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprites.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Textures.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PlayScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Portal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game_ObjectBase.h">
+    <ClInclude Include="SampleKeyEventHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game_Collision.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game_MovableObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game_StaticObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game_Layer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game_Screen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Demo_Layer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ScreenManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game_Character.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game_Player.h">
+    <ClInclude Include="Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Scene_Base.h">
@@ -265,13 +258,16 @@
     <ClInclude Include="Scene_Battle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game_Terrain.h">
+    <ClInclude Include="ScreenManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game_Platform.h">
+    <ClInclude Include="Spatial.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game_Blocker.h">
+    <ClInclude Include="Sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprites.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="State_Base.h">
@@ -280,44 +276,35 @@
     <ClInclude Include="State_Contra_Base.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="State_Contra_Idle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="State_Contra_Walk.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game_KeyInput.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game_Water.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="State_Contra_Swim.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="State_Contra_Fall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Contra_Idle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="State_Contra_Jump.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="State_Contra_Swim.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Contra_Walk.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="scene01.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="scene02.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="scene0005.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="goomba.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="mario-sample.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <Text Include="brick.txt">
       <Filter>Resource Files</Filter>
     </Text>
@@ -330,17 +317,43 @@
     <Text Include="contra.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="contra-scene01.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
     <Text Include="contra-level.txt">
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="ContraMapStage1BG.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="contra-scene01.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
     <Text Include="contra-scene02.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="goomba.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="mario-sample.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="scene01.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="scene02.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="scene0005.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{b3796e23-7421-47d1-85bb-9dbd4f8d6922}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{01f821c7-b8f6-49cf-8305-71a7875de09f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{314021af-3643-4867-b460-c6d6b3824924}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
