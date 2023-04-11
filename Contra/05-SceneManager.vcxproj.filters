@@ -147,6 +147,14 @@
     <ClCompile Include="State_Contra_Jump.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Game_Enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Contra_GET_ANI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_ContraBot.cpp">
+      <Filter>Source Files</Filter>
     <ClCompile Include="Spatial.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -291,12 +299,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="State_Contra_Jump.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Contra_ANI_ID.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spatial.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

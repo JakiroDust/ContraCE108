@@ -5,7 +5,12 @@
 #include "State_Contra_Fall.h"
 #include "State_Contra_Swim.h"
 #include "State_Contra_Jump.h"
+#include "Contra_GET_ANI.h"
 
+int Game_Player::CharID()
+{
+	return CHAR_CONTRA;
+}
 
 void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {

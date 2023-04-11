@@ -2,6 +2,7 @@
 #include "ScreenManager.h"
 #include "Game_KeyInput.h"
 #include "Game_Platform.h"
+#include "Obj_ContraBot.h"
 
 Scene_Battle::~Scene_Battle()
 {
@@ -90,6 +91,9 @@ void Scene_Battle::Update(DWORD dt)
     //for (int i = 0; i < _objects.size(); i++)
     float old_l, old_right, old_bottom, old_top,
         new_l, new_right, new_bottom, new_top;
+
+    vector<Game_ObjectBase*>* colObjects = objects();
+
     for(auto& i : id_list)
     {
         Game_ObjectBase* obj = __objects[i];
@@ -98,13 +102,13 @@ void Scene_Battle::Update(DWORD dt)
 
         if (obj->baseType() == TYPE_STATIC)
         {
-            obj->Update(dt, objects());
+            obj->Update(dt, colObjects);
 
         }
         else {
 
             obj->GetLTRB(old_l, old_top, old_right, old_bottom);
-            obj->Update(dt, objects());
+            obj->Update(dt, colObjects);
             obj->GetLTRB(new_l, new_top, new_right, new_bottom);
             spatial->update(i, old_l, old_top, old_right, old_bottom, new_l, new_top, new_right, new_bottom);
            
@@ -148,7 +152,7 @@ void Scene_Battle::Create_Stage_Demo()
     _init_spatial();
 
     _p1 = new Game_Player(40,40,2);
-
+    Obj_ContraBot* bot = new Obj_ContraBot(80, 40, 2);
 
     Game_Blocker* block1 = new Game_Blocker(-18, 0, 1, 20, GAMESCREEN_HEIGHT - 20);
     Game_Blocker* block2 = new Game_Blocker(_mapWidth - 20, 1, 0, 20, GAMESCREEN_HEIGHT - 20);
@@ -174,7 +178,8 @@ void Scene_Battle::Create_Stage_Demo()
     add_object(plat3);//7
     add_object(plat4);//8
     add_object(plat5);//9
-    add_object(plat6);
+    add_object(plat6);//10
+    add_object(bot);//11
     _layers.push_back(demo);
     ScreenManager::GetInstance()->Screen()->focusToPoint(GAMESCREEN_WIDTH/2,GAMESCREEN_HEIGHT/2, _mapWidth, _mapHeight);
     Game_KeyInput::GetInstance()->AddObjectControl(_p1);
