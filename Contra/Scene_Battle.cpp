@@ -15,11 +15,11 @@ Scene_Battle::~Scene_Battle()
     }
     _layers.clear();
 
-    for (int i = 0; i < _objects.size(); i++)
+  /*  for (int i = 0; i < _objects.size(); i++)
     {
         delete  _objects.at(i);
     }
-    _objects.clear();
+    _objects.clear();*/
     _delete_spatial();
     __objects.clear();
 }
@@ -85,14 +85,14 @@ void Scene_Battle::Update(DWORD dt)
         Game_ObjectBase* obj = _layers[i];
         checkObjectNeedRender(obj);
     }
-    float y, x;
 
     vector<int> id_list= getNearbyIDFast();
+    vector<PGAMEOBJECT>* nearbyObject = getObjectById(id_list);
     //for (int i = 0; i < _objects.size(); i++)
     float old_l, old_right, old_bottom, old_top,
         new_l, new_right, new_bottom, new_top;
 
-    vector<Game_ObjectBase*>* colObjects = objects();
+    //vector<Game_ObjectBase*>* colObjects = objects();
 
     for(auto& i : id_list)
     {
@@ -102,20 +102,20 @@ void Scene_Battle::Update(DWORD dt)
 
         if (obj->baseType() == TYPE_STATIC)
         {
-            obj->Update(dt, colObjects);
+            obj->Update(dt, nearbyObject);
 
         }
         else {
 
             obj->GetLTRB(old_l, old_top, old_right, old_bottom);
-            obj->Update(dt, colObjects);
+            obj->Update(dt, nearbyObject);
             obj->GetLTRB(new_l, new_top, new_right, new_bottom);
             spatial->update(i, old_l, old_top, old_right, old_bottom, new_l, new_top, new_right, new_bottom);
            
         }
         checkObjectNeedRender(obj);
     }
-
+    delete nearbyObject;
     // Test
     Demo_Camera_Action();
 }
@@ -186,7 +186,7 @@ void Scene_Battle::Create_Stage_Demo()
 }
 void Scene_Battle::add_object(Game_ObjectBase*object)
 {
-    _objects.push_back(object);
+    //_objects.push_back(object);
     __objects[id_nth] = object;
     float l, t, r, b;
     object->GetLTRB(l, t, r, b);
@@ -220,6 +220,16 @@ vector<int> Scene_Battle::getNearbyIDFast()
     return  getNearByIDyx(y, x);
 }
 
+/// REMBER TO DELETE AFTER USE
+vector<Game_ObjectBase*>* Scene_Battle::getObjectById(vector<int>& vtr)
+{
+    vector<Game_ObjectBase*>* objects= new vector<Game_ObjectBase*>;
+    for (auto& id : vtr)
+    {
+        objects->push_back(__objects[id]);
+    }
+    return objects;
+}
 void Scene_Battle::_delete_spatial()
 {
     delete spatial;

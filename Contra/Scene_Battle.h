@@ -22,7 +22,7 @@ class Scene_Battle : public Scene_Base
 		Game_Player* _p1 = NULL;
 		Game_Player* _p2 = NULL;
 		vector<Game_Layer*> _layers;
-		vector<Game_ObjectBase*> _objects;
+		//vector<Game_ObjectBase*> _objects;
 		unordered_map<int, Game_ObjectBase*> __objects;
 		int _mapWidth = 1;
 		int _mapHeight = 1;
@@ -32,7 +32,7 @@ class Scene_Battle : public Scene_Base
 		void Demo_Camera_Action();
 	public:
 		~Scene_Battle();
-		vector<Game_ObjectBase*>* objects() { return &_objects; }
+		//vector<Game_ObjectBase*>* objects() { return &_objects; }
 		Game_Player* p1() { return _p1; }
 		Game_Player* p2() { return _p2; }
 		int MapWidth() { return _mapWidth; }
@@ -56,6 +56,7 @@ public:
 	Spatial *spatial;
 	vector<int> getNearByID(int n, int m);
 	vector<int> getNearbyIDFast();
+	vector<Game_ObjectBase*>* getObjectById(vector<int>& vtr);
 	void add_object(Game_ObjectBase* object);
 };
 
