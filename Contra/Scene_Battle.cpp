@@ -185,6 +185,7 @@ void Scene_Battle::Create_Stage_Demo()
     add_object(plat4);//8
     add_object(plat5);//9
     add_object(plat6);//10
+    add_object(bot);//11
     _layers.push_back(demo);
     ScreenManager::GetInstance()->Screen()->focusToPoint(GAMESCREEN_WIDTH/2,GAMESCREEN_HEIGHT/2, _mapWidth, _mapHeight);
     Game_KeyInput::GetInstance()->AddObjectControl(_p1);
