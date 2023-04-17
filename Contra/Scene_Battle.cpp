@@ -188,6 +188,7 @@ void Scene_Battle::add_object(Game_ObjectBase*object)
 {
     //_objects.push_back(object);
     __objects[id_nth] = object;
+    object->SetId(id_nth);
     float l, t, r, b;
     object->GetLTRB(l, t, r, b);
     DebugOut(L"id %d l=%d t=%d r=%d b=%d\n", id_nth, l, t, r, b);
@@ -195,6 +196,18 @@ void Scene_Battle::add_object(Game_ObjectBase*object)
     id_nth++;
     
 
+}
+void Scene_Battle::delete_object(Game_ObjectBase* object)
+{
+    int id = object->id();
+    float left, top, right, bottom;
+    object->GetLTRB(left, top, right, bottom);
+    spatial->del_object(id, left, top, right, bottom);
+    __objects.erase(id);
+}
+void Scene_Battle::delete_object(int id)
+{
+    delete_object(__objects[id]);
 }
 void Scene_Battle::_init_spatial()
 {
