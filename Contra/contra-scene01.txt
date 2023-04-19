@@ -1,6 +1,7 @@
 # list of object assets to load in this scene
 [ASSETS]
 contra.txt
+CONTRA_BULLET.txt
 #brick.txt
 #coin.txt
 #goomba.txt

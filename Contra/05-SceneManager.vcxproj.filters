@@ -300,10 +300,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Obj_Bullet_Rifle.h" />
+    <ClInclude Include="Game_MovableEnemy.h" />
+    <ClInclude Include="Game_StationEnemy.h" />
+    <ClInclude Include="Enemy_Sniper.h" />
+    <ClInclude Include="Enemy_RedGunner.h" />
+    <ClInclude Include="Enemy_SneakSniper.h" />
+    <ClInclude Include="Enemy_ScubaDriver.h" />
+    <ClInclude Include="Enemy_Turret.h" />
     <ClInclude Include="State_MovableEnemy_Walk.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="brick.txt">
