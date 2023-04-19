@@ -151,6 +151,10 @@
     <ClCompile Include="Mapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Game_Bullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_Bullet_Rifle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -321,6 +325,10 @@
     <ClInclude Include="Mapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Game_Bullet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj_Bullet_Rifle.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
