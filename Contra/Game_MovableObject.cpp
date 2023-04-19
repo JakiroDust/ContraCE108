@@ -1,6 +1,6 @@
 #include "Game_MovableObject.h"
 
-const float Game_MovableObject::jumpVector = 0.15f;
+const float Game_MovableObject::JUMP_VECTOR = 0.15f;
 
 bool Game_MovableObject::isDie()
 {
@@ -41,7 +41,7 @@ void Game_MovableObject::moveRight()
 
 void Game_MovableObject::jump()
 {
-	_jumpForce = ceilf(40.0 / (jumpVector * 14));
+	_jumpForce = GetJumpForce();
 }
 
 void Game_MovableObject::forceDie()
@@ -53,13 +53,13 @@ void Game_MovableObject::UpdateJumpState()
 {
 	if (_jumpForce > 0)
 	{
-		_vy = -jumpVector;
+		_vy = -JUMP_VECTOR;
 		_jumpForce --;
 	}
 	else
 	{
 		_jumpForce = 0;
-		_vy = jumpVector;
+		_vy = JUMP_VECTOR;
 	}
 }
 

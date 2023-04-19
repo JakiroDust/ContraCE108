@@ -4,11 +4,9 @@
 class Game_Enemy : public Game_Character
 {
 	protected:
-		vector<int> _ActionQueue; // save keycode list
-		void UpdateState();
-		void AddAction(int);
-		void ExecuteAction();
-		virtual void UpdateBehavior();
+		void UpdateState() override;
+		virtual void UpdateBehavior(DWORD dt, vector<Game_ObjectBase*>* coObjects = NULL);
+		void KeyReleaseAll() override;
 	public:
 		Game_Enemy(float x, float y, int z, int width, int height) : Game_Character(x, y, z, width, height)
 		{
@@ -33,4 +31,5 @@ class Game_Enemy : public Game_Character
 
 		int CharID() override;
 };
+
 

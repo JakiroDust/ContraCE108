@@ -1,5 +1,6 @@
 #pragma once
 #include "Game_MovableObject.h"
+#include "Mapper.h"
 //#include "Contra_GET_ANI.h"
 
 using namespace std;
@@ -9,7 +10,12 @@ class Game_Character : public Game_MovableObject
 	protected:
 		int _hp = 1;
 		bool _jumpDown = false;
-
+		// Auto control
+		vector<pair<int,int>> _ActionQueue; // save keycode list
+		virtual void UpdateState() {}
+		void AddAction(int KeyCode1, int KeyCode2 = -1);
+		virtual void KeyReleaseAll() {}
+		void ExecuteAction();
 	public:
 
 		Game_Character(float x, float y, int z, int width, int height) : Game_MovableObject(x, y, z, width, height)
@@ -46,6 +52,7 @@ class Game_Character : public Game_MovableObject
 
 		bool IsJumpDown() { return _jumpDown; }
 		void SetJumpDown(bool b) { _jumpDown = b; }
+		float GetMovementSpeed() { return _moveSpd; }
 		virtual int CharID() { return -1; }
 };
 
