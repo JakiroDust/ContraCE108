@@ -210,6 +210,7 @@
     <ClInclude Include="Contra_GET_ANI.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="Demo_Layer.h" />
+    <ClInclude Include="Enemies_ID.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Game_Blocker.h" />

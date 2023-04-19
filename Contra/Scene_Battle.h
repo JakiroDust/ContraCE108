@@ -58,5 +58,7 @@ public:
 	vector<int> getNearbyIDFast();
 	vector<Game_ObjectBase*>* getObjectById(vector<int>& vtr);
 	void add_object(Game_ObjectBase* object);
+	void delete_object(int id);
+	void delete_object(Game_ObjectBase* object);
 };
 

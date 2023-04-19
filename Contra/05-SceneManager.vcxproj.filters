@@ -309,6 +309,9 @@
     <ClInclude Include="Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Enemies_ID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Game_TestBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>

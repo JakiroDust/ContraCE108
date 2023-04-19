@@ -105,10 +105,10 @@
 		}
 		void del_object(int& id, float& left, float& top, float& right, float& bottom)
 		{
-			int t =int( min(top / _height, _m - 1)),
-				b = int(max(bottom / _height, 0)),
-				l = int(max(left / _width, 0)),
-				r =int( min(right / _width, _n - 1));
+			int t = min(max(top / _height, 0), _n - 1),
+				b = min(max(bottom / _height, 0), _n - 1),
+				l = min(max(left / _width, 0), _m - 1),
+				r = min(max(right / _width, 0), _m - 1);
 
 			for (int i = b; i <= t; i++)
 			{

@@ -202,6 +202,20 @@ void Scene_Battle::add_object(Game_ObjectBase*object)
 
 }
 
+void Scene_Battle::delete_object(Game_ObjectBase* object)
+{
+    int id = object->id();
+    float left, top, right, bottom;
+    object->GetLTRB(left, top, right, bottom);
+    spatial->del_object(id, left, top, right, bottom);
+    __objects.erase(id);
+}
+
+void Scene_Battle::delete_object(int id)
+{
+    delete_object(__objects[id]);
+}
+
 void Scene_Battle::_init_spatial()
 {
     int width = int(GAMESCREEN_WIDTH * 1.1),
