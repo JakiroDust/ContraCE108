@@ -149,14 +149,11 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Animations.cpp" />
-    <ClCompile Include="Brick.cpp" />
-    <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Contra_GET_ANI.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Demo_Layer.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Game_Blocker.cpp" />
     <ClCompile Include="Game_Bullet.cpp" />
     <ClCompile Include="Game_Character.cpp" />
@@ -173,10 +170,8 @@
     <ClCompile Include="Game_Terrain.cpp" />
     <ClCompile Include="Game_TestBox.cpp" />
     <ClCompile Include="Game_Water.cpp" />
-    <ClCompile Include="Goomba.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mapper.cpp" />
-    <ClCompile Include="Mario.cpp" />
     <ClCompile Include="Obj_Bullet_Rifle.cpp" />
     <ClCompile Include="Obj_ContraBot.cpp" />
     <ClCompile Include="Obj_SmartBot.cpp" />
@@ -197,6 +192,7 @@
     <ClCompile Include="State_Contra_Jump.cpp" />
     <ClCompile Include="State_Contra_Swim.cpp" />
     <ClCompile Include="State_Contra_Walk.cpp" />
+    <ClCompile Include="State_MovableEnemy_Walk.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
@@ -205,8 +201,6 @@
     <ClInclude Include="AnimationFrame.h" />
     <ClInclude Include="Animations.h" />
     <ClInclude Include="AssetIDs.h" />
-    <ClInclude Include="Brick.h" />
-    <ClInclude Include="Coin.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Contra_ANI_ID.h" />
     <ClInclude Include="Contra_GET_ANI.h" />
@@ -214,7 +208,6 @@
     <ClInclude Include="Demo_Layer.h" />
     <ClInclude Include="Enemies_ID.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="GameObject.h" />
     <ClInclude Include="Game_Blocker.h" />
     <ClInclude Include="Game_Bullet.h" />
     <ClInclude Include="Game_Character.h" />
@@ -231,10 +224,8 @@
     <ClInclude Include="Game_Terrain.h" />
     <ClInclude Include="Game_TestBox.h" />
     <ClInclude Include="Game_Water.h" />
-    <ClInclude Include="Goomba.h" />
     <ClInclude Include="KeyEventHandler.h" />
     <ClInclude Include="Mapper.h" />
-    <ClInclude Include="Mario.h" />
     <ClInclude Include="Obj_Bullet_Rifle.h" />
     <ClInclude Include="Obj_ContraBot.h" />
     <ClInclude Include="Obj_SmartBot.h" />
@@ -256,6 +247,7 @@
     <ClInclude Include="State_Contra_Jump.h" />
     <ClInclude Include="State_Contra_Swim.h" />
     <ClInclude Include="State_Contra_Walk.h" />
+    <ClInclude Include="State_MovableEnemy_Walk.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Textures.h" />
     <ClInclude Include="Utils.h" />

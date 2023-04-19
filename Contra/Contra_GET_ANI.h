@@ -31,6 +31,4 @@ using namespace std;
 #define CHAR_CONTRA 10
 #define CHAR_CONTRA_BASE 12
 
-
-
 int Get_CharANI_ID(int character, int behavior);
