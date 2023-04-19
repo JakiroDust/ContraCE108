@@ -1,14 +1,21 @@
 #pragma once
 #include "Game_Enemy.h"
 
-class Obj_ContraBot : public Game_Enemy
+class Obj_SmartBot : public Game_Enemy
 {
 	private:
+		Mapper* _map;
+		vector<PTERRAINNODE> _path;
 		void UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects = NULL) override;
 	public:
-		Obj_ContraBot(float x, float y, int z) : Game_Enemy(x, y, z, 20, 32)
+		Obj_SmartBot(float x, float y, int z) : Game_Enemy(x, y, z, 20, 32) 
 		{
-			_moveSpd = 0.1f;
+			_map = new Mapper(this);
+			_moveSpd = 0.08f;
+		}
+		~Obj_SmartBot()
+		{
+			delete _map;
 		}
 
 		int CharID() override;
@@ -16,6 +23,6 @@ class Obj_ContraBot : public Game_Enemy
 		void OnNoCollision(DWORD dt);
 		// When collision with an object has been detected (triggered by CCollision::Process)
 		void OnCollisionWith(PCOLLISIONEVENT e) override;
-
 };
 
+// This object will follow player automatically.

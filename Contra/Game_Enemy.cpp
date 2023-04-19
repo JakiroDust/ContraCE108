@@ -23,7 +23,7 @@ void Game_Enemy::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	UpdateState();
 
 	ResetStateParams();
-	UpdateBehavior();
+	UpdateBehavior(dt, coObjects);
 }
 
 void Game_Enemy::Render()
@@ -187,23 +187,19 @@ void Game_Enemy::OnCollisionWith(PCOLLISIONEVENT e)
 	Game_Character::OnCollisionWith(e);
 }
 
+void Game_Enemy::KeyReleaseAll()
+{
+	KeyUpEventHandler(DIK_UP);
+	KeyUpEventHandler(DIK_DOWN);
+	KeyUpEventHandler(DIK_LEFT);
+	KeyUpEventHandler(DIK_RIGHT);
+	KeyUpEventHandler(DIK_O);
+	KeyUpEventHandler(DIK_P);
+}
+
 // ENEMY AUTO BEHAVIOR
 
-void Game_Enemy::AddAction(int KeyCode)
-{
-	_ActionQueue.push_back(KeyCode);
-}
-
-void Game_Enemy::ExecuteAction()
-{
-	if (_ActionQueue.size() == 0)
-		return;
-	int action = _ActionQueue[0];
-	_ActionQueue.erase(_ActionQueue.begin());
-	KeyDownEventHandler(action);
-}
-
-void Game_Enemy::UpdateBehavior()
+void Game_Enemy::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 
 }

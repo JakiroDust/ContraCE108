@@ -164,6 +164,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Game_Blocker.cpp" />
+    <ClCompile Include="Game_Bullet.cpp" />
     <ClCompile Include="Game_Character.cpp" />
     <ClCompile Include="Game_Collision.cpp" />
     <ClCompile Include="Game_Enemy.cpp" />
@@ -178,11 +179,15 @@
     <ClCompile Include="Game_StaticObject.cpp" />
     <ClCompile Include="Game_StationEnemy.cpp" />
     <ClCompile Include="Game_Terrain.cpp" />
+    <ClCompile Include="Game_TestBox.cpp" />
     <ClCompile Include="Game_Water.cpp" />
     <ClCompile Include="Goomba.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mapper.cpp" />
     <ClCompile Include="Mario.cpp" />
+    <ClCompile Include="Obj_Bullet_Rifle.cpp" />
     <ClCompile Include="Obj_ContraBot.cpp" />
+    <ClCompile Include="Obj_SmartBot.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="Portal.cpp" />
@@ -224,6 +229,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Game_Blocker.h" />
+    <ClInclude Include="Game_Bullet.h" />
     <ClInclude Include="Game_Character.h" />
     <ClInclude Include="Game_Collision.h" />
     <ClInclude Include="Game_Enemy.h" />
@@ -238,11 +244,15 @@
     <ClInclude Include="Game_StaticObject.h" />
     <ClInclude Include="Game_StationEnemy.h" />
     <ClInclude Include="Game_Terrain.h" />
+    <ClInclude Include="Game_TestBox.h" />
     <ClInclude Include="Game_Water.h" />
     <ClInclude Include="Goomba.h" />
     <ClInclude Include="KeyEventHandler.h" />
+    <ClInclude Include="Mapper.h" />
     <ClInclude Include="Mario.h" />
+    <ClInclude Include="Obj_Bullet_Rifle.h" />
     <ClInclude Include="Obj_ContraBot.h" />
+    <ClInclude Include="Obj_SmartBot.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="Portal.h" />

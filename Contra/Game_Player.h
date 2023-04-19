@@ -18,12 +18,16 @@
 class Game_Player : public Game_Character
 {
 	protected:
+		bool _auto = false;
 		void UpdateState();
+		void KeyReleaseAll() override;
 	public:
 		Game_Player(float x, float y, int z) : Game_Character(x, y, z, PLAYER_BASE_WIDTH, PLAYER_BASE_HEIGHT)
 		{
 			_moveSpd = 0.1f;
 		}
+		void SetAuto(bool b) { _auto = b; }
+		bool IsAuto() { return _auto; }
 
 		void Render() override;
 		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;

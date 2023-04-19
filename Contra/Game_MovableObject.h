@@ -24,7 +24,7 @@ protected:
 	bool _onGround = false;
 	bool _die = false;
 	bool _gravity = true;
-	State_Base* _state;
+	State_Base* _state = NULL;
 
 	/// function
 	
@@ -36,7 +36,7 @@ public:
 
 	// World variable to determine
 	// how fast jumpForce will be modified.
-	static const float jumpVector;
+	static const float JUMP_VECTOR;
 	// CONSTRUCTOR
 
 	Game_MovableObject(float x, float y, int z, int width, int height) : Game_ObjectBase(x, y, z, width, height) {}
@@ -92,6 +92,8 @@ public:
 
 	void SetLockFace(bool b) { _lockFace = b; }
 	bool LockFace() { return _lockFace; }
+
+	float GetJumpForce() { return max(ceilf(40.0f / (JUMP_VECTOR * 16)), 1); }
 
 	/// STATE
 

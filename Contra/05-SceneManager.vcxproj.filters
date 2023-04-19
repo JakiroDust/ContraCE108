@@ -142,13 +142,19 @@
     <ClCompile Include="Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game_MovableEnemy.cpp" />
-    <ClCompile Include="Game_StationEnemy.cpp" />
-    <ClCompile Include="Enemy_Sniper.cpp" />
-    <ClCompile Include="Enemy_RedGunner.cpp" />
-    <ClCompile Include="Enemy_SneakSniper.cpp" />
-    <ClCompile Include="Enemy_ScubaDriver.cpp" />
-    <ClCompile Include="Enemy_Turret.cpp" />
+    <ClCompile Include="Game_TestBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_SmartBot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Bullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_Bullet_Rifle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -310,6 +316,19 @@
     <ClInclude Include="Enemies_ID.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Game_TestBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj_SmartBot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Bullet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj_Bullet_Rifle.h" />
     <ClInclude Include="Game_MovableEnemy.h" />
     <ClInclude Include="Game_StationEnemy.h" />
     <ClInclude Include="Enemy_Sniper.h" />

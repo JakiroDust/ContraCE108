@@ -3,6 +3,7 @@
 #include "Game_KeyInput.h"
 #include "Game_Platform.h"
 #include "Obj_ContraBot.h"
+#include "Obj_SmartBot.h"
 
 Scene_Battle::~Scene_Battle()
 {
@@ -123,6 +124,7 @@ vector<int> Scene_Battle::getNearByIDyx(int y, int x)
 {
     return spatial->getNearByIDyx(y, x);
 }
+
 void Scene_Battle::checkObjectNeedRender(Game_ObjectBase* obj)
 {
     float y, x;
@@ -153,6 +155,7 @@ void Scene_Battle::Create_Stage_Demo()
 
     _p1 = new Game_Player(40,40,2);
     Obj_ContraBot* bot = new Obj_ContraBot(80, 40, 2);
+    Obj_SmartBot* smartbot = new Obj_SmartBot(100, 40, 2);
 
     Game_Blocker* block1 = new Game_Blocker(-18, 0, 1, 20, GAMESCREEN_HEIGHT - 20);
     Game_Blocker* block2 = new Game_Blocker(_mapWidth - 20, 1, 0, 20, GAMESCREEN_HEIGHT - 20);
@@ -180,6 +183,7 @@ void Scene_Battle::Create_Stage_Demo()
     add_object(plat5);//9
     add_object(plat6);//10
     add_object(bot);//11
+    add_object(smartbot);//12
     _layers.push_back(demo);
     ScreenManager::GetInstance()->Screen()->focusToPoint(GAMESCREEN_WIDTH/2,GAMESCREEN_HEIGHT/2, _mapWidth, _mapHeight);
     Game_KeyInput::GetInstance()->AddObjectControl(_p1);
@@ -197,6 +201,7 @@ void Scene_Battle::add_object(Game_ObjectBase*object)
     
 
 }
+
 void Scene_Battle::delete_object(Game_ObjectBase* object)
 {
     int id = object->id();
@@ -205,10 +210,12 @@ void Scene_Battle::delete_object(Game_ObjectBase* object)
     spatial->del_object(id, left, top, right, bottom);
     __objects.erase(id);
 }
+
 void Scene_Battle::delete_object(int id)
 {
     delete_object(__objects[id]);
 }
+
 void Scene_Battle::_init_spatial()
 {
     int width = int(GAMESCREEN_WIDTH * 1.1),

@@ -94,32 +94,42 @@ void Game_Player::KeyDownEventHandler(int KeyCode)
 
 void Game_Player::KeyUpEventHandler(int KeyCode)
 {
-	//if (_state == NULL)
-	//	return;
+	if (_state == NULL || !_auto)
+		return;
 
-	//State_Contra_Base* state = (State_Contra_Base*)_state;
+	State_Contra_Base* state = (State_Contra_Base*)_state;
 
-	//switch (KeyCode)
-	//{
-	//case DIK_UP:
-	//	state->KeyReleased_Up();
-	//	break;
-	//case DIK_DOWN:
-	//	state->KeyReleased_Down();
-	//	break;
-	//case DIK_LEFT:
-	//	state->KeyReleased_Left();
-	//	break;
-	//case DIK_RIGHT:
-	//	state->KeyReleased_Right();
-	//	break;
-	//case DIK_O:
-	//	state->KeyReleased_Shoot();
-	//	break;
-	//case DIK_P:
-	//	state->KeyReleased_Jump();
-	//	break;
-	//}
+	switch (KeyCode)
+	{
+	case DIK_UP:
+		state->KeyReleased_Up();
+		break;
+	case DIK_DOWN:
+		state->KeyReleased_Down();
+		break;
+	case DIK_LEFT:
+		state->KeyReleased_Left();
+		break;
+	case DIK_RIGHT:
+		state->KeyReleased_Right();
+		break;
+	case DIK_O:
+		state->KeyReleased_Shoot();
+		break;
+	case DIK_P:
+		state->KeyReleased_Jump();
+		break;
+	}
+}
+
+void Game_Player::KeyReleaseAll()
+{
+	KeyUpEventHandler(DIK_UP);
+	KeyUpEventHandler(DIK_DOWN);
+	KeyUpEventHandler(DIK_LEFT);
+	KeyUpEventHandler(DIK_RIGHT);
+	KeyUpEventHandler(DIK_O);
+	KeyUpEventHandler(DIK_P);
 }
 
 void Game_Player::KeyStateHandler(BYTE* state)

@@ -8,7 +8,7 @@ int Obj_ContraBot::CharID()
 	return CHAR_CONTRA;
 }
 
-void Obj_ContraBot::UpdateBehavior()
+void Obj_ContraBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 	if (_faceLeft)
 		AddAction(DIK_LEFT);
