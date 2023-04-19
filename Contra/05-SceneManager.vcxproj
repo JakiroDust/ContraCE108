@@ -144,6 +144,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +156,11 @@
     <ClCompile Include="Contra_GET_ANI.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Demo_Layer.cpp" />
+    <ClCompile Include="Enemy_RedGunner.cpp" />
+    <ClCompile Include="Enemy_ScubaDriver.cpp" />
+    <ClCompile Include="Enemy_SneakSniper.cpp" />
+    <ClCompile Include="Enemy_Sniper.cpp" />
+    <ClCompile Include="Enemy_Turret.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Game_Blocker.cpp" />
@@ -163,12 +169,14 @@
     <ClCompile Include="Game_Enemy.cpp" />
     <ClCompile Include="Game_KeyInput.cpp" />
     <ClCompile Include="Game_Layer.cpp" />
+    <ClCompile Include="Game_MovableEnemy.cpp" />
     <ClCompile Include="Game_MovableObject.cpp" />
     <ClCompile Include="Game_ObjectBase.cpp" />
     <ClCompile Include="Game_Platform.cpp" />
     <ClCompile Include="Game_Player.cpp" />
     <ClCompile Include="Game_Screen.cpp" />
     <ClCompile Include="Game_StaticObject.cpp" />
+    <ClCompile Include="Game_StationEnemy.cpp" />
     <ClCompile Include="Game_Terrain.cpp" />
     <ClCompile Include="Game_Water.cpp" />
     <ClCompile Include="Goomba.cpp" />
@@ -208,6 +216,11 @@
     <ClInclude Include="debug.h" />
     <ClInclude Include="Demo_Layer.h" />
     <ClInclude Include="Enemies_ID.h" />
+    <ClInclude Include="Enemy_RedGunner.h" />
+    <ClInclude Include="Enemy_ScubaDriver.h" />
+    <ClInclude Include="Enemy_SneakSniper.h" />
+    <ClInclude Include="Enemy_Sniper.h" />
+    <ClInclude Include="Enemy_Turret.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Game_Blocker.h" />
@@ -216,12 +229,14 @@
     <ClInclude Include="Game_Enemy.h" />
     <ClInclude Include="Game_KeyInput.h" />
     <ClInclude Include="Game_Layer.h" />
+    <ClInclude Include="Game_MovableEnemy.h" />
     <ClInclude Include="Game_MovableObject.h" />
     <ClInclude Include="Game_ObjectBase.h" />
     <ClInclude Include="Game_Platform.h" />
     <ClInclude Include="Game_Player.h" />
     <ClInclude Include="Game_Screen.h" />
     <ClInclude Include="Game_StaticObject.h" />
+    <ClInclude Include="Game_StationEnemy.h" />
     <ClInclude Include="Game_Terrain.h" />
     <ClInclude Include="Game_Water.h" />
     <ClInclude Include="Goomba.h" />
