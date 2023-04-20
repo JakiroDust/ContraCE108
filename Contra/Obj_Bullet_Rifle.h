@@ -11,9 +11,14 @@ class Obj_Bullet_Rifle :  public Game_Bullet
 		}
 
 	public:
-		Obj_Bullet_Rifle(float x, float y, int z, int width, int height, float targetX, float targetY) : Game_Bullet(x, y, z, width, height)
+		// If type = true, use point (x,y) instead of vx, vy
+		// vx, vy will be caculated so that bullet can move toward that point. 
+		Obj_Bullet_Rifle(float x, float y, int z, int width, int height, float vx, float vy, bool type = false) : Game_Bullet(x, y, z, width, height)
 		{
-			SetTargetPos(targetX, targetY);
+			if (type)
+				SetTargetPos(vx, vy);
+			else
+				SetSpeed(vx, vy);
 			Init();
 		}
 

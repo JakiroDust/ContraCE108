@@ -122,5 +122,6 @@ public:
 	virtual void moveRight();
 	virtual void jump();
 	virtual void forceDie();
+	virtual void Execute_DieAction() {}
 };
 

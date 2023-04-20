@@ -18,6 +18,8 @@ int Get_CharANI_ID(int character, int behavior)
 		arr[ACT_SWIM_RIGHT] = ANI_SWIM_RIGHT;
 		arr[ACT_FALL_LEFT] = ANI_FALL_LEFT;
 		arr[ACT_FALL_RIGHT] = ANI_FALL_RIGHT;
+		arr[ACT_DIE_LEFT] = ANI_FALL_LEFT;
+		arr[ACT_DIE_RIGHT] = ANI_FALL_RIGHT;
 		break;
 	}
 
@@ -33,6 +35,8 @@ int Get_CharANI_ID(int character, int behavior)
 		arr[ACT_SWIM_RIGHT] = ANI_SWIM_RIGHT;
 		arr[ACT_FALL_LEFT] = ANI_FALL_LEFT;
 		arr[ACT_FALL_RIGHT] = ANI_FALL_RIGHT;
+		arr[ACT_DIE_LEFT] = ANI_FALL_LEFT;
+		arr[ACT_DIE_RIGHT] = ANI_FALL_RIGHT;
 		break;
 	}
 

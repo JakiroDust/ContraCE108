@@ -5,6 +5,7 @@
 #include "State_Contra_Fall.h"
 #include "State_Contra_Swim.h"
 #include "State_Contra_Jump.h"
+#include "State_Contra_Die.h"
 #include "Contra_GET_ANI.h"
 
 int Game_Enemy::CharID()
@@ -38,6 +39,12 @@ void Game_Enemy::UpdateState()
 	if (_state == NULL)
 	{
 		_state = new State_Contra_Idle(this);
+		return;
+	}
+
+	if (_die && !dynamic_cast<State_Contra_Die*>(_state))
+	{
+		_state = new State_Contra_Die(this, 20);
 		return;
 	}
 

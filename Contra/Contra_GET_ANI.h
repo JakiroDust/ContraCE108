@@ -30,6 +30,8 @@ using namespace std;
 #define ACT_JUMP_LEFT 20
 #define ACT_FALL_RIGHT 21
 #define ACT_FALL_LEFT 22
+#define ACT_DIE_RIGHT 23
+#define ACT_DIE_LEFT 24
 
 #define CHAR_CONTRA 10
 #define CHAR_CONTRA_BASE 12

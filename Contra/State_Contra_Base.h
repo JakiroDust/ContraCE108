@@ -7,7 +7,7 @@
 #define STATE_JUMP 2
 #define STATE_SWIM 3
 #define STATE_FALL 4
-
+#define STATE_DIE 5
 
 class State_Contra_Base : public State_Base
 {

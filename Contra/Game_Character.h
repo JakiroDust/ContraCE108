@@ -62,7 +62,7 @@ class Game_Character : public Game_MovableObject
 		virtual void Shoot(int DIR) {}
 		virtual void Shoot(float x, float y) {}
 		virtual bool IsFullAutomaticGun() { return false; }
-
+		void Execute_DieAction() override { Game_MovableObject::Execute_DieAction(); }
 		// GET & SET
 
 		bool IsJumpDown() { return _jumpDown; }

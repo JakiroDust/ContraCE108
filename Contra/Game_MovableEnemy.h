@@ -14,5 +14,7 @@ class Game_MovableEnemy : public Game_Enemy
 		void OnNoCollision(DWORD dt) override { Game_Enemy::OnNoCollision(dt); }
 		// When collision with an object has been detected (triggered by CCollision::Process)
 		void OnCollisionWith(PCOLLISIONEVENT e) override { Game_Enemy::OnCollisionWith(e); }
+
+		void Execute_DieAction() override { Game_Enemy::Execute_DieAction(); }
 };
 

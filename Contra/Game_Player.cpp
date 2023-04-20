@@ -6,6 +6,7 @@
 #include "State_Contra_Swim.h"
 #include "State_Contra_Jump.h"
 #include "Contra_GET_ANI.h"
+#include "Enemy_RedGunner.h"
 
 int Game_Player::CharID()
 {
@@ -184,4 +185,9 @@ void Game_Player::OnNoCollision(DWORD dt)
 void Game_Player::OnCollisionWith(PCOLLISIONEVENT e)
 {
 	Game_Character::OnCollisionWith(e);
+	if (dynamic_cast<Enemy_RedGunner*>(e->obj))
+	{
+		Game_Character* enemy = (Game_Character*)(e->obj);
+		enemy->forceDie();
+	}
 }

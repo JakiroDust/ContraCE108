@@ -72,3 +72,8 @@ void Enemy_RedGunner::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	}
 }
 
+void Enemy_RedGunner::Execute_DieAction()
+{
+	Game_MovableEnemy::Execute_DieAction();
+	jump();
+}

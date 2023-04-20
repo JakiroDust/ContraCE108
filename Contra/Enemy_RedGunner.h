@@ -23,5 +23,6 @@ class Enemy_RedGunner : public Game_MovableEnemy
 		// When collision with an object has been detected (triggered by CCollision::Process)
 		void OnCollisionWith(PCOLLISIONEVENT e) override;
 
+		void Execute_DieAction() override;
 };
 
