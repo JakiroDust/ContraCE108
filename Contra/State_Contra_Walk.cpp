@@ -30,7 +30,7 @@ void State_Contra_Walk::Update(DWORD dt)
 	if (obj->LockFace())
 		obj->SetLockFace(false);
 
-	if (left_release && right_release)
+	if (!HoldKeyLeft && !HoldKeyRight)
 	{
 		if (_nextState == -1)
 		{
@@ -46,26 +46,16 @@ void State_Contra_Walk::Update(DWORD dt)
 
 void State_Contra_Walk::KeyHold_Left()
 {
+	State_Contra_Base::KeyHold_Left();
 	Game_Player* obj = (Game_Player*)_srcObj;
 	obj->moveLeft();
-	left_release = false;
 }
 
 void State_Contra_Walk::KeyHold_Right()
 {
+	State_Contra_Base::KeyHold_Right();
 	Game_Player* obj = (Game_Player*)_srcObj;
 	obj->moveRight();
-	right_release = false;
-}
-
-void State_Contra_Walk::KeyReleased_Left()
-{
-	left_release = true;
-}
-
-void State_Contra_Walk::KeyReleased_Right()
-{
-	right_release = true;
 }
 
 int press = 0;
@@ -86,5 +76,63 @@ void State_Contra_Walk ::KeyPressed_Jump()
 		obj->jump();
 		obj->SetLockFace(true);
 		_nextState = STATE_JUMP;
+	}
+}
+
+void State_Contra_Walk::KeyPressed_Shoot()
+{
+	Game_Character* obj = (Game_Character*)_srcObj;
+	if (!obj->IsFullAutomaticGun())
+	{
+		if (HoldKeyDown)
+		{
+			if (obj->IsFaceLeft())
+				obj->Shoot(DIR_BOTTOM_LEFT);
+			else
+				obj->Shoot(DIR_BOTTOM_RIGHT);
+		}
+		else if (HoldKeyUp)
+		{
+			if (obj->IsFaceLeft())
+				obj->Shoot(DIR_TOP_LEFT);
+			else
+				obj->Shoot(DIR_TOP_RIGHT);
+		}
+		else
+		{
+			if (obj->IsFaceLeft())
+				obj->Shoot(DIR_LEFT);
+			else
+				obj->Shoot(DIR_RIGHT);
+		}
+	}
+}
+
+void State_Contra_Walk::KeyHold_Shoot()
+{
+	Game_Character* obj = (Game_Character*)_srcObj;
+	if (obj->IsFullAutomaticGun())
+	{
+		if (HoldKeyDown)
+		{
+			if (obj->IsFaceLeft())
+				obj->Shoot(DIR_BOTTOM_LEFT);
+			else
+				obj->Shoot(DIR_BOTTOM_RIGHT);
+		}
+		else if (HoldKeyUp)
+		{
+			if (obj->IsFaceLeft())
+				obj->Shoot(DIR_TOP_LEFT);
+			else
+				obj->Shoot(DIR_TOP_RIGHT);
+		}
+		else
+		{
+			if (obj->IsFaceLeft())
+				obj->Shoot(DIR_LEFT);
+			else
+				obj->Shoot(DIR_RIGHT);
+		}
 	}
 }

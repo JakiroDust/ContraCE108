@@ -5,8 +5,7 @@
 class State_Contra_Walk : public State_Contra_Base
 {
 	private:
-		bool left_release = false;
-		bool right_release = false;
+
 	public:
 		State_Contra_Walk(Game_ObjectBase* obj) : State_Contra_Base(obj){}
 
@@ -16,8 +15,8 @@ class State_Contra_Walk : public State_Contra_Base
 
 		void KeyHold_Left() override;
 		void KeyHold_Right() override;
+		void KeyHold_Shoot() override;
 		void KeyPressed_Jump() override;
-		void KeyReleased_Left() override;
-		void KeyReleased_Right() override;
+		void KeyPressed_Shoot() override;
 };
 

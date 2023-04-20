@@ -22,8 +22,8 @@ void Game_Enemy::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 		_state->Update(dt);
 	UpdateState();
 
-	ResetStateParams();
 	UpdateBehavior(dt, coObjects);
+	ResetStateParams();
 }
 
 void Game_Enemy::Render()
@@ -204,7 +204,7 @@ void Game_Enemy::KeyReleaseAll()
 	KeyUpEventHandler(DIK_P);
 }
 
-// ENEMY AUTO BEHAVIOR
+// ENEMY BEHAVIOR
 
 void Game_Enemy::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {

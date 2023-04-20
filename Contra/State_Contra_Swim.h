@@ -12,7 +12,9 @@ class State_Contra_Swim : public State_Contra_Base
 
 		void KeyHold_Left() override;
 		void KeyHold_Right() override;
-		void KeyHold_Down() override;
-		void KeyHold_Up() override;
+		
+		void KeyPressed_Shoot() override;
+		void KeyHold_Shoot() override;
+
 };
 

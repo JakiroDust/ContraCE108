@@ -3,6 +3,8 @@
 
 class State_Contra_Jump : public State_Contra_Base
 {
+	private:
+
 	public:
 		State_Contra_Jump(Game_ObjectBase* obj) : State_Contra_Base(obj) {}
 
@@ -12,5 +14,8 @@ class State_Contra_Jump : public State_Contra_Base
 
 		void KeyHold_Left() override;
 		void KeyHold_Right() override;
-};
 
+		void KeyPressed_Shoot() override;
+		void KeyHold_Shoot() override;
+
+};

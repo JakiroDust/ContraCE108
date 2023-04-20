@@ -3,6 +3,15 @@
 #include "Mapper.h"
 //#include "Contra_GET_ANI.h"
 
+#define DIR_TOP_LEFT 1
+#define DIR_TOP 2
+#define DIR_TOP_RIGHT 3
+#define DIR_LEFT 4
+#define DIR_RIGHT 6
+#define DIR_BOTTOM_LEFT 7
+#define DIR_BOTTOM 8
+#define DIR_BOTTOM_RIGHT 9
+
 using namespace std;
 
 class Game_Character : public Game_MovableObject
@@ -47,6 +56,12 @@ class Game_Character : public Game_MovableObject
 		void Update(DWORD dt) override { Game_MovableObject::Update(dt); }
 		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override { Game_MovableObject::Update(dt, coObjects); }
 		//-------------------------------------------------------------------------------
+
+		// Character action
+
+		virtual void Shoot(int DIR) {}
+		virtual void Shoot(float x, float y) {}
+		virtual bool IsFullAutomaticGun() { return false; }
 
 		// GET & SET
 
