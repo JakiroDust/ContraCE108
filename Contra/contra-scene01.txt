@@ -2,6 +2,7 @@
 [ASSETS]
 contra.txt
 CONTRA_BULLET.txt
+INFARY.txt
 #brick.txt
 #coin.txt
 #goomba.txt
