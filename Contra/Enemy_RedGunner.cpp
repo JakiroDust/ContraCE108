@@ -9,7 +9,7 @@
 
 int Enemy_RedGunner::CharID()
 {
-	return CHAR_CONTRA;
+	return RED_GUNNER;
 }
 
 void Enemy_RedGunner::UpdateState()
