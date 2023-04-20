@@ -3,6 +3,6 @@
 class Game_StationEnemy :
     public Game_Enemy
 {
-    int baseType() { return TYPE_MOVABLE; }
+    int baseType() override { return TYPE_STATIC; }
 };
 

@@ -34,7 +34,7 @@
 		void _append(int id, int& n, int& m)
 		{
 			_indexes[n][m].push_back(id);
-			DebugOut(L"Moved % d to(% d, % d)\n",id, n, m);
+		//	DebugOut(L"Moved % d to(% d, % d)\n",id, n, m);
 		}
 		void _remove(int& id, int& n, int& m)
 		{
@@ -46,7 +46,7 @@
 			auto it = find(ptr.begin(), ptr.end(), id);
 			if (it == ptr.end())
 			{
-				DebugOut(L"[ERROR] ID %d NOT EXIST \n", id);
+			//	DebugOut(L"[ERROR] ID %d NOT EXIST \n", id);
 			}
 			else
 			{

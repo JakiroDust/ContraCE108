@@ -155,6 +155,13 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Obj_Bullet_Rifle.cpp" />
+    <ClCompile Include="Enemy_RedGunner.cpp" />
+    <ClCompile Include="Enemy_ScubaDriver.cpp" />
+    <ClCompile Include="Enemy_SneakSniper.cpp" />
+    <ClCompile Include="Enemy_Sniper.cpp" />
+    <ClCompile Include="Enemy_Turret.cpp" />
+    <ClCompile Include="Game_MovableEnemy.cpp" />
+    <ClCompile Include="Game_StationEnemy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -340,6 +347,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="brick.txt">

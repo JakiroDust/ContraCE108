@@ -3,5 +3,6 @@
 class Enemy_Sniper :
     public Game_StationEnemy
 {
+
 };
 

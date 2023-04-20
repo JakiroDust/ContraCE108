@@ -2,7 +2,7 @@
 
 #define TYPE_STATIC 0
 #define TYPE_MOVABLE 1
-
+#include "Scene_Battle.h"
 using namespace std;
 #include "Game_Collision.h"
 #include "Animations.h"

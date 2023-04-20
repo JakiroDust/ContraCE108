@@ -195,7 +195,7 @@ void Scene_Battle::add_object(Game_ObjectBase*object)
     object->SetId(id_nth);
     float l, t, r, b;
     object->GetLTRB(l, t, r, b);
-    DebugOut(L"id %d l=%d t=%d r=%d b=%d\n", id_nth, l, t, r, b);
+    //DebugOut(L"id %d l=%d t=%d r=%d b=%d\n", id_nth, l, t, r, b);
     spatial->init_object(id_nth, l, t, r, b);
     id_nth++;
     
