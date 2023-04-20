@@ -28,7 +28,7 @@ class Game_Enemy : public Game_Character
 		void OnNoCollision(DWORD dt);
 		// When collision with an object has been detected (triggered by CCollision::Process)
 		void OnCollisionWith(PCOLLISIONEVENT e) override;
-
+		// Sprite ID
 		int CharID() override;
 };
 

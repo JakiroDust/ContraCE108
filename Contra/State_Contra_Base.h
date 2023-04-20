@@ -12,7 +12,10 @@
 class State_Contra_Base : public State_Base
 {
 	protected:
-
+		bool HoldKeyUp = false;
+		bool HoldKeyDown = false;
+		bool HoldKeyLeft = false;
+		bool HoldKeyRight = false;
 	public:
 		State_Contra_Base(Game_ObjectBase* obj) : State_Base(obj){}
 
@@ -20,10 +23,10 @@ class State_Contra_Base : public State_Base
 		void Render() override {}
 		void Update(DWORD dt) override {}
 
-		virtual void KeyHold_Up() {}
-		virtual void KeyHold_Down() {}
-		virtual void KeyHold_Left() {}
-		virtual void KeyHold_Right() {}
+		virtual void KeyHold_Up() { HoldKeyUp = true; }
+		virtual void KeyHold_Down() { HoldKeyDown = true; }
+		virtual void KeyHold_Left() { HoldKeyLeft = true; }
+		virtual void KeyHold_Right() { HoldKeyRight = true; }
 		virtual void KeyHold_Shoot() {}
 
 		virtual void KeyPressed_Up() {}
@@ -33,10 +36,10 @@ class State_Contra_Base : public State_Base
 		virtual void KeyPressed_Shoot() {}
 		virtual void KeyPressed_Jump() {}
 
-		virtual void KeyReleased_Up() {}
-		virtual void KeyReleased_Down() {}
-		virtual void KeyReleased_Left() {}
-		virtual void KeyReleased_Right() {}
+		virtual void KeyReleased_Up() { HoldKeyUp = false; }
+		virtual void KeyReleased_Down() { HoldKeyDown = false; }
+		virtual void KeyReleased_Left() { HoldKeyLeft = false; }
+		virtual void KeyReleased_Right() { HoldKeyRight = false; }
 		virtual void KeyReleased_Shoot() {}
 		virtual void KeyReleased_Jump() {}
 };

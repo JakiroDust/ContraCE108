@@ -4,6 +4,7 @@
 #include "Game_Platform.h"
 #include "Obj_ContraBot.h"
 #include "Obj_SmartBot.h"
+#include "Enemy_RedGunner.h"
 
 Scene_Battle::~Scene_Battle()
 {
@@ -116,9 +117,20 @@ void Scene_Battle::Update(DWORD dt)
         }
         checkObjectNeedRender(obj);
     }
-    delete nearbyObject;
+
     // Test
     Demo_Camera_Action();
+    Execute_BasicSpawnerEvent();
+
+    // Terminate objects have Delete flag
+    for (auto& i : id_list)
+    {
+        Game_ObjectBase* obj = __objects[i];
+        if (obj->IsDeleted())
+            delete_object(obj);
+    }
+
+    delete nearbyObject;
 }
 vector<int> Scene_Battle::getNearByIDyx(int y, int x)
 {
@@ -168,7 +180,7 @@ void Scene_Battle::Create_Stage_Demo()
     Game_Platform* plat3 = new Game_Platform(352, 178, 1, 32, 10);
     Game_Platform* plat4 = new Game_Platform(416, 150, 1, 64, 10);
     Game_Blocker* plat5 = new Game_Blocker(288, 215, 1, 64, 32);
-    Game_Platform* plat6 = new Game_Platform(32, 118, 1, 704, 10);
+    Game_Platform* plat6 = new Game_Platform(32, 118, 1, 736, 10);
 
     Demo_Layer* demo = new Demo_Layer(0, 0, 0, 3328, 239);
     add_object(_p1);//0
@@ -265,27 +277,20 @@ void Scene_Battle::Demo_Camera_Action()
     Game_Screen* cam = ScreenManager::GetInstance()->Screen();
     p1()->GetCenterPoint(camPosX, camPosY);
     cam->focusToPoint(camPosX, camPosY, _mapWidth, _mapHeight);  
-
-    //cam->GetCenterPoint(camPosX, camPosY);
-    //if (moveRange > 0)
-    //{
-    //    moveRange--;
-    //    if (switchLeft) {
-    //        camPosX--;
-    //    }
-    //    else {
-    //        camPosX++;
-    //    }
-
-    //    cam->focusToPoint(camPosX, camPosY, _mapWidth, _mapHeight);
-    //}
-    //else
-    //{
-    //    moveRange = _mapWidth / 2;
-    //    switchLeft = !switchLeft;
-    //}
-
-
 }
 
 ///PROTYPE
+
+int ticker = 0;
+
+void Scene_Battle::Execute_BasicSpawnerEvent()
+{
+    if (ticker > 0)
+    {
+        ticker--;
+        return;
+    }
+    ticker = 240;
+    Enemy_RedGunner* redgunner = new Enemy_RedGunner(460, 40, 2);
+    add_object(redgunner);
+}

@@ -1,12 +1,12 @@
 #pragma once
 #include "Game_Character.h"
 
-#define KEY_UP 0
-#define KEY_DOWN 1
-#define KEY_LEFT 2
-#define KEY_RIGHT 3
-#define KEY_SHOOT 4
-#define KEY_JUMP 5
+//#define KEY_UP 0
+//#define KEY_DOWN 1
+//#define KEY_LEFT 2
+//#define KEY_RIGHT 3
+//#define KEY_SHOOT 4
+//#define KEY_JUMP 5
 
 #define PLAYER_BASE_WIDTH 20
 #define PLAYER_BASE_HEIGHT 32

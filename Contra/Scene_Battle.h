@@ -60,5 +60,7 @@ public:
 	void add_object(Game_ObjectBase* object);
 	void delete_object(int id);
 	void delete_object(Game_ObjectBase* object);
+	// Spawn an RedGunner
+	void Execute_BasicSpawnerEvent();
 };
 
