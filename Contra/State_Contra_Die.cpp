@@ -25,6 +25,9 @@ void State_Contra_Die::Update(DWORD dt)
 	if (_trigger)
 	{
 		obj->Execute_DieAction();
+		int width, height;
+		obj->GetCustomSize(StateId(), width, height);
+		obj->SetHeight(height, 2);
 		_trigger = false;
 	}
 

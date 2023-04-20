@@ -272,11 +272,14 @@
     <Text Include="contra-scene02.txt" />
     <Text Include="contra.txt" />
     <Text Include="ContraMapStage1BG.txt" />
+    <Text Include="CONTRA_BULLET.txt" />
     <Text Include="goomba.txt" />
+    <Text Include="INFARY.txt" />
     <Text Include="mario-sample.txt" />
     <Text Include="scene0005.txt" />
     <Text Include="scene01.txt" />
     <Text Include="scene02.txt" />
+    <Text Include="SNIPER.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -23,6 +23,8 @@ class Obj_SmartBot : public Game_Enemy
 		void OnNoCollision(DWORD dt);
 		// When collision with an object has been detected (triggered by CCollision::Process)
 		void OnCollisionWith(PCOLLISIONEVENT e) override;
+
+		void GetCustomSize(int state, int& width, int& height) override;
 };
 
 // This object will follow player automatically.

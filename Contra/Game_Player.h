@@ -47,5 +47,6 @@ class Game_Player : public Game_Character
 		void OnCollisionWith(PCOLLISIONEVENT e) override;
 
 		int CharID();
+		void GetCustomSize(int state, int& width, int& height) override;
 };
 

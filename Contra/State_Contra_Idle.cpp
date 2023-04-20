@@ -25,8 +25,13 @@ void State_Contra_Idle::Update(DWORD dt)
 		return;
 	
 	Game_Character* obj = (Game_Character*)_srcObj;
-	if (obj->height() != PLAYER_BASE_HEIGHT)
-		obj->SetHeight(PLAYER_BASE_HEIGHT, 2);
+
+	int width, height;
+	obj->GetCustomSize(StateId(), width, height);
+	if (obj->height() != height)
+	{
+		obj->SetHeight(height, 2);
+	}
 
 	if (obj->LockFace())
 		obj->SetLockFace(false);

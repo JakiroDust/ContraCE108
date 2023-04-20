@@ -25,8 +25,12 @@ void State_Contra_Swim::Update(DWORD dt)
 
 	Game_Player* obj = (Game_Player*)_srcObj;
 
-	if (obj->height() != PLAYER_SWIM_HEIGHT)
-		obj->SetHeight(PLAYER_SWIM_HEIGHT, 2);
+	int width, height;
+	obj->GetCustomSize(StateId(), width, height);
+	if (obj->height() != height)
+	{
+		obj->SetHeight(height, 2);
+	}
 	
 	if (!obj->IsSwimming())
 	{

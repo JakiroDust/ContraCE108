@@ -10,6 +10,8 @@ class Game_MovableEnemy : public Game_Enemy
 
 		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override { Game_Enemy::Update(dt, coObjects); }
 		int CharID() override { return 0; }
+		void GetCustomSize(int state, int& width, int& height) override { Game_Enemy::GetCustomSize(state, width, height); }
+		
 		// When no collision has been detected (triggered by CCollision::Process)
 		void OnNoCollision(DWORD dt) override { Game_Enemy::OnNoCollision(dt); }
 		// When collision with an object has been detected (triggered by CCollision::Process)

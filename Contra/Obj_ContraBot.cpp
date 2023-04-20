@@ -2,6 +2,8 @@
 #include "Game_Platform.h"
 #include "Game_Blocker.h"
 #include "Contra_GET_ANI.h"
+#include "State_Contra_Base.h"
+#include "Game_Player.h"
 
 int Obj_ContraBot::CharID()
 {
@@ -38,5 +40,38 @@ void Obj_ContraBot::OnCollisionWith(PCOLLISIONEVENT e)
 				_faceLeft = !_faceLeft;
 			}
 		}
+	}
+}
+
+void Obj_ContraBot::GetCustomSize(int state, int& width, int& height)
+{
+	switch (state)
+	{
+	case STATE_IDLE:
+		width = PLAYER_BASE_WIDTH;
+		height = PLAYER_BASE_HEIGHT;
+		break;
+	case STATE_FALL:
+		width = PLAYER_BASE_WIDTH;
+		height = PLAYER_BASE_HEIGHT;
+		break;
+	case STATE_SWIM:
+		width = PLAYER_SWIM_WIDTH;
+		height = PLAYER_SWIM_HEIGHT;
+		break;
+	case STATE_WALK:
+		width = PLAYER_BASE_WIDTH;
+		height = PLAYER_BASE_HEIGHT;
+		break;
+	case STATE_JUMP:
+		width = PLAYER_JUMP_WIDTH;
+		height = PLAYER_JUMP_HEIGHT;
+		break;
+	case STATE_DIE:
+		width = PLAYER_BASE_WIDTH;
+		height = PLAYER_BASE_HEIGHT;
+		break;
+	default:
+		break;
 	}
 }
