@@ -384,6 +384,15 @@
     <Text Include="scene0005.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="CONTRA_BULLET.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="INFARY.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="SNIPER.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

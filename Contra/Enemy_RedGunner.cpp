@@ -4,6 +4,8 @@
 #include "Game_TestBox.h"
 #include "Game_Player.h"
 #include "Scene_Battle.h"
+#include "State_Contra_Base.h"
+
 
 int Enemy_RedGunner::CharID()
 {
@@ -76,4 +78,37 @@ void Enemy_RedGunner::Execute_DieAction()
 {
 	Game_MovableEnemy::Execute_DieAction();
 	jump();
+}
+
+void Enemy_RedGunner::GetCustomSize(int state, int &width, int &height)
+{
+	switch (state)
+	{
+	case STATE_IDLE:
+		width = REDGUNNER_BASE_WIDTH;
+		height = REDGUNNER_BASE_HEIGHT;
+		break;
+	case STATE_FALL:
+		width = REDGUNNER_BASE_WIDTH;
+		height = REDGUNNER_BASE_HEIGHT;
+		break;
+	case STATE_SWIM:
+		width = REDGUNNER_BASE_WIDTH;
+		height = REDGUNNER_BASE_HEIGHT;
+		break;
+	case STATE_WALK:
+		width = REDGUNNER_BASE_WIDTH;
+		height = REDGUNNER_BASE_HEIGHT;
+		break;
+	case STATE_JUMP:
+		width = REDGUNNER_JUMP_WIDTH;
+		height = REDGUNNER_JUMP_HEIGHT;
+		break;
+	case STATE_DIE:
+		width = REDGUNNER_BASE_WIDTH;
+		height = REDGUNNER_BASE_HEIGHT;
+		break;
+	default:
+		break;
+	}
 }

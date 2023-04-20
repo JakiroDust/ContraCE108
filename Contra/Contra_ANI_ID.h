@@ -1,6 +1,8 @@
 #pragma once
 
 
+// CONTRA
+
 #define ANI_IDLE_RIGHT 10000
 #define ANI_IDLE_LEFT ANI_IDLE_RIGHT+1
 
@@ -15,3 +17,6 @@
 
 #define ANI_SWIM_RIGHT 11100
 #define ANI_SWIM_LEFT ANI_SWIM_RIGHT+1
+
+// RED GUNNER
+

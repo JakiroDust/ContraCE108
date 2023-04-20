@@ -5,6 +5,8 @@
 #include "Game_TestBox.h"
 #include "Scene_Battle.h"
 #include "Spatial.h"
+#include "State_Contra_Base.h"
+#include "Game_Player.h"
 
 int Obj_SmartBot::CharID()
 {
@@ -301,4 +303,37 @@ void Obj_SmartBot::OnNoCollision(DWORD dt)
 void Obj_SmartBot::OnCollisionWith(PCOLLISIONEVENT e)
 {
 	Game_Enemy::OnCollisionWith(e);
+}
+
+void Obj_SmartBot::GetCustomSize(int state, int& width, int& height)
+{
+	switch (state)
+	{
+	case STATE_IDLE:
+		width = PLAYER_BASE_WIDTH;
+		height = PLAYER_BASE_HEIGHT;
+		break;
+	case STATE_FALL:
+		width = PLAYER_BASE_WIDTH;
+		height = PLAYER_BASE_HEIGHT;
+		break;
+	case STATE_SWIM:
+		width = PLAYER_SWIM_WIDTH;
+		height = PLAYER_SWIM_HEIGHT;
+		break;
+	case STATE_WALK:
+		width = PLAYER_BASE_WIDTH;
+		height = PLAYER_BASE_HEIGHT;
+		break;
+	case STATE_JUMP:
+		width = PLAYER_JUMP_WIDTH;
+		height = PLAYER_JUMP_HEIGHT;
+		break;
+	case STATE_DIE:
+		width = PLAYER_BASE_WIDTH;
+		height = PLAYER_BASE_HEIGHT;
+		break;
+	default:
+		break;
+	}
 }

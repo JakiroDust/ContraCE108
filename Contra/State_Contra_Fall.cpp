@@ -24,6 +24,14 @@ void State_Contra_Fall::Update(DWORD dt)
 		return;
 
 	Game_Player* obj = (Game_Player*)_srcObj;
+
+	int width, height;
+	obj->GetCustomSize(StateId(), width, height);
+	if (obj->height() != height)
+	{
+		obj->SetHeight(height, 0);
+	}
+
 	if (obj->IsSwimming() && _nextState == -1)
 	{
 		_nextState = STATE_SWIM;
