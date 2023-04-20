@@ -49,7 +49,9 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	vector<Game_ObjectBase*>* collisionObjects = scene->getObjectById(colList);
 
 	// Update Map
-	_map->SetDt(dt);
+	
+	// Map update incorrectly when dt dropping. Not use below code for now
+	//_map->SetDt(dt);
 	_map->UpdateMap(collisionObjects);
 
 	PTERRAINNODE desNode = _map->GetDesNode(player);

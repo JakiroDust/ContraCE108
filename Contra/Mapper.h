@@ -36,7 +36,7 @@ class Mapper
 		PTERRAINNODE _home;
 		vector<Game_ObjectBase*> _baseObjList;
 
-		DWORD _dt;
+		DWORD _dt = 16;
 		Game_Character* _srcObj;
 		void ClearMap();
 		bool Compare(vector<Game_ObjectBase*>* coObject);
