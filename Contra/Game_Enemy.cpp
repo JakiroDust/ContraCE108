@@ -46,7 +46,12 @@ void Game_Enemy::UpdateState()
 	{
 		_state = new State_Contra_Die(this, 20);
 		return;
+	} 
+	else if (_die && dynamic_cast<State_Contra_Die*>(_state))
+	{
+		return;
 	}
+	
 
 	switch (_state->NextState())
 	{
