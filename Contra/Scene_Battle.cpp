@@ -267,13 +267,13 @@ void Scene_Battle::_delete_spatial()
     delete spatial;
 }
 
-int moveRange = 0;
-bool switchLeft = false;
-float camPosX = 0;
-float camPosY = 0;
+//int moveRange = 0;
+//bool switchLeft = false;
 
 void Scene_Battle::Demo_Camera_Action()
 {
+    float camPosX = 0;
+    float camPosY = 0;
     Game_Screen* cam = ScreenManager::GetInstance()->Screen();
     p1()->GetCenterPoint(camPosX, camPosY);
     cam->focusToPoint(camPosX, camPosY, _mapWidth, _mapHeight);  
