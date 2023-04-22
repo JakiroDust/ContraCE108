@@ -49,7 +49,8 @@ void Mapper::UpdateMap(vector<Game_ObjectBase*>* coObjects)
 			home = NULL;
 		}
 	_home = home;
-
+	filter->clear();
+	delete filter;
 }
 
 void Mapper::ClearMap()
@@ -73,6 +74,7 @@ void Mapper::LinkingNode()
 	ClearMap();
 
 	// init nodes
+	
 	for (int i = 0; i < _baseObjList.size(); i++)
 	{
 		PTERRAINNODE p = new TerrainNode();
@@ -162,6 +164,7 @@ void Mapper::LinkingNode()
 				continue;
 			}
 		}
+		//delete p;
 	}
 
 	firsttime = 1;

@@ -55,6 +55,7 @@ void Game_Enemy::UpdateState()
 
 	switch (_state->NextState())
 	{
+		delete _state;
 	case STATE_IDLE:
 		_state = new State_Contra_Idle(this);
 		break;

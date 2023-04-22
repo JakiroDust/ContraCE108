@@ -158,6 +158,7 @@
     <ClCompile Include="Enemy_SneakSniper.cpp" />
     <ClCompile Include="Enemy_Sniper.cpp" />
     <ClCompile Include="Enemy_Turret.cpp" />
+    <ClCompile Include="Equip_GunBase.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Game_Blocker.cpp" />
     <ClCompile Include="Game_Bullet.cpp" />
@@ -217,6 +218,7 @@
     <ClInclude Include="Enemy_SneakSniper.h" />
     <ClInclude Include="Enemy_Sniper.h" />
     <ClInclude Include="Enemy_Turret.h" />
+    <ClInclude Include="Equip_GunBase.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Game_Blocker.h" />
     <ClInclude Include="Game_Bullet.h" />

@@ -43,6 +43,19 @@ void Game_Character::OnCollisionWith(PCOLLISIONEVENT e)
 	}
 }
 
+void Game_Character::Shoot()
+{
+	float x, y;
+	this->GetCenterPoint(x, y);
+	float vx=0, vy=0;
+	//GET DIR
+	int dir = DIR_TOP;
+	x += _spawnBulletHelper[dir][X];
+	y += _spawnBulletHelper[dir][Y];
+	//Get gun or not or whatever 
+	// gun.gunshoot(x,y,dir)
+}
+
 void Game_Character::AddAction(int KeyCode1, int KeyCode2)
 {
 	pair<int, int> p(KeyCode1,KeyCode2);
@@ -66,4 +79,38 @@ void Game_Character::ExecuteAction()
 	KeyDownEventHandler(action.first);
 	if (action.second != -1)
 		KeyDownEventHandler(action.second);
+}
+
+Game_Character::Game_Character(float x, float y, int z, int width, int height) : Game_MovableObject(x, y, z, width, height)
+{
+	_needScanCollision = true;
+
+	//init default _spawnBulletHelper;
+	for (int i = 1; i <= 9; i++)
+		_spawnBulletHelper[i] = vector<float>(2, 0);
+
+	_spawnBulletHelper[DIR_TOP][X] = 0;
+	_spawnBulletHelper[DIR_TOP][Y] = 10;
+
+	_spawnBulletHelper[DIR_TOP_RIGHT][X] = 7;
+	_spawnBulletHelper[DIR_TOP_RIGHT][Y] = 7;
+	
+	_spawnBulletHelper[DIR_RIGHT][X] = 10;
+	_spawnBulletHelper[DIR_RIGHT][Y] = 0;
+
+	_spawnBulletHelper[DIR_BOTTOM_RIGHT][X] = 7;
+	_spawnBulletHelper[DIR_BOTTOM_RIGHT][Y] = -7;
+
+	_spawnBulletHelper[DIR_BOTTOM][X] = 0;
+	_spawnBulletHelper[DIR_BOTTOM][Y] = -10;
+
+	_spawnBulletHelper[DIR_BOTTOM_LEFT][X] = -7;
+	_spawnBulletHelper[DIR_BOTTOM_LEFT][Y] = -7;
+
+	_spawnBulletHelper[DIR_LEFT][X] = -10;
+	_spawnBulletHelper[DIR_LEFT][Y] = 0;
+
+	_spawnBulletHelper[DIR_TOP_LEFT][X] = -7;
+	_spawnBulletHelper[DIR_TOP_LEFT][Y] = 7;
+
 }

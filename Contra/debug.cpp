@@ -5,6 +5,8 @@ HWND _hwnd = NULL;
 
 void DebugOut(const wchar_t* fmt, ...)
 {
+	if (DEBUGOUT==false)
+		return;
 	va_list argp;
 	va_start(argp, fmt);
 	wchar_t dbg_out[4096];

@@ -72,6 +72,7 @@ void Enemy_RedGunner::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 			}
 		}
 	}
+	delete testbox;
 }
 
 void Enemy_RedGunner::Execute_DieAction()

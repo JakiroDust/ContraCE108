@@ -12,6 +12,8 @@
 #define DIR_BOTTOM 8
 #define DIR_BOTTOM_RIGHT 9
 
+#define X 0
+#define Y 1
 using namespace std;
 
 class Game_Character : public Game_MovableObject
@@ -21,16 +23,16 @@ protected:
 	bool _jumpDown = false;
 	// Auto control
 	vector<pair<int, int>> _ActionQueue; // save keycode list
+	// Save for x y
+	unordered_map<int, vector<float>> _spawnBulletHelper;
 	virtual void UpdateState() {}
 	void AddAction(int KeyCode1, int KeyCode2 = -1);
 	virtual void KeyReleaseAll() {}
 	void ExecuteAction();
 public:
 
-	Game_Character(float x, float y, int z, int width, int height) : Game_MovableObject(x, y, z, width, height)
-	{
-		_needScanCollision = true;
-	}
+	Game_Character(float x, float y, int z, int width, int height) ;
+
 	//-------------------------------------------------------------------------------
 	/// INHERITED
 
@@ -53,12 +55,14 @@ public:
 	// Key event handler
 	virtual void KeyUpEventHandler(int KeyCode) override {}
 
+
+
 	void Update(DWORD dt) override { Game_MovableObject::Update(dt); }
 	void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override { Game_MovableObject::Update(dt, coObjects); }
 	//-------------------------------------------------------------------------------
 
 	// Character action
-
+	virtual void Shoot();
 	virtual void Shoot(int DIR) {}
 	virtual void Shoot(float x, float y) {}
 	virtual bool IsFullAutomaticGun() { return false; }

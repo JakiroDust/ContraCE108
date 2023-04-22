@@ -82,6 +82,7 @@ void Scene_Battle::Render()
 
 void Scene_Battle::Update(DWORD dt)
 {
+    dt = min(dt, 40);
     for (int i = 0; i < _layers.size(); i++)
     {
         Game_ObjectBase* obj = _layers[i];
@@ -127,7 +128,10 @@ void Scene_Battle::Update(DWORD dt)
     {
         Game_ObjectBase* obj = __objects[i];
         if (obj->IsDeleted())
+        {
+            DebugOut(L"deleted id=%d\n", i);
             delete_object(obj);
+        }
     }
 
     delete nearbyObject;
@@ -221,6 +225,7 @@ void Scene_Battle::delete_object(Game_ObjectBase* object)
     object->GetLTRB(left, top, right, bottom);
     spatial->del_object(id, left, top, right, bottom);
     __objects.erase(id);
+    delete object;
 }
 
 void Scene_Battle::delete_object(int id)
@@ -291,6 +296,10 @@ void Scene_Battle::Execute_BasicSpawnerEvent()
         return;
     }
     ticker = 240;
-    Enemy_RedGunner* redgunner = new Enemy_RedGunner(460, 40, 2);
-    add_object(redgunner);
+    for (int i = 0; i < 30; i++)
+    {
+        Enemy_RedGunner* redgunner = new Enemy_RedGunner(460, 40, 2);
+        add_object(redgunner);
+    }
+
 }
