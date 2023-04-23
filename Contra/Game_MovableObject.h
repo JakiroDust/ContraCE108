@@ -24,7 +24,7 @@ protected:
 	bool _onGround = false;
 	bool _die = false;
 	bool _gravity = true;
-	State_Base* _state = NULL;
+	unique_ptr<State_Base> _state;
 
 	/// function
 	
@@ -43,7 +43,7 @@ public:
 
 	~Game_MovableObject()
 	{
-		delete _state;
+		//
 	}
 
 	//-------------------------------------------------------------------------------

@@ -5,6 +5,11 @@
 #include "State_Contra_Base.h"
 #include "Game_Player.h"
 
+Obj_ContraBot::Obj_ContraBot(int x, int y, int z) : Game_Enemy((float)x, (float)y, z, 20, 32)
+{
+	Obj_ContraBot((float)x, (float)y, z);
+}
+
 int Obj_ContraBot::CharID()
 {
 	return CHAR_CONTRA;
@@ -34,8 +39,8 @@ void Obj_ContraBot::OnCollisionWith(PCOLLISIONEVENT e)
 		}
 		else if (e->ny < 0)
 		{
-			if ((footerX() - _width / 2 < e->obj->x() && _faceLeft)
-				|| (footerX() + _width / 2 > e->obj->x() + e->obj->width() && !_faceLeft))
+			if ((footerX() -	_width / 2.0f < e->obj->x() && _faceLeft)
+				|| (footerX() + _width / 2.0f > e->obj->x() + e->obj->width() && !_faceLeft))
 			{
 				_faceLeft = !_faceLeft;
 			}

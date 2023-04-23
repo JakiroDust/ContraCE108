@@ -18,6 +18,9 @@ class Enemy_RedGunner : public Game_MovableEnemy
 		{
 			_moveSpd = 0.08f;
 		}
+		~Enemy_RedGunner() { 
+			Game_MovableEnemy::~Game_MovableEnemy();
+		};
 		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;
 		int CharID() override;
 		// When no collision has been detected (triggered by CCollision::Process)

@@ -25,7 +25,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 
 	// Use Game_TestBox to check surround environment
 	// before making decision on what to do next.
-	Game_TestBox* testbox = new Game_TestBox(_x,_y,_z,_width,_height,0,0);
+	unique_ptr<Game_TestBox> testbox (new Game_TestBox(_x,_y,_z,_width,_height,0,0));
 
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
 	Game_Player* player = scene->p1();
@@ -40,7 +40,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 		&& abs(testbox->footerY() - player->footerY()) < 0.5)
 	{
 
-		delete testbox;
+		
 		return;
 	}
 
@@ -68,13 +68,13 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 
 	if (_map->GetHome() == NULL)
 	{
-		delete testbox;
+		
 		return;
 	}
 
 	if (desNode == NULL)
 	{
-		delete testbox;
+		
 		return;
 	}
 
@@ -116,7 +116,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 		// Detect update incorrectly
 		if (_map->GetHome()->obj == nextT)
 		{
-			delete testbox;
+			
 			return;
 		}
 
@@ -138,7 +138,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 			{
 				AddAction(-1);
 				AddAction(DIK_DOWN, DIK_P);
-				delete testbox;
+				
 				return;
 			}
 			else if (NEED_JUMPDOWN &&
@@ -151,7 +151,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 					AddAction(DIK_RIGHT);
 				else
 					AddAction(DIK_LEFT);
-				delete testbox;
+				
 				return;
 			}
 			else if (NEED_JUMPDOWN
@@ -179,7 +179,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 							AddAction(DIK_RIGHT);
 						}
 					}
-					delete testbox;
+					
 					return;
 				}
 			}
@@ -196,7 +196,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 				AddAction(DIK_RIGHT);
 			else
 				AddAction(DIK_LEFT);
-			delete testbox;
+			
 			return;
 		} 
 		// NEED JUMP
@@ -207,7 +207,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 				&& abs(footerX() - nextT->x()) > 1 && abs(footerX() - (nextT->x() + nextT->width())) > 1)
 			{
 				AddAction(DIK_P);
-				delete testbox;
+				
 				return;
 			}
 
@@ -237,7 +237,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 							AddAction(DIK_RIGHT);
 						}
 					}
-					delete testbox;
+					
 					return;
 				}
 				// still in terrain
@@ -249,7 +249,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 							AddAction(DIK_LEFT);
 						else
 							AddAction(DIK_RIGHT);
-					delete testbox;
+					
 					return;
 				}
 			}
@@ -313,7 +313,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 
 	
 	// DELETE POINTER
-	delete testbox;
+	
 }
 
 void Obj_SmartBot::OnNoCollision(DWORD dt)

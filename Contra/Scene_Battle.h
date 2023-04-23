@@ -18,12 +18,14 @@ using namespace std;
 
 class Scene_Battle : public Scene_Base
 {
-	private: 
-		Game_Player* _p1 = NULL;
+	private:
+		int _p1_id=-1;
+		int _p2_id=-1;
+		unique_ptr< Game_Player> _p1 ;
 		Game_Player* _p2 = NULL;
 		vector<Game_Layer*> _layers;
 		//vector<Game_ObjectBase*> _objects;
-		unordered_map<int, Game_ObjectBase*> __objects;
+		unordered_map<int,unique_ptr<Game_ObjectBase>> __objects;
 		int _mapWidth = 1;
 		int _mapHeight = 1;
 		void checkObjectNeedRender(Game_ObjectBase* obj);
@@ -31,10 +33,13 @@ class Scene_Battle : public Scene_Base
 		// DEMO
 		void Demo_Camera_Action();
 	public:
+		Scene_Battle() : Scene_Base(), _p1(make_unique< Game_Player>(40, 40, 2)) {  };
 		~Scene_Battle();
 		//vector<Game_ObjectBase*>* objects() { return &_objects; }
-		Game_Player* p1() { return _p1; }
-		Game_Player* p2() { return _p2; }
+		Game_Player* p1() { return dynamic_cast<Game_Player*>(__objects[_p1_id].get()); }
+		void addPlayer1();
+		Game_Player* p2() { return dynamic_cast<Game_Player*>(__objects[_p2_id].get()); }
+		void addPlayer2();
 		int MapWidth() { return _mapWidth; }
 		int MapHeight() { return _mapHeight; }
 		void SetMapSize(int width, int height) { _mapWidth = width; _mapHeight = height; }
@@ -53,13 +58,13 @@ private:
 	void _init_spatial();
 	void _delete_spatial();
 public:
-	Spatial *spatial;
+	Spatial *spatial=NULL;
 	vector<int> getNearByID(int n, int m);
 	vector<int> getNearbyIDFast();
 	vector<Game_ObjectBase*>* getObjectById(vector<int>& vtr);
-	void add_object(Game_ObjectBase* object);
+	int add_object(unique_ptr<Game_ObjectBase>&& object);
 	void delete_object(int id);
-	void delete_object(Game_ObjectBase* object);
+	//void delete_object(unique_ptr<Game_ObjectBase>& object);
 	// Spawn an RedGunner
 	void Execute_BasicSpawnerEvent();
 };

@@ -19,7 +19,7 @@ void Game_Enemy::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	Game_MovableObject::Update(dt, coObjects);
 	Game_Collision::GetInstance()->Process(this, dt, coObjects);
 
-	if (_state != NULL)
+	if (_state.get() != NULL)
 		_state->Update(dt);
 	UpdateState();
 
@@ -30,7 +30,7 @@ void Game_Enemy::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 void Game_Enemy::Render()
 {
 	RenderHitbox();
-	if (_state != NULL)
+	if (_state.get() != NULL)
 		_state->Render();
 }
 
@@ -38,17 +38,16 @@ void Game_Enemy::UpdateState()
 {
 	if (_state == NULL)
 	{
-		_state = new State_Contra_Idle(this);
+		_state.reset( new State_Contra_Idle(this));
 		return;
 	}
 
-	if (_die && !dynamic_cast<State_Contra_Die*>(_state))
+	if (_die && !dynamic_cast<State_Contra_Die*>(_state.get()))
 	{
-		delete _state;
-		_state = new State_Contra_Die(this, 20);
+		_state.reset(new State_Contra_Die(this, 20));
 		return;
 	} 
-	else if (_die && dynamic_cast<State_Contra_Die*>(_state))
+	else if (_die && dynamic_cast<State_Contra_Die*>(_state.get()))
 	{
 		return;
 	}
@@ -58,24 +57,19 @@ void Game_Enemy::UpdateState()
 	{
 		
 	case STATE_IDLE:
-		delete _state;
-		_state = new State_Contra_Idle(this);
+		_state.reset(new State_Contra_Idle(this));
 		break;
 	case STATE_WALK:
-		delete _state;
-		_state = new State_Contra_Walk(this);
+		_state.reset(new State_Contra_Walk(this));
 		break;
 	case STATE_FALL:
-		delete _state;
-		_state = new State_Contra_Fall(this);
+		_state.reset(new State_Contra_Fall(this));
 		break;
 	case STATE_SWIM:
-		delete _state;
-		_state = new State_Contra_Swim(this);
+		_state.reset(new State_Contra_Swim(this));
 		break;
-	case STATE_JUMP:
-		delete _state;
-		_state = new State_Contra_Jump(this);
+	case STATE_JUMP:;
+		_state.reset(new State_Contra_Jump(this));
 		break;
 	}
 }
@@ -89,7 +83,7 @@ void Game_Enemy::KeyDownEventHandler(int KeyCode)
 	if (_ForceX != 0)
 		return;
 
-	State_Contra_Base* state = (State_Contra_Base*)_state;
+	State_Contra_Base* state = (State_Contra_Base*)_state.get();
 	switch (KeyCode)
 	{
 	case DIK_UP:
@@ -127,7 +121,7 @@ void Game_Enemy::KeyUpEventHandler(int KeyCode)
 	if (_ForceX != 0)
 		return;
 
-	State_Contra_Base* state = (State_Contra_Base*)_state;
+	State_Contra_Base* state = (State_Contra_Base*)_state.get();
 
 	switch (KeyCode)
 	{
@@ -162,7 +156,7 @@ void Game_Enemy::KeyStateHandler(BYTE* state)
 		return;
 
 	LPGAME game = CGame::GetInstance();
-	State_Contra_Base* CharState = (State_Contra_Base*)_state;
+	State_Contra_Base* CharState = (State_Contra_Base*)_state.get();
 	if (game->IsKeyDown(DIK_UP))
 	{
 		CharState->KeyHold_Up();

@@ -24,7 +24,7 @@ protected:
 	// Auto control
 	vector<pair<int, int>> _ActionQueue; // save keycode list
 	// Save for x y
-	unordered_map<int, vector<float>> _spawnBulletHelper;
+	//unordered_map<int, vector<float>> _spawnBulletHelper;
 	virtual void UpdateState() {}
 	void AddAction(int KeyCode1, int KeyCode2 = -1);
 	virtual void KeyReleaseAll() {}
@@ -32,6 +32,7 @@ protected:
 public:
 
 	Game_Character(float x, float y, int z, int width, int height) ;	
+	~Game_Character();
 	//-------------------------------------------------------------------------------
 	/// INHERITED
 

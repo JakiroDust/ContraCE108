@@ -44,6 +44,8 @@ void Game_Character::OnCollisionWith(PCOLLISIONEVENT e)
 
 void Game_Character::Shoot()
 {
+	return;
+	/*
 	float x, y;
 	this->GetCenterPoint(x, y);
 	float vx=0, vy=0;
@@ -51,6 +53,7 @@ void Game_Character::Shoot()
 	int dir = DIR_TOP;
 	x += _spawnBulletHelper[dir][X];
 	y += _spawnBulletHelper[dir][Y];
+	*/
 	//Get gun or not or whatever 
 	// gun.gunshoot(x,y,dir)
 }
@@ -85,7 +88,7 @@ Game_Character::Game_Character(float x, float y, int z, int width, int height) :
 	_needScanCollision = true;
 
 	//init default _spawnBulletHelper;
-	return;
+	/*
 	for (int i = 1; i <= 9; i++)
 		_spawnBulletHelper[i] = vector<float>(2, 0);
 
@@ -112,6 +115,12 @@ Game_Character::Game_Character(float x, float y, int z, int width, int height) :
 
 	_spawnBulletHelper[DIR_TOP_LEFT][X] = -7;
 	_spawnBulletHelper[DIR_TOP_LEFT][Y] = 7;
+	*/
+}
 
+Game_Character::~Game_Character()
+{
+	_ActionQueue.clear();
+	Game_MovableObject::~Game_MovableObject();
 }
 

@@ -37,7 +37,7 @@ void Enemy_RedGunner::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	
 	//--------------------------------------------------------------------
 	// Use testbox to check before making decision what to do next.
-	Game_TestBox* testbox = new Game_TestBox(_x, _y, _z, _width, _height, 0, 0);
+	unique_ptr<Game_TestBox>testbox(new Game_TestBox(_x, _y, _z, _width, _height, 0, 0));
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
 	Game_Player* player = scene->p1();
 
@@ -67,13 +67,13 @@ void Enemy_RedGunner::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 						AddAction(DIK_P, DIK_LEFT);
 					else
 						AddAction(DIK_P, DIK_RIGHT);
-					delete testbox;
+					
 					return;
 				}
 			}
 		}
 	}
-	delete testbox;
+	
 }
 
 void Enemy_RedGunner::Execute_DieAction()

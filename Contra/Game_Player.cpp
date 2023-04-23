@@ -36,7 +36,7 @@ void Game_Player::UpdateState()
 {
 	if (_state == NULL)
 	{
-		_state = new State_Contra_Idle(this);
+		_state.reset(new State_Contra_Idle(this));
 		return;
 	}
 
@@ -44,38 +44,38 @@ void Game_Player::UpdateState()
 	{
 		
 	case STATE_IDLE:
-		delete _state;
-		_state = new State_Contra_Idle(this);
+		
+		_state.reset( new State_Contra_Idle(this));
 		break;
 	case STATE_WALK:
-		delete _state;
-		_state = new State_Contra_Walk(this);
+		
+		_state.reset(new State_Contra_Walk(this));
 		break;
 	case STATE_FALL:
-		delete _state;
-		_state = new State_Contra_Fall(this);
+		
+		_state.reset(new State_Contra_Fall(this));
 		break;
 	case STATE_SWIM:
-		delete _state;
-		_state = new State_Contra_Swim(this);
+		
+		_state.reset(new State_Contra_Swim(this));
 		break;
 	case STATE_JUMP:
-		delete _state;
-		_state = new State_Contra_Jump(this);
+		
+		_state.reset(new State_Contra_Jump(this));
 		break;
 	}
 }
 
 void Game_Player::KeyDownEventHandler(int KeyCode)
 {
-	if (_state == NULL)
+	if (_state.get() == NULL)
 		return;
 
 	// Player characer in force-moving state, ignore KeyEvent.
 	if (_ForceX != 0)
 		return;
 	
-	State_Contra_Base* state = (State_Contra_Base*)_state;
+	State_Contra_Base* state = (State_Contra_Base*)_state.get();
 	switch (KeyCode)
 	{
 	case DIK_UP:
@@ -101,10 +101,10 @@ void Game_Player::KeyDownEventHandler(int KeyCode)
 
 void Game_Player::KeyUpEventHandler(int KeyCode)
 {
-	if (_state == NULL || !_auto)
+	if (_state.get() == NULL || !_auto)
 		return;
 
-	State_Contra_Base* state = (State_Contra_Base*)_state;
+	State_Contra_Base* state = (State_Contra_Base*)_state.get();
 
 	switch (KeyCode)
 	{
@@ -149,7 +149,7 @@ void Game_Player::KeyStateHandler(BYTE* state)
 		return;
 	
 	LPGAME game = CGame::GetInstance();
-	State_Contra_Base* CharState = (State_Contra_Base*)_state;
+	State_Contra_Base* CharState = (State_Contra_Base*)_state.get();
 	if (game->IsKeyDown(DIK_UP))
 	{
 		CharState->KeyHold_Up();

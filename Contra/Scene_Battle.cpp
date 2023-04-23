@@ -8,7 +8,7 @@
 
 Scene_Battle::~Scene_Battle()
 {
-    delete _p1;
+    //delete _p1;
     delete _p2;
 
     for (int i = 0; i < _layers.size(); i++)
@@ -53,7 +53,7 @@ void Scene_Battle::Render()
     vector<int> id_list = getNearbyIDFast();
     for (auto&i :id_list)
     {
-        Game_ObjectBase* obj = __objects[i];
+        Game_ObjectBase* obj = __objects[i].get();
         if (obj->NeedRender() == false) {
             continue;
         }
@@ -100,7 +100,7 @@ void Scene_Battle::Update(DWORD dt)
 
     for(auto& i : id_list)
     {
-        Game_ObjectBase* obj = __objects[i];
+        Game_ObjectBase* obj = __objects[i].get();
         //obj->Update(dt);
 
 
@@ -127,11 +127,11 @@ void Scene_Battle::Update(DWORD dt)
     // Terminate objects have Delete flag
     for (auto& i : id_list)
     {
-        Game_ObjectBase* obj = __objects[i];
+        Game_ObjectBase* obj = __objects[i].get();
         if (obj->IsDeleted())
         {
             DebugOut(L"deleted id=%d\n", i);
-            delete_object(obj);
+            delete_object(i);
         }
     }
     nearbyObject->clear();
@@ -164,48 +164,59 @@ void Scene_Battle::checkObjectNeedRender(Game_ObjectBase* obj)
 
 //=====================================================================================================================
 // DEMO
+void Scene_Battle::addPlayer1()
+{
+    _p1_id = add_object(move(_p1));
+    Game_KeyInput::GetInstance()->AddObjectControl(p1());
+}
+/*
+void Scene_Battle::addPlayer2()
+{
+    _p2_id = add_object(move(_p2));
+    Game_KeyInput::GetInstance()->AddObjectControl(p2());
+}*/
 void Scene_Battle::Create_Stage_Demo()
 {
     _mapWidth = 3328;
     _mapHeight = GAMESCREEN_HEIGHT;
     _init_spatial();
 
-    _p1 = new Game_Player(40,40,2);
-  Obj_ContraBot* bot = new Obj_ContraBot(80, 40, 2); add_object(bot);
-     Obj_SmartBot* smartbot = new Obj_SmartBot(100, 40, 2); add_object(smartbot);
+    addPlayer1();
+    unique_ptr<Obj_ContraBot> bot (new Obj_ContraBot(80, 40, 2)); add_object(move(bot));
+    unique_ptr<Obj_SmartBot>smartbot(new Obj_SmartBot(100, 40, 2)); add_object(move(smartbot));
 
-    Game_Blocker* block1 = new Game_Blocker(-18, 0, 1, 20, GAMESCREEN_HEIGHT - 20);
-    Game_Blocker* block2 = new Game_Blocker(_mapWidth - 20, 1, 0, 20, GAMESCREEN_HEIGHT - 20);
+    unique_ptr<Game_Blocker> block1 ( new Game_Blocker(-18, 0, 1, 20, GAMESCREEN_HEIGHT - 20));
+    unique_ptr<Game_Blocker> block2 ( new Game_Blocker(_mapWidth - 20, 1, 0, 20, GAMESCREEN_HEIGHT - 20));
 
-    Game_Water* water1 = new Game_Water(0, GAMESCREEN_HEIGHT - 20, 1, 288, 20);
-    Game_Water* water2 = new Game_Water(352, GAMESCREEN_HEIGHT - 20, 1, 2976, 20);
+    unique_ptr<Game_Water> water1(new Game_Water(0, GAMESCREEN_HEIGHT - 20, 1, 288, 20));
+    unique_ptr<Game_Water> water2(new Game_Water(352, GAMESCREEN_HEIGHT - 20, 1, 2976, 20));
 
-    Game_Platform* plat1 = new Game_Platform(160, 150, 1, 96, 10);
-    Game_Platform* plat2 = new Game_Platform(256, 178, 1, 32, 10);
-    Game_Platform* plat3 = new Game_Platform(352, 178, 1, 32, 10);
-    Game_Platform* plat4 = new Game_Platform(416, 150, 1, 64, 10);
-    Game_Blocker* plat5 = new Game_Blocker(288, 215, 1, 64, 32);
-    Game_Platform* plat6 = new Game_Platform(32, 118, 1, 736, 10);
+    unique_ptr<Game_Platform> plat1(new Game_Platform(160, 150, 1, 96, 10));
+    unique_ptr<Game_Platform> plat2(new Game_Platform(256, 178, 1, 32, 10));
+    unique_ptr<Game_Platform> plat3(new Game_Platform(352, 178, 1, 32, 10));
+    unique_ptr<Game_Platform> plat4(new Game_Platform(416, 150, 1, 64, 10));
+    unique_ptr<Game_Blocker> plat5(new Game_Blocker(288, 215, 1, 64, 32));
+    unique_ptr<Game_Platform> plat6(new Game_Platform(32, 118, 1, 736, 10));
 
     Demo_Layer* demo = new Demo_Layer(0, 0, 0, 3328, 239);
-    add_object(_p1);//0
-    add_object(water1);//1
-    add_object(water2);//2
-    add_object(block1);//3
-    add_object(block2);//4
-    add_object(plat1);//5
-    add_object(plat2);//6
-    add_object(plat3);//7
-    add_object(plat4);//8
-    add_object(plat5);//9
-    add_object(plat6);//10
+    //
+    add_object(move(water1));//1
+    add_object(move(water2));//2
+    add_object(move(block1));//3
+    add_object(move(block2));//4
+    add_object(move(plat1));//5
+    add_object(move(plat2));//6
+    add_object(move(plat3));//7
+    add_object(move(plat4));//8
+    add_object(move(plat5));//9
+    add_object(move(plat6));//10
     
     
     _layers.push_back(demo);
     ScreenManager::GetInstance()->Screen()->focusToPoint(GAMESCREEN_WIDTH/2,GAMESCREEN_HEIGHT/2, _mapWidth, _mapHeight);
-    Game_KeyInput::GetInstance()->AddObjectControl(_p1);
+    
 }
-void Scene_Battle::add_object(Game_ObjectBase*object)
+int Scene_Battle::add_object(unique_ptr<Game_ObjectBase>&& object)
 {
     //_objects.push_back(object);
     int id = id_nth;
@@ -218,18 +229,21 @@ void Scene_Battle::add_object(Game_ObjectBase*object)
     {
         id_nth++;
     }
-    __objects[id] = object;
-    object->SetId(id);
     float l, t, r, b;
+    object->SetId(id);
     object->GetLTRB(l, t, r, b);
+    __objects[id] =move(object);
+    
+ 
+    
    // DebugOut(L"id %d l=%d t=%d r=%d b=%d\n", id_nth, l, t, r, b);
     spatial->init_object(id, l, t, r, b);
-    
+    return id;
     
 
 }
 
-void Scene_Battle::delete_object(Game_ObjectBase* object)
+/*void Scene_Battle::delete_object(unique_ptr<Game_ObjectBase>& object)
 {
     int id = object->id();
     float left, top, right, bottom;
@@ -237,12 +251,17 @@ void Scene_Battle::delete_object(Game_ObjectBase* object)
     spatial->del_object(id, left, top, right, bottom);
     __objects.erase(id);
     id_recycle_bin.push_back(id);
-    delete object;
 }
-
+*/
 void Scene_Battle::delete_object(int id)
 {
-    delete_object(__objects[id]);
+    Game_ObjectBase* object = __objects[id].get();
+    float left, top, right, bottom;
+    object->GetLTRB(left, top, right, bottom);
+    spatial->del_object(id, left, top, right, bottom);
+    __objects[id].reset();
+    __objects.erase(id);
+    id_recycle_bin.push_back(id);
 }
 
 void Scene_Battle::_init_spatial()
@@ -275,7 +294,7 @@ vector<Game_ObjectBase*>* Scene_Battle::getObjectById(vector<int>& vtr)
     vector<Game_ObjectBase*>* objects= new vector<Game_ObjectBase*>;
     for (auto& id : vtr)
     {
-        objects->push_back(__objects[id]);
+        objects->push_back(__objects[id].get());
     }
     return objects;
 }
@@ -311,8 +330,8 @@ void Scene_Battle::Execute_BasicSpawnerEvent()
 
     for (int i = 0; i < 30; i++)
     {
-        Enemy_RedGunner* redgunner = new Enemy_RedGunner(460, 40, 2);
-        add_object(redgunner);
+       unique_ptr <Enemy_RedGunner> redgunner ( new Enemy_RedGunner(460, 40, 2));
+        add_object(move(redgunner));
     }
 
 }
