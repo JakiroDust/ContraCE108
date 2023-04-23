@@ -28,8 +28,8 @@ protected:
 
 	/// function
 	
-	void UpdateJumpState();
-	void UpdateDefault();
+	void UpdateJumpState(DWORD dt);
+	void UpdateDefault(DWORD dt);
 	void ResetStateParams() override;
 public:
 	/// STATIC
@@ -93,7 +93,7 @@ public:
 	void SetLockFace(bool b) { _lockFace = b; }
 	bool LockFace() { return _lockFace; }
 
-	float GetJumpForce() { return max(ceilf(40.0f / (JUMP_VECTOR * 16)), 1); }
+	float GetJumpForce() { return /*max(ceilf(40.0f / (JUMP_VECTOR * 16)), 1)*/ 40.0f; }
 
 	/// STATE
 

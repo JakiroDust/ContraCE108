@@ -46,7 +46,15 @@ class Mapper
 		vector<PTERRAINNODE> PathFinding_AStarAlgorithm(PTERRAINNODE p, PTERRAINNODE& des, unordered_map<int, bool>& ignoreList);
 	public:
 		Mapper(Game_Character* srcObj);
-		void UpdateMap(vector<Game_ObjectBase*>* coObjects);
+		~Mapper()
+		{
+			for (auto& i : _map)
+			{
+				delete i.second;
+			}
+			_map.clear();
+		}
+		bool UpdateMap(vector<Game_ObjectBase*>* coObjects);
 		void SetDt(DWORD dt) { _dt = dt; }
 		PTERRAINNODE GetHome();
 		vector<PTERRAINNODE> FindWay(Game_Character* des);

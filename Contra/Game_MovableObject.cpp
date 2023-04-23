@@ -49,12 +49,21 @@ void Game_MovableObject::forceDie()
 	_die = true;
 }
 
-void Game_MovableObject::UpdateJumpState()
+void Game_MovableObject::UpdateJumpState(DWORD dt)
 {
 	if (_jumpForce > 0)
 	{
-		_vy = -JUMP_VECTOR;
-		_jumpForce --;
+		if (_jumpForce < JUMP_VECTOR * dt)
+		{
+			_vy = -_jumpForce/dt;
+			_jumpForce = 0;
+		}
+		else
+		{
+			_jumpForce -= JUMP_VECTOR * dt;
+			_vy = -JUMP_VECTOR;
+		}
+		
 	}
 	else
 	{
@@ -78,18 +87,18 @@ void Game_MovableObject::ResetStateParams()
 
 void Game_MovableObject::Update(DWORD dt)
 {
-	UpdateDefault();
+	UpdateDefault(dt);
 }
 void Game_MovableObject::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
-	UpdateDefault();
+	UpdateDefault(dt);
 }
 
-void Game_MovableObject::UpdateDefault()
+void Game_MovableObject::UpdateDefault(DWORD dt)
 {
 	if (_gravity)
 	{
-		UpdateJumpState();
+		UpdateJumpState(dt);
 	}
 	if (_ForceX != 0)
 	{

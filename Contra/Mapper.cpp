@@ -7,6 +7,7 @@
 Mapper::Mapper(Game_Character* srcObj)
 {
 	_srcObj = srcObj;
+	_home = NULL;
 }
 
 PTERRAINNODE Mapper::GetHome()
@@ -14,8 +15,9 @@ PTERRAINNODE Mapper::GetHome()
 	return _home;
 }
 
-void Mapper::UpdateMap(vector<Game_ObjectBase*>* coObjects)
+bool Mapper::UpdateMap(vector<Game_ObjectBase*>* coObjects)
 {
+	bool isMapUpdated = false;
 	vector<Game_ObjectBase*>* filter = new vector<Game_ObjectBase*>();
 	for (int i = 0; i < coObjects->size(); i++)
 	{
@@ -33,6 +35,7 @@ void Mapper::UpdateMap(vector<Game_ObjectBase*>* coObjects)
 			_baseObjList.push_back(filter->at(i));
 		}
 		LinkingNode();
+		isMapUpdated = true;
 	}
 
 	//------------------------------------------
@@ -51,6 +54,7 @@ void Mapper::UpdateMap(vector<Game_ObjectBase*>* coObjects)
 	_home = home;
 	filter->clear();
 	delete filter;
+	return isMapUpdated;
 }
 
 void Mapper::ClearMap()
@@ -67,7 +71,7 @@ bool firsttime = 0;
 void Mapper::LinkingNode()
 {
 	float LINKUP_DIST_X = _dt * _srcObj->GetMovementSpeed() * 2;
-	float LINKUP_DIST_Y = 40;
+	float LINKUP_DIST_Y = _srcObj->GetJumpForce();
 	float LINK_HORIZONAL = _dt * _srcObj->GetMovementSpeed() * _srcObj->GetJumpForce();
 
 	// empty old map

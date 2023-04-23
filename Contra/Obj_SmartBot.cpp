@@ -56,7 +56,12 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	
 	// Map update incorrectly when dt dropping. Not use below code for now
 	//_map->SetDt(dt);
-	_map->UpdateMap(collisionObjects);
+	if (_map->UpdateMap(collisionObjects))
+	{
+		_path.clear();
+	}
+
+	//_map->UpdateMap(collisionObjects);
 	collisionObjects->clear();
 	delete collisionObjects;
 	PTERRAINNODE desNode = _map->GetDesNode(player);
@@ -77,14 +82,17 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	if (!_path.empty() && 
 		desNode->obj != _path[_path.size() - 1]->obj) // if target change TNode
 	{
+		_path.clear();
 		_path = _map->FindWay(player);
 	}
 	else if (!_path.empty() && _map->GetHome()->obj != _path[0]->obj)
 	{
+		_path.clear();
 		_path = _map->FindWay(player);
 	}
 	else if (_path.empty()) // not have path yet
 	{
+		_path.clear();
 		_path = _map->FindWay(player);
 	}
 
