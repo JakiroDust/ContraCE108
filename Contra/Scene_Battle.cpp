@@ -207,13 +207,23 @@ void Scene_Battle::Create_Stage_Demo()
 void Scene_Battle::add_object(Game_ObjectBase*object)
 {
     //_objects.push_back(object);
-    __objects[id_nth] = object;
-    object->SetId(id_nth);
+    int id = id_nth;
+    if (!id_recycle_bin.empty())
+    {
+        id = id_recycle_bin[id_recycle_bin.size() - 1];
+        id_recycle_bin.pop_back();
+    }
+    else
+    {
+        id_nth++;
+    }
+    __objects[id] = object;
+    object->SetId(id);
     float l, t, r, b;
     object->GetLTRB(l, t, r, b);
    // DebugOut(L"id %d l=%d t=%d r=%d b=%d\n", id_nth, l, t, r, b);
-    spatial->init_object(id_nth, l, t, r, b);
-    id_nth++;
+    spatial->init_object(id, l, t, r, b);
+    
     
 
 }
@@ -225,6 +235,7 @@ void Scene_Battle::delete_object(Game_ObjectBase* object)
     object->GetLTRB(left, top, right, bottom);
     spatial->del_object(id, left, top, right, bottom);
     __objects.erase(id);
+    id_recycle_bin.push_back(id);
     delete object;
 }
 

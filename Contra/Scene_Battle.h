@@ -49,7 +49,7 @@ class Scene_Battle : public Scene_Base
 
 private:
 	int id_nth = 0;
-	
+	vector<int> id_recycle_bin;
 	void _init_spatial();
 	void _delete_spatial();
 public:
