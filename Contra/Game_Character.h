@@ -31,8 +31,7 @@ protected:
 	void ExecuteAction();
 public:
 
-	Game_Character(float x, float y, int z, int width, int height) ;
-
+	Game_Character(float x, float y, int z, int width, int height) ;	
 	//-------------------------------------------------------------------------------
 	/// INHERITED
 

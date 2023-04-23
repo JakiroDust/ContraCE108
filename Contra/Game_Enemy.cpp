@@ -44,6 +44,7 @@ void Game_Enemy::UpdateState()
 
 	if (_die && !dynamic_cast<State_Contra_Die*>(_state))
 	{
+		delete _state;
 		_state = new State_Contra_Die(this, 20);
 		return;
 	} 
@@ -52,23 +53,28 @@ void Game_Enemy::UpdateState()
 		return;
 	}
 	
-
+	
 	switch (_state->NextState())
 	{
-		delete _state;
+		
 	case STATE_IDLE:
+		delete _state;
 		_state = new State_Contra_Idle(this);
 		break;
 	case STATE_WALK:
+		delete _state;
 		_state = new State_Contra_Walk(this);
 		break;
 	case STATE_FALL:
+		delete _state;
 		_state = new State_Contra_Fall(this);
 		break;
 	case STATE_SWIM:
+		delete _state;
 		_state = new State_Contra_Swim(this);
 		break;
 	case STATE_JUMP:
+		delete _state;
 		_state = new State_Contra_Jump(this);
 		break;
 	}

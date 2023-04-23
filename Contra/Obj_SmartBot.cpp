@@ -39,6 +39,8 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	if (abs(testbox->footerX() - player->footerX()) < 0.5
 		&& abs(testbox->footerY() - player->footerY()) < 0.5)
 	{
+
+		delete testbox;
 		return;
 	}
 
@@ -55,16 +57,19 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	// Map update incorrectly when dt dropping. Not use below code for now
 	//_map->SetDt(dt);
 	_map->UpdateMap(collisionObjects);
-
+	collisionObjects->clear();
+	delete collisionObjects;
 	PTERRAINNODE desNode = _map->GetDesNode(player);
 
 	if (_map->GetHome() == NULL)
 	{
+		delete testbox;
 		return;
 	}
 
 	if (desNode == NULL)
 	{
+		delete testbox;
 		return;
 	}
 
@@ -103,6 +108,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 		// Detect update incorrectly
 		if (_map->GetHome()->obj == nextT)
 		{
+			delete testbox;
 			return;
 		}
 
@@ -124,6 +130,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 			{
 				AddAction(-1);
 				AddAction(DIK_DOWN, DIK_P);
+				delete testbox;
 				return;
 			}
 			else if (NEED_JUMPDOWN &&
@@ -136,6 +143,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 					AddAction(DIK_RIGHT);
 				else
 					AddAction(DIK_LEFT);
+				delete testbox;
 				return;
 			}
 			else if (NEED_JUMPDOWN
@@ -163,6 +171,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 							AddAction(DIK_RIGHT);
 						}
 					}
+					delete testbox;
 					return;
 				}
 			}
@@ -179,6 +188,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 				AddAction(DIK_RIGHT);
 			else
 				AddAction(DIK_LEFT);
+			delete testbox;
 			return;
 		} 
 		// NEED JUMP
@@ -189,6 +199,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 				&& abs(footerX() - nextT->x()) > 1 && abs(footerX() - (nextT->x() + nextT->width())) > 1)
 			{
 				AddAction(DIK_P);
+				delete testbox;
 				return;
 			}
 
@@ -218,6 +229,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 							AddAction(DIK_RIGHT);
 						}
 					}
+					delete testbox;
 					return;
 				}
 				// still in terrain
@@ -229,6 +241,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 							AddAction(DIK_LEFT);
 						else
 							AddAction(DIK_RIGHT);
+					delete testbox;
 					return;
 				}
 			}

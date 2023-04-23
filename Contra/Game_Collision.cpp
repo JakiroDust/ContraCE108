@@ -249,10 +249,12 @@ void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* 
 		// Checking col blocking object Condition
 		if (colX != NULL && !colX->obj->BlockingCondition(dt, colX))
 		{
+			delete colX;
 			colX = NULL;
 		}
 		if (colY != NULL && !colY->obj->BlockingCondition(dt, colY))
 		{
+			delete colY;
 			colY = NULL;
 		}
 

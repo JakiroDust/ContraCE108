@@ -86,6 +86,7 @@ Game_Character::Game_Character(float x, float y, int z, int width, int height) :
 	_needScanCollision = true;
 
 	//init default _spawnBulletHelper;
+	return;
 	for (int i = 1; i <= 9; i++)
 		_spawnBulletHelper[i] = vector<float>(2, 0);
 
@@ -114,3 +115,4 @@ Game_Character::Game_Character(float x, float y, int z, int width, int height) :
 	_spawnBulletHelper[DIR_TOP_LEFT][Y] = 7;
 
 }
+

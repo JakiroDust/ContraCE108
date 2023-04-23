@@ -67,6 +67,7 @@ void Enemy_RedGunner::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 						AddAction(DIK_P, DIK_LEFT);
 					else
 						AddAction(DIK_P, DIK_RIGHT);
+					delete testbox;
 					return;
 				}
 			}

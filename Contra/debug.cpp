@@ -3,6 +3,16 @@
 
 HWND _hwnd = NULL;
 
+void MemCheckStart()
+{
+	if (MEMCHECK) _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+}
+
+void MemCheckRp()
+{
+	if (MEMCHECK) _CrtDumpMemoryLeaks();
+}
+
 void DebugOut(const wchar_t* fmt, ...)
 {
 	if (DEBUGOUT==false)

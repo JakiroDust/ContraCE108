@@ -78,6 +78,7 @@ void Scene_Battle::Render()
     // images
 
     // Render Images
+
 }
 
 void Scene_Battle::Update(DWORD dt)
@@ -133,7 +134,7 @@ void Scene_Battle::Update(DWORD dt)
             delete_object(obj);
         }
     }
-
+    nearbyObject->clear();
     delete nearbyObject;
 }
 vector<int> Scene_Battle::getNearByIDyx(int y, int x)
@@ -170,8 +171,8 @@ void Scene_Battle::Create_Stage_Demo()
     _init_spatial();
 
     _p1 = new Game_Player(40,40,2);
-    Obj_ContraBot* bot = new Obj_ContraBot(80, 40, 2);
-    Obj_SmartBot* smartbot = new Obj_SmartBot(100, 40, 2);
+  Obj_ContraBot* bot = new Obj_ContraBot(80, 40, 2); add_object(bot);
+     Obj_SmartBot* smartbot = new Obj_SmartBot(100, 40, 2); add_object(smartbot);
 
     Game_Blocker* block1 = new Game_Blocker(-18, 0, 1, 20, GAMESCREEN_HEIGHT - 20);
     Game_Blocker* block2 = new Game_Blocker(_mapWidth - 20, 1, 0, 20, GAMESCREEN_HEIGHT - 20);
@@ -198,8 +199,8 @@ void Scene_Battle::Create_Stage_Demo()
     add_object(plat4);//8
     add_object(plat5);//9
     add_object(plat6);//10
-    add_object(bot);//11
-    add_object(smartbot);//12
+    
+    
     _layers.push_back(demo);
     ScreenManager::GetInstance()->Screen()->focusToPoint(GAMESCREEN_WIDTH/2,GAMESCREEN_HEIGHT/2, _mapWidth, _mapHeight);
     Game_KeyInput::GetInstance()->AddObjectControl(_p1);
@@ -296,6 +297,7 @@ void Scene_Battle::Execute_BasicSpawnerEvent()
         return;
     }
     ticker = 240;
+
     for (int i = 0; i < 30; i++)
     {
         Enemy_RedGunner* redgunner = new Enemy_RedGunner(460, 40, 2);
