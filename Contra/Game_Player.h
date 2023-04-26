@@ -1,5 +1,6 @@
 #pragma once
 #include "Game_Character.h"
+#include "Equip_Gun_N.h"
 
 //#define KEY_UP 0
 //#define KEY_DOWN 1
@@ -25,6 +26,7 @@ class Game_Player : public Game_Character
 		Game_Player(float x, float y, int z) : Game_Character(x, y, z, PLAYER_BASE_WIDTH, PLAYER_BASE_HEIGHT)
 		{
 			_moveSpd = 0.1f;
+			_weapon = new Equip_Gun_N();
 		}
 		void SetAuto(bool b) { _auto = b; }
 		bool IsAuto() { return _auto; }

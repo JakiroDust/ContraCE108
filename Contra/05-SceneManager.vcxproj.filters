@@ -148,7 +148,7 @@
     <ClCompile Include="Game_StationEnemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Obj_Bullet_Rifle.cpp">
+    <ClCompile Include="Obj_Bullet_N.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="State_Station.cpp">
@@ -160,7 +160,10 @@
     <ClCompile Include="State_Contra_Die.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Equip_GunBase.cpp" />
+    <ClCompile Include="Equip_GunBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_Gun_N.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -325,7 +328,7 @@
     <ClInclude Include="Game_MovableEnemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Obj_Bullet_Rifle.h">
+    <ClInclude Include="Obj_Bullet_N.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game_StationEnemy.h">
@@ -340,7 +343,10 @@
     <ClInclude Include="State_Contra_Die.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Equip_GunBase.h" />
+    <ClInclude Include="Equip_GunBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Equip_Gun_N.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -393,6 +399,9 @@
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="SNIPER.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="map_stage_1.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

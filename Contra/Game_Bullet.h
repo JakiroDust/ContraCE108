@@ -1,8 +1,13 @@
 #pragma once
 #include "Game_MovableObject.h"
+#include "Contra_ANI_ID.h"
 
 #define B_OWNER_PLAYER 0
 #define B_OWNER_ENEMY 1
+#define B_SPAWN_MODE_TARGETPOS 1
+#define B_SPAWN_MODE_SETSPEED 0
+
+#define B_VALUE_Z 2
 
 class Game_Bullet : public Game_MovableObject
 {
@@ -30,5 +35,6 @@ class Game_Bullet : public Game_MovableObject
 		void Update(DWORD dt) override;
 		void SetAngle(float degree);
 		void SetTargetPos(float x, float y);
+		void SetVector(float vx, float vy);
 };
 

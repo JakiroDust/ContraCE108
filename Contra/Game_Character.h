@@ -1,6 +1,8 @@
 #pragma once
 #include "Game_MovableObject.h"
 #include "Mapper.h"
+#include "Equip_GunBase.h"
+
 //#include "Contra_GET_ANI.h"
 
 #define DIR_TOP_LEFT 1
@@ -21,6 +23,8 @@ class Game_Character : public Game_MovableObject
 protected:
 	int _hp = 1;
 	bool _jumpDown = false;
+	// Weapon
+	Equip_GunBase* _weapon = NULL;
 	// Auto control
 	vector<pair<int, int>> _ActionQueue; // save keycode list
 	// Save for x y
@@ -63,9 +67,9 @@ public:
 
 	// Character action
 	virtual void Shoot();
-	virtual void Shoot(int DIR) {}
-	virtual void Shoot(float x, float y) {}
-	virtual bool IsFullAutomaticGun() { return false; }
+	virtual void Shoot(int DIR);
+	virtual void Shoot(float x, float y);
+	virtual bool IsFullAutomaticGun() { return _weapon != NULL && _weapon->IsAuto();}
 	void Execute_DieAction() override { Game_MovableObject::Execute_DieAction(); }
 	// GET & SET
 
