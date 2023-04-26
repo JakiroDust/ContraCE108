@@ -58,6 +58,36 @@ void Game_Character::Shoot()
 	// gun.gunshoot(x,y,dir)
 }
 
+void Game_Character::Shoot(int DIR)
+{
+	if (_weapon == NULL)
+		return;
+	float x, y;
+	GetCenterPoint(x, y);
+	/* GET DIR
+	int dir = DIR_TOP;
+	x += _spawnBulletHelper[dir][X];
+	y += _spawnBulletHelper[dir][Y];
+	*/
+
+	_weapon->Fire(x, y, DIR);
+}
+
+void Game_Character::Shoot(float x, float y)
+{
+	if (_weapon == NULL)
+		return;
+	float cx, cy;
+	GetCenterPoint(cx, cy);
+	/* GET DIR
+	int dir = DIR_TOP;
+	x += _spawnBulletHelper[dir][X];
+	y += _spawnBulletHelper[dir][Y];
+	*/
+
+	_weapon->Fire(cx, cy, x, y, GUN_SPAWNMODE_TARGETPOS);
+}
+
 void Game_Character::AddAction(int KeyCode1, int KeyCode2)
 {
 	pair<int, int> p(KeyCode1,KeyCode2);

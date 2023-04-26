@@ -148,7 +148,7 @@
     <ClCompile Include="Game_StationEnemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Obj_Bullet_Rifle.cpp">
+    <ClCompile Include="Obj_Bullet_N.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="State_Station.cpp">
@@ -158,6 +158,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="State_Contra_Die.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_GunBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_Gun_N.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Infary.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Jumper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Equip_GunBase.cpp" />
@@ -326,7 +338,7 @@
     <ClInclude Include="Game_MovableEnemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Obj_Bullet_Rifle.h">
+    <ClInclude Include="Obj_Bullet_N.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game_StationEnemy.h">
@@ -366,6 +378,18 @@
     </ClInclude>
     <ClInclude Include="fmod\fmod_dsp.h">
       <Filter>Source Files\fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="Equip_GunBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Equip_Gun_N.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Infary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Jumper.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -419,6 +443,9 @@
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="SNIPER.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="map_stage_1.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

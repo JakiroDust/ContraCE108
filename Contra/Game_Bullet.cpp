@@ -23,6 +23,14 @@ void Game_Bullet::SetTargetPos(float x, float y)
 	_vy = _moveSpd * sideY / hypotenuse;
 }
 
+void Game_Bullet::SetVector(float vx, float vy)
+{
+	float hypotenuse = sqrt(vx * vx + vy * vy);
+
+	_vx = _moveSpd * vx / hypotenuse;
+	_vy = _moveSpd * vy / hypotenuse;
+}
+
 void Game_Bullet::Update(DWORD dt)
 {
 	_x += _vx * dt;

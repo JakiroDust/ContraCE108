@@ -153,12 +153,15 @@
     <ClCompile Include="Contra_GET_ANI.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Demo_Layer.cpp" />
+    <ClCompile Include="Enemy_Infary.cpp" />
+    <ClCompile Include="Enemy_Jumper.cpp" />
     <ClCompile Include="Enemy_RedGunner.cpp" />
     <ClCompile Include="Enemy_ScubaDriver.cpp" />
     <ClCompile Include="Enemy_SneakSniper.cpp" />
     <ClCompile Include="Enemy_Sniper.cpp" />
     <ClCompile Include="Enemy_Turret.cpp" />
     <ClCompile Include="Equip_GunBase.cpp" />
+    <ClCompile Include="Equip_Gun_N.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Game_Blocker.cpp" />
     <ClCompile Include="Game_Bullet.cpp" />
@@ -182,6 +185,7 @@
     <ClCompile Include="Mapper.cpp" />
     <ClCompile Include="MusicManager.cpp" />
     <ClCompile Include="Obj_Bullet_Rifle.cpp" />
+    <ClCompile Include="Obj_Bullet_N.cpp" />
     <ClCompile Include="Obj_ContraBot.cpp" />
     <ClCompile Include="Obj_SmartBot.cpp" />
     <ClCompile Include="PlayScene.cpp" />
@@ -214,6 +218,8 @@
     <ClInclude Include="debug.h" />
     <ClInclude Include="Demo_Layer.h" />
     <ClInclude Include="Enemies_ID.h" />
+    <ClInclude Include="Enemy_Infary.h" />
+    <ClInclude Include="Enemy_Jumper.h" />
     <ClInclude Include="Enemy_RedGunner.h" />
     <ClInclude Include="Enemy_ScubaDriver.h" />
     <ClInclude Include="Enemy_SneakSniper.h" />
@@ -228,6 +234,7 @@
     <ClInclude Include="fmod\fmod_dsp_effects.h" />
     <ClInclude Include="fmod\fmod_errors.h" />
     <ClInclude Include="fmod\fmod_output.h" />
+    <ClInclude Include="Equip_Gun_N.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Game_Blocker.h" />
     <ClInclude Include="Game_Bullet.h" />
@@ -251,6 +258,7 @@
     <ClInclude Include="Mapper.h" />
     <ClInclude Include="MusicManager.h" />
     <ClInclude Include="Obj_Bullet_Rifle.h" />
+    <ClInclude Include="Obj_Bullet_N.h" />
     <ClInclude Include="Obj_ContraBot.h" />
     <ClInclude Include="Obj_SmartBot.h" />
     <ClInclude Include="PlayScene.h" />
@@ -287,6 +295,7 @@
     <Text Include="CONTRA_BULLET.txt" />
     <Text Include="goomba.txt" />
     <Text Include="INFARY.txt" />
+    <Text Include="map_stage_1.txt" />
     <Text Include="mario-sample.txt" />
     <Text Include="scene0005.txt" />
     <Text Include="scene01.txt" />

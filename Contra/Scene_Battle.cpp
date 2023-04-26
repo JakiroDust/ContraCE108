@@ -5,6 +5,7 @@
 #include "Obj_ContraBot.h"
 #include "Obj_SmartBot.h"
 #include "Enemy_RedGunner.h"
+#include "Game_Bullet.h"
 
 Scene_Battle::~Scene_Battle()
 {
@@ -156,6 +157,10 @@ void Scene_Battle::checkObjectNeedRender(Game_ObjectBase* obj)
         || obj->y() > screen->y() + screen->height())
     {
         obj->SetNeedRender(false);
+        if (dynamic_cast<Game_Bullet*>(obj))
+        {
+            obj->DeleteThis();
+        }
     }
     else {
         obj->SetNeedRender(true);
@@ -180,7 +185,7 @@ void Scene_Battle::Create_Stage_Demo()
     _mapWidth = 3328;
     _mapHeight = GAMESCREEN_HEIGHT;
     _init_spatial();
-
+ 
     addPlayer1();
     unique_ptr<Obj_ContraBot> bot (new Obj_ContraBot(80, 40, 2)); add_object(move(bot));
     unique_ptr<Obj_SmartBot>smartbot(new Obj_SmartBot(100, 40, 2)); add_object(move(smartbot));
