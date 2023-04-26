@@ -163,7 +163,15 @@
     <ClCompile Include="Equip_GunBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Equip_Gun_N.cpp" />
+    <ClCompile Include="Equip_Gun_N.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Infary.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Jumper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -346,7 +354,15 @@
     <ClInclude Include="Equip_GunBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Equip_Gun_N.h" />
+    <ClInclude Include="Equip_Gun_N.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Infary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Jumper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

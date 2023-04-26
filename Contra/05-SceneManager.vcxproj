@@ -153,6 +153,8 @@
     <ClCompile Include="Contra_GET_ANI.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Demo_Layer.cpp" />
+    <ClCompile Include="Enemy_Infary.cpp" />
+    <ClCompile Include="Enemy_Jumper.cpp" />
     <ClCompile Include="Enemy_RedGunner.cpp" />
     <ClCompile Include="Enemy_ScubaDriver.cpp" />
     <ClCompile Include="Enemy_SneakSniper.cpp" />
@@ -214,6 +216,8 @@
     <ClInclude Include="debug.h" />
     <ClInclude Include="Demo_Layer.h" />
     <ClInclude Include="Enemies_ID.h" />
+    <ClInclude Include="Enemy_Infary.h" />
+    <ClInclude Include="Enemy_Jumper.h" />
     <ClInclude Include="Enemy_RedGunner.h" />
     <ClInclude Include="Enemy_ScubaDriver.h" />
     <ClInclude Include="Enemy_SneakSniper.h" />
