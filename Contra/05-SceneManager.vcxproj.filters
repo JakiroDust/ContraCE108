@@ -161,6 +161,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Equip_GunBase.cpp" />
+    <ClCompile Include="MusicManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -341,6 +342,31 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Equip_GunBase.h" />
+    <ClInclude Include="MusicManager.h" />
+    <ClInclude Include="fmod\fmod_dsp_effects.h">
+      <Filter>Source Files\fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\fmod_errors.h">
+      <Filter>Source Files\fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\fmod_output.h">
+      <Filter>Source Files\fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\fmod.h">
+      <Filter>Source Files\fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\fmod.hpp">
+      <Filter>Source Files\fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\fmod_codec.h">
+      <Filter>Source Files\fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\fmod_common.h">
+      <Filter>Source Files\fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\fmod_dsp.h">
+      <Filter>Source Files\fmod</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -405,6 +431,12 @@
     </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{314021af-3643-4867-b460-c6d6b3824924}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Music">
+      <UniqueIdentifier>{a729021d-a4e1-4a52-b4a9-770d0ce7dec6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\fmod">
+      <UniqueIdentifier>{f9629b2f-9f0b-4242-ac07-4f60a2ab1e3e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

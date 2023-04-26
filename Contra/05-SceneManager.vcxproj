@@ -123,7 +123,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d3d10.lib;dxguid.lib;dinput8.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d10.lib;dxguid.lib;dinput8.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -140,7 +140,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d3d10.lib;dxguid.lib;dinput8.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d10.lib;dxguid.lib;dinput8.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -180,6 +180,7 @@
     <ClCompile Include="Game_Water.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mapper.cpp" />
+    <ClCompile Include="MusicManager.cpp" />
     <ClCompile Include="Obj_Bullet_Rifle.cpp" />
     <ClCompile Include="Obj_ContraBot.cpp" />
     <ClCompile Include="Obj_SmartBot.cpp" />
@@ -219,6 +220,14 @@
     <ClInclude Include="Enemy_Sniper.h" />
     <ClInclude Include="Enemy_Turret.h" />
     <ClInclude Include="Equip_GunBase.h" />
+    <ClInclude Include="fmod\fmod.h" />
+    <ClInclude Include="fmod\fmod.hpp" />
+    <ClInclude Include="fmod\fmod_codec.h" />
+    <ClInclude Include="fmod\fmod_common.h" />
+    <ClInclude Include="fmod\fmod_dsp.h" />
+    <ClInclude Include="fmod\fmod_dsp_effects.h" />
+    <ClInclude Include="fmod\fmod_errors.h" />
+    <ClInclude Include="fmod\fmod_output.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Game_Blocker.h" />
     <ClInclude Include="Game_Bullet.h" />
@@ -240,6 +249,7 @@
     <ClInclude Include="Game_Water.h" />
     <ClInclude Include="KeyEventHandler.h" />
     <ClInclude Include="Mapper.h" />
+    <ClInclude Include="MusicManager.h" />
     <ClInclude Include="Obj_Bullet_Rifle.h" />
     <ClInclude Include="Obj_ContraBot.h" />
     <ClInclude Include="Obj_SmartBot.h" />
