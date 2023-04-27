@@ -48,6 +48,7 @@ CSprite::CSprite(int id, int left, int top, int right, int bottom, LPTEXTURE tex
 
 void CSprite::Draw(float x, float y)
 {
+	
 	CGame* g = CGame::GetInstance();
 	float cx, cy;
 
@@ -67,6 +68,8 @@ void CSprite::Draw(float x, float y)
 	this->sprite.matWorld = (this->matScaling * matTranslation);
 
 	g->GetSpriteHandler()->DrawSpritesImmediate(&sprite, 1, 0, 0);
+
+
 }
 
 void CSprite::getAll(int& id, int& left, int& top, int& right, int& bottom, LPTEXTURE& tex)

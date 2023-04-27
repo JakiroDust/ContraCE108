@@ -16,6 +16,7 @@ class State_Contra_Base : public State_Base
 		bool HoldKeyDown = false;
 		bool HoldKeyLeft = false;
 		bool HoldKeyRight = false;
+		bool HoldKeyShoot = false;
 	public:
 		State_Contra_Base(Game_ObjectBase* obj) : State_Base(obj){}
 
@@ -27,7 +28,7 @@ class State_Contra_Base : public State_Base
 		virtual void KeyHold_Down() { HoldKeyDown = true; }
 		virtual void KeyHold_Left() { HoldKeyLeft = true; }
 		virtual void KeyHold_Right() { HoldKeyRight = true; }
-		virtual void KeyHold_Shoot() {}
+		virtual void KeyHold_Shoot() { HoldKeyShoot = true; }
 
 		virtual void KeyPressed_Up() {}
 		virtual void KeyPressed_Down() {}
@@ -40,7 +41,7 @@ class State_Contra_Base : public State_Base
 		virtual void KeyReleased_Down() { HoldKeyDown = false; }
 		virtual void KeyReleased_Left() { HoldKeyLeft = false; }
 		virtual void KeyReleased_Right() { HoldKeyRight = false; }
-		virtual void KeyReleased_Shoot() {}
+		virtual void KeyReleased_Shoot() { HoldKeyShoot = false; }
 		virtual void KeyReleased_Jump() {}
 };
 

@@ -173,7 +173,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Equip_GunBase.cpp" />
-    <ClCompile Include="MusicManager.cpp" />
+    <ClCompile Include="MusicManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="spawnBulletHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -353,7 +358,6 @@
     <ClInclude Include="State_Contra_Die.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Equip_GunBase.h" />
     <ClInclude Include="MusicManager.h" />
     <ClInclude Include="fmod\fmod_dsp_effects.h">
       <Filter>Source Files\fmod</Filter>
@@ -391,6 +395,10 @@
     <ClInclude Include="Enemy_Jumper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Equip_GunBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="spawnBulletHelper.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -465,5 +473,124 @@
     <Filter Include="Source Files\fmod">
       <UniqueIdentifier>{f9629b2f-9f0b-4242-ac07-4f60a2ab1e3e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Music\sfx">
+      <UniqueIdentifier>{2027246e-03ae-4da3-b7af-f5822157f876}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Music\bgm">
+      <UniqueIdentifier>{0081ce23-2dd2-4dc6-ba73-76b0ca8e28d2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="music\sfx\area-clear.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\base-explosion.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\boss-defeat.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\death.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\electro.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\enemy-gun.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\enemy-gun-2.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\enemy-hit.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\explode.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\explode-2.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\flame.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\flame-2.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\flame-3.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\flame-gun.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\game-over.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\laser.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\machine-gun.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\major-explosion.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\pause.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\rapid.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\rapid-2.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\red-falcon.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\rifle.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\spread.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\title.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\sfx\1-up.mp3">
+      <Filter>Resource Files\Music\sfx</Filter>
+    </Media>
+    <Media Include="music\bgm\4 - Base Boss.mp3">
+      <Filter>Resource Files\Music\bgm</Filter>
+    </Media>
+    <Media Include="music\bgm\5 - Waterfall (Stage 3).mp3">
+      <Filter>Resource Files\Music\bgm</Filter>
+    </Media>
+    <Media Include="music\bgm\6 - Snowfield (Stage 5).mp3">
+      <Filter>Resource Files\Music\bgm</Filter>
+    </Media>
+    <Media Include="music\bgm\7 - Energy Zone (Stage 6).mp3">
+      <Filter>Resource Files\Music\bgm</Filter>
+    </Media>
+    <Media Include="music\bgm\8 - Alien%27s Lair (Stage 8).mp3">
+      <Filter>Resource Files\Music\bgm</Filter>
+    </Media>
+    <Media Include="music\bgm\9 - Victory.mp3">
+      <Filter>Resource Files\Music\bgm</Filter>
+    </Media>
+    <Media Include="music\bgm\10 - Ending.mp3">
+      <Filter>Resource Files\Music\bgm</Filter>
+    </Media>
+    <Media Include="music\bgm\11 - Game Over.mp3">
+      <Filter>Resource Files\Music\bgm</Filter>
+    </Media>
+    <Media Include="music\bgm\1 - Title Screen.mp3">
+      <Filter>Resource Files\Music\bgm</Filter>
+    </Media>
+    <Media Include="music\bgm\2 - Jungle  Hangar (Stages 1  7).mp3">
+      <Filter>Resource Files\Music\bgm</Filter>
+    </Media>
+    <Media Include="music\bgm\3 - Bases I  II (Stages 2  4).mp3">
+      <Filter>Resource Files\Music\bgm</Filter>
+    </Media>
   </ItemGroup>
 </Project>

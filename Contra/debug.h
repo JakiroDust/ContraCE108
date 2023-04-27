@@ -9,8 +9,9 @@
 #include <stdlib.h>
 #include <crtdbg.h>
 #include <memory>
-#define DEBUGOUT false
+#define DEBUGOUT true
 #define MEMCHECK false
+#define RENDER_HITBOX true
 #define _W(x)  __W(x)
 #define __W(x)  L##x
 

@@ -64,12 +64,7 @@ void Game_Character::Shoot(int DIR)
 		return;
 	float x, y;
 	GetCenterPoint(x, y);
-	/* GET DIR
-	int dir = DIR_TOP;
-	x += _spawnBulletHelper[dir][X];
-	y += _spawnBulletHelper[dir][Y];
-	*/
-
+	spawnBulletHelper::getInstance()->getSpawnCor(x, y,CharID(),DIR);
 	_weapon->Fire(x, y, DIR);
 }
 
@@ -117,35 +112,7 @@ Game_Character::Game_Character(float x, float y, int z, int width, int height) :
 {
 	_needScanCollision = true;
 
-	//init default _spawnBulletHelper;
-	/*
-	for (int i = 1; i <= 9; i++)
-		_spawnBulletHelper[i] = vector<float>(2, 0);
 
-	_spawnBulletHelper[DIR_TOP][X] = 0;
-	_spawnBulletHelper[DIR_TOP][Y] = 10;
-
-	_spawnBulletHelper[DIR_TOP_RIGHT][X] = 7;
-	_spawnBulletHelper[DIR_TOP_RIGHT][Y] = 7;
-	
-	_spawnBulletHelper[DIR_RIGHT][X] = 10;
-	_spawnBulletHelper[DIR_RIGHT][Y] = 0;
-
-	_spawnBulletHelper[DIR_BOTTOM_RIGHT][X] = 7;
-	_spawnBulletHelper[DIR_BOTTOM_RIGHT][Y] = -7;
-
-	_spawnBulletHelper[DIR_BOTTOM][X] = 0;
-	_spawnBulletHelper[DIR_BOTTOM][Y] = -10;
-
-	_spawnBulletHelper[DIR_BOTTOM_LEFT][X] = -7;
-	_spawnBulletHelper[DIR_BOTTOM_LEFT][Y] = -7;
-
-	_spawnBulletHelper[DIR_LEFT][X] = -10;
-	_spawnBulletHelper[DIR_LEFT][Y] = 0;
-
-	_spawnBulletHelper[DIR_TOP_LEFT][X] = -7;
-	_spawnBulletHelper[DIR_TOP_LEFT][Y] = 7;
-	*/
 }
 
 Game_Character::~Game_Character()

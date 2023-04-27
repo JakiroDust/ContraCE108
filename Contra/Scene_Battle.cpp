@@ -187,6 +187,8 @@ void Scene_Battle::Create_Stage_Demo()
     _init_spatial();
  
     addPlayer1();
+    SoundSystem* SS = SoundSystem::getInstance();
+    SS->playBGM(BGM_JUNGLE);
     unique_ptr<Obj_ContraBot> bot (new Obj_ContraBot(80, 40, 2)); add_object(move(bot));
     unique_ptr<Obj_SmartBot>smartbot(new Obj_SmartBot(100, 40, 2)); add_object(move(smartbot));
 

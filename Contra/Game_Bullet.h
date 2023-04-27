@@ -27,14 +27,16 @@ class Game_Bullet : public Game_MovableObject
 		// Base on OwnerID, objects will ignore this bullet or not.
 		int OwnerID() { return _OwnerID; }
 		int Damage() { return _Damage; }
-
+		int getAni() { return CONTRA_BULLET_ANI_BASE_RIGHT; }
+		int getExplodeAni() {return CONTRA_BULLET_ANI_BASE_RIGHT;}
 		// Can this object ingore blocking object and move through it?
 		// If YES, collision framework will skip this collision event.
 		bool IgnoreBlocking() override { return 1; }
 
 		void Update(DWORD dt) override;
-		void SetAngle(float degree);
+		void SetAngle(float degree);	
 		void SetTargetPos(float x, float y);
 		void SetVector(float vx, float vy);
+		void Render() override;
 };
 

@@ -2,20 +2,10 @@
 #include "Game_MovableObject.h"
 #include "Mapper.h"
 #include "Equip_GunBase.h"
-
+#include "spawnBulletHelper.h"
 //#include "Contra_GET_ANI.h"
 
-#define DIR_TOP_LEFT 1
-#define DIR_TOP 2
-#define DIR_TOP_RIGHT 3
-#define DIR_LEFT 4
-#define DIR_RIGHT 6
-#define DIR_BOTTOM_LEFT 7
-#define DIR_BOTTOM 8
-#define DIR_BOTTOM_RIGHT 9
 
-#define X 0
-#define Y 1
 using namespace std;
 
 class Game_Character : public Game_MovableObject
@@ -28,13 +18,13 @@ protected:
 	// Auto control
 	vector<pair<int, int>> _ActionQueue; // save keycode list
 	// Save for x y
-	//unordered_map<int, vector<float>> _spawnBulletHelper;
+	
 	virtual void UpdateState() {}
 	void AddAction(int KeyCode1, int KeyCode2 = -1);
 	virtual void KeyReleaseAll() {}
 	void ExecuteAction();
 public:
-
+	//static unordered_map<int, vector<float>> _spawnBulletHelper;
 	Game_Character(float x, float y, int z, int width, int height) ;	
 	~Game_Character();
 	//-------------------------------------------------------------------------------
@@ -78,6 +68,7 @@ public:
 	float GetMovementSpeed() { return _moveSpd; }
 	virtual void GetCustomSize(int state, int &width, int &height) {}
 	virtual int CharID() { return -1; }
+
 };
 
 

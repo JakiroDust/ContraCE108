@@ -13,6 +13,7 @@
 // DEMO
 #include "Demo_Layer.h"
 #include "Spatial.h"
+#include "MusicManager.h"
 using namespace std;
 
 

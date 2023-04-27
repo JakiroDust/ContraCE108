@@ -184,7 +184,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mapper.cpp" />
     <ClCompile Include="MusicManager.cpp" />
-    <ClCompile Include="Obj_Bullet_Rifle.cpp" />
     <ClCompile Include="Obj_Bullet_N.cpp" />
     <ClCompile Include="Obj_ContraBot.cpp" />
     <ClCompile Include="Obj_SmartBot.cpp" />
@@ -193,6 +192,7 @@
     <ClCompile Include="Scene_Battle.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="Spatial.cpp" />
+    <ClCompile Include="spawnBulletHelper.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Sprites.cpp" />
     <ClCompile Include="State_Base.cpp" />
@@ -257,7 +257,6 @@
     <ClInclude Include="KeyEventHandler.h" />
     <ClInclude Include="Mapper.h" />
     <ClInclude Include="MusicManager.h" />
-    <ClInclude Include="Obj_Bullet_Rifle.h" />
     <ClInclude Include="Obj_Bullet_N.h" />
     <ClInclude Include="Obj_ContraBot.h" />
     <ClInclude Include="Obj_SmartBot.h" />
@@ -267,6 +266,7 @@
     <ClInclude Include="Scene_Battle.h" />
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="Spatial.h" />
+    <ClInclude Include="spawnBulletHelper.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Sprites.h" />
     <ClInclude Include="State_Base.h" />
@@ -301,6 +301,45 @@
     <Text Include="scene01.txt" />
     <Text Include="scene02.txt" />
     <Text Include="SNIPER.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="music\bgm\1 - Title Screen.mp3" />
+    <Media Include="music\bgm\10 - Ending.mp3" />
+    <Media Include="music\bgm\11 - Game Over.mp3" />
+    <Media Include="music\bgm\2 - Jungle  Hangar (Stages 1  7).mp3" />
+    <Media Include="music\bgm\3 - Bases I  II (Stages 2  4).mp3" />
+    <Media Include="music\bgm\4 - Base Boss.mp3" />
+    <Media Include="music\bgm\5 - Waterfall (Stage 3).mp3" />
+    <Media Include="music\bgm\6 - Snowfield (Stage 5).mp3" />
+    <Media Include="music\bgm\7 - Energy Zone (Stage 6).mp3" />
+    <Media Include="music\bgm\8 - Alien%27s Lair (Stage 8).mp3" />
+    <Media Include="music\bgm\9 - Victory.mp3" />
+    <Media Include="music\sfx\1-up.mp3" />
+    <Media Include="music\sfx\area-clear.mp3" />
+    <Media Include="music\sfx\base-explosion.mp3" />
+    <Media Include="music\sfx\boss-defeat.mp3" />
+    <Media Include="music\sfx\death.mp3" />
+    <Media Include="music\sfx\electro.mp3" />
+    <Media Include="music\sfx\enemy-gun-2.mp3" />
+    <Media Include="music\sfx\enemy-gun.mp3" />
+    <Media Include="music\sfx\enemy-hit.mp3" />
+    <Media Include="music\sfx\explode-2.mp3" />
+    <Media Include="music\sfx\explode.mp3" />
+    <Media Include="music\sfx\flame-2.mp3" />
+    <Media Include="music\sfx\flame-3.mp3" />
+    <Media Include="music\sfx\flame-gun.mp3" />
+    <Media Include="music\sfx\flame.mp3" />
+    <Media Include="music\sfx\game-over.mp3" />
+    <Media Include="music\sfx\laser.mp3" />
+    <Media Include="music\sfx\machine-gun.mp3" />
+    <Media Include="music\sfx\major-explosion.mp3" />
+    <Media Include="music\sfx\pause.mp3" />
+    <Media Include="music\sfx\rapid-2.mp3" />
+    <Media Include="music\sfx\rapid.mp3" />
+    <Media Include="music\sfx\red-falcon.mp3" />
+    <Media Include="music\sfx\rifle.mp3" />
+    <Media Include="music\sfx\spread.mp3" />
+    <Media Include="music\sfx\title.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
