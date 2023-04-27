@@ -365,5 +365,5 @@ void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* 
 	}
 
 
-	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+	//for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 }

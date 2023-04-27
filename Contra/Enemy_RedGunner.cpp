@@ -28,6 +28,17 @@ void Enemy_RedGunner::OnCollisionWith(PCOLLISIONEVENT e)
 	if (dynamic_cast<Game_Water*>(e->obj))
 	{
 		DeleteThis();
+		return;
+	}
+	if (dynamic_cast<Game_Bullet*>(e->obj))
+	{
+		Game_Bullet* bullet = ((Game_Bullet*)e->obj);
+		if (bullet->OwnerID() == B_OWNER_PLAYER)
+		{
+			bullet->DeleteThis();
+			forceDie();
+			return;
+		}
 	}
 }
 

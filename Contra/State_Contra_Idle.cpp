@@ -98,6 +98,12 @@ void State_Contra_Idle::KeyPressed_Shoot()
 	Game_Character* obj = (Game_Character*)_srcObj;
 	if (!obj->IsFullAutomaticGun())
 	{
+		if (HoldKeyUp)
+		{
+			obj->Shoot(DIR_TOP);
+			return;
+		}
+
 		if (obj->IsFaceLeft())
 			obj->Shoot(DIR_LEFT);
 		else
@@ -110,6 +116,11 @@ void State_Contra_Idle::KeyHold_Shoot()
 	Game_Character* obj = (Game_Character*)_srcObj;
 	if (obj->IsFullAutomaticGun())
 	{
+		if (HoldKeyUp)
+		{
+			obj->Shoot(DIR_TOP);
+			return;
+		}
 		if (obj->IsFaceLeft())
 			obj->Shoot(DIR_LEFT);
 		else

@@ -15,6 +15,7 @@ protected:
 	bool _jumpDown = false;
 	// Weapon
 	Equip_GunBase* _weapon = NULL;
+	DWORD _GunReloadInterval = 0;
 	// Auto control
 	vector<pair<int, int>> _ActionQueue; // save keycode list
 	// Save for x y
@@ -52,7 +53,7 @@ public:
 
 
 	void Update(DWORD dt) override { Game_MovableObject::Update(dt); }
-	void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override { Game_MovableObject::Update(dt, coObjects); }
+	void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;
 	//-------------------------------------------------------------------------------
 
 	// Character action

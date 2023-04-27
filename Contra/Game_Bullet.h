@@ -17,8 +17,10 @@ class Game_Bullet : public Game_MovableObject
 		int _OwnerID = 0;
 		int _Damage = 1;
 	public:
-		Game_Bullet(float x, float y, int z, int width, int height) : Game_MovableObject(x, y, z, width, height)
+		Game_Bullet(float x, float y, int z, int width, int height) : Game_MovableObject(0, 0, z, width, height)
 		{
+			_x = x - width / 2.0f;
+			_y = y - height / 2.0f;
 			_needScanCollision = false;
 			_moveSpd = 0.5;
 		}

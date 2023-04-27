@@ -107,13 +107,19 @@ void Scene_Battle::Update(DWORD dt)
 
         if (obj->baseType() == TYPE_STATIC)
         {
-            obj->Update(dt, nearbyObject);
+            if (obj->NeedScanCollision())
+                obj->Update(dt, nearbyObject);
+            else
+                obj->Update(dt);
 
         }
         else {
 
             obj->GetLTRB(old_l, old_top, old_right, old_bottom);
-            obj->Update(dt, nearbyObject);
+            if (obj->NeedScanCollision())
+                obj->Update(dt, nearbyObject);
+            else
+                obj->Update(dt);
             obj->GetLTRB(new_l, new_top, new_right, new_bottom);
             spatial->update(i, old_l, old_top, old_right, old_bottom, new_l, new_top, new_right, new_bottom);
            
@@ -335,7 +341,7 @@ void Scene_Battle::Execute_BasicSpawnerEvent()
     }
     ticker = 240;
 
-    for (int i = 0; i < 30; i++)
+    for (int i = 0; i < 1; i++)
     {
        unique_ptr <Enemy_RedGunner> redgunner ( new Enemy_RedGunner(460, 40, 2));
         add_object(move(redgunner));

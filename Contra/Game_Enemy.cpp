@@ -16,7 +16,7 @@ int Game_Enemy::CharID()
 void Game_Enemy::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 	ExecuteAction();
-	Game_MovableObject::Update(dt, coObjects);
+	Game_Character::Update(dt, coObjects);
 	Game_Collision::GetInstance()->Process(this, dt, coObjects);
 
 	if (_state.get() != NULL)
