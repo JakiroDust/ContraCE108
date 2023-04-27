@@ -21,6 +21,7 @@ public:
 	
 	void Draw(float x, float y);
 	void getAll(int& id, int& left, int& top, int& right, int& bottom, LPTEXTURE& tex);
+	void getWH(float& width, float& heigth) { width = right - left; heigth = top - bottom; }
 };
 
 typedef CSprite* LPSPRITE;
