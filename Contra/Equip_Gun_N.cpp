@@ -29,7 +29,7 @@ void Equip_Gun_N::Fire(float& x, float& y, int DIR)
 		bullet = unique_ptr<Obj_Bullet_N>(new Obj_Bullet_N(x, y, B_VALUE_Z, -1, -1));
 		break;
 	case DIR_TOP_RIGHT:
-		bullet = unique_ptr<Obj_Bullet_N>(new Obj_Bullet_N(x, y, B_VALUE_Z, -1, 0));
+		bullet = unique_ptr<Obj_Bullet_N>(new Obj_Bullet_N(x, y, B_VALUE_Z, 1, -1));
 		break;
 	case DIR_BOTTOM_LEFT:
 		bullet = unique_ptr<Obj_Bullet_N>(new Obj_Bullet_N(x, y, B_VALUE_Z, -1, 1));

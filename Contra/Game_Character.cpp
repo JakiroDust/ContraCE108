@@ -3,6 +3,21 @@
 #include "Game_Platform.h"
 #include "Game_Collision.h"
 
+void Game_Character::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
+{
+	Game_MovableObject::Update(dt, coObjects);
+
+	if (_GunReloadInterval > dt)
+	{
+		_GunReloadInterval -= dt;
+	}
+	else if (_GunReloadInterval > 0 && _GunReloadInterval < dt)
+	{
+		_GunReloadInterval = 0;
+	}
+
+}
+
 void Game_Character::OnNoCollision(DWORD dt)
 {
 	Game_MovableObject::OnNoCollision(dt);
@@ -60,26 +75,36 @@ void Game_Character::Shoot()
 
 void Game_Character::Shoot(int DIR)
 {
-	if (_weapon == NULL)
+	if (_weapon == NULL || _GunReloadInterval > 0)
 		return;
 	float x, y;
 	GetCenterPoint(x, y);
 	spawnBulletHelper::getInstance()->getSpawnCor(x, y,CharID(),DIR);
-	_weapon->Fire(x, y, DIR);
-}
-
-void Game_Character::Shoot(float x, float y)
-{
-	if (_weapon == NULL)
-		return;
-	float cx, cy;
-	GetCenterPoint(cx, cy);
-	/* GET DIR
+	
+	/* GET OFFSET
 	int dir = DIR_TOP;
 	x += _spawnBulletHelper[dir][X];
 	y += _spawnBulletHelper[dir][Y];
 	*/
 
+	_GunReloadInterval = _weapon->FireRate();
+	_weapon->Fire(x, y, DIR);
+}
+
+void Game_Character::Shoot(float x, float y)
+{
+	if (_weapon == NULL || _GunReloadInterval > 0)
+		return;
+	float cx, cy;
+	GetCenterPoint(cx, cy);
+
+	/* GET OFFSET
+	int dir = DIR_TOP;
+	x += _spawnBulletHelper[dir][X];
+	y += _spawnBulletHelper[dir][Y];
+	*/
+
+	_GunReloadInterval = _weapon->FireRate();
 	_weapon->Fire(cx, cy, x, y, GUN_SPAWNMODE_TARGETPOS);
 }
 
