@@ -64,15 +64,38 @@ void CSprite::Draw(float x, float y)
 	y = (FLOAT)floor(y);
 
 	D3DXMatrixTranslation(&matTranslation, x - cx, g->GetBackBufferHeight() - y + cy, 0.1f);
-	D3DXMATRIX matScaling;
-	D3DXMatrixScaling(&matScaling, 40.0f, 40.0f, 1.0f);
 	this->sprite.matWorld = (this->matScaling * matTranslation);
-
 	g->GetSpriteHandler()->DrawSpritesImmediate(&sprite, 1, 0, 0);
 
 
 }
+void CSprite::Draw(float x, float y,float&width,float&heigth)
+{
 
+	CGame* g = CGame::GetInstance();
+	float cx, cy;
+
+	//g->GetCamPos(cx, cy);
+	ScreenManager::GetInstance()->Screen()->GetPosition(cx, cy);
+
+	cx = (FLOAT)floor(cx);
+	cy = (FLOAT)floor(cy);
+
+	D3DXMATRIX matTranslation;
+
+	x = (FLOAT)floor(x);
+	y = (FLOAT)floor(y);
+
+	D3DXMatrixTranslation(&matTranslation, x - cx, g->GetBackBufferHeight() - y + cy, 0.1f);
+	D3DXMATRIX matScaling;
+	float _width, _heigth;
+	getWH(_width, _heigth);
+	D3DXMatrixScaling(&matScaling, width, heigth, 1.0f);
+	this->sprite.matWorld = (matScaling * matTranslation);
+	g->GetSpriteHandler()->DrawSpritesImmediate(&sprite, 1, 0, 0);
+
+
+}
 void CSprite::getAll(int& id, int& left, int& top, int& right, int& bottom, LPTEXTURE& tex)
 {
 	id = this->id;

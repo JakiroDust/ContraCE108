@@ -22,7 +22,7 @@ class Game_Bullet : public Game_MovableObject
 			_x = x - width / 2.0f;
 			_y = y - height / 2.0f;
 			_needScanCollision = false;
-			_moveSpd = 0.5;
+			_moveSpd = 0.30f;
 		}
 
 		// Used by other objects.

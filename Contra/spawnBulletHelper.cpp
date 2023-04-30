@@ -13,7 +13,7 @@ unordered_map<int, vector<float>> spawnBulletHelper::initHelper()
     map[DIR_TOP_RIGHT][Y] = 7;
 
     map[DIR_RIGHT][X] = 10;
-    map[DIR_RIGHT][Y] = 0;
+    map[DIR_RIGHT][Y] = 5;
 
     map[DIR_BOTTOM_RIGHT][X] = 7;
     map[DIR_BOTTOM_RIGHT][Y] = -7;
@@ -25,7 +25,7 @@ unordered_map<int, vector<float>> spawnBulletHelper::initHelper()
     map[DIR_BOTTOM_LEFT][Y] = -7;
 
     map[DIR_LEFT][X] = -10;
-    map[DIR_LEFT][Y] = 0;
+    map[DIR_LEFT][Y] = 5;
 
     map[DIR_TOP_LEFT][X] = -7;
     map[DIR_TOP_LEFT][Y] = 7;

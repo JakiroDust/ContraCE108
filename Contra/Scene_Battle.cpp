@@ -211,7 +211,7 @@ void Scene_Battle::Create_Stage_Demo()
     unique_ptr<Game_Blocker> plat5(new Game_Blocker(288, 215, 1, 64, 32));
     unique_ptr<Game_Platform> plat6(new Game_Platform(32, 118, 1, 736, 10));
 
-    Demo_Layer* demo = new Demo_Layer(0, 0, 0, 3328, 239);
+    Demo_Layer* demo = new Demo_Layer(0, 0, 0, 3328, 240);
     //
     add_object(move(water1));//1
     add_object(move(water2));//2

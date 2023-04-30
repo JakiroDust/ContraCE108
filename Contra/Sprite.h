@@ -20,8 +20,9 @@ public:
 
 	
 	void Draw(float x, float y);
+	void Draw(float x, float y,float&width,float&heigth);
 	void getAll(int& id, int& left, int& top, int& right, int& bottom, LPTEXTURE& tex);
-	void getWH(float& width, float& heigth) { width = right - left; heigth = top - bottom; }
+	void getWH(float& width, float& heigth) { width = abs(right - left); heigth = abs(top - bottom); }
 };
 
 typedef CSprite* LPSPRITE;

@@ -33,11 +33,11 @@ void Game_Bullet::SetVector(float vx, float vy)
 
 void Game_Bullet::Render()
 {
-	//RenderHitbox();
+	RenderHitbox();
 	CAnimations* animations = CAnimations::GetInstance();
 	float x, y;
 	GetCenterPoint(x, y);
-	animations->Get(getAni()+1)->Render(x, y);
+	animations->Get(getAni()+1)->Render(x, y,width(), height());
 }
 
 void Game_Bullet::Update(DWORD dt)

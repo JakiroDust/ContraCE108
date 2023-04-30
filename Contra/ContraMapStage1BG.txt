@@ -1,7 +1,7 @@
 # id	left	top	right	bottom	texture_id(==1)
 [SPRITES]
 
-101	512	0	3840	239	1
+101	512	0	3840	240	1
 
 [ANIMATIONS]
 #  is_one_side? yes
