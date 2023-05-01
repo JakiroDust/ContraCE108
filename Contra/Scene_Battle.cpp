@@ -6,6 +6,8 @@
 #include "Obj_SmartBot.h"
 #include "Enemy_RedGunner.h"
 #include "Game_Bullet.h"
+#include <fstream>
+using namespace std;
 
 Scene_Battle::~Scene_Battle()
 {
@@ -286,6 +288,14 @@ void Scene_Battle::_init_spatial()
     
     spatial = new Spatial(n, m, width, height);
 
+
+    //texu
+    width = 32;
+    height = 32;
+    n = int(_mapHeight / width) + (_mapHeight % width>0);
+    m = int(_mapWidth / height) + (_mapWidth% height >0);
+    mapTexSpatial = new Spatial(n,m,width,height,8,8);
+
 }
 
 vector<int> Scene_Battle::getNearByID(int n, int m)
@@ -347,4 +357,94 @@ void Scene_Battle::Execute_BasicSpawnerEvent()
         add_object(move(redgunner));
     }
 
+}
+
+void Scene_Battle::parseMap()
+{
+
+}
+
+void Scene_Battle::_ParseSection_DICT(string line)
+
+{
+    ifstream f;
+    f.open(line + "\\info.txt");
+
+    int width, height, map_id;
+    bool filler;
+
+    if (f.is_open())
+    {
+        f >> map_id >> width >> height;
+        string strA;
+        f >> strA;
+        filler = (strA == "1");
+
+    }
+    else
+    {
+        // handle error if the file cannot be opened
+        // set default values or throw an exception
+        DebugOut(L"CANNOT READ %s\\into.txt", line);
+        return;
+    }
+    f.close();
+    f.open(line + "\\mapping.txt");
+    set<int> dect;
+    if (f.is_open())
+    {
+        int count = 0;
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                int temp;
+                f >> temp;
+                map[i][j] = temp;
+                dect.insert(temp);
+                count++;
+            }
+        }
+        if (filler)
+        {
+            int texID = -1;
+            map_info[texID] = 1;
+            wstring path = ToWSTR(line + "\\" + to_string(texID) + ".jpg");
+            map_tex[texID].reset(CGame::GetInstance()->LoadTexture(path.c_str(), false));
+        }
+        for (auto& i : dect)
+        {
+            int texID = i;
+            wstring path = ToWSTR(line + "\\" + to_string(texID) + ".jpg");
+            map_tex[texID].reset(CGame::GetInstance()->LoadTexture(path.c_str(), false));
+        }
+    }
+    else
+    {
+        DebugOut(L"CANNOT READ %s\\mapping.txt", line);
+        return;
+    }
+    f.close();
+
+
+    f.open(line + "\\block.txt");
+    if (f.is_open())
+    {
+        while (!f.eof() || !f.fail())
+        {
+            int type;
+            f >> type;
+            while (true)
+            {
+                int temp;
+                f >> temp;
+                if (temp == -1) break;
+                map_info[temp] = type;
+            }
+        }
+    }
+    else
+    {
+        DebugOut(L"CANNOT READ %s\\block.txt(CAN BE IGNORE IF DONT USE)", line);
+    }
 }

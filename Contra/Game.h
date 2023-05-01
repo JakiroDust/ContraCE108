@@ -79,7 +79,7 @@ public:
 		this->Draw(x, y, tex, &rect, alpha, sprite_width, sprite_height);
 	}
 
-	LPTEXTURE LoadTexture(LPCWSTR texturePath);
+	LPTEXTURE LoadTexture(LPCWSTR texturePath,bool debugout=true);
 
 	// Keyboard related functions 
 	void InitKeyboard();

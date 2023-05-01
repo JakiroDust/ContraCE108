@@ -1,163 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Animation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Animations.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Contra_GET_ANI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="debug.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Demo_Layer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_Blocker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_Character.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_Collision.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_Enemy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Game_KeyInput.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_Layer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_MovableObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_ObjectBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_Platform.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_Screen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_StaticObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_Terrain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_Water.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Obj_ContraBot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene_Base.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene_Battle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ScreenManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Spatial.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprites.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="State_Base.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="State_Contra_Base.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="State_Contra_Fall.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="State_Contra_Idle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="State_Contra_Jump.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="State_Contra_Swim.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="State_Contra_Walk.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Textures.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_TestBox.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Obj_SmartBot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Mapper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Game_Bullet.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_RedGunner.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_ScubaDriver.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_SneakSniper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_Sniper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_Turret.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_MovableEnemy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_StationEnemy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Obj_Bullet_N.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="State_Station.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="State_Station_Hide.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="State_Contra_Die.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Equip_GunBase.cpp">
@@ -166,20 +16,170 @@
     <ClCompile Include="Equip_Gun_N.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Equip_GunBase.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source Files\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Animations.cpp">
+      <Filter>Source Files\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures.cpp">
+      <Filter>Source Files\Sprite</Filter>
+    </ClCompile>
     <ClCompile Include="Enemy_Infary.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Object\Character\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_Jumper.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Object\Character\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="Equip_GunBase.cpp" />
+    <ClCompile Include="Enemy_RedGunner.cpp">
+      <Filter>Source Files\Object\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_ScubaDriver.cpp">
+      <Filter>Source Files\Object\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_SneakSniper.cpp">
+      <Filter>Source Files\Object\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Sniper.cpp">
+      <Filter>Source Files\Object\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Turret.cpp">
+      <Filter>Source Files\Object\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_MovableEnemy.cpp">
+      <Filter>Source Files\Object\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_StationEnemy.cpp">
+      <Filter>Source Files\Object\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Contra_Base.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Contra_Die.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Contra_Fall.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Contra_Idle.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Contra_Jump.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Contra_Swim.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Contra_Walk.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Station.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Station_Hide.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScene.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Base.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Battle.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenManager.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Spatial.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="debug.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Layer.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Enemy.cpp">
+      <Filter>Source Files\Object\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_Bullet_N.cpp">
+      <Filter>Source Files\Object\MoveObject\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_ContraBot.cpp">
+      <Filter>Source Files\Object\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_SmartBot.cpp">
+      <Filter>Source Files\Object\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Platform.cpp">
+      <Filter>Source Files\Object\StaticObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_StaticObject.cpp">
+      <Filter>Source Files\Object\StaticObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Terrain.cpp">
+      <Filter>Source Files\Object\StaticObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Water.cpp">
+      <Filter>Source Files\Object\StaticObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Collision.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Character.cpp">
+      <Filter>Source Files\Object\Character</Filter>
+    </ClCompile>
     <ClCompile Include="MusicManager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapper.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Contra_GET_ANI.cpp">
+      <Filter>Source Files\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_MovableObject.cpp">
+      <Filter>Source Files\Object\MoveObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_ObjectBase.cpp">
+      <Filter>Source Files\Object</Filter>
     </ClCompile>
     <ClCompile Include="spawnBulletHelper.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GameCore</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Game_TestBox.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Screen.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Player.cpp">
+      <Filter>Source Files\Object\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo_Layer.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Blocker.cpp">
+      <Filter>Source Files\Object\StaticObject</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Base.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprites.cpp">
+      <Filter>Source Files\Sprite</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -361,28 +361,28 @@
     </ClInclude>
     <ClInclude Include="MusicManager.h" />
     <ClInclude Include="fmod\fmod_dsp_effects.h">
-      <Filter>Source Files\fmod</Filter>
+      <Filter>Source Files\GameCore\fmod</Filter>
     </ClInclude>
     <ClInclude Include="fmod\fmod_errors.h">
-      <Filter>Source Files\fmod</Filter>
+      <Filter>Source Files\GameCore\fmod</Filter>
     </ClInclude>
     <ClInclude Include="fmod\fmod_output.h">
-      <Filter>Source Files\fmod</Filter>
+      <Filter>Source Files\GameCore\fmod</Filter>
     </ClInclude>
     <ClInclude Include="fmod\fmod.h">
-      <Filter>Source Files\fmod</Filter>
+      <Filter>Source Files\GameCore\fmod</Filter>
     </ClInclude>
     <ClInclude Include="fmod\fmod.hpp">
-      <Filter>Source Files\fmod</Filter>
+      <Filter>Source Files\GameCore\fmod</Filter>
     </ClInclude>
     <ClInclude Include="fmod\fmod_codec.h">
-      <Filter>Source Files\fmod</Filter>
+      <Filter>Source Files\GameCore\fmod</Filter>
     </ClInclude>
     <ClInclude Include="fmod\fmod_common.h">
-      <Filter>Source Files\fmod</Filter>
+      <Filter>Source Files\GameCore\fmod</Filter>
     </ClInclude>
     <ClInclude Include="fmod\fmod_dsp.h">
-      <Filter>Source Files\fmod</Filter>
+      <Filter>Source Files\GameCore\fmod</Filter>
     </ClInclude>
     <ClInclude Include="Equip_GunBase.h">
       <Filter>Header Files</Filter>
@@ -474,14 +474,41 @@
     <Filter Include="Resource Files\Music">
       <UniqueIdentifier>{a729021d-a4e1-4a52-b4a9-770d0ce7dec6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\fmod">
-      <UniqueIdentifier>{f9629b2f-9f0b-4242-ac07-4f60a2ab1e3e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files\Music\sfx">
       <UniqueIdentifier>{2027246e-03ae-4da3-b7af-f5822157f876}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resource Files\Music\bgm">
       <UniqueIdentifier>{0081ce23-2dd2-4dc6-ba73-76b0ca8e28d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Sprite">
+      <UniqueIdentifier>{a1e85d9e-9c94-46ae-b77b-fbd519646b13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object">
+      <UniqueIdentifier>{724683a2-6b95-4a7d-9b8e-1b6181355425}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameCore">
+      <UniqueIdentifier>{94793b07-f681-4240-86bf-c5c29965c4b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CharState">
+      <UniqueIdentifier>{212a0d87-c8f9-4aaa-8777-e45542e6faa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Character">
+      <UniqueIdentifier>{9e6eed07-07a8-4424-88a3-ddf11c03f576}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Character\Enemy">
+      <UniqueIdentifier>{49de5c78-298f-4414-ae59-ef4fb86dc94c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\MoveObject">
+      <UniqueIdentifier>{0bb3cfc3-518c-417f-a66b-f03540aa7e8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\MoveObject\Bullet">
+      <UniqueIdentifier>{0c011c6b-7c1f-4439-bfbc-6554507dac3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\StaticObject">
+      <UniqueIdentifier>{16696060-868f-4572-9221-e553210ab0a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameCore\fmod">
+      <UniqueIdentifier>{f9629b2f-9f0b-4242-ac07-4f60a2ab1e3e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -237,7 +237,7 @@ void CGame::Draw(float x, float y, LPTEXTURE tex, RECT* rect, float alpha, int s
 /*
 	Utility function to wrap D3DXCreateTextureFromFileEx
 */
-LPTEXTURE CGame::LoadTexture(LPCWSTR texturePath)
+LPTEXTURE CGame::LoadTexture(LPCWSTR texturePath,bool debugout)
 {
 	ID3D10Resource* pD3D10Resource = NULL;
 	ID3D10Texture2D* tex = NULL;
@@ -314,7 +314,7 @@ LPTEXTURE CGame::LoadTexture(LPCWSTR texturePath)
 	ID3D10ShaderResourceView* gSpriteTextureRV = NULL;
 
 	pD3DDevice->CreateShaderResourceView(tex, &SRVDesc, &gSpriteTextureRV);
-
+	if(debugout)
 	DebugOut(L"[INFO] Texture loaded Ok from file: %s \n", texturePath);
 
 	return new CTexture(tex, gSpriteTextureRV);

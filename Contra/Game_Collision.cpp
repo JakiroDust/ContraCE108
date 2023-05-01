@@ -358,10 +358,18 @@ void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* 
 	for (UINT i = 0; i < coEvents.size(); i++)
 	{
 		PCOLLISIONEVENT e = coEvents[i];
-		if (e->isDeleted) continue;
-		if (e->obj->IsBlocking()) continue;  // blocking collisions were handled already, skip them
-
+		if (e->isDeleted)
+		{
+			
+			continue;
+		}
+		if (e->obj->IsBlocking())
+		{
+			delete e;
+			continue;  // blocking collisions were handled already, skip them
+		}
 		objSrc->OnCollisionWith(e);
+		delete e;
 	}
 
 

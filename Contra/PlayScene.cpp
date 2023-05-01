@@ -10,7 +10,7 @@
 
 
 #include "Demo_Layer.h"
-
+#include "Scene_Battle.h"
 using namespace std;
 CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 	CScene(id, filePath)
@@ -87,57 +87,7 @@ void CPlayScene::_ParseSection_ANIMATIONS(string line)
 
 void CPlayScene::_ParseSection_DICT(string line)
 {
-	ifstream f;
-	f.open(line + "\\info.txt");
 
-	int width, height,map_id;
-	bool filler;
-
-	if (f.is_open())
-	{
-		f >>map_id>> width >> height;
-		string strA;
-		f >> strA;
-		filler = (strA == "1");
-
-	}
-	else
-	{
-		// handle error if the file cannot be opened
-		// set default values or throw an exception
-		DebugOut(L"CANNOT READ %s\\into.txt", line);
-		return;
-	}
-	f.close();
-	f.open(line + "\\mapping.txt");
-	set<int> dect;
-	if (f.is_open())
-	{
-		int count = 0;
-		for (int i = 0; i < height; i++)
-		{
-			for (int j = 0; j < width; j++)
-			{
-				int temp;
-				f >> temp;
-				map[i][j]=temp;
-				dect.insert(temp);
-				count++;
-			}
-		}
-		for (auto& i : dect)
-		{
-			int texID = i;
-			wstring path = ToWSTR(line+"\\" + to_string(i) + ".jpg");
-
-			//CTextures::GetInstance()->Add(texID, path.c_str());
-		}
-	}
-	else
-	{
-		DebugOut(L"CANNOT READ %s\\mapping.txt", line);
-		return;
-	}
 }
 
 

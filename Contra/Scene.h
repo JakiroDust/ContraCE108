@@ -3,6 +3,10 @@
 #include "KeyEventHandler.h"
 #include "STL_storage.h"
 #include "Texture.h"
+
+#define UP_BLOCK 1
+#define DOWN_BLOCK -1
+#define BRIDGE_BLOCK 2
 /*
 *  Abstract class for a game scene
 */
@@ -12,8 +16,7 @@ protected:
 	LPKEYEVENTHANDLER key_handler;
 	int id;
 	LPCWSTR sceneFilePath;
-	unordered_map<int, unordered_map<int,int>> map;
-	unordered_map<int, unique_ptr<CTexture>> map_sprites;
+
 public:
 	
 	CScene(int id, LPCWSTR filePath)
@@ -28,6 +31,12 @@ public:
 	virtual void Unload() = 0;
 	virtual void Update(DWORD dt) = 0;
 	virtual void Render() = 0; 
+	///spatial map
+protected:
+	unordered_map<int, unordered_map<int, int>> map;
+	unordered_map<int, int> map_info;
+	unordered_map<int, unique_ptr<CTexture>> map_tex;
+public:
 };
 typedef CScene * LPSCENE;
 

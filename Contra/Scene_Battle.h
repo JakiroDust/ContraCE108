@@ -14,8 +14,13 @@
 #include "Demo_Layer.h"
 #include "Spatial.h"
 #include "MusicManager.h"
-using namespace std;
 
+#include "Utils.h"
+#include "STL_storage.h"
+using namespace std;
+#define UP_BLOCK 1
+#define DOWN_BLOCK -1
+#define BRIDGE_BLOCK 2
 
 class Scene_Battle : public Scene_Base
 {
@@ -60,6 +65,7 @@ private:
 	void _delete_spatial();
 public:
 	Spatial *spatial=NULL;
+	Spatial* mapTexSpatial = NULL;
 	vector<int> getNearByID(int n, int m);
 	vector<int> getNearbyIDFast();
 	vector<Game_ObjectBase*>* getObjectById(vector<int>& vtr);
@@ -68,5 +74,15 @@ public:
 	//void delete_object(unique_ptr<Game_ObjectBase>& object);
 	// Spawn an RedGunner
 	void Execute_BasicSpawnerEvent();
+	// from here is MAP SPATIAL
+	void parseMap();
+
+	///spatial map
+protected:
+	unordered_map<int, unordered_map<int, int>> map;
+	unordered_map<int, int> map_info;
+	unordered_map<int, unique_ptr<CTexture>> map_tex;
+public:
+	void _ParseSection_DICT(string line);
 };
 
