@@ -1,6 +1,8 @@
 #include "MusicManager.h"
 SoundSystem* SoundSystem::instance = nullptr;
 SoundSystem::SoundSystem() {
+    if(!DEBUG_FMOD_LOG)
+    FMOD::Debug_Initialize(FMOD_DEBUG_LEVEL_NONE, FMOD_DEBUG_MODE_TTY, nullptr, nullptr);
     FMOD::System_Create(&system);
     system->init(32, FMOD_INIT_NORMAL, nullptr);
 #pragma region INIT SFX

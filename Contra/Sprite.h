@@ -22,7 +22,7 @@ public:
 	void Draw(float x, float y);
 	void Draw(float x, float y,float&width,float&heigth);
 	void getAll(int& id, int& left, int& top, int& right, int& bottom, LPTEXTURE& tex);
-	void getWH(float& width, float& heigth) { width = abs(right - left); heigth = abs(top - bottom); }
+	void getWH(float& width, float& heigth) { width = abs(right - left)/1.0f; heigth = abs(top - bottom)/1.0f; }
 };
 
 typedef CSprite* LPSPRITE;

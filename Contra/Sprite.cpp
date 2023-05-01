@@ -85,7 +85,7 @@ void CSprite::Draw(float x, float y,float&width,float&heigth)
 
 	x = (FLOAT)floor(x);
 	y = (FLOAT)floor(y);
-
+		
 	D3DXMatrixTranslation(&matTranslation, x - cx, g->GetBackBufferHeight() - y + cy, 0.1f);
 	D3DXMATRIX matScaling;
 	float _width, _heigth;

@@ -1,3 +1,4 @@
+#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
 #include <iostream>
 #include <fstream>
 #include "AssetIDs.h"
@@ -11,7 +12,6 @@
 #include "Demo_Layer.h"
 
 using namespace std;
-
 CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 	CScene(id, filePath)
 {
@@ -26,6 +26,7 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 #define ASSETS_SECTION_UNKNOWN -1
 #define ASSETS_SECTION_SPRITES 1
 #define ASSETS_SECTION_ANIMATIONS 2
+#define ASSETS_SECTION_DICT 3
 
 #define MAX_SCENE_LINE 1024
 
@@ -83,6 +84,62 @@ void CPlayScene::_ParseSection_ANIMATIONS(string line)
 
 	CAnimations::GetInstance()->Add(ani_id, ani);
 }
+
+void CPlayScene::_ParseSection_DICT(string line)
+{
+	ifstream f;
+	f.open(line + "\\info.txt");
+
+	int width, height,map_id;
+	bool filler;
+
+	if (f.is_open())
+	{
+		f >>map_id>> width >> height;
+		string strA;
+		f >> strA;
+		filler = (strA == "1");
+
+	}
+	else
+	{
+		// handle error if the file cannot be opened
+		// set default values or throw an exception
+		DebugOut(L"CANNOT READ %s\\into.txt", line);
+		return;
+	}
+	f.close();
+	f.open(line + "\\mapping.txt");
+	set<int> dect;
+	if (f.is_open())
+	{
+		int count = 0;
+		for (int i = 0; i < height; i++)
+		{
+			for (int j = 0; j < width; j++)
+			{
+				int temp;
+				f >> temp;
+				map[i][j]=temp;
+				dect.insert(temp);
+				count++;
+			}
+		}
+		for (auto& i : dect)
+		{
+			int texID = i;
+			wstring path = ToWSTR(line+"\\" + to_string(i) + ".jpg");
+
+			//CTextures::GetInstance()->Add(texID, path.c_str());
+		}
+	}
+	else
+	{
+		DebugOut(L"CANNOT READ %s\\mapping.txt", line);
+		return;
+	}
+}
+
 
 /*
 	Parse a line in section [OBJECTS] 
@@ -176,7 +233,9 @@ void CPlayScene::LoadAssets(LPCWSTR assetFile)
 
 		if (line == "[SPRITES]") { section = ASSETS_SECTION_SPRITES; continue; };
 		if (line == "[ANIMATIONS]") { section = ASSETS_SECTION_ANIMATIONS; continue; };
+		if (line == "[DICT]") { section = ASSETS_SECTION_DICT; continue; }
 		if (line[0] == '[') { section = SCENE_SECTION_UNKNOWN; continue; }
+	
 
 		//
 		// data section
@@ -185,6 +244,7 @@ void CPlayScene::LoadAssets(LPCWSTR assetFile)
 		{
 		case ASSETS_SECTION_SPRITES: _ParseSection_SPRITES(line); break;
 		case ASSETS_SECTION_ANIMATIONS: _ParseSection_ANIMATIONS(line); break;
+		case ASSETS_SECTION_DICT: _ParseSection_DICT(line); break;
 		}
 	}
 

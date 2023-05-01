@@ -1,12 +1,11 @@
 #pragma once
 
-using namespace std;
+
 #include <string>
 #include "Contra_ANI_ID.h"
-#include <unordered_map>
 #include "debug.h"
 #include "Enemies_ID.h"
-
+using namespace std;
 #define ACT_IDLE_RIGHT 0
 #define ACT_IDLE_LEFT 1
 #define ACT_LOOK_UP_RIGHT 2
@@ -16,7 +15,9 @@ using namespace std;
 #define ACT_LYING_RIGHT 6
 #define ACT_LYING_LEFT 7
 #define ACT_WALK_RIGHT 8
+#define ACT_SHOOT_WALK_RIGHT 81
 #define ACT_WALK_LEFT 9
+#define ACT_SHOOT_WALK_LEFT 91
 #define ACT_WALK_RIGHT_LOOK_UP 10
 #define ACT_WALK_LEFT_LOOK_UP 11
 #define ACT_WALK_RIGHT_LOOK_DOWN 12

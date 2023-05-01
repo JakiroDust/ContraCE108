@@ -1,7 +1,6 @@
 #pragma once
 #include <Windows.h>
-#include <unordered_map>
-
+#include "debug.h"
 #include <d3dx10.h>
 
 #include "Texture.h"

@@ -1,6 +1,4 @@
 #pragma once
-#include <unordered_map>
-#include <vector>
 #include "debug.h"
 #include "Contra_GET_ANI.h"
 #include "Enemies_ID.h"

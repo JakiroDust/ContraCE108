@@ -7,6 +7,7 @@ INFARY.txt
 #cloud.txt
 #brick.txt
 ContraMapStage1BG.txt
+legacy\ContraMapStage1BG.txt
 #
 [OBJECTS]
 # type	x	y	extra_settings per object type

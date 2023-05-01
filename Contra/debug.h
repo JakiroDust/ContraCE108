@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <crtdbg.h>
 #include <memory>
+#include"STL_storage.h"
 #define DEBUGOUT true
 #define MEMCHECK false
 #define RENDER_HITBOX true

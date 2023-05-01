@@ -10,11 +10,13 @@ class Equip_GunBase
 {
 	protected:
 		bool _isAuto;
+		DWORD _reloadTime;
+		DWORD _ammo;
 		DWORD _FireRate;
 	public:
 		Equip_GunBase() { _isAuto = false; }
 		bool IsAuto() { return _isAuto; }
-		DWORD FireRate() { return _FireRate; }
+		virtual DWORD FireRate() {return _FireRate; }
 		virtual void Fire(float& x, float& y, float& vx, float& vy, bool type = false) {}
 		virtual void Fire(float& x, float& y, int DIR) {}
 };

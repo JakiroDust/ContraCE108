@@ -179,6 +179,7 @@
     <ClCompile Include="spawnBulletHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -399,6 +400,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="spawnBulletHelper.h" />
+    <ClInclude Include="STL_storage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

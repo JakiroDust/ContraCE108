@@ -1,7 +1,8 @@
 #pragma once
 
 #include "KeyEventHandler.h"
-
+#include "STL_storage.h"
+#include "Texture.h"
 /*
 *  Abstract class for a game scene
 */
@@ -11,15 +12,17 @@ protected:
 	LPKEYEVENTHANDLER key_handler;
 	int id;
 	LPCWSTR sceneFilePath;
-
-public: 
+	unordered_map<int, unordered_map<int,int>> map;
+	unordered_map<int, unique_ptr<CTexture>> map_sprites;
+public:
+	
 	CScene(int id, LPCWSTR filePath)
 	{
 		this->id = id;
 		this->sceneFilePath = filePath;
 		this->key_handler = NULL;
 	}
-
+	unordered_map<int, unordered_map<int, int>>& getMap();
 	LPKEYEVENTHANDLER GetKeyEventHandler() { return key_handler; }
 	virtual void Load() = 0;
 	virtual void Unload() = 0;
