@@ -365,7 +365,6 @@ void Scene_Battle::parseMap()
 }
 
 void Scene_Battle::_ParseSection_DICT(string line)
-
 {
     ifstream f;
     f.open(line + "\\info.txt");
