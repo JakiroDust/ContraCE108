@@ -8,6 +8,7 @@
 #include "Game_Bullet.h"
 #include <fstream>
 using namespace std;
+float BG_color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 
 Scene_Battle::~Scene_Battle()
 {
@@ -31,6 +32,7 @@ Scene_Battle::~Scene_Battle()
 
 void Scene_Battle::Render()
 {
+
     vector<Game_ObjectBase*> RenderQueue;
     // layers
     for (int i = 0; i < _layers.size(); i++)
@@ -74,6 +76,11 @@ void Scene_Battle::Render()
         RenderQueue.insert(it + j, obj);
     }
     // Render ingame objects
+
+    CGame::GetInstance()->GetDirect3DDevice()->ClearRenderTargetView(CGame::GetInstance()->GetRenderTargetView(), BG_color);
+    float x, y;
+    ScreenManager::GetInstance()->Screen()->GetCenterPoint(x, y);
+    renderBG(x, y);
     for (int i = 0; i < RenderQueue.size(); i++)
     {
         RenderQueue[i]->Render();
@@ -193,7 +200,7 @@ void Scene_Battle::Create_Stage_Demo()
     _mapWidth = 3328;
     _mapHeight = GAMESCREEN_HEIGHT;
     _init_spatial();
- 
+    _ParseSection_DICT("textures\\MAP1");
     addPlayer1();
     SoundSystem* SS = SoundSystem::getInstance();
     SS->playBGM(BGM_JUNGLE);
@@ -227,7 +234,7 @@ void Scene_Battle::Create_Stage_Demo()
     add_object(move(plat6));//10
     
     
-    _layers.push_back(demo);
+    //_layers.push_back(demo);
     ScreenManager::GetInstance()->Screen()->focusToPoint(GAMESCREEN_WIDTH/2,GAMESCREEN_HEIGHT/2, _mapWidth, _mapHeight);
     
 }
@@ -294,7 +301,7 @@ void Scene_Battle::_init_spatial()
     height = 32;
     n = int(_mapHeight / width) + (_mapHeight % width>0);
     m = int(_mapWidth / height) + (_mapWidth% height >0);
-    mapTexSpatial = new Spatial(n,m,width,height,8,8);
+    mapTexSpatial = new SpatialforTex(n,m,width,height,8,8);
 
 }
 
@@ -361,7 +368,11 @@ void Scene_Battle::Execute_BasicSpawnerEvent()
 
 void Scene_Battle::parseMap()
 {
+    ///yeah i mean it is now has a header on a top i guess ?
+    if (map_info[-1] == 1)
+    {
 
+    }
 }
 
 void Scene_Battle::_ParseSection_DICT(string line)
@@ -369,7 +380,6 @@ void Scene_Battle::_ParseSection_DICT(string line)
     ifstream f;
     f.open(line + "\\info.txt");
 
-    int width, height, map_id;
     bool filler;
 
     if (f.is_open())
@@ -402,20 +412,24 @@ void Scene_Battle::_ParseSection_DICT(string line)
                 map[i][j] = temp;
                 dect.insert(temp);
                 count++;
+                if (count == 600)
+                {
+
+                }
             }
         }
         if (filler)
         {
             int texID = -1;
             map_info[texID] = 1;
-            wstring path = ToWSTR(line + "\\" + to_string(texID) + ".jpg");
-            map_tex[texID].reset(CGame::GetInstance()->LoadTexture(path.c_str(), false));
+            
+            
         }
         for (auto& i : dect)
         {
             int texID = i;
-            wstring path = ToWSTR(line + "\\" + to_string(texID) + ".jpg");
-            map_tex[texID].reset(CGame::GetInstance()->LoadTexture(path.c_str(), false));
+            wstring path = ToWSTR(line + "\\" + to_string(texID) + ".png");
+            map_tex[texID].reset(new CSprite(texID, 0, 0, 32, 32, CGame::GetInstance()->LoadTexture(path.c_str(), false)));
         }
     }
     else
@@ -446,4 +460,89 @@ void Scene_Battle::_ParseSection_DICT(string line)
     {
         DebugOut(L"CANNOT READ %s\\block.txt(CAN BE IGNORE IF DONT USE)", line);
     }
+    int curID = 0;
+    int curN = 0, curM = 0;
+    int startGapX = 0, startGapY = 0;
+    if (filler)
+    {
+        startGapX = 0;
+        startGapY = 16;
+    }
+    //parsing texture
+    curN = 0, curM = 0;
+    curID = 0;
+    for (curN = 0; curN < height; curN++)
+    {
+        for (curM = 0; curM < width; curM++)
+        {
+            int curType = map_info[curN * height + curM];
+            if (curType == NOTHING)
+                continue;
+            addMapPart(map[curN][curM], curID,curM*32+startGapX,curN*32+startGapY);
+                curID++;
+        }
+    }
+
+    //PARSING OBJECT(hitbox)
+    curN=0, curM=0;
+    
+
+    int curBlockStart;
+    int curBlockType;
+    for (curN = 0; curN < height; curN++)
+    {
+        curBlockStart = 0;
+        curBlockType = map_info[curN * height + 0];
+        for (curM = 1; curM < width; curM++)
+        {
+            int curType = map_info[curN * height + curM];
+            if (curType != curBlockType)
+            {
+                switch (curBlockType)
+                {
+                case NOTHING:
+                    /*
+                    * it is transparent
+                    */
+                    break;
+                case BRIDGE_BLOCK:
+                    /*
+                    ASSUMING BRIDGE ALWAYS UP, BUT FOR NOW SAME CASE WITH BLOCK UP
+                    */
+                case UP_BLOCK:
+                    break;
+                case DOWN_BLOCK:
+                    break;
+                default:
+                    DebugOut(L"Getting unknown type, please check again %d", map_info[curN * height + curM]);
+                }
+                curBlockType = curType;
+                curBlockStart = curM;
+            }
+        }
+
+    }
+
 }
+
+void Scene_Battle::renderBG(float x, float y)
+{
+    vector<int> id = mapTexSpatial->getNearByIDyx(y, x);
+    for (int i = 0; i < id.size(); i++)
+    {
+        int n = id[i] / width,
+            m=id[i]%width;
+        int _x, _y;
+        mapTexSpatial->getXYCenter(id[i], _x, _y);
+        map_tex[map[n][m]].get()->Draw(_x,_y,32,32);
+    }
+}
+void Scene_Battle::renderBG(int& x, int& y)
+{
+    renderBG(x / 1.0f, y / 1.0f);
+}
+void Scene_Battle::addMapPart(int texureID, int partID, int x, int y)
+{
+    mapTexSpatial->init_object_ONLYONCE(partID, x, y );
+}
+

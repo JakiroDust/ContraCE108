@@ -21,7 +21,7 @@ using namespace std;
 #define UP_BLOCK 1
 #define DOWN_BLOCK -1
 #define BRIDGE_BLOCK 2
-
+#define NOTHING 999
 class Scene_Battle : public Scene_Base
 {
 	private:
@@ -65,7 +65,7 @@ private:
 	void _delete_spatial();
 public:
 	Spatial *spatial=NULL;
-	Spatial* mapTexSpatial = NULL;
+	
 	vector<int> getNearByID(int n, int m);
 	vector<int> getNearbyIDFast();
 	vector<Game_ObjectBase*>* getObjectById(vector<int>& vtr);
@@ -81,8 +81,14 @@ public:
 protected:
 	unordered_map<int, unordered_map<int, int>> map;
 	unordered_map<int, int> map_info;
-	unordered_map<int, unique_ptr<CTexture>> map_tex;
+	unordered_map<int, unique_ptr<CSprite>> map_tex;
+	SpatialforTex* mapTexSpatial = NULL;
+	void renderBG(float x, float y);
+	void renderBG(int& x, int& y);
+	int width, height, map_id;
 public:
 	void _ParseSection_DICT(string line);
+	
+	void addMapPart(int texureID, int partID, int x, int y);
 };
 

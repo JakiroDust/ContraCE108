@@ -69,6 +69,18 @@ void CSprite::Draw(float x, float y)
 
 
 }
+void CSprite::Draw(float x, float y, const int width,const int heigth)
+{
+	float _width = width / 1.0f,
+		_heigth = heigth / 1.0f;
+	Draw(x, y, _width, _heigth);
+}
+void CSprite::Draw(float x, float y, int& width, int& heigth)
+{
+	float _width = width / 1.0f,
+		_heigth = heigth / 1.0f;
+	Draw(x, y, _width, _heigth);
+}
 void CSprite::Draw(float x, float y,float&width,float&heigth)
 {
 

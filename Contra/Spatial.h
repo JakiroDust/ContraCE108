@@ -10,7 +10,7 @@
 
 	class Spatial
 	{
-	private:
+	protected:
 		int _width;
 		int	_height;
 		int _m;
@@ -88,6 +88,7 @@
 		{
 			return getNearByID(y / _height, x / _width);
 		}
+
 		void init_object(int id, float& left, float& top, float& right, float& bottom)
 		{
 			int t = min(max(top / _height, 0), _n - 1),
@@ -100,7 +101,7 @@
 					_append(id, i, j);
 			}
 		}
-		void del_object(int& id, float& left, float& top, float& right, float& bottom)
+	virtual	void del_object(int& id, float& left, float& top, float& right, float& bottom)
 		{
 			int t = min(max(top / _height, 0), _n - 1),
 				b = min(max(bottom / _height, 0), _n - 1),
@@ -113,7 +114,7 @@
 					_remove(id, i, j);
 			}
 		}
-		void update(int& id, float& old_left, float& old_top, float& old_right, float& old_bottom,
+	virtual	void update(int& id, float& old_left, float& old_top, float& old_right, float& old_bottom,
 								float& new_left, float& new_top, float& new_right, float& new_bottom)
 		{
 			int old_l = old_left / _width, old_t=old_top/_height, old_r=old_right/_width, old_b=old_bottom/_height,
@@ -163,5 +164,39 @@
 
 		}
 	};
+/*
+* Mainly for Tex Map, supported with cache, but the cache part ehh not implement yet
+*/
+class SpatialforTex : public Spatial
+{
+	vector<int> oldLTRB;
+	set<int> cached_id;
+	vector<vector<int>> loc;
+public:
+	SpatialforTex(int n, int m, int width, int height, int nearN = 2, int nearM = 2) : Spatial(n, m, width, height, nearN, nearM) { loc = vector<vector<int>>(n*m,vector<int>(2,0)); };
+/*
+* ONLY USE THIS WHEN U KNOW WHAT ARE U DOING, FOR SPATIAL MAP TEXU or render related thing only
+*/
+	void init_object_ONLYONCE(int id, int left, int top)
+	{
+		int t = min(max(top / _height, 0), _n - 1),
+			l = min(max(left / _width, 0), _m - 1);
+		_append(id, t, l);
 
+		loc[id] = vector<int>(2, 0);
+		int c;
+		loc[id][0] = left;
+		loc[id][1] = top;
+	}
+	void getXY(int id, int& left, int& top)
+	{
+		left = loc[id][0];
+		top = loc[id][1];
+	}
+	void getXYCenter(int id, int& left, int& top)
+	{
+		left = loc[id][0]+16;
+		top = loc[id][1]+16;
+	}
+};
 #pragma warning(pop)

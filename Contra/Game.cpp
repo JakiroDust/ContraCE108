@@ -72,6 +72,7 @@ void CGame::Init(HWND hWnd, HINSTANCE hInstance)
 		DebugOut((wchar_t*)L"[ERROR] pSwapChain->GetBuffer has failed %s %d", _W(__FILE__), __LINE__);
 		return;
 	}
+	// Clear the back buffer to black
 
 	// create the render target view
 	hr = pD3DDevice->CreateRenderTargetView(pBackBuffer, NULL, &pRenderTargetView);
