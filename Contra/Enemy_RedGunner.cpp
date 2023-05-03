@@ -30,16 +30,6 @@ void Enemy_RedGunner::OnCollisionWith(PCOLLISIONEVENT e)
 		DeleteThis();
 		return;
 	}
-	if (dynamic_cast<Game_Bullet*>(e->obj))
-	{
-		Game_Bullet* bullet = ((Game_Bullet*)e->obj);
-		if (bullet->OwnerID() == B_OWNER_PLAYER)
-		{
-			bullet->DeleteThis();
-			forceDie();
-			return;
-		}
-	}
 }
 
 void Enemy_RedGunner::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)

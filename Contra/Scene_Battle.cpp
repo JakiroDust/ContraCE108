@@ -6,6 +6,7 @@
 #include "Obj_SmartBot.h"
 #include "Enemy_RedGunner.h"
 #include "Game_Bullet.h"
+#include "Enemy_Sniper.h"
 #include <fstream>
 using namespace std;
 float BG_color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
@@ -206,6 +207,7 @@ void Scene_Battle::Create_Stage_Demo()
     SS->playBGM(BGM_JUNGLE);
     unique_ptr<Obj_ContraBot> bot (new Obj_ContraBot(80, 40, 2)); add_object(move(bot));
     unique_ptr<Obj_SmartBot>smartbot(new Obj_SmartBot(100, 40, 2)); add_object(move(smartbot));
+    unique_ptr<Enemy_Sniper> sniper(new Enemy_Sniper(300, 200, 2)); add_object(move(sniper));
 
     unique_ptr<Game_Blocker> block1 ( new Game_Blocker(-18, 0, 1, 20, GAMESCREEN_HEIGHT - 20));
     unique_ptr<Game_Blocker> block2 ( new Game_Blocker(_mapWidth - 20, 1, 0, 20, GAMESCREEN_HEIGHT - 20));
@@ -360,7 +362,7 @@ void Scene_Battle::Execute_BasicSpawnerEvent()
 
     for (int i = 0; i < 1; i++)
     {
-       unique_ptr <Enemy_RedGunner> redgunner ( new Enemy_RedGunner(460, 40, 2));
+        unique_ptr <Enemy_RedGunner> redgunner ( new Enemy_RedGunner(460, 40, 2));
         add_object(move(redgunner));
     }
 

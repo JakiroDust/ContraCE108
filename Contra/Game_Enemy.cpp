@@ -7,6 +7,7 @@
 #include "State_Contra_Jump.h"
 #include "State_Contra_Die.h"
 #include "Contra_GET_ANI.h"
+#include "Game_Bullet.h"
 
 int Game_Enemy::CharID()
 {
@@ -23,6 +24,11 @@ void Game_Enemy::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 		_state->Update(dt);
 	UpdateState();
 
+	if (_hp <= 0)
+	{
+		forceDie();
+	}
+
 	UpdateBehavior(dt, coObjects);
 	ResetStateParams();
 }
@@ -36,6 +42,7 @@ void Game_Enemy::Render()
 
 void Game_Enemy::UpdateState()
 {
+
 	if (_state == NULL)
 	{
 		_state.reset( new State_Contra_Idle(this));
@@ -198,6 +205,18 @@ void Game_Enemy::OnNoCollision(DWORD dt)
 void Game_Enemy::OnCollisionWith(PCOLLISIONEVENT e)
 {
 	Game_Character::OnCollisionWith(e);
+
+	// Hit bullet
+	if (!_ghost && dynamic_cast<Game_Bullet*>(e->obj))
+	{
+		Game_Bullet* bullet = ((Game_Bullet*)e->obj);
+		if (bullet->OwnerID() == B_OWNER_PLAYER)
+		{
+			if (!_immortal)
+				_hp -= bullet->Damage();
+			bullet->DeleteThis();
+		}
+	}
 }
 
 void Game_Enemy::KeyReleaseAll()

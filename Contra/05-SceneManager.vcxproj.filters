@@ -28,31 +28,31 @@
       <Filter>Source Files\Sprite</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_Infary.cpp">
-      <Filter>Source Files\Object\Character\Enemy</Filter>
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_Jumper.cpp">
-      <Filter>Source Files\Object\Character\Enemy</Filter>
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_RedGunner.cpp">
-      <Filter>Source Files\Object\Character\Enemy</Filter>
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_ScubaDriver.cpp">
-      <Filter>Source Files\Object\Character\Enemy</Filter>
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_SneakSniper.cpp">
-      <Filter>Source Files\Object\Character\Enemy</Filter>
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_Sniper.cpp">
-      <Filter>Source Files\Object\Character\Enemy</Filter>
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_Turret.cpp">
-      <Filter>Source Files\Object\Character\Enemy</Filter>
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Game_MovableEnemy.cpp">
-      <Filter>Source Files\Object\Character\Enemy</Filter>
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Game_StationEnemy.cpp">
-      <Filter>Source Files\Object\Character\Enemy</Filter>
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="State_Contra_Base.cpp">
       <Filter>Source Files\CharState</Filter>
@@ -103,16 +103,16 @@
       <Filter>Source Files\GameCore</Filter>
     </ClCompile>
     <ClCompile Include="Game_Enemy.cpp">
-      <Filter>Source Files\Object\Character\Enemy</Filter>
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Obj_Bullet_N.cpp">
       <Filter>Source Files\Object\MoveObject\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="Obj_ContraBot.cpp">
-      <Filter>Source Files\Object\Character</Filter>
+      <Filter>Source Files\Object\MoveObject\Character</Filter>
     </ClCompile>
     <ClCompile Include="Obj_SmartBot.cpp">
-      <Filter>Source Files\Object\Character</Filter>
+      <Filter>Source Files\Object\MoveObject\Character</Filter>
     </ClCompile>
     <ClCompile Include="Game_Platform.cpp">
       <Filter>Source Files\Object\StaticObject</Filter>
@@ -130,7 +130,7 @@
       <Filter>Source Files\GameCore</Filter>
     </ClCompile>
     <ClCompile Include="Game_Character.cpp">
-      <Filter>Source Files\Object\Character</Filter>
+      <Filter>Source Files\Object\MoveObject\Character</Filter>
     </ClCompile>
     <ClCompile Include="MusicManager.cpp">
       <Filter>Source Files\GameCore</Filter>
@@ -160,7 +160,7 @@
       <Filter>Source Files\GameCore</Filter>
     </ClCompile>
     <ClCompile Include="Game_Player.cpp">
-      <Filter>Source Files\Object\Character</Filter>
+      <Filter>Source Files\Object\MoveObject\Character</Filter>
     </ClCompile>
     <ClCompile Include="Demo_Layer.cpp">
       <Filter>Source Files\GameCore</Filter>
@@ -180,6 +180,11 @@
     <ClCompile Include="Sprites.cpp">
       <Filter>Source Files\Sprite</Filter>
     </ClCompile>
+    <ClCompile Include="Obj_EnemyBullet_N.cpp">
+      <Filter>Source Files\Object\MoveObject\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_EnemyGun_N.cpp" />
+    <ClCompile Include="Equip_EnemyGun_Sniper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -403,6 +408,11 @@
     <ClInclude Include="STL_storage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Obj_EnemyBullet_N.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Equip_EnemyGun_N.h" />
+    <ClInclude Include="Equip_EnemyGun_Sniper.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -492,12 +502,6 @@
     <Filter Include="Source Files\CharState">
       <UniqueIdentifier>{212a0d87-c8f9-4aaa-8777-e45542e6faa5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Object\Character">
-      <UniqueIdentifier>{9e6eed07-07a8-4424-88a3-ddf11c03f576}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Object\Character\Enemy">
-      <UniqueIdentifier>{49de5c78-298f-4414-ae59-ef4fb86dc94c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Object\MoveObject">
       <UniqueIdentifier>{0bb3cfc3-518c-417f-a66b-f03540aa7e8c}</UniqueIdentifier>
     </Filter>
@@ -509,6 +513,12 @@
     </Filter>
     <Filter Include="Source Files\GameCore\fmod">
       <UniqueIdentifier>{f9629b2f-9f0b-4242-ac07-4f60a2ab1e3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\MoveObject\Character">
+      <UniqueIdentifier>{9e6eed07-07a8-4424-88a3-ddf11c03f576}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\MoveObject\Character\Enemy">
+      <UniqueIdentifier>{49de5c78-298f-4414-ae59-ef4fb86dc94c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

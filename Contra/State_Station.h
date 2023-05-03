@@ -3,6 +3,8 @@
 
 class State_Station : public State_Contra_Base
 {
+	private:
+		int _DIR = -1;
 	public:
 		State_Station(Game_ObjectBase* obj) : State_Contra_Base(obj) {}
 		int StateId() override { return STATE_WALK; }

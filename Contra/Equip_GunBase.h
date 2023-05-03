@@ -9,14 +9,30 @@ using namespace std;
 class Equip_GunBase
 {
 	protected:
-		bool _isAuto;
-		DWORD _reloadTime;
-		DWORD _ammo;
-		DWORD _FireRate;
+		bool _isAuto = false;
+		DWORD _reloadTime = 0;
+		DWORD _ammo = 0;
+		DWORD _maxAmmo = 0;
+		DWORD _FireRate = 0;
 	public:
 		Equip_GunBase() { _isAuto = false; }
 		bool IsAuto() { return _isAuto; }
-		virtual DWORD FireRate() {return _FireRate; }
+		virtual DWORD FireRate()
+		{
+			if (_maxAmmo <= 0)
+				return _FireRate;
+
+			if (_ammo > 0)
+			{
+				_ammo--;
+				return _FireRate;
+			}
+			else
+			{
+				_ammo = _maxAmmo;
+				return _reloadTime;
+			}
+		}
 		virtual void Fire(float& x, float& y, float& vx, float& vy, bool type = false) {}
 		virtual void Fire(float& x, float& y, int DIR) {}
 };

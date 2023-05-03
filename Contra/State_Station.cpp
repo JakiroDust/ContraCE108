@@ -40,6 +40,13 @@ void State_Station::Render()
 		else
 			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_LOOK_UP_RIGHT))->Render(x, y);
 	}
+	else 
+	{
+		if (obj->IsFaceLeft())
+			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_WALK_LEFT))->Render(x, y);
+		else
+			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_WALK_RIGHT))->Render(x, y);
+	}
 }
 
 void State_Station::Update(DWORD dt)
