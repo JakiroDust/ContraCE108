@@ -3,6 +3,7 @@
 contra.txt
 CONTRA_BULLET.txt
 INFARY.txt
+SNIPER.txt
 #coin.txt
 #cloud.txt
 #brick.txt
