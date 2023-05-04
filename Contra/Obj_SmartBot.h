@@ -12,6 +12,7 @@ class Obj_SmartBot : public Game_Enemy
 		{
 			_map = new Mapper(this);
 			_moveSpd = 0.08f;
+			_ghost = true;
 		}
 		~Obj_SmartBot()
 		{

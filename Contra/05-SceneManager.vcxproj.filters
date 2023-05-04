@@ -7,9 +7,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game_Bullet.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Equip_GunBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -102,9 +99,6 @@
     <ClCompile Include="Game_Layer.cpp">
       <Filter>Source Files\GameCore</Filter>
     </ClCompile>
-    <ClCompile Include="Game_Enemy.cpp">
-      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="Obj_Bullet_N.cpp">
       <Filter>Source Files\Object\MoveObject\Bullet</Filter>
     </ClCompile>
@@ -185,6 +179,12 @@
     </ClCompile>
     <ClCompile Include="Equip_EnemyGun_N.cpp" />
     <ClCompile Include="Equip_EnemyGun_Sniper.cpp" />
+    <ClCompile Include="Game_Enemy.cpp">
+      <Filter>Source Files\Object\MoveObject\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Bullet.cpp">
+      <Filter>Source Files\Object\MoveObject\Bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">

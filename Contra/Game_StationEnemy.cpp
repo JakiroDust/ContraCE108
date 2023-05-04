@@ -33,3 +33,47 @@ void Game_StationEnemy::UpdateState()
 		break;
 	}
 }
+
+void Game_StationEnemy::KeyDownEventHandler(int KeyCode)
+{
+	Game_Enemy::KeyDownEventHandler(KeyCode);
+
+	if (_state == NULL)
+		return;
+
+	// Characer in force-moving state, ignore KeyEvent.
+	if (_ForceX != 0)
+		return;
+
+	if (dynamic_cast<State_Station*>(_state.get()))
+	{
+		State_Station* state = (State_Station*)_state.get();
+		switch (KeyCode)
+		{
+		case DIK_NUMPAD1:
+			state->KeyPressed_FaceDownLeft();
+			break;
+		case DIK_NUMPAD2:
+			state->KeyPressed_FaceDown();
+			break;
+		case DIK_NUMPAD3:
+			state->KeyPressed_FaceDownRight();
+			break;
+		case DIK_NUMPAD4:
+			state->KeyPressed_FaceLeft();
+			break;
+		case DIK_NUMPAD6:
+			state->KeyPressed_FaceRight();
+			break;
+		case DIK_NUMPAD7:
+			state->KeyPressed_FaceUpLeft();
+			break;
+		case DIK_NUMPAD8:
+			state->KeyPressed_FaceUp();
+			break;
+		case DIK_NUMPAD9:
+			state->KeyPressed_FaceUpRight();
+			break;
+		}
+	}
+}

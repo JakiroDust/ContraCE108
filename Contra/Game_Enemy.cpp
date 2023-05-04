@@ -96,18 +96,22 @@ void Game_Enemy::KeyDownEventHandler(int KeyCode)
 	case DIK_UP:
 		state->KeyPressed_Up();
 		state->KeyHold_Up();
+		state->KeyReleased_Down();
 		break;
 	case DIK_DOWN:
 		state->KeyPressed_Down();
 		state->KeyHold_Down();
+		state->KeyReleased_Up();
 		break;
 	case DIK_LEFT:
 		state->KeyPressed_Left();
 		state->KeyHold_Left();
+		state->KeyReleased_Right();
 		break;
 	case DIK_RIGHT:
 		state->KeyPressed_Right();
 		state->KeyHold_Right();
+		state->KeyReleased_Left();
 		break;
 	case DIK_O:
 		state->KeyPressed_Shoot();

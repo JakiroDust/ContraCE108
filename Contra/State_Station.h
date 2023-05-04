@@ -15,5 +15,14 @@ class State_Station : public State_Contra_Base
 		void KeyPressed_Right() override;
 		void KeyPressed_Jump() override;
 		void KeyPressed_Shoot() override;
+
+		virtual void KeyPressed_FaceUp();
+		virtual void KeyPressed_FaceDown();
+		virtual void KeyPressed_FaceLeft();
+		virtual void KeyPressed_FaceRight();
+		virtual void KeyPressed_FaceUpLeft();
+		virtual void KeyPressed_FaceUpRight();
+		virtual void KeyPressed_FaceDownLeft();
+		virtual void KeyPressed_FaceDownRight();
 };
 
