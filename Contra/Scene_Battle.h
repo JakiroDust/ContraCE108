@@ -81,7 +81,8 @@ public:
 protected:
 	unordered_map<int, unordered_map<int, int>> map;
 	unordered_map<int, int> map_info;
-	unordered_map<int, unique_ptr<CSprite>> map_tex;
+	unordered_map<int, unique_ptr<CSprite>> map_sprite;
+	LPTEXTURE _map_tex=NULL;
 	SpatialforTex* mapTexSpatial = NULL;
 	void renderBG(float x, float y);
 	void renderBG(int& x, int& y);

@@ -402,7 +402,7 @@ void Scene_Battle::_ParseSection_DICT(string line)
         return;
     }
     f.close();
-    f.open(line + "\\mapping.txt");
+    f.open(line + "\\map.txt");
     set<int> dect;
     if (f.is_open())
     {
@@ -429,16 +429,22 @@ void Scene_Battle::_ParseSection_DICT(string line)
             
             
         }
+        wstring path = ToWSTR(line + "\\map.png");
+        _map_tex = CGame::GetInstance()->LoadTexture(path.c_str(), false);
         for (auto& i : dect)
         {
             int texID = i;
-            wstring path = ToWSTR(line + "\\" + to_string(texID) + ".png");
-            map_tex[texID].reset(new CSprite(texID, 0, 0, 32, 32, CGame::GetInstance()->LoadTexture(path.c_str(), false)));
+            int index_value = i - 1;
+            int left = 0 + 32 * (index_value % 10),
+                top = 0 + 32 * (index_value / 10),
+                right = left+31,
+                bottom = top+31;
+            map_sprite[texID].reset(new CSprite(texID,left,top ,right ,bottom, _map_tex));
         }
     }
     else
     {
-        DebugOut(L"CANNOT READ %s\\mapping.txt", line);
+        DebugOut(L"CANNOT READ %s\\map.txt", line);
         return;
     }
     f.close();
@@ -486,7 +492,7 @@ void Scene_Battle::_ParseSection_DICT(string line)
                 curID++;
         }
     }
-
+    return;
     //PARSING OBJECT(hitbox)
     curN=0, curM=0;
     
@@ -538,7 +544,7 @@ void Scene_Battle::renderBG(float x, float y)
             m=id[i]%width;
         int _x, _y;
         mapTexSpatial->getXYCenter(id[i], _x, _y);
-        map_tex[map[n][m]].get()->Draw(_x,_y,32,32);
+        map_sprite[map[n][m]].get()->Draw(_x,_y,32,32);
     }
 }
 void Scene_Battle::renderBG(int& x, int& y)
