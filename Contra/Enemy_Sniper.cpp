@@ -26,28 +26,28 @@ void Enemy_Sniper::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	switch (_lockDir)
 	{
 	case DIR_LEFT:
-		AddAction(DIK_LEFT);
+		AddAction(DIK_NUMPAD4);
 		break;
 	case DIR_RIGHT:
-		AddAction(DIK_RIGHT);
+		AddAction(DIK_NUMPAD6);
 		break;
 	case DIR_BOTTOM:
-		AddAction(DIK_DOWN);
+		AddAction(DIK_NUMPAD2);
 		break;
 	case DIR_TOP:
-		AddAction(DIK_UP);
+		AddAction(DIK_NUMPAD8);
 		break;
 	case DIR_BOTTOM_LEFT:
-		AddAction(DIK_DOWN, DIK_LEFT);
+		AddAction(DIK_NUMPAD1);
 		break;
 	case DIR_BOTTOM_RIGHT:
-		AddAction(DIK_DOWN, DIK_RIGHT);
+		AddAction(DIK_NUMPAD3);
 		break;
 	case DIR_TOP_LEFT:
-		AddAction(DIK_UP, DIK_LEFT);
+		AddAction(DIK_NUMPAD7);
 		break;
 	case DIR_TOP_RIGHT:
-		AddAction(DIK_UP, DIK_RIGHT);
+		AddAction(DIK_NUMPAD9);
 		break;
 	default:
 		break;
@@ -85,17 +85,17 @@ void Enemy_Sniper::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	// look up
 	if (player->footerY() - footerY() < -_height)
 	{
-		if (abs(player->footerX() - footerX()) <= _width * 2 / 3.0f)
+		if (abs(player->footerX() - footerX()) <= _width * 2)
 		{
 			_lockDir = DIR_TOP;
-			if (player->footerX() <= footerX())
-				_faceLeft = true;
+			if (floorf(player->footerX()) <= floorf(footerX()))
+				AddAction(DIK_LEFT);
 			else
-				_faceLeft = false;
+				AddAction(DIK_RIGHT);
 		}
 		else if (abs(player->footerX() - footerX()) < _width * 10 && abs(player->footerY() - footerY()) > _height)
 		{
-			if (player->footerX() < footerX())
+			if (floorf(player->footerX()) < floorf(footerX()))
 			{
 				_lockDir = DIR_TOP_LEFT;
 			}
@@ -106,7 +106,7 @@ void Enemy_Sniper::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 		}
 		else
 		{
-			if (player->footerX() < footerX())
+			if (floorf(player->footerX()) < floorf(footerX()))
 			{
 				_lockDir = DIR_LEFT;
 			}
@@ -122,14 +122,14 @@ void Enemy_Sniper::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 		if (abs(player->footerX() - footerX()) <= _width * 2 / 3.0f)
 		{
 			_lockDir = DIR_BOTTOM;
-			if (player->footerX() <= footerX())
+			if (floorf(player->footerX()) <= floorf(footerX()))
 				_faceLeft = true;
 			else
 				_faceLeft = false;
 		}
 		else if (abs(player->footerX() - footerX()) < _width * 10 && abs(player->footerY() - footerY()) > _height)
 		{
-			if (player->footerX() < footerX())
+			if (floorf(player->footerX()) < floorf(footerX()))
 			{
 				_lockDir = DIR_BOTTOM_LEFT;
 			}
@@ -140,7 +140,7 @@ void Enemy_Sniper::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 		}
 		else
 		{
-			if (player->footerX() < footerX())
+			if (floorf(player->footerX()) < floorf(footerX()))
 			{
 				_lockDir = DIR_LEFT;
 			}
@@ -152,7 +152,7 @@ void Enemy_Sniper::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	}
 	else
 	{
-		if (player->footerX() < footerX())
+		if (floorf(player->footerX()) < floorf(footerX()))
 		{
 			_lockDir = DIR_LEFT;
 		}

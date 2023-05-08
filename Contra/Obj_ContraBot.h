@@ -10,6 +10,7 @@ class Obj_ContraBot : public Game_Enemy
 		Obj_ContraBot(float x, float y, int z) : Game_Enemy(x, y, z, 20, 32)
 		{
 			_moveSpd = 0.1f;
+			_ghost = true;
 		}
 		Obj_ContraBot(int x, int y, int z);
 		int CharID() override;

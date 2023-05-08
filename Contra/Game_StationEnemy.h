@@ -21,6 +21,8 @@ class Game_StationEnemy : public Game_Enemy
 		// When collision with an object has been detected (triggered by CCollision::Process)
 		void OnCollisionWith(PCOLLISIONEVENT e) override { Game_Enemy::OnCollisionWith(e); }
 
+		void KeyDownEventHandler(int KeyCode) override;
+
 		void Execute_DieAction() override { Game_Enemy::Execute_DieAction(); }
 };
 

@@ -8,44 +8,61 @@ void State_Station::Render()
 	CAnimations* animations = CAnimations::GetInstance();
 	float x, y;
 	obj->GetCenterPoint(x, y);
-	if (HoldKeyLeft)
+	switch (_DIR)
 	{
-		if (HoldKeyUp)
+	case DIR_TOP:
+		{
+			if (obj->IsFaceLeft())
+				animations->Get(Get_CharANI_ID(obj->CharID(), ACT_LOOK_UP_LEFT))->Render(x, y);
+			else
+				animations->Get(Get_CharANI_ID(obj->CharID(), ACT_LOOK_UP_RIGHT))->Render(x, y);
+			break;
+		}
+	case DIR_BOTTOM:
+		{
+			if (obj->IsFaceLeft())
+				animations->Get(Get_CharANI_ID(obj->CharID(), ACT_LOOK_DOWN_LEFT))->Render(x, y);
+			else
+				animations->Get(Get_CharANI_ID(obj->CharID(), ACT_LOOK_DOWN_RIGHT))->Render(x, y);
+			break;
+		}
+	case DIR_LEFT:
+		{
+			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_WALK_LEFT))->Render(x, y);
+			break;
+		}
+	case DIR_RIGHT:
+		{
+			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_WALK_RIGHT))->Render(x, y);
+			break;
+		}
+	case DIR_TOP_LEFT:
+		{
 			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_WALK_LEFT_LOOK_UP))->Render(x, y);
-		else if (HoldKeyDown)
-			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_WALK_LEFT_LOOK_DOWN))->Render(x, y);
-		else
-			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_WALK_LEFT))->Render(x, y);
-	}
-	else if (HoldKeyRight)
-	{
-		if (HoldKeyUp)
+			break;
+		}
+	case DIR_TOP_RIGHT:
+		{
 			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_WALK_RIGHT_LOOK_UP))->Render(x, y);
-		else if (HoldKeyDown)
+			break;
+		}
+	case DIR_BOTTOM_LEFT:
+		{
+			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_WALK_LEFT_LOOK_DOWN))->Render(x, y);
+			break;
+		}
+	case DIR_BOTTOM_RIGHT:
+		{
 			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_WALK_RIGHT_LOOK_DOWN))->Render(x, y);
-		else
-			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_WALK_RIGHT))->Render(x, y);
-	}
-	else if (HoldKeyDown)
-	{
-		if (obj->IsFaceLeft())
-			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_LOOK_DOWN_LEFT))->Render(x, y);
-		else
-			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_LOOK_DOWN_RIGHT))->Render(x, y);
-	}
-	else if (HoldKeyUp)
-	{
-		if (obj->IsFaceLeft())
-			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_LOOK_UP_LEFT))->Render(x, y);
-		else
-			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_LOOK_UP_RIGHT))->Render(x, y);
-	}
-	else 
-	{
-		if (obj->IsFaceLeft())
-			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_WALK_LEFT))->Render(x, y);
-		else
-			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_WALK_RIGHT))->Render(x, y);
+			break;
+		}
+	default:
+		{
+			if (obj->IsFaceLeft())
+				animations->Get(Get_CharANI_ID(obj->CharID(), ACT_WALK_LEFT))->Render(x, y);
+			else
+				animations->Get(Get_CharANI_ID(obj->CharID(), ACT_WALK_RIGHT))->Render(x, y);
+		}
 	}
 }
 
@@ -82,30 +99,71 @@ void State_Station::KeyPressed_Shoot()
 {
 	Game_Character* obj = (Game_Character*)_srcObj;
 
-	if (HoldKeyDown)
+	switch (_DIR)
 	{
-		if (obj->IsFaceLeft())
-			obj->Shoot(DIR_BOTTOM_LEFT);
-		else if (obj->IsFaceLeft())
-			obj->Shoot(DIR_BOTTOM_RIGHT);
-		else
-			obj->Shoot(DIR_BOTTOM);
+	case DIR_TOP:
+		obj->Shoot(DIR_TOP);
+		break;
+	case DIR_BOTTOM:
+		obj->Shoot(DIR_BOTTOM);
+		break;
+	case DIR_LEFT:
+		obj->Shoot(DIR_LEFT);
+		break;
+	case DIR_RIGHT:
+		obj->Shoot(DIR_RIGHT);
+		break;
+	case DIR_TOP_LEFT:
+		obj->Shoot(DIR_TOP_LEFT);
+		break;
+	case DIR_TOP_RIGHT:
+		obj->Shoot(DIR_TOP_RIGHT);
+		break;
+	case DIR_BOTTOM_LEFT:
+		obj->Shoot(DIR_BOTTOM_LEFT);
+		break;
+	case DIR_BOTTOM_RIGHT:
+		obj->Shoot(DIR_BOTTOM_RIGHT);
+		break;
 	}
-	else if (HoldKeyUp)
-	{
-		if (HoldKeyLeft)
-			obj->Shoot(DIR_TOP_LEFT);
-		else if (HoldKeyRight)
-			obj->Shoot(DIR_TOP_RIGHT);
-		else
-			obj->Shoot(DIR_TOP);
-	}
-	else
-	{
-		if (obj->IsFaceLeft())
-			obj->Shoot(DIR_LEFT);
-		else
-			obj->Shoot(DIR_RIGHT);
-	}
+}
 
+void State_Station::KeyPressed_FaceUp()
+{
+	_DIR = DIR_TOP;
+}
+
+void State_Station::KeyPressed_FaceDown()
+{
+	_DIR = DIR_BOTTOM;
+}
+
+void State_Station::KeyPressed_FaceLeft()
+{
+	_DIR = DIR_LEFT;
+}
+
+void State_Station::KeyPressed_FaceRight()
+{
+	_DIR = DIR_RIGHT;
+}
+
+void State_Station::KeyPressed_FaceUpLeft()
+{
+	_DIR = DIR_TOP_LEFT;
+}
+
+void State_Station::KeyPressed_FaceUpRight()
+{
+	_DIR = DIR_TOP_RIGHT;
+}
+
+void State_Station::KeyPressed_FaceDownLeft()
+{
+	_DIR = DIR_BOTTOM_LEFT;
+}
+
+void State_Station::KeyPressed_FaceDownRight()
+{
+	_DIR = DIR_BOTTOM_RIGHT;
 }
