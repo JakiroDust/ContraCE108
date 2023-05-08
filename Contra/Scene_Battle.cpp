@@ -402,7 +402,7 @@ void Scene_Battle::_ParseSection_DICT(string line)
         return;
     }
     f.close();
-    f.open(line + "\\map.txt");
+    f.open(line + "\\mapping.txt");
     set<int> dect;
     if (f.is_open())
     {
@@ -429,12 +429,12 @@ void Scene_Battle::_ParseSection_DICT(string line)
             
             
         }
-        wstring path = ToWSTR(line + "\\map.png");
+        wstring path = ToWSTR(line + "\\merged.png");
         _map_tex = CGame::GetInstance()->LoadTexture(path.c_str(), false);
         for (auto& i : dect)
         {
             int texID = i;
-            int index_value = i - 1;
+            int index_value = i;
             int left = 0 + 32 * (index_value % 10),
                 top = 0 + 32 * (index_value / 10),
                 right = left+31,
@@ -444,7 +444,7 @@ void Scene_Battle::_ParseSection_DICT(string line)
     }
     else
     {
-        DebugOut(L"CANNOT READ %s\\map.txt", line);
+        DebugOut(L"CANNOT READ %s\\mapping.txt", line);
         return;
     }
     f.close();
