@@ -478,7 +478,7 @@ void Scene_Battle::_ParseSection_DICT(string line)
         startGapX = 0;
         startGapY = 16;
     }
-    //parsing texture
+    //parsing texture+
     curN = 0, curM = 0;
     curID = 0;
     for (curN = 0; curN < height; curN++)
