@@ -204,11 +204,10 @@ void Scene_Battle::Create_Stage_Demo()
     _ParseSection_DICT("textures\\MAP1");
     addPlayer1();
     SoundSystem* SS = SoundSystem::getInstance();
-    //SS->playBGM(BGM_JUNGLE);
+    SS->playBGM(BGM_JUNGLE);
     unique_ptr<Obj_ContraBot> bot (new Obj_ContraBot(80, 40, 2)); add_object(move(bot));
     unique_ptr<Obj_SmartBot>smartbot(new Obj_SmartBot(100, 40, 2)); add_object(move(smartbot));
     
-    // Can't use now. Wait for adding sprites.
     unique_ptr<Enemy_Sniper> sniper(new Enemy_Sniper(300, 150, 2)); add_object(move(sniper));
 
     unique_ptr<Game_Blocker> block1 ( new Game_Blocker(-18, 0, 1, 20, GAMESCREEN_HEIGHT - 20));

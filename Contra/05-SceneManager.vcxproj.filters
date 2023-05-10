@@ -177,14 +177,22 @@
     <ClCompile Include="Obj_EnemyBullet_N.cpp">
       <Filter>Source Files\Object\MoveObject\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="Equip_EnemyGun_N.cpp" />
-    <ClCompile Include="Equip_EnemyGun_Sniper.cpp" />
     <ClCompile Include="Game_Enemy.cpp">
       <Filter>Source Files\Object\MoveObject\Character</Filter>
     </ClCompile>
     <ClCompile Include="Game_Bullet.cpp">
       <Filter>Source Files\Object\MoveObject\Bullet</Filter>
     </ClCompile>
+    <ClCompile Include="Equip_Gun_R.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_EnemyGun_N.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_EnemyGun_Sniper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_Bullet_R.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -364,7 +372,6 @@
     <ClInclude Include="State_Contra_Die.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MusicManager.h" />
     <ClInclude Include="fmod\fmod_dsp_effects.h">
       <Filter>Source Files\GameCore\fmod</Filter>
     </ClInclude>
@@ -411,8 +418,19 @@
     <ClInclude Include="Obj_EnemyBullet_N.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Equip_EnemyGun_N.h" />
-    <ClInclude Include="Equip_EnemyGun_Sniper.h" />
+    <ClInclude Include="Equip_Gun_R.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Equip_EnemyGun_Sniper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Equip_EnemyGun_N.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj_Bullet_R.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

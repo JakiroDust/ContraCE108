@@ -181,6 +181,15 @@ void Game_Player::KeyStateHandler(BYTE* state)
 		CharState->KeyReleased_Left();
 		CharState->KeyReleased_Right();
 	}
+
+	if (game->IsKeyDown(DIK_O))
+	{
+		CharState->KeyHold_Shoot();
+	}
+	else
+	{
+		CharState->KeyReleased_Shoot();
+	}
 }
 
 void Game_Player::OnNoCollision(DWORD dt) 
