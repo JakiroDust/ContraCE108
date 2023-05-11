@@ -147,6 +147,11 @@ void Game_Character::ExecuteAction()
 		KeyDownEventHandler(action.second);
 }
 
+void Game_Character::ResetStateParams()
+{
+	Game_MovableObject::ResetStateParams();
+}
+
 Game_Character::Game_Character(float x, float y, int z, int width, int height) : Game_MovableObject(x, y, z, width, height)
 {
 	_needScanCollision = true;

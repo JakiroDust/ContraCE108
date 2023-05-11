@@ -41,7 +41,6 @@ void Game_Collision::SweptAABB(
 		return;
 	}
 
-
 	//
 	// Broad-phase test 
 	//
@@ -187,7 +186,7 @@ void Game_Collision::Scan(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* obj
 	{
 		PCOLLISIONEVENT e = SweptAABB(objSrc, dt, objDests->at(i));
 
-		if (e->WasCollided() == 1)
+		if (e->WasCollided() == 1 && e->obj->BlockingCondition(dt, e))
 			coEvents.push_back(e);
 		else
 			delete e;
@@ -270,17 +269,17 @@ void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* 
 		dx = vx * dt;
 		dy = vy * dt;
 
-		// Checking col blocking object Condition
-		if (colX != NULL && !colX->obj->BlockingCondition(dt, colX))
-		{
-			delete colX;
-			colX = NULL;
-		}
-		if (colY != NULL && !colY->obj->BlockingCondition(dt, colY))
-		{
-			delete colY;
-			colY = NULL;
-		}
+		//// Checking col blocking object Condition
+		//if (colX != NULL && !colX->obj->BlockingCondition(dt, colX))
+		//{
+		//	delete colX;
+		//	colX = NULL;
+		//}
+		//if (colY != NULL && !colY->obj->BlockingCondition(dt, colY))
+		//{
+		//	delete colY;
+		//	colY = NULL;
+		//}
 
 		if (colX != NULL && colY != NULL)
 		{

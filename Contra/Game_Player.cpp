@@ -350,7 +350,7 @@ void Game_Player::PerformRevive()
 	_revive_pos_X = 64;
 	_revive_pos_Y = 64;
 	// --------------
-
+	_ForceX = 0;
 	_x = _revive_pos_X;
 	_y = _revive_pos_Y;
 }

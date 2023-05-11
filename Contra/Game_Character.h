@@ -13,6 +13,7 @@ class Game_Character : public Game_MovableObject
 protected:
 	int _hp = 1;
 	bool _jumpDown = false;
+	bool _moveFlag = false;
 	// Weapon
 	Equip_GunBase* _weapon = NULL;
 	DWORD _GunReloadInterval = 0;
@@ -23,7 +24,8 @@ protected:
 	void AddAction(int KeyCode1, int KeyCode2 = -1);
 	virtual void KeyReleaseAll() {}
 	void ExecuteAction();
-	bool _moveFlag = false;
+	void ResetStateParams() override;
+
 public:
 	//static unordered_map<int, vector<float>> _spawnBulletHelper;
 	Game_Character(float x, float y, int z, int width, int height) ;	
