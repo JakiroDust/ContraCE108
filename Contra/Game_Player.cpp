@@ -314,6 +314,7 @@ void Game_Player::GetCustomSize(int state, int& width, int& height)
 void Game_Player::Execute_DieAction()
 {
 	Game_Character::Execute_DieAction();
+	_lockFace = true;
 	if (_faceLeft)
 	{
 		_ForceX = -40;
@@ -342,7 +343,7 @@ void Game_Player::PerformRevive()
 	_invincible_ani_flash = false;
 	_invincible_ani_interval = PLAYER_INVINCIBLE_ANI_INTERVAL;
 	_invincible_interval = PLAYER_REVIVE_INVINCIBLE_TIME;
-	
+	_lockFace = false;
 	// implement revive-pos detection later
 	_revive_pos_X = 64;
 	_revive_pos_Y = 64;
