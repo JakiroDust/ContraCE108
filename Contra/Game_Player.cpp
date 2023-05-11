@@ -58,7 +58,6 @@ void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	if (_state != NULL)
 		_state->Update(dt);
 	UpdateState();
-
 	ResetStateParams();
 }
 
@@ -257,12 +256,15 @@ void Game_Player::OnNoCollision(DWORD dt)
 void Game_Player::OnCollisionWith(PCOLLISIONEVENT e)
 {
 	Game_Character::OnCollisionWith(e);
-	if (!_die && !_ghost && dynamic_cast<Enemy_RedGunner*>(e->obj))
+	if (!_die && !_ghost && dynamic_cast<Game_Enemy*>(e->obj))
 	{
-		//Game_Character* enemy = (Game_Character*)(e->obj);
+		Game_Enemy* enemy = (Game_Enemy*)(e->obj);
 		//enemy->forceDie();
-		DieEvent();
-		return;
+		if (enemy->BodyDamage())
+		{
+			DieEvent();
+			return;
+		}
 	}
 
 	// Hit bullet

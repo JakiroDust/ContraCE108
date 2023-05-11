@@ -18,6 +18,7 @@ class Enemy_Jumper : public Game_MovableEnemy
 		Enemy_Jumper(float x, float y, int z) : Game_MovableEnemy(x, y, z, INFARY_BASE_WIDTH, INFARY_BASE_HEIGHT)
 		{
 			_moveSpd = 0.08f;
+			_BodyDamage = true;
 		}
 		~Enemy_Jumper() {
 			Game_MovableEnemy::~Game_MovableEnemy();

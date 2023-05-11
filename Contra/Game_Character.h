@@ -18,12 +18,12 @@ protected:
 	DWORD _GunReloadInterval = 0;
 	// Auto control
 	vector<pair<int, int>> _ActionQueue; // save keycode list
-	// Save for x y
-	
+
 	virtual void UpdateState() {}
 	void AddAction(int KeyCode1, int KeyCode2 = -1);
 	virtual void KeyReleaseAll() {}
 	void ExecuteAction();
+	bool _moveFlag = false;
 public:
 	//static unordered_map<int, vector<float>> _spawnBulletHelper;
 	Game_Character(float x, float y, int z, int width, int height) ;	
@@ -62,6 +62,10 @@ public:
 	virtual void Shoot(float x, float y);
 	virtual bool IsFullAutomaticGun() { return _weapon != NULL && _weapon->IsAuto();}
 	void Execute_DieAction() override { Game_MovableObject::Execute_DieAction(); }
+
+	void moveLeft() override;
+	void moveRight() override;
+
 	// GET & SET
 
 	bool IsJumpDown() { return _jumpDown; }

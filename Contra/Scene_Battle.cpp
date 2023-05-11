@@ -5,6 +5,7 @@
 #include "Obj_ContraBot.h"
 #include "Obj_SmartBot.h"
 #include "Enemy_RedGunner.h"
+#include "Enemy_Infary.h"
 #include "Game_Bullet.h"
 #include "Enemy_Sniper.h"
 #include <fstream>
@@ -363,7 +364,7 @@ void Scene_Battle::Execute_BasicSpawnerEvent()
 
     for (int i = 0; i < 1; i++)
     {
-        unique_ptr <Enemy_RedGunner> redgunner ( new Enemy_RedGunner(460, 40, 2));
+        unique_ptr <Enemy_Infary> redgunner ( new Enemy_Infary(460, 40, 2));
         add_object(move(redgunner));
     }
 

@@ -42,7 +42,7 @@ protected:
 
 	void UpdatePosition(DWORD dt);
 	virtual void ResetStateParams();
-
+	void ResetSpeed();
 public:
 	Game_ObjectBase(float x = 0, float y = 0, int z = 0, int width = 0, int height = 0);
 
@@ -86,6 +86,7 @@ public:
 	virtual void Update(DWORD dt) {}
 	virtual void Update(DWORD dt, vector< Game_ObjectBase*>* coObjects) {}
 	virtual void Update(DWORD dt, unordered_map<int, Game_ObjectBase*>* coObjects) {}
+	virtual void Execute_AfterUpdating(DWORD dt) {}
 
 	// COLLISION
 
