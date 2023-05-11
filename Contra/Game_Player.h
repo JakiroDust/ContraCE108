@@ -17,12 +17,25 @@
 #define PLAYER_SWIM_WIDTH 20
 #define PLAYER_SWIM_HEIGHT 8
 
+// PARAM
+#define PLAYER_REVIVE_INVINCIBLE_TIME 2000
+#define PLAYER_WAIT_FOR_REVIVE_TIME 600
+#define PLAYER_INVINCIBLE_ANI_INTERVAL 50
+
 class Game_Player : public Game_Character
 {
 	protected:
 		bool _auto = false;
+		int _invincible_interval = 0;
+		int _revive_interval = 0;
+		int _invincible_ani_interval = 0;
+		bool _invincible_ani_flash = false;
+		float _revive_pos_X = 0;
+		float _revive_pos_Y = 0;
 		void UpdateState();
 		void KeyReleaseAll() override;
+		void DieEvent();
+		void PerformRevive();
 	public:
 		Game_Player(float x, float y, int z) : Game_Character(x, y, z, PLAYER_BASE_WIDTH, PLAYER_BASE_HEIGHT)
 		{
@@ -51,5 +64,7 @@ class Game_Player : public Game_Character
 
 		int CharID();
 		void GetCustomSize(int state, int& width, int& height) override;
+
+		void Execute_DieAction() override;
 };
 

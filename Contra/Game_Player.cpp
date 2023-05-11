@@ -5,6 +5,7 @@
 #include "State_Contra_Fall.h"
 #include "State_Contra_Swim.h"
 #include "State_Contra_Jump.h"
+#include "State_Contra_Die.h"
 #include "Contra_GET_ANI.h"
 #include "Enemy_RedGunner.h"
 
@@ -16,6 +17,42 @@ int Game_Player::CharID()
 void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 	Game_Character::Update(dt, coObjects);
+
+	// UPDATE SOME PARAMS
+	// invincible mode
+	if (_invincible_interval >= dt)
+	{
+		_ghost = true;
+		_invincible_interval -= dt;
+	}
+	else
+	{
+		_ghost = false;
+	}
+	// invincible ani
+	if (_invincible_interval > 0)
+	{
+		if (_invincible_ani_interval > 0)
+		{
+			_invincible_ani_interval -= dt;
+		}
+		else
+		{
+			_invincible_ani_interval = PLAYER_INVINCIBLE_ANI_INTERVAL;
+			_invincible_ani_flash = !_invincible_ani_flash;
+		}
+	}
+	// Wait for revive
+	if (_die && _revive_interval > 0)
+	{
+		_revive_interval -= dt;
+	}
+	else if (_die)
+	{
+		PerformRevive();
+	}
+
+	// Check Collision event
 	Game_Collision::GetInstance()->Process(this, dt, coObjects);
 	
 	if (_state != NULL)
@@ -28,6 +65,10 @@ void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 void Game_Player::Render()
 {
 	RenderHitbox();
+
+	if (_invincible_interval > 0 && _invincible_ani_flash)
+		return;
+	
 	if (_state != NULL)
 		_state->Render();
 }
@@ -35,6 +76,22 @@ void Game_Player::Render()
 void Game_Player::UpdateState()
 {
 	if (_state == NULL)
+	{
+		_state.reset(new State_Contra_Idle(this));
+		return;
+	}
+
+	if (_die && !dynamic_cast<State_Contra_Die*>(_state.get()))
+	{
+		// player won't be deleted
+		_state.reset(new State_Contra_Die(this, 1000000));
+		return;
+	}
+	else if (_die && dynamic_cast<State_Contra_Die*>(_state.get()))
+	{
+		return;
+	}
+	else if (!_die && dynamic_cast<State_Contra_Die*>(_state.get()))
 	{
 		_state.reset(new State_Contra_Idle(this));
 		return;
@@ -200,10 +257,24 @@ void Game_Player::OnNoCollision(DWORD dt)
 void Game_Player::OnCollisionWith(PCOLLISIONEVENT e)
 {
 	Game_Character::OnCollisionWith(e);
-	if (dynamic_cast<Enemy_RedGunner*>(e->obj))
+	if (!_die && !_ghost && dynamic_cast<Enemy_RedGunner*>(e->obj))
 	{
-		Game_Character* enemy = (Game_Character*)(e->obj);
-		enemy->forceDie();
+		//Game_Character* enemy = (Game_Character*)(e->obj);
+		//enemy->forceDie();
+		DieEvent();
+		return;
+	}
+
+	// Hit bullet
+	if (!_ghost && dynamic_cast<Game_Bullet*>(e->obj))
+	{
+		Game_Bullet* bullet = ((Game_Bullet*)e->obj);
+		if (bullet->OwnerID() == B_OWNER_ENEMY)
+		{
+			if (!_immortal)
+				DieEvent();
+			bullet->DeleteThis();
+		}
 	}
 }
 
@@ -238,4 +309,45 @@ void Game_Player::GetCustomSize(int state, int& width, int& height)
 	default:
 		break;
 	}
+}
+
+void Game_Player::Execute_DieAction()
+{
+	Game_Character::Execute_DieAction();
+	if (_faceLeft)
+	{
+		_ForceX = -40;
+	}
+	else
+	{
+		_ForceX = 40;
+	}
+	jump();
+}
+
+void Game_Player::DieEvent()
+{
+	forceDie();
+	
+	// implement limited life later
+	//_hp--;
+	
+	_revive_interval = PLAYER_WAIT_FOR_REVIVE_TIME;
+}
+
+void Game_Player::PerformRevive()
+{
+	_die = false;
+	_revive_interval = 0;
+	_invincible_ani_flash = false;
+	_invincible_ani_interval = PLAYER_INVINCIBLE_ANI_INTERVAL;
+	_invincible_interval = PLAYER_REVIVE_INVINCIBLE_TIME;
+	
+	// implement revive-pos detection later
+	_revive_pos_X = 64;
+	_revive_pos_Y = 64;
+	// --------------
+
+	_x = _revive_pos_X;
+	_y = _revive_pos_Y;
 }

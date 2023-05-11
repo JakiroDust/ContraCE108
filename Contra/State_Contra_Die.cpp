@@ -31,9 +31,14 @@ void State_Contra_Die::Update(DWORD dt)
 		_trigger = false;
 	}
 
-	if (_delayDelete > 0)
+	if (_delayDelete >= dt)
 	{
-		_delayDelete--;
+		_delayDelete -= dt;
+		return;
+	}
+	else if (_delayDelete > 0)
+	{
+		_delayDelete = 0;
 		return;
 	}
 

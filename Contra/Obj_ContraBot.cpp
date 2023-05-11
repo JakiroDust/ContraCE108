@@ -5,10 +5,10 @@
 #include "State_Contra_Base.h"
 #include "Game_Player.h"
 
-Obj_ContraBot::Obj_ContraBot(int x, int y, int z) : Game_Enemy((float)x, (float)y, z, 20, 32)
-{
-	Obj_ContraBot((float)x, (float)y, z);
-}
+//Obj_ContraBot::Obj_ContraBot(int x, int y, int z) : Game_Enemy((float)x, (float)y, z, 20, 32)
+//{
+//	Obj_ContraBot((float)x, (float)y, z);
+//}
 
 int Obj_ContraBot::CharID()
 {
