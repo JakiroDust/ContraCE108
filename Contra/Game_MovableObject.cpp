@@ -14,17 +14,17 @@ float Game_MovableObject::footerX()
 
 float Game_MovableObject::footerY()
 {
-	return _y + _height - 1;
+	return _y - _height + 1;
 }
 
 float Game_MovableObject::realX(float x)
 {
-	return floorf(x - ceilf((float)_width / 2));
+	return floorf(x - ceilf((float)_width / 2) + 1);
 }
 
 float Game_MovableObject::realY(float y)
 {
-	return y - _height;
+	return floorf(y + _height - 1);
 }
 
 void Game_MovableObject::moveLeft()
@@ -57,20 +57,20 @@ void Game_MovableObject::UpdateJumpState(DWORD dt)
 	{
 		if (_jumpForce < JUMP_VECTOR * dt)
 		{
-			_vy = -_jumpForce/dt;
+			_vy = _jumpForce/dt;
 			_jumpForce = 0;
 		}
 		else
 		{
 			_jumpForce -= JUMP_VECTOR * dt;
-			_vy = -JUMP_VECTOR;
+			_vy = JUMP_VECTOR;
 		}
 		
 	}
 	else
 	{
 		_jumpForce = 0;
-		_vy = JUMP_VECTOR;
+		_vy = -JUMP_VECTOR;
 	}
 }
 
@@ -128,7 +128,7 @@ void Game_MovableObject::OnCollisionWith(PCOLLISIONEVENT e)
 	Game_ObjectBase::OnCollisionWith(e);
 	if (e->ny != 0 && e->obj->IsBlocking())
 	{
-		if (e->ny < 0) _onGround = true;
-		if (e->ny > 0) _jumpForce = 0;
+		if (e->ny > 0) _onGround = true;
+		if (e->ny < 0) _jumpForce = 0; 
 	}
 }

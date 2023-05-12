@@ -36,7 +36,7 @@ public:
     void getSpawnCor(float& x, float& y,int CHAR_ID, int& DIR)
     {
         x += _spawnBulletHelper[CHAR_ID][DIR][X];
-        y -= _spawnBulletHelper[CHAR_ID][DIR][Y];
+        y += _spawnBulletHelper[CHAR_ID][DIR][Y];
     }
 
 };

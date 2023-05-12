@@ -17,22 +17,22 @@ void Game_Screen::focusToPoint(float x, float y, int MapWidth = 1, int MapHeight
 	}
 	if (x + _width / 2.0f > MapWidth)
 	{
-		x = MapWidth - 1 - _width / 2.0f;
+		x = MapWidth + 1 - _width / 2.0f;
 	}
 	if (y - _height / 2.0f < 0)
 	{
-		y = _height / 2.0f - 1;
+		y = _height / 2.0f;
 	}
 	if (y + _height / 2.0f > MapHeight)
 	{
-		y = MapHeight - 1 - _height / 2.0f;
+		y = MapHeight + 1 - _height / 2.0f;
 	}
 
 	// Set CAM position
 	x = (FLOAT)floor(x);
-	y = (FLOAT)floor(y);
+	y = (FLOAT)ceilf(y);
 	_x = x - _width / 2.0f;
-	_y = y - _height / 2.0f;
+	_y = y + _height / 2.0f;
 
 	// Update later
 }

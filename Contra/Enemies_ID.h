@@ -1,5 +1,11 @@
 #pragma once
 
+// Terrains
+#define TBLOCKER 10000
+#define TPLATFORM 10001
+#define TWATER 10002
+
+// Enemies
 
 #define INFARY 20
 #define INFARY_BASE 21

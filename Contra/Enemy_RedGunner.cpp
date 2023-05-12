@@ -47,7 +47,7 @@ void Enemy_RedGunner::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	float NEAR_Y = JUMP_VECTOR * dt * 2;
 	
 	// Make testbox move down in order to get data of platform which this obj is standing on 
-	testbox->SetSpeed(0, JUMP_VECTOR);
+	testbox->SetSpeed(0, -JUMP_VECTOR);
 	testbox->Update(dt, coObjects);
 	// Get Collisions and handle them.
 	vector<PCOLLISIONEVENT>* coEvents = testbox->GetCollisionList();
@@ -57,7 +57,7 @@ void Enemy_RedGunner::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 		// Check current terrain
 		if (dynamic_cast<Game_Terrain*>(e->obj))
 		{
-			if (e->ny < 0)
+			if (e->ny > 0)
 			{
 				// obj is near border of terrain
 				if ((footerX() - NEAR_X < e->obj->x() &&  _faceLeft)

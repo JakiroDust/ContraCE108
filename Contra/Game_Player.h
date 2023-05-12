@@ -26,9 +26,9 @@ class Game_Player : public Game_Character
 {
 	protected:
 		bool _auto = false;
-		int _invincible_interval = 0;
-		int _revive_interval = 0;
-		int _invincible_ani_interval = 0;
+		DWORD _invincible_interval = 0;
+		DWORD _revive_interval = 0;
+		DWORD _invincible_ani_interval = 0;
 		bool _invincible_ani_flash = false;
 		float _revive_pos_X = 0;
 		float _revive_pos_Y = 0;

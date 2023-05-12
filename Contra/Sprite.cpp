@@ -53,15 +53,16 @@ void CSprite::Draw(float x, float y)
 	float cx, cy;
 
 	//g->GetCamPos(cx, cy);
-	ScreenManager::GetInstance()->Screen()->GetPosition(cx, cy);
+	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
+	screen->GetPosition(cx, cy);
 
 	cx = (FLOAT)floor(cx);
-	cy = (FLOAT)floor(cy);
+	cy = (FLOAT)floor(screen->ViewBoxHeight() - cy);
 
 	D3DXMATRIX matTranslation;
 	
 	x = (FLOAT)floor(x);
-	y = (FLOAT)floor(y);
+	y = (FLOAT)floor(screen->ViewBoxHeight() - y);
 
 	D3DXMatrixTranslation(&matTranslation, x - cx, g->GetBackBufferHeight() - y + cy, 0.1f);
 	D3DXMATRIX matScaling;
@@ -93,15 +94,16 @@ void CSprite::Draw(float x, float y,float&width,float&heigth)
 	float cx, cy;
 
 	//g->GetCamPos(cx, cy);
-	ScreenManager::GetInstance()->Screen()->GetPosition(cx, cy);
+	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
+	screen->GetPosition(cx, cy);
 
 	cx = (FLOAT)floor(cx);
-	cy = (FLOAT)floor(cy);
+	cy = (FLOAT)floor(screen->ViewBoxHeight() - cy);
 
 	D3DXMATRIX matTranslation;
 
 	x = (FLOAT)floor(x);
-	y = (FLOAT)floor(y);
+	y = (FLOAT)floor(screen->ViewBoxHeight() - y);
 		
 	D3DXMatrixTranslation(&matTranslation, x - cx, g->GetBackBufferHeight() - y + cy, 0.1f);
 	D3DXMATRIX matScaling;
