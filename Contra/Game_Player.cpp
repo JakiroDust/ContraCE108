@@ -353,7 +353,7 @@ void Game_Player::PerformRevive()
 	_lockFace = false;
 	// implement revive-pos detection later
 	_revive_pos_X = 64;
-	_revive_pos_Y = 64;
+	_revive_pos_Y = 220;
 	// --------------
 	_ForceX = 0;
 	_x = _revive_pos_X;

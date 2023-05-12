@@ -39,7 +39,7 @@ class Scene_Battle : public Scene_Base
 		// DEMO
 		void Demo_Camera_Action();
 	public:
-		Scene_Battle() : Scene_Base() { _p1.reset(new Game_Player(40.0f, 40.0f, 2)); };
+		Scene_Battle() : Scene_Base() {  }
 		~Scene_Battle();
 		//vector<Game_ObjectBase*>* objects() { return &_objects; }
 		Game_Player* p1() { return dynamic_cast<Game_Player*>(__objects[_p1_id].get()); }
@@ -58,37 +58,37 @@ class Scene_Battle : public Scene_Base
 
 		/// from this is protype
 
-private:
-	int id_nth = 0;
-	vector<int> id_recycle_bin;
-	void _init_spatial();
-	void _delete_spatial();
-public:
-	Spatial *spatial=NULL;
-	vector<int> getNearByID(int n, int m);
-	vector<int> getNearbyIDFast();
-	vector<Game_ObjectBase*>* getObjectById(vector<int>& vtr);
-	int add_object(unique_ptr<Game_ObjectBase>&& object);
-	void delete_object(int id);
-	//void delete_object(unique_ptr<Game_ObjectBase>& object);
-	// Spawn an RedGunner
-	void Execute_BasicSpawnerEvent();
-	// from here is MAP SPATIAL
-	void parseMap();
+	private:
+		int id_nth = 0;
+		vector<int> id_recycle_bin;
+		void _init_spatial();
+		void _delete_spatial();
+	public:
+		Spatial *spatial=NULL;
+		vector<int> getNearByID(int n, int m);
+		vector<int> getNearbyIDFast();
+		vector<Game_ObjectBase*>* getObjectById(vector<int>& vtr);
+		int add_object(unique_ptr<Game_ObjectBase>&& object);
+		void delete_object(int id);
+		//void delete_object(unique_ptr<Game_ObjectBase>& object);
+		// Spawn an RedGunner
+		void Execute_BasicSpawnerEvent();
+		// from here is MAP SPATIAL
+		void parseMap();
 
-	///spatial map
-protected:
-	unordered_map<int, unordered_map<int, int>> map;
-	unordered_map<int, int> map_info;
-	unordered_map<int, unique_ptr<CSprite>> map_sprite;
-	LPTEXTURE _map_tex=NULL;
-	SpatialforTex* mapTexSpatial = NULL;
-	void renderBG(float x, float y);
-	void renderBG(int& x, int& y);
-	int width, height, map_id;
-public:
-	void _ParseSection_DICT(string line);
+		///spatial map
+	protected:
+		unordered_map<int, unordered_map<int, int>> map;
+		unordered_map<int, int> map_info;
+		unordered_map<int, unique_ptr<CSprite>> map_sprite;
+		LPTEXTURE _map_tex=NULL;
+		SpatialforTex* mapTexSpatial = NULL;
+		void renderBG(float x, float y);
+		void renderBG(int& x, int& y);
+		int width, height, map_id;
+	public:
+		void _ParseSection_DICT(string line);
 	
-	void addMapPart(int texureID, int partID, int x, int y);
+		void addMapPart(int texureID, int partID, int x, int y);
 };
 

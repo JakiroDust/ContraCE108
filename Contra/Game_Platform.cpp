@@ -9,7 +9,7 @@ bool Game_Platform::BlockingCondition(DWORD dt, PCOLLISIONEVENT e)
 	{
 
 		Game_MovableObject* SrcObj = (Game_MovableObject*)e->src_obj;
-		if (e->ny < 0 && SrcObj->footerY() <= _y)
+		if (e->ny > 0 && SrcObj->footerY() >= _y)
 		{
 			if (dynamic_cast<Game_Character*>(SrcObj))
 			{

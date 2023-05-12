@@ -14,10 +14,10 @@ void Equip_Gun_N::Fire(float& x, float& y, int DIR)
 	switch (DIR)
 	{
 	case DIR_TOP:
-		bullet = unique_ptr<Obj_Bullet_N>(new Obj_Bullet_N(x, y, B_VALUE_Z, 0, -1));
+		bullet = unique_ptr<Obj_Bullet_N>(new Obj_Bullet_N(x, y, B_VALUE_Z, 0, 1));
 		break;
 	case DIR_BOTTOM:
-		bullet = unique_ptr<Obj_Bullet_N>(new Obj_Bullet_N(x, y, B_VALUE_Z, 0, 1));
+		bullet = unique_ptr<Obj_Bullet_N>(new Obj_Bullet_N(x, y, B_VALUE_Z, 0, -1));
 		break;
 	case DIR_LEFT:
 		bullet = unique_ptr<Obj_Bullet_N>(new Obj_Bullet_N(x, y, B_VALUE_Z, -1, 0));
@@ -26,16 +26,16 @@ void Equip_Gun_N::Fire(float& x, float& y, int DIR)
 		bullet = unique_ptr<Obj_Bullet_N>(new Obj_Bullet_N(x, y, B_VALUE_Z, 1, 0));
 		break;
 	case DIR_TOP_LEFT:
-		bullet = unique_ptr<Obj_Bullet_N>(new Obj_Bullet_N(x, y, B_VALUE_Z, -1, -1));
-		break;
-	case DIR_TOP_RIGHT:
-		bullet = unique_ptr<Obj_Bullet_N>(new Obj_Bullet_N(x, y, B_VALUE_Z, 1, -1));
-		break;
-	case DIR_BOTTOM_LEFT:
 		bullet = unique_ptr<Obj_Bullet_N>(new Obj_Bullet_N(x, y, B_VALUE_Z, -1, 1));
 		break;
-	case DIR_BOTTOM_RIGHT:
+	case DIR_TOP_RIGHT:
 		bullet = unique_ptr<Obj_Bullet_N>(new Obj_Bullet_N(x, y, B_VALUE_Z, 1, 1));
+		break;
+	case DIR_BOTTOM_LEFT:
+		bullet = unique_ptr<Obj_Bullet_N>(new Obj_Bullet_N(x, y, B_VALUE_Z, -1, -1));
+		break;
+	case DIR_BOTTOM_RIGHT:
+		bullet = unique_ptr<Obj_Bullet_N>(new Obj_Bullet_N(x, y, B_VALUE_Z, 1, -1));
 		break;
 	default:
 		break;

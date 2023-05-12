@@ -163,15 +163,14 @@ vector<int> Scene_Battle::getNearByIDyx(int y, int x)
 void Scene_Battle::checkObjectNeedRender(Game_ObjectBase* obj)
 {
     float y, x;
-
     
     Game_Screen* screen = ScreenManager::GetInstance()->Screen();
     screen->GetCenterPoint(x, y);
     getNearByIDyx(y, x);
     if (obj->x() + obj->width() < screen->x()
         || obj->x() > screen->x() + screen->width()
-        || obj->y() + obj->height() < screen->y()
-        || obj->y() > screen->y() + screen->height())
+        || obj->y() < screen->y() - screen->height()
+        || obj->y() - obj->height() > screen->y())
     {
         obj->SetNeedRender(false);
         if (dynamic_cast<Game_Bullet*>(obj))
@@ -201,28 +200,32 @@ void Scene_Battle::Create_Stage_Demo()
 {
     _mapWidth = 3328;
     _mapHeight = GAMESCREEN_HEIGHT;
+    ScreenManager::GetInstance()->Screen()->SetViewBox(_mapWidth, _mapHeight);
     _init_spatial();
     _ParseSection_DICT("textures\\MAP1");
+
+    _p1.reset(new Game_Player(40.0f, _mapHeight - 40.0f, 2));
+
     addPlayer1();
     SoundSystem* SS = SoundSystem::getInstance();
     SS->playBGM(BGM_JUNGLE);
-    unique_ptr<Obj_ContraBot> bot (new Obj_ContraBot(80.0f, 40.0f, 2)); add_object(move(bot));
-    unique_ptr<Obj_SmartBot>smartbot(new Obj_SmartBot(100.0f, 40.0f, 2)); add_object(move(smartbot));
+    //unique_ptr<Obj_ContraBot> bot (new Obj_ContraBot(80.0f, _mapHeight - 40.0f + 32, 2)); add_object(move(bot));
+    //unique_ptr<Obj_SmartBot>smartbot(new Obj_SmartBot(100.0f, _mapHeight - 40.0f + 32, 2)); add_object(move(smartbot));
     
-    unique_ptr<Enemy_Sniper> sniper(new Enemy_Sniper(300.0f, 150.0f, 2)); add_object(move(sniper));
+    unique_ptr<Enemy_Sniper> sniper(new Enemy_Sniper(300.0f, _mapHeight - 150.0f, 2)); add_object(move(sniper));
 
-    unique_ptr<Game_Blocker> block1 ( new Game_Blocker(-18.0f, 0.0f, 1, 20, GAMESCREEN_HEIGHT - 20));
-    unique_ptr<Game_Blocker> block2 ( new Game_Blocker(_mapWidth - 20.0f, 1.0f, 0, 20, GAMESCREEN_HEIGHT - 20));
+    unique_ptr<Game_Blocker> block1 ( new Game_Blocker(-18.0f, _mapHeight - 20.0f, 1, 20, GAMESCREEN_HEIGHT - 20));
+    unique_ptr<Game_Blocker> block2 ( new Game_Blocker(_mapWidth - 20.0f, _mapHeight - 20.0f, 1, 20, GAMESCREEN_HEIGHT - 20));
 
-    unique_ptr<Game_Water> water1(new Game_Water(0.0f, GAMESCREEN_HEIGHT - 20.0f, 1, 288, 20));
-    unique_ptr<Game_Water> water2(new Game_Water(352.0f, GAMESCREEN_HEIGHT - 20.0f, 1, 2976, 20));
+    unique_ptr<Game_Water> water1(new Game_Water(0.0f, 20.0f, 1, 288, 20));
+    unique_ptr<Game_Water> water2(new Game_Water(352.0f, 20.0f, 1, 2976, 20));
 
-    unique_ptr<Game_Platform> plat1(new Game_Platform(160.0f, 150.0f, 1, 96, 10));
-    unique_ptr<Game_Platform> plat2(new Game_Platform(256.0f, 178.0f, 1, 32, 10));
-    unique_ptr<Game_Platform> plat3(new Game_Platform(352.0f, 178.0f, 1, 32, 10));
-    unique_ptr<Game_Platform> plat4(new Game_Platform(416.0f, 150.0f, 1, 64, 10));
-    unique_ptr<Game_Blocker> plat5(new Game_Blocker(288.0f, 215.0f, 1, 64, 32));
-    unique_ptr<Game_Platform> plat6(new Game_Platform(32.0f, 118.0f, 1, 736, 10));
+    unique_ptr<Game_Platform> plat1(new Game_Platform(160.0f, _mapHeight - 150.0f, 1, 96, 10));
+    unique_ptr<Game_Platform> plat2(new Game_Platform(256.0f, _mapHeight - 178.0f, 1, 32, 10));
+    unique_ptr<Game_Platform> plat3(new Game_Platform(352.0f, _mapHeight - 178.0f, 1, 32, 10));
+    unique_ptr<Game_Platform> plat4(new Game_Platform(416.0f, _mapHeight - 150.0f, 1, 64, 10));
+    unique_ptr<Game_Blocker> plat5(new Game_Blocker(288.0f, _mapHeight - 215.0f, 1, 64, 32));
+    unique_ptr<Game_Platform> plat6(new Game_Platform(32.0f, _mapHeight - 118.0f, 1, 736, 10));
 
     //Demo_Layer* demo = new Demo_Layer(0, 0, 0, 3328, 240);
     //
@@ -364,7 +367,7 @@ void Scene_Battle::Execute_BasicSpawnerEvent()
 
     for (int i = 0; i < 1; i++)
     {
-        unique_ptr <Enemy_Infary> redgunner ( new Enemy_Infary(460, 40, 2));
+        unique_ptr <Enemy_Infary> redgunner ( new Enemy_Infary(460, 200, 2));
         add_object(move(redgunner));
     }
 
@@ -439,7 +442,7 @@ void Scene_Battle::_ParseSection_DICT(string line)
                 top = 0 + 32 * (index_value / 10),
                 right = left+31,
                 bottom = top+31;
-            map_sprite[texID].reset(new CSprite(texID,left,top ,right ,bottom, _map_tex));
+            map_sprite[texID].reset(new CSprite(texID, left, top, right, bottom, _map_tex));
         }
     }
     else

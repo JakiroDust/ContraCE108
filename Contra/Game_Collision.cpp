@@ -1,5 +1,6 @@
 #include "Game_Collision.h"
 #include "Game_ObjectBase.h"
+#include "ScreenManager.h"
 
 #include "debug.h"
 
@@ -31,7 +32,7 @@ void Game_Collision::SweptAABB(
 	nx = ny = 0;
 
 	// check if move object has already intersected with static object. 
-	if (ml <= sr && mr >= sl && mt <= sb && mb >= st)
+	if (ml <= sr && mr >= sl && mt >= sb && mb <= st)
 	{
 		t = 0;
 		ny = 0.0f;
@@ -123,7 +124,7 @@ void Game_Collision::SweptAABB(
 }
 
 #include "Game_Player.h"
-#include "Enemy_Infary.h"
+#include "Game_Water.h"
 
 /*
 	Extension of original SweptAABB to deal with two moving objects
@@ -157,11 +158,18 @@ PCOLLISIONEVENT Game_Collision::SweptAABB(PGAMEOBJECT objSrc, DWORD dt, PGAMEOBJ
 	objSrc->GetBoundingBox(ml, mt, mr, mb);
 	objDest->GetBoundingBox(sl, st, sr, sb);
 
+	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
+	mt = screen->ViewBoxHeight() - mt;
+	mb = screen->ViewBoxHeight() - mb;
+	st = screen->ViewBoxHeight() - st;
+	sb = screen->ViewBoxHeight() - sb;
+	dy = -dy;
+
 	//// These codes are used to debug Player collision
-	//if (dynamic_cast<Game_Player*>(objSrc) && dynamic_cast<Enemy_Infary*>(objDest) && abs(objSrc->x() - objDest->x()) < (objSrc->width() + objDest->width())/3)
-	//{
-	//	int a = 2;
-	//}
+	if (dynamic_cast<Game_Player*>(objSrc) && dynamic_cast<Game_Water*>(objDest) && abs(objSrc->y() - objSrc->height() - objDest->y()) < 1)
+	{
+		int a = 2;
+	}
 
 	SweptAABB(
 		ml, mt, mr, mb,
@@ -170,7 +178,7 @@ PCOLLISIONEVENT Game_Collision::SweptAABB(PGAMEOBJECT objSrc, DWORD dt, PGAMEOBJ
 		t, nx, ny
 	);
 
-	Game_CollisionEvent* e = new Game_CollisionEvent(t, nx, ny, dx, dy, objDest, objSrc);
+	Game_CollisionEvent* e = new Game_CollisionEvent(t, nx, -ny, dx, dy, objDest, objSrc);
 	return e;
 }
 

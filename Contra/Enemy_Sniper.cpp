@@ -83,7 +83,7 @@ void Enemy_Sniper::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	_idle = 0;
 
 	// look up
-	if (player->footerY() - footerY() < -_height)
+	if (player->footerY() - footerY() > _height)
 	{
 		if (abs(player->footerX() - footerX()) <= _width * 2)
 		{
@@ -117,7 +117,7 @@ void Enemy_Sniper::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 		}
 	}
 	// look down
-	else if (player->y() - footerY() > 1)
+	else if (player->y() - footerY() < -1)
 	{
 		if (abs(player->footerX() - footerX()) <= _width * 2 / 3.0f)
 		{

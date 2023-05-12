@@ -58,8 +58,8 @@ public:
 	void SetSpeed(float vx, float vy) { this->_vx = vx, this->_vy = vy; }
 	void GetPosition(float& x, float& y) { x = this->_x; y = this->_y; }
 	void GetSpeed(float& vx, float& vy) { vx = this->_vx; vy = this->_vy; }
-	void GetCenterPoint(float& x, float& y) { x = _x + _width / 2.0f; y = _y + _height / 2.0f; }
-	void SetCenterPoint(float x, float y) { this->_x = x - _width/2.0f, this->_y = y - _height / 2.0f; }
+	void GetCenterPoint(float& x, float& y) { x = _x + _width / 2.0f; y = _y - _height / 2.0f; }
+	void SetCenterPoint(float x, float y) { this->_x = x - _width/2.0f, this->_y = y + _height / 2.0f; }
 	void GetLTRB(float& l, float& t, float& r, float& b);
 	bool NeedScanCollision() { return _needScanCollision; }
 	// 0 - left alignment

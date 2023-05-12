@@ -8,7 +8,7 @@ void Game_Bullet::SetAngle(float degree)
 	float rad = CONVERT_DEGREE_TO_RAD * degree;
 
 	_vx = cos(rad) * _moveSpd;
-	_vy = -1.0f * sin(rad) * _moveSpd;
+	_vy = sin(rad) * _moveSpd;
 }
 
 void Game_Bullet::SetTargetPos(float x, float y)

@@ -4,6 +4,7 @@
 #include "Textures.h"
 #include "ScreenManager.h"
 #include "Game_Screen.h"
+#include "Scene_Battle.h"
 
 using namespace std;
 
@@ -17,7 +18,7 @@ Game_ObjectBase::Game_ObjectBase(float x, float y, int z, int width, int height)
 }
 
 void Game_ObjectBase::GetLTRB(float& l, float& t, float& r, float& b)
-{ l = _x; t = _y; r = _x + _width; b = _y + _height; }
+{ l = _x; t = _y; r = _x + _width; b = _y - _height; }
 
 void Game_ObjectBase::SetWidth(int width, int mode)
 {
@@ -44,10 +45,10 @@ void Game_ObjectBase::SetHeight(int height, int mode)
 	case 0: // top alignment
 		break;
 	case 1: // center alignment
-		_y += (float)(_height - height) / 2;
+		_y -= (float)(_height - height) / 2 - 1;
 		break;
 	case 2: // bottom alignment
-		_y += (float)(_height - height);
+		_y -= (float)(_height - height) - 1;
 		break;
 	}
 	_height = height;
@@ -82,12 +83,16 @@ void Game_ObjectBase::RenderHitbox()
 	rect.bottom = _height;
 
 	float cx, cy;
-	ScreenManager::GetInstance()->Screen()->GetPosition(cx, cy);
+	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
+	screen->GetPosition(cx, cy);
 
 	float centerX, centerY;
 	GetCenterPoint(centerX, centerY);
 
-	CGame::GetInstance()->Draw(centerX - cx, centerY - cy, bbox, &rect, 0.25f, _width, _height);
+	cy = screen->ViewBoxHeight() - cy;
+	centerY = screen->ViewBoxHeight() - centerY;
+
+	CGame::GetInstance()->Draw(centerX - cx, centerY - cy, bbox, &rect, 0.75f, _width, _height);
 }
 
 void Game_ObjectBase::GetBoundingBox(float& left, float& top, float& right, float& bottom)
@@ -95,7 +100,7 @@ void Game_ObjectBase::GetBoundingBox(float& left, float& top, float& right, floa
 	left = _x;
 	top = _y;
 	right = _x + _width;
-	bottom = _y + _height;
+	bottom = _y - _height;
 }
 
 void Game_ObjectBase::OnNoCollision(DWORD dt)
