@@ -30,10 +30,20 @@ void Game_Collision::SweptAABB(
 	t = -1.0f;			// no collision
 	nx = ny = 0;
 
+	// check if move object has already intersected with static object. 
+	if (ml <= sr && mr >= sl && mt <= sb && mb >= st)
+	{
+		t = 0;
+		ny = 0.0f;
+		dx > 0 ? nx = -1.0f : nx = 1.0f;
+		nx = 0.0f;
+		dy > 0 ? ny = -1.0f : ny = 1.0f;
+		return;
+	}
+
 	//
 	// Broad-phase test 
 	//
-
 	float bl = dx > 0 ? ml : ml + dx;
 	float bt = dy > 0 ? mt : mt + dy;
 	float br = dx > 0 ? mr + dx : mr;
@@ -112,11 +122,18 @@ void Game_Collision::SweptAABB(
 
 }
 
+#include "Game_Player.h"
+#include "Enemy_Infary.h"
+
 /*
 	Extension of original SweptAABB to deal with two moving objects
 */
 PCOLLISIONEVENT Game_Collision::SweptAABB(PGAMEOBJECT objSrc, DWORD dt, PGAMEOBJECT objDest)
 {
+	// ignore if objSrc is also objDest
+	if (objSrc == objDest)
+		return new Game_CollisionEvent(-1, 0, 0, 0, 0, objDest, objSrc);
+
 	float sl, st, sr, sb;		// static object bbox
 	float ml, mt, mr, mb;		// moving object bbox
 	float t, nx, ny;
@@ -139,6 +156,12 @@ PCOLLISIONEVENT Game_Collision::SweptAABB(PGAMEOBJECT objSrc, DWORD dt, PGAMEOBJ
 
 	objSrc->GetBoundingBox(ml, mt, mr, mb);
 	objDest->GetBoundingBox(sl, st, sr, sb);
+
+	//// These codes are used to debug Player collision
+	//if (dynamic_cast<Game_Player*>(objSrc) && dynamic_cast<Enemy_Infary*>(objDest) && abs(objSrc->x() - objDest->x()) < (objSrc->width() + objDest->width())/3)
+	//{
+	//	int a = 2;
+	//}
 
 	SweptAABB(
 		ml, mt, mr, mb,
@@ -163,7 +186,7 @@ void Game_Collision::Scan(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* obj
 	{
 		PCOLLISIONEVENT e = SweptAABB(objSrc, dt, objDests->at(i));
 
-		if (e->WasCollided() == 1)
+		if (e->WasCollided() == 1 && e->obj->BlockingCondition(dt, e))
 			coEvents.push_back(e);
 		else
 			delete e;
@@ -246,17 +269,17 @@ void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* 
 		dx = vx * dt;
 		dy = vy * dt;
 
-		// Checking col blocking object Condition
-		if (colX != NULL && !colX->obj->BlockingCondition(dt, colX))
-		{
-			delete colX;
-			colX = NULL;
-		}
-		if (colY != NULL && !colY->obj->BlockingCondition(dt, colY))
-		{
-			delete colY;
-			colY = NULL;
-		}
+		//// Checking col blocking object Condition
+		//if (colX != NULL && !colX->obj->BlockingCondition(dt, colX))
+		//{
+		//	delete colX;
+		//	colX = NULL;
+		//}
+		//if (colY != NULL && !colY->obj->BlockingCondition(dt, colY))
+		//{
+		//	delete colY;
+		//	colY = NULL;
+		//}
 
 		if (colX != NULL && colY != NULL)
 		{

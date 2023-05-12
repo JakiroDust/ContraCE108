@@ -17,6 +17,7 @@ class Enemy_Infary : public Game_MovableEnemy
 		Enemy_Infary(float x, float y, int z) : Game_MovableEnemy(x, y, z, INFARY_BASE_WIDTH, INFARY_BASE_HEIGHT)
 		{
 			_moveSpd = 0.08f;
+			_BodyDamage = true;
 		}
 		~Enemy_Infary() {
 			Game_MovableEnemy::~Game_MovableEnemy();

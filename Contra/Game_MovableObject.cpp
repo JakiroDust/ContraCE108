@@ -29,13 +29,15 @@ float Game_MovableObject::realY(float y)
 
 void Game_MovableObject::moveLeft()
 {
-	_faceLeft = true;
+	if (!_lockFace)
+		_faceLeft = true;
 	_vx = -_moveSpd;
 }
 
 void Game_MovableObject::moveRight()
 {
-	_faceLeft = false;
+	if (!_lockFace)
+		_faceLeft = false;
 	_vx = _moveSpd;
 }
 

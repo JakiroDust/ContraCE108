@@ -15,7 +15,9 @@ void Game_Character::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	{
 		_GunReloadInterval = 0;
 	}
-
+	if (!_moveFlag)
+		_vx = 0;
+	_moveFlag = false;
 }
 
 void Game_Character::OnNoCollision(DWORD dt)
@@ -108,6 +110,18 @@ void Game_Character::Shoot(float x, float y)
 	_weapon->Fire(cx, cy, x, y, GUN_SPAWNMODE_TARGETPOS);
 }
 
+void Game_Character::moveLeft()
+{
+	Game_MovableObject::moveLeft();
+	_moveFlag = true;
+}
+
+void Game_Character::moveRight()
+{
+	Game_MovableObject::moveRight();
+	_moveFlag = true;
+}
+
 void Game_Character::AddAction(int KeyCode1, int KeyCode2)
 {
 	pair<int, int> p(KeyCode1,KeyCode2);
@@ -133,11 +147,14 @@ void Game_Character::ExecuteAction()
 		KeyDownEventHandler(action.second);
 }
 
+void Game_Character::ResetStateParams()
+{
+	Game_MovableObject::ResetStateParams();
+}
+
 Game_Character::Game_Character(float x, float y, int z, int width, int height) : Game_MovableObject(x, y, z, width, height)
 {
 	_needScanCollision = true;
-
-
 }
 
 Game_Character::~Game_Character()

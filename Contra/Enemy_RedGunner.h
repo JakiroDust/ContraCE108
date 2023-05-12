@@ -17,6 +17,7 @@ class Enemy_RedGunner : public Game_MovableEnemy
 		Enemy_RedGunner(float x, float y, int z) : Game_MovableEnemy(x, y, z, REDGUNNER_BASE_WIDTH, REDGUNNER_BASE_HEIGHT)
 		{
 			_moveSpd = 0.08f;
+			_BodyDamage = true;
 		}
 		~Enemy_RedGunner() { 
 			Game_MovableEnemy::~Game_MovableEnemy();

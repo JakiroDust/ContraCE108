@@ -116,6 +116,11 @@ void Game_ObjectBase::UpdatePosition(DWORD dt)
 
 void Game_ObjectBase::ResetStateParams()
 {
+
+}
+
+void Game_ObjectBase::ResetSpeed()
+{
 	_vx = 0;
 	_vy = 0;
 }

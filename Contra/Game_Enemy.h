@@ -4,6 +4,7 @@
 class Game_Enemy : public Game_Character
 {
 	protected:
+		bool _BodyDamage = false;
 		void UpdateState() override;
 		virtual void UpdateBehavior(DWORD dt, vector<Game_ObjectBase*>* coObjects = NULL);
 		void KeyReleaseAll() override;
@@ -12,6 +13,9 @@ class Game_Enemy : public Game_Character
 		{
 			_moveSpd = 0.1f;
 		}
+
+		// GET & SET
+		bool BodyDamage() { return _BodyDamage; }
 
 		void Render() override;
 		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;

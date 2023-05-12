@@ -12,7 +12,11 @@ class Obj_ContraBot : public Game_Enemy
 			_moveSpd = 0.1f;
 			_ghost = true;
 		}
-		Obj_ContraBot(int x, int y, int z);
+		//Obj_ContraBot(int x, int y, int z) : Game_Enemy(x, y, z, 20, 32)
+		//{
+		//	Obj_ContraBot((float)x, (float)y, z);
+		//}
+
 		int CharID() override;
 		// When no collision has been detected (triggered by CCollision::Process)
 		void OnNoCollision(DWORD dt);
