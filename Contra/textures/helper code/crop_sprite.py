@@ -65,7 +65,7 @@ for y in range(height):
     for i in remove_list:
         finished_parts.append(unfinished_parts[i])
     unfinished_parts=[unfinished_parts[i] for i in range(len(unfinished_parts)) if i not in remove_list]
-cur_parr=10
+cur_parr=101
 y_start,x_start=finished_parts[cur_parr][0][0]
 y_end,x_end=finished_parts[cur_parr][-1][0]
 for i in finished_parts[cur_parr]:
