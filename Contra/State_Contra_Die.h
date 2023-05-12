@@ -3,7 +3,7 @@
 class State_Contra_Die : public State_Contra_Base
 {
 	private:
-		int _delayDelete = 1;
+		DWORD _delayDelete = 1;
 		bool _trigger = true;
 	public:
 		State_Contra_Die(Game_ObjectBase* obj, int delayDelete) : State_Contra_Base(obj) { _delayDelete = delayDelete; }

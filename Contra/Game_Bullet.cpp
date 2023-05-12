@@ -1,6 +1,6 @@
 #include "Game_Bullet.h"
 
-#define CONVERT_DEGREE_TO_RAD 0.0174532925
+#define CONVERT_DEGREE_TO_RAD 0.0174533f
 
 void Game_Bullet::SetAngle(float degree)
 {

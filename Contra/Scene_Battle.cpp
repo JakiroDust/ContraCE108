@@ -206,23 +206,23 @@ void Scene_Battle::Create_Stage_Demo()
     addPlayer1();
     SoundSystem* SS = SoundSystem::getInstance();
     SS->playBGM(BGM_JUNGLE);
-    unique_ptr<Obj_ContraBot> bot (new Obj_ContraBot(80, 40, 2)); add_object(move(bot));
-    unique_ptr<Obj_SmartBot>smartbot(new Obj_SmartBot(100, 40, 2)); add_object(move(smartbot));
+    unique_ptr<Obj_ContraBot> bot (new Obj_ContraBot(80.0f, 40.0f, 2)); add_object(move(bot));
+    unique_ptr<Obj_SmartBot>smartbot(new Obj_SmartBot(100.0f, 40.0f, 2)); add_object(move(smartbot));
     
-    unique_ptr<Enemy_Sniper> sniper(new Enemy_Sniper(300, 150, 2)); add_object(move(sniper));
+    unique_ptr<Enemy_Sniper> sniper(new Enemy_Sniper(300.0f, 150.0f, 2)); add_object(move(sniper));
 
-    unique_ptr<Game_Blocker> block1 ( new Game_Blocker(-18, 0, 1, 20, GAMESCREEN_HEIGHT - 20));
-    unique_ptr<Game_Blocker> block2 ( new Game_Blocker(_mapWidth - 20, 1, 0, 20, GAMESCREEN_HEIGHT - 20));
+    unique_ptr<Game_Blocker> block1 ( new Game_Blocker(-18.0f, 0.0f, 1, 20, GAMESCREEN_HEIGHT - 20));
+    unique_ptr<Game_Blocker> block2 ( new Game_Blocker(_mapWidth - 20.0f, 1.0f, 0, 20, GAMESCREEN_HEIGHT - 20));
 
-    unique_ptr<Game_Water> water1(new Game_Water(0, GAMESCREEN_HEIGHT - 20, 1, 288, 20));
-    unique_ptr<Game_Water> water2(new Game_Water(352, GAMESCREEN_HEIGHT - 20, 1, 2976, 20));
+    unique_ptr<Game_Water> water1(new Game_Water(0.0f, GAMESCREEN_HEIGHT - 20.0f, 1, 288, 20));
+    unique_ptr<Game_Water> water2(new Game_Water(352.0f, GAMESCREEN_HEIGHT - 20.0f, 1, 2976, 20));
 
-    unique_ptr<Game_Platform> plat1(new Game_Platform(160, 150, 1, 96, 10));
-    unique_ptr<Game_Platform> plat2(new Game_Platform(256, 178, 1, 32, 10));
-    unique_ptr<Game_Platform> plat3(new Game_Platform(352, 178, 1, 32, 10));
-    unique_ptr<Game_Platform> plat4(new Game_Platform(416, 150, 1, 64, 10));
-    unique_ptr<Game_Blocker> plat5(new Game_Blocker(288, 215, 1, 64, 32));
-    unique_ptr<Game_Platform> plat6(new Game_Platform(32, 118, 1, 736, 10));
+    unique_ptr<Game_Platform> plat1(new Game_Platform(160.0f, 150.0f, 1, 96, 10));
+    unique_ptr<Game_Platform> plat2(new Game_Platform(256.0f, 178.0f, 1, 32, 10));
+    unique_ptr<Game_Platform> plat3(new Game_Platform(352.0f, 178.0f, 1, 32, 10));
+    unique_ptr<Game_Platform> plat4(new Game_Platform(416.0f, 150.0f, 1, 64, 10));
+    unique_ptr<Game_Blocker> plat5(new Game_Blocker(288.0f, 215.0f, 1, 64, 32));
+    unique_ptr<Game_Platform> plat6(new Game_Platform(32.0f, 118.0f, 1, 736, 10));
 
     //Demo_Layer* demo = new Demo_Layer(0, 0, 0, 3328, 240);
     //
@@ -239,7 +239,7 @@ void Scene_Battle::Create_Stage_Demo()
     
     
     //_layers.push_back(demo);
-    ScreenManager::GetInstance()->Screen()->focusToPoint(GAMESCREEN_WIDTH/2,GAMESCREEN_HEIGHT/2, _mapWidth, _mapHeight);
+    ScreenManager::GetInstance()->Screen()->focusToPoint(GAMESCREEN_WIDTH/2.0f,GAMESCREEN_HEIGHT/2.0f, _mapWidth, _mapHeight);
     
 }
 int Scene_Battle::add_object(unique_ptr<Game_ObjectBase>&& object)

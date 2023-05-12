@@ -27,23 +27,28 @@ void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	}
 	else
 	{
+		_invincible_interval = 0;
 		_ghost = false;
 	}
 	// invincible ani
 	if (_invincible_interval > 0)
 	{
-		if (_invincible_ani_interval > 0)
+		if (_invincible_ani_interval > dt)
 		{
 			_invincible_ani_interval -= dt;
 		}
-		else
+		else if (_invincible_ani_interval > 0)
+		{
+			_invincible_ani_interval = 0;
+		}
+		else 
 		{
 			_invincible_ani_interval = PLAYER_INVINCIBLE_ANI_INTERVAL;
 			_invincible_ani_flash = !_invincible_ani_flash;
 		}
 	}
 	// Wait for revive
-	if (_die && _revive_interval > 0)
+	if (_die && _revive_interval > dt)
 	{
 		_revive_interval -= dt;
 	}
