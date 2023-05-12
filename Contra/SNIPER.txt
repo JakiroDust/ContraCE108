@@ -1,4 +1,4 @@
-# id	left	top	right	bottom	texture_id
+	# id	left	top	right	bottom	texture_id
 # STAND STILL AND SNIPE PLAYER
 [SPRITES]
 
@@ -6,8 +6,8 @@
 402101	1	18	24	49	10
 402102	26	18	49	49	10
 #SHOOT UP
-402201	51	10	69	48	10
-402202	71	10	89	48	10
+402201	51	10	69	52	10
+402202	71	10	89	52	10
 
 #SHOOT RIGHT
 402001	91	17	114	48	10

@@ -39,7 +39,7 @@ class Scene_Battle : public Scene_Base
 		// DEMO
 		void Demo_Camera_Action();
 	public:
-		Scene_Battle() : Scene_Base(), _p1(make_unique< Game_Player>(40, 40, 2)) {  };
+		Scene_Battle() : Scene_Base() { _p1.reset(new Game_Player(40, 40, 2)); };
 		~Scene_Battle();
 		//vector<Game_ObjectBase*>* objects() { return &_objects; }
 		Game_Player* p1() { return dynamic_cast<Game_Player*>(__objects[_p1_id].get()); }

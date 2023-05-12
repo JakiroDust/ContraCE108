@@ -184,7 +184,6 @@ public:
 		_append(id, t, l);
 
 		loc[id] = vector<int>(2, 0);
-		int c;
 		loc[id][0] = left;
 		loc[id][1] = top;
 	}
