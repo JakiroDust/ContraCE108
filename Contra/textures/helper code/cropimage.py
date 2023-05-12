@@ -1,7 +1,7 @@
 from PIL import Image
 director="D:/temp_img"
 # Load the image
-img = Image.open(r'D:\ContraCE108\Contra\textures\croppedMap1.png')
+img = Image.open(r'D:\ContraCE108\Contra\textures\Map1v1.png')
 
 import os
 
@@ -18,28 +18,22 @@ for filename in os.listdir(director):
 
 
 # Define the size of the parts
-part_size = 32
+part_size_WIDTH = 16
+part_size_HEIGHT=8
 
-# Crop the top part separately if it doesn't have the same height as the parts
-if img.height % part_size != 0:
-    top_part_height = img.height % part_size
-    top_part = img.crop((0, 0, img.width, top_part_height))
-else:
-    top_part_height = 0
-    top_part = None
 
 # Calculate the number of rows and columns needed to cover the entire image
-num_cols = img.width // part_size
-num_rows = (img.height - top_part_height) // part_size
+num_cols = img.width // part_size_WIDTH
+num_rows = (img.height) // part_size_HEIGHT
 
 # Crop the image into parts and store them in a list
 parts = []
 for row in range(1, num_rows+1):
     for col in range(num_cols):
-        x0 = col * part_size
-        y0 = top_part_height + (row - 1) * part_size
-        x1 = x0 + part_size
-        y1 = y0 + part_size
+        x0 = col * part_size_WIDTH
+        y0 =  (row - 1) * part_size_HEIGHT
+        x1 = x0 + part_size_WIDTH
+        y1 = y0 + part_size_HEIGHT
         part = img.crop((x0, y0, x1, y1))
         parts.append(part)
 
@@ -58,9 +52,10 @@ for i, part1 in enumerate(parts):
             # Skip this part if it has already been replaced
             continue
         # You can use histogram comparison or other techniques here to check for similarities
-        if part1.histogram() == part2.histogram():
+        #if part1.histogram() == part2.histogram():
+        if (part1 == part2):
             # Replace the similar part with the first occurrence of that part
-            img.paste(parts[i], (j % num_cols * part_size, top_part_height + j // num_cols * part_size))
+            img.paste(parts[i], (j % num_cols * part_size_WIDTH, j // num_cols * part_size_HEIGHT))
             replaced_parts[j]=i
 print(len(replaced_parts.keys()))
 _str=""
@@ -89,14 +84,6 @@ output_str = " ".join(str(index) for index in index_list)
 print(len(output_str.split()))
 with open(f"{director}/mapping.txt","w") as f:
     f.write(output_str)   
-# If there's a top part, add it to the beginning of the parts list
-if top_part is not None:
-    parts.insert(0, top_part)
-    #top_part.convert('RGB').save(f'D:/temp_img/-1.png', 'PNG')
-## Save the modified image to a file
-##img.save(r'D:\ContraCE108\Contra\textures\1GB.png')
-
-
 
 from PIL import Image
 import os
@@ -104,9 +91,9 @@ import os
 
 # set the output image dimensions
 num_cols = 10  # number of images per row
-img_size = 32  # assuming images are 32x32
+#img_size = 32  # assuming images are 32x32
 num_rows = -(-len(os.listdir(director)) // num_cols)  # calculate the number of rows
-width, height = num_cols * img_size, num_rows * img_size
+width, height = num_cols * part_size_WIDTH, num_rows * part_size_HEIGHT
 
 # create a new blank image to merge the images into
 result = Image.new('RGB', (width, height))
@@ -129,12 +116,12 @@ for i, filename in enumerate(image_filenames):
     result.paste(image, (x, y))
     
     # increment the x coordinate
-    x += img_size
+    x += part_size_WIDTH
     
     # if we have pasted num_cols images in a row, move to the next row
     if i % num_cols == num_cols - 1:
         x = 0
-        y += img_size
+        y += part_size_HEIGHT
 
 # save the merged image
 result.save(f'{director}/merged.png')

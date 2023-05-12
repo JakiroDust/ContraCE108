@@ -10,6 +10,8 @@
 #include "Enemy_Sniper.h"
 #include <fstream>
 using namespace std;
+#define MAP_TEXU_WIDTH 16
+#define MAP_TEXU_HEIGHT 8
 float BG_color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 
 Scene_Battle::~Scene_Battle()
@@ -304,11 +306,9 @@ void Scene_Battle::_init_spatial()
 
 
     //texu
-    width = 32;
-    height = 32;
-    n = int(_mapHeight / width) + (_mapHeight % width>0);
-    m = int(_mapWidth / height) + (_mapWidth% height >0);
-    mapTexSpatial = new SpatialforTex(n,m,width,height,8,8);
+    n = int(_mapHeight / MAP_TEXU_HEIGHT);
+    m = int(_mapWidth / MAP_TEXU_WIDTH);
+    mapTexSpatial = new SpatialforTex(n,m, MAP_TEXU_WIDTH, MAP_TEXU_HEIGHT,int(340/ MAP_TEXU_HEIGHT), int(340 / MAP_TEXU_WIDTH));
 
 }
 
@@ -375,11 +375,7 @@ void Scene_Battle::Execute_BasicSpawnerEvent()
 
 void Scene_Battle::parseMap()
 {
-    ///yeah i mean it is now has a header on a top i guess ?
-    if (map_info[-1] == 1)
-    {
 
-    }
 }
 
 void Scene_Battle::_ParseSection_DICT(string line)
@@ -387,21 +383,18 @@ void Scene_Battle::_ParseSection_DICT(string line)
     ifstream f;
     f.open(line + "\\info.txt");
 
-    bool filler;
 
     if (f.is_open())
     {
-        f >> map_id >> width >> height;
-        string strA;
-        f >> strA;
-        filler = (strA == "1");
-
+        f >> map_id;
+        width = MapWidth() / MAP_TEXU_WIDTH;
+        height = MapHeight() / MAP_TEXU_HEIGHT;
     }
     else
     {
         // handle error if the file cannot be opened
         // set default values or throw an exception
-        DebugOut(L"CANNOT READ %s\\into.txt", line);
+        DebugOut(L"CANNOT READ %s\\info.txt", line);
         return;
     }
     f.close();
@@ -425,23 +418,16 @@ void Scene_Battle::_ParseSection_DICT(string line)
                 }
             }
         }
-        if (filler)
-        {
-            int texID = -1;
-            map_info[texID] = 1;
-            
-            
-        }
         wstring path = ToWSTR(line + "\\merged.png");
         _map_tex = CGame::GetInstance()->LoadTexture(path.c_str(), false);
         for (auto& i : dect)
         {
             int texID = i;
             int index_value = i;
-            int left = 0 + 32 * (index_value % 10),
-                top = 0 + 32 * (index_value / 10),
-                right = left+31,
-                bottom = top+31;
+            int left = 0 + MAP_TEXU_WIDTH * (index_value % 10),
+                top = 0 + MAP_TEXU_HEIGHT * (index_value / 10),
+                right = left+ MAP_TEXU_WIDTH-1,
+                bottom = top+MAP_TEXU_HEIGHT-1;
             map_sprite[texID].reset(new CSprite(texID, left, top, right, bottom, _map_tex));
         }
     }
@@ -452,7 +438,7 @@ void Scene_Battle::_ParseSection_DICT(string line)
     }
     f.close();
 
-
+    /*
     f.open(line + "\\block.txt");
     if (f.is_open())
     {
@@ -473,25 +459,23 @@ void Scene_Battle::_ParseSection_DICT(string line)
     {
         DebugOut(L"CANNOT READ %s\\block.txt(CAN BE IGNORE IF DONT USE)", line);
     }
+    */
     int curID = 0;
     int curN = 0, curM = 0;
-    int startGapX = 0, startGapY = 0;
-    if (filler)
-    {
-        startGapX = 0;
-        startGapY = 16;
-    }
     //parsing texture+
     curN = 0, curM = 0;
     curID = 0;
+    int a = MapHeight();
+    DebugOut(L"%d\n",a);
     for (curN = 0; curN < height; curN++)
     {
         for (curM = 0; curM < width; curM++)
         {
-            int curType = map_info[curN * height + curM];
-            if (curType == NOTHING)
-                continue;
-            addMapPart(map[curN][curM], curID,curM*32+startGapX,curN*32+startGapY);
+           // int curType = map_info[curN * height + curM];
+            //if (curType == NOTHING)
+              //  continue;
+            //map[0][curM]
+             addMapPart(curID,(curM)*MAP_TEXU_WIDTH,MapHeight() - curN * MAP_TEXU_HEIGHT- MAP_TEXU_HEIGHT);
                 curID++;
         }
     }
@@ -500,42 +484,41 @@ void Scene_Battle::_ParseSection_DICT(string line)
     curN=0, curM=0;
     
 
-    int curBlockStart;
-    int curBlockType;
-    for (curN = 0; curN < height; curN++)
-    {
-        curBlockStart = 0;
-        curBlockType = map_info[curN * height + 0];
-        for (curM = 1; curM < width; curM++)
-        {
-            int curType = map_info[curN * height + curM];
-            if (curType != curBlockType)
-            {
-                switch (curBlockType)
-                {
-                case NOTHING:
-                    /*
-                    * it is transparent
-                    */
-                    break;
-                case BRIDGE_BLOCK:
-                    /*
-                    ASSUMING BRIDGE ALWAYS UP, BUT FOR NOW SAME CASE WITH BLOCK UP
-                    */
-                case UP_BLOCK:
-                    break;
-                case DOWN_BLOCK:
-                    break;
-                default:
-                    DebugOut(L"Getting unknown type, please check again %d", map_info[curN * height + curM]);
-                }
-                curBlockType = curType;
-                curBlockStart = curM;
-            }
-        }
+    //int curBlockStart;
+    //int curBlockType;
+    //for (curN = 0; curN < height; curN++)
+    //{
+    //    curBlockStart = 0;
+    //    curBlockType = map_info[curN * height + 0];
+    //    for (curM = 1; curM < width; curM++)
+    //    {
+    //        int curType = map_info[curN * height + curM];
+    //        if (curType != curBlockType)
+    //        {
+    //            switch (curBlockType)
+    //            {
+    //            case NOTHING:
+    //                /*
+    //                * it is transparent
+    //                */
+    //                break;
+    //            case BRIDGE_BLOCK:
+    //                /*
+    //                ASSUMING BRIDGE ALWAYS UP, BUT FOR NOW SAME CASE WITH BLOCK UP
+    //                */
+    //            case UP_BLOCK:
+    //                break;
+    //            case DOWN_BLOCK:
+    //                break;
+    //            default:
+    //                DebugOut(L"Getting unknown type, please check again %d", map_info[curN * height + curM]);
+    //            }
+    //            curBlockType = curType;
+    //            curBlockStart = curM;
+    //        }
+    //    }
 
-    }
-
+    //}
 }
 
 void Scene_Battle::renderBG(float x, float y)
@@ -547,14 +530,14 @@ void Scene_Battle::renderBG(float x, float y)
             m=id[i]%width;
         int _x, _y;
         mapTexSpatial->getXYCenter(id[i], _x, _y);
-        map_sprite[map[n][m]].get()->Draw(_x,_y,32,32);
+        map_sprite[map[n][m]].get()->Draw(_x,_y);
     }
 }
 void Scene_Battle::renderBG(int& x, int& y)
 {
     renderBG(x / 1.0f, y / 1.0f);
 }
-void Scene_Battle::addMapPart(int texureID, int partID, int x, int y)
+void Scene_Battle::addMapPart( int partID, int x, int y)
 {
     mapTexSpatial->init_object_ONLYONCE(partID, x, y );
 }

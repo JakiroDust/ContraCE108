@@ -79,7 +79,7 @@ class Scene_Battle : public Scene_Base
 		///spatial map
 	protected:
 		unordered_map<int, unordered_map<int, int>> map;
-		unordered_map<int, int> map_info;
+		//unordered_map<int, int> map_info;
 		unordered_map<int, unique_ptr<CSprite>> map_sprite;
 		LPTEXTURE _map_tex=NULL;
 		SpatialforTex* mapTexSpatial = NULL;
@@ -89,6 +89,6 @@ class Scene_Battle : public Scene_Base
 	public:
 		void _ParseSection_DICT(string line);
 	
-		void addMapPart(int texureID, int partID, int x, int y);
+		void addMapPart( int partID, int x, int y);
 };
 

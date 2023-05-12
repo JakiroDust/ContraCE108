@@ -194,8 +194,8 @@ public:
 	}
 	void getXYCenter(int id, int& left, int& top)
 	{
-		left = loc[id][0]+16;
-		top = loc[id][1]+16;
+		left = loc[id][0]+8;
+		top = loc[id][1]+4;
 	}
 };
 #pragma warning(pop)
