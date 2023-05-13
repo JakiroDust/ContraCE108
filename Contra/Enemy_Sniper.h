@@ -2,9 +2,9 @@
 #include "Game_StationEnemy.h"
 #include "Equip_EnemyGun_Sniper.h"
 
-#define SNIPER_BASE_WIDTH 20
-#define SNIPER_BASE_HEIGHT 32
-#define SNIPER_HIDE_WIDTH 20
+#define SNIPER_BASE_WIDTH 18
+#define SNIPER_BASE_HEIGHT 28
+#define SNIPER_HIDE_WIDTH 18
 #define SNIPER_HIDE_HEIGHT 28
 
 class Enemy_Sniper : public Game_StationEnemy

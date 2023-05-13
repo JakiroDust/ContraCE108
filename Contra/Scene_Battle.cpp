@@ -98,6 +98,12 @@ void Scene_Battle::Render()
 void Scene_Battle::Update(DWORD dt)
 {
     dt = min(dt, 40);
+
+    // Event Handler
+    if (_controller != NULL)
+        _controller->Update(dt);
+
+    // Map Update
     for (int i = 0; i < _layers.size(); i++)
     {
         Game_ObjectBase* obj = _layers[i];
@@ -140,10 +146,6 @@ void Scene_Battle::Update(DWORD dt)
         checkObjectNeedRender(obj);
     }
 
-    // Test
-    Demo_Camera_Action();
-    Execute_BasicSpawnerEvent();
-
     // Terminate objects have Delete flag
     for (auto& i : id_list)
     {
@@ -157,6 +159,27 @@ void Scene_Battle::Update(DWORD dt)
     nearbyObject->clear();
     delete nearbyObject;
 }
+
+void Scene_Battle::Load()
+{
+    //GameManager::GetInstance()->LoadStage(this);
+
+    if (_controller = NULL)
+    {
+        DebugOut(L"[LOAD FAILED] Can't find Stage controller.\n");
+        return;
+    }
+    _controller->Load();
+
+}
+
+void Scene_Battle::Unload()
+{
+    delete _controller;
+}
+
+//=====================================================================================================================
+
 vector<int> Scene_Battle::getNearByIDyx(int y, int x)
 {
     return spatial->getNearByIDyx(y, x);
@@ -200,6 +223,8 @@ void Scene_Battle::addPlayer2()
 }*/
 void Scene_Battle::Create_Stage_Demo()
 {
+    _controller = new StageEventHandler_S1(this);
+
     _mapWidth = 3328;
     _mapHeight = GAMESCREEN_HEIGHT;
     ScreenManager::GetInstance()->Screen()->SetViewBox(_mapWidth, _mapHeight);
@@ -340,38 +365,8 @@ void Scene_Battle::_delete_spatial()
     delete spatial;
 }
 
-//int moveRange = 0;
-//bool switchLeft = false;
-
-void Scene_Battle::Demo_Camera_Action()
-{
-    float camPosX = 0;
-    float camPosY = 0;
-    Game_Screen* cam = ScreenManager::GetInstance()->Screen();
-    p1()->GetCenterPoint(camPosX, camPosY);
-    cam->focusToPoint(camPosX, camPosY, _mapWidth, _mapHeight);  
-}
 
 ///PROTYPE
-
-int ticker = 0;
-
-void Scene_Battle::Execute_BasicSpawnerEvent()
-{
-    if (ticker > 0)
-    {
-        ticker--;
-        return;
-    }
-    ticker = 240;
-
-    for (int i = 0; i < 1; i++)
-    {
-        unique_ptr <Enemy_Infary> redgunner ( new Enemy_Infary(460, 200, 2));
-        add_object(move(redgunner));
-    }
-
-}
 
 void Scene_Battle::parseMap()
 {

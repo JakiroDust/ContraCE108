@@ -193,6 +193,8 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Obj_Bullet_R.cpp" />
+    <ClCompile Include="StageEventHandler_Base.cpp" />
+    <ClCompile Include="StageEventHandler_S1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -431,6 +433,8 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Obj_Bullet_R.h" />
+    <ClInclude Include="StageEventHandler_Base.h" />
+    <ClInclude Include="StageEventHandler_S1.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

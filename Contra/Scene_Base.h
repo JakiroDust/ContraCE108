@@ -22,5 +22,7 @@ class Scene_Base
 
 		virtual void Render() {}
 		virtual void Update(DWORD dt) {}
+		virtual void Load() {}
+		virtual void Unload() {}
 };
 

@@ -1,12 +1,12 @@
 #pragma once
 #include "Game_MovableEnemy.h"
 
-#define INFARY_BASE_WIDTH 20
-#define INFARY_BASE_HEIGHT 32
-#define INFARY_JUMP_WIDTH 20
+#define INFARY_BASE_WIDTH 18
+#define INFARY_BASE_HEIGHT 28
+#define INFARY_JUMP_WIDTH 18
 #define INFARY_JUMP_HEIGHT 28
-#define INFARY_SWIM_WIDTH 20
-#define INFARY_SWIM_HEIGHT 32
+#define INFARY_SWIM_WIDTH 18
+#define INFARY_SWIM_HEIGHT 28
 
 class Enemy_Infary : public Game_MovableEnemy
 	{

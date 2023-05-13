@@ -1,12 +1,12 @@
 #pragma once
 #include "Game_MovableEnemy.h"
 
-#define REDGUNNER_BASE_WIDTH 20
-#define REDGUNNER_BASE_HEIGHT 32
-#define REDGUNNER_JUMP_WIDTH 20
+#define REDGUNNER_BASE_WIDTH 18
+#define REDGUNNER_BASE_HEIGHT 28
+#define REDGUNNER_JUMP_WIDTH 18
 #define REDGUNNER_JUMP_HEIGHT 28
-#define REDGUNNER_SWIM_WIDTH 20
-#define REDGUNNER_SWIM_HEIGHT 32
+#define REDGUNNER_SWIM_WIDTH 18
+#define REDGUNNER_SWIM_HEIGHT 28
 
 class Enemy_RedGunner : public Game_MovableEnemy
 {

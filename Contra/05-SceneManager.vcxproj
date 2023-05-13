@@ -203,6 +203,8 @@
     <ClCompile Include="spawnBulletHelper.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Sprites.cpp" />
+    <ClCompile Include="StageEventHandler_Base.cpp" />
+    <ClCompile Include="StageEventHandler_S1.cpp" />
     <ClCompile Include="State_Base.cpp" />
     <ClCompile Include="State_Contra_Base.cpp" />
     <ClCompile Include="State_Contra_Die.cpp" />
@@ -282,6 +284,8 @@
     <ClInclude Include="spawnBulletHelper.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Sprites.h" />
+    <ClInclude Include="StageEventHandler_Base.h" />
+    <ClInclude Include="StageEventHandler_S1.h" />
     <ClInclude Include="State_Base.h" />
     <ClInclude Include="State_Contra_Base.h" />
     <ClInclude Include="State_Contra_Die.h" />

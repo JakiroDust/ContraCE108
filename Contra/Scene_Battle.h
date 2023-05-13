@@ -10,6 +10,9 @@
 #include "Game_Terrain.h"
 #include "Game_Collision.h"
 #include "Game_Water.h"
+
+#include "StageEventHandler_S1.h"
+
 // DEMO
 #include "Demo_Layer.h"
 #include "Spatial.h"
@@ -22,6 +25,13 @@ using namespace std;
 #define DOWN_BLOCK -1
 #define BRIDGE_BLOCK 2
 #define NOTHING 999
+
+#define Z_INDEX_PLAYER 5
+#define Z_INDEX_ENEMY 4
+#define Z_INDEX_BULLET 3
+#define Z_INDEX_BACKGROUND 1
+#define Z_INDEX_ANIMATION 6
+
 class Scene_Battle : public Scene_Base
 {
 	private:
@@ -36,8 +46,10 @@ class Scene_Battle : public Scene_Base
 		int _mapHeight = 1;
 		void checkObjectNeedRender(Game_ObjectBase* obj);
 		vector<int> getNearByIDyx(int y, int x);
-		// DEMO
-		void Demo_Camera_Action();
+
+		// Stage controller
+		StageEventHandler_Base* _controller = NULL;
+
 	public:
 		Scene_Battle() : Scene_Base() {  }
 		~Scene_Battle();
@@ -52,9 +64,12 @@ class Scene_Battle : public Scene_Base
 
 		void Render() override;
 		void Update(DWORD dt) override;
-
+		void Load() override;
+		void Unload() override;
 		void Create_Stage_Demo();
 
+		// Key event handler
+		virtual void KeyDownEventHandler(int KeyCode) override {}
 
 		/// from this is protype
 
@@ -71,8 +86,7 @@ class Scene_Battle : public Scene_Base
 		int add_object(unique_ptr<Game_ObjectBase>&& object);
 		void delete_object(int id);
 		//void delete_object(unique_ptr<Game_ObjectBase>& object);
-		// Spawn an RedGunner
-		void Execute_BasicSpawnerEvent();
+
 		// from here is MAP SPATIAL
 		void parseMap();
 
