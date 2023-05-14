@@ -72,6 +72,13 @@ class Scene_Battle : public Scene_Base
 		virtual void KeyDownEventHandler(int KeyCode) override {}
 
 		/// from this is protype
+		void SetStageEventHandler(StageEventHandler_Base* handler)
+		{
+			if (_controller != NULL)
+				delete _controller;
+			_controller = handler;
+		}
+		StageEventHandler_Base* GetStageEventHandler() { return _controller; }
 
 	private:
 		int id_nth = 0;

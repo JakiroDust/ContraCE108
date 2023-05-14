@@ -38,10 +38,18 @@ void ScreenManager::Load(LPCWSTR gameFile)
 	//Create_Scene_Demo();
 }
 
-// DEMO
+
+
+// CREATE SCENE
+void ScreenManager::Unload_Scene()
+{
+	if (_scene != NULL)
+		delete _scene;
+}
 
 void ScreenManager::Create_Scene_Battle()
 {
+	Unload_Scene();
 	Scene_Battle* scene = new Scene_Battle();
 	//scene->Create_Stage_Demo();
 	_scene = scene;

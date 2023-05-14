@@ -162,9 +162,7 @@ void Scene_Battle::Update(DWORD dt)
 
 void Scene_Battle::Load()
 {
-    //GameManager::GetInstance()->LoadStage(this);
-
-    if (_controller = NULL)
+    if (_controller == NULL)
     {
         DebugOut(L"[LOAD FAILED] Can't find Stage controller.\n");
         return;

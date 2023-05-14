@@ -67,6 +67,7 @@ void Update(DWORD dt)
 {
 	//CGame::GetInstance()->GetCurrentScene()->Update(dt);
 	// Demo
+	GameManager::GetInstance()->Update(dt);
 	ScreenManager::GetInstance()->Update(dt);
 }
 

@@ -30,8 +30,8 @@ class GameManager
 
 		// signal
 		
-		int _signal;
-		Scene_Base* _signalSender;
+		int _signal = -1;
+		Scene_Base* _signalSender = NULL;
 
 		// stage
 
@@ -41,6 +41,11 @@ class GameManager
 		int _stagePasscard = 0;
 
 		void InitGame();
+
+		// scene
+		void Create_Stage_1(Scene_Battle* scene);
+		
+
 	public:
 		static GameManager* GetInstance();
 		GameManager() {}

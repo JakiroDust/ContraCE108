@@ -22,7 +22,7 @@ private:
 
 	// Test
 	void Create_Scene_Demo() {}
-
+	void Unload_Scene();
 public:
 	static ScreenManager* GetInstance();
 	ScreenManager();

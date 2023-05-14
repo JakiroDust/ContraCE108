@@ -22,7 +22,7 @@ void StageEventHandler_S1::Update(DWORD dt)
 
 void StageEventHandler_S1::Load()
 {
-
+	_srcScene->Create_Stage_Demo();
 }
 
 // ===================================================================
