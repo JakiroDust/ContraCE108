@@ -168,6 +168,7 @@
     <ClCompile Include="Equip_Gun_N.cpp" />
     <ClCompile Include="Equip_Gun_R.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Game_Blocker.cpp" />
     <ClCompile Include="Game_Bullet.cpp" />
     <ClCompile Include="Game_Character.cpp" />
@@ -249,6 +250,7 @@
     <ClInclude Include="fmod\fmod_output.h" />
     <ClInclude Include="Equip_Gun_N.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="Game_Blocker.h" />
     <ClInclude Include="Game_Bullet.h" />
     <ClInclude Include="Game_Character.h" />

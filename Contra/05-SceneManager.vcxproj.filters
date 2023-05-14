@@ -192,9 +192,14 @@
     <ClCompile Include="Equip_EnemyGun_Sniper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Obj_Bullet_R.cpp" />
     <ClCompile Include="StageEventHandler_Base.cpp" />
     <ClCompile Include="StageEventHandler_S1.cpp" />
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_Bullet_R.cpp">
+      <Filter>Source Files\Object\MoveObject\Bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -432,9 +437,14 @@
     <ClInclude Include="MusicManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Obj_Bullet_R.h" />
     <ClInclude Include="StageEventHandler_Base.h" />
     <ClInclude Include="StageEventHandler_S1.h" />
+    <ClInclude Include="Obj_Bullet_R.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

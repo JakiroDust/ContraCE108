@@ -26,10 +26,11 @@ protected:
 	void ExecuteAction();
 	void ResetStateParams() override;
 
+	void Cleaning() override;
 public:
 	//static unordered_map<int, vector<float>> _spawnBulletHelper;
 	Game_Character(float x, float y, int z, int width, int height) ;	
-	~Game_Character();
+	~Game_Character() { }
 	//-------------------------------------------------------------------------------
 	/// INHERITED
 

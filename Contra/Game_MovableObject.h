@@ -32,6 +32,8 @@ protected:
 	void UpdateJumpState(DWORD dt);
 	void UpdateDefault(DWORD dt);
 	void ResetStateParams() override;
+
+	void Cleaning() override { Game_ObjectBase::Cleaning(); }
 public:
 	/// STATIC
 
@@ -44,7 +46,7 @@ public:
 
 	~Game_MovableObject()
 	{
-		//
+
 	}
 
 	//-------------------------------------------------------------------------------

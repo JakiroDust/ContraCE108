@@ -157,9 +157,9 @@ Game_Character::Game_Character(float x, float y, int z, int width, int height) :
 	_needScanCollision = true;
 }
 
-Game_Character::~Game_Character()
+void Game_Character::Cleaning()
 {
 	_ActionQueue.clear();
-	Game_MovableObject::~Game_MovableObject();
+	Game_MovableObject::Cleaning();
 }
 

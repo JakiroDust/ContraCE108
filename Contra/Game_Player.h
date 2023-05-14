@@ -42,6 +42,8 @@ class Game_Player : public Game_Character
 			_moveSpd = 0.1f;
 			_weapon = new Equip_Gun_R();
 		}
+		~Game_Player() { Cleaning(); }
+
 		void SetAuto(bool b) { _auto = b; }
 		bool IsAuto() { return _auto; }
 

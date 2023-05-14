@@ -35,6 +35,7 @@ HOW TO INSTALL Microsoft.DXSDK.D3DX
 #include "AssetIDs.h"
 
 #include "ScreenManager.h"
+#include "GameManager.h"
 
 #define WINDOW_CLASS_NAME L"SampleWindow"
 #define MAIN_WINDOW_TITLE L"04 - Collision"
@@ -203,7 +204,8 @@ int WINAPI WinMain(
 	game->Load(L"contra-level.txt");
 
 	// Demo
-	ScreenManager::GetInstance()->Load(L"contra-level.txt");
+	GameManager::GetInstance()->StartApplication();
+	//ScreenManager::GetInstance()->Load(L"contra-level.txt");
 
 	SetWindowPos(hWnd, 0, 0, 0, WINDOW_WIDTH*2, WINDOW_HEIGHT*2, SWP_NOMOVE | SWP_NOOWNERZORDER | SWP_NOZORDER);
 
