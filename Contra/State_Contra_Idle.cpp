@@ -80,7 +80,7 @@ void State_Contra_Idle::KeyPressed_Jump()
 
 	if (HoldKeyDown)
 	{
-		obj->SetJumpDown(true);
+		obj->jumpDown();
 		return;
 	}
 

@@ -366,6 +366,9 @@ void Scene_Battle::_delete_spatial()
 
 ///PROTYPE
 
+//=====================================================================================================
+// PARSE
+
 void Scene_Battle::parseMap()
 {
 

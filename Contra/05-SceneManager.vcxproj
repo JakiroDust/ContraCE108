@@ -173,6 +173,7 @@
     <ClCompile Include="Game_Bullet.cpp" />
     <ClCompile Include="Game_Character.cpp" />
     <ClCompile Include="Game_Collision.cpp" />
+    <ClCompile Include="Game_DeadlyBlock.cpp" />
     <ClCompile Include="Game_Enemy.cpp" />
     <ClCompile Include="Game_KeyInput.cpp" />
     <ClCompile Include="Game_Layer.cpp" />
@@ -184,6 +185,7 @@
     <ClCompile Include="Game_Screen.cpp" />
     <ClCompile Include="Game_StaticObject.cpp" />
     <ClCompile Include="Game_StationEnemy.cpp" />
+    <ClCompile Include="Game_SweeperBlock.cpp" />
     <ClCompile Include="Game_Terrain.cpp" />
     <ClCompile Include="Game_TestBox.cpp" />
     <ClCompile Include="Game_Water.cpp" />
@@ -206,6 +208,7 @@
     <ClCompile Include="Sprites.cpp" />
     <ClCompile Include="StageEventHandler_Base.cpp" />
     <ClCompile Include="StageEventHandler_S1.cpp" />
+    <ClCompile Include="StageEventHandler_S3.cpp" />
     <ClCompile Include="State_Base.cpp" />
     <ClCompile Include="State_Contra_Base.cpp" />
     <ClCompile Include="State_Contra_Die.cpp" />
@@ -255,6 +258,7 @@
     <ClInclude Include="Game_Bullet.h" />
     <ClInclude Include="Game_Character.h" />
     <ClInclude Include="Game_Collision.h" />
+    <ClInclude Include="Game_DeadlyBlock.h" />
     <ClInclude Include="Game_Enemy.h" />
     <ClInclude Include="Game_KeyInput.h" />
     <ClInclude Include="Game_Layer.h" />
@@ -266,6 +270,7 @@
     <ClInclude Include="Game_Screen.h" />
     <ClInclude Include="Game_StaticObject.h" />
     <ClInclude Include="Game_StationEnemy.h" />
+    <ClInclude Include="Game_SweeperBlock.h" />
     <ClInclude Include="Game_Terrain.h" />
     <ClInclude Include="Game_TestBox.h" />
     <ClInclude Include="Game_Water.h" />
@@ -288,6 +293,7 @@
     <ClInclude Include="Sprites.h" />
     <ClInclude Include="StageEventHandler_Base.h" />
     <ClInclude Include="StageEventHandler_S1.h" />
+    <ClInclude Include="StageEventHandler_S3.h" />
     <ClInclude Include="State_Base.h" />
     <ClInclude Include="State_Contra_Base.h" />
     <ClInclude Include="State_Contra_Die.h" />

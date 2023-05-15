@@ -4,6 +4,7 @@
 #define TBLOCKER 10000
 #define TPLATFORM 10001
 #define TWATER 10002
+#define TDEADLY 10003
 
 // Enemies
 

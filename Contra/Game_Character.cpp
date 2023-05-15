@@ -2,6 +2,9 @@
 #include "Game_Water.h"
 #include "Game_Platform.h"
 #include "Game_Collision.h"
+#include "Game_TestBox.h"
+#include "Scene_Battle.h"
+#include "Game_DeadlyBlock.h"
 
 void Game_Character::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
@@ -120,6 +123,43 @@ void Game_Character::moveRight()
 {
 	Game_MovableObject::moveRight();
 	_moveFlag = true;
+}
+
+void Game_Character::jumpDown()
+{
+	unique_ptr<Game_TestBox>testbox(new Game_TestBox(_x, _y - _height - 16, _z, _width, _height, 0, 0));
+	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
+
+	vector<int> id_list = scene->getNearbyIDFast();
+	vector<PGAMEOBJECT>* coObjects = scene->getObjectById(id_list);
+
+	bool canJumpDown = false;
+
+	// Make testbox move down
+	testbox->SetSpeed(0, -scene->MapWidth());
+	testbox->Update(1, coObjects);
+	// Get Collisions and handle them.
+	vector<PCOLLISIONEVENT>* coEvents = testbox->GetCollisionList();
+	for (int i = 0; i < coEvents->size(); i++)
+	{
+		PCOLLISIONEVENT e = coEvents->at(i);
+		// Check if under player have any terrain
+		if (dynamic_cast<Game_DeadlyBlock*>(e->obj))
+		{
+			canJumpDown = false;
+			break;
+		}
+
+		if (dynamic_cast<Game_Terrain*>(e->obj))
+		{
+			canJumpDown = true;
+			break;
+		}
+	}
+	if (canJumpDown)
+		_jumpDown = true;
+	else
+		_jumpDown = false;
 }
 
 void Game_Character::AddAction(int KeyCode1, int KeyCode2)

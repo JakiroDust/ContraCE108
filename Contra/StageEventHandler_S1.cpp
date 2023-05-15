@@ -23,6 +23,18 @@ void StageEventHandler_S1::Update(DWORD dt)
 void StageEventHandler_S1::Load()
 {
 	_srcScene->Create_Stage_Demo();
+	return;
+
+	// PROTYPE
+	SoundSystem* SS = SoundSystem::getInstance();
+	SS->playBGM(BGM_JUNGLE);
+	_srcScene->_ParseSection_DICT("textures\\MAP1");
+	// ParseSection_OBJECT
+	// ParseSection_animation
+
+	// Add sweeper block
+	_sweeper.reset(new Game_SweeperBlock(-100, 0, 0, 100, GAMESCREEN_HEIGHT));
+	_srcScene->add_object(move(_sweeper));
 }
 
 // ===================================================================

@@ -200,6 +200,13 @@
     <ClCompile Include="Obj_Bullet_R.cpp">
       <Filter>Source Files\Object\MoveObject\Bullet</Filter>
     </ClCompile>
+    <ClCompile Include="StageEventHandler_S3.cpp" />
+    <ClCompile Include="Game_DeadlyBlock.cpp">
+      <Filter>Source Files\Object\StaticObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_SweeperBlock.cpp">
+      <Filter>Source Files\Object\StaticObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -443,6 +450,13 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StageEventHandler_S3.h" />
+    <ClInclude Include="Game_DeadlyBlock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_SweeperBlock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

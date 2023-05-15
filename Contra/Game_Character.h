@@ -68,7 +68,7 @@ public:
 
 	void moveLeft() override;
 	void moveRight() override;
-
+	void jumpDown();
 	// GET & SET
 
 	bool IsJumpDown() { return _jumpDown; }
