@@ -9,7 +9,7 @@ class Obj_Bullet_N :  public Game_Bullet
 	private:
 		void Init()
 		{
-			_moveSpd = 0.3f;
+			_moveSpd = 0.25f;
 			_OwnerID = B_OWNER_PLAYER;
 			_Damage = 1;
 			_SpriteId = CONTRA_BULLET_ANI_BASE_LEFT;

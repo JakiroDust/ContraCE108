@@ -10,10 +10,11 @@ void Equip_Gun_S::Fire(float& x, float& y, float& vx, float& vy, bool type)
 
 void Equip_Gun_S::Fire(float& x, float& y, int DIR)
 {
-	if (!CanShoot())
+	int remain_bullet = CanShoot();
+	if (remain_bullet <= 0)
 		return;
 
-	unique_ptr<Obj_Bullet_S> bullets[5];
+	vector<unique_ptr<Obj_Bullet_S>> bullets;
 
 	float baseAngle = 0.0f;
 
@@ -47,14 +48,38 @@ void Equip_Gun_S::Fire(float& x, float& y, int DIR)
 		break;
 	}
 
-	bullets[0] = unique_ptr<Obj_Bullet_S>(new Obj_Bullet_S(this, x, y, B_VALUE_Z, baseAngle));
-	bullets[1] = unique_ptr<Obj_Bullet_S>(new Obj_Bullet_S(this, x, y, B_VALUE_Z, baseAngle + 20.0f));
-	bullets[2] = unique_ptr<Obj_Bullet_S>(new Obj_Bullet_S(this, x, y, B_VALUE_Z, baseAngle + 40.0f));
-	bullets[3] = unique_ptr<Obj_Bullet_S>(new Obj_Bullet_S(this, x, y, B_VALUE_Z, baseAngle - 20.0f));
-	bullets[4] = unique_ptr<Obj_Bullet_S>(new Obj_Bullet_S(this, x, y, B_VALUE_Z, baseAngle - 40.0f));
+	if (remain_bullet > 0)
+	{
+		bullets.push_back(unique_ptr<Obj_Bullet_S>(new Obj_Bullet_S(this, x, y, B_VALUE_Z, baseAngle)));
+		remain_bullet--;
+	}
+
+	if (remain_bullet > 0)
+	{
+		bullets.push_back(unique_ptr<Obj_Bullet_S>(new Obj_Bullet_S(this, x, y, B_VALUE_Z, baseAngle - 20)));
+		remain_bullet--;
+	}
+
+	if (remain_bullet > 0)
+	{
+		bullets.push_back(unique_ptr<Obj_Bullet_S>(new Obj_Bullet_S(this, x, y, B_VALUE_Z, baseAngle + 20)));
+		remain_bullet--;
+	}
+
+	if (remain_bullet > 0)
+	{
+		bullets.push_back(unique_ptr<Obj_Bullet_S>(new Obj_Bullet_S(this, x, y, B_VALUE_Z, baseAngle - 40)));
+		remain_bullet--;
+	}
+
+	if (remain_bullet > 0)
+	{
+		bullets.push_back(unique_ptr<Obj_Bullet_S>(new Obj_Bullet_S(this, x, y, B_VALUE_Z, baseAngle + 40)));
+		remain_bullet--;
+	}
 
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < bullets.size(); i++)
 		scene->add_object(move(bullets[i]));
 }

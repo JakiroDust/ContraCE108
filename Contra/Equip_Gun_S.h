@@ -8,9 +8,9 @@ class Equip_Gun_S : public Equip_GunBase
 {
 	private:
 		UINT _TotalShooted = 0;
-		bool CanShoot()
+		int CanShoot()
 		{
-			return _TotalShooted < EQUIP_GUN_S_MAX_BULLETS_EXIST;
+			return EQUIP_GUN_S_MAX_BULLETS_EXIST - _TotalShooted;
 		}
 	public:
 		Equip_Gun_S()
