@@ -200,6 +200,7 @@ Game_Character::Game_Character(float x, float y, int z, int width, int height) :
 void Game_Character::Cleaning()
 {
 	_ActionQueue.clear();
+	delete _weapon;
 	Game_MovableObject::Cleaning();
 }
 

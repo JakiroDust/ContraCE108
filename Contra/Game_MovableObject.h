@@ -123,8 +123,12 @@ public:
 	virtual void teleport(float x, float y);
 	virtual void moveLeft();
 	virtual void moveRight();
+	virtual void moveUp();
+	virtual void moveDown();
 	virtual void jump();
 	virtual void forceDie();
 	virtual void Execute_DieAction() {}
+
+	void DeleteThis() override { Game_ObjectBase::DeleteThis(); }
 };
 

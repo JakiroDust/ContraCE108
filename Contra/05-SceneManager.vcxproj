@@ -167,6 +167,7 @@
     <ClCompile Include="Equip_GunBase.cpp" />
     <ClCompile Include="Equip_Gun_N.cpp" />
     <ClCompile Include="Equip_Gun_R.cpp" />
+    <ClCompile Include="Equip_Gun_S.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Game_Blocker.cpp" />
@@ -194,6 +195,7 @@
     <ClCompile Include="MusicManager.cpp" />
     <ClCompile Include="Obj_Bullet_N.cpp" />
     <ClCompile Include="Obj_Bullet_R.cpp" />
+    <ClCompile Include="Obj_Bullet_S.cpp" />
     <ClCompile Include="Obj_ContraBot.cpp" />
     <ClCompile Include="Obj_EnemyBullet_N.cpp" />
     <ClCompile Include="Obj_SmartBot.cpp" />
@@ -243,6 +245,7 @@
     <ClInclude Include="Equip_EnemyGun_Sniper.h" />
     <ClInclude Include="Equip_GunBase.h" />
     <ClInclude Include="Equip_Gun_R.h" />
+    <ClInclude Include="Equip_Gun_S.h" />
     <ClInclude Include="fmod\fmod.h" />
     <ClInclude Include="fmod\fmod.hpp" />
     <ClInclude Include="fmod\fmod_codec.h" />
@@ -279,6 +282,7 @@
     <ClInclude Include="MusicManager.h" />
     <ClInclude Include="Obj_Bullet_N.h" />
     <ClInclude Include="Obj_Bullet_R.h" />
+    <ClInclude Include="Obj_Bullet_S.h" />
     <ClInclude Include="Obj_ContraBot.h" />
     <ClInclude Include="Obj_EnemyBullet_N.h" />
     <ClInclude Include="Obj_SmartBot.h" />

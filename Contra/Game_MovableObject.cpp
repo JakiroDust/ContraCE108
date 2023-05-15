@@ -41,8 +41,25 @@ void Game_MovableObject::moveRight()
 	_vx = _moveSpd;
 }
 
+void Game_MovableObject::moveUp()
+{
+	if (_gravity)
+		return;
+	_vy = _moveSpd;
+}
+
+void Game_MovableObject::moveDown()
+{
+	if (_gravity)
+		return;
+	_vy = -_moveSpd;
+}
+
 void Game_MovableObject::jump()
 {
+	// only allow when this object is affected by gravity
+	if (!_gravity)
+		return;
 	_jumpForce = GetJumpForce();
 }
 

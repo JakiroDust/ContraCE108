@@ -40,5 +40,7 @@ class Game_Bullet : public Game_MovableObject
 		void SetTargetPos(float x, float y);
 		void SetVector(float vx, float vy);
 		void Render() override;
+
+		void DeleteThis() override { Game_MovableObject::DeleteThis(); }
 };
 

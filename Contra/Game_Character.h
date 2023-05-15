@@ -77,6 +77,12 @@ public:
 	virtual void GetCustomSize(int state, int &width, int &height) {}
 	virtual int CharID() { return -1; }
 
+	void ChangeWeapon(Equip_GunBase* newWep)
+	{
+		if (_weapon != NULL)
+			delete _weapon;
+		_weapon = newWep;
+	}
 };
 
 

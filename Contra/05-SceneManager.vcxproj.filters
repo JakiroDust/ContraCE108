@@ -207,6 +207,8 @@
     <ClCompile Include="Game_SweeperBlock.cpp">
       <Filter>Source Files\Object\StaticObject</Filter>
     </ClCompile>
+    <ClCompile Include="Equip_Gun_S.cpp" />
+    <ClCompile Include="Obj_Bullet_S.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -459,6 +461,8 @@
     <ClInclude Include="Game_SweeperBlock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Equip_Gun_S.h" />
+    <ClInclude Include="Obj_Bullet_S.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
