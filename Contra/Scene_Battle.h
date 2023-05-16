@@ -109,7 +109,7 @@ class Scene_Battle : public Scene_Base
 		int width, height, map_id;
 	public:
 		void _ParseSection_DICT(string line);
-	
+		void _ParseOBject(string line);
 		void addMapPart( int partID, int x, int y);
 };
 
