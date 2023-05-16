@@ -7,7 +7,6 @@
 
 	#include"debug.h"
 	using namespace std;
-
 	class Spatial
 	{
 	protected:
@@ -198,4 +197,8 @@ public:
 		top = loc[id][1]+4;
 	}
 };
+
+
+
+
 #pragma warning(pop)

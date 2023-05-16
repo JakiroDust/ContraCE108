@@ -193,6 +193,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Obj_Bullet_R.cpp" />
+    <ClCompile Include="QuadTree.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">

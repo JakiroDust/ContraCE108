@@ -53,6 +53,7 @@ public:
 	int z() { return _z; }
 	int width() { return _width; }
 	int height() { return _height; }
+	float getRadius(){ return max(_width,_height)/1.0f; }
 	void SetId(int id) { _id = id; }
 	void SetPosition(float x, float y) { this->_x = x, this->_y = y; }
 	void SetSpeed(float vx, float vy) { this->_vx = vx, this->_vy = vy; }

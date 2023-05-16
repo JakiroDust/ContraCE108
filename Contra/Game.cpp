@@ -269,7 +269,8 @@ LPTEXTURE CGame::LoadTexture(LPCWSTR texturePath,bool debugout)
 	info.pSrcInfo = &imageInfo;
 
 	// Loads the texture into a temporary ID3D10Resource object
-	hr = D3DX10CreateTextureFromFile(pD3DDevice,
+	hr = D3DX10CreateTextureFromFile(
+		pD3DDevice,
 		texturePath,
 		&info,
 		NULL,
