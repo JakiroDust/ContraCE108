@@ -20,7 +20,7 @@ class Game_Bullet : public Game_MovableObject
 		Game_Bullet(float x, float y, int z, int width, int height) : Game_MovableObject(0, 0, z, width, height)
 		{
 			_x = x - width / 2.0f;
-			_y = y - height / 2.0f;
+			_y = y + height / 2.0f;
 			_needScanCollision = false;
 			_moveSpd = 0.30f;
 		}

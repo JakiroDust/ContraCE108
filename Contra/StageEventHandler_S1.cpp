@@ -24,7 +24,7 @@ void StageEventHandler_S1::Load()
 {
 	_srcScene->Create_Stage_Demo();
 
-	_srcScene->p1()->ChangeWeapon(new Equip_Gun_S());
+	_srcScene->p1()->ChangeWeapon(new Equip_Gun_L());
 	return;
 
 	// PROTYPE
