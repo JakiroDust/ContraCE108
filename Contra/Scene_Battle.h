@@ -68,7 +68,7 @@ class Scene_Battle : public Scene_Base
 		void Load() override;
 		void Unload() override;
 		
-		void Create_Stage_Demo();
+		//void Create_Stage_Demo();
 
 		// Key event handler
 		virtual void KeyDownEventHandler(int KeyCode) override {}
