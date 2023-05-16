@@ -86,7 +86,11 @@ void State_Contra_Jump::KeyPressed_Shoot()
 		}
 		else
 		{
-			if (obj->IsFaceLeft())
+			if (HoldKeyLeft)
+				obj->Shoot(DIR_LEFT);
+			else if (HoldKeyRight)
+				obj->Shoot(DIR_RIGHT);
+			else if (obj->IsFaceLeft())
 				obj->Shoot(DIR_LEFT);
 			else
 				obj->Shoot(DIR_RIGHT);
@@ -119,7 +123,11 @@ void State_Contra_Jump::KeyHold_Shoot()
 		}
 		else
 		{
-			if (obj->IsFaceLeft())
+			if (HoldKeyLeft)
+				obj->Shoot(DIR_LEFT);
+			else if (HoldKeyRight)
+				obj->Shoot(DIR_RIGHT);
+			else if (obj->IsFaceLeft())
 				obj->Shoot(DIR_LEFT);
 			else
 				obj->Shoot(DIR_RIGHT);

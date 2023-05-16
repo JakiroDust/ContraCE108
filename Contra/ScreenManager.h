@@ -10,6 +10,7 @@ using namespace std;
 #include "Game_Screen.h"
 #include "Scene_Battle.h"
 
+class GameManager;
 
 class ScreenManager
 {
@@ -20,8 +21,8 @@ private:
 	Scene_Base* _scene = NULL;
 
 	// Test
-	void Create_Scene_Demo();
-
+	void Create_Scene_Demo() {}
+	void Unload_Scene();
 public:
 	static ScreenManager* GetInstance();
 	ScreenManager();
@@ -30,5 +31,7 @@ public:
 	void Render();
 	void Update(DWORD dt);
 	void Load(LPCWSTR gameFile);
+
+	void Create_Scene_Battle();
 };
 

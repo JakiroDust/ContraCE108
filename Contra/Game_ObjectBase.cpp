@@ -92,7 +92,7 @@ void Game_ObjectBase::RenderHitbox()
 	cy = screen->ViewBoxHeight() - cy;
 	centerY = screen->ViewBoxHeight() - centerY;
 
-	CGame::GetInstance()->Draw(centerX - cx, centerY - cy, bbox, &rect, 0.75f, _width, _height);
+	CGame::GetInstance()->Draw(centerX - cx, centerY - cy, bbox, &rect, 0.5f, _width, _height);
 }
 
 void Game_ObjectBase::GetBoundingBox(float& left, float& top, float& right, float& bottom)

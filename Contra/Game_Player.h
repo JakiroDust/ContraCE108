@@ -2,6 +2,7 @@
 #include "Game_Character.h"
 #include "Equip_Gun_N.h"
 #include "Equip_Gun_R.h"
+#include "Equip_Gun_S.h"
 
 //#define KEY_UP 0
 //#define KEY_DOWN 1
@@ -10,11 +11,11 @@
 //#define KEY_SHOOT 4
 //#define KEY_JUMP 5
 
-#define PLAYER_BASE_WIDTH 20
-#define PLAYER_BASE_HEIGHT 32
-#define PLAYER_JUMP_WIDTH 20
-#define PLAYER_JUMP_HEIGHT 20
-#define PLAYER_SWIM_WIDTH 20
+#define PLAYER_BASE_WIDTH 18
+#define PLAYER_BASE_HEIGHT 28
+#define PLAYER_JUMP_WIDTH 18
+#define PLAYER_JUMP_HEIGHT 18
+#define PLAYER_SWIM_WIDTH 18
 #define PLAYER_SWIM_HEIGHT 8
 
 // PARAM
@@ -40,8 +41,10 @@ class Game_Player : public Game_Character
 		Game_Player(float x, float y, int z) : Game_Character(x, y, z, PLAYER_BASE_WIDTH, PLAYER_BASE_HEIGHT)
 		{
 			_moveSpd = 0.1f;
-			_weapon = new Equip_Gun_R();
+			_weapon = new Equip_Gun_N();
 		}
+		~Game_Player() { Cleaning(); }
+
 		void SetAuto(bool b) { _auto = b; }
 		bool IsAuto() { return _auto; }
 

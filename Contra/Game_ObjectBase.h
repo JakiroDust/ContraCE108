@@ -10,41 +10,44 @@ using namespace std;
 
 class Game_ObjectBase
 {
-protected:
-	/// POS
+	protected:
+		/// POS
 
-	// horizonal position, base on current map
-	float _x;
-	// vertical position, base on current map
-	float _y;
-	// Value use to determine with object will be draw first
-	// Object with lowest value will be drawn first.
-	int _z;
+		// horizonal position, base on current map
+		float _x;
+		// vertical position, base on current map
+		float _y;
+		// Value use to determine with object will be draw first
+		// Object with lowest value will be drawn first.
+		int _z;
 
-	float _vx = 0;
-	float _vy = 0;
+		float _vx = 0;
+		float _vy = 0;
 
-	/// PROPERTIES
+		/// PROPERTIES
 
-	int _width;
-	int _height;
+		int _width;
+		int _height;
 
-	// LOGIC
-	int _id = -1;
-	bool _isDeleted = false;
-	bool _needScanCollision = false;
-	// RENDER 
+		// LOGIC
+		int _id = -1;
+		bool _isDeleted = false;
+		bool _needScanCollision = false;
+		// RENDER 
 
-	int _SpriteId = 0;
-	bool _needRender = true;
+		int _SpriteId = 0;
+		bool _needRender = true;
 
-	/// PROTECTED FUNCTIONS
+		/// PROTECTED FUNCTIONS
 
-	void UpdatePosition(DWORD dt);
-	virtual void ResetStateParams();
-	void ResetSpeed();
-public:
-	Game_ObjectBase(float x = 0, float y = 0, int z = 0, int width = 0, int height = 0);
+		void UpdatePosition(DWORD dt);
+		virtual void ResetStateParams();
+		void ResetSpeed();
+
+		// Clean data after calling destructor
+		virtual void Cleaning() {}
+	public:
+		Game_ObjectBase(float x = 0, float y = 0, int z = 0, int width = 0, int height = 0);
 
 	// GET SET FUNCTIONS
 	int id() { return _id; }
@@ -72,51 +75,51 @@ public:
 	// 2 - bottom aligment
 	void SetHeight(int height, int mode = 0);
 
-	// Draw object to screen
-	virtual void Render();
-	virtual void SetNeedRender(bool b) { _needRender = b; }
-	virtual bool NeedRender() { return _needRender; }
-	// For debug
-	virtual void RenderHitbox();
+		// Draw object to screen
+		virtual void Render();
+		virtual void SetNeedRender(bool b) { _needRender = b; }
+		virtual bool NeedRender() { return _needRender; }
+		// For debug
+		virtual void RenderHitbox();
 
-	// Movable object or Static Object
-	virtual int baseType() = 0;
+		// Movable object or Static Object
+		virtual int baseType() = 0;
 
-	// UPDATE
+		// UPDATE
 
-	virtual void Update(DWORD dt) {}
-	virtual void Update(DWORD dt, vector< Game_ObjectBase*>* coObjects) {}
-	virtual void Update(DWORD dt, unordered_map<int, Game_ObjectBase*>* coObjects) {}
-	virtual void Execute_AfterUpdating(DWORD dt) {}
+		virtual void Update(DWORD dt) {}
+		virtual void Update(DWORD dt, vector< Game_ObjectBase*>* coObjects) {}
+		virtual void Update(DWORD dt, unordered_map<int, Game_ObjectBase*>* coObjects) {}
+		virtual void Execute_AfterUpdating(DWORD dt) {}
 
-	// COLLISION
+		// COLLISION
 
-	// Get hitbox
-	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
-	// Collision ON or OFF ? This can change depending on object's state. For example: die
-	virtual int IsCollidable() { return 0; }
-	// When no collision has been detected (triggered by CCollision::Process)
-	virtual void OnNoCollision(DWORD dt);
-	// When collision with an object has been detected (triggered by CCollision::Process)
-	virtual void OnCollisionWith(PCOLLISIONEVENT e);
-	// Is this object blocking other object? If YES, collision framework will automatically push the other object
-	virtual bool IsBlocking() { return 0; }
-	// Aditional condition for blocking object. This condition will check if object has IsBlocking = 1.
-	// If NO, this Blocking object will be skip while processing collision framework.
-	virtual bool BlockingCondition(DWORD dt, PCOLLISIONEVENT e) { return 1; }
-	// Can this object ingore blocking object and move through it?
-	// If YES, collision framework will skip this collision event.
-	virtual bool IgnoreBlocking() { return 1; }
+		// Get hitbox
+		virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
+		// Collision ON or OFF ? This can change depending on object's state. For example: die
+		virtual int IsCollidable() { return 0; }
+		// When no collision has been detected (triggered by CCollision::Process)
+		virtual void OnNoCollision(DWORD dt);
+		// When collision with an object has been detected (triggered by CCollision::Process)
+		virtual void OnCollisionWith(PCOLLISIONEVENT e);
+		// Is this object blocking other object? If YES, collision framework will automatically push the other object
+		virtual bool IsBlocking() { return 0; }
+		// Aditional condition for blocking object. This condition will check if object has IsBlocking = 1.
+		// If NO, this Blocking object will be skip while processing collision framework.
+		virtual bool BlockingCondition(DWORD dt, PCOLLISIONEVENT e) { return 1; }
+		// Can this object ingore blocking object and move through it?
+		// If YES, collision framework will skip this collision event.
+		virtual bool IgnoreBlocking() { return 1; }
 
 
-	// Key event handler
-	virtual void KeyDownEventHandler(int KeyCode) {}
-	// Key event handler
-	virtual void KeyUpEventHandler(int KeyCode) {}
-	// Key state handler
-	virtual void KeyStateHandler(BYTE* state) {}
+		// Key event handler
+		virtual void KeyDownEventHandler(int KeyCode) {}
+		// Key event handler
+		virtual void KeyUpEventHandler(int KeyCode) {}
+		// Key state handler
+		virtual void KeyStateHandler(BYTE* state) {}
 
-	virtual void DeleteThis() { _isDeleted = true; }
-	bool IsDeleted() { return _isDeleted; }
+		virtual void DeleteThis() { _isDeleted = true; }
+		bool IsDeleted() { return _isDeleted; }
 };
 

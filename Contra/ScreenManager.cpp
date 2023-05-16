@@ -1,4 +1,5 @@
 #include "ScreenManager.h"
+#include "GameManager.h"
 
 ScreenManager* ScreenManager::__instance = NULL;
 
@@ -16,7 +17,8 @@ ScreenManager::ScreenManager()
 
 void ScreenManager::Update(DWORD dt)
 {
-	_scene->Update(dt);
+	if (_scene != NULL)
+		_scene->Update(dt);
 	// Camera Update
 	//if (dynamic_cast<Scene_Battle*>(_scene))
 	//	_screen->Update(dt, ((Scene_Battle*)_scene)->objects());
@@ -24,7 +26,8 @@ void ScreenManager::Update(DWORD dt)
 
 void ScreenManager::Render()
 {
-	_scene->Render();
+	if (_scene != NULL)
+		_scene->Render();
 }
 
 void ScreenManager::Load(LPCWSTR gameFile)
@@ -32,15 +35,23 @@ void ScreenManager::Load(LPCWSTR gameFile)
 	// Build later
 
 	// Test
-	Create_Scene_Demo();
+	//Create_Scene_Demo();
 }
 
-// DEMO
 
-void ScreenManager::Create_Scene_Demo()
+
+// CREATE SCENE
+void ScreenManager::Unload_Scene()
 {
+	if (_scene != NULL)
+		delete _scene;
+}
+
+void ScreenManager::Create_Scene_Battle()
+{
+	Unload_Scene();
 	Scene_Battle* scene = new Scene_Battle();
-	scene->Create_Stage_Demo();
+	//scene->Create_Stage_Demo();
 	_scene = scene;
 	
 }

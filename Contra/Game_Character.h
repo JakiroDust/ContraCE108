@@ -26,10 +26,11 @@ protected:
 	void ExecuteAction();
 	void ResetStateParams() override;
 
+	void Cleaning() override;
 public:
 	//static unordered_map<int, vector<float>> _spawnBulletHelper;
 	Game_Character(float x, float y, int z, int width, int height) ;	
-	~Game_Character();
+	~Game_Character() { }
 	//-------------------------------------------------------------------------------
 	/// INHERITED
 
@@ -67,7 +68,7 @@ public:
 
 	void moveLeft() override;
 	void moveRight() override;
-
+	void jumpDown();
 	// GET & SET
 
 	bool IsJumpDown() { return _jumpDown; }
@@ -76,6 +77,12 @@ public:
 	virtual void GetCustomSize(int state, int &width, int &height) {}
 	virtual int CharID() { return -1; }
 
+	void ChangeWeapon(Equip_GunBase* newWep)
+	{
+		if (_weapon != NULL)
+			delete _weapon;
+		_weapon = newWep;
+	}
 };
 
 

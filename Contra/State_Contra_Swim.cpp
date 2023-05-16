@@ -32,6 +32,9 @@ void State_Contra_Swim::Update(DWORD dt)
 		obj->SetHeight(height, 2);
 	}
 	
+	if (obj->LockFace())
+		obj->SetLockFace(false);
+
 	if (!obj->IsSwimming())
 	{
 		if (_nextState == -1)
