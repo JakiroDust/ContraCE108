@@ -3,6 +3,9 @@
 #include <string>
 #include "State_Base.h"
 
+#define JUMP_VECTOR 0.15f
+#define OBJECT_JUMP_HEIGHT 54.0f
+
 class Game_MovableObject : public Game_ObjectBase
 {
 protected:
@@ -39,7 +42,7 @@ public:
 
 	// World variable to determine
 	// how fast jumpForce will be modified.
-	static const float JUMP_VECTOR;
+	//static const float JUMP_VECTOR;
 	// CONSTRUCTOR
 
 	Game_MovableObject(float x, float y, int z, int width, int height) : Game_ObjectBase(x, y, z, width, height) {}
@@ -96,7 +99,7 @@ public:
 	void SetLockFace(bool b) { _lockFace = b; }
 	bool LockFace() { return _lockFace; }
 
-	float GetJumpForce() { return /*max(ceilf(40.0f / (JUMP_VECTOR * 16)), 1)*/ 40.0f; }
+	float GetJumpForce() { return /*max(ceilf(40.0f / (JUMP_VECTOR * 16)), 1)*/ OBJECT_JUMP_HEIGHT; }
 
 	/// STATE
 

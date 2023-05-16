@@ -1,6 +1,6 @@
 #include "Game_MovableObject.h"
 
-const float Game_MovableObject::JUMP_VECTOR = 0.15f;
+//const float Game_MovableObject::JUMP_VECTOR = 0.15f;
 
 bool Game_MovableObject::isDie()
 {

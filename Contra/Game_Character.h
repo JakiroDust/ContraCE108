@@ -5,6 +5,7 @@
 #include "spawnBulletHelper.h"
 //#include "Contra_GET_ANI.h"
 
+#define CHARACTER_JUMP_ON_HEIGHT 12
 
 using namespace std;
 

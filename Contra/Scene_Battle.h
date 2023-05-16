@@ -10,7 +10,7 @@
 #include "Game_Terrain.h"
 #include "Game_Collision.h"
 #include "Game_Water.h"
-
+#include "Game_DeadlyBlock.h"
 #include "StageEventHandler_S1.h"
 
 // DEMO

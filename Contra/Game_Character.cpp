@@ -44,12 +44,12 @@ void Game_Character::OnCollisionWith(PCOLLISIONEVENT e)
 	}
 
 	if (e->nx != 0 && _onGround && dynamic_cast<Game_Terrain*>(e->obj) && !dynamic_cast<Game_Water*>(e->obj)
-		&& e->obj->y() - footerY() < _height / 2.0)
+		&& e->obj->y() - footerY() <= CHARACTER_JUMP_ON_HEIGHT)
 	{
 		if (_swim)
 		{
 			//_jumpForce = (footerY() - e->obj->y()) / (JUMP_VECTOR * 4) + 1
-			_jumpForce = (e->obj->y() - footerY()) + _height / 3.0f;
+			_jumpForce = (e->obj->y() - footerY()) + CHARACTER_JUMP_ON_HEIGHT / 3.0f;
 			_jumpForce = floorf(_jumpForce);
 			if (e->nx < 0)
 			{

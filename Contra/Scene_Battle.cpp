@@ -539,7 +539,7 @@ void Scene_Battle::_ParseOBject(string line)
                     break;
                 case TWATER: obj.reset(new Game_Water(x, y, 1, width, height));
                     break;
-                case TDEADLY:
+                case TDEADLY: obj.reset(new Game_DeadlyBlock(x, y, 1, width, height));
                     break;
                 default: 
                     obj.reset( NULL);
