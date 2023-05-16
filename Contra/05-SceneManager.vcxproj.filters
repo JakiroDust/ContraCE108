@@ -209,8 +209,10 @@
     </ClCompile>
     <ClCompile Include="Equip_Gun_S.cpp" />
     <ClCompile Include="Obj_Bullet_S.cpp" />
-    <ClCompile Include="Equip_Gun_L.cpp" />
-    <ClCompile Include="Obj_Bullet_L.cpp" />
+    <ClCompile Include="Obj_Bullet_R.cpp" />
+    <ClCompile Include="QuadTree.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -465,8 +467,6 @@
     </ClInclude>
     <ClInclude Include="Equip_Gun_S.h" />
     <ClInclude Include="Obj_Bullet_S.h" />
-    <ClInclude Include="Equip_Gun_L.h" />
-    <ClInclude Include="Obj_Bullet_L.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

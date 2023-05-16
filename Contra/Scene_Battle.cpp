@@ -238,7 +238,7 @@ void Scene_Battle::Create_Stage_Demo()
     //unique_ptr<Obj_SmartBot>smartbot(new Obj_SmartBot(100.0f, _mapHeight - 40.0f + 32, 2)); add_object(move(smartbot));
     
     unique_ptr<Enemy_Sniper> sniper(new Enemy_Sniper(300.0f, _mapHeight - 150.0f, 2)); add_object(move(sniper));
-
+    /*
     unique_ptr<Game_Blocker> block1 ( new Game_Blocker(-18.0f, _mapHeight - 20.0f, 1, 20, GAMESCREEN_HEIGHT - 20));
     unique_ptr<Game_Blocker> block2 ( new Game_Blocker(_mapWidth - 20.0f, _mapHeight - 20.0f, 1, 20, GAMESCREEN_HEIGHT - 20));
 
@@ -264,8 +264,8 @@ void Scene_Battle::Create_Stage_Demo()
     add_object(move(plat4));//8
     add_object(move(plat5));//9
     add_object(move(plat6));//10
-    
-    
+    */
+    _ParseOBject("textures\\MAP1");
     //_layers.push_back(demo);
     ScreenManager::GetInstance()->Screen()->focusToPoint(GAMESCREEN_WIDTH/2.0f,GAMESCREEN_HEIGHT/2.0f, _mapWidth, _mapHeight);
     
@@ -515,6 +515,55 @@ void Scene_Battle::_ParseSection_DICT(string line)
     //    }
 
     //}
+}
+void Scene_Battle::_ParseOBject(string line)
+{
+    fstream f;
+    f.open(line+"\\object.txt");
+    if (f.is_open())
+    {
+        int16_t id;
+        float x, y;
+        int width, height;
+        unique_ptr<Game_ObjectBase>obj;
+        while (!f.eof() || !f.fail())
+        {
+            try
+            {
+                f >> id >> x >> y >> width >> height;
+                switch (id)
+                {
+                case TBLOCKER: obj.reset(new Game_Blocker(x, y, 1, width, height));
+                    break;
+                case TPLATFORM: obj.reset(new Game_Platform(x, y, 1, width, height));
+                    break;
+                case TWATER: obj.reset(new Game_Water(x, y, 1, width, height));
+                    break;
+                case TDEADLY:
+                    break;
+                default: 
+                    obj.reset( NULL);
+                    DebugOut(L"Unknown id=%d", id);
+                    break;
+                }
+                if(obj.get()!=NULL)
+                add_object(move(obj));
+                
+            }
+            catch(...)
+            {
+                DebugOut(L"PLEASE RECHECK THE OBJECT.TXT IN MAP DIC");
+                return;
+            }
+        }
+    }
+    else
+    {
+        DebugOut(L"CANNOT READ %s\\object.txt", line);
+        return;
+    }
+    f.close();
+
 }
 
 void Scene_Battle::renderBG(float x, float y)

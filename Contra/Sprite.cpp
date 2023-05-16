@@ -89,7 +89,8 @@ void CSprite::Draw(float x, float y, int& width, int& heigth)
 }
 void CSprite::Draw(float x, float y,float&width,float&heigth)
 {
-
+	Draw(x, y);
+	return;
 	CGame* g = CGame::GetInstance();
 	float cx, cy;
 
