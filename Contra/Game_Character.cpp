@@ -37,8 +37,6 @@ void Game_Character::OnCollisionWith(PCOLLISIONEVENT e)
 		_swim = true;
 	} 
 
-	float test = footerY();
-
 	if (dynamic_cast<Game_Platform*>(e->obj)
 		&& footerY() >= e->obj->y()
 	){
@@ -48,16 +46,32 @@ void Game_Character::OnCollisionWith(PCOLLISIONEVENT e)
 	if (e->nx != 0 && _onGround && dynamic_cast<Game_Terrain*>(e->obj) && !dynamic_cast<Game_Water*>(e->obj)
 		&& e->obj->y() - footerY() < _height / 2.0)
 	{
-		//_jumpForce = (footerY() - e->obj->y()) / (JUMP_VECTOR * 4) + 1
-		_jumpForce = (e->obj->y() - footerY()) + _height / 3.0f;
-		_jumpForce = floorf(_jumpForce);
-		if (e->nx < 0)
+		if (_swim)
 		{
-			_ForceX = -10;
+			//_jumpForce = (footerY() - e->obj->y()) / (JUMP_VECTOR * 4) + 1
+			_jumpForce = (e->obj->y() - footerY()) + _height / 3.0f;
+			_jumpForce = floorf(_jumpForce);
+			if (e->nx < 0)
+			{
+				_ForceX = -10;
+			}
+			else
+			{
+				_ForceX = 10;
+			}
 		}
 		else
 		{
-			_ForceX = 10;
+			_jumpForce = (e->obj->y() - footerY()) + 4;
+			_jumpForce = floorf(_jumpForce);
+			if (e->nx < 0)
+			{
+				_ForceX = -1;
+			}
+			else
+			{
+				_ForceX = 1;
+			}
 		}
 	}
 }
