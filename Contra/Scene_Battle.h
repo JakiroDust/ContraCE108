@@ -31,6 +31,7 @@ using namespace std;
 #define Z_INDEX_BULLET 3
 #define Z_INDEX_BACKGROUND 1
 #define Z_INDEX_ANIMATION 6
+#define Z_INDEX_TERRAIN 2
 
 class Scene_Battle : public Scene_Base
 {
@@ -66,6 +67,7 @@ class Scene_Battle : public Scene_Base
 		void Update(DWORD dt) override;
 		void Load() override;
 		void Unload() override;
+		
 		void Create_Stage_Demo();
 
 		// Key event handler
@@ -95,7 +97,7 @@ class Scene_Battle : public Scene_Base
 		//void delete_object(unique_ptr<Game_ObjectBase>& object);
 
 		// from here is MAP SPATIAL
-		void parseMap();
+		void parseMap(string line);
 
 		///spatial map
 	protected:
@@ -111,5 +113,8 @@ class Scene_Battle : public Scene_Base
 		void _ParseSection_DICT(string line);
 		void _ParseOBject(string line);
 		void addMapPart( int partID, int x, int y);
+
+		// Delete later
+		void init_spatial() { _init_spatial(); }
 };
 

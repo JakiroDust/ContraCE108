@@ -99,6 +99,9 @@ void Scene_Battle::Update(DWORD dt)
 {
     dt = min(dt, 40);
 
+    if (_isLoading)
+        return;
+
     // Event Handler
     if (_controller != NULL)
         _controller->Update(dt);
@@ -109,6 +112,9 @@ void Scene_Battle::Update(DWORD dt)
         Game_ObjectBase* obj = _layers[i];
         checkObjectNeedRender(obj);
     }
+
+    if (__objects.empty())
+        return;
 
     vector<int> id_list= getNearbyIDFast();
     vector<PGAMEOBJECT>* nearbyObject = getObjectById(id_list);
@@ -173,6 +179,9 @@ void Scene_Battle::Load()
 
 void Scene_Battle::Unload()
 {
+    _delete_spatial();
+    map_sprite.clear();
+    __objects.clear();
     delete _controller;
 }
 
@@ -369,9 +378,12 @@ void Scene_Battle::_delete_spatial()
 //=====================================================================================================
 // PARSE
 
-void Scene_Battle::parseMap()
+void Scene_Battle::parseMap(string line)
 {
-
+    _isLoading = true;
+    _ParseSection_DICT(line);
+    _ParseOBject(line);
+    _isLoading = false;
 }
 
 void Scene_Battle::_ParseSection_DICT(string line)
@@ -531,30 +543,58 @@ void Scene_Battle::_ParseOBject(string line)
             try
             {
                 f >> id >> x >> y >> width >> height;
-                switch (id)
-                {
-                case TBLOCKER: obj.reset(new Game_Blocker(x, y, 1, width, height));
-                    break;
-                case TPLATFORM: obj.reset(new Game_Platform(x, y, 1, width, height));
-                    break;
-                case TWATER: obj.reset(new Game_Water(x, y, 1, width, height));
-                    break;
-                case TDEADLY: obj.reset(new Game_DeadlyBlock(x, y, 1, width, height));
-                    break;
-                default: 
-                    obj.reset( NULL);
-                    DebugOut(L"Unknown id=%d", id);
-                    break;
-                }
-                if(obj.get()!=NULL)
-                add_object(move(obj));
                 
+                // PARSE TERRAIN
+                if (width != 0 && height != 0)
+                {
+                    switch (id)
+                    {
+                    case TBLOCKER: obj.reset(new Game_Blocker(x, y, Z_INDEX_TERRAIN, width, height));
+                        break;
+                    case TPLATFORM: obj.reset(new Game_Platform(x, y, Z_INDEX_TERRAIN, width, height));
+                        break;
+                    case TWATER: obj.reset(new Game_Water(x, y, Z_INDEX_TERRAIN, width, height));
+                        break;
+                    case TDEADLY: obj.reset(new Game_DeadlyBlock(x, y, Z_INDEX_TERRAIN, width, height));
+                        break;
+                    default:
+                        obj.reset(NULL);
+                        DebugOut(L"Unknown id=%d", id);
+                        break;
+                    }
+                    if (obj.get() != NULL)
+                    {
+                        add_object(move(obj));
+                    }
+                }
+                else // PARSE OBJECT
+                {
+                    switch (id)
+                    {
+                    case CHAR_CONTRA:
+                        _p1.reset(new Game_Player(x, y, Z_INDEX_PLAYER));
+                        addPlayer1();
+                        obj.reset(NULL);
+                        break;
+                    case SNIPER: obj.reset(new Enemy_Sniper(x, y, Z_INDEX_ENEMY));
+                        break;
+                    default:
+                        obj.reset(NULL);
+                        DebugOut(L"Unknown id=%d", id);
+                        break;
+                    }
+                    if (obj.get() != NULL)
+                    {
+                        add_object(move(obj));
+                    }
+                }
             }
             catch(...)
             {
                 DebugOut(L"PLEASE RECHECK THE OBJECT.TXT IN MAP DIC");
                 return;
             }
+
         }
     }
     else
