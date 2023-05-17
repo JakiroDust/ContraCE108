@@ -101,7 +101,13 @@ public:
         }
         system->playSound((bgm[fileName]), nullptr, false, &bgmChannel);
     }
-
+    void stopBGM()
+    {
+        if (bgmChannel != nullptr) {
+            bgmChannel->stop();
+            bgmChannel = nullptr;
+        }
+    }
     void playSFX(const int& fileName, int mode, int type) {
         switch (mode)
         {
