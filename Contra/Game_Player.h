@@ -3,6 +3,7 @@
 #include "Equip_Gun_N.h"
 #include "Equip_Gun_R.h"
 #include "Equip_Gun_S.h"
+#include "Equip_Gun_L.h"
 
 //#define KEY_UP 0
 //#define KEY_DOWN 1

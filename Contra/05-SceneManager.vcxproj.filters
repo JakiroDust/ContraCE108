@@ -213,6 +213,10 @@
     <ClCompile Include="QuadTree.h">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="Equip_Gun_L.cpp" />
+    <ClCompile Include="Obj_Bullet_L.cpp" />
+    <ClCompile Include="Game_Picture.cpp" />
+    <ClCompile Include="Scene_LoadingStage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -467,6 +471,10 @@
     </ClInclude>
     <ClInclude Include="Equip_Gun_S.h" />
     <ClInclude Include="Obj_Bullet_S.h" />
+    <ClInclude Include="Equip_Gun_L.h" />
+    <ClInclude Include="Obj_Bullet_L.h" />
+    <ClInclude Include="Game_Picture.h" />
+    <ClInclude Include="Scene_LoadingStage.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

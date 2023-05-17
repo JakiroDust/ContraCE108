@@ -1,6 +1,7 @@
 #pragma once
 #include "debug.h"
 #include "StageEventHandler_S1.h"
+#include "Scene_LoadingStage.h"
 #include "ScreenManager.h"
 
 #define SIG_PLAY_INTRO 1200
@@ -32,6 +33,7 @@ class GameManager
 		
 		int _signal = -1;
 		Scene_Base* _signalSender = NULL;
+		void SignalHandler();
 
 		// stage
 
@@ -45,7 +47,7 @@ class GameManager
 		// scene
 		void Create_Stage_1(Scene_Battle* scene);
 		
-
+		void Create_LoadingStage(Scene_LoadingStage* scene, int stageID);
 	public:
 		static GameManager* GetInstance();
 		GameManager() {}

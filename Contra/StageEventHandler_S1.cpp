@@ -2,9 +2,11 @@
 #include "Scene_Battle.h"
 #include "ScreenManager.h"
 #include "Enemy_Infary.h"
+#include "GameManager.h"
 
 void StageEventHandler_S1::Update(DWORD dt)
 {
+
 	// Make Camera focus to player
 	Set_Camera_Focus_Player();
 
@@ -22,21 +24,39 @@ void StageEventHandler_S1::Update(DWORD dt)
 
 void StageEventHandler_S1::Load()
 {
-	_srcScene->Create_Stage_Demo();
+	//_srcScene->Create_Stage_Demo();
 
-	_srcScene->p1()->ChangeWeapon(new Equip_Gun_S());
-	return;
+
+	//return;
 
 	// PROTYPE
+
+
+	_srcScene->SetMapSize(3328, GAMESCREEN_HEIGHT);
+	ScreenManager::GetInstance()->Screen()->SetViewBox(_srcScene->MapWidth(), _srcScene->MapHeight());
+
 	SoundSystem* SS = SoundSystem::getInstance();
 	SS->playBGM(BGM_JUNGLE);
-	_srcScene->_ParseSection_DICT("textures\\MAP1");
-	// ParseSection_OBJECT
-	// ParseSection_animation
+
+	// Parse map
+	_srcScene->init_spatial();
+	_srcScene->parseMap("textures\\MAP1");
+
+	//_srcScene->_ParseSection_DICT("textures\\MAP1");
+	//_srcScene->_ParseOBject("textures\\MAP1");
 
 	// Add sweeper block
 	_sweeper.reset(new Game_SweeperBlock(-100, 0, 0, 100, GAMESCREEN_HEIGHT));
 	_srcScene->add_object(move(_sweeper));
+
+	// Change laser
+	//_srcScene->p1()->ChangeWeapon(new Equip_Gun_L());
+}
+
+void StageEventHandler_S1::CompleteStage()
+{
+	GameManager::GetInstance()->ReceiveSignal(SIG_LOADING_STAGE_3, _srcScene);
+	_srcScene->PAUSE();
 }
 
 // ===================================================================

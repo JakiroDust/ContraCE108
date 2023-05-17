@@ -17,21 +17,22 @@ float BG_color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 Scene_Battle::~Scene_Battle()
 {
     //delete _p1;
-    delete _p2;
+    //delete _p2;
 
-    for (int i = 0; i < _layers.size(); i++)
-    {
-        delete  _layers.at(i);
-    }
-    _layers.clear();
+    //for (int i = 0; i < _layers.size(); i++)
+    //{
+    //    delete  _layers.at(i);
+    //}
+    //_layers.clear();
 
-  /*  for (int i = 0; i < _objects.size(); i++)
+    /*  for (int i = 0; i < _objects.size(); i++)
     {
         delete  _objects.at(i);
     }
     _objects.clear();*/
-    _delete_spatial();
-    __objects.clear();
+    //_delete_spatial();
+    //__objects.clear();
+    Unload();
 }
 
 void Scene_Battle::Render()
@@ -41,7 +42,7 @@ void Scene_Battle::Render()
     // layers
     for (int i = 0; i < _layers.size(); i++)
     {
-        Game_ObjectBase* obj = _layers[i];
+        Game_ObjectBase* obj = _layers[i].get();
         if (obj->NeedRender() == false) {
             continue;
         }
@@ -99,6 +100,9 @@ void Scene_Battle::Update(DWORD dt)
 {
     dt = min(dt, 40);
 
+    if (!_isPlaying)
+        return;
+
     // Event Handler
     if (_controller != NULL)
         _controller->Update(dt);
@@ -106,9 +110,12 @@ void Scene_Battle::Update(DWORD dt)
     // Map Update
     for (int i = 0; i < _layers.size(); i++)
     {
-        Game_ObjectBase* obj = _layers[i];
+        Game_ObjectBase* obj = _layers[i].get();
         checkObjectNeedRender(obj);
     }
+
+    if (__objects.empty())
+        return;
 
     vector<int> id_list= getNearbyIDFast();
     vector<PGAMEOBJECT>* nearbyObject = getObjectById(id_list);
@@ -173,7 +180,21 @@ void Scene_Battle::Load()
 
 void Scene_Battle::Unload()
 {
-    delete _controller;
+    _delete_spatial();
+    map_sprite.clear();
+    __objects.clear();
+    _p1.reset(NULL);
+    //_p2.reset(NULL);
+    if (_controller != NULL)
+        delete _controller;
+}
+
+void Scene_Battle::KeyDownEventHandler(int KeyCode)
+{
+    if (_controller != NULL)
+    {
+        _controller->KeyDownEventHandler(KeyCode);
+    }
 }
 
 //=====================================================================================================================
@@ -219,57 +240,60 @@ void Scene_Battle::addPlayer2()
     _p2_id = add_object(move(_p2));
     Game_KeyInput::GetInstance()->AddObjectControl(p2());
 }*/
-void Scene_Battle::Create_Stage_Demo()
-{
-    _controller = new StageEventHandler_S1(this);
 
-    _mapWidth = 3328;
-    _mapHeight = GAMESCREEN_HEIGHT;
-    ScreenManager::GetInstance()->Screen()->SetViewBox(_mapWidth, _mapHeight);
-    _init_spatial();
-    _ParseSection_DICT("textures\\MAP1");
 
-    _p1.reset(new Game_Player(40.0f, _mapHeight - 40.0f, 2));
+//void Scene_Battle::Create_Stage_Demo()
+//{
+//    _controller = new StageEventHandler_S1(this);
+//
+//    _mapWidth = 3328;
+//    _mapHeight = GAMESCREEN_HEIGHT;
+//    ScreenManager::GetInstance()->Screen()->SetViewBox(_mapWidth, _mapHeight);
+//    _init_spatial();
+//    _ParseSection_DICT("textures\\MAP1");
+//
+//    _p1.reset(new Game_Player(40.0f, _mapHeight - 40.0f, 2));
+//
+//    addPlayer1();
+//    SoundSystem* SS = SoundSystem::getInstance();
+//    SS->playBGM(BGM_JUNGLE);
+//    //unique_ptr<Obj_ContraBot> bot (new Obj_ContraBot(80.0f, _mapHeight - 40.0f + 32, 2)); add_object(move(bot));
+//    //unique_ptr<Obj_SmartBot>smartbot(new Obj_SmartBot(100.0f, _mapHeight - 40.0f + 32, 2)); add_object(move(smartbot));
+//    
+//    unique_ptr<Enemy_Sniper> sniper(new Enemy_Sniper(300.0f, _mapHeight - 150.0f, 2)); add_object(move(sniper));
+//    /*
+//    unique_ptr<Game_Blocker> block1 ( new Game_Blocker(-18.0f, _mapHeight - 20.0f, 1, 20, GAMESCREEN_HEIGHT - 20));
+//    unique_ptr<Game_Blocker> block2 ( new Game_Blocker(_mapWidth - 20.0f, _mapHeight - 20.0f, 1, 20, GAMESCREEN_HEIGHT - 20));
+//
+//    unique_ptr<Game_Water> water1(new Game_Water(0.0f, 20.0f, 1, 288, 20));
+//    unique_ptr<Game_Water> water2(new Game_Water(352.0f, 20.0f, 1, 2976, 20));
+//
+//    unique_ptr<Game_Platform> plat1(new Game_Platform(160.0f, _mapHeight - 150.0f, 1, 96, 10));
+//    unique_ptr<Game_Platform> plat2(new Game_Platform(256.0f, _mapHeight - 178.0f, 1, 32, 10));
+//    unique_ptr<Game_Platform> plat3(new Game_Platform(352.0f, _mapHeight - 178.0f, 1, 32, 10));
+//    unique_ptr<Game_Platform> plat4(new Game_Platform(416.0f, _mapHeight - 150.0f, 1, 64, 10));
+//    unique_ptr<Game_Blocker> plat5(new Game_Blocker(288.0f, _mapHeight - 215.0f, 1, 64, 32));
+//    unique_ptr<Game_Platform> plat6(new Game_Platform(32.0f, _mapHeight - 118.0f, 1, 736, 10));
+//
+//    //Demo_Layer* demo = new Demo_Layer(0, 0, 0, 3328, 240);
+//    //
+//    add_object(move(water1));//1
+//    add_object(move(water2));//2
+//    add_object(move(block1));//3
+//    add_object(move(block2));//4
+//    add_object(move(plat1));//5
+//    add_object(move(plat2));//6
+//    add_object(move(plat3));//7
+//    add_object(move(plat4));//8
+//    add_object(move(plat5));//9
+//    add_object(move(plat6));//10
+//    */
+//    _ParseOBject("textures\\MAP1");
+//    //_layers.push_back(demo);
+//    ScreenManager::GetInstance()->Screen()->focusToPoint(GAMESCREEN_WIDTH/2.0f,GAMESCREEN_HEIGHT/2.0f, _mapWidth, _mapHeight);
+//    
+//}
 
-    addPlayer1();
-    SoundSystem* SS = SoundSystem::getInstance();
-    SS->playBGM(BGM_JUNGLE);
-    //unique_ptr<Obj_ContraBot> bot (new Obj_ContraBot(80.0f, _mapHeight - 40.0f + 32, 2)); add_object(move(bot));
-    //unique_ptr<Obj_SmartBot>smartbot(new Obj_SmartBot(100.0f, _mapHeight - 40.0f + 32, 2)); add_object(move(smartbot));
-    
-    unique_ptr<Enemy_Sniper> sniper(new Enemy_Sniper(300.0f, _mapHeight - 150.0f, 2)); add_object(move(sniper));
-    /*
-    unique_ptr<Game_Blocker> block1 ( new Game_Blocker(-18.0f, _mapHeight - 20.0f, 1, 20, GAMESCREEN_HEIGHT - 20));
-    unique_ptr<Game_Blocker> block2 ( new Game_Blocker(_mapWidth - 20.0f, _mapHeight - 20.0f, 1, 20, GAMESCREEN_HEIGHT - 20));
-
-    unique_ptr<Game_Water> water1(new Game_Water(0.0f, 20.0f, 1, 288, 20));
-    unique_ptr<Game_Water> water2(new Game_Water(352.0f, 20.0f, 1, 2976, 20));
-
-    unique_ptr<Game_Platform> plat1(new Game_Platform(160.0f, _mapHeight - 150.0f, 1, 96, 10));
-    unique_ptr<Game_Platform> plat2(new Game_Platform(256.0f, _mapHeight - 178.0f, 1, 32, 10));
-    unique_ptr<Game_Platform> plat3(new Game_Platform(352.0f, _mapHeight - 178.0f, 1, 32, 10));
-    unique_ptr<Game_Platform> plat4(new Game_Platform(416.0f, _mapHeight - 150.0f, 1, 64, 10));
-    unique_ptr<Game_Blocker> plat5(new Game_Blocker(288.0f, _mapHeight - 215.0f, 1, 64, 32));
-    unique_ptr<Game_Platform> plat6(new Game_Platform(32.0f, _mapHeight - 118.0f, 1, 736, 10));
-
-    //Demo_Layer* demo = new Demo_Layer(0, 0, 0, 3328, 240);
-    //
-    add_object(move(water1));//1
-    add_object(move(water2));//2
-    add_object(move(block1));//3
-    add_object(move(block2));//4
-    add_object(move(plat1));//5
-    add_object(move(plat2));//6
-    add_object(move(plat3));//7
-    add_object(move(plat4));//8
-    add_object(move(plat5));//9
-    add_object(move(plat6));//10
-    */
-    _ParseOBject("textures\\MAP1");
-    //_layers.push_back(demo);
-    ScreenManager::GetInstance()->Screen()->focusToPoint(GAMESCREEN_WIDTH/2.0f,GAMESCREEN_HEIGHT/2.0f, _mapWidth, _mapHeight);
-    
-}
 int Scene_Battle::add_object(unique_ptr<Game_ObjectBase>&& object)
 {
     //_objects.push_back(object);
@@ -369,9 +393,12 @@ void Scene_Battle::_delete_spatial()
 //=====================================================================================================
 // PARSE
 
-void Scene_Battle::parseMap()
+void Scene_Battle::parseMap(string line)
 {
-
+    PAUSE();
+    _ParseSection_DICT(line);
+    _ParseOBject(line);
+    PLAY();
 }
 
 void Scene_Battle::_ParseSection_DICT(string line)
@@ -531,30 +558,58 @@ void Scene_Battle::_ParseOBject(string line)
             try
             {
                 f >> id >> x >> y >> width >> height;
-                switch (id)
-                {
-                case TBLOCKER: obj.reset(new Game_Blocker(x, y, 1, width, height));
-                    break;
-                case TPLATFORM: obj.reset(new Game_Platform(x, y, 1, width, height));
-                    break;
-                case TWATER: obj.reset(new Game_Water(x, y, 1, width, height));
-                    break;
-                case TDEADLY:
-                    break;
-                default: 
-                    obj.reset( NULL);
-                    DebugOut(L"Unknown id=%d", id);
-                    break;
-                }
-                if(obj.get()!=NULL)
-                add_object(move(obj));
                 
+                // PARSE TERRAIN
+                if (width != 0 && height != 0)
+                {
+                    switch (id)
+                    {
+                    case TBLOCKER: obj.reset(new Game_Blocker(x, y, Z_INDEX_TERRAIN, width, height));
+                        break;
+                    case TPLATFORM: obj.reset(new Game_Platform(x, y, Z_INDEX_TERRAIN, width, height));
+                        break;
+                    case TWATER: obj.reset(new Game_Water(x, y, Z_INDEX_TERRAIN, width, height));
+                        break;
+                    case TDEADLY: obj.reset(new Game_DeadlyBlock(x, y, Z_INDEX_TERRAIN, width, height));
+                        break;
+                    default:
+                        obj.reset(NULL);
+                        DebugOut(L"Unknown id=%d", id);
+                        break;
+                    }
+                    if (obj.get() != NULL)
+                    {
+                        add_object(move(obj));
+                    }
+                }
+                else // PARSE OBJECT
+                {
+                    switch (id)
+                    {
+                    case CHAR_CONTRA:
+                        _p1.reset(new Game_Player(x, y, Z_INDEX_PLAYER));
+                        addPlayer1();
+                        obj.reset(NULL);
+                        break;
+                    case SNIPER: obj.reset(new Enemy_Sniper(x, y, Z_INDEX_ENEMY));
+                        break;
+                    default:
+                        obj.reset(NULL);
+                        DebugOut(L"Unknown id=%d", id);
+                        break;
+                    }
+                    if (obj.get() != NULL)
+                    {
+                        add_object(move(obj));
+                    }
+                }
             }
             catch(...)
             {
                 DebugOut(L"PLEASE RECHECK THE OBJECT.TXT IN MAP DIC");
                 return;
             }
+
         }
     }
     else

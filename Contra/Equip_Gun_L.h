@@ -1,0 +1,25 @@
+#pragma once
+#include "Equip_GunBase.h"
+#include "Obj_Bullet_L.h"
+
+#define EQUIP_GUN_L_MAX_ID 20
+
+class Equip_Gun_L : public Equip_GunBase
+{
+private:
+	BYTE _CurrentWaveID = 0;
+public:
+	Equip_Gun_L()
+	{
+		_isAuto = false;
+		_FireRate = 80;
+		_reloadTime = 0;
+		_maxAmmo = 0;
+		_ammo = _maxAmmo;
+	}
+
+	BYTE CurrentWaveID() { return _CurrentWaveID; }
+	void Fire(float& x, float& y, float& vx, float& vy, bool type = false) override;
+	void Fire(float& x, float& y, int DIR) override;
+};
+

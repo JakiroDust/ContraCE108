@@ -3,11 +3,15 @@
 
 class Scene_Battle;
 
+#define STAGE_DEBUG_ALLOW true
+
 class StageEventHandler_Base
 {
 	protected:
 		Scene_Battle* _srcScene;
 		void Set_Camera_Focus_Player();
+
+		void Debug_KeyDownEventHandler(int KeyCode);
 	public:
 		StageEventHandler_Base(Scene_Battle* src)
 		{
@@ -16,5 +20,7 @@ class StageEventHandler_Base
 
 		virtual void Update(DWORD dt) {}
 		virtual void Load() {}
+		virtual void CompleteStage() {}
+		virtual void KeyDownEventHandler(int KeyCode);
 };
 

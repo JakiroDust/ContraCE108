@@ -33,5 +33,6 @@ public:
 	void Load(LPCWSTR gameFile);
 
 	void Create_Scene_Battle();
+	void Create_Scene_LoadingStage(int stageID);
 };
 

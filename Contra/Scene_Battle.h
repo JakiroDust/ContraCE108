@@ -10,7 +10,7 @@
 #include "Game_Terrain.h"
 #include "Game_Collision.h"
 #include "Game_Water.h"
-
+#include "Game_DeadlyBlock.h"
 #include "StageEventHandler_S1.h"
 
 // DEMO
@@ -31,15 +31,16 @@ using namespace std;
 #define Z_INDEX_BULLET 3
 #define Z_INDEX_BACKGROUND 1
 #define Z_INDEX_ANIMATION 6
+#define Z_INDEX_TERRAIN 2
 
 class Scene_Battle : public Scene_Base
 {
 	private:
 		int _p1_id=-1;
 		int _p2_id=-1;
-		unique_ptr< Game_Player> _p1 ;
+		unique_ptr<Game_Player> _p1 ;
 		Game_Player* _p2 = NULL;
-		vector<Game_Layer*> _layers;
+		vector<unique_ptr<Game_Layer>> _layers;
 		//vector<Game_ObjectBase*> _objects;
 		unordered_map<int,unique_ptr<Game_ObjectBase>> __objects;
 		int _mapWidth = 1;
@@ -66,10 +67,11 @@ class Scene_Battle : public Scene_Base
 		void Update(DWORD dt) override;
 		void Load() override;
 		void Unload() override;
-		void Create_Stage_Demo();
+		
+		//void Create_Stage_Demo();
 
 		// Key event handler
-		virtual void KeyDownEventHandler(int KeyCode) override {}
+		virtual void KeyDownEventHandler(int KeyCode) override;
 
 		/// from this is protype
 		void SetStageEventHandler(StageEventHandler_Base* handler)
@@ -95,7 +97,7 @@ class Scene_Battle : public Scene_Base
 		//void delete_object(unique_ptr<Game_ObjectBase>& object);
 
 		// from here is MAP SPATIAL
-		void parseMap();
+		void parseMap(string line);
 
 		///spatial map
 	protected:
@@ -111,5 +113,8 @@ class Scene_Battle : public Scene_Base
 		void _ParseSection_DICT(string line);
 		void _ParseOBject(string line);
 		void addMapPart( int partID, int x, int y);
+
+		// Delete later
+		void init_spatial() { _init_spatial(); }
 };
 

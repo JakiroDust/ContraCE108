@@ -32,7 +32,7 @@ void Game_Collision::SweptAABB(
 	nx = ny = 0;
 
 	// check if move object has already intersected with static object. 
-	if (ml <= sr && mr >= sl && mt >= sb && mb <= st)
+	if (ml <= sr && mr >= sl && mt <= sb && mb >= st)
 	{
 		t = 0;
 		ny = 0.0f;

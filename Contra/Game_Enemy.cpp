@@ -7,7 +7,7 @@
 #include "State_Contra_Jump.h"
 #include "State_Contra_Die.h"
 #include "Contra_GET_ANI.h"
-#include "Game_Bullet.h"
+#include "Obj_Bullet_L.h"
 
 int Game_Enemy::CharID()
 {
@@ -210,14 +210,31 @@ void Game_Enemy::OnCollisionWith(PCOLLISIONEVENT e)
 	Game_Character::OnCollisionWith(e);
 
 	// Hit bullet
+	
+	// Laser
+	if (!_ghost && dynamic_cast<Obj_Bullet_L*>(e->obj))
+	{
+		Obj_Bullet_L* bullet = ((Obj_Bullet_L*)e->obj);
+
+		if (bullet->OwnerID() == B_OWNER_PLAYER && bullet->Test_InternalCollision(this))
+		{
+			if (!_immortal)
+				_hp -= bullet->Damage();
+			if (_HardBody)
+				bullet->DeleteThis();
+		}
+		return;
+	}
+
 	if (!_ghost && dynamic_cast<Game_Bullet*>(e->obj))
 	{
 		Game_Bullet* bullet = ((Game_Bullet*)e->obj);
+
 		if (bullet->OwnerID() == B_OWNER_PLAYER)
 		{
 			if (!_immortal)
 				_hp -= bullet->Damage();
-			bullet->DeleteThis();
+
 		}
 	}
 }
