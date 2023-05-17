@@ -16,7 +16,7 @@ protected:
 	// When value above 0, entity will float.
 	float _jumpForce = 0;
 	float _ForceX = 0;
-
+	float _ForceY = 0;
 	/// state
 
 	bool _faceLeft = false;

@@ -59,7 +59,7 @@ void Scene_LoadingStage::Render()
 void Scene_LoadingStage::Load()
 {
 	SoundSystem* SS = SoundSystem::getInstance();
-	//SS->stopBGM();
+	SS->stopBGM();
 
 	switch (_StageID)
 	{

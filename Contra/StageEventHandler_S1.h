@@ -2,22 +2,26 @@
 #include "StageEventHandler_Base.h"
 #include "Game_SweeperBlock.h"
 
-#define SPAWN_INFARY_INTERVAL 1200
+#define SPAWN_INFARY_INTERVAL 1500
+#define SPAWN_INFARY_RANDOM_MAX 20
 
 class StageEventHandler_S1 : public StageEventHandler_Base
 {
 	private:
-		unique_ptr<Game_SweeperBlock> _sweeper;
+		int _sweeperID;
 		DWORD spawn_infary_ticker = 0;
+		DWORD random_seed = 0;
 		void Spawn_Infary(DWORD dt, float camX, float spawnPosY);
 	public:
 		StageEventHandler_S1(Scene_Battle* src) : StageEventHandler_Base(src)
 		{
 			_srcScene = src;
 		}
-
+		Game_SweeperBlock* GetSweeper();
 		void Update(DWORD dt) override;
 		void Load() override;
 		void CompleteStage() override;
+
+		virtual void HelpGetRevivePoint(float& posX, float& posY) override;
 };
 

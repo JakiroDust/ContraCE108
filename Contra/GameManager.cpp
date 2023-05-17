@@ -71,9 +71,7 @@ void GameManager::StartApplication()
 	ScreenManager* screenManager = ScreenManager::GetInstance();
 
 	// currently Intro 've not implemented yet . So start STAGE 1 instead.
-	//screenManager->Create_Scene_Battle();
-	//((Scene_Battle*)(screenManager->Scene()))->Create_Stage_Demo();
-	Create_Stage_1(NULL);
+	Create_LoadingStage(NULL, SCENE_STAGE_1);
 }
 
 //======================================================================================

@@ -91,7 +91,10 @@ class Scene_Battle : public Scene_Base
 		Spatial *spatial=NULL;
 		vector<int> getNearByID(int n, int m);
 		vector<int> getNearbyIDFast();
+		
+		Game_ObjectBase* getObjectByID(int id) { return __objects[id].get(); }
 		vector<Game_ObjectBase*>* getObjectById(vector<int>& vtr);
+
 		int add_object(unique_ptr<Game_ObjectBase>&& object);
 		void delete_object(int id);
 		//void delete_object(unique_ptr<Game_ObjectBase>& object);
