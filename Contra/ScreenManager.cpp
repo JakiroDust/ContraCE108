@@ -1,5 +1,6 @@
 #include "ScreenManager.h"
 #include "GameManager.h"
+#include "Game_KeyInput.h"
 
 ScreenManager* ScreenManager::__instance = NULL;
 
@@ -45,6 +46,7 @@ void ScreenManager::Unload_Scene()
 {
 	if (_scene != NULL)
 		delete _scene;
+	Game_KeyInput::GetInstance()->ClearAll();
 }
 
 void ScreenManager::Create_Scene_Battle()
@@ -53,5 +55,12 @@ void ScreenManager::Create_Scene_Battle()
 	Scene_Battle* scene = new Scene_Battle();
 	//scene->Create_Stage_Demo();
 	_scene = scene;
-	
+	Game_KeyInput::GetInstance()->AddSceneControl(_scene);
+}
+
+void ScreenManager::Create_Scene_LoadingStage(int stageID)
+{
+	Unload_Scene();
+	Scene_LoadingStage* scene = new Scene_LoadingStage(stageID);
+	_scene = scene;
 }

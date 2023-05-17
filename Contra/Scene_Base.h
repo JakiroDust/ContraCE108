@@ -7,7 +7,7 @@ class Scene_Base
 {
 	protected:
 		//vector<Game_Image*>* _images = NULL;
-		bool _isLoading = false;
+		bool _isPlaying = false;
 	public:
 		// GET & SET
 		// vector<Game_ObjectBase*>* objects() { return _objects; }
@@ -25,6 +25,8 @@ class Scene_Base
 		virtual void Update(DWORD dt) {}
 		virtual void Load() {}
 		virtual void Unload() {}
-		bool IsLoading() { return _isLoading; }
+		bool IsPlaying() { return _isPlaying; }
+		void PLAY() { _isPlaying = true; }
+		void PAUSE() { _isPlaying = false; }
 };
 

@@ -18,5 +18,6 @@ class StageEventHandler_S1 : public StageEventHandler_Base
 
 		void Update(DWORD dt) override;
 		void Load() override;
+		void CompleteStage() override;
 };
 

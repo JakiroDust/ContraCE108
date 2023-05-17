@@ -17,21 +17,22 @@ float BG_color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 Scene_Battle::~Scene_Battle()
 {
     //delete _p1;
-    delete _p2;
+    //delete _p2;
 
-    for (int i = 0; i < _layers.size(); i++)
-    {
-        delete  _layers.at(i);
-    }
-    _layers.clear();
+    //for (int i = 0; i < _layers.size(); i++)
+    //{
+    //    delete  _layers.at(i);
+    //}
+    //_layers.clear();
 
-  /*  for (int i = 0; i < _objects.size(); i++)
+    /*  for (int i = 0; i < _objects.size(); i++)
     {
         delete  _objects.at(i);
     }
     _objects.clear();*/
-    _delete_spatial();
-    __objects.clear();
+    //_delete_spatial();
+    //__objects.clear();
+    Unload();
 }
 
 void Scene_Battle::Render()
@@ -41,7 +42,7 @@ void Scene_Battle::Render()
     // layers
     for (int i = 0; i < _layers.size(); i++)
     {
-        Game_ObjectBase* obj = _layers[i];
+        Game_ObjectBase* obj = _layers[i].get();
         if (obj->NeedRender() == false) {
             continue;
         }
@@ -99,7 +100,7 @@ void Scene_Battle::Update(DWORD dt)
 {
     dt = min(dt, 40);
 
-    if (_isLoading)
+    if (!_isPlaying)
         return;
 
     // Event Handler
@@ -109,7 +110,7 @@ void Scene_Battle::Update(DWORD dt)
     // Map Update
     for (int i = 0; i < _layers.size(); i++)
     {
-        Game_ObjectBase* obj = _layers[i];
+        Game_ObjectBase* obj = _layers[i].get();
         checkObjectNeedRender(obj);
     }
 
@@ -182,7 +183,18 @@ void Scene_Battle::Unload()
     _delete_spatial();
     map_sprite.clear();
     __objects.clear();
-    delete _controller;
+    _p1.reset(NULL);
+    //_p2.reset(NULL);
+    if (_controller != NULL)
+        delete _controller;
+}
+
+void Scene_Battle::KeyDownEventHandler(int KeyCode)
+{
+    if (_controller != NULL)
+    {
+        _controller->KeyDownEventHandler(KeyCode);
+    }
 }
 
 //=====================================================================================================================
@@ -383,10 +395,10 @@ void Scene_Battle::_delete_spatial()
 
 void Scene_Battle::parseMap(string line)
 {
-    _isLoading = true;
+    PAUSE();
     _ParseSection_DICT(line);
     _ParseOBject(line);
-    _isLoading = false;
+    PLAY();
 }
 
 void Scene_Battle::_ParseSection_DICT(string line)

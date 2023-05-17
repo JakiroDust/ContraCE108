@@ -182,6 +182,7 @@
     <ClCompile Include="Game_MovableEnemy.cpp" />
     <ClCompile Include="Game_MovableObject.cpp" />
     <ClCompile Include="Game_ObjectBase.cpp" />
+    <ClCompile Include="Game_Picture.cpp" />
     <ClCompile Include="Game_Platform.cpp" />
     <ClCompile Include="Game_Player.cpp" />
     <ClCompile Include="Game_Screen.cpp" />
@@ -206,6 +207,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Scene_Base.cpp" />
     <ClCompile Include="Scene_Battle.cpp" />
+    <ClCompile Include="Scene_LoadingStage.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="Spatial.cpp" />
     <ClCompile Include="spawnBulletHelper.cpp" />
@@ -272,6 +274,7 @@
     <ClInclude Include="Game_MovableEnemy.h" />
     <ClInclude Include="Game_MovableObject.h" />
     <ClInclude Include="Game_ObjectBase.h" />
+    <ClInclude Include="Game_Picture.h" />
     <ClInclude Include="Game_Platform.h" />
     <ClInclude Include="Game_Player.h" />
     <ClInclude Include="Game_Screen.h" />
@@ -295,6 +298,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Scene_Base.h" />
     <ClInclude Include="Scene_Battle.h" />
+    <ClInclude Include="Scene_LoadingStage.h" />
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="Spatial.h" />
     <ClInclude Include="spawnBulletHelper.h" />

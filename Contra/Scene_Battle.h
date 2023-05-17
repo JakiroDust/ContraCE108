@@ -38,9 +38,9 @@ class Scene_Battle : public Scene_Base
 	private:
 		int _p1_id=-1;
 		int _p2_id=-1;
-		unique_ptr< Game_Player> _p1 ;
+		unique_ptr<Game_Player> _p1 ;
 		Game_Player* _p2 = NULL;
-		vector<Game_Layer*> _layers;
+		vector<unique_ptr<Game_Layer>> _layers;
 		//vector<Game_ObjectBase*> _objects;
 		unordered_map<int,unique_ptr<Game_ObjectBase>> __objects;
 		int _mapWidth = 1;
@@ -71,7 +71,7 @@ class Scene_Battle : public Scene_Base
 		//void Create_Stage_Demo();
 
 		// Key event handler
-		virtual void KeyDownEventHandler(int KeyCode) override {}
+		virtual void KeyDownEventHandler(int KeyCode) override;
 
 		/// from this is protype
 		void SetStageEventHandler(StageEventHandler_Base* handler)

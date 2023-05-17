@@ -12,7 +12,30 @@ GameManager* GameManager::GetInstance()
 
 void GameManager::Update(DWORD dt)
 {
+	SignalHandler();
+}
 
+void GameManager::SignalHandler()
+{
+	switch (_signal)
+	{
+	case SIG_PLAY_STAGE_1:
+		Create_Stage_1(NULL);
+		break;
+	case SIG_PLAY_STAGE_3:
+		Create_Stage_1(NULL);
+		break;
+	case SIG_LOADING_STAGE_1:
+		Create_LoadingStage(NULL, SCENE_STAGE_1);
+		break;
+	case SIG_LOADING_STAGE_3:
+		Create_LoadingStage(NULL, SCENE_STAGE_3);
+		break;
+	default:
+		break;
+	}
+	_signal = 0;
+	_signalSender = NULL;
 }
 
 void GameManager::ReceiveSignal(int signal, Scene_Base* sender)
@@ -70,6 +93,18 @@ void GameManager::Create_Stage_1(Scene_Battle* scene)
 	// create stage 1 mean just at the beginning of the game
 	// init game
 	InitGame();
+
+	scene->Load();
+}
+
+void GameManager::Create_LoadingStage(Scene_LoadingStage* scene, int stageID)
+{
+	if (scene == NULL)
+	{
+		ScreenManager* screenManager = ScreenManager::GetInstance();
+		screenManager->Create_Scene_LoadingStage(stageID);
+		scene = (Scene_LoadingStage*)(screenManager->Scene());
+	}
 
 	scene->Load();
 }

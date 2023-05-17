@@ -2,6 +2,7 @@
 #include "Scene_Battle.h"
 #include "ScreenManager.h"
 #include "Enemy_Infary.h"
+#include "GameManager.h"
 
 void StageEventHandler_S1::Update(DWORD dt)
 {
@@ -50,6 +51,12 @@ void StageEventHandler_S1::Load()
 
 	// Change laser
 	//_srcScene->p1()->ChangeWeapon(new Equip_Gun_L());
+}
+
+void StageEventHandler_S1::CompleteStage()
+{
+	GameManager::GetInstance()->ReceiveSignal(SIG_LOADING_STAGE_3, _srcScene);
+	_srcScene->PAUSE();
 }
 
 // ===================================================================
