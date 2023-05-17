@@ -18,6 +18,8 @@ public:
 	CAnimation(int defaultTime = 100) { this->defaultTime = defaultTime; lastFrameTime = -1; currentFrame = -1; }
 	void Add(int spriteId, DWORD time = 0);
 	void Render(float x, float y);
+	// Render using screen position instead of world location
+	void RenderOnScreen(float x, float y, BYTE RenderMode = RENDER_MODE_CENTER);
 	void Render(float x, float y,float width,float height);
 	CAnimation* Clone_Flip();
 };
