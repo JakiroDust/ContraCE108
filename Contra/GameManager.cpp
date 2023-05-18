@@ -23,7 +23,7 @@ void GameManager::SignalHandler()
 		Create_Stage_1(NULL);
 		break;
 	case SIG_PLAY_STAGE_3:
-		Create_Stage_1(NULL);
+		Create_Stage_3(NULL);
 		break;
 	case SIG_LOADING_STAGE_1:
 		Create_LoadingStage(NULL, SCENE_STAGE_1);
@@ -51,6 +51,10 @@ StageEventHandler_Base* GameManager::Get_StageEventHandler(int stage, Scene_Batt
 	{
 	case SCENE_STAGE_1:
 		handler = new StageEventHandler_S1(scene);
+		return handler;
+		break;
+	case SCENE_STAGE_3:
+		handler = new StageEventHandler_S3(scene);
 		return handler;
 		break;
 	default:
@@ -91,6 +95,20 @@ void GameManager::Create_Stage_1(Scene_Battle* scene)
 	// create stage 1 mean just at the beginning of the game
 	// init game
 	InitGame();
+
+	scene->Load();
+}
+
+void GameManager::Create_Stage_3(Scene_Battle* scene)
+{
+	if (scene == NULL)
+	{
+		ScreenManager* screenManager = ScreenManager::GetInstance();
+		screenManager->Create_Scene_Battle();
+		scene = (Scene_Battle*)(screenManager->Scene());
+	}
+
+	scene->SetStageEventHandler(Get_StageEventHandler(SCENE_STAGE_3, scene));
 
 	scene->Load();
 }

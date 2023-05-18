@@ -72,14 +72,6 @@ void StageEventHandler_S1::Update(DWORD dt)
 
 void StageEventHandler_S1::Load()
 {
-	//_srcScene->Create_Stage_Demo();
-
-
-	//return;
-
-	// PROTYPE
-
-
 	_srcScene->SetMapSize(3328, GAMESCREEN_HEIGHT);
 	ScreenManager::GetInstance()->Screen()->SetViewBox(_srcScene->MapWidth(), _srcScene->MapHeight());
 
@@ -95,9 +87,7 @@ void StageEventHandler_S1::Load()
 
 	// Add sweeper block
 	unique_ptr<Game_SweeperBlock> sweeper(new Game_SweeperBlock(-64, 0, Z_INDEX_TERRAIN, 64, GAMESCREEN_HEIGHT));
-	_srcScene->add_object(move(sweeper));
-	// Change laser
-	//_srcScene->p1()->ChangeWeapon(new Equip_Gun_L());
+	_sweeperID =  _srcScene->add_object(move(sweeper));
 }
 
 void StageEventHandler_S1::CompleteStage()
@@ -146,17 +136,15 @@ void StageEventHandler_S1::HelpGetRevivePoint(float& posX, float& posY)
 	vector<PGAMEOBJECT>* coObjects = scene->getObjectById(id_list);
 
 	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
-	float cx, cy;
-	screen->GetCenterPoint(cx, cy);
 
-	float adding = -16;
+	float adding = -8;
 
 	bool canSpawn = false;
 	while (!canSpawn && testbox->x() + testbox->width() < _srcScene->MapWidth())
 	{
 		adding += 32;
 		posX = sweeper->x() + sweeper->width() + adding;
-		posY = sweeper->height() - 64;
+		posY = _srcScene->MapHeight() - 16;
 		testbox->SetPosition(posX, posY);
 
 		// Make testbox move down
@@ -185,6 +173,6 @@ void StageEventHandler_S1::HelpGetRevivePoint(float& posX, float& posY)
 	if (!canSpawn)
 	{
 		posX = sweeper->x() + sweeper->width() + 16;
-		posY = sweeper->height() - 64;
+		posY = _srcScene->MapHeight() - 16;
 	}
 }

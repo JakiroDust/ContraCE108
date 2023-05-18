@@ -534,6 +534,9 @@ void Scene_Battle::_ParseOBject(string line)
                         break;
                     case SNIPER: obj.reset(new Enemy_Sniper(x, y, Z_INDEX_ENEMY));
                         break;
+                    case CAMERA:
+                        ScreenManager::GetInstance()->Screen()->SetPosition(x, y);
+                        break;
                     default:
                         obj.reset(NULL);
                         DebugOut(L"Unknown id=%d", id);

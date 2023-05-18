@@ -107,10 +107,10 @@ void Scene_LoadingStage::Finish_Loading()
 	switch (_StageID)
 	{
 	case SCENE_STAGE_1:
-		GameManager::GetInstance()->ReceiveSignal(SIG_PLAY_STAGE_3, this);
+		GameManager::GetInstance()->ReceiveSignal(SIG_PLAY_STAGE_1, this);
 		break;
 	case SCENE_STAGE_3:
-		GameManager::GetInstance()->ReceiveSignal(SIG_PLAY_STAGE_1, this);
+		GameManager::GetInstance()->ReceiveSignal(SIG_PLAY_STAGE_3, this);
 		break;
 	}
 	_finishLoading = true;

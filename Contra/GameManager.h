@@ -1,6 +1,7 @@
 #pragma once
 #include "debug.h"
 #include "StageEventHandler_S1.h"
+#include "StageEventHandler_S3.h"
 #include "Scene_LoadingStage.h"
 #include "ScreenManager.h"
 
@@ -46,7 +47,7 @@ class GameManager
 
 		// scene
 		void Create_Stage_1(Scene_Battle* scene);
-		
+		void Create_Stage_3(Scene_Battle* scene);
 		void Create_LoadingStage(Scene_LoadingStage* scene, int stageID);
 	public:
 		static GameManager* GetInstance();

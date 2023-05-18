@@ -1,5 +1,8 @@
 #pragma once
 
+// Camera
+#define CAMERA 9999
+
 // Terrains
 #define TBLOCKER 10000
 #define TPLATFORM 10001
