@@ -53,11 +53,11 @@ void Game_Character::OnCollisionWith(PCOLLISIONEVENT e)
 			_jumpForce = floorf(_jumpForce);
 			if (e->nx < 0)
 			{
-				_ForceX = -10;
+				_ForceX = 10;
 			}
 			else
 			{
-				_ForceX = 10;
+				_ForceX = -10;
 			}
 		}
 		else
@@ -66,11 +66,11 @@ void Game_Character::OnCollisionWith(PCOLLISIONEVENT e)
 			_jumpForce = floorf(_jumpForce);
 			if (e->nx < 0)
 			{
-				_ForceX = -1;
+				_ForceX = 1;
 			}
 			else
 			{
-				_ForceX = 1;
+				_ForceX = -1;
 			}
 		}
 	}

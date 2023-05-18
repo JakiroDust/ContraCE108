@@ -2,7 +2,7 @@
 #include "Scene_Base.h"
 #include "Game_Picture.h"
 
-#define SCENE_LOADING_STAGE_WAIT_INTERVAL 2000
+#define SCENE_LOADING_STAGE_WAIT_INTERVAL 1500
 
 class Scene_LoadingStage : public Scene_Base
 {

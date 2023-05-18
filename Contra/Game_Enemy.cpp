@@ -8,6 +8,8 @@
 #include "State_Contra_Die.h"
 #include "Contra_GET_ANI.h"
 #include "Obj_Bullet_L.h"
+#include "Game_DeadlyBlock.h"
+#include "Game_SweeperBlock.h"
 
 int Game_Enemy::CharID()
 {
@@ -209,6 +211,12 @@ void Game_Enemy::OnCollisionWith(PCOLLISIONEVENT e)
 {
 	Game_Character::OnCollisionWith(e);
 
+	// Collision with deadly block or sweeper
+	if (dynamic_cast<Game_DeadlyBlock*>(e->obj) || dynamic_cast<Game_SweeperBlock*>(e->obj))
+	{
+		DeleteThis();
+		return;
+	}
 	// Hit bullet
 	
 	// Laser

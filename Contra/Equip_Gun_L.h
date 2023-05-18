@@ -12,7 +12,7 @@ public:
 	Equip_Gun_L()
 	{
 		_isAuto = false;
-		_FireRate = 80;
+		_FireRate = 120;
 		_reloadTime = 0;
 		_maxAmmo = 0;
 		_ammo = _maxAmmo;

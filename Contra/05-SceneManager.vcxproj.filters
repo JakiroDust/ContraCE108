@@ -435,7 +435,6 @@
     <ClInclude Include="Equip_GunBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="spawnBulletHelper.h" />
     <ClInclude Include="STL_storage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -454,27 +453,48 @@
     <ClInclude Include="MusicManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StageEventHandler_Base.h" />
-    <ClInclude Include="StageEventHandler_S1.h" />
     <ClInclude Include="Obj_Bullet_R.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StageEventHandler_S3.h" />
     <ClInclude Include="Game_DeadlyBlock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game_SweeperBlock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Equip_Gun_S.h" />
-    <ClInclude Include="Obj_Bullet_S.h" />
-    <ClInclude Include="Equip_Gun_L.h" />
-    <ClInclude Include="Obj_Bullet_L.h" />
-    <ClInclude Include="Game_Picture.h" />
-    <ClInclude Include="Scene_LoadingStage.h" />
+    <ClInclude Include="Equip_Gun_L.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Equip_Gun_S.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Picture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj_Bullet_L.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj_Bullet_S.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_LoadingStage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="spawnBulletHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StageEventHandler_Base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StageEventHandler_S1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StageEventHandler_S3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

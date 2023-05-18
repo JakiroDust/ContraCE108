@@ -8,6 +8,9 @@
 #include "State_Contra_Die.h"
 #include "Contra_GET_ANI.h"
 #include "Enemy_RedGunner.h"
+#include "Game_DeadlyBlock.h"
+#include "ScreenManager.h"
+#include "StageEventHandler_Base.h"
 
 int Game_Player::CharID()
 {
@@ -298,6 +301,13 @@ void Game_Player::OnNoCollision(DWORD dt)
 void Game_Player::OnCollisionWith(PCOLLISIONEVENT e)
 {
 	Game_Character::OnCollisionWith(e);
+	
+	if (!_die && dynamic_cast<Game_DeadlyBlock*>(e->obj))
+	{
+		DieEvent();
+		return;
+	}
+
 	if (!_die && !_ghost && dynamic_cast<Game_Enemy*>(e->obj))
 	{
 		Game_Enemy* enemy = (Game_Enemy*)(e->obj);
@@ -361,13 +371,13 @@ void Game_Player::Execute_DieAction()
 	_lockFace = true;
 	if (_faceLeft)
 	{
-		_ForceX = -40;
+		_ForceX = 40;
 	}
 	else
 	{
-		_ForceX = 40;
+		_ForceX = -40;
 	}
-	jump();
+	_ForceY = 40;
 }
 
 void Game_Player::DieEvent()
@@ -388,11 +398,17 @@ void Game_Player::PerformRevive()
 	_invincible_ani_interval = PLAYER_INVINCIBLE_ANI_INTERVAL;
 	_invincible_interval = PLAYER_REVIVE_INVINCIBLE_TIME;
 	_lockFace = false;
-	// implement revive-pos detection later
-	_revive_pos_X = 64;
-	_revive_pos_Y = 220;
+	
+	// Get Respawn point
+
+	StageEventHandler_Base* helper = ((Scene_Battle*)(ScreenManager::GetInstance()->Scene()))->GetStageEventHandler();
+
+	helper->HelpGetRevivePoint(_revive_pos_X, _revive_pos_Y);
 	// --------------
 	_ForceX = 0;
 	_x = _revive_pos_X;
 	_y = _revive_pos_Y;
+	// --------------
+	// Reset to normal gun
+	ChangeWeapon(new Equip_Gun_N());
 }

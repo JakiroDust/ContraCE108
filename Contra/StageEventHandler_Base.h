@@ -22,5 +22,7 @@ class StageEventHandler_Base
 		virtual void Load() {}
 		virtual void CompleteStage() {}
 		virtual void KeyDownEventHandler(int KeyCode);
+
+		virtual void HelpGetRevivePoint(float &posX, float &posY) { }
 };
 

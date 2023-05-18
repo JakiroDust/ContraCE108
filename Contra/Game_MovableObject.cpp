@@ -115,7 +115,7 @@ void Game_MovableObject::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 
 void Game_MovableObject::UpdateDefault(DWORD dt)
 {
-	if (_gravity)
+	if (_gravity && _ForceY == 0)
 	{
 		UpdateJumpState(dt);
 	}
@@ -123,13 +123,63 @@ void Game_MovableObject::UpdateDefault(DWORD dt)
 	{
 		if (_ForceX > 0)
 		{
-			_ForceX--;
-			moveLeft();
+			if (abs(_ForceX) > _moveSpd * dt)
+			{
+				_ForceX -= _moveSpd * dt;
+				moveRight();
+			}
+			else
+			{
+				moveRight();
+				_ForceX = 0;
+			}
 		}
 		else
 		{
-			_ForceX++;
-			moveRight();
+			if (abs(_ForceX) > _moveSpd * dt)
+			{
+				_ForceX += _moveSpd * dt;
+				moveLeft();
+			}
+			else
+			{
+				moveLeft();
+				_ForceX = 0;
+			}
+		}
+	}
+
+	if (_ForceY != 0)
+	{
+		if (_jumpForce != 0)
+			_jumpForce = 0;
+		
+		if (_ForceY > 0)
+		{
+			if (abs(_ForceY) > JUMP_VECTOR * dt)
+			{
+				_ForceY -= JUMP_VECTOR * dt;
+				_vy = JUMP_VECTOR;
+			}
+			else
+			{
+				_vy = abs(_ForceY) / dt;
+				_ForceY = 0;
+			}
+			
+		}
+		else
+		{
+			if (abs(_ForceY) > JUMP_VECTOR * dt)
+			{
+				_ForceY += JUMP_VECTOR * dt;
+				_vy = -JUMP_VECTOR;
+			}
+			else
+			{
+				_vy = -abs(_ForceY) / dt;
+				_ForceY = 0;
+			}
 		}
 	}
 }
