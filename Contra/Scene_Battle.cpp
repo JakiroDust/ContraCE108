@@ -352,10 +352,7 @@ void Scene_Battle::_init_spatial()
     spatial = new Spatial(n, m, width, height);
 
 
-    //texu
-    n = int(_mapHeight / MAP_TEXU_HEIGHT);
-    m = int(_mapWidth / MAP_TEXU_WIDTH);
-    mapTexSpatial = new SpatialforTex(n,m, MAP_TEXU_WIDTH, MAP_TEXU_HEIGHT,int(340/ MAP_TEXU_HEIGHT), int(340 / MAP_TEXU_WIDTH));
+
 
 }
 
@@ -403,6 +400,13 @@ void Scene_Battle::parseMap(string line)
 
 void Scene_Battle::_ParseSection_DICT(string line)
 {
+    map_sprite.clear();
+    //texu
+    int n = int(_mapHeight / MAP_TEXU_HEIGHT),
+        m = int(_mapWidth / MAP_TEXU_WIDTH);
+    if (mapTexSpatial != NULL)
+        delete mapTexSpatial;
+    mapTexSpatial = new SpatialforTex(n, m, MAP_TEXU_WIDTH, MAP_TEXU_HEIGHT, int(340 / MAP_TEXU_HEIGHT), int(340 / MAP_TEXU_WIDTH));
     ifstream f;
     f.open(line + "\\info.txt");
 
@@ -461,28 +465,6 @@ void Scene_Battle::_ParseSection_DICT(string line)
     }
     f.close();
 
-    /*
-    f.open(line + "\\block.txt");
-    if (f.is_open())
-    {
-        while (!f.eof() || !f.fail())
-        {
-            int type;
-            f >> type;
-            while (true)
-            {
-                int temp;
-                f >> temp;
-                if (temp == -1) break;
-                map_info[temp] = type;
-            }
-        }
-    }
-    else
-    {
-        DebugOut(L"CANNOT READ %s\\block.txt(CAN BE IGNORE IF DONT USE)", line);
-    }
-    */
     int curID = 0;
     int curN = 0, curM = 0;
     //parsing texture+
@@ -494,54 +476,13 @@ void Scene_Battle::_ParseSection_DICT(string line)
     {
         for (curM = 0; curM < width; curM++)
         {
-           // int curType = map_info[curN * height + curM];
-            //if (curType == NOTHING)
-              //  continue;
-            //map[0][curM]
+
              addMapPart(curID,(curM)*MAP_TEXU_WIDTH,MapHeight() - curN * MAP_TEXU_HEIGHT- MAP_TEXU_HEIGHT);
                 curID++;
         }
     }
-    return;
-    //PARSING OBJECT(hitbox)
-    curN=0, curM=0;
-    
 
-    //int curBlockStart;
-    //int curBlockType;
-    //for (curN = 0; curN < height; curN++)
-    //{
-    //    curBlockStart = 0;
-    //    curBlockType = map_info[curN * height + 0];
-    //    for (curM = 1; curM < width; curM++)
-    //    {
-    //        int curType = map_info[curN * height + curM];
-    //        if (curType != curBlockType)
-    //        {
-    //            switch (curBlockType)
-    //            {
-    //            case NOTHING:
-    //                /*
-    //                * it is transparent
-    //                */
-    //                break;
-    //            case BRIDGE_BLOCK:
-    //                /*
-    //                ASSUMING BRIDGE ALWAYS UP, BUT FOR NOW SAME CASE WITH BLOCK UP
-    //                */
-    //            case UP_BLOCK:
-    //                break;
-    //            case DOWN_BLOCK:
-    //                break;
-    //            default:
-    //                DebugOut(L"Getting unknown type, please check again %d", map_info[curN * height + curM]);
-    //            }
-    //            curBlockType = curType;
-    //            curBlockStart = curM;
-    //        }
-    //    }
 
-    //}
 }
 void Scene_Battle::_ParseOBject(string line)
 {
