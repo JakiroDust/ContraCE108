@@ -202,9 +202,10 @@ int WINAPI WinMain(
 
 	//IMPORTANT: this is the only place where a hardcoded file name is allowed ! 
 	//game->Load(L"mario-sample.txt");  
-	game->Load(L"contra-level.txt");
+	//game->Load(L"contra-level.txt");
 
 	// Demo
+	GameManager::GetInstance()->Load(L"contra-level.txt");
 	GameManager::GetInstance()->StartApplication();
 	//ScreenManager::GetInstance()->Load(L"contra-level.txt");
 

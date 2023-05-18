@@ -5,12 +5,7 @@ height	240
 
 #id	type	file
 # type: 0: intro, 1: play scene 
-[SCENES]
-0	intro.txt
-#1	contra-scene01.txt
-#2	contra-scene02.txt
-1	contra-scene02.txt
-# id	file 
+
 [TEXTURES]
 -100	textures\bbox.png
 0	textures\contra2-transparent.png
@@ -22,3 +17,9 @@ height	240
 2	textures\ContraMapStage2BG.png
 3	textures\ContraMapStage3BG.png
 4	textures\ContraMapStage4BG.png
+
+[ASSETS]
+contra.txt
+CONTRA_BULLET.txt
+INFARY.txt
+SNIPER.txt

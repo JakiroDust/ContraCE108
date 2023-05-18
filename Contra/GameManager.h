@@ -4,6 +4,17 @@
 #include "StageEventHandler_S3.h"
 #include "Scene_LoadingStage.h"
 #include "ScreenManager.h"
+#include "Textures.h"
+
+#define SCENE_SECTION_UNKNOWN -1
+#define SCENE_SECTION_ASSETS	10
+
+#define ASSETS_SECTION_UNKNOWN -1
+#define ASSETS_SECTION_SPRITES 1
+#define ASSETS_SECTION_ANIMATIONS 2
+#define ASSETS_SECTION_DICT 3
+
+#define MAX_SCENE_LINE 1024
 
 #define SIG_PLAY_INTRO 1200
 #define SIG_PlAY_END_GAME 1201
@@ -49,7 +60,17 @@ class GameManager
 		void Create_Stage_1(Scene_Battle* scene);
 		void Create_Stage_3(Scene_Battle* scene);
 		void Create_LoadingStage(Scene_LoadingStage* scene, int stageID);
+		void _ParseSection_SPRITES(string line);
+		void _ParseSection_ANIMATIONS(string line);
+
+		
+
+		void _ParseSection_TEXTURES(string line);
+
+		void _ParseSection_ASSETS(string line);
+		void LoadAssets(LPCWSTR assetFile);
 	public:
+		void Load(LPCWSTR gameFile);
 		static GameManager* GetInstance();
 		GameManager() {}
 

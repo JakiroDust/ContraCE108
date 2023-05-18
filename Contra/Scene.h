@@ -25,17 +25,13 @@ public:
 		this->sceneFilePath = filePath;
 		this->key_handler = NULL;
 	}
-	unordered_map<int, unordered_map<int, int>>& getMap();
 	LPKEYEVENTHANDLER GetKeyEventHandler() { return key_handler; }
 	virtual void Load() = 0;
 	virtual void Unload() = 0;
 	virtual void Update(DWORD dt) = 0;
 	virtual void Render() = 0; 
-	///spatial map
+
 protected:
-	unordered_map<int, unordered_map<int, int>> map;
-	unordered_map<int, int> map_info;
-	unordered_map<int, unique_ptr<CTexture>> map_tex;
 public:
 };
 typedef CScene * LPSCENE;

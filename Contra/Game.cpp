@@ -497,7 +497,6 @@ void CGame::Load(LPCWSTR gameFile)
 
 		if (line == "[SETTINGS]") { section = GAME_FILE_SECTION_SETTINGS; continue; }
 		if (line == "[TEXTURES]") { section = GAME_FILE_SECTION_TEXTURES; continue; }
-		if (line == "[SCENES]") { section = GAME_FILE_SECTION_SCENES; continue; }
 		if (line[0] == '[') 
 		{ 
 			section = GAME_FILE_SECTION_UNKNOWN; 

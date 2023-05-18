@@ -64,6 +64,43 @@ void CPlayScene::_ParseSection_ASSETS(string line)
 	LoadAssets(path.c_str());
 }
 
+void CPlayScene::LoadAssets(LPCWSTR assetFile)
+{
+	DebugOut(L"[INFO] Start loading assets from : %s \n", assetFile);
+
+	ifstream f;
+	f.open(assetFile);
+
+	int section = ASSETS_SECTION_UNKNOWN;
+
+	char str[MAX_SCENE_LINE];
+	while (f.getline(str, MAX_SCENE_LINE))
+	{
+		string line(str);
+
+		if (line[0] == '#') continue;	// skip comment lines	
+
+		if (line == "[SPRITES]") { section = ASSETS_SECTION_SPRITES; continue; };
+		if (line == "[ANIMATIONS]") { section = ASSETS_SECTION_ANIMATIONS; continue; };
+		if (line == "[DICT]") { section = ASSETS_SECTION_DICT; continue; }
+		if (line[0] == '[') { section = SCENE_SECTION_UNKNOWN; continue; }
+	
+
+		//
+		// data section
+		//
+		switch (section)
+		{
+		case ASSETS_SECTION_SPRITES: _ParseSection_SPRITES(line); break;
+		case ASSETS_SECTION_ANIMATIONS: _ParseSection_ANIMATIONS(line); break;
+		case ASSETS_SECTION_DICT: _ParseSection_DICT(line); break;
+		}
+	}
+
+	f.close();
+
+	DebugOut(L"[INFO] Done loading assets from %s\n", assetFile);
+}
 void CPlayScene::_ParseSection_ANIMATIONS(string line)
 {
 	vector<string> tokens = split(line);
@@ -165,43 +202,6 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	//objects.push_back(obj);
 }
 
-void CPlayScene::LoadAssets(LPCWSTR assetFile)
-{
-	DebugOut(L"[INFO] Start loading assets from : %s \n", assetFile);
-
-	ifstream f;
-	f.open(assetFile);
-
-	int section = ASSETS_SECTION_UNKNOWN;
-
-	char str[MAX_SCENE_LINE];
-	while (f.getline(str, MAX_SCENE_LINE))
-	{
-		string line(str);
-
-		if (line[0] == '#') continue;	// skip comment lines	
-
-		if (line == "[SPRITES]") { section = ASSETS_SECTION_SPRITES; continue; };
-		if (line == "[ANIMATIONS]") { section = ASSETS_SECTION_ANIMATIONS; continue; };
-		if (line == "[DICT]") { section = ASSETS_SECTION_DICT; continue; }
-		if (line[0] == '[') { section = SCENE_SECTION_UNKNOWN; continue; }
-	
-
-		//
-		// data section
-		//
-		switch (section)
-		{
-		case ASSETS_SECTION_SPRITES: _ParseSection_SPRITES(line); break;
-		case ASSETS_SECTION_ANIMATIONS: _ParseSection_ANIMATIONS(line); break;
-		case ASSETS_SECTION_DICT: _ParseSection_DICT(line); break;
-		}
-	}
-
-	f.close();
-
-	DebugOut(L"[INFO] Done loading assets from %s\n", assetFile);
-}
 
 void CPlayScene::Load()
 {
