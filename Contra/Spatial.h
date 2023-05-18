@@ -124,16 +124,16 @@
 			//vector<vector<int>> addLoc, deleteLoc;
 
 			// Check if the squares intersect
-			if (old_l > new_r || new_l > old_r || old_t > new_b || new_t > old_b) {
+			if (old_l > new_r || new_l > old_r || old_t < new_b || new_t > old_b) {
 				// No intersection, return all points in each square
 				for (int i = old_l; i <= old_r; i++) {
-					for (int j = old_t; j <= old_b; j++) {
+					for (int j = old_b; j <= old_t; j++) {
 						//deleteLoc.push_back({ i, j });
 						_remove(id, j, i);
 					}
 				}
 				for (int i = new_l; i <= new_r; i++) {
-					for (int j = new_t; j <= new_b; j++) {
+					for (int j = new_b; j <= new_t; j++) {
 						//addLoc.push_back({ i, j });
 						_append(id, j, i);
 					}
@@ -142,7 +142,7 @@
 			else {
 				// Compute points in square 1 but not in square 2
 				for (int i = old_l; i <= old_r; i++) {
-					for (int j = old_t; j <= old_b; j++) {
+					for (int j = old_b; j <= old_t; j++) {
 						if (i < new_l || i > new_r || j < new_t || j > new_b) {
 							//deleteLoc.push_back({ i, j });
 							_remove(id, j, i);
@@ -152,7 +152,7 @@
 
 				// Compute points in square 2 but not in square 1
 				for (int i = new_l; i <= new_r; i++) {
-					for (int j = new_t; j <= new_b; j++) {
+					for (int j = new_b; j <= new_t; j++) {
 						if (i < old_l || i > old_r || j < old_t || j > old_b) {
 							//addLoc.push_back({ i, j });
 							_append(id, j, i);

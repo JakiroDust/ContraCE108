@@ -348,7 +348,8 @@ void Scene_Battle::_init_spatial()
         height= int(GAMESCREEN_HEIGHT*1.1),
         n= _mapHeight / width+1,
         m= _mapWidth/ height+1;
-    
+    if (spatial != NULL)
+        delete spatial;
     spatial = new Spatial(n, m, width, height);
 
 
