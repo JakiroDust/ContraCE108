@@ -9,6 +9,7 @@ class StageEventHandler_Base
 {
 	protected:
 		Scene_Battle* _srcScene;
+		bool _toggleFreeCam = false;
 		void Set_Camera_Focus_Player();
 
 		void Debug_KeyDownEventHandler(int KeyCode);
