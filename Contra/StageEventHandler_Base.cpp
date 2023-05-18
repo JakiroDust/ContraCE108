@@ -4,6 +4,8 @@
 
 void StageEventHandler_Base::Set_Camera_Focus_Player()
 {
+    if (_toggleFreeCam)
+        return;
 	float camPosX = 0;
     float camPosY = 0;
     Game_Screen* cam = ScreenManager::GetInstance()->Screen();
@@ -37,6 +39,38 @@ void StageEventHandler_Base::Debug_KeyDownEventHandler(int KeyCode)
             CompleteStage();
             break;
         case DIK_8:
+            _toggleFreeCam = true;
+            break;
+        case DIK_9:
+            _toggleFreeCam = false;
+            break;
+        case DIK_W:
+            if (_toggleFreeCam)
+            {
+                Game_Screen* screen = ScreenManager::GetInstance()->Screen();
+                screen->SetPosition(screen->x(), screen->y() + 32);
+            }
+            break;
+        case DIK_S:
+            if (_toggleFreeCam)
+            {
+                Game_Screen* screen = ScreenManager::GetInstance()->Screen();
+                screen->SetPosition(screen->x(), screen->y() - 32);
+            }
+            break;
+        case DIK_A:
+            if (_toggleFreeCam)
+            {
+                Game_Screen* screen = ScreenManager::GetInstance()->Screen();
+                screen->SetPosition(screen->x() - 32, screen->y());
+            }
+            break;
+        case DIK_D:
+            if (_toggleFreeCam)
+            {
+                Game_Screen* screen = ScreenManager::GetInstance()->Screen();
+                screen->SetPosition(screen->x() + 32, screen->y());
+            }
             break;
         }
     }
