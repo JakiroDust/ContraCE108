@@ -141,7 +141,7 @@ void Game_Character::moveRight()
 
 void Game_Character::jumpDown()
 {
-	unique_ptr<Game_TestBox>testbox(new Game_TestBox(_x, _y - _height - 16, _z, _width, _height, 0, 0));
+	unique_ptr<Game_TestBox>testbox(new Game_TestBox(_x, _y - _height - 12, _z, _width, 8, 0, 0));
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
 
 	vector<int> id_list = scene->getNearbyIDFast();
@@ -157,14 +157,16 @@ void Game_Character::jumpDown()
 	for (int i = 0; i < coEvents->size(); i++)
 	{
 		PCOLLISIONEVENT e = coEvents->at(i);
-		// Check if under player have any terrain
-		if (dynamic_cast<Game_DeadlyBlock*>(e->obj))
+		//Check if under player have any terrain
+		if (dynamic_cast<Game_DeadlyBlock*>(e->obj) || dynamic_cast<Game_SweeperBlock*>(e->obj))
 		{
 			canJumpDown = false;
 			break;
 		}
 
-		if (dynamic_cast<Game_Terrain*>(e->obj))
+		if (dynamic_cast<Game_Platform*>(e->obj)
+			|| dynamic_cast<Game_Blocker*>(e->obj)
+			|| dynamic_cast<Game_Water*>(e->obj))
 		{
 			canJumpDown = true;
 			break;
