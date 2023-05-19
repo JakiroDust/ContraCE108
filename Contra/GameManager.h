@@ -57,9 +57,9 @@ class GameManager
 		void InitGame();
 
 		// scene
-		void Create_Stage_1(Scene_Battle* scene);
-		void Create_Stage_3(Scene_Battle* scene);
-		void Create_LoadingStage(Scene_LoadingStage* scene, int stageID);
+		void Create_Stage_1();
+		void Create_Stage_3();
+		void Create_LoadingStage(int stageID);
 		void _ParseSection_SPRITES(string line);
 		void _ParseSection_ANIMATIONS(string line);
 
