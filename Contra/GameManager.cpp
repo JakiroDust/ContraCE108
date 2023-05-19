@@ -154,6 +154,9 @@ void GameManager::_ParseSection_ANIMATIONS(string line)
 	CAnimations::GetInstance()->Add(ani_id, ani);
 }
 
+//======================================================================================================
+// PROCESSOR
+
 GameManager* GameManager::GetInstance()
 {
 	if (__instance == NULL) __instance = new GameManager();
