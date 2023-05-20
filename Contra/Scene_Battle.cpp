@@ -120,8 +120,8 @@ void Scene_Battle::Update(DWORD dt)
     vector<int> id_list= getNearbyIDFast();
     vector<PGAMEOBJECT>* nearbyObject = getObjectById(id_list);
     //for (int i = 0; i < _objects.size(); i++)
-    float old_l, old_right, old_bottom, old_top,
-        new_l, new_right, new_bottom, new_top;
+    //float old_l, old_right, old_bottom, old_top,
+    float   new_l, new_right, new_bottom, new_top;
 
     //vector<Game_ObjectBase*>* colObjects = objects();
 
@@ -141,13 +141,13 @@ void Scene_Battle::Update(DWORD dt)
         }
         else {
 
-            obj->GetLTRB(old_l, old_top, old_right, old_bottom);
+
             if (obj->NeedScanCollision())
                 obj->Update(dt, nearbyObject);
             else
                 obj->Update(dt);
             obj->GetLTRB(new_l, new_top, new_right, new_bottom);
-            spatial->update(i, old_l, old_top, old_right, old_bottom, new_l, new_top, new_right, new_bottom);
+            spatial->update(i,(int)new_l, (int)new_bottom, (int)new_right, (int)new_top);
            
         }
         checkObjectNeedRender(obj);
@@ -199,10 +199,7 @@ void Scene_Battle::KeyDownEventHandler(int KeyCode)
 
 //=====================================================================================================================
 
-vector<int> Scene_Battle::getNearByIDyx(int y, int x)
-{
-    return spatial->getNearByIDyx(y, x);
-}
+
 
 void Scene_Battle::checkObjectNeedRender(Game_ObjectBase* obj)
 {
@@ -210,7 +207,7 @@ void Scene_Battle::checkObjectNeedRender(Game_ObjectBase* obj)
     
     Game_Screen* screen = ScreenManager::GetInstance()->Screen();
     screen->GetCenterPoint(x, y);
-    getNearByIDyx(y, x);
+    //getNearByIDyx(y, x);
     if (obj->x() + obj->width() < screen->x()
         || obj->x() > screen->x() + screen->width()
         || obj->y() < screen->y() - screen->height()
@@ -315,7 +312,7 @@ int Scene_Battle::add_object(unique_ptr<Game_ObjectBase>&& object)
  
     
    // DebugOut(L"id %d l=%d t=%d r=%d b=%d\n", id_nth, l, t, r, b);
-    spatial->init_object(id, l, t, r, b);
+    spatial->insert(id, l, b, r, t);
     return id;
     
 
@@ -336,7 +333,7 @@ void Scene_Battle::delete_object(int id)
     Game_ObjectBase* object = __objects[id].get();
     float left, top, right, bottom;
     object->GetLTRB(left, top, right, bottom);
-    spatial->del_object(id, left, top, right, bottom);
+    spatial->remove(id);
     __objects[id].reset();
     __objects.erase(id);
     id_recycle_bin.push_back(id);
@@ -350,25 +347,14 @@ void Scene_Battle::_init_spatial()
         m= _mapWidth/ height+1;
     if (spatial != NULL)
         delete spatial;
-    spatial = new Spatial(n, m, width, height);
+    spatial = new QuadTree(0, 0, width, height,8,5);
 
 
 
 
 }
 
-vector<int> Scene_Battle::getNearByID(int n, int m)
-{
-    return spatial->getNearByID(n, m);
-}
 
-vector<int> Scene_Battle::getNearbyIDFast()
-{
-    float x, y;
-    Game_Screen* screen = ScreenManager::GetInstance()->Screen();
-    screen->GetCenterPoint(x, y);
-    return  getNearByIDyx(y, x);
-}
 
 /// REMBER TO DELETE AFTER USE
 vector<Game_ObjectBase*>* Scene_Battle::getObjectById(vector<int>& vtr)
@@ -585,5 +571,26 @@ void Scene_Battle::renderBG(int& x, int& y)
 void Scene_Battle::addMapPart( int partID, int x, int y)
 {
     mapTexSpatial->init_object_ONLYONCE(partID, x, y );
+}
+vector<int> Scene_Battle::getNearbyIDFast()
+{
+    float x, y;
+    ScreenManager::GetInstance()->Screen()->GetCenterPoint(x, y);
+    int width =(int) (GAMESCREEN_WIDTH * 1.3),
+        height = (int)(GAMESCREEN_HEIGHT * 1.3);
+    return getNearByIDwithWH(x, y, width, height);
+}
+vector<int> Scene_Battle::getNearByID(int left, int bottom, int right, int top)
+{
+    return spatial->search(left, bottom, right, top, -100);
+}
+
+vector<int> Scene_Battle::getNearByIDwithWH(int x, int y, int width, int height)
+{
+    int left = x - width / 2,
+        right = left + width,
+        bottom = y - height / 2,
+        top = y + height;
+    return spatial->search(left, bottom, right, top,-100);
 }
 

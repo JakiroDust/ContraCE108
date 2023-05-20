@@ -217,6 +217,12 @@
     <ClCompile Include="Obj_Bullet_L.cpp" />
     <ClCompile Include="Game_Picture.cpp" />
     <ClCompile Include="Scene_LoadingStage.cpp" />
+    <ClCompile Include="QuadTree\SimpleVector.cpp">
+      <Filter>Header Files\QuadTree</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadTree\QuadTree.cpp">
+      <Filter>Header Files\QuadTree</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -495,6 +501,12 @@
     <ClInclude Include="StageEventHandler_S3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="QuadTree\SimpleVector.h">
+      <Filter>Header Files\QuadTree</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadTree\QuadTree.h">
+      <Filter>Header Files\QuadTree</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -601,6 +613,9 @@
     </Filter>
     <Filter Include="Source Files\Object\MoveObject\Character\Enemy">
       <UniqueIdentifier>{49de5c78-298f-4414-ae59-ef4fb86dc94c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\QuadTree">
+      <UniqueIdentifier>{30320bf2-53dd-42d5-8dcb-b5ecaa55bc71}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

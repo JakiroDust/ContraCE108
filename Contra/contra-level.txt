@@ -1,11 +1,3 @@
-[SETTINGS]
-start	1
-width	320
-height	240
-
-#id	type	file
-# type: 0: intro, 1: play scene 
-
 [TEXTURES]
 -100	textures\bbox.png
 0	textures\contra2-transparent.png

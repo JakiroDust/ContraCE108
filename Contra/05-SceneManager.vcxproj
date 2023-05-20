@@ -204,6 +204,8 @@
     <ClCompile Include="Obj_SmartBot.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="QuadTree.h" />
+    <ClCompile Include="QuadTree\QuadTree.cpp" />
+    <ClCompile Include="QuadTree\SimpleVector.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Scene_Base.cpp" />
     <ClCompile Include="Scene_Battle.cpp" />
@@ -295,6 +297,8 @@
     <ClInclude Include="Obj_EnemyBullet_N.h" />
     <ClInclude Include="Obj_SmartBot.h" />
     <ClInclude Include="PlayScene.h" />
+    <ClInclude Include="QuadTree\QuadTree.h" />
+    <ClInclude Include="QuadTree\SimpleVector.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Scene_Base.h" />
     <ClInclude Include="Scene_Battle.h" />

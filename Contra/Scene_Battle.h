@@ -16,6 +16,7 @@
 // DEMO
 #include "Demo_Layer.h"
 #include "Spatial.h"
+#include "QuadTree/QuadTree.h"
 #include "MusicManager.h"
 
 #include "Utils.h"
@@ -46,7 +47,6 @@ class Scene_Battle : public Scene_Base
 		int _mapWidth = 1;
 		int _mapHeight = 1;
 		void checkObjectNeedRender(Game_ObjectBase* obj);
-		vector<int> getNearByIDyx(int y, int x);
 
 		// Stage controller
 		StageEventHandler_Base* _controller = NULL;
@@ -88,8 +88,10 @@ class Scene_Battle : public Scene_Base
 		void _init_spatial();
 		void _delete_spatial();
 	public:
-		Spatial *spatial=NULL;
-		vector<int> getNearByID(int n, int m);
+		//Spatial *spatial=NULL;
+		QuadTree* spatial = NULL;
+		vector<int> getNearByIDwithWH(int x, int y, int width, int height);
+		vector<int> getNearByID(int left, int bottom, int right, int top);
 		vector<int> getNearbyIDFast();
 		
 		Game_ObjectBase* getObjectByID(int id) { return __objects[id].get(); }
@@ -119,5 +121,8 @@ class Scene_Battle : public Scene_Base
 
 		// Delete later
 		void init_spatial() { _init_spatial(); }
+
+		//quadTree
+
 };
 

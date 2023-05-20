@@ -1,7 +1,7 @@
 from PIL import Image
 director="D:/temp_img"
 # Load the image
-img = Image.open(r'D:\ContraCE108\Contra\textures\ContraMapStage3BG.png')
+img = Image.open(r'D:\ContraCE108\Contra\textures\ContraMapStage3BGcroped.png')
 
 import os
 

@@ -49,7 +49,7 @@ void Obj_SmartBot::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	float NEAR_Y = JUMP_VECTOR * dt * 2;
 
 	 //Get all Collision objects. 
-	vector<int> colList = (scene->spatial->getNearByIDyx(_y, _x));
+	vector<int> colList = scene->getNearbyIDFast();
 	vector<Game_ObjectBase*>* collisionObjects = scene->getObjectById(colList);
 
 	// Update Map
