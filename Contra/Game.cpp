@@ -435,7 +435,7 @@ void CGame::ProcessKeyboard()
 			//keyHandler->OnKeyDown(KeyCode);
 		} else {
 			// Modified
-			Game_KeyInput::GetInstance()->OnKeyDown(KeyCode);
+			Game_KeyInput::GetInstance()->OnKeyUp(KeyCode);
 
 			//keyHandler->OnKeyUp(KeyCode);
 		}

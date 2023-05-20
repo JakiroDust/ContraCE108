@@ -154,6 +154,9 @@ void GameManager::_ParseSection_ANIMATIONS(string line)
 	CAnimations::GetInstance()->Add(ani_id, ani);
 }
 
+//======================================================================================================
+// PROCESSOR
+
 GameManager* GameManager::GetInstance()
 {
 	if (__instance == NULL) __instance = new GameManager();
@@ -171,16 +174,16 @@ void GameManager::SignalHandler()
 	switch (_signal)
 	{
 	case SIG_PLAY_STAGE_1:
-		Create_Stage_1(NULL);
+		Create_Stage_1();
 		break;
 	case SIG_PLAY_STAGE_3:
-		Create_Stage_3(NULL);
+		Create_Stage_3();
 		break;
 	case SIG_LOADING_STAGE_1:
-		Create_LoadingStage(NULL, SCENE_STAGE_1);
+		Create_LoadingStage(SCENE_STAGE_1);
 		break;
 	case SIG_LOADING_STAGE_3:
-		Create_LoadingStage(NULL, SCENE_STAGE_3);
+		Create_LoadingStage(SCENE_STAGE_3);
 		break;
 	default:
 		break;
@@ -227,20 +230,17 @@ void GameManager::StartApplication()
 
 
 	// currently Intro 've not implemented yet . So start STAGE 1 instead.
-	Create_LoadingStage(NULL, SCENE_STAGE_1);
+	Create_LoadingStage(SCENE_STAGE_1);
 }
 
 //======================================================================================
 // CREATE SCENE
 
-void GameManager::Create_Stage_1(Scene_Battle* scene)
+void GameManager::Create_Stage_1()
 {
-	if (scene == NULL)
-	{
-		ScreenManager* screenManager = ScreenManager::GetInstance();
-		screenManager->Create_Scene_Battle();
-		scene = (Scene_Battle*)(screenManager->Scene());
-	}
+	ScreenManager* screenManager = ScreenManager::GetInstance();
+	screenManager->Create_Scene_Battle();
+	Scene_Battle* scene = (Scene_Battle*)(screenManager->Scene());
 
 	scene->SetStageEventHandler(Get_StageEventHandler(SCENE_STAGE_1, scene));
 
@@ -251,28 +251,22 @@ void GameManager::Create_Stage_1(Scene_Battle* scene)
 	scene->Load();
 }
 
-void GameManager::Create_Stage_3(Scene_Battle* scene)
+void GameManager::Create_Stage_3()
 {
-	if (scene == NULL)
-	{
-		ScreenManager* screenManager = ScreenManager::GetInstance();
-		screenManager->Create_Scene_Battle();
-		scene = (Scene_Battle*)(screenManager->Scene());
-	}
+	ScreenManager* screenManager = ScreenManager::GetInstance();
+	screenManager->Create_Scene_Battle();
+	Scene_Battle* scene = (Scene_Battle*)(screenManager->Scene());
 
 	scene->SetStageEventHandler(Get_StageEventHandler(SCENE_STAGE_3, scene));
 
 	scene->Load();
 }
 
-void GameManager::Create_LoadingStage(Scene_LoadingStage* scene, int stageID)
+void GameManager::Create_LoadingStage(int stageID)
 {
-	if (scene == NULL)
-	{
-		ScreenManager* screenManager = ScreenManager::GetInstance();
-		screenManager->Create_Scene_LoadingStage(stageID);
-		scene = (Scene_LoadingStage*)(screenManager->Scene());
-	}
+	ScreenManager* screenManager = ScreenManager::GetInstance();
+	screenManager->Create_Scene_LoadingStage(stageID);
+	Scene_LoadingStage* scene = (Scene_LoadingStage*)(screenManager->Scene());
 
 	scene->Load();
 }
