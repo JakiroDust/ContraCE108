@@ -14,8 +14,6 @@ namespace QTREE
     };
 }
 
-// Func signature để đi ngược 
-typedef void QtNodeFunc(QuadTree* qt, void* user_data, int node, int depth, int mx, int my, int sx, int sy);
 class QuadTree
 {
     //Quản lý node, root nằm ở nodes đầu
