@@ -31,14 +31,10 @@ void ScreenManager::Render()
 		_scene->Render();
 }
 
-void ScreenManager::Load(LPCWSTR gameFile)
-{
-	// Build later
-
-	// Test
-	//Create_Scene_Demo();
-}
-
+//void ScreenManager::Load(LPCWSTR gameFile)
+//{
+//
+//}
 
 
 // CREATE SCENE

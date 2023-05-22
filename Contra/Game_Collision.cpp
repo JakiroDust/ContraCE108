@@ -166,10 +166,10 @@ PCOLLISIONEVENT Game_Collision::SweptAABB(PGAMEOBJECT objSrc, DWORD dt, PGAMEOBJ
 	dy = -dy;
 
 	//// These codes are used to debug Player collision
-	if (dynamic_cast<Game_Player*>(objSrc) && dynamic_cast<Game_Water*>(objDest) && abs(objSrc->y() - objSrc->height() - objDest->y()) < 1)
-	{
-		int a = 2;
-	}
+	//if (dynamic_cast<Game_Player*>(objSrc) && dynamic_cast<Game_Water*>(objDest) && abs(objSrc->y() - objSrc->height() - objDest->y()) < 1)
+	//{
+	//	int a = 2;
+	//}
 
 	SweptAABB(
 		ml, mt, mr, mb,

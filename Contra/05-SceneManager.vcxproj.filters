@@ -14,7 +14,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Equip_GunBase.cpp" />
-    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Animation.cpp">
       <Filter>Source Files\Sprite</Filter>
     </ClCompile>
@@ -78,9 +77,6 @@
     <ClCompile Include="State_Station_Hide.cpp">
       <Filter>Source Files\CharState</Filter>
     </ClCompile>
-    <ClCompile Include="PlayScene.cpp">
-      <Filter>Source Files\GameCore</Filter>
-    </ClCompile>
     <ClCompile Include="Scene_Base.cpp">
       <Filter>Source Files\GameCore</Filter>
     </ClCompile>
@@ -102,12 +98,6 @@
     <ClCompile Include="Obj_Bullet_N.cpp">
       <Filter>Source Files\Object\MoveObject\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="Obj_ContraBot.cpp">
-      <Filter>Source Files\Object\MoveObject\Character</Filter>
-    </ClCompile>
-    <ClCompile Include="Obj_SmartBot.cpp">
-      <Filter>Source Files\Object\MoveObject\Character</Filter>
-    </ClCompile>
     <ClCompile Include="Game_Platform.cpp">
       <Filter>Source Files\Object\StaticObject</Filter>
     </ClCompile>
@@ -127,9 +117,6 @@
       <Filter>Source Files\Object\MoveObject\Character</Filter>
     </ClCompile>
     <ClCompile Include="MusicManager.cpp">
-      <Filter>Source Files\GameCore</Filter>
-    </ClCompile>
-    <ClCompile Include="Mapper.cpp">
       <Filter>Source Files\GameCore</Filter>
     </ClCompile>
     <ClCompile Include="Contra_GET_ANI.cpp">
@@ -297,15 +284,6 @@
     <ClInclude Include="KeyEventHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Obj_ContraBot.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayScene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Scene_Base.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -358,12 +336,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game_TestBox.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Obj_SmartBot.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Mapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game_Bullet.h">

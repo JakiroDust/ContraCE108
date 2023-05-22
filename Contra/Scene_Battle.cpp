@@ -2,8 +2,6 @@
 #include "ScreenManager.h"
 #include "Game_KeyInput.h"
 #include "Game_Platform.h"
-#include "Obj_ContraBot.h"
-#include "Obj_SmartBot.h"
 #include "Enemy_RedGunner.h"
 #include "Enemy_Infary.h"
 #include "Game_Bullet.h"
