@@ -15,15 +15,15 @@ void Game_Screen::focusToPoint(float x, float y, int MapWidth = 1, int MapHeight
 	{
 		x = _width / 2.0f - 1;
 	}
-	if (x + _width / 2.0f > MapWidth)
+	else if (x + _width / 2.0f > MapWidth)
 	{
 		x = MapWidth + 1 - _width / 2.0f;
 	}
-	if (y - _height / 2.0f < 0)
+	else if (y - _height / 2.0f < 0)
 	{
 		y = _height / 2.0f;
 	}
-	if (y + _height / 2.0f > MapHeight)
+	else if (y + _height / 2.0f > MapHeight)
 	{
 		y = MapHeight + 1 - _height / 2.0f;
 	}

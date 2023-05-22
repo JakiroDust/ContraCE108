@@ -30,7 +30,7 @@ public:
 	Scene_Base* Scene() { return _scene; }
 	void Render();
 	void Update(DWORD dt);
-	void Load(LPCWSTR gameFile);
+	//void Load(LPCWSTR gameFile);
 
 	void Create_Scene_Battle();
 	void Create_Scene_LoadingStage(int stageID);

@@ -49,31 +49,31 @@ class Game_ObjectBase
 	public:
 		Game_ObjectBase(float x = 0, float y = 0, int z = 0, int width = 0, int height = 0);
 
-	// GET SET FUNCTIONS
-	int id() { return _id; }
-	float x() { return _x; }
-	float y() { return _y; }
-	int z() { return _z; }
-	int width() { return _width; }
-	int height() { return _height; }
-	float getRadius(){ return max(_width,_height)/1.0f; }
-	void SetId(int id) { _id = id; }
-	void SetPosition(float x, float y) { this->_x = x, this->_y = y; }
-	void SetSpeed(float vx, float vy) { this->_vx = vx, this->_vy = vy; }
-	void GetPosition(float& x, float& y) { x = this->_x; y = this->_y; }
-	void GetSpeed(float& vx, float& vy) { vx = this->_vx; vy = this->_vy; }
-	void GetCenterPoint(float& x, float& y) { x = _x + _width / 2.0f; y = _y - _height / 2.0f; }
-	void SetCenterPoint(float x, float y) { this->_x = x - _width/2.0f, this->_y = y + _height / 2.0f; }
-	void GetLTRB(float& l, float& t, float& r, float& b);
-	bool NeedScanCollision() { return _needScanCollision; }
-	// 0 - left alignment
-	// 1 - center aligment
-	// 2 - right aligment
-	void SetWidth(int width, int mode = 0);
-	// 0 - top alignment
-	// 1 - center aligment
-	// 2 - bottom aligment
-	void SetHeight(int height, int mode = 0);
+		// GET SET FUNCTIONS
+		int id() { return _id; }
+		float x() { return _x; }
+		float y() { return _y; }
+		int z() { return _z; }
+		int width() { return _width; }
+		int height() { return _height; }
+		float getRadius(){ return max(_width,_height)/1.0f; }
+		void SetId(int id) { _id = id; }
+		void SetPosition(float x, float y) { this->_x = x, this->_y = y; }
+		void SetSpeed(float vx, float vy) { this->_vx = vx, this->_vy = vy; }
+		void GetPosition(float& x, float& y) { x = this->_x; y = this->_y; }
+		void GetSpeed(float& vx, float& vy) { vx = this->_vx; vy = this->_vy; }
+		void GetCenterPoint(float& x, float& y) { x = _x + _width / 2.0f; y = _y - _height / 2.0f; }
+		void SetCenterPoint(float x, float y) { this->_x = x - _width/2.0f, this->_y = y + _height / 2.0f; }
+		void GetLTRB(float& l, float& t, float& r, float& b);
+		bool NeedScanCollision() { return _needScanCollision; }
+		// 0 - left alignment
+		// 1 - center aligment
+		// 2 - right aligment
+		void SetWidth(int width, int mode = 0);
+		// 0 - top alignment
+		// 1 - center aligment
+		// 2 - bottom aligment
+		void SetHeight(int height, int mode = 0);
 
 		// Draw object to screen
 		virtual void Render();

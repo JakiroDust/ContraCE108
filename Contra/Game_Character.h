@@ -1,6 +1,5 @@
 #pragma once
 #include "Game_MovableObject.h"
-#include "Mapper.h"
 #include "Equip_GunBase.h"
 #include "spawnBulletHelper.h"
 //#include "Contra_GET_ANI.h"
