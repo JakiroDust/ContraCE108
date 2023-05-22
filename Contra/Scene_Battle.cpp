@@ -35,6 +35,7 @@ Scene_Battle::~Scene_Battle()
 
 void Scene_Battle::Render()
 {
+    Game_Screen* screen = ScreenManager::GetInstance()->Screen();
 
     vector<Game_ObjectBase*> RenderQueue;
     // layers
@@ -58,7 +59,7 @@ void Scene_Battle::Render()
         RenderQueue.insert(it + j, obj);
     }
     // other game objects
-    vector<int> id_list = getNearbyIDFast();
+    vector<int> id_list = screen->Get_ObjectsID_InsideScreen(spatial, GET_OBJECTS_RANGE);
     for (auto&i :id_list)
     {
         Game_ObjectBase* obj = __objects[i].get();
@@ -101,6 +102,8 @@ void Scene_Battle::Update(DWORD dt)
     if (!_isPlaying)
         return;
 
+    Game_Screen* screen = ScreenManager::GetInstance()->Screen();
+
     // Event Handler
     if (_controller != NULL)
         _controller->Update(dt);
@@ -109,13 +112,13 @@ void Scene_Battle::Update(DWORD dt)
     for (int i = 0; i < _layers.size(); i++)
     {
         Game_ObjectBase* obj = _layers[i].get();
-        checkObjectNeedRender(obj);
+        screen->CheckObjectIfNeedRender(obj);
     }
 
     if (__objects.empty())
         return;
 
-    vector<int> id_list= getNearbyIDFast();
+    vector<int> id_list= screen->Get_ObjectsID_InsideScreen(spatial, GET_OBJECTS_RANGE);
     vector<PGAMEOBJECT>* nearbyObject = getObjectById(id_list);
     //for (int i = 0; i < _objects.size(); i++)
     //float old_l, old_right, old_bottom, old_top,
@@ -148,7 +151,7 @@ void Scene_Battle::Update(DWORD dt)
             spatial->update(i,(int)new_l, (int)new_bottom, (int)new_right, (int)new_top);
            
         }
-        checkObjectNeedRender(obj);
+        screen->CheckObjectIfNeedRender(obj);
     }
 
     // Terminate objects have Delete flag
@@ -199,28 +202,28 @@ void Scene_Battle::KeyDownEventHandler(int KeyCode)
 
 
 
-void Scene_Battle::checkObjectNeedRender(Game_ObjectBase* obj)
-{
-    float y, x;
-    
-    Game_Screen* screen = ScreenManager::GetInstance()->Screen();
-    screen->GetCenterPoint(x, y);
-    //getNearByIDyx(y, x);
-    if (obj->x() + obj->width() < screen->x()
-        || obj->x() > screen->x() + screen->width()
-        || obj->y() < screen->y() - screen->height()
-        || obj->y() - obj->height() > screen->y())
-    {
-        obj->SetNeedRender(false);
-        if (dynamic_cast<Game_Bullet*>(obj))
-        {
-            obj->DeleteThis();
-        }
-    }
-    else {
-        obj->SetNeedRender(true);
-    }
-}
+//void Scene_Battle::checkObjectNeedRender(Game_ObjectBase* obj)
+//{
+//    float y, x;
+//    
+//    Game_Screen* screen = ScreenManager::GetInstance()->Screen();
+//    screen->GetCenterPoint(x, y);
+//    //getNearByIDyx(y, x);
+//    if (obj->x() + obj->width() < screen->x()
+//        || obj->x() > screen->x() + screen->width()
+//        || obj->y() < screen->y() - screen->height()
+//        || obj->y() - obj->height() > screen->y())
+//    {
+//        obj->SetNeedRender(false);
+//        if (dynamic_cast<Game_Bullet*>(obj))
+//        {
+//            obj->DeleteThis();
+//        }
+//    }
+//    else {
+//        obj->SetNeedRender(true);
+//    }
+//}
 
 //=====================================================================================================================
 // DEMO
@@ -570,14 +573,16 @@ void Scene_Battle::addMapPart( int partID, int x, int y)
 {
     mapTexSpatial->init_object_ONLYONCE(partID, x, y );
 }
-vector<int> Scene_Battle::getNearbyIDFast()
-{
-    float x, y;
-    ScreenManager::GetInstance()->Screen()->GetCenterPoint(x, y);
-    int width =(int) (GAMESCREEN_WIDTH * 1.3),
-        height = (int)(GAMESCREEN_HEIGHT * 1.3);
-    return getNearByIDwithWH(x, y, width, height);
-}
+
+//vector<int> Scene_Battle::getNearbyIDFast()
+//{
+//    float x, y;
+//    ScreenManager::GetInstance()->Screen()->GetCenterPoint(x, y);
+//    int width =(int) (GAMESCREEN_WIDTH * 1.3),
+//        height = (int)(GAMESCREEN_HEIGHT * 1.3);
+//    return getNearByIDwithWH(x, y, width, height);
+//}
+
 vector<int> Scene_Battle::getNearByID(int left, int bottom, int right, int top)
 {
     return spatial->search(left, bottom, right, top, -100);

@@ -7,12 +7,15 @@
 
 void StageEventHandler_S1::Update(DWORD dt)
 {
+	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
 
 	// Make Camera focus to player
 	Set_Camera_Focus_Player();
+	// Fix position
 
 	// Execute event base on camera position
-	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
+	screen->SetPosition(screen->x(), screen->height());
+
 	float cx, cy;
 	screen->GetPosition(cx, cy);
 
@@ -73,7 +76,6 @@ void StageEventHandler_S1::Update(DWORD dt)
 void StageEventHandler_S1::Load()
 {
 	_srcScene->SetMapSize(3328, GAMESCREEN_HEIGHT);
-	ScreenManager::GetInstance()->Screen()->SetViewBox(_srcScene->MapWidth(), _srcScene->MapHeight());
 
 	SoundSystem* SS = SoundSystem::getInstance();
 	SS->playBGM(BGM_JUNGLE);
@@ -132,7 +134,7 @@ void StageEventHandler_S1::HelpGetRevivePoint(float& posX, float& posY)
 
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
 
-	vector<int> id_list = scene->getNearbyIDFast();
+	vector<int> id_list = ScreenManager::GetInstance()->Screen()->Get_ObjectsID_InsideScreen(scene->spatial, GET_OBJECTS_RANGE);
 	vector<PGAMEOBJECT>* coObjects = scene->getObjectById(id_list);
 
 	Game_Screen* screen = ScreenManager::GetInstance()->Screen();

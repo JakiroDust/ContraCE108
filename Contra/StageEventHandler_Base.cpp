@@ -10,7 +10,8 @@ void StageEventHandler_Base::Set_Camera_Focus_Player()
     float camPosY = 0;
     Game_Screen* cam = ScreenManager::GetInstance()->Screen();
     _srcScene->p1()->GetCenterPoint(camPosX, camPosY);
-    cam->focusToPoint(camPosX, camPosY);
+    cam->SetCenterPoint(camPosX, camPosY);
+    //cam->focusToPoint(camPosX, camPosY);
 }
 
 void StageEventHandler_Base::Debug_KeyDownEventHandler(int KeyCode)

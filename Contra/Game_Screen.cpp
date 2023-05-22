@@ -1,40 +1,60 @@
 #include "Game_Screen.h"
+#include "QuadTree/QuadTree.h"
+#include "Game_Bullet.h"
 
-void Game_Screen::focusToPoint(float x, float y, int MapWidth = 1, int MapHeight = 1)
+vector<int> Game_Screen::Get_ObjectsID_InsideScreen(QuadTree* spatial, float size)
 {
-	// Fix position on map
-	if (MapWidth <= _width)
+	vector<int> objects;
+
+	float l, t, r, b;
+	GetBoundingBox(l, t, r, b);
+
+	if (size <= 0)
 	{
-		x = MapWidth / 2.0f - 1;
-	}
-	if (MapHeight <= _height)
-	{
-		y = MapHeight / 2.0f - 1;
-	}
-	if (x - _width / 2.0f < 0)
-	{
-		x = _width / 2.0f - 1;
-	}
-	else if (x + _width / 2.0f > MapWidth)
-	{
-		x = MapWidth + 1 - _width / 2.0f;
-	}
-	else if (y - _height / 2.0f < 0)
-	{
-		y = _height / 2.0f;
-	}
-	else if (y + _height / 2.0f > MapHeight)
-	{
-		y = MapHeight + 1 - _height / 2.0f;
+		DebugOut(L"[ERROR] size must be higher than 0.\n");
+		return objects;
 	}
 
-	// Set CAM position
-	x = (FLOAT)floor(x);
-	y = (FLOAT)ceilf(y);
-	_x = x - _width / 2.0f;
-	_y = y + _height / 2.0f;
+	if (size != 1.0f)
+	{
+		float width_modifier = (size*_width - _width) / 2.0f;
+		float height_modifier = (size * _height - _height) / 2.0f;
+		l -= width_modifier;
+		r += width_modifier;
+		t += height_modifier;
+		b -= height_modifier;
+	}
 
-	// Update later
+	objects = spatial->search(l, b, r, t, -100);
+	return objects;
+}
+
+void Game_Screen::Convert_WorldPos_to_ScreenPos(float &x, float &y)
+{
+	x = x - _x;
+	y = -(y - _y);
+}
+
+void Game_Screen::CheckObjectIfNeedRender(Game_ObjectBase* obj)
+{
+	float y, x;
+
+	GetCenterPoint(x, y);
+	//getNearByIDyx(y, x);
+	if (obj->x() + obj->width() < _x
+		|| obj->x() > _x + _width
+		|| obj->y() < _y - _height
+		|| obj->y() - obj->height() > _y)
+	{
+		obj->SetNeedRender(false);
+		if (dynamic_cast<Game_Bullet*>(obj))
+		{
+			obj->DeleteThis();
+		}
+	}
+	else {
+		obj->SetNeedRender(true);
+	}
 }
 
 void Game_Screen::DeleteThis()

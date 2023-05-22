@@ -82,17 +82,16 @@ void Game_ObjectBase::RenderHitbox()
 	rect.right = _width;
 	rect.bottom = _height;
 
-	float cx, cy;
+	//float cx, cy;
 	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
-	screen->GetPosition(cx, cy);
+	//screen->GetPosition(cx, cy);
 
 	float centerX, centerY;
 	GetCenterPoint(centerX, centerY);
+		
+	screen->Convert_WorldPos_to_ScreenPos(centerX, centerY);
 
-	cy = screen->ViewBoxHeight() - cy;
-	centerY = screen->ViewBoxHeight() - centerY;
-
-	CGame::GetInstance()->Draw(centerX - cx, centerY - cy, bbox, &rect, 0.5f, _width, _height);
+	CGame::GetInstance()->Draw(centerX, centerY, bbox, &rect, 0.5f, _width, _height);
 }
 
 void Game_ObjectBase::GetBoundingBox(float& left, float& top, float& right, float& bottom)

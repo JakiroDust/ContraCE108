@@ -1,6 +1,8 @@
 #pragma once
 #include "Game_MovableObject.h"
 
+class QuadTree;
+
 #define GAMESCREEN_WIDTH 256
 #define GAMESCREEN_HEIGHT 240
 #define WINDOW_WIDTH 272
@@ -9,16 +11,11 @@
 class Game_Screen : public Game_MovableObject
 {
 	private:
-		int _ViewBoxWidth = 1;
-		int _ViewBoxHeight = 1;
 	public:
 		Game_Screen(float x, float y) : Game_MovableObject(x, y, 0, GAMESCREEN_WIDTH, GAMESCREEN_HEIGHT) { _gravity = false; }
-		// Focus point will be center of screen
-		void focusToPoint(float x, float y, int MapWidth, int MapHeight);
-		void focusToPoint(float x, float y) { focusToPoint(x, y, _ViewBoxWidth, _ViewBoxHeight); }
-		void SetViewBox(int width, int height) { _ViewBoxWidth = width; _ViewBoxHeight = height; }
-		int ViewBoxWidth() { return _ViewBoxWidth; }
-		int ViewBoxHeight() { return _ViewBoxHeight; }
+		vector<int> Get_ObjectsID_InsideScreen(QuadTree* spatial, float size);
+		void CheckObjectIfNeedRender(Game_ObjectBase* obj);
+		void Convert_WorldPos_to_ScreenPos(float &x, float &y);
 		void DeleteThis();
 		void forceDie();
 };

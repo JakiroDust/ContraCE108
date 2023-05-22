@@ -158,11 +158,12 @@ PCOLLISIONEVENT Game_Collision::SweptAABB(PGAMEOBJECT objSrc, DWORD dt, PGAMEOBJ
 	objSrc->GetBoundingBox(ml, mt, mr, mb);
 	objDest->GetBoundingBox(sl, st, sr, sb);
 
+	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
 	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
-	mt = screen->ViewBoxHeight() - mt;
-	mb = screen->ViewBoxHeight() - mb;
-	st = screen->ViewBoxHeight() - st;
-	sb = screen->ViewBoxHeight() - sb;
+	mt = scene->MapHeight()  - mt;
+	mb = scene->MapHeight() - mb;
+	st = scene->MapHeight() - st;
+	sb = scene->MapHeight() - sb;
 	dy = -dy;
 
 	//// These codes are used to debug Player collision

@@ -144,7 +144,7 @@ void Game_Character::jumpDown()
 	unique_ptr<Game_TestBox>testbox(new Game_TestBox(_x, _y - _height - 12, _z, _width, 8, 0, 0));
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
 
-	vector<int> id_list = scene->getNearbyIDFast();
+	vector<int> id_list = ScreenManager::GetInstance()->Screen()->Get_ObjectsID_InsideScreen(scene->spatial, GET_OBJECTS_RANGE);
 	vector<PGAMEOBJECT>* coObjects = scene->getObjectById(id_list);
 
 	bool canJumpDown = false;
