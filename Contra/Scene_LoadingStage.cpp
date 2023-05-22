@@ -1,7 +1,8 @@
 #include "Scene_LoadingStage.h"
 #include "GameManager.h"
 #include "Contra_ANI_ID.h"
-
+#include "Word.h"
+#include "Game_Picture_Static.h"
 void Scene_LoadingStage::Update(DWORD dt)
 {
 	if (_finishLoading)
@@ -49,7 +50,10 @@ void Scene_LoadingStage::Render()
 		std::vector<Game_Picture*>::iterator it = RenderQueue.begin();
 		RenderQueue.insert(it + j, obj);
 	}
-
+	float BG_color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
+	CGame::GetInstance()->GetDirect3DDevice()->ClearRenderTargetView(CGame::GetInstance()->GetRenderTargetView(), BG_color);
+	float x, y;
+	ScreenManager::GetInstance()->Screen()->GetCenterPoint(x, y);
 	for (int i = 0; i < RenderQueue.size(); i++)
 	{
 		RenderQueue[i]->Render();
@@ -91,10 +95,27 @@ void Scene_LoadingStage::AddImage(float x, float y, int index, int spriteID, BYT
 		_images[index] = move(image);
 	}
 }
-
+void Scene_LoadingStage::AddImage_Static(float x, float y, int index, int spriteID, BYTE RenderMode)
+{
+	if (_images[index] != NULL)
+	{
+		_images[index].reset(new Game_Picture_Static(x, y, index, spriteID, RenderMode));
+	}
+	else
+	{
+		unique_ptr <Game_Picture_Static> image(new Game_Picture_Static(x, y, index, spriteID, RenderMode));
+		_images[index] = move(image);
+	}
+}
 void Scene_LoadingStage::Init_Stage1()
 {
-	AddImage(GAMESCREEN_WIDTH/2, GAMESCREEN_HEIGHT/2, 1, CONTRA_ANI_WALK_RIGHT, RENDER_MODE_CENTER);
+	int id = 1;
+	int id2 = GAMESCREEN_WIDTH / 5;
+	AddImage(GAMESCREEN_WIDTH/2, GAMESCREEN_HEIGHT/2, id++, CONTRA_ANI_WALK_RIGHT, RENDER_MODE_CENTER);
+	AddImage_Static(id2=id2+10, GAMESCREEN_HEIGHT -10, id++, WORDSPRITE::getNumberSpriteID(0), RENDER_MODE_CENTER);
+	//AddImage_Static(id2 = id2 + 10, GAMESCREEN_HEIGHT - 10, id++, WORDSPRITE::getNumberSpriteID(2), RENDER_MODE_CENTER);
+	//AddImage_Static(id2 = id2 + 10, GAMESCREEN_HEIGHT - 10, id++, WORDSPRITE::getNumberSpriteID(3), RENDER_MODE_CENTER);
+	//AddImage_Static(id2 = id2 + 10, GAMESCREEN_HEIGHT - 10, id++, WORDSPRITE::getNumberSpriteID(4), RENDER_MODE_CENTER);
 }
 
 void Scene_LoadingStage::Init_Stage3()

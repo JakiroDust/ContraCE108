@@ -254,7 +254,7 @@ LPTEXTURE CGame::LoadTexture(LPCWSTR texturePath,bool debugout)
 
 	D3DX10_IMAGE_LOAD_INFO info; 
 	ZeroMemory(&info, sizeof(D3DX10_IMAGE_LOAD_INFO));
-	info.Width = imageInfo.Width;
+	/*info.Width = imageInfo.Width;
 	info.Height = imageInfo.Height;
 	info.Depth = imageInfo.Depth;
 	info.FirstMipLevel = 0;
@@ -266,6 +266,19 @@ LPTEXTURE CGame::LoadTexture(LPCWSTR texturePath,bool debugout)
 	info.Format = imageInfo.Format;
 	info.Filter = D3DX10_FILTER_NONE;
 	info.MipFilter = D3DX10_DEFAULT;
+	info.pSrcInfo = &imageInfo;*/
+	info.Width = imageInfo.Width;
+	info.Height = imageInfo.Height;
+	info.Depth = imageInfo.Depth;
+	info.FirstMipLevel = 0;
+	info.MipLevels = 1;  // Disable mipmapping
+	info.Usage = D3D10_USAGE_DEFAULT;
+	info.BindFlags = D3D10_BIND_SHADER_RESOURCE;
+	info.CpuAccessFlags = 0;
+	info.MiscFlags = 0;
+	info.Format = imageInfo.Format;
+	info.Filter = D3DX10_FILTER_POINT;  // Use point filtering for pixel-perfect rendering
+	info.MipFilter = D3DX10_FILTER_POINT;  // Use point filtering for mipmaps (disabled in this case)
 	info.pSrcInfo = &imageInfo;
 
 	// Loads the texture into a temporary ID3D10Resource object

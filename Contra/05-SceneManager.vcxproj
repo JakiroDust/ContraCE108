@@ -169,6 +169,7 @@
     <ClCompile Include="Equip_Gun_N.cpp" />
     <ClCompile Include="Equip_Gun_R.cpp" />
     <ClCompile Include="Equip_Gun_S.cpp" />
+    <ClCompile Include="Font.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Game_Blocker.cpp" />
@@ -183,6 +184,7 @@
     <ClCompile Include="Game_MovableObject.cpp" />
     <ClCompile Include="Game_ObjectBase.cpp" />
     <ClCompile Include="Game_Picture.cpp" />
+    <ClCompile Include="Game_Picture_Static.cpp" />
     <ClCompile Include="Game_Platform.cpp" />
     <ClCompile Include="Game_Player.cpp" />
     <ClCompile Include="Game_Screen.cpp" />
@@ -230,6 +232,7 @@
     <ClCompile Include="State_Station_Hide.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="Word.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -263,6 +266,7 @@
     <ClInclude Include="fmod\fmod_errors.h" />
     <ClInclude Include="fmod\fmod_output.h" />
     <ClInclude Include="Equip_Gun_N.h" />
+    <ClInclude Include="Font.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Game_Blocker.h" />
@@ -277,6 +281,7 @@
     <ClInclude Include="Game_MovableObject.h" />
     <ClInclude Include="Game_ObjectBase.h" />
     <ClInclude Include="Game_Picture.h" />
+    <ClInclude Include="Game_Picture_Static.h" />
     <ClInclude Include="Game_Platform.h" />
     <ClInclude Include="Game_Player.h" />
     <ClInclude Include="Game_Screen.h" />
@@ -325,6 +330,7 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Textures.h" />
     <ClInclude Include="Utils.h" />
+    <ClInclude Include="Word.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="brick.txt" />

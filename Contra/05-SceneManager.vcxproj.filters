@@ -223,6 +223,13 @@
     <ClCompile Include="QuadTree\QuadTree.cpp">
       <Filter>Header Files\QuadTree</Filter>
     </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Header Files\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Word.cpp">
+      <Filter>Header Files\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Picture_Static.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -507,6 +514,13 @@
     <ClInclude Include="QuadTree\QuadTree.h">
       <Filter>Header Files\QuadTree</Filter>
     </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Header Files\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Word.h">
+      <Filter>Header Files\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Picture_Static.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -616,6 +630,9 @@
     </Filter>
     <Filter Include="Header Files\QuadTree">
       <UniqueIdentifier>{30320bf2-53dd-42d5-8dcb-b5ecaa55bc71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Font">
+      <UniqueIdentifier>{741d1aaa-ecae-46c4-9f5b-a64c25a944d2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

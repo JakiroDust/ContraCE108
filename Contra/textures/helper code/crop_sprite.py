@@ -1,4 +1,4 @@
-image_path=r'D:\ContraCE108\Contra\textures\192883.png'
+image_path=r'D:\ContraCE108\Contra\textures\font.png'
 import cv2
 import numpy as np
 

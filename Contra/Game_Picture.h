@@ -38,7 +38,7 @@ class Game_Picture
 		void MoveToPoint(float x, float y, DWORD duration);
 
 		void Update(DWORD dt);
-		void Render();
+		virtual void Render();
 
 		void Flash(DWORD duration, DWORD flashInterval);
 		void StopFlash();

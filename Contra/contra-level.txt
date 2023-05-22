@@ -2,16 +2,15 @@
 -100	textures\bbox.png
 0	textures\contra2-transparent.png
 10	textures\foes.png
+20	textures\font2.png
 100	textures\enemies_sprites\0.png
 101	textures\enemies_sprites\1.png
 #20	textures\misc.png
-1	textures\ContraMapStage1BG.png
-2	textures\ContraMapStage2BG.png
-3	textures\ContraMapStage3BG.png
-4	textures\ContraMapStage4BG.png
+
 
 [ASSETS]
 contra.txt
 CONTRA_BULLET.txt
 INFARY.txt
 SNIPER.txt
+WORD.txt
