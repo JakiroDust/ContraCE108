@@ -6,6 +6,7 @@
 #include "Enemy_Infary.h"
 #include "Game_Bullet.h"
 #include "Enemy_Sniper.h"
+#include "Spawner_Infary_Stage1.h"
 #include <fstream>
 using namespace std;
 #define MAP_TEXU_WIDTH 16
@@ -488,52 +489,43 @@ void Scene_Battle::_ParseOBject(string line)
             {
                 f >> id >> x >> y >> width >> height;
                 
+                switch (id)
+                {
                 // PARSE TERRAIN
-                if (width != 0 && height != 0)
-                {
-                    switch (id)
-                    {
-                    case TBLOCKER: obj.reset(new Game_Blocker(x, y, Z_INDEX_TERRAIN, width, height));
-                        break;
-                    case TPLATFORM: obj.reset(new Game_Platform(x, y, Z_INDEX_TERRAIN, width, height));
-                        break;
-                    case TWATER: obj.reset(new Game_Water(x, y, Z_INDEX_TERRAIN, width, height));
-                        break;
-                    case TDEADLY: obj.reset(new Game_DeadlyBlock(x, y, Z_INDEX_TERRAIN, width, height));
-                        break;
-                    default:
-                        obj.reset(NULL);
-                        DebugOut(L"Unknown id=%d", id);
-                        break;
-                    }
-                    if (obj.get() != NULL)
-                    {
-                        add_object(move(obj));
-                    }
+                case TBLOCKER: obj.reset(new Game_Blocker(x, y, Z_INDEX_TERRAIN, width, height));
+                    break;
+                case TPLATFORM: obj.reset(new Game_Platform(x, y, Z_INDEX_TERRAIN, width, height));
+                    break;
+                case TWATER: obj.reset(new Game_Water(x, y, Z_INDEX_TERRAIN, width, height));
+                    break;
+                case TDEADLY: obj.reset(new Game_DeadlyBlock(x, y, Z_INDEX_TERRAIN, width, height));
+                    break;
+
+                // PARSE OBJECT
+                case CHAR_CONTRA:
+                    _p1.reset(new Game_Player(x, y, Z_INDEX_PLAYER));
+                    addPlayer1();
+                    obj.reset(NULL);
+                    break;
+                case SNIPER: obj.reset(new Enemy_Sniper(x, y, Z_INDEX_ENEMY));
+                    break;
+                case CAMERA:
+                    ScreenManager::GetInstance()->Screen()->SetPosition(x, y);
+                    obj.reset(NULL);
+                    break;
+
+                // SPAWNER
+                case SPAWNER_INFARY: obj.reset(new Spawner_Infary_Stage1(x, y, Z_INDEX_TERRAIN, width));
+                    break;
+
+                default:
+                    obj.reset(NULL);
+                    DebugOut(L"Unknown id=%d", id);
+                    break;
                 }
-                else // PARSE OBJECT
+                if (obj.get() != NULL)
                 {
-                    switch (id)
-                    {
-                    case CHAR_CONTRA:
-                        _p1.reset(new Game_Player(x, y, Z_INDEX_PLAYER));
-                        addPlayer1();
-                        obj.reset(NULL);
-                        break;
-                    case SNIPER: obj.reset(new Enemy_Sniper(x, y, Z_INDEX_ENEMY));
-                        break;
-                    case CAMERA:
-                        ScreenManager::GetInstance()->Screen()->SetPosition(x, y);
-                        break;
-                    default:
-                        obj.reset(NULL);
-                        DebugOut(L"Unknown id=%d", id);
-                        break;
-                    }
-                    if (obj.get() != NULL)
-                    {
-                        add_object(move(obj));
-                    }
+                    add_object(move(obj));
                 }
             }
             catch(...)

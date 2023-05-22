@@ -11,66 +11,21 @@ void StageEventHandler_S1::Update(DWORD dt)
 
 	// Make Camera focus to player
 	Set_Camera_Focus_Player();
-	// Fix position
 
-	// Execute event base on camera position
-	screen->SetPosition(screen->x(), screen->height());
-
-	float cx, cy;
-	screen->GetPosition(cx, cy);
-
-
-	if (cx >= 160 && cx <= 512)
+	// Fix camera position
+	Game_SweeperBlock* sweeper = GetSweeper();
+	
+	if (!_toggleFreeCam)
 	{
-		Spawn_Infary(dt, cx, 160);
-		if (cx <= 192)
-		{
-			Spawn_Infary(dt, cx, 130);
-		}
-	}	
-	else if (cx >= 960 && cx <= 1120)
-	{
-		Spawn_Infary(dt, cx, 160);
+		if (screen->x() + screen->width() > _srcScene->MapWidth())
+			screen->SetPosition(_srcScene->MapWidth() - screen->width(), screen->height());
+		else if (screen->x() < sweeper->x() + sweeper->width())
+			screen->SetPosition(sweeper->x() + sweeper->width(), screen->height());
+		else
+			screen->SetPosition(screen->x(), screen->height());
+		// fix sweeper position
+		GetSweeper()->SetPosition(screen->x() - GetSweeper()->width(), screen->height());
 	}
-	else if (cx >= 1184 && cx <= 1600)
-	{
-		Spawn_Infary(dt, cx, 190);
-		if (cx >= 1376 && cx <= 1504)
-		{
-			Spawn_Infary(dt, cx, 160);
-		}
-	}
-	else if (cx >= 1696 && cx <= 1760)
-	{
-		Spawn_Infary(dt, cx, 160);
-	}
-	else if (cx >= 1824 && cx <= 1920)
-	{
-		Spawn_Infary(dt, cx, 190);
-	}
-	else if (cx >= 2080 && cx <= 2112)
-	{
-		Spawn_Infary(dt, cx, 160);
-	}
-	else if (cx >= 2112 && cx <= 2144)
-	{
-		Spawn_Infary(dt, cx, 130);
-	}
-	else if (cx >= 2208 && cx <= 2272)
-	{
-		Spawn_Infary(dt, cx, 190);
-	}
-	else if (cx >= 2400 && cx <= 2496)
-	{
-		Spawn_Infary(dt, cx, 130);
-	}
-	else if (cx >= 2784 && cx <= 2848)
-	{
-		Spawn_Infary(dt, cx, 160);
-	}
-
-	// fix sweeper position
-	GetSweeper()->SetPosition(cx - GetSweeper()->width(), cy);
 }
 
 void StageEventHandler_S1::Load()
@@ -88,7 +43,7 @@ void StageEventHandler_S1::Load()
 	//_srcScene->_ParseOBject("textures\\MAP1");
 
 	// Add sweeper block
-	unique_ptr<Game_SweeperBlock> sweeper(new Game_SweeperBlock(-64, 0, Z_INDEX_TERRAIN, 64, GAMESCREEN_HEIGHT));
+	unique_ptr<Game_SweeperBlock> sweeper(new Game_SweeperBlock(-32, GAMESCREEN_HEIGHT, Z_INDEX_TERRAIN, 32, GAMESCREEN_HEIGHT));
 	_sweeperID =  _srcScene->add_object(move(sweeper));
 }
 
@@ -106,26 +61,6 @@ Game_SweeperBlock* StageEventHandler_S1::GetSweeper()
 // ===================================================================
 // EVENTS
 
-void StageEventHandler_S1::Spawn_Infary(DWORD dt, float camX, float spawnPosY)
-{
-	if (random_seed < SPAWN_INFARY_RANDOM_MAX)
-		random_seed++;
-	else
-		random_seed = 0;
-	
-	if (spawn_infary_ticker >= dt + random_seed)
-	{
-		spawn_infary_ticker -= dt + random_seed;
-		return;
-	}
-	spawn_infary_ticker = SPAWN_INFARY_INTERVAL;
-
-	for (int i = 0; i < 1; i++)
-	{
-		unique_ptr <Enemy_Infary> redgunner(new Enemy_Infary(camX + GAMESCREEN_WIDTH + 28, spawnPosY, Z_INDEX_ENEMY));
-		_srcScene->add_object(move(redgunner));
-	}
-}
 
 void StageEventHandler_S1::HelpGetRevivePoint(float& posX, float& posY)
 {

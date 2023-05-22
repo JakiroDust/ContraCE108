@@ -9,9 +9,7 @@ class StageEventHandler_S1 : public StageEventHandler_Base
 {
 	private:
 		int _sweeperID;
-		DWORD spawn_infary_ticker = 0;
-		DWORD random_seed = 0;
-		void Spawn_Infary(DWORD dt, float camX, float spawnPosY);
+		//void Spawn_Infary(DWORD dt, float camX, float spawnPosY);
 	public:
 		StageEventHandler_S1(Scene_Battle* src) : StageEventHandler_Base(src)
 		{

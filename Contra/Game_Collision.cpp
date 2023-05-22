@@ -125,6 +125,7 @@ void Game_Collision::SweptAABB(
 
 #include "Game_Player.h"
 #include "Game_Water.h"
+#include "Game_SweeperBlock.h"
 
 /*
 	Extension of original SweptAABB to deal with two moving objects
@@ -167,10 +168,10 @@ PCOLLISIONEVENT Game_Collision::SweptAABB(PGAMEOBJECT objSrc, DWORD dt, PGAMEOBJ
 	dy = -dy;
 
 	//// These codes are used to debug Player collision
-	//if (dynamic_cast<Game_Player*>(objSrc) && dynamic_cast<Game_Water*>(objDest) && abs(objSrc->y() - objSrc->height() - objDest->y()) < 1)
-	//{
-	//	int a = 2;
-	//}
+	if (dynamic_cast<Game_Player*>(objSrc) && dynamic_cast<Game_SweeperBlock*>(objDest))
+	{
+		int a = 2;
+	}
 
 	SweptAABB(
 		ml, mt, mr, mb,

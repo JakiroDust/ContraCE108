@@ -188,6 +188,7 @@
     <ClCompile Include="Game_Platform.cpp" />
     <ClCompile Include="Game_Player.cpp" />
     <ClCompile Include="Game_Screen.cpp" />
+    <ClCompile Include="Game_Spawner.cpp" />
     <ClCompile Include="Game_StaticObject.cpp" />
     <ClCompile Include="Game_StationEnemy.cpp" />
     <ClCompile Include="Game_SweeperBlock.cpp" />
@@ -210,6 +211,7 @@
     <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="Spatial.cpp" />
     <ClCompile Include="spawnBulletHelper.cpp" />
+    <ClCompile Include="Spawner_Infary_Stage1.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Sprites.cpp" />
     <ClCompile Include="StageEventHandler_Base.cpp" />
@@ -280,6 +282,7 @@
     <ClInclude Include="Game_Platform.h" />
     <ClInclude Include="Game_Player.h" />
     <ClInclude Include="Game_Screen.h" />
+    <ClInclude Include="Game_Spawner.h" />
     <ClInclude Include="Game_StaticObject.h" />
     <ClInclude Include="Game_StationEnemy.h" />
     <ClInclude Include="Game_SweeperBlock.h" />
@@ -301,6 +304,7 @@
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="Spatial.h" />
     <ClInclude Include="spawnBulletHelper.h" />
+    <ClInclude Include="Spawner_Infary_Stage1.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Sprites.h" />
     <ClInclude Include="StageEventHandler_Base.h" />
