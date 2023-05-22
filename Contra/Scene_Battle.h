@@ -34,7 +34,7 @@ using namespace std;
 #define Z_INDEX_ANIMATION 6
 #define Z_INDEX_TERRAIN 2
 
-#define GET_OBJECTS_RANGE 1.3f
+#define GET_OBJECTS_RANGE 1.5f
 
 class Scene_Battle : public Scene_Base
 {
@@ -48,7 +48,6 @@ class Scene_Battle : public Scene_Base
 		unordered_map<int,unique_ptr<Game_ObjectBase>> __objects;
 		int _mapWidth = 1;
 		int _mapHeight = 1;
-		//void checkObjectNeedRender(Game_ObjectBase* obj);
 
 		// Stage controller
 		StageEventHandler_Base* _controller = NULL;

@@ -10,22 +10,37 @@ void StageEventHandler_S1::Update(DWORD dt)
 	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
 
 	// Make Camera focus to player
-	Set_Camera_Focus_Player();
+	//Set_Camera_Focus_Player();
 
 	// Fix camera position
 	Game_SweeperBlock* sweeper = GetSweeper();
-	
+	float px, py;
+	_srcScene->p1()->GetCenterPoint(px, py);
+
+	if (px > _maxMovedLength && _maxMovedLength < MAX_MOVEABLE_LENGTH_STAGE_1)
+	{
+		_maxMovedLength = px;
+	}
+	else if (_maxMovedLength > MAX_MOVEABLE_LENGTH_STAGE_1)
+	{
+		_maxMovedLength = MAX_MOVEABLE_LENGTH_STAGE_1;
+	}
+
 	if (!_toggleFreeCam)
 	{
+		screen->SetPosition(_maxMovedLength - screen->width()/2.0f, screen->height());
 		if (screen->x() + screen->width() > _srcScene->MapWidth())
 			screen->SetPosition(_srcScene->MapWidth() - screen->width(), screen->height());
-		else if (screen->x() < sweeper->x() + sweeper->width())
-			screen->SetPosition(sweeper->x() + sweeper->width(), screen->height());
-		else
-			screen->SetPosition(screen->x(), screen->height());
-		// fix sweeper position
-		GetSweeper()->SetPosition(screen->x() - GetSweeper()->width(), screen->height());
+
+		//else if (screen->x() < sweeper->x() + sweeper->width())
+		//	screen->SetPosition(sweeper->x() + sweeper->width(), screen->height());
+		//else
+		//	screen->SetPosition(screen->x(), screen->height());
+		//fix sweeper position
+		//sweeper->SetPosition(screen->x() - GetSweeper()->width(), screen->height());
 	}
+
+	sweeper->SetPosition(_maxMovedLength - screen->width()/2.0f - sweeper->width(), screen->height());
 }
 
 void StageEventHandler_S1::Load()
