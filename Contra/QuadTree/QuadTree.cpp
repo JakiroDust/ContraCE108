@@ -175,6 +175,10 @@ void QuadTree::de_Split_phase()
         }
     }
 }
+void QuadTree::insert_exception(int& value)
+{
+    forced_one.push_back(value);
+}
 SimpleVector QuadTree::query(int left, int bottom, int right, int top, int omit_element)
 {
 
@@ -184,6 +188,12 @@ SimpleVector QuadTree::query(int left, int bottom, int right, int top, int omit_
     const int elt_cap = elts.size();
     SimpleVector out(1, elt_cap);
     std::unordered_map<int, int, modified_hash> temp;
+    for (int i = 0; i < forced_one.size(); i++)
+    {
+        int value = forced_one[i];
+        out.set_I_in_Row(out._push_back(), 0, value);
+        temp[value] = 1;
+    }
     SimpleVector leaves(find_leaves( 0, 0, cen_x, cen_y, half_width,half_height, left, bottom, right, top));
     //b2, tìm mọi object trong các là mà giao với hcm
     for (j = 0; j < leaves.size(); ++j)

@@ -15,17 +15,14 @@ vector<int> Game_Screen::Get_ObjectsID_InsideScreen(QuadTree* spatial, float siz
 		return objects;
 	}
 
-	if (size != 1.0f)
-	{
-		float width_modifier = (size*_width - _width) / 2.0f;
-		float height_modifier = (size * _height - _height) / 2.0f;
-		l -= width_modifier;
-		r += width_modifier;
-		t += height_modifier;
-		b -= height_modifier;
-	}
+	float width_modifier = (size * _width - _width) / 2.0f;
+	float height_modifier = (size * _height - _height) / 2.0f;
+	l -= width_modifier;
+	r += width_modifier;
+	t += height_modifier;
+	b -= height_modifier;
 
-	objects = spatial->search(l, b, r, t, -100);
+	objects = spatial->search((int)l, (int)b,(int)r, (int)t, -100);
 	return objects;
 }
 

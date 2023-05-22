@@ -165,6 +165,7 @@ void Scene_Battle::Update(DWORD dt)
             delete_object(i);
         }
     }
+    spatial->de_Split_phase();
     nearbyObject->clear();
     delete nearbyObject;
 }
@@ -231,6 +232,7 @@ void Scene_Battle::KeyDownEventHandler(int KeyCode)
 void Scene_Battle::addPlayer1()
 {
     _p1_id = add_object(move(_p1));
+    spatial->insert_exception(_p1_id);
     Game_KeyInput::GetInstance()->AddObjectControl(p1());
 }
 /*

@@ -40,7 +40,8 @@ void StageEventHandler_S1::Update(DWORD dt)
 		//sweeper->SetPosition(screen->x() - GetSweeper()->width(), screen->height());
 	}
 
-	sweeper->SetPosition(_maxMovedLength - screen->width()/2.0f - sweeper->width(), screen->height());
+	//sweeper->SetPosition(_maxMovedLength - screen->width()/2.0f - sweeper->width(), screen->height());
+	sweeper->SetPosition(_maxMovedLength - screen->width() / 2.0f - sweeper->width()+10, screen->height());
 }
 
 void StageEventHandler_S1::Load()
@@ -60,6 +61,7 @@ void StageEventHandler_S1::Load()
 	// Add sweeper block
 	unique_ptr<Game_SweeperBlock> sweeper(new Game_SweeperBlock(-32, GAMESCREEN_HEIGHT, Z_INDEX_TERRAIN, 32, GAMESCREEN_HEIGHT));
 	_sweeperID =  _srcScene->add_object(move(sweeper));
+	_srcScene->spatial->insert_exception(_sweeperID);
 }
 
 void StageEventHandler_S1::CompleteStage()

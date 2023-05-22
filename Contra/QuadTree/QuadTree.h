@@ -1,7 +1,9 @@
 ﻿#pragma once
 #include "SimpleVector.h"
+#include <vector>
 #include <unordered_map>
 using namespace QTREE;
+using namespace std;
 typedef class QuadTree QuadTree;
 namespace QTREE
 {
@@ -25,6 +27,8 @@ class QuadTree
     SimpleVector enodes;
     //Map từ ID -> sang element id
     std::unordered_map<int, int, modified_hash> umap;
+    // 
+    vector<int> forced_one;
     // Range của root
     int cen_x, cen_y, half_width, half_height;
     //Số lượng element tối đa, 
@@ -67,6 +71,7 @@ public:
     void remove(int id);
     std::vector<int> search(int left, int bottom, int right, int top, int omit_element = -1);
     void de_Split_phase();
+    void insert_exception(int& value);
 };
 
 
