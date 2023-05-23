@@ -217,6 +217,10 @@
       <Filter>Header Files\Font</Filter>
     </ClCompile>
     <ClCompile Include="Game_Picture_Static.cpp" />
+    <ClCompile Include="Game_Spawner.cpp" />
+    <ClCompile Include="Spawner_Infary_Stage1.cpp" />
+    <ClCompile Include="Equip_Gun_F.cpp" />
+    <ClCompile Include="Obj_Bullet_F.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -493,6 +497,10 @@
       <Filter>Header Files\Font</Filter>
     </ClInclude>
     <ClInclude Include="Game_Picture_Static.h" />
+    <ClInclude Include="Game_Spawner.h" />
+    <ClInclude Include="Spawner_Infary_Stage1.h" />
+    <ClInclude Include="Equip_Gun_F.h" />
+    <ClInclude Include="Obj_Bullet_F.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

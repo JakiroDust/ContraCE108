@@ -33,6 +33,7 @@ void StageEventHandler_Base::Debug_KeyDownEventHandler(int KeyCode)
             _srcScene->p1()->ChangeWeapon(new Equip_Gun_L());
             break;
         case DIK_5:
+            _srcScene->p1()->ChangeWeapon(new Equip_Gun_F());
             break;
         case DIK_6:
             break;
