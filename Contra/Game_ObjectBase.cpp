@@ -17,9 +17,6 @@ Game_ObjectBase::Game_ObjectBase(float x, float y, int z, int width, int height)
 	_height = height;
 }
 
-void Game_ObjectBase::GetLTRB(float& l, float& t, float& r, float& b)
-{ l = _x; t = _y; r = _x + _width; b = _y - _height; }
-
 void Game_ObjectBase::SetWidth(int width, int mode)
 {
 	

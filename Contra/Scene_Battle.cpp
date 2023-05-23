@@ -148,7 +148,7 @@ void Scene_Battle::Update(DWORD dt)
                 obj->Update(dt, nearbyObject);
             else
                 obj->Update(dt);
-            obj->GetLTRB(new_l, new_top, new_right, new_bottom);
+            obj->GetBoundingBox(new_l, new_top, new_right, new_bottom);
             spatial->update(i,(int)new_l, (int)new_bottom, (int)new_right, (int)new_top);
            
         }
@@ -310,7 +310,7 @@ int Scene_Battle::add_object(unique_ptr<Game_ObjectBase>&& object)
     }
     float l, t, r, b;
     object->SetId(id);
-    object->GetLTRB(l, t, r, b);
+    object->GetBoundingBox(l, t, r, b);
     __objects[id] =move(object);
     
  
@@ -326,7 +326,7 @@ int Scene_Battle::add_object(unique_ptr<Game_ObjectBase>&& object)
 {
     int id = object->id();
     float left, top, right, bottom;
-    object->GetLTRB(left, top, right, bottom);
+    object->GetBoundingBox(left, top, right, bottom);
     spatial->del_object(id, left, top, right, bottom);
     __objects.erase(id);
     id_recycle_bin.push_back(id);
@@ -336,7 +336,7 @@ void Scene_Battle::delete_object(int id)
 {
     Game_ObjectBase* object = __objects[id].get();
     float left, top, right, bottom;
-    object->GetLTRB(left, top, right, bottom);
+    object->GetBoundingBox(left, top, right, bottom);
     spatial->remove(id);
     __objects[id].reset();
     __objects.erase(id);
