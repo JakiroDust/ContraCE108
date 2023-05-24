@@ -1,5 +1,6 @@
 #pragma once
 #include "Game_Terrain.h"
+#include "Contra_ANI_ID.h"
 
 #define BRIDGE_S1_WIDTH 32
 #define BRIDGE_S1_HEIGHT 32
@@ -19,6 +20,7 @@ class Game_Bridge_S1 : public Game_Terrain
 		{
 			_triggerID = triggerID;
 			_explosionOffset = TimeOffset;
+			_SpriteId = BLACK_BOX_ANI;
 		}
 		bool IsBlocking() { return 1; }
 		bool BlockingCondition(DWORD dt, PCOLLISIONEVENT e) override;

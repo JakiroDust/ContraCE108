@@ -116,3 +116,6 @@
 #define SNIPER_ANI_DIE_LEFT SNIPER_ANI_DIE_RIGHT +1
 #pragma endregion
 
+#pragma region TERRAIN
+#define BLACK_BOX_ANI 99990
+#pragma endregion
