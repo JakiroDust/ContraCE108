@@ -8,6 +8,7 @@
 #define TPLATFORM 10001
 #define TWATER 10002
 #define TDEADLY 10003
+#define TBRIDGE_S1 10004
 
 // Enemies
 

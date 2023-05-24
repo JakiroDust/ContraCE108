@@ -9,9 +9,6 @@ void StageEventHandler_S1::Update(DWORD dt)
 {
 	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
 
-	// Make Camera focus to player
-	//Set_Camera_Focus_Player();
-
 	// Fix camera position
 	Game_SweeperBlock* sweeper = GetSweeper();
 	float px, py;
@@ -21,30 +18,48 @@ void StageEventHandler_S1::Update(DWORD dt)
 	{
 		_maxMovedLength = px;
 	}
-	else if (_maxMovedLength > MAX_MOVEABLE_LENGTH_STAGE_1)
+	else if (_maxMovedLength > BOSS_TRIGGER_RANGE_STAGE_1
+		&& _maxMovedLength < MAX_MOVEABLE_LENGTH_STAGE_1)
+	{
+		_maxMovedLength += SWEEPER_TRIGGERED_SPEED_S1 * dt;
+		_maxMovedLength = min(MAX_MOVEABLE_LENGTH_STAGE_1, _maxMovedLength);
+	}
+	else if (_maxMovedLength >= MAX_MOVEABLE_LENGTH_STAGE_1)
 	{
 		_maxMovedLength = MAX_MOVEABLE_LENGTH_STAGE_1;
 	}
-
+	
 	if (!_toggleFreeCam)
 	{
-		screen->SetPosition(_maxMovedLength - screen->width()/2.0f, screen->height());
-		if (screen->x() + screen->width() > _srcScene->MapWidth())
+		screen->SetPosition(_maxMovedLength - screen->width() / 2.0f, screen->height());
+		if (screen->x() <= 0)
+			screen->SetPosition(0 , screen->height());
+		else if (screen->x() + screen->width() > _srcScene->MapWidth())
 			screen->SetPosition(_srcScene->MapWidth() - screen->width(), screen->height());
-
-		//else if (screen->x() < sweeper->x() + sweeper->width())
-		//	screen->SetPosition(sweeper->x() + sweeper->width(), screen->height());
-		//else
-		//	screen->SetPosition(screen->x(), screen->height());
-		//fix sweeper position
-		//sweeper->SetPosition(screen->x() - GetSweeper()->width(), screen->height());
 	}
 
-	//sweeper->SetPosition(_maxMovedLength - screen->width()/2.0f - sweeper->width(), screen->height());
-	sweeper->SetPosition(_maxMovedLength - screen->width() / 2.0f - sweeper->width()+10, screen->height());
+	// Update sweeper
+	sweeper->SetPosition(_maxMovedLength - screen->width() / 2.0f - sweeper->width()+2, screen->height());
 	float l, t, b, r;
-	sweeper->GetLTRB(l, t, r, b);
+	sweeper->GetBoundingBox(l, t, r, b);
 	_srcScene->spatial->update(_sweeperID,(int) l,(int) b,(int) r,(int) t);
+}
+
+void StageEventHandler_S1::SpecificUpdate(DWORD dt, Game_ObjectBase* obj)
+{
+	if (dynamic_cast<Game_Bridge_S1*>(obj))
+	{
+		Game_Bridge_S1* bridge = (Game_Bridge_S1*)obj;
+		Game_Player* p1 = _srcScene->p1();
+		if (p1->x() >= 752 && p1->x() <= 896)
+		{
+			bridge->TriggerExplosion(1);
+		}
+		else if (p1->x() >= 1040 && p1->x() <= 1184)
+		{
+			bridge->TriggerExplosion(2);
+		}
+	}
 }
 
 void StageEventHandler_S1::Load()
@@ -58,13 +73,9 @@ void StageEventHandler_S1::Load()
 	_srcScene->init_spatial();
 	_srcScene->parseMap("textures\\MAP1");
 
-	//_srcScene->_ParseSection_DICT("textures\\MAP1");
-	//_srcScene->_ParseOBject("textures\\MAP1");
-
 	// Add sweeper block
 	unique_ptr<Game_SweeperBlock> sweeper(new Game_SweeperBlock(-32, GAMESCREEN_HEIGHT, Z_INDEX_TERRAIN, 32, GAMESCREEN_HEIGHT));
 	_sweeperID =  _srcScene->add_object(move(sweeper));
-	//_srcScene->spatial->insert_exception(_sweeperID);
 }
 
 void StageEventHandler_S1::CompleteStage()

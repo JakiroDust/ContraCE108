@@ -4,7 +4,9 @@
 
 #define SPAWN_INFARY_INTERVAL 1500
 #define SPAWN_INFARY_RANDOM_MAX 20
-#define MAX_MOVEABLE_LENGTH_STAGE_1 3072 
+#define MAX_MOVEABLE_LENGTH_STAGE_1 3200 
+#define BOSS_TRIGGER_RANGE_STAGE_1 3072
+#define SWEEPER_TRIGGERED_SPEED_S1 0.1f 
 
 class StageEventHandler_S1 : public StageEventHandler_Base
 {
@@ -19,6 +21,7 @@ class StageEventHandler_S1 : public StageEventHandler_Base
 		}
 		Game_SweeperBlock* GetSweeper();
 		void Update(DWORD dt) override;
+		void SpecificUpdate(DWORD dt, Game_ObjectBase* obj) override;
 		void Load() override;
 		void CompleteStage() override;
 

@@ -2,6 +2,7 @@
 #include "debug.h"
 
 class Scene_Battle;
+class Game_ObjectBase;
 
 #define STAGE_DEBUG_ALLOW true
 
@@ -20,6 +21,8 @@ class StageEventHandler_Base
 		}
 
 		virtual void Update(DWORD dt) {}
+		virtual void SpecificUpdate(DWORD dt, Game_ObjectBase* obj) {}
+		virtual void RenderHUD() {}
 		virtual void Load() {}
 		virtual void CompleteStage() {}
 		virtual void KeyDownEventHandler(int KeyCode);

@@ -165,6 +165,7 @@
     <ClCompile Include="Equip_EnemyGun_N.cpp" />
     <ClCompile Include="Equip_EnemyGun_Sniper.cpp" />
     <ClCompile Include="Equip_GunBase.cpp" />
+    <ClCompile Include="Equip_Gun_F.cpp" />
     <ClCompile Include="Equip_Gun_L.cpp" />
     <ClCompile Include="Equip_Gun_N.cpp" />
     <ClCompile Include="Equip_Gun_R.cpp" />
@@ -173,6 +174,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Game_Blocker.cpp" />
+    <ClCompile Include="Game_Bridge_S1.cpp" />
     <ClCompile Include="Game_Bullet.cpp" />
     <ClCompile Include="Game_Character.cpp" />
     <ClCompile Include="Game_Collision.cpp" />
@@ -197,6 +199,7 @@
     <ClCompile Include="Game_Water.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MusicManager.cpp" />
+    <ClCompile Include="Obj_Bullet_F.cpp" />
     <ClCompile Include="Obj_Bullet_L.cpp" />
     <ClCompile Include="Obj_Bullet_N.cpp" />
     <ClCompile Include="Obj_Bullet_R.cpp" />
@@ -250,6 +253,7 @@
     <ClInclude Include="Equip_EnemyGun_N.h" />
     <ClInclude Include="Equip_EnemyGun_Sniper.h" />
     <ClInclude Include="Equip_GunBase.h" />
+    <ClInclude Include="Equip_Gun_F.h" />
     <ClInclude Include="Equip_Gun_L.h" />
     <ClInclude Include="Equip_Gun_R.h" />
     <ClInclude Include="Equip_Gun_S.h" />
@@ -267,6 +271,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Game_Blocker.h" />
+    <ClInclude Include="Game_Bridge_S1.h" />
     <ClInclude Include="Game_Bullet.h" />
     <ClInclude Include="Game_Character.h" />
     <ClInclude Include="Game_Collision.h" />
@@ -291,6 +296,7 @@
     <ClInclude Include="Game_Water.h" />
     <ClInclude Include="KeyEventHandler.h" />
     <ClInclude Include="MusicManager.h" />
+    <ClInclude Include="Obj_Bullet_F.h" />
     <ClInclude Include="Obj_Bullet_L.h" />
     <ClInclude Include="Obj_Bullet_N.h" />
     <ClInclude Include="Obj_Bullet_R.h" />

@@ -1,12 +1,12 @@
 #pragma once
 #include "Game_MovableEnemy.h"
 
-#define INFARY_BASE_WIDTH 20
-#define INFARY_BASE_HEIGHT 32
-#define INFARY_JUMP_WIDTH 20
-#define INFARY_JUMP_HEIGHT 28
-#define INFARY_SWIM_WIDTH 20
-#define INFARY_SWIM_HEIGHT 32
+#define JUMPER_BASE_WIDTH 20
+#define JUMPER_BASE_HEIGHT 32
+#define JUMPER_JUMP_WIDTH 20
+#define JUMPER_JUMP_HEIGHT 28
+#define JUMPER_SWIM_WIDTH 20
+#define JUMPER_SWIM_HEIGHT 32
 
 class Enemy_Jumper : public Game_MovableEnemy
 {
@@ -15,7 +15,7 @@ class Enemy_Jumper : public Game_MovableEnemy
 		void UpdateState() override;
 		void UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects = NULL) override;
 	public:
-		Enemy_Jumper(float x, float y, int z) : Game_MovableEnemy(x, y, z, INFARY_BASE_WIDTH, INFARY_BASE_HEIGHT)
+		Enemy_Jumper(float x, float y, int z) : Game_MovableEnemy(x, y, z, JUMPER_BASE_WIDTH, JUMPER_BASE_HEIGHT)
 		{
 			_moveSpd = 0.08f;
 			_BodyDamage = true;

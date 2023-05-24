@@ -11,8 +11,8 @@ class Equip_Gun_N : public Equip_GunBase
 		{
 			_isAuto = false;
 			_FireRate = 120;
-			_reloadTime = 240;
-			_maxAmmo = 5;
+			_reloadTime = 0;
+			_maxAmmo = 0;
 			_ammo = _maxAmmo;
 		}
 
