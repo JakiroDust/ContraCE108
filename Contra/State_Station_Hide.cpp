@@ -6,8 +6,11 @@ void State_Station_Hide::Render()
 {
 	Game_Character* obj = (Game_Character*)_srcObj;
 	CAnimations* animations = CAnimations::GetInstance();
-	float x, y;
+	float x, y, ox, oy;
 	obj->GetCenterPoint(x, y);
+	obj->GetSpriteOffset(StateId(), ox, oy);
+	x += ox;
+	y += oy;
 	if (obj->IsFaceLeft())
 	{
 		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_IDLE_LEFT))->Render(x, y);

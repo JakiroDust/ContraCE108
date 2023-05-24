@@ -9,6 +9,8 @@
 #define TWATER 10002
 #define TDEADLY 10003
 #define TBRIDGE_S1 10004
+#define TMOVINGSTONE 10005
+#define TPLAYERBLOCKER 10006
 
 // Enemies
 

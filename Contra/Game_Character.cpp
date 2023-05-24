@@ -5,6 +5,7 @@
 #include "Game_TestBox.h"
 #include "Scene_Battle.h"
 #include "Game_DeadlyBlock.h"
+#include "Obj_MovingStone.h"
 
 void Game_Character::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
@@ -21,6 +22,7 @@ void Game_Character::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	if (!_moveFlag)
 		_vx = 0;
 	_moveFlag = false;
+	AddExternalForces();
 }
 
 void Game_Character::OnNoCollision(DWORD dt)
@@ -37,10 +39,20 @@ void Game_Character::OnCollisionWith(PCOLLISIONEVENT e)
 		_swim = true;
 	} 
 
-	if (dynamic_cast<Game_Platform*>(e->obj)
+	//if (dynamic_cast<Game_Platform*>(e->obj)
+	//	&& footerY() >= e->obj->y()
+	//){
+	//	_onGround = true;
+	//}
+
+	if (dynamic_cast<Obj_MovingStone*>(e->obj)
 		&& footerY() >= e->obj->y()
-	){
-		_onGround = true;
+		) {
+		float vx, vy;
+		e->obj->GetSpeed(vx, vy);
+		_external_vx += vx;
+		_external_vy += vy;
+		return;
 	}
 
 	if (e->nx != 0 && _onGround && dynamic_cast<Game_Terrain*>(e->obj) && !dynamic_cast<Game_Water*>(e->obj)
@@ -48,7 +60,6 @@ void Game_Character::OnCollisionWith(PCOLLISIONEVENT e)
 	{
 		if (_swim)
 		{
-			//_jumpForce = (footerY() - e->obj->y()) / (JUMP_VECTOR * 4) + 1
 			_jumpForce = (e->obj->y() - footerY()) + CHARACTER_JUMP_ON_HEIGHT / 3.0f;
 			_jumpForce = floorf(_jumpForce);
 			if (e->nx < 0)

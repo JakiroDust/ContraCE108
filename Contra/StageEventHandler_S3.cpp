@@ -8,22 +8,41 @@
 void StageEventHandler_S3::Update(DWORD dt)
 {
 	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
-	// Make Camera focus to player
-	Set_Camera_Focus_Player();
-	screen->SetPosition(0, screen->y());
 
-	// Execute event base on camera position
-	
-	float cx, cy;
-	screen->GetPosition(cx, cy);
+	// Fix camera position
+	Game_SweeperBlock* sweeper = GetSweeper();
+	float px, py;
+	_srcScene->p1()->GetCenterPoint(px, py);
 
-	//if (cx >= 224 && cx <= 544)
-	//{
-	//	Spawn_Infary(dt, cx, 160);
-	//}
+	if (py > _maxMovedLength && _maxMovedLength < MAX_MOVEABLE_LENGTH_STAGE_3)
+	{
+		_maxMovedLength = py;
+	}
+	else if (_maxMovedLength > BOSS_TRIGGER_RANGE_STAGE_3
+		&& _maxMovedLength < MAX_MOVEABLE_LENGTH_STAGE_3)
+	{
+		_maxMovedLength += SWEEPER_TRIGGERED_SPEED_S3 * dt;
+		_maxMovedLength = min(MAX_MOVEABLE_LENGTH_STAGE_3, _maxMovedLength);
+	}
+	else if (_maxMovedLength >= MAX_MOVEABLE_LENGTH_STAGE_3)
+	{
+		_maxMovedLength = MAX_MOVEABLE_LENGTH_STAGE_3;
+	}
 
-		// fix sweeper position
-	GetSweeper()->SetPosition(0, cy - GAMESCREEN_HEIGHT);
+	if (!_toggleFreeCam)
+	{
+		screen->SetPosition(0, _maxMovedLength + screen->height() / 2.0f);
+		if (screen->y() - screen->height() <= 0)
+			screen->SetPosition(0, screen->height());
+		else if (screen->y() > _srcScene->MapHeight())
+			screen->SetPosition(0, _srcScene->MapHeight());
+	}
+
+	// Update sweeper
+	sweeper->SetPosition(0, _maxMovedLength - screen->height() / 2.0f + 2);
+	float l, t, b, r;
+	sweeper->GetBoundingBox(l, t, r, b);
+	_srcScene->spatial->update(_sweeperID, (int)l, (int)b, (int)r, (int)t);
 }
 
 void StageEventHandler_S3::Load()
@@ -59,22 +78,6 @@ Game_SweeperBlock* StageEventHandler_S3::GetSweeper()
 // ===================================================================
 // EVENTS
 
-void StageEventHandler_S3::Spawn_Infary(DWORD dt, float camX, float spawnPosY)
-{
-	//if (spawn_infary_ticker >= dt)
-	//{
-	//	spawn_infary_ticker -= dt;
-	//	return;
-	//}
-	//spawn_infary_ticker = SPAWN_INFARY_INTERVAL;
-
-	//for (int i = 0; i < 1; i++)
-	//{
-	//	unique_ptr <Enemy_Infary> redgunner(new Enemy_Infary(camX + GAMESCREEN_WIDTH / 2 + 32, spawnPosY, 2));
-	//	_srcScene->add_object(move(redgunner));
-	//}
-}
-
 void StageEventHandler_S3::HelpGetRevivePoint(float& posX, float& posY)
 {
 	Game_SweeperBlock* sweeper = GetSweeper();
@@ -87,7 +90,7 @@ void StageEventHandler_S3::HelpGetRevivePoint(float& posX, float& posY)
 
 	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
 	float cx, cy;
-	screen->GetCenterPoint(cx, cy);
+	screen->GetPosition(cx, cy);
 
 	float adding = -8;
 
@@ -95,8 +98,8 @@ void StageEventHandler_S3::HelpGetRevivePoint(float& posX, float& posY)
 	while (!canSpawn && testbox->x() + testbox->width() < _srcScene->MapWidth())
 	{
 		adding += 32;
-		posX = sweeper->x() + sweeper->width() + adding;
-		posY = sweeper->height() + GAMESCREEN_HEIGHT / 2;
+		posX = adding;
+		posY = _maxMovedLength;
 		testbox->SetPosition(posX, posY);
 
 		// Make testbox move down
@@ -114,7 +117,8 @@ void StageEventHandler_S3::HelpGetRevivePoint(float& posX, float& posY)
 				break;
 			}
 
-			if (dynamic_cast<Game_Terrain*>(e->obj))
+			if (dynamic_cast<Game_Terrain*>(e->obj)
+				|| dynamic_cast<Game_Blocker*>(e->obj))
 			{
 				canSpawn = true;
 				break;
@@ -124,7 +128,7 @@ void StageEventHandler_S3::HelpGetRevivePoint(float& posX, float& posY)
 
 	if (!canSpawn)
 	{
-		posX = sweeper->x() + sweeper->width() + 16;
-		posY = sweeper->height() + GAMESCREEN_HEIGHT/2;
+		posX = screen->width()/2;
+		posY = _maxMovedLength;
 	}
 }

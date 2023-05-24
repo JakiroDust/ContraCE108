@@ -2,12 +2,15 @@
 #include "StageEventHandler_Base.h"
 #include "Game_SweeperBlock.h"
 
+#define MAX_MOVEABLE_LENGTH_STAGE_3 2048
+#define BOSS_TRIGGER_RANGE_STAGE_3 1952
+#define SWEEPER_TRIGGERED_SPEED_S3 0.1f 
+
 class StageEventHandler_S3 : public StageEventHandler_Base
 {
 	private:
 		int _sweeperID = -1;
-		DWORD spawn_infary_ticker = 0;
-		void Spawn_Infary(DWORD dt, float camX, float spawnPosY);
+		float _maxMovedLength;
 	public:
 		StageEventHandler_S3(Scene_Battle* src) : StageEventHandler_Base(src)
 		{

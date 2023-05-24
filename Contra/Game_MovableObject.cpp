@@ -199,3 +199,11 @@ void Game_MovableObject::OnCollisionWith(PCOLLISIONEVENT e)
 		if (e->ny < 0) _jumpForce = 0; 
 	}
 }
+
+void Game_MovableObject::AddExternalForces()
+{
+	_vx += _external_vx;
+	_vy += _external_vy;
+	_external_vx = 0;
+	_external_vy = 0;
+}

@@ -18,6 +18,27 @@
 #define PLAYER_JUMP_HEIGHT 18
 #define PLAYER_SWIM_WIDTH 18
 #define PLAYER_SWIM_HEIGHT 8
+#define PLAYER_LIE_WIDTH 20
+#define PLAYER_LIE_HEIGHT 8
+#define PLAYER_DIVE_WIDTH 18
+#define PLAYER_DIVE_HEIGHT 8
+
+#define PLAYER_IDLE_OFFSET_X 0
+#define PLAYER_IDLE_OFFSET_Y 0
+#define PLAYER_WALK_OFFSET_X 0
+#define PLAYER_WALK_OFFSET_Y 0
+#define PLAYER_JUMP_OFFSET_X 0
+#define PLAYER_JUMP_OFFSET_Y 0
+#define PLAYER_SWIM_OFFSET_X 0
+#define PLAYER_SWIM_OFFSET_Y 0
+#define PLAYER_FALL_OFFSET_X 0
+#define PLAYER_FALL_OFFSET_Y 0
+#define PLAYER_LIE_OFFSET_X 0
+#define PLAYER_LIE_OFFSET_Y 10
+#define PLAYER_DIVE_OFFSET_X 0
+#define PLAYER_DIVE_OFFSET_Y 0
+#define PLAYER_DIE_OFFSET_X 0
+#define PLAYER_DIE_OFFSET_Y 0
 
 // PARAM
 #define PLAYER_REVIVE_INVINCIBLE_TIME 2000
@@ -68,7 +89,7 @@ class Game_Player : public Game_Character
 
 		int CharID();
 		void GetCustomSize(int state, int& width, int& height) override;
-
+		void GetSpriteOffset(int state, float& x, float& y) override;
 		void Execute_DieAction() override;
 };
 

@@ -22,7 +22,8 @@
 #include "Game_Bullet.h"
 #include "Enemy_Sniper.h"
 #include "Spawner_Infary_Stage1.h"
-
+#include "Obj_MovingStone.h"
+#include "Game_PlayerBlocker.h"
 // EventHandler
 #include "StageEventHandler_S1.h"
 

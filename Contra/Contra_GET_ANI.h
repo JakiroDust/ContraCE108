@@ -9,8 +9,6 @@ using namespace std;
 enum Action {
     ACT_IDLE_RIGHT,
     ACT_IDLE_LEFT,
-    ACT_LOOK_UP_STAND_RIGHT,
-    ACT_LOOK_UP_STAND_LEFT,
     ACT_LOOK_UP_RIGHT,
     ACT_LOOK_UP_LEFT,
     ACT_LOOK_DOWN_RIGHT,

@@ -107,12 +107,14 @@ void StageEventHandler_S1::HelpGetRevivePoint(float& posX, float& posY)
 
 	float adding = -8;
 
+	testbox->SetPosition(screen->x(), screen->y() - 16);
+
 	bool canSpawn = false;
 	while (!canSpawn && testbox->x() + testbox->width() < _srcScene->MapWidth())
 	{
 		adding += 32;
 		posX = sweeper->x() + sweeper->width() + adding;
-		posY = _srcScene->MapHeight() - 16;
+		posY = screen->y() - 16;
 		testbox->SetPosition(posX, posY);
 
 		// Make testbox move down

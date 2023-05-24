@@ -17,6 +17,10 @@ protected:
 	float _jumpForce = 0;
 	float _ForceX = 0;
 	float _ForceY = 0;
+
+	float _external_vx = 0;
+	float _external_vy = 0;
+
 	/// state
 
 	bool _faceLeft = false;
@@ -98,9 +102,14 @@ public:
 
 	void SetLockFace(bool b) { _lockFace = b; }
 	bool LockFace() { return _lockFace; }
+	void SetFaceLeft(bool b) { _faceLeft = b; }
 
 	float GetJumpForce() { return /*max(ceilf(40.0f / (JUMP_VECTOR * 16)), 1)*/ OBJECT_JUMP_HEIGHT; }
 
+	bool IsImmortal() { return _immortal; }
+	bool IsGhost() { return _ghost; }
+	void SetImmortal(bool b) { _immortal = b; }
+	void SetGhost(bool b) { _ghost = b; }
 	/// STATE
 
 	virtual bool isDie();
@@ -112,6 +121,8 @@ public:
 	
 	void Update(DWORD dt) override;
 	void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;
+
+	void AddExternalForces();
 
 	// Render
 

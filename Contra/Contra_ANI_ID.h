@@ -11,8 +11,8 @@
 
 
 ////////////////////////////////////LOOK_UP(_SHOOTING)////////////////////////////////////////////
-#define CONTRA_ANI_LOOK_UP_STANING_RIGHT	10500
-#define CONTRA_ANI_LOOK_UP_STANING_LEFT CONTRA_ANI_LOOK_UP_STANING_RIGHT+1
+//#define CONTRA_ANI_LOOK_UP_STANING_RIGHT	10500
+//#define CONTRA_ANI_LOOK_UP_STANING_LEFT CONTRA_ANI_LOOK_UP_STANING_RIGHT+1
 ////////////////////////////////////WALK_RIGHT(_SHOOTING)////////////////////////////////////////////
 #define CONTRA_ANI_WALK_RIGHT 10100
 #define CONTRA_ANI_WALK_LEFT CONTRA_ANI_WALK_RIGHT+1

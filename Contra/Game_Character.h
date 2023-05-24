@@ -75,6 +75,7 @@ public:
 	void SetJumpDown(bool b) { _jumpDown = b; }
 	float GetMovementSpeed() { return _moveSpd; }
 	virtual void GetCustomSize(int state, int &width, int &height) {}
+	virtual void GetSpriteOffset(int state, float& x, float& y) { x = 0; y = 0; }
 	virtual int CharID() { return -1; }
 
 	void ChangeWeapon(Equip_GunBase* newWep)

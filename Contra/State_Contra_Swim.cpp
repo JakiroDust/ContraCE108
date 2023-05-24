@@ -1,13 +1,16 @@
 #include "State_Contra_Swim.h"
-#include "Game_Player.h"
+#include "Game_Character.h"
 #include "Contra_GET_ANI.h"
 
 void State_Contra_Swim::Render()
 {
-	Game_Player* obj = (Game_Player*)_srcObj;
+	Game_Character* obj = (Game_Character*)_srcObj;
 	CAnimations* animations = CAnimations::GetInstance();
-	float x, y;
+	float x, y, ox, oy;
 	obj->GetCenterPoint(x, y);
+	obj->GetSpriteOffset(StateId(), ox, oy);
+	x += ox;
+	y += oy;
 	if (obj->IsFaceLeft())
 	{
 		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_SWIM_LEFT))->Render(x, y);
@@ -23,7 +26,10 @@ void State_Contra_Swim::Update(DWORD dt)
 	if (_nextState != -1)
 		return;
 
-	Game_Player* obj = (Game_Player*)_srcObj;
+	Game_Character* obj = (Game_Character*)_srcObj;
+
+	if (obj->IsGhost())
+		obj->SetGhost(false);
 
 	int width, height;
 	obj->GetCustomSize(StateId(), width, height);
@@ -37,24 +43,27 @@ void State_Contra_Swim::Update(DWORD dt)
 
 	if (!obj->IsSwimming())
 	{
-		if (_nextState == -1)
-		{
-			_nextState = STATE_IDLE;
-		}
+		_nextState = STATE_IDLE;
+		return;
+	}
+
+	if (HoldKeyDown)
+	{
+		_nextState = STATE_DIVE;
 	}
 }
 
 void State_Contra_Swim::KeyHold_Left()
 {
 	State_Contra_Base::KeyHold_Left();
-	Game_Player* obj = (Game_Player*)_srcObj;
+	Game_Character* obj = (Game_Character*)_srcObj;
 	obj->moveLeft();
 }
 
 void State_Contra_Swim::KeyHold_Right()
 {
 	State_Contra_Base::KeyHold_Right();
-	Game_Player* obj = (Game_Player*)_srcObj;
+	Game_Character* obj = (Game_Character*)_srcObj;
 	obj->moveRight();
 }
 

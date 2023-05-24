@@ -15,7 +15,7 @@ void Obj_Bullet_F::Update(DWORD dt)
 	_centerY += _vy * dt;
 
 	// calc angular velocity
-	float w = _moveSpd / _radius;
+	float w = _moveSpd / _radius * BULLET_F_ANGULAR_V_MULTIPLY;
 
 	if (_direct == BULLET_F_DIR_CLOCKWISE)
 		_currentRad -= w * dt;

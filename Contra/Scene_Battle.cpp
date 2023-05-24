@@ -417,10 +417,14 @@ void Scene_Battle::_ParseOBject(string line)
                     break;
                 case TDEADLY: obj.reset(new Game_DeadlyBlock(x, y, Z_INDEX_TERRAIN, param1, param2));
                     break;
+                case TPLAYERBLOCKER: obj.reset(new Game_PlayerBlocker(x, y, Z_INDEX_TERRAIN, param1, param2));
+                    break;
                 case TBRIDGE_S1: obj.reset(new Game_Bridge_S1(x, y, Z_INDEX_TERRAIN, param1, param2)); 
                     // param1 = triggerID, param2 = TimeOffset
                     break;
-
+                case TMOVINGSTONE: obj.reset(new Obj_MovingStone(x, y, Z_INDEX_TERRAIN, param1, param2));
+                    // param1 = max pos Left, param2 = max pos Right
+                    break;
                 // PARSE OBJECT
                 case CHAR_CONTRA:
                     _p1.reset(new Game_Player(x, y, Z_INDEX_PLAYER));

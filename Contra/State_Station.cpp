@@ -6,8 +6,11 @@ void State_Station::Render()
 {
 	Game_Character* obj = (Game_Character*)_srcObj;
 	CAnimations* animations = CAnimations::GetInstance();
-	float x, y;
+	float x, y, ox, oy;
 	obj->GetCenterPoint(x, y);
+	obj->GetSpriteOffset(StateId(), ox, oy);
+	x += ox;
+	y += oy;
 	switch (_DIR)
 	{
 	case DIR_TOP:

@@ -7,15 +7,24 @@ void State_Contra_Idle::Render()
 {
 	Game_Character* obj = (Game_Character*)_srcObj;
 	CAnimations* animations = CAnimations::GetInstance();
-	float x, y;
+	float x, y, ox, oy;
 	obj->GetCenterPoint(x, y);
+	obj->GetSpriteOffset(StateId(), ox, oy);
+	x += ox;
+	y += oy;
 	if (obj->IsFaceLeft())
 	{
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_IDLE_LEFT))->Render(x, y);
+		if (HoldKeyUp)
+			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_LOOK_UP_LEFT))->Render(x, y);
+		else
+			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_IDLE_LEFT))->Render(x, y);
 	}
 	else
 	{
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_IDLE_RIGHT))->Render(x, y);
+		if (HoldKeyUp)
+			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_LOOK_UP_RIGHT))->Render(x, y);
+		else
+			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_IDLE_RIGHT))->Render(x, y);
 	}
 }
 
@@ -28,13 +37,26 @@ void State_Contra_Idle::Update(DWORD dt)
 
 	int width, height;
 	obj->GetCustomSize(StateId(), width, height);
+	if (obj->width() != width)
+	{
+		obj->SetWidth(width, 1);
+	}
 	if (obj->height() != height)
 	{
 		obj->SetHeight(height, 2);
 	}
 
 	if (obj->LockFace())
+	{
 		obj->SetLockFace(false);
+	}
+
+
+	if (HoldKeyDown)
+	{
+		_nextState = STATE_LIE;
+		return;
+	}
 
 	if (!obj->IsOnGround())
 	{
@@ -77,12 +99,6 @@ void State_Contra_Idle::KeyPressed_Jump()
 	Game_Character* obj = (Game_Character*)_srcObj;
 	if (obj->IsJumping())
 		return;
-
-	if (HoldKeyDown)
-	{
-		obj->jumpDown();
-		return;
-	}
 
 	if (_nextState == -1)
 	{

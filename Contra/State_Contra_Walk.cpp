@@ -1,14 +1,17 @@
 #include "State_Contra_Walk.h"
-#include "Game_Player.h"
+#include "Game_Character.h"
 #include "Animations.h"
 #include "Contra_GET_ANI.h"
 
 void State_Contra_Walk::Render()
 {
-	Game_Player* obj = (Game_Player*)_srcObj;
+	Game_Character* obj = (Game_Character*)_srcObj;
 	CAnimations* animations = CAnimations::GetInstance();
-	float x, y;
+	float x, y, ox, oy;
 	obj->GetCenterPoint(x, y);
+	obj->GetSpriteOffset(StateId(), ox, oy);
+	x += ox;
+	y += oy;
 	if (obj->IsFaceLeft())
 	{
 		if(HoldKeyUp)
@@ -37,7 +40,7 @@ void State_Contra_Walk::Update(DWORD dt)
 {
 	if (_nextState != -1)
 		return;
-	Game_Player* obj = (Game_Player*)_srcObj;
+	Game_Character* obj = (Game_Character*)_srcObj;
 
 	int width, height;
 	obj->GetCustomSize(StateId(), width, height);
@@ -47,7 +50,14 @@ void State_Contra_Walk::Update(DWORD dt)
 	}
 
 	if (obj->LockFace())
+	{
 		obj->SetLockFace(false);
+		if (HoldKeyLeft)
+			obj->SetFaceLeft(true);
+		else if (HoldKeyRight)
+			obj->SetFaceLeft(false);
+	}
+
 
 	if (!HoldKeyLeft && !HoldKeyRight)
 	{
@@ -66,14 +76,14 @@ void State_Contra_Walk::Update(DWORD dt)
 void State_Contra_Walk::KeyHold_Left()
 {
 	State_Contra_Base::KeyHold_Left();
-	Game_Player* obj = (Game_Player*)_srcObj;
+	Game_Character* obj = (Game_Character*)_srcObj;
 	obj->moveLeft();
 }
 
 void State_Contra_Walk::KeyHold_Right()
 {
 	State_Contra_Base::KeyHold_Right();
-	Game_Player* obj = (Game_Player*)_srcObj;
+	Game_Character* obj = (Game_Character*)_srcObj;
 	obj->moveRight();
 }
 
@@ -85,7 +95,7 @@ void State_Contra_Walk ::KeyPressed_Jump()
 	//
 	DebugOut(L"[INFO] WALK Jump key is pressed %d\n", press);
 	//
-	Game_Player* obj = (Game_Player*)_srcObj;
+	Game_Character* obj = (Game_Character*)_srcObj;
 	
 	if (obj->IsJumping())
 		return;

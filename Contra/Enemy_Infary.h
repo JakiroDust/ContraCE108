@@ -14,10 +14,11 @@ class Enemy_Infary : public Game_MovableEnemy
 		void UpdateState() override;
 		void UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects = NULL) override;
 	public:
-		Enemy_Infary(float x, float y, int z) : Game_MovableEnemy(x, y, z, INFARY_BASE_WIDTH, INFARY_BASE_HEIGHT)
+		Enemy_Infary(float x, float y, int z, bool faceLeft = true) : Game_MovableEnemy(x, y, z, INFARY_BASE_WIDTH, INFARY_BASE_HEIGHT)
 		{
 			_moveSpd = 0.08f;
 			_BodyDamage = true;
+			_faceLeft = faceLeft;
 		}
 		~Enemy_Infary() {
 			Game_MovableEnemy::~Game_MovableEnemy();

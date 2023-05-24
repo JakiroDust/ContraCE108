@@ -33,8 +33,10 @@ void Enemy_Infary::OnCollisionWith(PCOLLISIONEVENT e)
 
 void Enemy_Infary::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
-	AddAction(DIK_LEFT);
-
+	if (_faceLeft)
+		AddAction(DIK_LEFT);
+	else
+		AddAction(DIK_RIGHT);
 	//--------------------------------------------------------------------
 	// Use testbox to check before making decision what to do next.
 	unique_ptr<Game_TestBox>testbox(new Game_TestBox(_x, _y, _z, _width, _height, 0, 0));

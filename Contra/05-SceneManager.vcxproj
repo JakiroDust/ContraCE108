@@ -189,6 +189,7 @@
     <ClCompile Include="Game_Picture_Static.cpp" />
     <ClCompile Include="Game_Platform.cpp" />
     <ClCompile Include="Game_Player.cpp" />
+    <ClCompile Include="Game_PlayerBlocker.cpp" />
     <ClCompile Include="Game_Screen.cpp" />
     <ClCompile Include="Game_Spawner.cpp" />
     <ClCompile Include="Game_StaticObject.cpp" />
@@ -205,6 +206,7 @@
     <ClCompile Include="Obj_Bullet_R.cpp" />
     <ClCompile Include="Obj_Bullet_S.cpp" />
     <ClCompile Include="Obj_EnemyBullet_N.cpp" />
+    <ClCompile Include="Obj_MovingStone.cpp" />
     <ClCompile Include="QuadTree\QuadTree.cpp" />
     <ClCompile Include="QuadTree\SimpleVector.cpp" />
     <ClCompile Include="Scene_Base.cpp" />
@@ -222,9 +224,11 @@
     <ClCompile Include="State_Base.cpp" />
     <ClCompile Include="State_Contra_Base.cpp" />
     <ClCompile Include="State_Contra_Die.cpp" />
+    <ClCompile Include="State_Contra_Dive.cpp" />
     <ClCompile Include="State_Contra_Fall.cpp" />
     <ClCompile Include="State_Contra_Idle.cpp" />
     <ClCompile Include="State_Contra_Jump.cpp" />
+    <ClCompile Include="State_Contra_Lie.cpp" />
     <ClCompile Include="State_Contra_Swim.cpp" />
     <ClCompile Include="State_Contra_Walk.cpp" />
     <ClCompile Include="State_Station.cpp" />
@@ -286,6 +290,7 @@
     <ClInclude Include="Game_Picture_Static.h" />
     <ClInclude Include="Game_Platform.h" />
     <ClInclude Include="Game_Player.h" />
+    <ClInclude Include="Game_PlayerBlocker.h" />
     <ClInclude Include="Game_Screen.h" />
     <ClInclude Include="Game_Spawner.h" />
     <ClInclude Include="Game_StaticObject.h" />
@@ -302,6 +307,7 @@
     <ClInclude Include="Obj_Bullet_R.h" />
     <ClInclude Include="Obj_Bullet_S.h" />
     <ClInclude Include="Obj_EnemyBullet_N.h" />
+    <ClInclude Include="Obj_MovingStone.h" />
     <ClInclude Include="QuadTree\QuadTree.h" />
     <ClInclude Include="QuadTree\SimpleVector.h" />
     <ClInclude Include="Scene_Base.h" />
@@ -319,9 +325,11 @@
     <ClInclude Include="State_Base.h" />
     <ClInclude Include="State_Contra_Base.h" />
     <ClInclude Include="State_Contra_Die.h" />
+    <ClInclude Include="State_Contra_Dive.h" />
     <ClInclude Include="State_Contra_Fall.h" />
     <ClInclude Include="State_Contra_Idle.h" />
     <ClInclude Include="State_Contra_Jump.h" />
+    <ClInclude Include="State_Contra_Lie.h" />
     <ClInclude Include="State_Contra_Swim.h" />
     <ClInclude Include="State_Contra_Walk.h" />
     <ClInclude Include="State_Station.h" />

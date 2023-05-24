@@ -179,28 +179,19 @@
     <ClCompile Include="Equip_EnemyGun_Sniper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StageEventHandler_Base.cpp" />
-    <ClCompile Include="StageEventHandler_S1.cpp" />
     <ClCompile Include="GameManager.cpp">
       <Filter>Source Files\GameCore</Filter>
     </ClCompile>
     <ClCompile Include="Obj_Bullet_R.cpp">
       <Filter>Source Files\Object\MoveObject\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="StageEventHandler_S3.cpp" />
     <ClCompile Include="Game_DeadlyBlock.cpp">
       <Filter>Source Files\Object\StaticObject</Filter>
     </ClCompile>
     <ClCompile Include="Game_SweeperBlock.cpp">
       <Filter>Source Files\Object\StaticObject</Filter>
     </ClCompile>
-    <ClCompile Include="Equip_Gun_S.cpp" />
-    <ClCompile Include="Obj_Bullet_S.cpp" />
     <ClCompile Include="Obj_Bullet_R.cpp" />
-    <ClCompile Include="Equip_Gun_L.cpp" />
-    <ClCompile Include="Obj_Bullet_L.cpp" />
-    <ClCompile Include="Game_Picture.cpp" />
-    <ClCompile Include="Scene_LoadingStage.cpp" />
     <ClCompile Include="QuadTree\SimpleVector.cpp">
       <Filter>Header Files\QuadTree</Filter>
     </ClCompile>
@@ -213,12 +204,55 @@
     <ClCompile Include="Word.cpp">
       <Filter>Header Files\Font</Filter>
     </ClCompile>
-    <ClCompile Include="Game_Picture_Static.cpp" />
-    <ClCompile Include="Game_Spawner.cpp" />
-    <ClCompile Include="Spawner_Infary_Stage1.cpp" />
-    <ClCompile Include="Equip_Gun_F.cpp" />
-    <ClCompile Include="Obj_Bullet_F.cpp" />
-    <ClCompile Include="Game_Bridge_S1.cpp" />
+    <ClCompile Include="Game_Picture_Static.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Bridge_S1.cpp">
+      <Filter>Source Files\Object\StaticObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_Bullet_L.cpp">
+      <Filter>Source Files\Object\MoveObject\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_Bullet_F.cpp">
+      <Filter>Source Files\Object\MoveObject\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_Gun_F.cpp">
+      <Filter>Source Files\Object\MoveObject\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_Bullet_S.cpp">
+      <Filter>Source Files\Object\MoveObject\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Picture.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Spawner.cpp">
+      <Filter>Source Files\Object\StaticObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Spawner_Infary_Stage1.cpp">
+      <Filter>Source Files\Object\StaticObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_LoadingStage.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="StageEventHandler_Base.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="StageEventHandler_S1.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="StageEventHandler_S3.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_Gun_S.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_Gun_L.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_MovingStone.cpp" />
+    <ClCompile Include="Game_PlayerBlocker.cpp" />
+    <ClCompile Include="State_Contra_Lie.cpp" />
+    <ClCompile Include="State_Contra_Dive.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -494,12 +528,29 @@
     <ClInclude Include="Word.h">
       <Filter>Header Files\Font</Filter>
     </ClInclude>
-    <ClInclude Include="Game_Picture_Static.h" />
-    <ClInclude Include="Game_Spawner.h" />
-    <ClInclude Include="Spawner_Infary_Stage1.h" />
-    <ClInclude Include="Equip_Gun_F.h" />
-    <ClInclude Include="Obj_Bullet_F.h" />
-    <ClInclude Include="Game_Bridge_S1.h" />
+    <ClInclude Include="ft2build.h" />
+    <ClInclude Include="Equip_Gun_F.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Bridge_S1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Picture_Static.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Spawner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj_Bullet_F.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spawner_Infary_Stage1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj_MovingStone.h" />
+    <ClInclude Include="Game_PlayerBlocker.h" />
+    <ClInclude Include="State_Contra_Lie.h" />
+    <ClInclude Include="State_Contra_Dive.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

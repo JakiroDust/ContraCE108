@@ -5,6 +5,8 @@
 #include "State_Contra_Fall.h"
 #include "State_Contra_Swim.h"
 #include "State_Contra_Jump.h"
+#include "State_Contra_Lie.h"
+#include "State_Contra_Dive.h"
 #include "State_Contra_Die.h"
 #include "Contra_GET_ANI.h"
 #include "Enemy_RedGunner.h"
@@ -31,7 +33,8 @@ void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	else
 	{
 		_invincible_interval = 0;
-		_ghost = false;
+		if (_state != NULL && _state.get()->StateId() != STATE_DIVE)
+			_ghost = false;
 	}
 	// invincible ani
 	if (_invincible_interval > 0)
@@ -106,26 +109,30 @@ void Game_Player::UpdateState()
 
 	switch (_state->NextState())
 	{
-		
-	case STATE_IDLE:
-		
+	case STATE_IDLE:		
 		_state.reset( new State_Contra_Idle(this));
 		break;
-	case STATE_WALK:
-		
+	case STATE_WALK:	
 		_state.reset(new State_Contra_Walk(this));
 		break;
 	case STATE_FALL:
-		
 		_state.reset(new State_Contra_Fall(this));
 		break;
 	case STATE_SWIM:
-		
 		_state.reset(new State_Contra_Swim(this));
 		break;
 	case STATE_JUMP:
-		
 		_state.reset(new State_Contra_Jump(this));
+		break;
+	case STATE_LIE:
+		_state.reset(new State_Contra_Lie(this));
+		break;
+	case STATE_DIVE:
+		if (_state.get()->StateId() == STATE_JUMP
+			|| _state.get()->StateId() == STATE_FALL)
+			_state.reset(new State_Contra_Dive(this, 500));
+		else 
+			_state.reset(new State_Contra_Dive(this));
 		break;
 	}
 }
@@ -147,28 +154,23 @@ void Game_Player::KeyDownEventHandler(int KeyCode)
 		switch (KeyCode)
 		{
 		case DIK_UP:
-			state->KeyPressed_Up();
 			state->KeyHold_Up();
 			state->KeyReleased_Down();
 			break;
 		case DIK_DOWN:
-			state->KeyPressed_Down();
 			state->KeyHold_Down();
 			state->KeyReleased_Up();
 			break;
 		case DIK_LEFT:
-			state->KeyPressed_Left();
 			state->KeyHold_Left();
 			state->KeyReleased_Right();
 			break;
 		case DIK_RIGHT:
-			state->KeyPressed_Right();
 			state->KeyHold_Right();
 			state->KeyReleased_Left();
 			break;
 		case DIK_O:
-			state->KeyPressed_Shoot();
-			state->KeyHold_Shoot();
+			// Can't auto shoot
 			break;
 		case DIK_P:
 			state->KeyPressed_Jump();
@@ -176,27 +178,29 @@ void Game_Player::KeyDownEventHandler(int KeyCode)
 		}
 		return;
 	}
-
-	switch (KeyCode)
+	else
 	{
-	case DIK_UP:
-		state->KeyPressed_Up();
-		break;
-	case DIK_DOWN:
-		state->KeyPressed_Down();
-		break;
-	case DIK_LEFT:
-		state->KeyPressed_Left();
-		break;
-	case DIK_RIGHT:
-		state->KeyPressed_Right();
-		break;
-	case DIK_O: 
-		state->KeyPressed_Shoot();
-		break;
-	case DIK_P:
-		state->KeyPressed_Jump();
-		break;
+		switch (KeyCode)
+		{
+		case DIK_UP:
+			state->KeyPressed_Up();
+			break;
+		case DIK_DOWN:
+			state->KeyPressed_Down();
+			break;
+		case DIK_LEFT:
+			state->KeyPressed_Left();
+			break;
+		case DIK_RIGHT:
+			state->KeyPressed_Right();
+			break;
+		case DIK_O:
+			state->KeyPressed_Shoot();
+			break;
+		case DIK_P:
+			state->KeyPressed_Jump();
+			break;
+		}
 	}
 }
 
@@ -302,7 +306,15 @@ void Game_Player::OnCollisionWith(PCOLLISIONEVENT e)
 {
 	Game_Character::OnCollisionWith(e);
 	
+	// touched deadly block
 	if (!_die && dynamic_cast<Game_DeadlyBlock*>(e->obj))
+	{
+		DieEvent();
+		return;
+	}
+
+	// touched sweeper block (vertical direction)
+	if (!_die && dynamic_cast<Game_SweeperBlock*>(e->obj) && e->ny != 0)
 	{
 		DieEvent();
 		return;
@@ -356,6 +368,14 @@ void Game_Player::GetCustomSize(int state, int& width, int& height)
 		width = PLAYER_JUMP_WIDTH;
 		height = PLAYER_JUMP_HEIGHT;
 		break;
+	case STATE_LIE:
+		width = PLAYER_LIE_WIDTH;
+		height = PLAYER_LIE_HEIGHT;
+		break;
+	case STATE_DIVE:
+		width = PLAYER_DIVE_WIDTH;
+		height = PLAYER_DIVE_HEIGHT;
+		break;
 	case STATE_DIE:
 		width = PLAYER_BASE_WIDTH;
 		height = PLAYER_BASE_HEIGHT;
@@ -363,6 +383,48 @@ void Game_Player::GetCustomSize(int state, int& width, int& height)
 	default:
 		break;
 	}
+}
+
+void Game_Player::GetSpriteOffset(int state, float& x, float& y)
+{
+	switch (state)
+	{
+	case STATE_IDLE:
+		x = PLAYER_IDLE_OFFSET_X;
+		y = PLAYER_IDLE_OFFSET_Y;
+		break;
+	case STATE_FALL:
+		x = PLAYER_IDLE_OFFSET_X;
+		y = PLAYER_IDLE_OFFSET_Y;
+		break;
+	case STATE_SWIM:
+		x = PLAYER_SWIM_OFFSET_X;
+		y = PLAYER_SWIM_OFFSET_Y;
+		break;
+	case STATE_WALK:
+		x = PLAYER_WALK_OFFSET_X;
+		y = PLAYER_WALK_OFFSET_Y;
+		break;
+	case STATE_JUMP:
+		x = PLAYER_JUMP_OFFSET_X;
+		y = PLAYER_JUMP_OFFSET_Y;
+		break;
+	case STATE_LIE:
+		x = PLAYER_LIE_OFFSET_X;
+		y = PLAYER_LIE_OFFSET_Y;
+		break;
+	case STATE_DIVE:
+		x = PLAYER_DIVE_OFFSET_X;
+		y = PLAYER_DIVE_OFFSET_Y;
+	case STATE_DIE:
+		x = PLAYER_DIE_OFFSET_X;
+		y = PLAYER_DIE_OFFSET_Y;
+		break;
+	default:
+		break;
+	}
+	if (!_faceLeft)
+		x = -x;
 }
 
 void Game_Player::Execute_DieAction()
