@@ -95,15 +95,15 @@ void Scene_LoadingStage::AddImage(float x, float y, int index, int spriteID, BYT
 		_images[index] = move(image);
 	}
 }
-void Scene_LoadingStage::AddImage_Static(float x, float y, int index, int spriteID, BYTE RenderMode)
+void Scene_LoadingStage::AddImage_Static(float x, float y, int index, int spriteID,float ratio, BYTE RenderMode)
 {
 	if (_images[index] != NULL)
 	{
-		_images[index].reset(new Game_Picture_Static(x, y, index, spriteID, RenderMode));
+		_images[index].reset(new Game_Picture_Static(x, y, index, spriteID,ratio, RenderMode));
 	}
 	else
 	{
-		unique_ptr <Game_Picture_Static> image(new Game_Picture_Static(x, y, index, spriteID, RenderMode));
+		unique_ptr <Game_Picture_Static> image(new Game_Picture_Static(x, y, index, spriteID,ratio, RenderMode));
 		_images[index] = move(image);
 	}
 }
@@ -112,10 +112,13 @@ void Scene_LoadingStage::Init_Stage1()
 	int id = 1;
 	int id2 = GAMESCREEN_WIDTH / 5;
 	AddImage(GAMESCREEN_WIDTH/2, GAMESCREEN_HEIGHT/2, id++, CONTRA_ANI_WALK_RIGHT, RENDER_MODE_CENTER);
-	AddImage_Static(id2=id2+10, GAMESCREEN_HEIGHT -10, id++, WORDSPRITE::getNumberSpriteID(0), RENDER_MODE_CENTER);
-	//AddImage_Static(id2 = id2 + 10, GAMESCREEN_HEIGHT - 10, id++, WORDSPRITE::getNumberSpriteID(2), RENDER_MODE_CENTER);
-	//AddImage_Static(id2 = id2 + 10, GAMESCREEN_HEIGHT - 10, id++, WORDSPRITE::getNumberSpriteID(3), RENDER_MODE_CENTER);
-	//AddImage_Static(id2 = id2 + 10, GAMESCREEN_HEIGHT - 10, id++, WORDSPRITE::getNumberSpriteID(4), RENDER_MODE_CENTER);
+	int height = GAMESCREEN_HEIGHT - 10;
+	AddImage_Static(id2 = id2 + 9, height, id++, WORDSPRITE::getCharacterSpriteID(L'L'), 2, RENDER_MODE_CENTER);
+	AddImage_Static(id2 = id2 + 9, height, id++, WORDSPRITE::getCharacterSpriteID(L'O'), 2, RENDER_MODE_CENTER);
+	AddImage_Static(id2 = id2 + 9, height, id++, WORDSPRITE::getCharacterSpriteID(L'A'), 2, RENDER_MODE_CENTER);
+	AddImage_Static(id2 = id2 + 9, height, id++, WORDSPRITE::getCharacterSpriteID(L'D'), 2, RENDER_MODE_CENTER);
+	id2 = id2 + 9;
+	AddImage_Static(id2=id2+9,height, id++, WORDSPRITE::getNumberSpriteID(1),2, RENDER_MODE_CENTER);
 }
 
 void Scene_LoadingStage::Init_Stage3()

@@ -65,4 +65,17 @@ namespace WORDSPRITE
 	{
 		return number + SPRITE_0;
 	}
+	/*int getCharcaterSpriteID(const wchar_t& a)
+	{
+		number=
+		return A_SPRITE + static_cast<int>(a)-97;
+	}*/
+	int getCharacterSpriteID(int number)
+	{
+		if (number >= 97)
+			number = number - 97;
+		if (number >= 65)
+			number = number - 65;
+		return number + A_SPRITE;
+	}
 }

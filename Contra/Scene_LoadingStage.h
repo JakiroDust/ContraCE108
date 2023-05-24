@@ -23,7 +23,7 @@ class Scene_LoadingStage : public Scene_Base
 		void Unload() override;
 		void AddImage(float x, float y, int index, int spriteID, BYTE RenderMode);
 
-		void AddImage_Static(float x, float y, int index, int spriteID, BYTE RenderMode);
+		void AddImage_Static(float x, float y, int index, int spriteID,float ratio, BYTE RenderMode);
 
 };
 

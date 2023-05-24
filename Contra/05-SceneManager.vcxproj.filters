@@ -197,9 +197,6 @@
     <ClCompile Include="Equip_Gun_S.cpp" />
     <ClCompile Include="Obj_Bullet_S.cpp" />
     <ClCompile Include="Obj_Bullet_R.cpp" />
-    <ClCompile Include="QuadTree.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="Equip_Gun_L.cpp" />
     <ClCompile Include="Obj_Bullet_L.cpp" />
     <ClCompile Include="Game_Picture.cpp" />
@@ -217,6 +214,8 @@
       <Filter>Header Files\Font</Filter>
     </ClCompile>
     <ClCompile Include="Game_Picture_Static.cpp" />
+    <ClCompile Include="Game_Spawner.cpp" />
+    <ClCompile Include="Spawner_Infary_Stage1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -493,6 +492,11 @@
       <Filter>Header Files\Font</Filter>
     </ClInclude>
     <ClInclude Include="Game_Picture_Static.h" />
+    <ClInclude Include="Game_Spawner.h" />
+    <ClInclude Include="Spawner_Infary_Stage1.h" />
+    <ClInclude Include="ft2build.h">
+      <Filter>Header Files\Font</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,13 +1,13 @@
 from PIL import Image
 
 # Open the source image
-source_image = Image.open(r"D:\ContraCE108\Contra\textures\font.png")
+source_image = Image.open(r"D:\ContraCE108\Contra\textures\font-2.png")
 
 
 
 # Calculate the number of cropped images
-crop_width = 8
-crop_height = 8
+crop_width = 16
+crop_height = 16
 num_crops = (source_image.width // crop_width) * (source_image.height // crop_height)
 
 # Create a list to store the cropped images

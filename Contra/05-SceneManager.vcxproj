@@ -202,7 +202,6 @@
     <ClCompile Include="Obj_Bullet_R.cpp" />
     <ClCompile Include="Obj_Bullet_S.cpp" />
     <ClCompile Include="Obj_EnemyBullet_N.cpp" />
-    <ClCompile Include="QuadTree.h" />
     <ClCompile Include="QuadTree\QuadTree.cpp" />
     <ClCompile Include="QuadTree\SimpleVector.cpp" />
     <ClCompile Include="Scene_Base.cpp" />
@@ -264,6 +263,7 @@
     <ClInclude Include="fmod\fmod_output.h" />
     <ClInclude Include="Equip_Gun_N.h" />
     <ClInclude Include="Font.h" />
+    <ClInclude Include="ft2build.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Game_Blocker.h" />
