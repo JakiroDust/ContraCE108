@@ -221,6 +221,7 @@
     <ClCompile Include="Spawner_Infary_Stage1.cpp" />
     <ClCompile Include="Equip_Gun_F.cpp" />
     <ClCompile Include="Obj_Bullet_F.cpp" />
+    <ClCompile Include="Game_Bridge_S1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -501,6 +502,7 @@
     <ClInclude Include="Spawner_Infary_Stage1.h" />
     <ClInclude Include="Equip_Gun_F.h" />
     <ClInclude Include="Obj_Bullet_F.h" />
+    <ClInclude Include="Game_Bridge_S1.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

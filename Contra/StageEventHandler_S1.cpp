@@ -45,6 +45,23 @@ void StageEventHandler_S1::Update(DWORD dt)
 	_srcScene->spatial->update(_sweeperID,(int) l,(int) b,(int) r,(int) t);
 }
 
+void StageEventHandler_S1::SpecificUpdate(DWORD dt, Game_ObjectBase* obj)
+{
+	if (dynamic_cast<Game_Bridge_S1*>(obj))
+	{
+		Game_Bridge_S1* bridge = (Game_Bridge_S1*)obj;
+		Game_Player* p1 = _srcScene->p1();
+		if (p1->x() >= 752 && p1->x() <= 896)
+		{
+			bridge->TriggerExplosion(1);
+		}
+		else if (p1->x() >= 1040 && p1->x() <= 1184)
+		{
+			bridge->TriggerExplosion(2);
+		}
+	}
+}
+
 void StageEventHandler_S1::Load()
 {
 	_srcScene->SetMapSize(3328, GAMESCREEN_HEIGHT);

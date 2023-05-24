@@ -4,13 +4,26 @@
 #include "ScreenManager.h"
 #include <string>
 #include "debug.h"
-#include "Game_Player.h"
+
+// Terrains
 #include "Game_Layer.h"
 #include "Game_Blocker.h"
 #include "Game_Terrain.h"
+#include "Game_Platform.h"
 #include "Game_Collision.h"
 #include "Game_Water.h"
 #include "Game_DeadlyBlock.h"
+#include "Game_Bridge_S1.h"
+
+// Objects
+#include "Game_Player.h"
+#include "Enemy_RedGunner.h"
+#include "Enemy_Infary.h"
+#include "Game_Bullet.h"
+#include "Enemy_Sniper.h"
+#include "Spawner_Infary_Stage1.h"
+
+// EventHandler
 #include "StageEventHandler_S1.h"
 
 // DEMO

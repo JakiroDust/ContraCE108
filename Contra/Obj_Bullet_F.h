@@ -20,7 +20,7 @@ class Obj_Bullet_F : public Game_Bullet
 			_direct = direct;
 			_moveSpd = 0.25f;
 			_OwnerID = B_OWNER_PLAYER;
-			_Damage = 1;
+			_Damage = 5;
 			_SpriteId = CONTRA_BULLET_ANI_BASE_LEFT;
 		}
 		void SetupMovement();

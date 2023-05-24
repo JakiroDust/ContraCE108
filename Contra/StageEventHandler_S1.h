@@ -21,6 +21,7 @@ class StageEventHandler_S1 : public StageEventHandler_Base
 		}
 		Game_SweeperBlock* GetSweeper();
 		void Update(DWORD dt) override;
+		void SpecificUpdate(DWORD dt, Game_ObjectBase* obj) override;
 		void Load() override;
 		void CompleteStage() override;
 

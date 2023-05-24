@@ -1,12 +1,7 @@
 #include "Scene_Battle.h"
 #include "ScreenManager.h"
 #include "Game_KeyInput.h"
-#include "Game_Platform.h"
-#include "Enemy_RedGunner.h"
-#include "Enemy_Infary.h"
-#include "Game_Bullet.h"
-#include "Enemy_Sniper.h"
-#include "Spawner_Infary_Stage1.h"
+
 #include <fstream>
 using namespace std;
 #define MAP_TEXU_WIDTH 16
@@ -80,7 +75,8 @@ void Scene_Battle::Render()
         std::vector<Game_ObjectBase*>::iterator it = RenderQueue.begin();
         RenderQueue.insert(it + j, obj);
     }
-    // Render ingame objects
+
+    // Start render
 
     CGame::GetInstance()->GetDirect3DDevice()->ClearRenderTargetView(CGame::GetInstance()->GetRenderTargetView(), BG_color);
     float x, y;
@@ -90,10 +86,9 @@ void Scene_Battle::Render()
     {
         RenderQueue[i]->Render();
     }
-    // images
-
-    // Render Images
-
+    // Render HUD
+    if (_controller != NULL)
+        _controller->RenderHUD();
 }
 
 void Scene_Battle::Update(DWORD dt)
@@ -139,7 +134,8 @@ void Scene_Battle::Update(DWORD dt)
                 obj->Update(dt, nearbyObject);
             else
                 obj->Update(dt);
-
+            if (_controller != NULL)
+                _controller->SpecificUpdate(dt, obj);
         }
         else {
 
@@ -148,9 +144,10 @@ void Scene_Battle::Update(DWORD dt)
                 obj->Update(dt, nearbyObject);
             else
                 obj->Update(dt);
+            if (_controller != NULL)
+                _controller->SpecificUpdate(dt, obj);
             obj->GetBoundingBox(new_l, new_top, new_right, new_bottom);
             spatial->update(i,(int)new_l, (int)new_bottom, (int)new_right, (int)new_top);
-           
         }
         screen->CheckObjectIfNeedRender(obj);
     }
@@ -203,30 +200,6 @@ void Scene_Battle::KeyDownEventHandler(int KeyCode)
 //=====================================================================================================================
 
 
-
-//void Scene_Battle::checkObjectNeedRender(Game_ObjectBase* obj)
-//{
-//    float y, x;
-//    
-//    Game_Screen* screen = ScreenManager::GetInstance()->Screen();
-//    screen->GetCenterPoint(x, y);
-//    //getNearByIDyx(y, x);
-//    if (obj->x() + obj->width() < screen->x()
-//        || obj->x() > screen->x() + screen->width()
-//        || obj->y() < screen->y() - screen->height()
-//        || obj->y() - obj->height() > screen->y())
-//    {
-//        obj->SetNeedRender(false);
-//        if (dynamic_cast<Game_Bullet*>(obj))
-//        {
-//            obj->DeleteThis();
-//        }
-//    }
-//    else {
-//        obj->SetNeedRender(true);
-//    }
-//}
-
 //=====================================================================================================================
 // DEMO
 void Scene_Battle::addPlayer1()
@@ -235,65 +208,7 @@ void Scene_Battle::addPlayer1()
     spatial->insert_exception(_p1_id);
     Game_KeyInput::GetInstance()->AddObjectControl(p1());
 }
-/*
-void Scene_Battle::addPlayer2()
-{
-    _p2_id = add_object(move(_p2));
-    Game_KeyInput::GetInstance()->AddObjectControl(p2());
-}*/
 
-
-//void Scene_Battle::Create_Stage_Demo()
-//{
-//    _controller = new StageEventHandler_S1(this);
-//
-//    _mapWidth = 3328;
-//    _mapHeight = GAMESCREEN_HEIGHT;
-//    ScreenManager::GetInstance()->Screen()->SetViewBox(_mapWidth, _mapHeight);
-//    _init_spatial();
-//    _ParseSection_DICT("textures\\MAP1");
-//
-//    _p1.reset(new Game_Player(40.0f, _mapHeight - 40.0f, 2));
-//
-//    addPlayer1();
-//    SoundSystem* SS = SoundSystem::getInstance();
-//    SS->playBGM(BGM_JUNGLE);
-//    //unique_ptr<Obj_ContraBot> bot (new Obj_ContraBot(80.0f, _mapHeight - 40.0f + 32, 2)); add_object(move(bot));
-//    //unique_ptr<Obj_SmartBot>smartbot(new Obj_SmartBot(100.0f, _mapHeight - 40.0f + 32, 2)); add_object(move(smartbot));
-//    
-//    unique_ptr<Enemy_Sniper> sniper(new Enemy_Sniper(300.0f, _mapHeight - 150.0f, 2)); add_object(move(sniper));
-//    /*
-//    unique_ptr<Game_Blocker> block1 ( new Game_Blocker(-18.0f, _mapHeight - 20.0f, 1, 20, GAMESCREEN_HEIGHT - 20));
-//    unique_ptr<Game_Blocker> block2 ( new Game_Blocker(_mapWidth - 20.0f, _mapHeight - 20.0f, 1, 20, GAMESCREEN_HEIGHT - 20));
-//
-//    unique_ptr<Game_Water> water1(new Game_Water(0.0f, 20.0f, 1, 288, 20));
-//    unique_ptr<Game_Water> water2(new Game_Water(352.0f, 20.0f, 1, 2976, 20));
-//
-//    unique_ptr<Game_Platform> plat1(new Game_Platform(160.0f, _mapHeight - 150.0f, 1, 96, 10));
-//    unique_ptr<Game_Platform> plat2(new Game_Platform(256.0f, _mapHeight - 178.0f, 1, 32, 10));
-//    unique_ptr<Game_Platform> plat3(new Game_Platform(352.0f, _mapHeight - 178.0f, 1, 32, 10));
-//    unique_ptr<Game_Platform> plat4(new Game_Platform(416.0f, _mapHeight - 150.0f, 1, 64, 10));
-//    unique_ptr<Game_Blocker> plat5(new Game_Blocker(288.0f, _mapHeight - 215.0f, 1, 64, 32));
-//    unique_ptr<Game_Platform> plat6(new Game_Platform(32.0f, _mapHeight - 118.0f, 1, 736, 10));
-//
-//    //Demo_Layer* demo = new Demo_Layer(0, 0, 0, 3328, 240);
-//    //
-//    add_object(move(water1));//1
-//    add_object(move(water2));//2
-//    add_object(move(block1));//3
-//    add_object(move(block2));//4
-//    add_object(move(plat1));//5
-//    add_object(move(plat2));//6
-//    add_object(move(plat3));//7
-//    add_object(move(plat4));//8
-//    add_object(move(plat5));//9
-//    add_object(move(plat6));//10
-//    */
-//    _ParseOBject("textures\\MAP1");
-//    //_layers.push_back(demo);
-//    ScreenManager::GetInstance()->Screen()->focusToPoint(GAMESCREEN_WIDTH/2.0f,GAMESCREEN_HEIGHT/2.0f, _mapWidth, _mapHeight);
-//    
-//}
 
 int Scene_Battle::add_object(unique_ptr<Game_ObjectBase>&& object)
 {
@@ -483,24 +398,27 @@ void Scene_Battle::_ParseOBject(string line)
     {
         int16_t id;
         float x, y;
-        int width, height;
+        int param1, param2;
         unique_ptr<Game_ObjectBase>obj;
         while (!f.eof() || !f.fail())
         {
             try
             {
-                f >> id >> x >> y >> width >> height;
+                f >> id >> x >> y >> param1 >> param2;
                 
                 switch (id)
                 {
-                // PARSE TERRAIN
-                case TBLOCKER: obj.reset(new Game_Blocker(x, y, Z_INDEX_TERRAIN, width, height));
+                // PARSE TERRAIN (param1 = width, param2 = height)
+                case TBLOCKER: obj.reset(new Game_Blocker(x, y, Z_INDEX_TERRAIN, param1, param2));
                     break;
-                case TPLATFORM: obj.reset(new Game_Platform(x, y, Z_INDEX_TERRAIN, width, height));
+                case TPLATFORM: obj.reset(new Game_Platform(x, y, Z_INDEX_TERRAIN, param1, param2));
                     break;
-                case TWATER: obj.reset(new Game_Water(x, y, Z_INDEX_TERRAIN, width, height));
+                case TWATER: obj.reset(new Game_Water(x, y, Z_INDEX_TERRAIN, param1, param2));
                     break;
-                case TDEADLY: obj.reset(new Game_DeadlyBlock(x, y, Z_INDEX_TERRAIN, width, height));
+                case TDEADLY: obj.reset(new Game_DeadlyBlock(x, y, Z_INDEX_TERRAIN, param1, param2));
+                    break;
+                case TBRIDGE_S1: obj.reset(new Game_Bridge_S1(x, y, Z_INDEX_TERRAIN, param1, param2)); 
+                    // param1 = triggerID, param2 = TimeOffset
                     break;
 
                 // PARSE OBJECT
@@ -517,7 +435,7 @@ void Scene_Battle::_ParseOBject(string line)
                     break;
 
                 // SPAWNER
-                case SPAWNER_INFARY: obj.reset(new Spawner_Infary_Stage1(x, y, Z_INDEX_TERRAIN, width));
+                case SPAWNER_INFARY: obj.reset(new Spawner_Infary_Stage1(x, y, Z_INDEX_TERRAIN, param1));
                     break;
 
                 default:

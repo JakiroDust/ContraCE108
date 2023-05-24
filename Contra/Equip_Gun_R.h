@@ -11,6 +11,7 @@ class Equip_Gun_R : public Equip_GunBase
 			_reloadTime = 0;
 			_maxAmmo = 0;
 			_ammo = _maxAmmo;
+
 		}
 
 		void Fire(float& x, float& y, float& vx, float& vy, bool type = false) override;
