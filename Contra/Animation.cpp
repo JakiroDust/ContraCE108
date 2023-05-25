@@ -51,7 +51,7 @@ void CAnimation::Render(float x, float y)
 	frames[currentFrame]->GetSprite()->Draw(x, y);
 }
 
-void CAnimation::RenderOnScreen(float x, float y, BYTE RenderMode)
+void CAnimation::RenderOnScreen(float x, float y, BYTE RenderMode,float ratiox,float ratioy)
 {
 	ULONGLONG now = GetTickCount64();
 	if (currentFrame == -1)
@@ -71,7 +71,7 @@ void CAnimation::RenderOnScreen(float x, float y, BYTE RenderMode)
 
 	}
 
-	frames[currentFrame]->GetSprite()->DrawOnScreen(x, y, RenderMode);
+	frames[currentFrame]->GetSprite()->DrawOnScreen(x, y, RenderMode,ratiox,ratioy);
 }
 
 void CAnimation::Render(float x, float y, float width, float height)

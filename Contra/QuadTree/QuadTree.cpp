@@ -38,7 +38,7 @@ enum
     nodes_elts_count = 1,
 
     // ----------------------------------------------------------------------------------------
-    // 1 Node được lưu bằng 6 giá trị
+    // Processing Node fields:
     // ----------------------------------------------------------------------------------------
     nd_num = 6,
 
@@ -86,6 +86,12 @@ QuadTree::QuadTree(int left, int bottom, int right, int top, int _max_elements, 
 
 QuadTree::~QuadTree()
 {
+
+    nodes.selfDestruc();
+    elts.selfDestruc();
+    enodes.selfDestruc();
+    umap.clear();
+    forced_one.clear();
 }
 
 int QuadTree::insert(int id, int left, int bottom, int right, int top)

@@ -19,7 +19,7 @@ public:
 	void Add(int spriteId, DWORD time = 0);
 	void Render(float x, float y);
 	// Render using screen position instead of world location
-	void RenderOnScreen(float x, float y, BYTE RenderMode = RENDER_MODE_CENTER);
+	void RenderOnScreen(float x, float y, BYTE RenderMode = RENDER_MODE_CENTER,float ratiox=1,float ratioy=1);
 	void Render(float x, float y,float width,float height);
 	CAnimation* Clone_Flip();
 };

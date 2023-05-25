@@ -67,7 +67,7 @@ class Scene_Battle : public Scene_Base
 		StageEventHandler_Base* _controller = NULL;
 
 	public:
-		Scene_Battle() : Scene_Base() {  }
+		Scene_Battle() : Scene_Base() { height = 0; map_id = 0; width = 0; }
 		~Scene_Battle();
 		//vector<Game_ObjectBase*>* objects() { return &_objects; }
 		Game_Player* p1() { return dynamic_cast<Game_Player*>(__objects[_p1_id].get()); }
@@ -104,7 +104,7 @@ class Scene_Battle : public Scene_Base
 		void _delete_spatial();
 	public:
 		//Spatial *spatial=NULL;
-		QuadTree* spatial = NULL;
+		unique_ptr<QuadTree> spatial;
 		vector<int> getNearByIDwithWH(int x, int y, int width, int height);
 		vector<int> getNearByID(int left, int bottom, int right, int top);
 		//vector<int> getNearbyIDFast();
@@ -125,7 +125,7 @@ class Scene_Battle : public Scene_Base
 		//unordered_map<int, int> map_info;
 		unordered_map<int, unique_ptr<CSprite>> map_sprite;
 		LPTEXTURE _map_tex=NULL;
-		SpatialforTex* mapTexSpatial = NULL;
+		unique_ptr<SpatialforTex>mapTexSpatial;
 		void renderBG(float x, float y);
 		void renderBG(int& x, int& y);
 		int width, height, map_id;

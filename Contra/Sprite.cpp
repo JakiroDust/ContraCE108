@@ -116,8 +116,11 @@ void CSprite::Draw(float x, float y, BYTE RenderMode)
 
 	g->GetSpriteHandler()->DrawSpritesImmediate(&sprite, 1, 0, 0);
 }
+void CSprite::DrawOnScreen(float x, float y, int width, int height, BYTE RenderMode)
+{
 
-void CSprite::DrawOnScreen(float x, float y, BYTE RenderMode,float ratio)
+}
+void CSprite::DrawOnScreen(float x, float y, BYTE RenderMode,float ratiox,float ratioy)
 {
 
 	CGame* g = CGame::GetInstance();
@@ -126,8 +129,8 @@ void CSprite::DrawOnScreen(float x, float y, BYTE RenderMode,float ratio)
 
 	float _width, _height;
 	getWH(_width, _height);
-	_width = _width / ratio;
-	_height = _height / ratio;
+	_width = _width / ratiox;
+	_height = _height / ratioy;
 	if (RenderMode == RENDER_MODE_TOP_LEFT)
 	{
 		x = (floor(x - _width / 2.0f));

@@ -55,7 +55,7 @@ void Scene_Battle::Render()
         RenderQueue.insert(it + j, obj);
     }
     // other game objects
-    vector<int> id_list = screen->Get_ObjectsID_InsideScreen(spatial, GET_OBJECTS_RANGE);
+    vector<int> id_list = screen->Get_ObjectsID_InsideScreen(spatial.get(), GET_OBJECTS_RANGE);
     for (auto&i :id_list)
     {
         Game_ObjectBase* obj = __objects[i].get();
@@ -114,7 +114,7 @@ void Scene_Battle::Update(DWORD dt)
     if (__objects.empty())
         return;
 
-    vector<int> id_list= screen->Get_ObjectsID_InsideScreen(spatial, GET_OBJECTS_RANGE);
+    vector<int> id_list= screen->Get_ObjectsID_InsideScreen(spatial.get(), GET_OBJECTS_RANGE);
     vector<PGAMEOBJECT>* nearbyObject = getObjectById(id_list);
     //for (int i = 0; i < _objects.size(); i++)
     //float old_l, old_right, old_bottom, old_top,
@@ -264,9 +264,8 @@ void Scene_Battle::_init_spatial()
         height= int(GAMESCREEN_HEIGHT*1.1),
         n= _mapHeight / width+1,
         m= _mapWidth/ height+1;
-    if (spatial != NULL)
-        delete spatial;
-    spatial = new QuadTree(0, 0, width, height,8,5);
+    spatial.reset();
+    spatial.reset(move( new QuadTree(0, 0, width, height,8,5)));
 
 
 
@@ -287,7 +286,8 @@ vector<Game_ObjectBase*>* Scene_Battle::getObjectById(vector<int>& vtr)
 }
 void Scene_Battle::_delete_spatial()
 {
-    delete spatial;
+    spatial.release();
+    mapTexSpatial.release();
 }
 
 
@@ -310,9 +310,8 @@ void Scene_Battle::_ParseSection_DICT(string line)
     //texu
     int n = int(_mapHeight / MAP_TEXU_HEIGHT),
         m = int(_mapWidth / MAP_TEXU_WIDTH);
-    if (mapTexSpatial != NULL)
-        delete mapTexSpatial;
-    mapTexSpatial = new SpatialforTex(n, m, MAP_TEXU_WIDTH, MAP_TEXU_HEIGHT, int(340 / MAP_TEXU_HEIGHT), int(340 / MAP_TEXU_WIDTH));
+    mapTexSpatial.reset();
+    mapTexSpatial.reset(move(new SpatialforTex(n, m, MAP_TEXU_WIDTH, MAP_TEXU_HEIGHT, int(340 / MAP_TEXU_HEIGHT), int(340 / MAP_TEXU_WIDTH))));
     ifstream f;
     f.open(line + "\\info.txt");
 

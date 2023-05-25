@@ -24,8 +24,9 @@ public:
 
 	
 	void Draw(float x, float y, BYTE RenderMode = RENDER_MODE_CENTER);
+	void DrawOnScreen(float x, float y, int width, int height, BYTE RenderMode);
 	// Draw using screen position instead of world location
-	void DrawOnScreen(float x, float y, BYTE RenderMode = RENDER_MODE_CENTER,float ratio=1);
+	void DrawOnScreen(float x, float y, BYTE RenderMode = RENDER_MODE_CENTER,float ratiox=1,float ratioy=1);
 	//void Draw(float x, float y, const int width,const int heigth);
 	//void Draw(float x, float y, int& width, int& heigth);
 	//void Draw(float x, float y,float&width,float&heigth);

@@ -253,6 +253,7 @@
     <ClCompile Include="Game_PlayerBlocker.cpp" />
     <ClCompile Include="State_Contra_Lie.cpp" />
     <ClCompile Include="State_Contra_Dive.cpp" />
+    <ClCompile Include="Scene_Start.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -528,7 +529,6 @@
     <ClInclude Include="Word.h">
       <Filter>Header Files\Font</Filter>
     </ClInclude>
-    <ClInclude Include="ft2build.h" />
     <ClInclude Include="Equip_Gun_F.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -551,10 +551,10 @@
     <ClInclude Include="Game_PlayerBlocker.h" />
     <ClInclude Include="State_Contra_Lie.h" />
     <ClInclude Include="State_Contra_Dive.h" />
+    <ClInclude Include="Scene_Start.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="brick.txt">

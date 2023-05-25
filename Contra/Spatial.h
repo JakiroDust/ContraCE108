@@ -36,6 +36,10 @@
 		{
 			_remove(id, _indexes[n][m]);
 		}
+		virtual void _destroy_spatial()
+		{
+			_indexes.clear();
+		}
 		void _remove(int& id, vector<int>& ptr)
 		{
 
@@ -161,7 +165,12 @@
 				}
 			}
 
+
 		}
+	~Spatial()
+	{
+		_destroy_spatial();
+	}
 	};
 /*
 * Mainly for Tex Map, supported with cache, but the cache part ehh not implement yet
@@ -195,6 +204,17 @@ public:
 	{
 		left = loc[id][0]+8;
 		top = loc[id][1]+4;
+	}
+	void _destroy_spatial() override
+	{
+		Spatial::_destroy_spatial();
+		oldLTRB.clear();
+		cached_id.clear();
+		loc.clear();
+	}
+	~SpatialforTex()
+	{
+		_destroy_spatial();
 	}
 };
 

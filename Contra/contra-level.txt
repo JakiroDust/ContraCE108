@@ -2,7 +2,7 @@
 -100	textures\bbox.png
 0	textures\contra2-transparent.png
 10	textures\foes.png
-20	textures\font2-2.png
+20	textures\font2-gray.png
 21	textures\blackbox.png
 100	textures\enemies_sprites\0.png
 101	textures\enemies_sprites\1.png

@@ -28,7 +28,7 @@ namespace QTREE
 
     void SimpleVector::selfDestruc()
     {
-
+        data.clear();
 
     }
 

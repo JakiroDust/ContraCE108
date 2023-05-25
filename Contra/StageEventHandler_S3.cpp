@@ -85,7 +85,7 @@ void StageEventHandler_S3::HelpGetRevivePoint(float& posX, float& posY)
 
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
 
-	vector<int> id_list = ScreenManager::GetInstance()->Screen()->Get_ObjectsID_InsideScreen(scene->spatial, GET_OBJECTS_RANGE);
+	vector<int> id_list = ScreenManager::GetInstance()->Screen()->Get_ObjectsID_InsideScreen(scene->spatial.get(), GET_OBJECTS_RANGE);
 	vector<PGAMEOBJECT>* coObjects = scene->getObjectById(id_list);
 
 	Game_Screen* screen = ScreenManager::GetInstance()->Screen();

@@ -82,48 +82,48 @@ void Scene_LoadingStage::Unload()
 {
 	_images.clear();
 }
-
-void Scene_LoadingStage::AddImage(float x, float y, int index, int spriteID, BYTE RenderMode)
-{	
-	if (_images[index] != NULL)
-	{
-		_images[index].reset(new Game_Picture(x, y, index, spriteID, RenderMode));
-	}
-	else
-	{
-		unique_ptr <Game_Picture> image(new Game_Picture(x, y, index, spriteID, RenderMode));
-		_images[index] = move(image);
-	}
-}
-void Scene_LoadingStage::AddImage_Static(float x, float y, int index, int spriteID,float ratio, BYTE RenderMode)
+void Scene_LoadingStage::Init_Stage(int& id, int stage, const wchar_t* str)
 {
-	if (_images[index] != NULL)
-	{
-		_images[index].reset(new Game_Picture_Static(x, y, index, spriteID,ratio, RenderMode));
-	}
-	else
-	{
-		unique_ptr <Game_Picture_Static> image(new Game_Picture_Static(x, y, index, spriteID,ratio, RenderMode));
-		_images[index] = move(image);
-	}
+
+	int height;
+	int start_dis;
+	start_dis = 10;
+	height = 30;
+	AddText(start_dis, height, L"1P", id, 2.0f, RENDER_MODE_CENTER);
+	start_dis = 80;
+	AddNumber(start_dis, height, GameManager::GetInstance()->GetScore_P1(), id, 2, RENDER_MODE_CENTER);
+	AddBlinkingDarkEffect(160.0f, 30.0f, 160, 10, id);
+	start_dis = 10;
+	height = 45;
+	AddText(start_dis, height, L"REST 3", id, 2, RENDER_MODE_CENTER);
+
+	start_dis = 80;
+	height = 60;
+	AddText(start_dis, height, L"HI 00000", id, 2, RENDER_MODE_CENTER);
+	AddBlinkingDarkEffect(150.0f, 60.0f, 80, 10, id);
+	start_dis = 80;
+	height = 120;
+	wstring stage_name = L"STAGE " + to_wstring(stage);
+	AddText(start_dis, height,stage_name.c_str(), id, 2, RENDER_MODE_CENTER);
+
+	start_dis = 80;
+	height = 135;
+	AddText(start_dis, height,str, id, 2, RENDER_MODE_CENTER);
 }
 void Scene_LoadingStage::Init_Stage1()
 {
 	int id = 1;
-	int id2 = GAMESCREEN_WIDTH / 5;
-	AddImage(GAMESCREEN_WIDTH/2, GAMESCREEN_HEIGHT/2, id++, CONTRA_ANI_WALK_RIGHT, RENDER_MODE_CENTER);
-	int height = GAMESCREEN_HEIGHT - 10;
-	AddImage_Static(id2 = id2 + 9, height, id++, WORDSPRITE::getCharacterSpriteID(L'L'), 2, RENDER_MODE_CENTER);
-	AddImage_Static(id2 = id2 + 9, height, id++, WORDSPRITE::getCharacterSpriteID(L'O'), 2, RENDER_MODE_CENTER);
-	AddImage_Static(id2 = id2 + 9, height, id++, WORDSPRITE::getCharacterSpriteID(L'A'), 2, RENDER_MODE_CENTER);
-	AddImage_Static(id2 = id2 + 9, height, id++, WORDSPRITE::getCharacterSpriteID(L'D'), 2, RENDER_MODE_CENTER);
-	id2 = id2 + 9;
-	AddImage_Static(id2=id2+9,height, id++, WORDSPRITE::getNumberSpriteID(1),2, RENDER_MODE_CENTER);
+	Init_Stage(id, 1, L"Jungle");
+
+//	AddText(start_dis, height, L"LOADING ", id, 2, RENDER_MODE_CENTER);
+//	AddNumber(start_dis, height, 1, id, 2, RENDER_MODE_CENTER);
 }
 
 void Scene_LoadingStage::Init_Stage3()
 {
-	AddImage(GAMESCREEN_WIDTH / 2, GAMESCREEN_HEIGHT / 2, 1, CONTRA_ANI_WALK_LEFT, RENDER_MODE_CENTER);
+	int id = 1;
+	Init_Stage(id, 3, L"WATERFALL");
+	//AddImage(GAMESCREEN_WIDTH / 2, GAMESCREEN_HEIGHT / 2, 1, CONTRA_ANI_WALK_LEFT, RENDER_MODE_CENTER);
 }
 
 void Scene_LoadingStage::Finish_Loading()

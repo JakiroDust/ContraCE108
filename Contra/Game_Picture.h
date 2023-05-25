@@ -13,6 +13,8 @@ class Game_Picture
 		int _SpriteID = 0;
 		float _vx = 0;
 		float _vy = 0;
+		float _ratiox;
+		float _ratioy;
 		DWORD _moveDuration = 0;
 		float _movePosX = 0;
 		float _movePosY = 0;
@@ -23,11 +25,13 @@ class Game_Picture
 		bool _flashing = false;
 		BYTE _RenderMode;
 	public:
-		Game_Picture(float screenX, float screenY, int z, int spriteID, BYTE RenderMode = RENDER_MODE_TOP_LEFT)
+		Game_Picture(float screenX, float screenY, int z, int spriteID, BYTE RenderMode = RENDER_MODE_TOP_LEFT,float ratiox = 1, float ratioy = 1 )
 		{
 			_screenX = screenX;
 			_screenY = screenY;
 			_z = z;
+			_ratiox = ratiox;
+			_ratioy = ratioy;
 			_SpriteID = spriteID;
 			_RenderMode = RenderMode;
 		}

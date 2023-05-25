@@ -9,16 +9,13 @@ class Game_ObjectBase;
 class StageEventHandler_Base
 {
 	protected:
-		Scene_Battle* _srcScene;
+		Scene_Battle* _srcScene=NULL;
 		bool _toggleFreeCam = false;
 		void Set_Camera_Focus_Player();
 
 		void Debug_KeyDownEventHandler(int KeyCode);
 	public:
-		StageEventHandler_Base(Scene_Battle* src)
-		{
-			_srcScene = src;
-		}
+		StageEventHandler_Base(Scene_Battle* src);
 
 		virtual void Update(DWORD dt) {}
 		virtual void SpecificUpdate(DWORD dt, Game_ObjectBase* obj) {}

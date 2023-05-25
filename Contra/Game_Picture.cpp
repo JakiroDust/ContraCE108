@@ -48,7 +48,7 @@ void Game_Picture::Render()
 	if (_SpriteID > 0 && !_flashing)
 	{
 		CAnimations* animations = CAnimations::GetInstance();
-		animations->Get(_SpriteID)->RenderOnScreen(_screenX, _screenY, _RenderMode);
+		animations->Get(_SpriteID)->RenderOnScreen(_screenX, _screenY, _RenderMode,_ratiox,_ratioy);
 	}
 }
 

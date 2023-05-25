@@ -41,8 +41,11 @@ void ScreenManager::Render()
 void ScreenManager::Unload_Scene()
 {
 	if (_scene != NULL)
+	{
+		_scene->Unload();
 		delete _scene;
-	Game_KeyInput::GetInstance()->ClearAll();
+
+	}Game_KeyInput::GetInstance()->ClearAll();
 }
 
 void ScreenManager::Create_Scene_Battle()

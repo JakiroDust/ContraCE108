@@ -78,6 +78,15 @@ void StageEventHandler_Base::Debug_KeyDownEventHandler(int KeyCode)
     }
 }
 
+StageEventHandler_Base::StageEventHandler_Base(Scene_Battle* src)
+{
+    if (_srcScene != NULL)
+    {
+        delete _srcScene;
+    }
+    _srcScene = src;
+}
+
 void StageEventHandler_Base::KeyDownEventHandler(int KeyCode)
 {
     Debug_KeyDownEventHandler(KeyCode);
