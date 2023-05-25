@@ -6,6 +6,7 @@
 21	textures\blackbox.png
 100	textures\enemies_sprites\0.png
 101	textures\enemies_sprites\1.png
+102	textures\Contra-start.png
 #20	textures\misc.png
 
 

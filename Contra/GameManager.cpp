@@ -173,6 +173,13 @@ void GameManager::SignalHandler()
 {
 	switch (_signal)
 	{
+	case SIG_PLAY_INTRO:
+		Create_Start_Screen();
+		break;
+	case SIG_PlAY_END_GAME:
+		break;
+	case SIG_PLAY_CREDIT:
+		break;
 	case SIG_PLAY_STAGE_1:
 		Create_Stage_1();
 		break;
@@ -230,12 +237,19 @@ void GameManager::StartApplication()
 
 
 	// currently Intro 've not implemented yet . So start STAGE 1 instead.
-	Create_LoadingStage(SCENE_STAGE_1);
+	//Create_LoadingStage(SCENE_STAGE_1);
+	Create_Start_Screen();
 }
 
 //======================================================================================
 // CREATE SCENE
-
+void GameManager::Create_Start_Screen()
+{
+	ScreenManager* screenManager = ScreenManager::GetInstance();
+	screenManager->Create_Scene_Start();
+	
+	screenManager->Scene()->Load();
+}
 void GameManager::Create_Stage_1()
 {
 	ScreenManager* screenManager = ScreenManager::GetInstance();

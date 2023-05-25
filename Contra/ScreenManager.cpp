@@ -1,7 +1,7 @@
 #include "ScreenManager.h"
 #include "GameManager.h"
 #include "Game_KeyInput.h"
-
+#include "Scene_Start.h"
 ScreenManager* ScreenManager::__instance = NULL;
 
 ScreenManager* ScreenManager::GetInstance()
@@ -61,5 +61,11 @@ void ScreenManager::Create_Scene_LoadingStage(int stageID)
 {
 	Unload_Scene();
 	Scene_LoadingStage* scene = new Scene_LoadingStage(stageID);
+	_scene = scene;
+}
+void ScreenManager::Create_Scene_Start()
+{
+	Unload_Scene();
+	Scene_Base* scene = new Scene_Start();
 	_scene = scene;
 }

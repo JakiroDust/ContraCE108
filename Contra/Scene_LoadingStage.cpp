@@ -114,7 +114,8 @@ void Scene_LoadingStage::Init_Stage1()
 {
 	int id = 1;
 	Init_Stage(id, 1, L"Jungle");
-
+	int x = 0, y = 0;
+	//
 //	AddText(start_dis, height, L"LOADING ", id, 2, RENDER_MODE_CENTER);
 //	AddNumber(start_dis, height, 1, id, 2, RENDER_MODE_CENTER);
 }

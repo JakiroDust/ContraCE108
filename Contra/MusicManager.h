@@ -45,6 +45,7 @@ constexpr auto CHANNEL_SFX_ENV = 3;
 #define MUSIC_PATH "music/"
 #define BGM_PATH MUSIC_PATH "bgm/"
 #define BGM_JUNGLE_PATH BGM_PATH "2 - Jungle  Hangar (Stages 1  7).mp3"
+#define BGM_TITLE_PATH BGM_PATH "1 - Title Screen.mp3"
 #define SFX_PATH MUSIC_PATH "sfx/"
 #define SFX_CONTRA_DEATH_PATH SFX_PATH  "death.mp3"
 #define SFX_BOSS_DEFEAT_PATH SFX_PATH  "boss-defeat.mp3"

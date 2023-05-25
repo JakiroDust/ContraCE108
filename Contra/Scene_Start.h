@@ -5,5 +5,16 @@ class Scene_Start :
 {
     void KeyDownEventHandler(int KeyCode) override;
     void init();
+    bool startTimer = false;
+    DWORD _waitingTick = 500;
+    void Update(DWORD dt) override;
+    void Render() override;
+    void Load() override;
+    void Unload() override;
+    void nextScene();
+    
+public:
+    Scene_Start(): Scene_Base() {};
+    ~Scene_Start() { Unload(); };
 };
 

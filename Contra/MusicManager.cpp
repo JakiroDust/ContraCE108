@@ -28,6 +28,7 @@ SoundSystem::SoundSystem() {
 #pragma endregion
 
     system->createStream(BGM_JUNGLE_PATH, FMOD_LOOP_NORMAL, nullptr, &bgm[BGM_JUNGLE]);
+    system->createStream(BGM_TITLE_PATH, FMOD_LOOP_NORMAL, nullptr, &bgm[BGM_TITLE]);
     bgmChannel = nullptr;
     sfxChannel_Contra = nullptr;
     sfxChannel_ContraMisc = nullptr;

@@ -16,24 +16,26 @@
 
 #define MAX_SCENE_LINE 1024
 
-#define SIG_PLAY_INTRO 1200
-#define SIG_PlAY_END_GAME 1201
-#define SIG_PLAY_ASK_REVIVE 1202
-#define SIG_PLAY_STAGE_1 1001
-#define SIG_PLAY_STAGE_2 1002
-#define SIG_PLAY_STAGE_3 1003
-#define SIG_PLAY_STAGE_4 1004
-#define SIG_LOADING_STAGE_1 1101
-#define SIG_LOADING_STAGE_2 1102
-#define SIG_LOADING_STAGE_3 1103
-#define SIG_LOADING_STAGE_4 1104
-
-#define SCENE_BLANK_SCREEN 0
-#define SCENE_STAGE_1 10001
-#define SCENE_STAGE_2 10002
-#define SCENE_STAGE_3 10003
-#define SCENE_STAGE_4 10004
-
+enum STAGE
+{
+	SIG_PLAY_INTRO,
+	SIG_PlAY_END_GAME,
+	SIG_PLAY_CREDIT,
+	SIG_PLAY_ASK_REVIVE,
+	SIG_PLAY_STAGE_1,
+	SIG_PLAY_STAGE_2,
+	SIG_PLAY_STAGE_3,
+	SIG_PLAY_STAGE_4,
+	SIG_LOADING_STAGE_1,
+	SIG_LOADING_STAGE_2,
+	SIG_LOADING_STAGE_3,
+	SIG_LOADING_STAGE_4,
+	SCENE_BLANK_SCREEN,
+	SCENE_STAGE_1,
+	SCENE_STAGE_2,
+	SCENE_STAGE_3,
+	SCENE_STAGE_4
+};
 typedef unsigned int UINT;
 
 class GameManager
@@ -56,7 +58,10 @@ class GameManager
 
 		void InitGame();
 
+		
+
 		// scene
+		void Create_Start_Screen();
 		void Create_Stage_1();
 		void Create_Stage_3();
 		void Create_LoadingStage(int stageID);
