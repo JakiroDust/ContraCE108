@@ -24,9 +24,10 @@ void Game_Picture::Update(DWORD dt)
 
 
 	// Flasing
-	if (_flashingDuration > dt)
+	if (_flashingLoop || _flashingDuration > dt)
 	{
-		_flashingDuration -= dt;
+		if (!_flashingLoop)
+			_flashingDuration -= dt;
 		if (_flashingTicker >= dt)
 		{
 			_flashingTicker -= dt;
@@ -68,13 +69,23 @@ void Game_Picture::MoveToPoint(float x, float y, DWORD duration)
 
 void Game_Picture::Flash(DWORD duration, DWORD flashInterval)
 {
+	_flashingLoop = false;
 	_flashingDuration = duration;
+	_flashingInterval = flashInterval;
+	_flashingTicker = _flashingInterval;
+}
+
+void Game_Picture::Flash(DWORD flashInterval)
+{
+	_flashingLoop = true;
+	_flashingDuration = 0;
 	_flashingInterval = flashInterval;
 	_flashingTicker = _flashingInterval;
 }
 
 void Game_Picture::StopFlash()
 {
+	_flashingLoop = false;
 	_flashingDuration = 0;
 	_flashingInterval = 0;
 	_flashingTicker = 0;

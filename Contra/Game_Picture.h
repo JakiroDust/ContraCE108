@@ -22,6 +22,7 @@ class Game_Picture
 		DWORD _flashingInterval = 0;
 		DWORD _flashingTicker = 0;
 		DWORD _flashingDuration = 0;
+		bool _flashingLoop = false;
 		bool _flashing = false;
 		BYTE _RenderMode;
 	public:
@@ -45,6 +46,7 @@ class Game_Picture
 		virtual void Render();
 
 		void Flash(DWORD duration, DWORD flashInterval);
+		void Flash(DWORD flashInterval);
 		void StopFlash();
 };
 
