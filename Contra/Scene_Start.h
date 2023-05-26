@@ -4,7 +4,7 @@ class Scene_Start : public Scene_Base
 {
     void init();
     bool startTimer = false;
-    DWORD _waitingTick = 500;  
+    DWORD _waitingTick = 2000;  
 public:
     Scene_Start(): Scene_Base() {};
     void KeyDownEventHandler(int KeyCode) override;

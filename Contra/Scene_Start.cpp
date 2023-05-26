@@ -9,8 +9,8 @@ void Scene_Start::KeyDownEventHandler(int KeyCode)
 		if (startTimer == false)
 		{
 			startTimer = true;
-			int id = 1;
-			AddBlinkingDarkEffect(160, 160, 30.0f, 10.0f, id);
+			int id = 1;	
+			AddBlinkingDarkEffect(90, 165, 70.0f, 12.0f, id);
 
 		}
 }
