@@ -68,4 +68,5 @@ void ScreenManager::Create_Scene_Start()
 	Unload_Scene();
 	Scene_Base* scene = new Scene_Start();
 	_scene = scene;
+	Game_KeyInput::GetInstance()->AddSceneControl(_scene);
 }
