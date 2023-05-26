@@ -3,6 +3,7 @@
 class Scene_Start :
     public Scene_Base
 {
+public:
     void KeyDownEventHandler(int KeyCode) override;
     void init();
     bool startTimer = false;
@@ -13,7 +14,7 @@ class Scene_Start :
     void Unload() override;
     void nextScene();
     
-public:
+
     Scene_Start(): Scene_Base() {};
     ~Scene_Start() { Unload(); };
 };
