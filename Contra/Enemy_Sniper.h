@@ -14,6 +14,7 @@ class Enemy_Sniper : public Game_StationEnemy
 		void UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects = NULL) override;
 		DWORD _idle = 0;
 		int _lockDir = 0;
+		void Cleaning() override { Game_StationEnemy::Cleaning(); }
 	public:
 		Enemy_Sniper(float x, float y, int z) : Game_StationEnemy(x, y, z, SNIPER_BASE_WIDTH, SNIPER_BASE_HEIGHT)
 		{

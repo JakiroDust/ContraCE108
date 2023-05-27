@@ -314,10 +314,14 @@ void Game_Player::OnCollisionWith(PCOLLISIONEVENT e)
 	}
 
 	// touched sweeper block (vertical direction)
-	if (!_die && dynamic_cast<Game_SweeperBlock*>(e->obj) && e->ny != 0)
+	if (!_die && dynamic_cast<Game_SweeperBlock*>(e->obj))
 	{
-		DieEvent();
-		return;
+		Game_SweeperBlock* block = (Game_SweeperBlock*)(e->obj);
+		if (block->CanKillPlayer())
+		{
+			DieEvent();
+			return;
+		}
 	}
 
 	if (!_die && !_ghost && dynamic_cast<Game_Enemy*>(e->obj))

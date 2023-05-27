@@ -1,5 +1,4 @@
 #include "Enemy_Sniper.h"
-#include "Game_Player.h"
 #include "Scene_Battle.h"
 #include "Contra_GET_ANI.h"
 #include "State_Contra_Base.h"
@@ -59,6 +58,9 @@ void Enemy_Sniper::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	if (_GunReloadInterval > 0)
 		return;
 
+	// already locked target, perform shoot
+	if (_state->StateId() == STATE_WALK && _ActionQueue.size() > 0)
+		AddAction(DIK_O);
 
 	// idle (Sniper will look around)
 	if (abs(player->x() - _x) > GAMESCREEN_WIDTH * 3 / 4)
@@ -82,88 +84,18 @@ void Enemy_Sniper::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	}
 	_idle = 0;
 
-	// look up
-	if (player->footerY() - footerY() > _height)
+	// lock target
+	float pcx, pcy, cx, cy;
+	player->GetCenterPoint(pcx, pcy);
+	GetCenterPoint(cx, cy);
+	_lockDir = Detect_Dir(cx, cy, pcx, pcy);
+	if (_lockDir == DIR_TOP || _lockDir == DIR_BOTTOM)
 	{
-		if (abs(player->footerX() - footerX()) <= _width * 2)
-		{
-			_lockDir = DIR_TOP;
-			if (floorf(player->footerX()) <= floorf(footerX()))
-				AddAction(DIK_LEFT);
-			else
-				AddAction(DIK_RIGHT);
-		}
-		else if (abs(player->footerX() - footerX()) < _width * 10 && abs(player->footerY() - footerY()) > _height)
-		{
-			if (floorf(player->footerX()) < floorf(footerX()))
-			{
-				_lockDir = DIR_TOP_LEFT;
-			}
-			else
-			{
-				_lockDir = DIR_TOP_RIGHT;
-			}
-		}
+		if (pcx < cx)
+			_faceLeft = true;
 		else
-		{
-			if (floorf(player->footerX()) < floorf(footerX()))
-			{
-				_lockDir = DIR_LEFT;
-			}
-			else
-			{
-				_lockDir = DIR_RIGHT;
-			}
-		}
+			_faceLeft = false;
 	}
-	// look down
-	else if (player->y() - footerY() < -1)
-	{
-		if (abs(player->footerX() - footerX()) <= _width * 2 / 3.0f)
-		{
-			_lockDir = DIR_BOTTOM;
-			if (floorf(player->footerX()) <= floorf(footerX()))
-				_faceLeft = true;
-			else
-				_faceLeft = false;
-		}
-		else if (abs(player->footerX() - footerX()) < _width * 10 && abs(player->footerY() - footerY()) > _height)
-		{
-			if (floorf(player->footerX()) < floorf(footerX()))
-			{
-				_lockDir = DIR_BOTTOM_LEFT;
-			}
-			else
-			{
-				_lockDir = DIR_BOTTOM_RIGHT;
-			}
-		}
-		else
-		{
-			if (floorf(player->footerX()) < floorf(footerX()))
-			{
-				_lockDir = DIR_LEFT;
-			}
-			else
-			{
-				_lockDir = DIR_RIGHT;
-			}
-		}
-	}
-	else
-	{
-		if (floorf(player->footerX()) < floorf(footerX()))
-		{
-			_lockDir = DIR_LEFT;
-		}
-		else
-		{
-			_lockDir = DIR_RIGHT;
-		}
-	}
-
-	// shoot
-	AddAction(DIK_O);
 }
 
 void Enemy_Sniper::GetCustomSize(int state, int& width, int& height)

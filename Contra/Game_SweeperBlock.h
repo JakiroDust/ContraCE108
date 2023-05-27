@@ -5,8 +5,14 @@
 // But Player will be blocked by this object.
 class Game_SweeperBlock : public Game_Terrain
 {
+	private:
+		bool _canKillPlayer = false;
 	public:
-		Game_SweeperBlock(float x, float y, int z, int width, int height) : Game_Terrain(x, y, z, width, height) {}
+		Game_SweeperBlock(float x, float y, int z, int width, int height, bool deadly = false) : Game_Terrain(x, y, z, width, height)
+		{
+			_canKillPlayer = deadly;
+		}
 		bool IsBlocking() { return 1; }
+		bool CanKillPlayer() { return _canKillPlayer; }
 };
 

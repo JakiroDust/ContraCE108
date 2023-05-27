@@ -60,7 +60,7 @@ void StageEventHandler_S3::Load()
 	//_srcScene->_ParseOBject("textures\\MAP1");
 
 	// Add sweeper block
-	unique_ptr<Game_SweeperBlock> sweeper(new Game_SweeperBlock(0, 0, Z_INDEX_TERRAIN, GAMESCREEN_WIDTH, 32));
+	unique_ptr<Game_SweeperBlock> sweeper(new Game_SweeperBlock(0, 0, Z_INDEX_TERRAIN, GAMESCREEN_WIDTH, 32, true));
 	_sweeperID = _srcScene->add_object(move(sweeper));
 }
 
