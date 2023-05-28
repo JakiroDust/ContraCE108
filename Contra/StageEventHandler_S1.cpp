@@ -39,10 +39,21 @@ void StageEventHandler_S1::Update(DWORD dt)
 	}
 
 	// Update sweeper
-	sweeper->SetPosition(_maxMovedLength - screen->width() / 2.0f - sweeper->width()+2, screen->height());
+	sweeper->SetPosition(_maxMovedLength - screen->width() / 2.0f - sweeper->width() + 2, screen->height());
 	float l, t, b, r;
 	sweeper->GetBoundingBox(l, t, r, b);
 	_srcScene->spatial->update(_sweeperID,(int) l,(int) b,(int) r,(int) t);
+	
+	// fix player position
+	Game_Player* player = _srcScene->p1();
+	if (player->x() < r)
+	{
+		player->SetPosition(r + 1, player->y());
+		// re-update spatial
+		float pl, pt, pb, pr;
+		player->GetBoundingBox(pl, pt, pr, pb);
+		_srcScene->spatial->update(_sweeperID, (int)pl, (int)pb, (int)pr, (int)pt);
+	}
 }
 
 void StageEventHandler_S1::SpecificUpdate(DWORD dt, Game_ObjectBase* obj)

@@ -154,6 +154,7 @@
     <ClCompile Include="Contra_GET_ANI.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Demo_Layer.cpp" />
+    <ClCompile Include="Enemy_Cannon.cpp" />
     <ClCompile Include="Enemy_Infary.cpp" />
     <ClCompile Include="Enemy_Jumper.cpp" />
     <ClCompile Include="Enemy_RedGunner.cpp" />
@@ -234,6 +235,8 @@
     <ClCompile Include="State_Contra_Walk.cpp" />
     <ClCompile Include="State_Station.cpp" />
     <ClCompile Include="State_Station_Hide.cpp" />
+    <ClCompile Include="State_Turret_Active.cpp" />
+    <ClCompile Include="State_Turret_Base.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="Word.cpp" />
@@ -248,6 +251,7 @@
     <ClInclude Include="debug.h" />
     <ClInclude Include="Demo_Layer.h" />
     <ClInclude Include="Enemies_ID.h" />
+    <ClInclude Include="Enemy_Cannon.h" />
     <ClInclude Include="Enemy_Infary.h" />
     <ClInclude Include="Enemy_Jumper.h" />
     <ClInclude Include="Enemy_RedGunner.h" />
@@ -336,6 +340,8 @@
     <ClInclude Include="State_Contra_Walk.h" />
     <ClInclude Include="State_Station.h" />
     <ClInclude Include="State_Station_Hide.h" />
+    <ClInclude Include="State_Turret_Active.h" />
+    <ClInclude Include="State_Turret_Base.h" />
     <ClInclude Include="STL_storage.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Textures.h" />

@@ -1,26 +1,29 @@
 #pragma once
 #include "Game_StationEnemy.h"
-#include "Equip_EnemyGun_Sniper.h"
 
-#define SNIPER_BASE_WIDTH 18
-#define SNIPER_BASE_HEIGHT 28
-#define SNIPER_HIDE_WIDTH 18
-#define SNIPER_HIDE_HEIGHT 28
+#define CANNON_BASE_WIDTH 32
+#define CANNON_BASE_HEIGHT 32
+#define CANNON_TRIGGER_RANGE_X 0.75f
+#define CANNON_TRIGGER_RANGE_Y 0.75f
+#define CANNON_ROTATE_CD 150
 
-class Enemy_Sniper : public Game_StationEnemy
+// This enemy only face left
+class Enemy_Cannon : public Game_StationEnemy
 {
 	private:
 		void UpdateState() override { Game_StationEnemy::UpdateState(); }
 		void UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects = NULL) override;
-		DWORD _idle = 0;
 		int _lockDir = 0;
+		DWORD _rotate_CD = 0;
 		void Cleaning() override { Game_StationEnemy::Cleaning(); }
 	public:
-		Enemy_Sniper(float x, float y, int z) : Game_StationEnemy(x, y, z, SNIPER_BASE_WIDTH, SNIPER_BASE_HEIGHT)
+		Enemy_Cannon(float x, float y, int z) : Game_StationEnemy(x, y, z, CANNON_BASE_WIDTH, CANNON_BASE_HEIGHT)
 		{
-			_weapon = new Equip_EnemyGun_Sniper();
+			//_weapon = new Equip_EnemyGun_Sniper();
+			_hp = 20;
+			_station_12DIR = true;
 		}
-		~Enemy_Sniper() {
+		~Enemy_Cannon() {
 			Game_StationEnemy::~Game_StationEnemy();
 		};
 

@@ -11,6 +11,19 @@
 #define DIR_BOTTOM 8
 #define DIR_BOTTOM_RIGHT 9
 
+#define DIR_1_OCLOCK 11
+#define DIR_2_OCLOCK DIR_1_OCLOCK + 1
+#define DIR_3_OCLOCK DIR_1_OCLOCK + 2
+#define DIR_4_OCLOCK DIR_1_OCLOCK + 3
+#define DIR_5_OCLOCK DIR_1_OCLOCK + 4
+#define DIR_6_OCLOCK DIR_1_OCLOCK + 5
+#define DIR_7_OCLOCK DIR_1_OCLOCK + 6
+#define DIR_8_OCLOCK DIR_1_OCLOCK + 7
+#define DIR_9_OCLOCK DIR_1_OCLOCK + 8
+#define DIR_10_OCLOCK DIR_1_OCLOCK + 9
+#define DIR_11_OCLOCK DIR_1_OCLOCK + 10
+#define DIR_12_OCLOCK DIR_1_OCLOCK + 11
+
 #define X 0
 #define Y 1
 using namespace std;

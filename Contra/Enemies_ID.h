@@ -35,7 +35,7 @@
 #define TURRET_BASE 81
 #define ELITE_TURRET_BASE 1081
 
-#define CANON 90
+#define CANNON 90
 
 #define Mine 100
 #define Mine_BASE 101

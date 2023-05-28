@@ -200,7 +200,7 @@ void Game_MovableObject::OnCollisionWith(PCOLLISIONEVENT e)
 	}
 }
 
-void Game_MovableObject::AddExternalForces()
+void Game_MovableObject::ApplyExternalForce()
 {
 	_vx += _external_vx;
 	_vy += _external_vy;

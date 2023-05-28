@@ -37,7 +37,7 @@ class State_Contra_Base : public State_Base
 		virtual void KeyPressed_Down() {}
 		virtual void KeyPressed_Left() {}
 		virtual void KeyPressed_Right() {}
-		virtual void KeyPressed_Shoot() { HoldKeyShoot = true; }
+		virtual void KeyPressed_Shoot() {}
 		virtual void KeyPressed_Jump() {}
 
 		virtual void KeyReleased_Up() { HoldKeyUp = false; }
