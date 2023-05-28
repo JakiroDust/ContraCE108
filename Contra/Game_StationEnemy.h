@@ -1,11 +1,13 @@
 #pragma once
 #include "Game_Enemy.h"
+
 class Game_StationEnemy : public Game_Enemy
 {
 	protected:
 		void UpdateState() override;
 		void UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects = NULL) override { Game_Enemy::UpdateBehavior(dt, coObjects); }
 		static int Detect_Dir(float baseX, float baseY, float tarX, float tarY);
+		static int Detect_Dir12(float baseX, float baseY, float tarX, float tarY);
 	public:
 		Game_StationEnemy(float x, float y, int z, int width, int height) : Game_Enemy(x, y, z, width, height)
 		{

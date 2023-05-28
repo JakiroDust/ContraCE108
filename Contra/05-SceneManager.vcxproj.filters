@@ -254,6 +254,9 @@
     <ClCompile Include="State_Contra_Lie.cpp" />
     <ClCompile Include="State_Contra_Dive.cpp" />
     <ClCompile Include="Scene_Start.cpp" />
+    <ClCompile Include="Enemy_Cannon.cpp" />
+    <ClCompile Include="State_Turret_Active.cpp" />
+    <ClCompile Include="State_Turret_Base.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -552,6 +555,9 @@
     <ClInclude Include="State_Contra_Lie.h" />
     <ClInclude Include="State_Contra_Dive.h" />
     <ClInclude Include="Scene_Start.h" />
+    <ClInclude Include="Enemy_Cannon.h" />
+    <ClInclude Include="State_Turret_Active.h" />
+    <ClInclude Include="State_Turret_Base.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

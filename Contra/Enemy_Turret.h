@@ -6,6 +6,7 @@
 #define TURRET_BASE_HEIGHT 32
 #define TURRET_TRIGGER_RANGE_X 0.75f
 #define TURRET_TRIGGER_RANGE_Y 0.75f
+#define TURRET_ROTATE_CD 250
 
 class Enemy_Turret : public Game_StationEnemy
 {
@@ -13,11 +14,13 @@ class Enemy_Turret : public Game_StationEnemy
 		void UpdateState() override { Game_StationEnemy::UpdateState(); }
 		void UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects = NULL) override;
 		int _lockDir = 0;
+		DWORD _rotate_CD = 0;
 		void Cleaning() override { Game_StationEnemy::Cleaning(); }
 	public:
 		Enemy_Turret(float x, float y, int z) : Game_StationEnemy(x, y, z, TURRET_BASE_WIDTH, TURRET_BASE_HEIGHT)
 		{
 			_weapon = new Equip_EnemyGun_Sniper();
+			_hp = 15;
 		}
 		~Enemy_Turret() {
 			Game_StationEnemy::~Game_StationEnemy();

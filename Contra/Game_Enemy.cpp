@@ -212,7 +212,7 @@ void Game_Enemy::OnCollisionWith(PCOLLISIONEVENT e)
 	Game_Character::OnCollisionWith(e);
 
 	// Collision with deadly block or sweeper
-	if (dynamic_cast<Game_DeadlyBlock*>(e->obj) || dynamic_cast<Game_SweeperBlock*>(e->obj))
+	if (dynamic_cast<Game_DeadlyBlock*>(e->obj) || (dynamic_cast<Game_SweeperBlock*>(e->obj) && !_needRender))
 	{
 		DeleteThis();
 		return;
