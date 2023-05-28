@@ -1,16 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Game_KeyInput.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Equip_GunBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Equip_Gun_N.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Equip_GunBase.cpp" />
@@ -170,15 +161,6 @@
     <ClCompile Include="Game_Bullet.cpp">
       <Filter>Source Files\Object\MoveObject\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="Equip_Gun_R.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Equip_EnemyGun_N.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Equip_EnemyGun_Sniper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameManager.cpp">
       <Filter>Source Files\GameCore</Filter>
     </ClCompile>
@@ -243,21 +225,57 @@
     <ClCompile Include="StageEventHandler_S3.cpp">
       <Filter>Source Files\GameCore</Filter>
     </ClCompile>
-    <ClCompile Include="Equip_Gun_S.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Equip_EnemyGun_N.cpp">
+      <Filter>Source Files\Equip</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_EnemyGun_Sniper.cpp">
+      <Filter>Source Files\Equip</Filter>
     </ClCompile>
     <ClCompile Include="Equip_Gun_L.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Equip</Filter>
     </ClCompile>
-    <ClCompile Include="Obj_MovingStone.cpp" />
-    <ClCompile Include="Game_PlayerBlocker.cpp" />
-    <ClCompile Include="State_Contra_Lie.cpp" />
-    <ClCompile Include="State_Contra_Dive.cpp" />
-    <ClCompile Include="Scene_Start.cpp" />
-    <ClCompile Include="Enemy_Cannon.cpp" />
-    <ClCompile Include="State_Turret_Active.cpp" />
-    <ClCompile Include="State_Turret_Base.cpp" />
-    <ClCompile Include="Scene_GameOver.cpp" />
+    <ClCompile Include="Equip_Gun_N.cpp">
+      <Filter>Source Files\Equip</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_Gun_R.cpp">
+      <Filter>Source Files\Equip</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_Gun_S.cpp">
+      <Filter>Source Files\Equip</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_GunBase.cpp">
+      <Filter>Source Files\Equip</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_KeyInput.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Cannon.cpp">
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_GameOver.cpp">
+      <Filter>Source Files\GameCore\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Start.cpp">
+      <Filter>Source Files\GameCore\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Contra_Dive.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Contra_Lie.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Turret_Active.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Turret_Base.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_MovingStone.cpp">
+      <Filter>Source Files\Object\MoveObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_PlayerBlocker.cpp">
+      <Filter>Source Files\Object\MoveObject\Character</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -551,15 +569,33 @@
     <ClInclude Include="Spawner_Infary_Stage1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Obj_MovingStone.h" />
-    <ClInclude Include="Game_PlayerBlocker.h" />
-    <ClInclude Include="State_Contra_Lie.h" />
-    <ClInclude Include="State_Contra_Dive.h" />
-    <ClInclude Include="Scene_Start.h" />
-    <ClInclude Include="Enemy_Cannon.h" />
-    <ClInclude Include="State_Turret_Active.h" />
-    <ClInclude Include="State_Turret_Base.h" />
-    <ClInclude Include="Scene_GameOver.h" />
+    <ClInclude Include="Scene_GameOver.h">
+      <Filter>Source Files\GameCore\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Start.h">
+      <Filter>Source Files\GameCore\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Contra_Dive.h">
+      <Filter>Source Files\CharState</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Contra_Lie.h">
+      <Filter>Source Files\CharState</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Turret_Active.h">
+      <Filter>Source Files\CharState</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Turret_Base.h">
+      <Filter>Source Files\CharState</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Cannon.h">
+      <Filter>Source Files\Object\StaticObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_PlayerBlocker.h">
+      <Filter>Source Files\Object\MoveObject\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj_MovingStone.h">
+      <Filter>Source Files\Object\MoveObject\Character</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -671,6 +707,12 @@
     </Filter>
     <Filter Include="Header Files\Font">
       <UniqueIdentifier>{741d1aaa-ecae-46c4-9f5b-a64c25a944d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equip">
+      <UniqueIdentifier>{17826895-56f3-415c-a9da-b89971c29381}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameCore\Scene">
+      <UniqueIdentifier>{b1fe2d8f-f6a5-4169-8ea0-fc7e10443a99}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
