@@ -22,7 +22,7 @@ void Game_Character::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	if (!_moveFlag)
 		_vx = 0;
 	_moveFlag = false;
-	AddExternalForces();
+	ApplyExternalForce();
 }
 
 void Game_Character::OnNoCollision(DWORD dt)
@@ -202,7 +202,18 @@ void Game_Character::ExecuteAction()
 		KeyReleaseAll();
 		return;
 	}
+
 	pair<int,int> action = _ActionQueue[0];
+	if (action.first == DIK_PAUSE)
+	{
+		KeyReleaseAll();
+		if (action.second > 1)
+			action.second--;
+		else 
+			_ActionQueue.erase(_ActionQueue.begin());
+		return;
+	}
+
 	_ActionQueue.erase(_ActionQueue.begin());
 	if (action.first == -1)
 	{

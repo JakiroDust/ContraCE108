@@ -12,7 +12,6 @@ int Enemy_Turret::CharID()
 void Enemy_Turret::Execute_DieAction()
 {
 	Game_StationEnemy::Execute_DieAction();
-	jump();
 }
 
 void Enemy_Turret::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)

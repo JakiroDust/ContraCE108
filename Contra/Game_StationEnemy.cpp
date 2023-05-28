@@ -2,12 +2,16 @@
 #include "State_Station.h"
 #include "State_Station_Hide.h"
 #include "State_Contra_Die.h"
+#include "State_Turret_Active.h"
 
 void Game_StationEnemy::UpdateState()
 {
 	if (_state == NULL)
 	{
-		_state.reset(new State_Station(this));
+		if (!_station_12DIR)
+			_state.reset(new State_Station(this));
+		else
+			_state.reset(new State_Turret_Active(this, DIR_9_OCLOCK));
 		return;
 	}
 
@@ -21,17 +25,24 @@ void Game_StationEnemy::UpdateState()
 		return;
 	}
 
-
 	switch (_state->NextState())
 	{
-
+	// 8 DIR
 	case STATE_IDLE:
 		_state.reset(new State_Station_Hide(this));
 		break;
 	case STATE_WALK:
 		_state.reset(new State_Station(this));
 		break;
+
+	// 12 DIR
+	case STATE_ACTIVE:
+		_state.reset(new State_Turret_Active(this));
+		break;
 	}
+
+
+
 }
 
 void Game_StationEnemy::KeyDownEventHandler(int KeyCode)

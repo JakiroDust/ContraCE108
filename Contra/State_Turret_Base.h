@@ -3,13 +3,9 @@
 #include "spawnBulletHelper.h"
 
 // Turret && station
-enum TurretState
-{
-	STATE_ACTIVE,
-	STATE_EMERGE,
-	STATE_HIDING,
-	STATE_HIDE,
-};
+#define STATE_ACTIVE 10
+#define STATE_EMERGE 11
+#define STATE_HIDE 12
 
 class State_Turret_Base : public State_Base
 {

@@ -4,6 +4,7 @@
 class Game_StationEnemy : public Game_Enemy
 {
 	protected:
+		bool _station_12DIR = false;
 		void UpdateState() override;
 		void UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects = NULL) override { Game_Enemy::UpdateBehavior(dt, coObjects); }
 		static int Detect_Dir(float baseX, float baseY, float tarX, float tarY);

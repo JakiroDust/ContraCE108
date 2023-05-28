@@ -8,141 +8,143 @@
 
 class Game_MovableObject : public Game_ObjectBase
 {
-protected:
-	/// PROPERTIES
+	protected:
+		/// PROPERTIES
 
-	// Moving speed of entity
-	float _moveSpd = 0.2f;
-	// When value above 0, entity will float.
-	float _jumpForce = 0;
-	float _ForceX = 0;
-	float _ForceY = 0;
+		// Moving speed of entity
+		float _moveSpd = 0.2f;
+		// When value above 0, entity will float.
+		float _jumpForce = 0;
+		float _ForceX = 0;
+		float _ForceY = 0;
 
-	float _external_vx = 0;
-	float _external_vy = 0;
+		float _external_vx = 0;
+		float _external_vy = 0;
 
-	/// state
+		/// state
 
-	bool _faceLeft = false;
-	bool _lockFace = false;
-	bool _swim = false;
-	bool _immortal = false;
-	bool _ghost = false;
-	bool _onGround = false;
-	bool _die = false;
-	bool _gravity = true;
-	bool _moveFlag = false;
-	unique_ptr<State_Base> _state;
+		bool _faceLeft = false;
+		bool _lockFace = false;
+		bool _swim = false;
+		bool _immortal = false;
+		bool _ghost = false;
+		bool _onGround = false;
+		bool _die = false;
+		bool _gravity = true;
+		bool _moveFlag = false;
+		unique_ptr<State_Base> _state;
 
-	/// function
+		/// function
 	
-	void UpdateJumpState(DWORD dt);
-	void UpdateDefault(DWORD dt);
-	void ResetStateParams() override;
+		void UpdateJumpState(DWORD dt);
+		void UpdateDefault(DWORD dt);
+		void ResetStateParams() override;
 
-	void Cleaning() override { Game_ObjectBase::Cleaning(); }
-public:
-	/// STATIC
+		void Cleaning() override { Game_ObjectBase::Cleaning(); }
+	public:
+		/// STATIC
 
-	// World variable to determine
-	// how fast jumpForce will be modified.
-	//static const float JUMP_VECTOR;
-	// CONSTRUCTOR
+		// World variable to determine
+		// how fast jumpForce will be modified.
+		//static const float JUMP_VECTOR;
+		// CONSTRUCTOR
 
-	Game_MovableObject(float x, float y, int z, int width, int height) : Game_ObjectBase(x, y, z, width, height) {}
+		Game_MovableObject(float x, float y, int z, int width, int height) : Game_ObjectBase(x, y, z, width, height) {}
 
-	~Game_MovableObject()
-	{
+		~Game_MovableObject()
+		{
 
-	}
+		}
 
-	//-------------------------------------------------------------------------------
-	/// INHERITED
+		//-------------------------------------------------------------------------------
+		/// INHERITED
 
-	int baseType() { return TYPE_MOVABLE; }
+		int baseType() { return TYPE_MOVABLE; }
 	
-	// Get hitbox
-	void GetBoundingBox(float& left, float& top, float& right, float& bottom) override { Game_ObjectBase::GetBoundingBox(left, top, right, bottom); }
-	// Collision ON or OFF ? This can change depending on object's state. For example: die
-	int IsCollidable() override { return 1; }
-	// When no collision has been detected (triggered by CCollision::Process)
-	void OnNoCollision(DWORD dt);
-	// When collision with an object has been detected (triggered by CCollision::Process)
-	void OnCollisionWith(PCOLLISIONEVENT e);
-	// Is this object blocking other object? If YES, collision framework will automatically push the other object
-	bool IsBlocking() override { return 0; }
-	// Can this object ingore blocking object and move through it?
-	// If YES, collision framework will skip this collision event.
-	virtual bool IgnoreBlocking() { return 0; }
+		// Get hitbox
+		void GetBoundingBox(float& left, float& top, float& right, float& bottom) override { Game_ObjectBase::GetBoundingBox(left, top, right, bottom); }
+		// Collision ON or OFF ? This can change depending on object's state. For example: die
+		int IsCollidable() override { return 1; }
+		// When no collision has been detected (triggered by CCollision::Process)
+		void OnNoCollision(DWORD dt);
+		// When collision with an object has been detected (triggered by CCollision::Process)
+		void OnCollisionWith(PCOLLISIONEVENT e);
+		// Is this object blocking other object? If YES, collision framework will automatically push the other object
+		bool IsBlocking() override { return 0; }
+		// Can this object ingore blocking object and move through it?
+		// If YES, collision framework will skip this collision event.
+		virtual bool IgnoreBlocking() { return 0; }
 
-	// Key event handler
-	virtual void KeyDownEventHandler(int KeyCode) override {}
-	// Key event handler
-	virtual void KeyUpEventHandler(int KeyCode) override {}
-	// Key state handler
-	virtual void KeyStateHandler(BYTE* state) {}
+		// Key event handler
+		virtual void KeyDownEventHandler(int KeyCode) override {}
+		// Key event handler
+		virtual void KeyUpEventHandler(int KeyCode) override {}
+		// Key state handler
+		virtual void KeyStateHandler(BYTE* state) {}
 
-	//-------------------------------------------------------------------------------
+		//-------------------------------------------------------------------------------
 
-	/// GET & SET
+		/// GET & SET
 
-	// alternative horizonal position.
-	// It will be determine based on the point in the middle of sprite footer.
-	float footerX();
-	// alternative vertical position.
-	// It will be determine based on the point in the middle of sprite footer.
-	float footerY();
-	// Convert mapX to real x.
-	float realX(float x);
-	// Convert mapY to real y.
-	float realY(float y);
+		// alternative horizonal position.
+		// It will be determine based on the point in the middle of sprite footer.
+		float footerX();
+		// alternative vertical position.
+		// It will be determine based on the point in the middle of sprite footer.
+		float footerY();
+		// Convert mapX to real x.
+		float realX(float x);
+		// Convert mapY to real y.
+		float realY(float y);
 
-	bool IsFaceLeft() { return _faceLeft; }
-	bool IsOnGround() { return _onGround; }
+		bool IsFaceLeft() { return _faceLeft; }
+		bool IsOnGround() { return _onGround; }
 
-	void SetLockFace(bool b) { _lockFace = b; }
-	bool LockFace() { return _lockFace; }
-	void SetFaceLeft(bool b) { _faceLeft = b; }
+		void SetLockFace(bool b) { _lockFace = b; }
+		bool LockFace() { return _lockFace; }
+		void SetFaceLeft(bool b) { _faceLeft = b; }
 
-	float GetJumpForce() { return /*max(ceilf(40.0f / (JUMP_VECTOR * 16)), 1)*/ OBJECT_JUMP_HEIGHT; }
+		float GetJumpForce() { return /*max(ceilf(40.0f / (JUMP_VECTOR * 16)), 1)*/ OBJECT_JUMP_HEIGHT; }
 
-	bool IsImmortal() { return _immortal; }
-	bool IsGhost() { return _ghost; }
-	void SetImmortal(bool b) { _immortal = b; }
-	void SetGhost(bool b) { _ghost = b; }
-	/// STATE
+		bool IsImmortal() { return _immortal; }
+		bool IsGhost() { return _ghost; }
+		void SetImmortal(bool b) { _immortal = b; }
+		void SetGhost(bool b) { _ghost = b; }
 
-	virtual bool isDie();
-	int StateId() { return _state->StateId(); }
-	bool IsSwimming() { return _swim; }
-	bool IsJumping() { return _jumpForce > 0; }
+		/// STATE
 
-	/// UPDATE
+		virtual bool isDie();
+		int StateId() { return _state->StateId(); }
+		bool IsSwimming() { return _swim; }
+		bool IsJumping() { return _jumpForce > 0; }
+
+		/// UPDATE
 	
-	void Update(DWORD dt) override;
-	void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;
+		void Update(DWORD dt) override;
+		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;
 
-	void AddExternalForces();
+		void ApplyExternalForce();
+		void AddExternalForce(float vx, float vy) { _external_vx += vx; _external_vy += vy; }
 
-	// Render
+		// Render
 
-	void Render() { Game_ObjectBase::Render(); }
+		void Render() { Game_ObjectBase::Render(); }
 
-	/// ACTION
+		/// ACTION
 
 
 
-	// Override teleport function.
-	// Use entity x,y pos instead of real x,y pos.
-	virtual void teleport(float x, float y);
-	virtual void moveLeft();
-	virtual void moveRight();
-	virtual void moveUp();
-	virtual void moveDown();
-	virtual void jump();
-	virtual void forceDie();
-	virtual void Execute_DieAction() {}
+		// Override teleport function.
+		// Use entity x,y pos instead of real x,y pos.
+		virtual void teleport(float x, float y);
+		virtual void moveLeft();
+		virtual void moveRight();
+		virtual void moveUp();
+		virtual void moveDown();
+		virtual void jump();
+		virtual void forceDie();
+		virtual void Execute_DieAction() {}
 
-	void DeleteThis() override { Game_ObjectBase::DeleteThis(); }
+		void DeleteThis() override { Game_ObjectBase::DeleteThis(); }
 };
 

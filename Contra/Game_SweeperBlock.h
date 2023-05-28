@@ -13,6 +13,7 @@ class Game_SweeperBlock : public Game_Terrain
 			_canKillPlayer = deadly;
 		}
 		bool IsBlocking() { return 1; }
+		bool BlockingCondition(DWORD dt, PCOLLISIONEVENT e) override;
 		bool CanKillPlayer() { return _canKillPlayer; }
 };
 

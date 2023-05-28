@@ -21,7 +21,7 @@ class State_Turret_Active : public State_Turret_Base
 				_currentAngle = DIR_12_OCLOCK;
 		}
 	public:
-		State_Turret_Active(Game_ObjectBase* obj, int angle = 12) : State_Turret_Base(obj)
+		State_Turret_Active(Game_ObjectBase* obj, int angle = DIR_12_OCLOCK) : State_Turret_Base(obj)
 		{
 			_currentAngle = angle;
 		}
