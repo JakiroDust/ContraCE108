@@ -254,6 +254,7 @@
     <ClCompile Include="State_Contra_Lie.cpp" />
     <ClCompile Include="State_Contra_Dive.cpp" />
     <ClCompile Include="Scene_Start.cpp" />
+    <ClCompile Include="Scene_GameOver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -552,6 +553,7 @@
     <ClInclude Include="State_Contra_Lie.h" />
     <ClInclude Include="State_Contra_Dive.h" />
     <ClInclude Include="Scene_Start.h" />
+    <ClInclude Include="Scene_GameOver.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

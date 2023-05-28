@@ -91,7 +91,7 @@ void Scene_Start::Unload()
 
 void Scene_Start::nextScene()
 {
-	GameManager::GetInstance()->ReceiveSignal(SIG_LOADING_STAGE_1, this);
+	_NextScene(SIG_LOADING_STAGE_1);
 }
 
 

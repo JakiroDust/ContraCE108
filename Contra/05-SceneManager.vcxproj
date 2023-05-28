@@ -210,6 +210,7 @@
     <ClCompile Include="QuadTree\SimpleVector.cpp" />
     <ClCompile Include="Scene_Base.cpp" />
     <ClCompile Include="Scene_Battle.cpp" />
+    <ClCompile Include="Scene_GameOver.cpp" />
     <ClCompile Include="Scene_LoadingStage.cpp" />
     <ClCompile Include="Scene_Start.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
@@ -311,6 +312,7 @@
     <ClInclude Include="QuadTree\SimpleVector.h" />
     <ClInclude Include="Scene_Base.h" />
     <ClInclude Include="Scene_Battle.h" />
+    <ClInclude Include="Scene_GameOver.h" />
     <ClInclude Include="Scene_LoadingStage.h" />
     <ClInclude Include="Scene_Start.h" />
     <ClInclude Include="ScreenManager.h" />

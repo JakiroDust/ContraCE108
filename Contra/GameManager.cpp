@@ -192,6 +192,8 @@ void GameManager::SignalHandler()
 	case SIG_LOADING_STAGE_3:
 		Create_LoadingStage(SCENE_STAGE_3);
 		break;
+	case SIG_PLAY_GAME_OVER:
+		Create_GAME_OVER_Screen();
 	default:
 		break;
 	}
@@ -239,6 +241,7 @@ void GameManager::StartApplication()
 	// currently Intro 've not implemented yet . So start STAGE 1 instead.
 	//Create_LoadingStage(SCENE_STAGE_1);
 	Create_Start_Screen();
+	//Create_GAME_OVER_Screen();
 }
 
 //======================================================================================
@@ -248,6 +251,13 @@ void GameManager::Create_Start_Screen()
 	ScreenManager* screenManager = ScreenManager::GetInstance();
 	screenManager->Create_Scene_Start();
 	
+	screenManager->Scene()->Load();
+}
+void GameManager::Create_GAME_OVER_Screen()
+{
+	ScreenManager* screenManager = ScreenManager::GetInstance();
+	screenManager->Create_Scene_GAME_OVER();
+
 	screenManager->Scene()->Load();
 }
 void GameManager::Create_Stage_1()

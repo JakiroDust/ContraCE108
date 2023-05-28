@@ -35,5 +35,6 @@ public:
 	void Create_Scene_Battle();
 	void Create_Scene_LoadingStage(int stageID);
 	void Create_Scene_Start();
+	void Create_Scene_GAME_OVER();
 };
 

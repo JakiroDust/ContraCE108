@@ -7,9 +7,15 @@
 
 using namespace std;
 #define DEBUG_FMOD_LOG false
-constexpr auto BGM_TITLE= 1;
-constexpr auto BGM_JUNGLE = 2;
-
+enum
+{
+    BGM_TITLE,
+    BGM_JUNGLE,
+    BGM_WATERFALL,
+    BGM_VICTORY,
+    BGM_ENDING,
+    BGM_GAME_OVER
+};
 constexpr auto SFX_CONTRA_DEATH = 1;
 constexpr auto SFX_BOSS_DEFEAT = 2;
 constexpr auto SFX_BASE_EXPLODE = 3;
@@ -42,36 +48,7 @@ constexpr auto CHANNEL_SFX_CONTRA_MISC = 1;
 constexpr auto CHANNEL_SFX_ENEMY = 2;
 constexpr auto CHANNEL_SFX_ENV = 3;
 
-#define MUSIC_PATH "music/"
-#define BGM_PATH MUSIC_PATH "bgm/"
-#define BGM_JUNGLE_PATH BGM_PATH "2 - Jungle  Hangar (Stages 1  7).mp3"
-#define BGM_TITLE_PATH BGM_PATH "1 - Title Screen.mp3"
-#define SFX_PATH MUSIC_PATH "sfx/"
-#define SFX_CONTRA_DEATH_PATH SFX_PATH  "death.mp3"
-#define SFX_BOSS_DEFEAT_PATH SFX_PATH  "boss-defeat.mp3"
-#define SFX_BASE_EXPLODE_PATH SFX_PATH  "base-explosion.mp3"
 
-#define SFX_CONTRA_DEFAULTGUN_PATH SFX_PATH "enemy-gun.mp3"
-#define SFX_CONTRA_RIFLE_PATH SFX_PATH "enemy-gun.mp3"
-#define SFX_CONTRA_SPREAD_PATH SFX_PATH "spread.mp3"
-#define SFX_CONTRA_FLAME_PATH SFX_PATH "flame.mp3"
-#define SFX_CONTRA_LASER_PATH SFX_PATH "laser.mp3"
-
-#define SFX_CONTRA_LAND_PATH SFX_PATH "land.mp3"
-#define SFX_CONTRA_ELECTRIC_PATH SFX_PATH "electro.mp3"
-#define SFX_CONTRA_UPGRADE_PATH SFX_PATH "1-up.mp3"
-
-#define SFX_ENEMY_SHOOT_1_PATH SFX_PATH "enemy-gun.mp3"
-#define SFX_ENEMY_SHOOT_2_PATH SFX_PATH "enemy-gun-2.mp3"
-
-#define SFX_ENEMY_HIT_PATH SFX_PATH "enemy-hit.mp3"
-#define SFX_ENEMY_EXPLODE_1_PATH SFX_PATH "explode.mp3"
-#define SFX_ENEMY_EXPLODE_2_PATH SFX_PATH "explode-2.mp3"
-
-#define SFX_MAJOR_EXPLODE_PATH SFX_PATH "major-explosion.mp3"
-
-#define SFX_NEXTROUND_PATH SFX_PATH "area-clear.mp3"
-#define SFX_GAMEOVER_PATH SFX_PATH "game-over.mp3"
 class SoundSystem {
 private:
     static SoundSystem* instance;

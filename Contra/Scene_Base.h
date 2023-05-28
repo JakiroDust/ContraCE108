@@ -9,6 +9,7 @@ class Scene_Base
 	protected:
 		//vector<Game_Image*>* _images = NULL;
 		bool _isPlaying = false;
+		int id=1;
 		unordered_map<int, unique_ptr<Game_Picture>> _images;
 	public:
 		// GET & SET
@@ -31,7 +32,8 @@ class Scene_Base
 		void PLAY() { _isPlaying = true; }
 		void PAUSE() { _isPlaying = false; }
 
-
+		void _NextScene(int signal);
+		virtual void nextScene() {};
 		void AddBlinkingDarkEffect(float x, float y, int width, int height, int& id,int ani_id=99980);
 		void AddImage(float x, float y, int index, int spriteID, BYTE RenderMode);
 		void AddImage(float x, float y, int index, int spriteID,float ratiox,float ratioy, BYTE RenderMode);

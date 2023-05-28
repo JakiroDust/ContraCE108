@@ -1,5 +1,10 @@
 #include "Scene_Base.h"
 #include "Word.h"
+#include "GameManager.h"
+void Scene_Base::_NextScene(int signal)
+{
+	GameManager::GetInstance()->ReceiveSignal(signal, this);
+}
 void Scene_Base::AddBlinkingDarkEffect(float x, float y, int width, int height, int& id,int ani_id)
 {
 	AddImage(x, y, id++, ani_id,32.0f/width,32.0f/height, RENDER_MODE_CENTER);

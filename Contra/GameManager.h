@@ -22,7 +22,7 @@ enum STAGE
 	SIG_PLAY_INTRO,
 	SIG_PlAY_END_GAME,
 	SIG_PLAY_CREDIT,
-	SIG_PLAY_ASK_REVIVE,
+	SIG_PLAY_GAME_OVER,
 	SIG_PLAY_STAGE_1,
 	SIG_PLAY_STAGE_2,
 	SIG_PLAY_STAGE_3,
@@ -63,6 +63,7 @@ class GameManager
 
 		// scene
 		void Create_Start_Screen();
+		void Create_GAME_OVER_Screen();
 		void Create_Stage_1();
 		void Create_Stage_3();
 		void Create_LoadingStage(int stageID);
