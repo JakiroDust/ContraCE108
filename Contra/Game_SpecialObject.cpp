@@ -35,17 +35,11 @@ void Game_SpecialObject::UpdateState()
 	case STATE_OBJ_ACTIVE:
 		_state.reset(new State_Object_Active(this));
 		break;
-
 	}
-
-
-
 }
 
 void Game_SpecialObject::KeyDownEventHandler(int KeyCode)
 {
-	Game_Enemy::KeyDownEventHandler(KeyCode);
-
 	if (_state == NULL)
 		return;
 

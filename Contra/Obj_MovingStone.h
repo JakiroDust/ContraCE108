@@ -1,5 +1,6 @@
 #pragma once
 #include "Game_MovableObject.h"
+#include "Contra_ANI_ID.h"
 
 #define MOVING_STONE_WIDTH 32
 #define MOVING_STONE_HEIGHT 32
@@ -18,7 +19,7 @@ class Obj_MovingStone : public Game_MovableObject
 			_maxRangeR = maxRangeR;
 			_moveSpd = 0.05f;
 			_gravity = false;
-			_SpriteId = 0;
+			_SpriteId = ANI_MOVING_ROCK;
 			_needScanCollision = false;
 		}
 		void Update(DWORD dt) override;

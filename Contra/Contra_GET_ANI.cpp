@@ -76,6 +76,15 @@ int Get_CharANI_ID(int character, int behavior)
 		break;
 	}
 
+	case FALLING_STONE:
+	{
+		arr[ACT_STANDBY_LEFT] = ANI_FALLING_ROCK;
+		arr[ACT_STANDBY_RIGHT] = ANI_FALLING_ROCK;
+		arr[ACT_ACTIVE_LEFT] = ANI_FALLING_ROCK;
+		arr[ACT_ACTIVE_RIGHT] = ANI_FALLING_ROCK;
+		break;
+	}
+
 	default:
 		DebugOut(L"[ERROR] Character ID is undefined.\n");
 		return -1;

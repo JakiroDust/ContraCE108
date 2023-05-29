@@ -440,7 +440,9 @@ void Scene_Battle::_ParseOBject(string line)
                     break;
 
                 // SPAWNER
-                case SPAWNER_INFARY: obj.reset(new Spawner_Infary_Stage1(x, y, Z_INDEX_TERRAIN, param1));
+                case SPAWNER_INFARY: obj.reset(new Spawner_Infary_Stage1(x, y, Z_INDEX_TERRAIN, param1, param2));
+                    break;
+                case SPAWNER_FALLING_STONE: obj.reset(new Spawner_FallingStone(x, y, Z_INDEX_TERRAIN, param1, param2));
                     break;
 
                 default:

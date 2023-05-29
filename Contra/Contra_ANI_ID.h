@@ -119,6 +119,7 @@
 
 #define ANI_MOVING_ROCK 96990
 #define ANI_FALLING_ROCK	96980
+
 #pragma region TERRAIN
 #define BLACK_BOX_ANI 99990
 #pragma endregion

@@ -154,12 +154,15 @@ void Game_MovableObject::UpdateDefault(DWORD dt)
 		if (_jumpForce != 0)
 			_jumpForce = 0;
 		
+		float forceY = _gravity ? JUMP_VECTOR : _moveSpd;
+
+
 		if (_ForceY > 0)
 		{
-			if (abs(_ForceY) > JUMP_VECTOR * dt)
+			if (abs(_ForceY) > forceY * dt)
 			{
-				_ForceY -= JUMP_VECTOR * dt;
-				_vy = JUMP_VECTOR;
+				_ForceY -= forceY * dt;
+				_vy = forceY;
 			}
 			else
 			{
@@ -170,10 +173,10 @@ void Game_MovableObject::UpdateDefault(DWORD dt)
 		}
 		else
 		{
-			if (abs(_ForceY) > JUMP_VECTOR * dt)
+			if (abs(_ForceY) > forceY * dt)
 			{
-				_ForceY += JUMP_VECTOR * dt;
-				_vy = -JUMP_VECTOR;
+				_ForceY += forceY * dt;
+				_vy = -forceY;
 			}
 			else
 			{

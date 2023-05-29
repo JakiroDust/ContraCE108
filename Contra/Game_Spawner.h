@@ -9,8 +9,20 @@ class Game_Spawner : public Game_StaticObject
 	protected:
 		DWORD _Interval = 0;
 		DWORD _Tick = 0;
+		DWORD _Offset = 0;
 		bool ProcessTimer(DWORD dt)
 		{
+			if (_Offset > dt)
+			{
+				_Offset -= dt;
+				return false;
+			}
+			else if (_Offset > 0)
+			{
+				_Offset = 0;
+				return false;
+			}
+
 			if (_Interval == 0)
 			{
 				return true;

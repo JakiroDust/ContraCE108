@@ -193,6 +193,7 @@
     <ClCompile Include="Game_PlayerBlocker.cpp" />
     <ClCompile Include="Game_Screen.cpp" />
     <ClCompile Include="Game_Spawner.cpp" />
+    <ClCompile Include="Game_SpecialObject.cpp" />
     <ClCompile Include="Game_StaticObject.cpp" />
     <ClCompile Include="Game_StationEnemy.cpp" />
     <ClCompile Include="Game_SweeperBlock.cpp" />
@@ -219,6 +220,7 @@
     <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="Spatial.cpp" />
     <ClCompile Include="spawnBulletHelper.cpp" />
+    <ClCompile Include="Spawner_FallingStone.cpp" />
     <ClCompile Include="Spawner_Infary_Stage1.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Sprites.cpp" />
@@ -235,6 +237,10 @@
     <ClCompile Include="State_Contra_Lie.cpp" />
     <ClCompile Include="State_Contra_Swim.cpp" />
     <ClCompile Include="State_Contra_Walk.cpp" />
+    <ClCompile Include="State_Object_Active.cpp" />
+    <ClCompile Include="State_Object_Base.cpp" />
+    <ClCompile Include="State_Object_Emerge.cpp" />
+    <ClCompile Include="State_Object_Standby.cpp" />
     <ClCompile Include="State_Station.cpp" />
     <ClCompile Include="State_Station_Hide.cpp" />
     <ClCompile Include="State_Turret_Active.cpp" />
@@ -300,6 +306,7 @@
     <ClInclude Include="Game_PlayerBlocker.h" />
     <ClInclude Include="Game_Screen.h" />
     <ClInclude Include="Game_Spawner.h" />
+    <ClInclude Include="Game_SpecialObject.h" />
     <ClInclude Include="Game_StaticObject.h" />
     <ClInclude Include="Game_StationEnemy.h" />
     <ClInclude Include="Game_SweeperBlock.h" />
@@ -326,6 +333,7 @@
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="Spatial.h" />
     <ClInclude Include="spawnBulletHelper.h" />
+    <ClInclude Include="Spawner_FallingStone.h" />
     <ClInclude Include="Spawner_Infary_Stage1.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Sprites.h" />
@@ -342,6 +350,10 @@
     <ClInclude Include="State_Contra_Lie.h" />
     <ClInclude Include="State_Contra_Swim.h" />
     <ClInclude Include="State_Contra_Walk.h" />
+    <ClInclude Include="State_Object_Active.h" />
+    <ClInclude Include="State_Object_Base.h" />
+    <ClInclude Include="State_Object_Emerge.h" />
+    <ClInclude Include="State_Object_Standby.h" />
     <ClInclude Include="State_Station.h" />
     <ClInclude Include="State_Station_Hide.h" />
     <ClInclude Include="State_Turret_Active.h" />

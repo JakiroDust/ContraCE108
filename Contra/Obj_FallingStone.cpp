@@ -1,5 +1,6 @@
 #include "Obj_FallingStone.h"
 #include "Game_Platform.h"
+#include "Game_Blocker.h"
 
 int Obj_FallingStone::CharID()
 {
@@ -14,35 +15,37 @@ void Obj_FallingStone::UpdateState()
 void Obj_FallingStone::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 	if (_ForceY == 0 && _finishEmerge)
-		_vy = STONE_FALLING_SPEED;
+		_external_vy += STONE_FALLING_SPEED;
 	Game_SpecialObject::Update(dt, coObjects);
 }
 
 void Obj_FallingStone::OnCollisionWith(PCOLLISIONEVENT e)
 {
 	Game_SpecialObject::OnCollisionWith(e);
-	if (dynamic_cast<Game_Platform*>(e->obj))
+	if (dynamic_cast<Game_Platform*>(e->obj)
+		|| dynamic_cast<Game_Blocker*>(e->obj))
 	{
-		bool check = true;
-		for (int i = 0; i < _touchList.size(); i++)
+		_touchList.push_back(e->obj->id());
+		_ForceY += STONE_BOUNCE_HEIGHT;
+		return;
+	}
+}
+
+bool Obj_FallingStone::CollideBlockerCondition(DWORD dt, PCOLLISIONEVENT e)
+{
+	for (int i = 0; i < _touchList.size(); i++)
+	{
+		if (_touchList[i] == e->obj->id())
 		{
-			if (_touchList[i] == e->obj->id())
-			{
-				check = false;
-			}
-		}
-		if (check)
-		{
-			_touchList.push_back(e->obj->id());
-			_ForceY += STONE_BOUNCE_HEIGHT;
-			return;
+			return false;
 		}
 	}
+	return true;
 }
 
 void Obj_FallingStone::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
-	if (_ForceX != 0 || _ForceY != 0 || _finishEmerge == false)
+	if (_finishEmerge)
 		return;
 	//-------------------------------------------------
 	// shake effect
@@ -50,17 +53,22 @@ void Obj_FallingStone::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	{
 		_EmergeTick -= dt;
 		// shake
-		if (_faceLeft)
-			_ForceX = -STONE_SHAKE_RANGE * 2;
-		else
-			_ForceX = STONE_SHAKE_RANGE * 2;
+		if (_ForceX == 0)
+		{
+			_faceLeft = !_faceLeft;
+			if (_faceLeft)
+				_ForceX = -STONE_SHAKE_RANGE * 2;
+			else
+				_ForceX = STONE_SHAKE_RANGE * 2;
+		}
+
 	}
 	else
 	{
+		_ForceX = 0;
 		_finishEmerge = true;
 		_EmergeTick = 0;
 		SetPosition(_baseX, _y);
-		_gravity = true;
 		_BodyDamage = true;
 		AddAction(DIK_O);
 	}

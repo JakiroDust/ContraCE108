@@ -50,3 +50,4 @@
 
 // Spawner
 #define SPAWNER_INFARY 11020
+#define SPAWNER_FALLING_STONE 11140

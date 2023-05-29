@@ -20,6 +20,7 @@ class Game_SpecialObject : public Game_Enemy
 		void OnCollisionWith(PCOLLISIONEVENT e) override { Game_Enemy::OnCollisionWith(e); }
 
 		void KeyDownEventHandler(int KeyCode) override;
+		void KeyUpEventHandler(int KeyCode) override {}
 
 		void Execute_DieAction() override { Game_Enemy::Execute_DieAction(); }
 };
