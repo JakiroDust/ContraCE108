@@ -430,6 +430,8 @@ void Scene_Battle::_ParseOBject(string line)
                     addPlayer1();
                     obj.reset(NULL);
                     break;
+                case RED_GUNNER: obj.reset(new Enemy_RedGunner(x, y, Z_INDEX_ENEMY, param1));
+                    break;
                 case SNIPER: obj.reset(new Enemy_Sniper(x, y, Z_INDEX_ENEMY));
                     break;
                 case CAMERA:

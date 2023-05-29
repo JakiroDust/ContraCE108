@@ -6,6 +6,7 @@
 #include "State_Contra_Swim.h"
 #include "State_Contra_Jump.h"
 #include "State_Contra_Die.h"
+#include "State_Contra_Lie.h"
 #include "Contra_GET_ANI.h"
 #include "Obj_Bullet_L.h"
 #include "Game_DeadlyBlock.h"
@@ -72,6 +73,9 @@ void Game_Enemy::UpdateState()
 		break;
 	case STATE_FALL:
 		_state.reset(new State_Contra_Fall(this));
+		break;
+	case STATE_LIE:
+		_state.reset(new State_Contra_Lie(this));
 		break;
 	case STATE_SWIM:
 		_state.reset(new State_Contra_Swim(this));

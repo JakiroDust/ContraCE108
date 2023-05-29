@@ -4,8 +4,8 @@
 
 #define TURRET_BASE_WIDTH 32
 #define TURRET_BASE_HEIGHT 32
-#define TURRET_TRIGGER_RANGE_X 0.75f
-#define TURRET_TRIGGER_RANGE_Y 0.75f
+#define TURRET_TRIGGER_RANGE_X 200
+#define TURRET_TRIGGER_RANGE_Y 200
 #define TURRET_ROTATE_CD 250
 
 class Enemy_Turret : public Game_StationEnemy

@@ -21,7 +21,7 @@ class Equip_GunBase
 		{
 			if (_maxAmmo <= 0)
 				return _FireRate;
-			if (_ammo > 0)
+			if (_ammo > 1)
 			{
 				_ammo--;
 				return _FireRate;

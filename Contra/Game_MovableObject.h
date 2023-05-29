@@ -4,7 +4,8 @@
 #include "State_Base.h"
 
 #define JUMP_VECTOR 0.15f
-#define OBJECT_JUMP_HEIGHT 54.0f
+#define STANDARD_JUMP_HEIGHT 54.0f
+#define GRAVITY 0.15f
 
 class Game_MovableObject : public Game_ObjectBase
 {
@@ -17,7 +18,7 @@ class Game_MovableObject : public Game_ObjectBase
 		float _jumpForce = 0;
 		float _ForceX = 0;
 		float _ForceY = 0;
-
+		float _jumpHeight = STANDARD_JUMP_HEIGHT;
 		float _external_vx = 0;
 		float _external_vy = 0;
 
@@ -104,7 +105,7 @@ class Game_MovableObject : public Game_ObjectBase
 		bool LockFace() { return _lockFace; }
 		void SetFaceLeft(bool b) { _faceLeft = b; }
 
-		float GetJumpForce() { return /*max(ceilf(40.0f / (JUMP_VECTOR * 16)), 1)*/ OBJECT_JUMP_HEIGHT; }
+		float GetJumpForce() { return _jumpHeight; }
 
 		bool IsImmortal() { return _immortal; }
 		bool IsGhost() { return _ghost; }

@@ -4,7 +4,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Equip_GunBase.cpp" />
     <ClCompile Include="Animation.cpp">
       <Filter>Source Files\Sprite</Filter>
     </ClCompile>
@@ -275,6 +274,9 @@
     </ClCompile>
     <ClCompile Include="Game_PlayerBlocker.cpp">
       <Filter>Source Files\Object\MoveObject\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_GunBase.cpp">
+      <Filter>Source Files\Equip</Filter>
     </ClCompile>
     <ClCompile Include="CAnimation_OneLoop.cpp" />
   </ItemGroup>

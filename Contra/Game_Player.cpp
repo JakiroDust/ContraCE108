@@ -107,10 +107,16 @@ void Game_Player::UpdateState()
 		return;
 	}
 
+	int saveFace = 0;
+	if (_state->StateId() == STATE_JUMP)
+	{
+		saveFace = ((State_Contra_Jump*)(_state.get()))->GetFace();
+	}
+
 	switch (_state->NextState())
 	{
 	case STATE_IDLE:		
-		_state.reset( new State_Contra_Idle(this));
+		_state.reset( new State_Contra_Idle(this, saveFace));
 		break;
 	case STATE_WALK:	
 		_state.reset(new State_Contra_Walk(this));
@@ -475,6 +481,8 @@ void Game_Player::PerformRevive()
 	_x = _revive_pos_X;
 	_y = _revive_pos_Y;
 	// --------------
+	_ghost = true;
+	_state.reset(new State_Contra_Idle(this));
 	// Reset to normal gun
 	ChangeWeapon(new Equip_Gun_N());
 }

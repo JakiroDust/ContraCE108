@@ -55,6 +55,7 @@ void State_Contra_Jump::KeyHold_Left()
 	State_Contra_Base::KeyHold_Left();
 	Game_Character* obj = (Game_Character*)_srcObj;
 	obj->moveLeft();
+	_saveLastFace = -1;
 }
 
 void State_Contra_Jump::KeyHold_Right()
@@ -62,6 +63,7 @@ void State_Contra_Jump::KeyHold_Right()
 	State_Contra_Base::KeyHold_Right();
 	Game_Character* obj = (Game_Character*)_srcObj;
 	obj->moveRight();
+	_saveLastFace = 1;
 }
 
 void State_Contra_Jump::KeyPressed_Shoot()

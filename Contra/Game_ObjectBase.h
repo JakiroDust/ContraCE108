@@ -106,6 +106,9 @@ class Game_ObjectBase
 		// Aditional condition for blocking object. This condition will check if object has IsBlocking = 1.
 		// If NO, this Blocking object will be skip while processing collision framework.
 		virtual bool BlockingCondition(DWORD dt, PCOLLISIONEVENT e) { return 1; }
+		// Aditional condition for src object. This condition will check if blocking object has IsBlocking = 1.
+		// If NO, this collision event will be skip while processing collision framework.
+		virtual bool CollideBlockerCondition(DWORD dt, PCOLLISIONEVENT e) { return 1; }
 		// Can this object ingore blocking object and move through it?
 		// If YES, collision framework will skip this collision event.
 		virtual bool IgnoreBlocking() { return 1; }
