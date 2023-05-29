@@ -278,6 +278,7 @@
     <ClCompile Include="Equip_GunBase.cpp">
       <Filter>Source Files\Equip</Filter>
     </ClCompile>
+    <ClCompile Include="CAnimation_OneLoop.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -598,6 +599,7 @@
     <ClInclude Include="Obj_MovingStone.h">
       <Filter>Source Files\Object\MoveObject\Character</Filter>
     </ClInclude>
+    <ClInclude Include="CAnimation_OneLoop.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
