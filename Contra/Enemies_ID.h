@@ -46,5 +46,7 @@
 #define MACHINE_GUNNER 130
 #define SHIELD_MACHINE_GUNNER 131//(?)
 
+#define FALLING_STONE 140 
+
 // Spawner
 #define SPAWNER_INFARY 11020
