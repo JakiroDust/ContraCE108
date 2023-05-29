@@ -1,7 +1,7 @@
 #include "Animation.h"
 #include "debug.h"
 
-LPSPRITE _Clone_Flip_CSprite(LPSPRITE target,int new_id=-1111111)
+LPSPRITE _Clone_Flip_CSprite(LPSPRITE target,int new_id)
 {	
 	
 
@@ -50,7 +50,6 @@ void CAnimation::Render(float x, float y)
 
 	frames[currentFrame]->GetSprite()->Draw(x, y);
 }
-
 void CAnimation::RenderOnScreen(float x, float y, BYTE RenderMode,float ratiox,float ratioy)
 {
 	ULONGLONG now = GetTickCount64();
@@ -72,29 +71,6 @@ void CAnimation::RenderOnScreen(float x, float y, BYTE RenderMode,float ratiox,f
 	}
 
 	frames[currentFrame]->GetSprite()->DrawOnScreen(x, y, RenderMode,ratiox,ratioy);
-}
-
-void CAnimation::Render(float x, float y, float width, float height)
-{
-	ULONGLONG now = GetTickCount64();
-	if (currentFrame == -1)
-	{
-		currentFrame = 0;
-		lastFrameTime = now;
-	}
-	else
-	{
-		DWORD t = frames[currentFrame]->GetTime();
-		if (now - lastFrameTime > t)
-		{
-			currentFrame++;
-			lastFrameTime = now;
-			if (currentFrame == frames.size()) currentFrame = 0;
-		}
-
-	}
-
-	frames[currentFrame]->GetSprite()->Draw(x, y);
 }
 
 LPANIMATION CAnimation::Clone_Flip()

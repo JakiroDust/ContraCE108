@@ -10,18 +10,20 @@ using namespace std;
 
 class CAnimation
 {
+protected:
 	ULONGLONG lastFrameTime;
 	int defaultTime;
 	int currentFrame;
-	vector<LPANIMATION_FRAME> frames;
+	
+	int variance = 0;
 public:
+	vector<LPANIMATION_FRAME> frames;
 	CAnimation(int defaultTime = 100) { this->defaultTime = defaultTime; lastFrameTime = -1; currentFrame = -1; }
 	void Add(int spriteId, DWORD time = 0);
-	void Render(float x, float y);
+	virtual void Render(float x, float y);
 	// Render using screen position instead of world location
-	void RenderOnScreen(float x, float y, BYTE RenderMode = RENDER_MODE_CENTER,float ratiox=1,float ratioy=1);
-	void Render(float x, float y,float width,float height);
-	CAnimation* Clone_Flip();
+	virtual void RenderOnScreen(float x, float y, BYTE RenderMode = RENDER_MODE_CENTER,float ratiox=1,float ratioy=1);
+	virtual CAnimation* Clone_Flip();
 };
-
+LPSPRITE _Clone_Flip_CSprite(LPSPRITE target, int new_id = -1111111);
 typedef CAnimation* LPANIMATION;
