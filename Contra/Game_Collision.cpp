@@ -168,10 +168,10 @@ PCOLLISIONEVENT Game_Collision::SweptAABB(PGAMEOBJECT objSrc, DWORD dt, PGAMEOBJ
 	dy = -dy;
 
 	//// These codes are used to debug Player collision
-	if (dynamic_cast<Game_Player*>(objSrc) && dynamic_cast<Game_SweeperBlock*>(objDest))
-	{
-		int a = 2;
-	}
+	//if (dynamic_cast<Game_Player*>(objSrc) && dynamic_cast<Game_SweeperBlock*>(objDest))
+	//{
+	//	int a = 2;
+	//}
 
 	SweptAABB(
 		ml, mt, mr, mb,
@@ -196,7 +196,7 @@ void Game_Collision::Scan(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* obj
 	{
 		PCOLLISIONEVENT e = SweptAABB(objSrc, dt, objDests->at(i));
 
-		if (e->WasCollided() == 1 && e->obj->BlockingCondition(dt, e))
+		if (e->WasCollided() == 1 && e->obj->BlockingCondition(dt, e) && e->src_obj->CollideBlockerCondition(dt, e))
 			coEvents.push_back(e);
 		else
 			delete e;

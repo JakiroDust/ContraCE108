@@ -26,8 +26,8 @@ void Enemy_Turret::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 		return;
 
 	// active range
-	if (abs(player->x() - _x) > GAMESCREEN_WIDTH * TURRET_TRIGGER_RANGE_X
-		&& abs(player->y() - _y) > GAMESCREEN_HEIGHT * TURRET_TRIGGER_RANGE_Y)
+	if (abs(player->x() - _x) > TURRET_TRIGGER_RANGE_X
+		&& abs(player->y() - _y) > TURRET_TRIGGER_RANGE_Y)
 	{
 		// No active. Perform hiding
 		if (_state->StateId() != STATE_IDLE)

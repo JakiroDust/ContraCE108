@@ -52,7 +52,7 @@ void Enemy_Sniper::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 		break;
 	}
 
-	if (_needRender == false)
+	if (!_needRender || !player->NeedRender())
 		return;
 
 	if (_GunReloadInterval > 0)
@@ -63,7 +63,8 @@ void Enemy_Sniper::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 		AddAction(DIK_O);
 
 	// idle (Sniper will look around)
-	if (abs(player->x() - _x) > GAMESCREEN_WIDTH * 3 / 4)
+	if (abs(player->x() - _x) > SNIPER_ACTIVE_RANGE_X
+		&& abs(player->x() - _x) > SNIPER_ACTIVE_RANGE_Y)
 	{
 		if (_idle > 0)
 		{

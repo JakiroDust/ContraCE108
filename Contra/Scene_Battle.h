@@ -48,7 +48,7 @@ using namespace std;
 #define Z_INDEX_ANIMATION 6
 #define Z_INDEX_TERRAIN 2
 
-#define GET_OBJECTS_RANGE 1.5f
+#define GET_OBJECTS_RANGE 1.4f
 
 class Scene_Battle : public Scene_Base
 {

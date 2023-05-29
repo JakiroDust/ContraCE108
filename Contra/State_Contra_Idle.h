@@ -6,8 +6,7 @@ class State_Contra_Idle : public State_Contra_Base
 	private:
 
 	public:
-		State_Contra_Idle(Game_ObjectBase* obj) : State_Contra_Base(obj) {}
-
+		State_Contra_Idle(Game_ObjectBase* obj, int forceFace = 0);
 		int StateId() override { return STATE_IDLE; }
 		void Render() override;
 		void Update(DWORD dt) override;

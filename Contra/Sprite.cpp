@@ -80,25 +80,18 @@ void CSprite::Draw(float x, float y, BYTE RenderMode)
 	//this->sprite.matWorld = (this->matScaling * matTranslation);
 	g->GetSpriteHandler()->DrawSpritesImmediate(&sprite, 1, 0, 0);
 }
-
 */
+
 void CSprite::Draw(float x, float y, BYTE RenderMode)
 {	
 	CGame* g = CGame::GetInstance();
-	//float cx, cy;
 
-	//g->GetCamPos(cx, cy);
 	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
-	//screen->GetPosition(cx, cy);
-
-	//cx = (FLOAT)floor(cx);
-	//cy = (FLOAT)floor(cy);
 
 	D3DXMATRIX matTranslation;
 	
 	screen->Convert_WorldPos_to_ScreenPos(x, y);
-	x = floor(x);
-	y = floor(y);
+
 	float _width, _height;
 	getWH(_width, _height);
 
@@ -107,6 +100,9 @@ void CSprite::Draw(float x, float y, BYTE RenderMode)
 		x = (floor(x - _width / 2.0f));
 		y = (floor(y - _height / 2.0f));
 	}
+
+	x = floorf(x);
+	y = floorf(y);
 
 	D3DXMatrixTranslation(&matTranslation, x,g->GetBackBufferHeight() - y, 0.1f);
 	D3DXMATRIX matScaling;
@@ -131,11 +127,15 @@ void CSprite::DrawOnScreen(float x, float y, BYTE RenderMode,float ratiox,float 
 	getWH(_width, _height);
 	_width = _width / ratiox;
 	_height = _height / ratioy;
+
 	if (RenderMode == RENDER_MODE_TOP_LEFT)
 	{
-		x = (floor(x - _width / 2.0f));
-		y = (floor(y - _height / 2.0f));
+		x = x - _width / 2.0f;
+		y = y - _height / 2.0f;
 	}
+
+	x = floorf(x);
+	y = floorf(y);
 
 	D3DXMatrixTranslation(&matTranslation, x, g->GetBackBufferHeight() - y, 0.1f);
 	D3DXMATRIX matScaling;
@@ -145,52 +145,6 @@ void CSprite::DrawOnScreen(float x, float y, BYTE RenderMode,float ratiox,float 
 	//this->sprite.matWorld = (this->matScaling * matTranslation);
 	g->GetSpriteHandler()->DrawSpritesImmediate(&sprite, 1, 0, 0);
 }
-
-
-
-//void CSprite::Draw(float x, float y, const int width,const int heigth)
-//{
-//	float _width = width / 1.0f,
-//		_heigth = heigth / 1.0f;
-//	Draw(x, y, _width, _heigth);
-//}
-
-
-//void CSprite::Draw(float x, float y, int& width, int& heigth)
-//{
-//	float _width = width / 1.0f,
-//		_heigth = heigth / 1.0f;
-//	Draw(x, y, _width, _heigth);
-//}
-//
-//void CSprite::Draw(float x, float y,float&width,float&heigth)
-//{
-//	Draw(x, y);
-//	return;
-//	CGame* g = CGame::GetInstance();
-//	//float cx, cy;
-//
-//	//g->GetCamPos(cx, cy);
-//	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
-//	//screen->GetPosition(cx, cy);
-//
-//	//cx = floorf(cx);
-//	//cy = floorf(cy);
-//
-//	D3DXMATRIX matTranslation;
-//
-//	screen->Convert_WorldPos_to_ScreenPos(x, y);
-//	x = (FLOAT)floor(x);
-//	y = (FLOAT)floor(y);
-//
-//	D3DXMatrixTranslation(&matTranslation, x, g->GetBackBufferHeight() - y, 0.1f);
-//	D3DXMATRIX matScaling;
-//	float _width, _heigth;
-//	getWH(_width, _heigth);
-//	D3DXMatrixScaling(&matScaling, _width, _heigth, 1.0f);
-//	this->sprite.matWorld = (matScaling * matTranslation);
-//	g->GetSpriteHandler()->DrawSpritesImmediate(&sprite, 1, 0, 0);
-//}
 
 void CSprite::getAll(int& id, int& left, int& top, int& right, int& bottom, LPTEXTURE& tex)
 {

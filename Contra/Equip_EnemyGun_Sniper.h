@@ -9,7 +9,7 @@ class Equip_EnemyGun_Sniper : public Equip_EnemyGun_N
 			_isAuto = false;
 			_FireRate = 500;
 			_reloadTime = 1400;
-			_maxAmmo = 2;
+			_maxAmmo = 3;
 			_ammo = _maxAmmo;
 		}
 

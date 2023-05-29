@@ -3,6 +3,14 @@
 #include "Animations.h"
 #include "Contra_GET_ANI.h"
 
+State_Contra_Idle::State_Contra_Idle(Game_ObjectBase* obj, int forceFace) : State_Contra_Base(obj)
+{
+	if (forceFace > 0)
+		((Game_Character*)_srcObj)->SetFaceLeft(false);
+	else if (forceFace < 0)
+		((Game_Character*)_srcObj)->SetFaceLeft(true);
+}
+
 void State_Contra_Idle::Render()
 {
 	Game_Character* obj = (Game_Character*)_srcObj;

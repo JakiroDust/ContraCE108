@@ -49,7 +49,7 @@ spawnBulletHelper::spawnBulletHelper()
     _spawnBulletHelper[ELITE_TURRET] = initHelper();
     _spawnBulletHelper[TURRET_BASE] = initHelper();
     _spawnBulletHelper[ELITE_TURRET_BASE] = initHelper();
-    _spawnBulletHelper[CANON] = initHelper();
+    _spawnBulletHelper[CANNON] = initHelper();
     _spawnBulletHelper[Mine] = initHelper();
     _spawnBulletHelper[Mine_BASE] = initHelper();
     _spawnBulletHelper[FLY_DEF_ROBOT] = initHelper();
