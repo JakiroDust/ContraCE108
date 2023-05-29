@@ -5,6 +5,7 @@
 #include "Game_Player.h"
 #include "Scene_Battle.h"
 #include "State_Contra_Jump.h"
+#include "Obj_MovingStone.h"
 
 int Enemy_RedGunner::CharID()
 {
@@ -143,7 +144,8 @@ bool Enemy_RedGunner::CollideBlockerCondition(DWORD dt, PCOLLISIONEVENT e)
 	if (_jumpOff
 		&&	(	dynamic_cast<Game_Platform*>(e->obj)
 			||	dynamic_cast<Game_Blocker*>(e->obj)
-			||  dynamic_cast<Game_Water*>(e->obj)))
+			||  dynamic_cast<Game_Water*>(e->obj)
+			|| dynamic_cast<Obj_MovingStone*>(e->obj)))
 	{
 		return false;
 	}
