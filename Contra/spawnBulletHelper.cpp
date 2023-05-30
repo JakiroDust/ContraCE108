@@ -4,7 +4,7 @@ spawnBulletHelper*  spawnBulletHelper::instance = nullptr;
 unordered_map<int, vector<float>> spawnBulletHelper::initHelper()
 {
     unordered_map<int, vector<float>> map;
-    for (int i = 1; i <= 9; i++)
+    for (int i = 1; i <= 21; i++)
         map[i] = vector<float>(2, 0);
     map[DIR_TOP][X] = 0;
     map[DIR_TOP][Y] = 10;
@@ -29,6 +29,9 @@ unordered_map<int, vector<float>> spawnBulletHelper::initHelper()
 
     map[DIR_TOP_LEFT][X] = -7;
     map[DIR_TOP_LEFT][Y] = 7;
+
+    initTurret(map);
+
     return map;
 }
 spawnBulletHelper::spawnBulletHelper()
@@ -57,4 +60,43 @@ spawnBulletHelper::spawnBulletHelper()
     _spawnBulletHelper[MACHINE_GUNNER] = initHelper();
     _spawnBulletHelper[SHIELD_MACHINE_GUNNER] = initHelper();
 
+}
+
+void spawnBulletHelper::initTurret(unordered_map<int, vector<float>>& map)
+{
+    map[DIR_1_OCLOCK][X] = 0;
+    map[DIR_1_OCLOCK][Y] = 0;
+
+    map[DIR_2_OCLOCK][X] = 0;
+    map[DIR_2_OCLOCK][Y] = 0;
+
+    map[DIR_3_OCLOCK][X] = 0;
+    map[DIR_3_OCLOCK][Y] = 0;
+
+    map[DIR_4_OCLOCK][X] = 0;
+    map[DIR_4_OCLOCK][Y] = 0;
+
+    map[DIR_5_OCLOCK][X] = 0;
+    map[DIR_5_OCLOCK][Y] = 0;
+
+    map[DIR_6_OCLOCK][X] = 0;
+    map[DIR_6_OCLOCK][Y] = 0;
+
+    map[DIR_7_OCLOCK][X] = 0;
+    map[DIR_7_OCLOCK][Y] = 0;
+
+    map[DIR_8_OCLOCK][X] = 0;
+    map[DIR_8_OCLOCK][Y] = 0;
+
+    map[DIR_9_OCLOCK][X] = 0;
+    map[DIR_9_OCLOCK][Y] = 0;
+
+    map[DIR_10_OCLOCK][X] = 0;
+    map[DIR_10_OCLOCK][Y] = 0;
+
+    map[DIR_11_OCLOCK][X] = 0;
+    map[DIR_11_OCLOCK][Y] = 0;
+
+    map[DIR_12_OCLOCK][X] = 0;
+    map[DIR_12_OCLOCK][Y] = 0;
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include "Game_Spawner.h"
 
-#define SPAWNER_INFARY_S1_BASE_INTERVAL 1000
+#define SPAWNER_INFARY_S1_BASE_INTERVAL 1800
 
 class Spawner_Infary_Stage1 : public Game_Spawner
 {

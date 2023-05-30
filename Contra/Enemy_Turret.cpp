@@ -43,6 +43,8 @@ void Enemy_Turret::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	}
 
 	// ACTIVE MODE
+	State_Turret_Active* state = (State_Turret_Active*)(_state.get());
+
 	if (_state->StateId() != STATE_ACTIVE)
 	{
 		return;
@@ -55,18 +57,30 @@ void Enemy_Turret::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	else
 	{
 		_rotate_CD = TURRET_ROTATE_CD - (dt - _rotate_CD);
-		State_Turret_Active* state = (State_Turret_Active*)(_state.get());
-		if (_lockDir < state->CurrentAngle())
-			AddAction(DIK_RIGHT);
-		else if (_lockDir > state->CurrentAngle())
-			AddAction(DIK_LEFT);
+		// try moving clockwise
+		bool rotateLeft = true;
+		
+		int shiftValue = _lockDir - state->CurrentAngle();
+
+		if (shiftValue != 0)
+		{
+			// fix value if _lockDir is smaller than currentAngle (ex: 8h->2h)
+			if (shiftValue < 0)
+				shiftValue = 12 + shiftValue;
+
+			// if value > 6 mean moving counterclockwise is faster
+			if (shiftValue > 6)
+				rotateLeft = false;
+
+			if (rotateLeft)
+				AddAction(DIK_LEFT);
+			else
+				AddAction(DIK_RIGHT);
+		}
 	}
 
-	if (_GunReloadInterval > 0)
-		return;
-
 	// already locked target, perform shoot
-	if (_state->StateId() == STATE_WALK && _ActionQueue.size() > 0)
+	if (_GunReloadInterval == 0 && state->CurrentAngle() == _lockDir)
 		AddAction(DIK_O);
 
 	// lock target

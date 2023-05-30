@@ -3,6 +3,8 @@
 #include "State_Station_Hide.h"
 #include "State_Contra_Die.h"
 #include "State_Turret_Active.h"
+#include "State_Turret_Emerge.h"
+#include "State_Turret_Hide.h"
 
 void Game_StationEnemy::UpdateState()
 {
@@ -24,31 +26,40 @@ void Game_StationEnemy::UpdateState()
 	{
 		return;
 	}
-
-	switch (_state->NextState())
+	if (!_station_12DIR)
 	{
-	// 8 DIR
-	case STATE_IDLE:
-		_state.reset(new State_Station_Hide(this));
-		break;
-	case STATE_WALK:
-		_state.reset(new State_Station(this));
-		break;
-
-	// 12 DIR
-	case STATE_ACTIVE:
-		_state.reset(new State_Turret_Active(this));
-		break;
+		switch (_state->NextState())
+		{
+			// 8 DIR
+		case STATE_IDLE:
+			_state.reset(new State_Station_Hide(this));
+			break;
+		case STATE_WALK:
+			_state.reset(new State_Station(this));
+			break;
+		}
 	}
-
-
-
+	else
+	{
+		State_Turret_Base* state = (State_Turret_Base*)(_state.get());
+		// 12 DIR
+		switch (_state->NextState())
+		{
+		case STATE_ACTIVE:
+			_state.reset(new State_Turret_Active(this, state->CurrentAngle()));
+			break;
+		case STATE_EMERGE:
+			_state.reset(new State_Turret_Emerge(this, state->CurrentAngle()));
+			break;
+		case STATE_HIDE:
+			_state.reset(new State_Turret_Hide(this, state->CurrentAngle()));
+			break;
+		}
+	}
 }
 
 void Game_StationEnemy::KeyDownEventHandler(int KeyCode)
 {
-	Game_Enemy::KeyDownEventHandler(KeyCode);
-
 	if (_state == NULL)
 		return;
 
@@ -56,37 +67,75 @@ void Game_StationEnemy::KeyDownEventHandler(int KeyCode)
 	if (_ForceX != 0)
 		return;
 
-	if (dynamic_cast<State_Station*>(_state.get()))
+	if (!_station_12DIR)
 	{
-		State_Station* state = (State_Station*)_state.get();
+		// 8 DIR KeyEventHandler
+
+		Game_Enemy::KeyDownEventHandler(KeyCode);
+
+		if (dynamic_cast<State_Station*>(_state.get()))
+		{
+			State_Station* state = (State_Station*)_state.get();
+			switch (KeyCode)
+			{
+			case DIK_NUMPAD1:
+				state->KeyPressed_FaceDownLeft();
+				break;
+			case DIK_NUMPAD2:
+				state->KeyPressed_FaceDown();
+				break;
+			case DIK_NUMPAD3:
+				state->KeyPressed_FaceDownRight();
+				break;
+			case DIK_NUMPAD4:
+				state->KeyPressed_FaceLeft();
+				break;
+			case DIK_NUMPAD6:
+				state->KeyPressed_FaceRight();
+				break;
+			case DIK_NUMPAD7:
+				state->KeyPressed_FaceUpLeft();
+				break;
+			case DIK_NUMPAD8:
+				state->KeyPressed_FaceUp();
+				break;
+			case DIK_NUMPAD9:
+				state->KeyPressed_FaceUpRight();
+				break;
+			}
+		}
+	}
+	else
+	{
+		// 12 DIR KeyEventHandler
+
+		State_Turret_Base* state = (State_Turret_Base*)(_state.get());
 		switch (KeyCode)
 		{
-		case DIK_NUMPAD1:
-			state->KeyPressed_FaceDownLeft();
+		case DIK_LEFT:
+			state->KeyPressed_Left();
 			break;
-		case DIK_NUMPAD2:
-			state->KeyPressed_FaceDown();
+		case DIK_RIGHT:
+			state->KeyPressed_Right();
 			break;
-		case DIK_NUMPAD3:
-			state->KeyPressed_FaceDownRight();
+		case DIK_P:
+			state->KeyPressed_Hide();
 			break;
-		case DIK_NUMPAD4:
-			state->KeyPressed_FaceLeft();
-			break;
-		case DIK_NUMPAD6:
-			state->KeyPressed_FaceRight();
-			break;
-		case DIK_NUMPAD7:
-			state->KeyPressed_FaceUpLeft();
-			break;
-		case DIK_NUMPAD8:
-			state->KeyPressed_FaceUp();
-			break;
-		case DIK_NUMPAD9:
-			state->KeyPressed_FaceUpRight();
+		case DIK_O:
+			state->KeyPressed_Shoot();
 			break;
 		}
 	}
+
+}
+
+void Game_StationEnemy::KeyUpEventHandler(int KeyCode)
+{
+	if (!_station_12DIR)
+	{
+		Game_Enemy::KeyUpEventHandler(KeyCode);
+	}
+	// Station_12DIR doesn't have KeyUpEventHandler
 }
 
 #define SLOPE_DIR8_D1 0.41421f
@@ -173,7 +222,7 @@ int Game_StationEnemy::Detect_Dir12(float baseX, float baseY, float tarX, float 
 	// above d5, below d6
 	else if (tarY > d5_a * tarX + d5_b && tarY < d6_a * tarX + d6_b)  return DIR_4_OCLOCK;
 	// above d4, below d5
-	else if (tarY > d4_a * tarX + d4_b && tarY > d5_a * tarX + d5_b)  return DIR_5_OCLOCK;
+	else if (tarY > d4_a * tarX + d4_b && tarY < d5_a * tarX + d5_b)  return DIR_5_OCLOCK;
 	// below d3, below d4
 	else if (tarY < d3_a * tarX + d3_b && tarY < d4_a * tarX + d4_b)  return DIR_6_OCLOCK;
 	// above d3, below d2
@@ -187,6 +236,6 @@ int Game_StationEnemy::Detect_Dir12(float baseX, float baseY, float tarX, float 
 	// above d5, below d4
 	else if (tarY > d5_a * tarX + d5_b && tarY < d4_a * tarX + d4_b)  return DIR_11_OCLOCK;
 	// above d3, above d4
-	else if (tarY > d3_a * tarX + d3_b && tarY < d4_a * tarX + d4_b)  return DIR_12_OCLOCK;
+	else if (tarY > d3_a * tarX + d3_b && tarY > d4_a * tarX + d4_b)  return DIR_12_OCLOCK;
 	else return -1;
 }

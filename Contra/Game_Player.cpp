@@ -56,6 +56,7 @@ void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	// Wait for revive
 	if (_die && _revive_interval > dt)
 	{
+		_ghost = true;
 		_revive_interval -= dt;
 	}
 	else if (_die)

@@ -1,12 +1,12 @@
 #pragma once
 #include "Game_StationEnemy.h"
-#include "Equip_EnemyGun_Sniper.h"
+#include "Equip_EnemyGun_Turret.h"
 
 #define TURRET_BASE_WIDTH 32
 #define TURRET_BASE_HEIGHT 32
 #define TURRET_TRIGGER_RANGE_X 200
 #define TURRET_TRIGGER_RANGE_Y 200
-#define TURRET_ROTATE_CD 250
+#define TURRET_ROTATE_CD 400
 
 class Enemy_Turret : public Game_StationEnemy
 {
@@ -19,10 +19,11 @@ class Enemy_Turret : public Game_StationEnemy
 	public:
 		Enemy_Turret(float x, float y, int z) : Game_StationEnemy(x, y, z, TURRET_BASE_WIDTH, TURRET_BASE_HEIGHT)
 		{
-			_weapon = new Equip_EnemyGun_Sniper();
+			_weapon = new Equip_EnemyGun_Turret();
 			_hp = 15;
 			_station_12DIR = true;
 			_HardBody = true;
+			_gravity = false;
 		}
 		~Enemy_Turret() {
 			Game_StationEnemy::~Game_StationEnemy();

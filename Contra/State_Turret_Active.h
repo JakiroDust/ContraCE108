@@ -4,14 +4,12 @@
 class State_Turret_Active : public State_Turret_Base
 {
 	private:
-		int _currentAngle = 1;
-		
 		void Rotate_Clockwise()
 		{
 			if (_currentAngle < DIR_12_OCLOCK)
 				_currentAngle++;
 			else
-				_currentAngle = 1;
+				_currentAngle = DIR_1_OCLOCK;
 		}
 		void Rotate_Counterclockwise()
 		{
@@ -25,11 +23,9 @@ class State_Turret_Active : public State_Turret_Base
 		{
 			_currentAngle = angle;
 		}
-		int StateId() override { return STATE_EMERGE; }
+		int StateId() override { return STATE_ACTIVE; }
 		void Render() override;
 		void Update(DWORD dt) override;
-
-		int CurrentAngle() { return _currentAngle; }
 
 		void SetAngle(int angle)
 		{

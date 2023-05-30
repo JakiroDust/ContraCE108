@@ -11,7 +11,7 @@
 #define DIR_BOTTOM 8
 #define DIR_BOTTOM_RIGHT 9
 
-#define DIR_1_OCLOCK 11
+#define DIR_1_OCLOCK 10
 #define DIR_2_OCLOCK DIR_1_OCLOCK + 1
 #define DIR_3_OCLOCK DIR_1_OCLOCK + 2
 #define DIR_4_OCLOCK DIR_1_OCLOCK + 3
@@ -39,6 +39,9 @@ private:
     unordered_map<int, vector<float>> initHelper();
     spawnBulletHelper();
     static spawnBulletHelper* instance;
+
+    void initTurret(unordered_map<int, vector<float>>& map);
+
 public:
     static spawnBulletHelper* getInstance() {
         if (instance == nullptr) {

@@ -278,7 +278,39 @@
     <ClCompile Include="Equip_GunBase.cpp">
       <Filter>Source Files\Equip</Filter>
     </ClCompile>
-    <ClCompile Include="CAnimation_OneLoop.cpp" />
+    <ClCompile Include="CAnimation_OneLoop.cpp">
+      <Filter>Source Files\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Spawner_FallingStone.cpp">
+      <Filter>Source Files\Object\StaticObject</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Object_Active.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Object_Base.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Object_Emerge.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Object_Standby.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_FallingStone.cpp">
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_SpecialObject.cpp">
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Turret_Hide.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Turret_Emerge.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_EnemyGun_Turret.cpp">
+      <Filter>Source Files\Equip</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -578,18 +610,6 @@
     <ClInclude Include="Scene_Start.h">
       <Filter>Source Files\GameCore\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="State_Contra_Dive.h">
-      <Filter>Source Files\CharState</Filter>
-    </ClInclude>
-    <ClInclude Include="State_Contra_Lie.h">
-      <Filter>Source Files\CharState</Filter>
-    </ClInclude>
-    <ClInclude Include="State_Turret_Active.h">
-      <Filter>Source Files\CharState</Filter>
-    </ClInclude>
-    <ClInclude Include="State_Turret_Base.h">
-      <Filter>Source Files\CharState</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy_Cannon.h">
       <Filter>Source Files\Object\StaticObject</Filter>
     </ClInclude>
@@ -599,7 +619,51 @@
     <ClInclude Include="Obj_MovingStone.h">
       <Filter>Source Files\Object\MoveObject\Character</Filter>
     </ClInclude>
-    <ClInclude Include="CAnimation_OneLoop.h" />
+    <ClInclude Include="Obj_FallingStone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimation_OneLoop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spawner_FallingStone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_SpecialObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Object_Active.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Object_Base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Object_Emerge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Object_Standby.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Contra_Lie.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Turret_Active.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Contra_Dive.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Turret_Base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Turret_Hide.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Turret_Emerge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Equip_EnemyGun_Turret.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

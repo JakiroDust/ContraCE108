@@ -213,6 +213,9 @@ void Game_Enemy::OnNoCollision(DWORD dt)
 
 void Game_Enemy::OnCollisionWith(PCOLLISIONEVENT e)
 {
+	if (e->obj->IsDeleted())
+		return;
+
 	Game_Character::OnCollisionWith(e);
 
 	// Collision with deadly block
@@ -222,7 +225,7 @@ void Game_Enemy::OnCollisionWith(PCOLLISIONEVENT e)
 		return;
 	}
 	// Hit bullet
-	
+
 	// Laser
 	if (!_ghost && dynamic_cast<Obj_Bullet_L*>(e->obj))
 	{
@@ -238,6 +241,7 @@ void Game_Enemy::OnCollisionWith(PCOLLISIONEVENT e)
 		return;
 	}
 
+	// other bullet
 	if (!_ghost && dynamic_cast<Game_Bullet*>(e->obj))
 	{
 		Game_Bullet* bullet = ((Game_Bullet*)e->obj);
@@ -246,7 +250,7 @@ void Game_Enemy::OnCollisionWith(PCOLLISIONEVENT e)
 		{
 			if (!_immortal)
 				_hp -= bullet->Damage();
-
+			bullet->DeleteThis();
 		}
 	}
 }
