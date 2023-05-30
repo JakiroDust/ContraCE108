@@ -24,6 +24,7 @@ public:
 	// Render using screen position instead of world location
 	virtual void RenderOnScreen(float x, float y, BYTE RenderMode = RENDER_MODE_CENTER,float ratiox=1,float ratioy=1);
 	virtual CAnimation* Clone_Flip();
+	bool checkFinalFrame();
 };
 LPSPRITE _Clone_Flip_CSprite(LPSPRITE target, int new_id = -1111111);
 typedef CAnimation* LPANIMATION;

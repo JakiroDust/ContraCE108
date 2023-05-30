@@ -88,3 +88,8 @@ LPANIMATION CAnimation::Clone_Flip()
 	return clone;
 }
 
+bool CAnimation::checkFinalFrame()
+{
+	return (currentFrame == frames.size() - 1);
+}
+
