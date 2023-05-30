@@ -11,13 +11,13 @@
 class Enemy_Turret : public Game_StationEnemy
 {
 	private:
-		void UpdateState() override { Game_StationEnemy::UpdateState(); }
+		void UpdateState() override;
 		void UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects = NULL) override;
 		int _lockDir = 0;
 		DWORD _rotate_CD = 0;
 		void Cleaning() override { Game_StationEnemy::Cleaning(); }
 	public:
-		Enemy_Turret(float x, float y, int z) : Game_StationEnemy(x, y, z, TURRET_BASE_WIDTH, TURRET_BASE_HEIGHT)
+		Enemy_Turret(float x, float y, int z, bool faceLeft = true) : Game_StationEnemy(x, y, z, TURRET_BASE_WIDTH, TURRET_BASE_HEIGHT)
 		{
 			_weapon = new Equip_EnemyGun_Turret();
 			_hp = 15;
@@ -25,6 +25,7 @@ class Enemy_Turret : public Game_StationEnemy
 			_HardBody = true;
 			_gravity = false;
 			_DieDelay = 150;
+			_faceLeft = faceLeft;
 		}
 
 		~Enemy_Turret() {
@@ -43,4 +44,3 @@ class Enemy_Turret : public Game_StationEnemy
 		void GetCustomSize(int state, int& width, int& height) override;
 		void Execute_DieAction() override;
 };
-

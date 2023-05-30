@@ -256,7 +256,6 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationFrame.h" />
     <ClInclude Include="Animations.h" />
-    <ClInclude Include="AssetIDs.h" />
     <ClInclude Include="CAnimation_OneLoop.h" />
     <ClInclude Include="Contra_ANI_ID.h" />
     <ClInclude Include="Contra_GET_ANI.h" />

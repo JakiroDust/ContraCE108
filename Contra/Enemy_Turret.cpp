@@ -4,6 +4,7 @@
 #include "State_Contra_Base.h"
 #include "State_Contra_Die.h"
 #include "State_Turret_Active.h"
+#include "State_Turret_Hide.h"
 
 int Enemy_Turret::CharID()
 {
@@ -125,4 +126,17 @@ void Enemy_Turret::Shoot(int DIR)
 
 	_weapon->Fire(x, y, DIR);
 	return;
+}
+
+void Enemy_Turret::UpdateState()
+{
+	if (_state == NULL)
+	{
+		if (_faceLeft)
+			_state.reset(new State_Turret_Hide(this, DIR_9_OCLOCK));
+		else
+			_state.reset(new State_Turret_Hide(this, DIR_3_OCLOCK));
+	}
+
+	Game_StationEnemy::UpdateState();
 }

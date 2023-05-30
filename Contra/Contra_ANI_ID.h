@@ -138,12 +138,13 @@
 #define ANI_TURRET_360_IDLE	80980
 #pragma endregion
 
-#pragma region TURRET_LEFT
-#define ANI_TURRET_WIND_UP	77230
-#define ANI_TURRET_LEFT_9 77010
-#define ANI_TURRET_LEFT_10 77330
-#define ANI_TURRET_LEFT_11 77320
+#pragma region CANNON
+#define ANI_CANNON_WIND_UP_LEFT	77230
+#define ANI_CANNON_9 77010
+#define ANI_CANNON_10 77330
+#define ANI_CANNON_11 77320
 #pragma endregion
+
 //since sniper 
 #pragma region BUSH_SNIPER
 #define ANI_BUSH_SNIPER_WIND_UP 50000
