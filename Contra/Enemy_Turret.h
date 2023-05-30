@@ -4,8 +4,8 @@
 
 #define TURRET_BASE_WIDTH 32
 #define TURRET_BASE_HEIGHT 32
-#define TURRET_TRIGGER_RANGE_X 200
-#define TURRET_TRIGGER_RANGE_Y 200
+#define TURRET_TRIGGER_RANGE_X 120
+#define TURRET_TRIGGER_RANGE_Y 120
 #define TURRET_ROTATE_CD 400
 
 class Enemy_Turret : public Game_StationEnemy
@@ -17,21 +17,14 @@ class Enemy_Turret : public Game_StationEnemy
 		DWORD _rotate_CD = 0;
 		void Cleaning() override { Game_StationEnemy::Cleaning(); }
 	public:
-		Enemy_Turret(float x, float y, int z) : Game_StationEnemy(x, y, z, TURRET_BASE_WIDTH, TURRET_BASE_HEIGHT)
-		{
-			_weapon = new Equip_EnemyGun_Turret();
-			_hp = 15;
-			_station_12DIR = true;
-			_HardBody = true;
-			_gravity = false;
-		}
+		Enemy_Turret(float x, float y, int z);
 		~Enemy_Turret() {
 			Game_StationEnemy::~Game_StationEnemy();
 		};
 
 		void Shoot(int DIR) override;
 
-		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override { Game_StationEnemy::Update(dt, coObjects); }
+		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;
 		int CharID() override;
 		// When no collision has been detected (triggered by CCollision::Process)
 		void OnNoCollision(DWORD dt) override { Game_StationEnemy::OnNoCollision(dt); }
