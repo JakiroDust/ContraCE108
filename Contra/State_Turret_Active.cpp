@@ -63,7 +63,7 @@ void State_Turret_Active::Update(DWORD dt)
 
 void State_Turret_Active::KeyPressed_Hide()
 {
-	if (_nextState != -1)
+	if (_nextState == -1)
 		_nextState = STATE_HIDE;
 }
 

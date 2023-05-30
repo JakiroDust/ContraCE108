@@ -7,6 +7,7 @@ class Game_Enemy : public Game_Character
 		bool _BodyDamage = false;
 		// If true, this enemy can block laser bullet
 		bool _HardBody = false;
+		DWORD _DieDelay = 150;
 		void UpdateState() override;
 		virtual void UpdateBehavior(DWORD dt, vector<Game_ObjectBase*>* coObjects = NULL);
 		void KeyReleaseAll() override;

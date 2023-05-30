@@ -19,13 +19,14 @@ void Game_StationEnemy::UpdateState()
 
 	if (_die && !dynamic_cast<State_Contra_Die*>(_state.get()))
 	{
-		_state.reset(new State_Contra_Die(this, 20));
+		_state.reset(new State_Contra_Die(this, _DieDelay));
 		return;
 	}
 	else if (_die && dynamic_cast<State_Contra_Die*>(_state.get()))
 	{
 		return;
 	}
+
 	if (!_station_12DIR)
 	{
 		switch (_state->NextState())

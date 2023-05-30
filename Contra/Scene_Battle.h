@@ -22,6 +22,7 @@
 #include "Game_Bullet.h"
 #include "Enemy_Sniper.h"
 #include "Enemy_Turret.h"
+#include "Enemy_Cannon.h"
 #include "Spawner_Infary_Stage1.h"
 #include "Spawner_FallingStone.h"
 #include "Obj_MovingStone.h"

@@ -322,9 +322,6 @@
     <ClInclude Include="Animations.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AssetIDs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Contra_ANI_ID.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -610,15 +607,6 @@
     <ClInclude Include="Scene_Start.h">
       <Filter>Source Files\GameCore\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_Cannon.h">
-      <Filter>Source Files\Object\StaticObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Game_PlayerBlocker.h">
-      <Filter>Source Files\Object\MoveObject\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="Obj_MovingStone.h">
-      <Filter>Source Files\Object\MoveObject\Character</Filter>
-    </ClInclude>
     <ClInclude Include="Obj_FallingStone.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -662,6 +650,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Equip_EnemyGun_Turret.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj_MovingStone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_PlayerBlocker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Cannon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

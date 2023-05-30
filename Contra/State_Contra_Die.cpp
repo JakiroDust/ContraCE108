@@ -34,7 +34,9 @@ void State_Contra_Die::Update(DWORD dt)
 		_trigger = false;
 	}
 
-	if (_delayDelete >= dt)
+	if (_delayDelete >= INFINITE_DELAY)
+		return;
+	else if (_delayDelete >= dt)
 	{
 		_delayDelete -= dt;
 		return;

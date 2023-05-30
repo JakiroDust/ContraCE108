@@ -13,6 +13,6 @@ class State_Turret_Hide : public State_Turret_Base
 		void Render() override;
 		void Update(DWORD dt) override {}
 
-		virtual void KeyPressed_Hide() override;
+		virtual void KeyPressed_Shoot() override;
 };
 

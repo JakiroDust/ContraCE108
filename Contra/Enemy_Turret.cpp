@@ -2,7 +2,9 @@
 #include "Scene_Battle.h"
 #include "Contra_GET_ANI.h"
 #include "State_Contra_Base.h"
+#include "State_Contra_Die.h"
 #include "State_Turret_Active.h"
+#include "State_Turret_Hide.h"
 
 int Enemy_Turret::CharID()
 {
@@ -12,6 +14,11 @@ int Enemy_Turret::CharID()
 void Enemy_Turret::Execute_DieAction()
 {
 	Game_StationEnemy::Execute_DieAction();
+}
+
+void Enemy_Turret::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
+{
+	Game_StationEnemy::Update(dt, coObjects);
 }
 
 void Enemy_Turret::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
@@ -24,26 +31,37 @@ void Enemy_Turret::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 
 	if (_needRender == false)
 		return;
-
-	// out of active range
-	if (abs(player->x() - _x) > TURRET_TRIGGER_RANGE_X
-		&& abs(player->y() - _y) > TURRET_TRIGGER_RANGE_Y)
+	
+	// EMERGE MODE
+	if (_state->StateId() == STATE_EMERGE)
 	{
-		// No active. Perform hiding
-		if (_state->StateId() == STATE_ACTIVE)
-			AddAction(DIK_P);
 		return;
 	}
-	// inside active range
-	else if (_state->StateId() == STATE_HIDE)
+
+	// HIDING MODE
+	if (_state->StateId() == STATE_HIDE)
 	{
-		// Perform emerge
-		AddAction(DIK_P);
+		// in active range
+		if (abs(player->x() - _x) <= TURRET_TRIGGER_RANGE_X
+			&& abs(player->y() - _y) <= TURRET_TRIGGER_RANGE_Y)
+		{
+			AddAction(DIK_O);
+			return;
+		}
 		return;
 	}
 
 	// ACTIVE MODE
 	State_Turret_Active* state = (State_Turret_Active*)(_state.get());
+
+	// out of active range
+	if (abs(player->x() - _x) > TURRET_TRIGGER_RANGE_X
+		|| abs(player->y() - _y) > TURRET_TRIGGER_RANGE_Y)
+	{
+		// No active. Perform hiding
+		AddAction(DIK_P);
+		return;
+	}
 
 	if (_state->StateId() != STATE_ACTIVE)
 	{
@@ -108,4 +126,17 @@ void Enemy_Turret::Shoot(int DIR)
 
 	_weapon->Fire(x, y, DIR);
 	return;
+}
+
+void Enemy_Turret::UpdateState()
+{
+	if (_state == NULL)
+	{
+		if (_faceLeft)
+			_state.reset(new State_Turret_Hide(this, DIR_9_OCLOCK));
+		else
+			_state.reset(new State_Turret_Hide(this, DIR_3_OCLOCK));
+	}
+
+	Game_StationEnemy::UpdateState();
 }

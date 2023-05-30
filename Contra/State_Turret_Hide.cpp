@@ -17,7 +17,7 @@ void State_Turret_Hide::Render()
 		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_HIDE_RIGHT))->Render(x, y);
 }
 
-void State_Turret_Hide::KeyPressed_Hide()
+void State_Turret_Hide::KeyPressed_Shoot()
 {
 	_nextState = STATE_EMERGE;
 }
