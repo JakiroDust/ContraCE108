@@ -120,6 +120,34 @@
 #define ANI_MOVING_ROCK 96990
 #define ANI_FALLING_ROCK	96980
 
+#pragma region TURRET360
+#define ANI_TURRET_360_0 80500
+#define ANI_TURRET_360_1 80280
+#define ANI_TURRET_360_2 80270
+#define ANI_TURRET_360_3 80010
+#define ANI_TURRET_360_4 80250	
+#define ANI_TURRET_360_5 80260	
+#define ANI_TURRET_360_6 80290
+#define ANI_TURRET_360_7 80281
+#define ANI_TURRET_360_8 80271
+#define ANI_TURRET_360_9 80011
+#define ANI_TURRET_360_10 80251	
+#define ANI_TURRET_360_11 80261
+#pragma endregion
+
+#pragma region TURRET_LEFT
+#define ANI_TURRET_WIND_UP	77230
+#define ANI_TURRET_LEFT_9 77010
+#define ANI_TURRET_LEFT_10 77330
+#define ANI_TURRET_LEFT_11 77320
+#pragma endregion
+//since sniper 
+#pragma region BUSH_SNIPER
+#define ANI_BUSH_SNIPER_WIND_UP 50000
+#define ANI_BUSH_SNIPER_SHOOT	50010
+#pragma endregion
+
+
 #pragma region TERRAIN
 #define BLACK_BOX_ANI 99990
 #pragma endregion
