@@ -8,6 +8,7 @@
 100	textures\enemies_sprites\0.png
 101	textures\enemies_sprites\1.png
 102	textures\Contra-start.png
+103	textures\ContraSheet4.png
 #20	textures\misc.png
 
 
@@ -18,3 +19,4 @@ INFARY.txt
 SNIPER.txt
 WORD.txt
 bb.txt
+turret.txt
