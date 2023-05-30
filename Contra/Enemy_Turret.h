@@ -17,7 +17,16 @@ class Enemy_Turret : public Game_StationEnemy
 		DWORD _rotate_CD = 0;
 		void Cleaning() override { Game_StationEnemy::Cleaning(); }
 	public:
-		Enemy_Turret(float x, float y, int z);
+		Enemy_Turret(float x, float y, int z) : Game_StationEnemy(x, y, z, TURRET_BASE_WIDTH, TURRET_BASE_HEIGHT)
+		{
+			_weapon = new Equip_EnemyGun_Turret();
+			_hp = 15;
+			_station_12DIR = true;
+			_HardBody = true;
+			_gravity = false;
+			_DieDelay = 150;
+		}
+
 		~Enemy_Turret() {
 			Game_StationEnemy::~Game_StationEnemy();
 		};

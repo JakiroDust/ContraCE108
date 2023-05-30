@@ -5,16 +5,6 @@
 #include "State_Contra_Die.h"
 #include "State_Turret_Active.h"
 
-Enemy_Turret::Enemy_Turret(float x, float y, int z) : Game_StationEnemy(x, y, z, TURRET_BASE_WIDTH, TURRET_BASE_HEIGHT)
-{
-	_weapon = new Equip_EnemyGun_Turret();
-	_hp = 15;
-	_station_12DIR = true;
-	_HardBody = true;
-	_gravity = false;
-	_DieDelay = INFINITE_DELAY;
-}
-
 int Enemy_Turret::CharID()
 {
 	return TURRET;
@@ -50,9 +40,9 @@ void Enemy_Turret::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	// HIDING MODE
 	if (_state->StateId() == STATE_HIDE)
 	{
-		// out of active range
+		// in active range
 		if (abs(player->x() - _x) <= TURRET_TRIGGER_RANGE_X
-			|| abs(player->y() - _y) <= TURRET_TRIGGER_RANGE_Y)
+			&& abs(player->y() - _y) <= TURRET_TRIGGER_RANGE_Y)
 		{
 			AddAction(DIK_O);
 			return;
