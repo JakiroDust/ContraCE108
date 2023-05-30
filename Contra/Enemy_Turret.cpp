@@ -25,13 +25,26 @@ void Enemy_Turret::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	if (_needRender == false)
 		return;
 
-	// active range
+	// out of active range
 	if (abs(player->x() - _x) > TURRET_TRIGGER_RANGE_X
 		&& abs(player->y() - _y) > TURRET_TRIGGER_RANGE_Y)
 	{
 		// No active. Perform hiding
-		if (_state->StateId() != STATE_IDLE)
+		if (_state->StateId() == STATE_ACTIVE)
 			AddAction(DIK_P);
+		return;
+	}
+	// inside active range
+	else if (_state->StateId() == STATE_HIDE)
+	{
+		// Perform emerge
+		AddAction(DIK_P);
+		return;
+	}
+
+	// ACTIVE MODE
+	if (_state->StateId() != STATE_ACTIVE)
+	{
 		return;
 	}
 
@@ -42,14 +55,11 @@ void Enemy_Turret::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	else
 	{
 		_rotate_CD = TURRET_ROTATE_CD - (dt - _rotate_CD);
-		if (_state->StateId() == STATE_ACTIVE)
-		{
-			State_Turret_Active* state = (State_Turret_Active*)(_state.get());
-			if (_lockDir < state->CurrentAngle())
-				AddAction(DIK_RIGHT);
-			else if (_lockDir > state->CurrentAngle())
-				AddAction(DIK_LEFT);
-		}
+		State_Turret_Active* state = (State_Turret_Active*)(_state.get());
+		if (_lockDir < state->CurrentAngle())
+			AddAction(DIK_RIGHT);
+		else if (_lockDir > state->CurrentAngle())
+			AddAction(DIK_LEFT);
 	}
 
 	if (_GunReloadInterval > 0)

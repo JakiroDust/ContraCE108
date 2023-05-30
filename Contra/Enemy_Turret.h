@@ -22,6 +22,7 @@ class Enemy_Turret : public Game_StationEnemy
 			_weapon = new Equip_EnemyGun_Sniper();
 			_hp = 15;
 			_station_12DIR = true;
+			_HardBody = true;
 		}
 		~Enemy_Turret() {
 			Game_StationEnemy::~Game_StationEnemy();
