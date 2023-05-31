@@ -153,6 +153,7 @@
 
 #pragma region EXPLO
 #define ANI_EXPLOSION_CONSTRUCT	80550
+#define ANI_EXPLOSION_BULLET	80550
 #define ANI_EXPLOSION_ARMY	20550
 #pragma endregion
 
