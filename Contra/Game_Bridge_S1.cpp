@@ -28,7 +28,8 @@ void Game_Bridge_S1::Render()
 		CAnimations* animations = CAnimations::GetInstance();
 		float x, y;
 		GetCenterPoint(x, y);
-		animations->Get(_SpriteId)->Render(x, y);
+
+		_Render(_SpriteId, x, y);
 	}
 }
 

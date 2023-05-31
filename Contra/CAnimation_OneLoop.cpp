@@ -26,30 +26,30 @@ void CAnimation_OneLoop::RenderOnScreen(float x, float y, BYTE RenderMode, float
 	frames[currentFrame]->GetSprite()->DrawOnScreen(x, y, RenderMode, ratiox, ratioy);
 }
 
-void CAnimation_OneLoop::Render(float x, float y)
+void CAnimation_OneLoop::Render(float x, float y, ULONGLONG& curFrameTime, int& curFrame)
 {
 	ULONGLONG now = GetTickCount64();
-	if (currentFrame == -1)
+	if (curFrame == -1)
 	{
-		currentFrame = 0;
-		lastFrameTime = now;
+		curFrame = 0;
+		curFrameTime = now;
 	}
-	else if (currentFrame == frames.size() - 1)
+	else if (curFrame == frames.size() - 1)
 	{
 
 	}
 	else
 	{
-		DWORD t = frames[currentFrame]->GetTime();
-		if (now - lastFrameTime > t)
+		DWORD t = frames[curFrame]->GetTime();
+		if (now - curFrameTime > t)
 		{
-			currentFrame++;
-			lastFrameTime = now;
+			curFrame++;
+			curFrameTime = now;
 		}
 
 	}
 
-	frames[currentFrame]->GetSprite()->Draw(x, y);
+	frames[curFrame]->GetSprite()->Draw(x, y);
 }
 
 LPANIMATION CAnimation_OneLoop::Clone_Flip()

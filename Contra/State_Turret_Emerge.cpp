@@ -12,9 +12,9 @@ void State_Turret_Emerge::Render()
 	x += ox;
 	y += oy;
 	if (obj->IsFaceLeft())
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_EMERGE_LEFT))->Render(x, y);
+		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_EMERGE_LEFT),x,y);
 	else 
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_EMERGE_RIGHT))->Render(x, y);
+		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_EMERGE_RIGHT),x,y);
 }
 
 void State_Turret_Emerge::Update(DWORD dt)
@@ -22,13 +22,13 @@ void State_Turret_Emerge::Update(DWORD dt)
 	if (_nextState != -1)
 		return;
 	Game_Character* obj = (Game_Character*)_srcObj;
-	CAnimations* animations = CAnimations::GetInstance();
-	LPANIMATION ani = NULL;
+
+	int curAni;
 	if (obj->IsFaceLeft())
-		ani = animations->Get(Get_CharANI_ID(obj->CharID(), ACT_EMERGE_LEFT));
+		curAni=Get_CharANI_ID(obj->CharID(), ACT_EMERGE_LEFT);
 	else
-		ani = animations->Get(Get_CharANI_ID(obj->CharID(), ACT_EMERGE_RIGHT));
-	if (ani->checkFinalFrame())
+		curAni = Get_CharANI_ID(obj->CharID(), ACT_EMERGE_RIGHT);
+	if (obj->atFinalFrame(curAni))
 	{
 		if (waitForChange > dt)
 		{

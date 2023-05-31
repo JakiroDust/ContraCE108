@@ -13,11 +13,11 @@ void State_Contra_Jump::Render()
 	y += oy;
 	if (obj->IsFaceLeft())
 	{
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_JUMP_LEFT))->Render(x, y);
+		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_JUMP_LEFT),x,y);
 	}
 	else
 	{
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_JUMP_RIGHT))->Render(x, y);
+		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_JUMP_RIGHT),x,y);
 	}
 }
 

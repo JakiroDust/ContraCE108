@@ -28,27 +28,27 @@ void CAnimation::Add(int spriteId, DWORD time)
 	frames.push_back(frame);
 }
 
-void CAnimation::Render(float x, float y)
+void CAnimation::Render(float x, float y,ULONGLONG& curFrameTime,int&curFrame)
 {
 	ULONGLONG now = GetTickCount64();
-	if (currentFrame == -1)
+	if (curFrame == -1)
 	{
-		currentFrame = 0;
-		lastFrameTime = now;
+		curFrame = 0;
+		curFrameTime = now;
 	}
 	else
 	{
-		DWORD t = frames[currentFrame]->GetTime();
-		if (now - lastFrameTime > t)
+		DWORD t = frames[curFrame]->GetTime();
+		if (now - curFrameTime > t)
 		{
-			currentFrame++;
-			lastFrameTime = now;
-			if (currentFrame == frames.size()) currentFrame = 0;
+			curFrame++;
+			curFrameTime = now;
+			if (curFrame == frames.size()) curFrame = 0;
 		}
 
 	}
 
-	frames[currentFrame]->GetSprite()->Draw(x, y);
+	frames[curFrame]->GetSprite()->Draw(x, y);
 }
 void CAnimation::RenderOnScreen(float x, float y, BYTE RenderMode,float ratiox,float ratioy)
 {
@@ -88,8 +88,8 @@ LPANIMATION CAnimation::Clone_Flip()
 	return clone;
 }
 
-bool CAnimation::checkFinalFrame()
+bool CAnimation::checkFinalFrame(int&curFrame)
 {
-	return (currentFrame == frames.size() - 1);
+	return (curFrame == frames.size() - 1);
 }
 

@@ -12,7 +12,7 @@ void State_Object_Emerge::Render()
 	y += oy;
 
 	if (obj->IsFaceLeft())
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_EMERGE_LEFT))->Render(x, y);
+		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_EMERGE_LEFT),x,y);
 	else
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_EMERGE_RIGHT))->Render(x, y);
+		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_EMERGE_RIGHT),x,y);
 }

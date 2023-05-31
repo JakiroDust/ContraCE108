@@ -123,5 +123,12 @@ class Game_ObjectBase
 
 		virtual void DeleteThis() { _isDeleted = true; }
 		bool IsDeleted() { return _isDeleted; }
+	private:
+		int curFrame;
+		ULONGLONG curFrameTime;
+		int curAni;
+	public:
+		void _Render(int aniId, float x=-1, float y=-1);
+		bool atFinalFrame(int curAni=-99);
 };
 

@@ -5,7 +5,7 @@ class CAnimation_OneLoop :
 {
 
 	void RenderOnScreen(float x, float y, BYTE RenderMode, float ratiox, float ratioy) override;
-	void Render(float x, float y) override;
+	void Render(float x, float y, ULONGLONG& curFrameTime, int& curFrame) override;
 	LPANIMATION Clone_Flip() override;
 
 public:

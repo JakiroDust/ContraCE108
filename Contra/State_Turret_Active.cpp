@@ -13,40 +13,40 @@ void State_Turret_Active::Render()
 	switch (_currentAngle)
 	{
 	case DIR_1_OCLOCK:
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_1_OCLOCK))->Render(x, y);
+		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_1_OCLOCK),x,y);
 		break;
 	case DIR_2_OCLOCK:
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_2_OCLOCK))->Render(x, y);
+		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_2_OCLOCK),x,y);
 		break;
 	case DIR_3_OCLOCK:
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_3_OCLOCK))->Render(x, y);
+		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_3_OCLOCK),x,y);
 		break;
 	case DIR_4_OCLOCK:
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_4_OCLOCK))->Render(x, y);
+		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_4_OCLOCK),x,y);
 		break;
 	case DIR_5_OCLOCK:
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_5_OCLOCK))->Render(x, y);
+		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_5_OCLOCK),x,y);
 		break;
 	case DIR_6_OCLOCK:
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_6_OCLOCK))->Render(x, y);
+		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_6_OCLOCK),x,y);
 		break;
 	case DIR_7_OCLOCK:
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_7_OCLOCK))->Render(x, y);
+		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_7_OCLOCK),x,y);
 		break;
 	case DIR_8_OCLOCK:
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_8_OCLOCK))->Render(x, y);
+		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_8_OCLOCK),x,y);
 		break;
 	case DIR_9_OCLOCK:
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_9_OCLOCK))->Render(x, y);
+		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_9_OCLOCK),x,y);
 		break;
 	case DIR_10_OCLOCK:
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_10_OCLOCK))->Render(x, y);
+		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_10_OCLOCK),x,y);
 		break;
 	case DIR_11_OCLOCK:
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_11_OCLOCK))->Render(x, y);
+		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_11_OCLOCK),x,y);
 		break;
 	case DIR_12_OCLOCK:
-		animations->Get(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_12_OCLOCK))->Render(x, y);
+		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_ANGLE_12_OCLOCK),x,y);
 		break;
 	}
 }

@@ -15,7 +15,7 @@ public:
 			CAnimations* animations = CAnimations::GetInstance();
 			float x, y;
 			GetCenterPoint(x, y);
-			animations->Get(_SpriteId)->Render(x, y);
+			_Render(_SpriteId,x, y);
 		}
 
 	}

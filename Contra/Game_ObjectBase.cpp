@@ -54,13 +54,7 @@ void Game_ObjectBase::SetHeight(int height, int mode)
 void Game_ObjectBase::Render()
 {
 	RenderHitbox();
-	if (_SpriteId > 0)
-	{
-		CAnimations* animations = CAnimations::GetInstance();
-		float x, y;
-		GetCenterPoint(x, y);
-		animations->Get(_SpriteId)->Render(x, y);
-	}
+	_Render(_SpriteId);
 
 }
 
@@ -107,6 +101,33 @@ void Game_ObjectBase::OnNoCollision(DWORD dt)
 void Game_ObjectBase::OnCollisionWith(PCOLLISIONEVENT e)
 {
 
+}
+
+void Game_ObjectBase::_Render(int aniId, float x, float y)
+{
+	if (aniId > 0)
+	{
+		CAnimations* animations = CAnimations::GetInstance();
+		if(x==-1&&y==-1)
+		GetCenterPoint(x, y);
+		if (curAni != aniId)
+		{
+			curFrameTime = 0;
+			curFrame = 0;
+			curAni = aniId;
+		}
+		animations->Get(aniId)->Render(x, y,curFrameTime,curFrame);
+	}
+}
+
+bool Game_ObjectBase::atFinalFrame(int curAni)
+{
+	if (curAni == -99)
+		curAni = this->curAni;
+	else
+		if (curAni != this->curAni)
+			return false;
+	return CAnimations::GetInstance()->Get(curAni)->checkFinalFrame(curFrame);
 }
 
 void Game_ObjectBase::UpdatePosition(DWORD dt)

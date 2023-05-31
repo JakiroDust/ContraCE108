@@ -23,16 +23,16 @@ void State_Contra_Idle::Render()
 	if (obj->IsFaceLeft())
 	{
 		if (HoldKeyUp)
-			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_LOOK_UP_LEFT))->Render(x, y);
+			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_LOOK_UP_LEFT),x,y);
 		else
-			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_IDLE_LEFT))->Render(x, y);
+			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_IDLE_LEFT),x,y);
 	}
 	else
 	{
 		if (HoldKeyUp)
-			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_LOOK_UP_RIGHT))->Render(x, y);
+			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_LOOK_UP_RIGHT),x,y);
 		else
-			animations->Get(Get_CharANI_ID(obj->CharID(), ACT_IDLE_RIGHT))->Render(x, y);
+			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_IDLE_RIGHT),x,y);
 	}
 }
 
