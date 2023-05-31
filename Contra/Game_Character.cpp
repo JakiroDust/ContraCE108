@@ -30,6 +30,7 @@ void Game_Character::OnNoCollision(DWORD dt)
 	Game_MovableObject::OnNoCollision(dt);
 }
 
+#define CLIMP_UP_TERRAIN_SCALE_Y_X 0.25f
 
 void Game_Character::OnCollisionWith(PCOLLISIONEVENT e)
 {
@@ -37,6 +38,7 @@ void Game_Character::OnCollisionWith(PCOLLISIONEVENT e)
 	if (_onGround && dynamic_cast<Game_Water*>(e->obj))
 	{
 		_swim = true;
+		return;
 	} 
 
 	//if (dynamic_cast<Game_Platform*>(e->obj)
@@ -55,52 +57,22 @@ void Game_Character::OnCollisionWith(PCOLLISIONEVENT e)
 		return;
 	}
 
-	if (e->nx != 0 && _onGround && dynamic_cast<Game_Terrain*>(e->obj) && !dynamic_cast<Game_Water*>(e->obj)
+	// climb up
+	if (e->nx != 0 && _onGround && dynamic_cast<Game_Terrain*>(e->obj)
 		&& e->obj->y() - footerY() <= CHARACTER_JUMP_ON_HEIGHT)
 	{
-		if (_swim)
+		// character is under water
+		teleport(_x, e->obj->y() + _height + CHARACTER_JUMP_ON_HEIGHT / 3.0f);
+		float forceXValue = abs(e->obj->y() - footerY()) / CLIMP_UP_TERRAIN_SCALE_Y_X;
+		if (e->nx < 0)
 		{
-			_jumpForce = (e->obj->y() - footerY()) + CHARACTER_JUMP_ON_HEIGHT / 3.0f;
-			_jumpForce = floorf(_jumpForce);
-			if (e->nx < 0)
-			{
-				_ForceX = 10;
-			}
-			else
-			{
-				_ForceX = -10;
-			}
+			_ForceX = forceXValue;
 		}
 		else
 		{
-			_jumpForce = (e->obj->y() - footerY()) + 4;
-			_jumpForce = floorf(_jumpForce);
-			if (e->nx < 0)
-			{
-				_ForceX = 1;
-			}
-			else
-			{
-				_ForceX = -1;
-			}
+			_ForceX = -forceXValue;
 		}
 	}
-}
-
-void Game_Character::Shoot()
-{
-	return;
-	/*
-	float x, y;
-	this->GetCenterPoint(x, y);
-	float vx=0, vy=0;
-	//GET DIR
-	int dir = DIR_TOP;
-	x += _spawnBulletHelper[dir][X];
-	y += _spawnBulletHelper[dir][Y];
-	*/
-	//Get gun or not or whatever 
-	// gun.gunshoot(x,y,dir)
 }
 
 void Game_Character::Shoot(int DIR)

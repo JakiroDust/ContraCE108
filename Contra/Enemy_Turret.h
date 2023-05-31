@@ -4,8 +4,8 @@
 
 #define TURRET_BASE_WIDTH 32
 #define TURRET_BASE_HEIGHT 32
-#define TURRET_TRIGGER_RANGE_X 120
-#define TURRET_TRIGGER_RANGE_Y 120
+#define TURRET_TRIGGER_RANGE_X 150
+#define TURRET_TRIGGER_RANGE_Y 200
 #define TURRET_ROTATE_CD 400
 
 class Enemy_Turret : public Game_StationEnemy
@@ -20,7 +20,7 @@ class Enemy_Turret : public Game_StationEnemy
 		Enemy_Turret(float x, float y, int z, bool faceLeft = true) : Game_StationEnemy(x, y, z, TURRET_BASE_WIDTH, TURRET_BASE_HEIGHT)
 		{
 			_weapon = new Equip_EnemyGun_Turret();
-			_hp = 15;
+			_hp = 12;
 			_station_12DIR = true;
 			_HardBody = true;
 			_gravity = false;

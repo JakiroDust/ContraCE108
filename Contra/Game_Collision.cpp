@@ -31,14 +31,14 @@ void Game_Collision::SweptAABB(
 	t = -1.0f;			// no collision
 	nx = ny = 0;
 
-	// check if move object has already intersected with static object. 
-	if (ml <= sr && mr >= sl && mt <= sb && mb >= st)
+	 //check if move object has already intersected with static object. 
+	if (ml <= sr && mr >= sl && mt >= sb && mb <= st)
 	{
 		t = 0;
-		ny = 0.0f;
-		dx > 0 ? nx = -1.0f : nx = 1.0f;
-		nx = 0.0f;
-		dy > 0 ? ny = -1.0f : ny = 1.0f;
+		if (dx != 0)
+			dx > 0 ? nx = -1.0f : nx = 1.0f;
+		if (dy != 0)
+			dy > 0 ? ny = -1.0f : ny = 1.0f;
 		return;
 	}
 
@@ -46,11 +46,11 @@ void Game_Collision::SweptAABB(
 	// Broad-phase test 
 	//
 	float bl = dx > 0 ? ml : ml + dx;
-	float bt = dy > 0 ? mt : mt + dy;
+	float bt = dy > 0 ? mt + dy : mt;
 	float br = dx > 0 ? mr + dx : mr;
-	float bb = dy > 0 ? mb + dy : mb;
+	float bb = dy > 0 ? mb : mb + dy;
 
-	if (br < sl || bl > sr || bb < st || bt > sb) return;
+	if (br < sl || bl > sr || bb > st || bt < sb) return;
 
 
 	if (dx == 0 && dy == 0) return;		// moving object is not moving > obvious no collision
@@ -69,13 +69,13 @@ void Game_Collision::SweptAABB(
 
 	if (dy > 0)
 	{
-		dy_entry = st - mb;
-		dy_exit = sb - mt;
+		dy_entry = mt - st;
+		dy_exit = mt - sb;
 	}
 	else if (dy < 0)
 	{
-		dy_entry = sb - mt;
-		dy_exit = st - mb;
+		dy_entry = st - mb;
+		dy_exit = sb - mt;
 	}
 
 	if (dx == 0)
@@ -159,13 +159,13 @@ PCOLLISIONEVENT Game_Collision::SweptAABB(PGAMEOBJECT objSrc, DWORD dt, PGAMEOBJ
 	objSrc->GetBoundingBox(ml, mt, mr, mb);
 	objDest->GetBoundingBox(sl, st, sr, sb);
 
-	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
-	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
-	mt = scene->MapHeight()  - mt;
-	mb = scene->MapHeight() - mb;
-	st = scene->MapHeight() - st;
-	sb = scene->MapHeight() - sb;
-	dy = -dy;
+	//Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
+	//Game_Screen* screen = ScreenManager::GetInstance()->Screen();
+	//mt = scene->MapHeight()  - mt;
+	//mb = scene->MapHeight() - mb;
+	//st = scene->MapHeight() - st;
+	//sb = scene->MapHeight() - sb;
+	//dy = -dy;
 
 	//// These codes are used to debug Player collision
 	//if (dynamic_cast<Game_Player*>(objSrc) && dynamic_cast<Game_SweeperBlock*>(objDest))
@@ -180,7 +180,7 @@ PCOLLISIONEVENT Game_Collision::SweptAABB(PGAMEOBJECT objSrc, DWORD dt, PGAMEOBJ
 		t, nx, ny
 	);
 
-	Game_CollisionEvent* e = new Game_CollisionEvent(t, nx, -ny, dx, dy, objDest, objSrc);
+	Game_CollisionEvent* e = new Game_CollisionEvent(t, nx, ny, dx, dy, objDest, objSrc);
 	return e;
 }
 
@@ -278,18 +278,6 @@ void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* 
 		objSrc->GetSpeed(vx, vy);
 		dx = vx * dt;
 		dy = vy * dt;
-
-		//// Checking col blocking object Condition
-		//if (colX != NULL && !colX->obj->BlockingCondition(dt, colX))
-		//{
-		//	delete colX;
-		//	colX = NULL;
-		//}
-		//if (colY != NULL && !colY->obj->BlockingCondition(dt, colY))
-		//{
-		//	delete colY;
-		//	colY = NULL;
-		//}
 
 		if (colX != NULL && colY != NULL)
 		{

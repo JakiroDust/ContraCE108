@@ -60,7 +60,6 @@ public:
 	//-------------------------------------------------------------------------------
 
 	// Character action
-	virtual void Shoot();
 	virtual void Shoot(int DIR);
 	virtual void Shoot(float x, float y);
 	virtual bool IsFullAutomaticGun() { return _weapon != NULL && _weapon->IsAuto();}

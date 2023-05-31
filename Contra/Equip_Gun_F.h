@@ -9,7 +9,7 @@ class Equip_Gun_F : public Equip_GunBase
 		Equip_Gun_F()
 		{
 			_isAuto = false;
-			_FireRate = 180;
+			_FireRate = 250;
 		}
 
 		void Fire(float& x, float& y, float& vx, float& vy, bool type = false) override;

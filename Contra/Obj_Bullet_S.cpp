@@ -4,9 +4,9 @@
 void Obj_Bullet_S::Init()
 {
 	_owner->Use_Bullet();
-	_moveSpd = 0.2f;
+	_moveSpd = 0.25f;
 	_OwnerID = B_OWNER_PLAYER;
-	_Damage = 4;
+	_Damage = 3;
 	_SpriteId = CONTRA_BULLET_ANI_BASE_LEFT;
 }
 

@@ -21,6 +21,8 @@ class Game_MovableObject : public Game_ObjectBase
 		float _jumpHeight = STANDARD_JUMP_HEIGHT;
 		float _external_vx = 0;
 		float _external_vy = 0;
+		float _tele_X = 0;
+		float _tele_Y = 0;
 
 		/// state
 
@@ -93,10 +95,6 @@ class Game_MovableObject : public Game_ObjectBase
 		// alternative vertical position.
 		// It will be determine based on the point in the middle of sprite footer.
 		float footerY();
-		// Convert mapX to real x.
-		float realX(float x);
-		// Convert mapY to real y.
-		float realY(float y);
 
 		bool IsFaceLeft() { return _faceLeft; }
 		bool IsOnGround() { return _onGround; }
@@ -136,7 +134,6 @@ class Game_MovableObject : public Game_ObjectBase
 
 
 		// Override teleport function.
-		// Use entity x,y pos instead of real x,y pos.
 		virtual void teleport(float x, float y);
 		virtual void moveLeft();
 		virtual void moveRight();
