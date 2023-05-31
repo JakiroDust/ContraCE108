@@ -151,6 +151,11 @@
 #define ANI_BUSH_SNIPER_SHOOT	50010
 #pragma endregion
 
+#pragma region EXPLO
+#define ANI_EXPLOSION_CONSTRUCT	80550
+#define ANI_EXPLOSION_ARMY	20550
+#pragma endregion
+
 
 #pragma region TERRAIN
 #define BLACK_BOX_ANI 99990
