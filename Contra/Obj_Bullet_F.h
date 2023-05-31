@@ -5,7 +5,7 @@
 #define BULLET_F_HEIGHT 12
 #define BULLET_F_DIR_CLOCKWISE 0
 #define BULLET_F_DIR_COUNTER_CLOCKWISE 1
-#define BULLET_F_ANGULAR_V_MULTIPLY 2.0f
+#define BULLET_F_ANGULAR_V_MULTIPLY 3.0f
 
 class Obj_Bullet_F : public Game_Bullet
 {
@@ -19,9 +19,9 @@ class Obj_Bullet_F : public Game_Bullet
 		void Init(bool direct)
 		{
 			_direct = direct;
-			_moveSpd = 0.15f;
+			_moveSpd = 0.2f;
 			_OwnerID = B_OWNER_PLAYER;
-			_Damage = 5;
+			_Damage = 4;
 			_SpriteId = CONTRA_BULLET_ANI_BASE_LEFT;
 		}
 		void SetupMovement();

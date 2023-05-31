@@ -17,16 +17,6 @@ float Game_MovableObject::footerY()
 	return _y - _height + 1;
 }
 
-float Game_MovableObject::realX(float x)
-{
-	return floorf(x - ceilf((float)_width / 2) + 1);
-}
-
-float Game_MovableObject::realY(float y)
-{
-	return floorf(y + _height - 1);
-}
-
 void Game_MovableObject::moveLeft()
 {
 	if (!_lockFace)
@@ -93,8 +83,8 @@ void Game_MovableObject::UpdateJumpState(DWORD dt)
 
 void Game_MovableObject::teleport(float x, float y)
 {
-	_x = realX(x);
-	_y = realY(y);
+	_tele_X = x;
+	_tele_Y = y;
 }
 
 void Game_MovableObject::ResetStateParams()
@@ -184,6 +174,15 @@ void Game_MovableObject::UpdateDefault(DWORD dt)
 				_ForceY = 0;
 			}
 		}
+	}
+
+	// perform teleport
+	if (_tele_X != 0 || _tele_Y != 0)
+	{
+		_x = _tele_X;
+		_y = _tele_Y;
+		_tele_X = 0;
+		_tele_Y = 0;
 	}
 }
 

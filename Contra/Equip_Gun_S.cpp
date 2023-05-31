@@ -56,6 +56,18 @@ void Equip_Gun_S::Fire(float& x, float& y, int DIR)
 
 	if (remain_bullet > 0)
 	{
+		bullets.push_back(unique_ptr<Obj_Bullet_S>(new Obj_Bullet_S(this, x, y, B_VALUE_Z, baseAngle - 10)));
+		remain_bullet--;
+	}
+
+	if (remain_bullet > 0)
+	{
+		bullets.push_back(unique_ptr<Obj_Bullet_S>(new Obj_Bullet_S(this, x, y, B_VALUE_Z, baseAngle + 10)));
+		remain_bullet--;
+	}
+
+	if (remain_bullet > 0)
+	{
 		bullets.push_back(unique_ptr<Obj_Bullet_S>(new Obj_Bullet_S(this, x, y, B_VALUE_Z, baseAngle - 20)));
 		remain_bullet--;
 	}
@@ -63,18 +75,6 @@ void Equip_Gun_S::Fire(float& x, float& y, int DIR)
 	if (remain_bullet > 0)
 	{
 		bullets.push_back(unique_ptr<Obj_Bullet_S>(new Obj_Bullet_S(this, x, y, B_VALUE_Z, baseAngle + 20)));
-		remain_bullet--;
-	}
-
-	if (remain_bullet > 0)
-	{
-		bullets.push_back(unique_ptr<Obj_Bullet_S>(new Obj_Bullet_S(this, x, y, B_VALUE_Z, baseAngle - 40)));
-		remain_bullet--;
-	}
-
-	if (remain_bullet > 0)
-	{
-		bullets.push_back(unique_ptr<Obj_Bullet_S>(new Obj_Bullet_S(this, x, y, B_VALUE_Z, baseAngle + 40)));
 		remain_bullet--;
 	}
 

@@ -19,5 +19,15 @@ void State_Turret_Hide::Render()
 
 void State_Turret_Hide::KeyPressed_Shoot()
 {
-	_nextState = STATE_EMERGE;
+	Game_Character* obj = (Game_Character*)_srcObj;
+	CAnimations* animations = CAnimations::GetInstance();
+	LPANIMATION ani = NULL;
+	if (obj->IsFaceLeft())
+		ani = animations->Get(Get_CharANI_ID(obj->CharID(), ACT_HIDE_LEFT));
+	else
+		ani = animations->Get(Get_CharANI_ID(obj->CharID(), ACT_HIDE_RIGHT));
+	if (ani->checkFinalFrame())
+	{
+		_nextState = STATE_EMERGE;
+	}
 }
