@@ -434,6 +434,8 @@ void Scene_Battle::_ParseOBject(string line)
                     break;
                 case SNIPER: obj.reset(new Enemy_Sniper(x, y, Z_INDEX_ENEMY));
                     break;
+                case SNEAKY_SNIPER: obj.reset(new Enemy_SneakSniper(x, y, Z_INDEX_ENEMY));
+                    break;
                 case TURRET: obj.reset(new Enemy_Turret(x, y, Z_INDEX_ENEMY, param1));
                     break;
                 case CANNON: obj.reset(new Enemy_Cannon(x, y, Z_INDEX_ENEMY, param1));

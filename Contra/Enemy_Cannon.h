@@ -1,6 +1,6 @@
 #pragma once
 #include "Game_StationEnemy.h"
-#include "Equip_EnemyGun_Turret.h"
+#include "Equip_EnemyGun_Cannon.h"
 
 #define CANNON_BASE_WIDTH 32
 #define CANNON_BASE_HEIGHT 32
@@ -20,7 +20,7 @@ class Enemy_Cannon : public Game_StationEnemy
 	public:
 		Enemy_Cannon(float x, float y, int z, bool faceLeft = true) : Game_StationEnemy(x, y, z, CANNON_BASE_WIDTH, CANNON_BASE_HEIGHT)
 		{
-			_weapon = new Equip_EnemyGun_Turret();
+			_weapon = new Equip_EnemyGun_Cannon();
 			_hp = 20;
 			_station_12DIR = true;
 			_faceLeft = faceLeft;

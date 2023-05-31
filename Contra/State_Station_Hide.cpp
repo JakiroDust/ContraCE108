@@ -45,7 +45,7 @@ void State_Station_Hide::KeyPressed_Right()
 	obj->moveRight();
 }
 
-void State_Station_Hide::KeyPressed_Jump()
+void State_Station_Hide::KeyPressed_Shoot()
 {
 	_nextState = STATE_WALK;
 }

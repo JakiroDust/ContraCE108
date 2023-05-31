@@ -26,7 +26,7 @@ class Game_Enemy : public Game_Character
 		void KeyUpEventHandler(int KeyCode) override;
 		void KeyStateHandler(BYTE* state) override;
 
-		void Execute_DieAction() override { Game_Character::Execute_DieAction(); }
+		void Execute_DieAction() override;
 
 		//============================================================================================
 		// INHERITED

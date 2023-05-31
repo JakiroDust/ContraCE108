@@ -311,6 +311,12 @@
     <ClCompile Include="Equip_EnemyGun_Turret.cpp">
       <Filter>Source Files\Equip</Filter>
     </ClCompile>
+    <ClCompile Include="Equip_EnemyGun_Cannon.cpp">
+      <Filter>Source Files\Equip</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_EnemyGun_SneakSniper.cpp">
+      <Filter>Source Files\Equip</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -659,6 +665,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_Cannon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Equip_EnemyGun_Cannon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Equip_EnemyGun_SneakSniper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

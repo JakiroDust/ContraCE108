@@ -175,26 +175,26 @@ void Game_Character::ExecuteAction()
 		return;
 	}
 
-	pair<int,int>* action = &(_ActionQueue[0]);
-	if (action->first == DIK_PAUSE)
+	pair<int,int> action = (_ActionQueue[0]);
+	if (action.first == DIK_PAUSE)
 	{
 		KeyReleaseAll();
-		if (action->second > 1)
-			action->second--;
+		if (action.second > 1)
+			_ActionQueue[0].second--;
 		else 
 			_ActionQueue.erase(_ActionQueue.begin());
 		return;
 	}
 
 	_ActionQueue.erase(_ActionQueue.begin());
-	if (action->first == -1)
+	if (action.first == -1)
 	{
 		KeyReleaseAll();
 		return;
 	}
-	KeyDownEventHandler(action->first);
-	if (action->second != -1)
-		KeyDownEventHandler(action->second);
+	KeyDownEventHandler(action.first);
+	if (action.second != -1)
+		KeyDownEventHandler(action.second);
 }
 
 void Game_Character::ResetStateParams()

@@ -76,6 +76,15 @@ int Get_CharANI_ID(int character, int behavior)
 		break;
 	}
 
+	case SNEAKY_SNIPER:
+	{
+		arr[ACT_LOOK_DOWN_LEFT] = ANI_BUSH_SNIPER_SHOOT;
+		arr[ACT_WALK_LEFT] = ANI_BUSH_SNIPER_WIND_UP;
+		arr[ACT_IDLE_LEFT] = SNIPER_ANI_AIM_LEFT;
+		arr[ACT_DIE_LEFT] = SNIPER_ANI_AIM_LEFT;
+		break;
+	}
+
 	case TURRET:
 	{
 		arr[ACT_HIDE_LEFT] = ANI_TURRET_360_IDLE;

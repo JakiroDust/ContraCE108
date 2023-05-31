@@ -1,7 +1,6 @@
 #include "State_Contra_Die.h"
 #include "Game_Character.h"
 #include "Contra_GET_ANI.h"
-#include "GameManager.h"
 void State_Contra_Die::Render()
 {
 	Game_Character* obj = (Game_Character*)_srcObj;
@@ -27,7 +26,6 @@ void State_Contra_Die::Update(DWORD dt)
 
 	if (_trigger)
 	{
-		GameManager::GetInstance()->GainScore_P1(obj->RewardScore());
 		obj->Execute_DieAction();
 		int width, height;
 		obj->GetCustomSize(StateId(), width, height);

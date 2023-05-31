@@ -19,6 +19,10 @@ void Enemy_Turret::Execute_DieAction()
 void Enemy_Turret::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 	Game_StationEnemy::Update(dt, coObjects);
+	if (_state->StateId() == STATE_HIDE)
+		_ghost = true;
+	else if (_state->StateId() != STATE_DIE)
+		_ghost = false;
 }
 
 void Enemy_Turret::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)

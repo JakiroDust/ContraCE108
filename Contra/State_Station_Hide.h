@@ -10,6 +10,6 @@ class State_Station_Hide : public State_Contra_Base
 
 		void KeyPressed_Left() override;
 		void KeyPressed_Right() override;
-		void KeyPressed_Jump() override;
+		void KeyPressed_Shoot() override;
 };
 

@@ -11,6 +11,7 @@
 #include "Obj_Bullet_L.h"
 #include "Game_DeadlyBlock.h"
 #include "Game_SweeperBlock.h"
+#include "GameManager.h"
 
 int Game_Enemy::CharID()
 {
@@ -99,28 +100,23 @@ void Game_Enemy::KeyDownEventHandler(int KeyCode)
 	switch (KeyCode)
 	{
 	case DIK_UP:
-		state->KeyPressed_Up();
 		state->KeyHold_Up();
 		state->KeyReleased_Down();
 		break;
 	case DIK_DOWN:
-		state->KeyPressed_Down();
 		state->KeyHold_Down();
 		state->KeyReleased_Up();
 		break;
 	case DIK_LEFT:
-		state->KeyPressed_Left();
 		state->KeyHold_Left();
 		state->KeyReleased_Right();
 		break;
 	case DIK_RIGHT:
-		state->KeyPressed_Right();
 		state->KeyHold_Right();
 		state->KeyReleased_Left();
 		break;
 	case DIK_O:
 		state->KeyPressed_Shoot();
-		state->KeyHold_Shoot();
 		break;
 	case DIK_P:
 		state->KeyPressed_Jump();
@@ -270,4 +266,12 @@ void Game_Enemy::KeyReleaseAll()
 void Game_Enemy::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 
+}
+
+void Game_Enemy::Execute_DieAction()
+{
+	Game_Character::Execute_DieAction();
+	_BodyDamage = false;
+	_ghost = true;
+	GameManager::GetInstance()->GainScore_P1(RewardScore());
 }
