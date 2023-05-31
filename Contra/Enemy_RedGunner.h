@@ -44,5 +44,6 @@ class Enemy_RedGunner : public Game_MovableEnemy
 
 		void GetCustomSize(int state, int& width, int& height) override;
 		void Execute_DieAction() override;
+		virtual int RewardScore() override { return 100; };
 };
 

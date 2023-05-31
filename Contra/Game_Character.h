@@ -84,6 +84,7 @@ public:
 			delete _weapon;
 		_weapon = newWep;
 	}
+	virtual int RewardScore() { return 0; }
 };
 
 

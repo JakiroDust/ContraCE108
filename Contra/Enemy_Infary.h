@@ -34,5 +34,6 @@ class Enemy_Infary : public Game_MovableEnemy
 
 		void GetCustomSize(int state, int& width, int& height) override;
 		void Execute_DieAction() override;
+		virtual int RewardScore() override { return 100; };
 };
 
