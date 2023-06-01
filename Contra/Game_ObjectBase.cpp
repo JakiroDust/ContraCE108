@@ -103,25 +103,15 @@ void Game_ObjectBase::OnCollisionWith(PCOLLISIONEVENT e)
 
 }
 
-void Game_ObjectBase::_Render(int aniId, float x, float y)
-{
-	if (aniId > 0)
-	{
-		CAnimations* animations = CAnimations::GetInstance();
-		if (curAni != aniId)
-		{
-			curFrameTime = 0;
-			curFrame = 0;
-			curAni = aniId;
-		}
-		animations->Get(aniId)->Render(x, y,curFrameTime,curFrame);
-	}
-}
-
 void Game_ObjectBase::_Render(int aniId)
 {
 	float x, y;
 	GetCenterPoint(x, y);
+	_Render(aniId, x, y);
+}
+
+void Game_ObjectBase::_Render(int aniId, float x, float y)
+{
 	if (aniId > 0)
 	{
 		CAnimations* animations = CAnimations::GetInstance();
