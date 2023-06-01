@@ -28,6 +28,8 @@ void State_Contra_Swim::Render()
 			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_RIGHT_LOOK_UP), x, y);
 		else if (HoldKeyUp)
 			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_LOOK_UP_STAND_RIGHT), x, y);
+		else if (HoldKeyShoot)
+			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_SHOOT_RIGHT), x, y);
 		else
 			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_RIGHT), x, y);
 	}
@@ -81,6 +83,7 @@ void State_Contra_Swim::KeyHold_Right()
 
 void State_Contra_Swim::KeyPressed_Shoot()
 {
+	State_Contra_Base::KeyHold_Shoot();
 	Game_Character* obj = (Game_Character*)_srcObj;
 	if (!obj->IsFullAutomaticGun())
 	{
@@ -110,6 +113,7 @@ void State_Contra_Swim::KeyPressed_Shoot()
 
 void State_Contra_Swim::KeyHold_Shoot()
 {
+	State_Contra_Base::KeyHold_Shoot();
 	Game_Character* obj = (Game_Character*)_srcObj;
 	if (obj->IsFullAutomaticGun())
 	{
