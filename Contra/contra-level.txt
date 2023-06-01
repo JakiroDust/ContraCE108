@@ -10,6 +10,7 @@
 102	textures\Contra-start.png
 103	textures\ContraSheet4.png
 104	textures\laser-bullet.png
+105	textures\ContraSheet8.png
 #20	textures\misc.png
 
 
@@ -26,3 +27,4 @@ sneak_sniper.txt
 army_destroyed.txt
 construct_destroyed.txt
 laser.txt
+upgrade.txt
