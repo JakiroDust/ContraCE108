@@ -12,7 +12,7 @@ private:
 		_moveSpd = 0.08f;
 		_OwnerID = B_OWNER_ENEMY;
 		_Damage = 1;
-		_SpriteId = CONTRA_BULLET_ANI_BASE_LEFT;
+		_SpriteId = CONTRA_BULLET_ANI_BULLET_E_N;
 	}
 
 public:

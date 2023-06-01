@@ -29,8 +29,8 @@ class Game_Bullet : public Game_MovableObject
 		// Base on OwnerID, objects will ignore this bullet or not.
 		int OwnerID() { return _OwnerID; }
 		int Damage() { return _Damage; }
-		int getAni() { return CONTRA_BULLET_ANI_BASE_RIGHT; }
-		int getExplodeAni() {return CONTRA_BULLET_ANI_BASE_RIGHT;}
+		int getAni() { return CONTRA_BULLET_ANI_BULLET_N; }
+		int getExplodeAni() {return CONTRA_BULLET_ANI_BULLET_N;}
 		// Can this object ingore blocking object and move through it?
 		// If YES, collision framework will skip this collision event.
 		bool IgnoreBlocking() override { return 1; }

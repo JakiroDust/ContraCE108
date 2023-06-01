@@ -37,7 +37,7 @@ void Game_Bullet::Render()
 	CAnimations* animations = CAnimations::GetInstance();
 	float x, y;
 	GetCenterPoint(x, y);
-	_Render(getAni()+10,x, y);
+	_Render(getAni(),x, y);
 }
 
 void Game_Bullet::Update(DWORD dt)
