@@ -173,6 +173,7 @@
 #define ANI_EXPLOSION_ARMY	20550
 #pragma endregion
 
+#define ANI_FLAME	95990
 
 #pragma region TERRAIN
 #define BLACK_BOX_ANI 99990
