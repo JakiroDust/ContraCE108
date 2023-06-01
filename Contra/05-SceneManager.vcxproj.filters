@@ -82,7 +82,7 @@
     <ClCompile Include="debug.cpp">
       <Filter>Source Files\GameCore</Filter>
     </ClCompile>
-    <ClCompile Include="Game_Layer.cpp">
+    <ClCompile Include="Game_Effect.cpp">
       <Filter>Source Files\GameCore</Filter>
     </ClCompile>
     <ClCompile Include="Obj_Bullet_N.cpp">
@@ -132,9 +132,6 @@
     </ClCompile>
     <ClCompile Include="Game_Player.cpp">
       <Filter>Source Files\Object\MoveObject\Character</Filter>
-    </ClCompile>
-    <ClCompile Include="Demo_Layer.cpp">
-      <Filter>Source Files\GameCore</Filter>
     </ClCompile>
     <ClCompile Include="Game_Blocker.cpp">
       <Filter>Source Files\Object\StaticObject</Filter>
@@ -337,9 +334,6 @@
     <ClInclude Include="debug.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Demo_Layer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -358,7 +352,7 @@
     <ClInclude Include="Game_KeyInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game_Layer.h">
+    <ClInclude Include="Game_Effect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game_MovableObject.h">

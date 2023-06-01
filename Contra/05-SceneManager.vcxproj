@@ -154,7 +154,6 @@
     <ClCompile Include="CAnimation_OneLoop.cpp" />
     <ClCompile Include="Contra_GET_ANI.cpp" />
     <ClCompile Include="debug.cpp" />
-    <ClCompile Include="Demo_Layer.cpp" />
     <ClCompile Include="Enemy_Cannon.cpp" />
     <ClCompile Include="Enemy_Infary.cpp" />
     <ClCompile Include="Enemy_Jumper.cpp" />
@@ -185,7 +184,7 @@
     <ClCompile Include="Game_DeadlyBlock.cpp" />
     <ClCompile Include="Game_Enemy.cpp" />
     <ClCompile Include="Game_KeyInput.cpp" />
-    <ClCompile Include="Game_Layer.cpp" />
+    <ClCompile Include="Game_Effect.cpp" />
     <ClCompile Include="Game_MovableEnemy.cpp" />
     <ClCompile Include="Game_MovableObject.cpp" />
     <ClCompile Include="Game_ObjectBase.cpp" />
@@ -262,7 +261,6 @@
     <ClInclude Include="Contra_ANI_ID.h" />
     <ClInclude Include="Contra_GET_ANI.h" />
     <ClInclude Include="debug.h" />
-    <ClInclude Include="Demo_Layer.h" />
     <ClInclude Include="Enemies_ID.h" />
     <ClInclude Include="Enemy_Cannon.h" />
     <ClInclude Include="Enemy_Infary.h" />
@@ -302,7 +300,7 @@
     <ClInclude Include="Game_DeadlyBlock.h" />
     <ClInclude Include="Game_Enemy.h" />
     <ClInclude Include="Game_KeyInput.h" />
-    <ClInclude Include="Game_Layer.h" />
+    <ClInclude Include="Game_Effect.h" />
     <ClInclude Include="Game_MovableEnemy.h" />
     <ClInclude Include="Game_MovableObject.h" />
     <ClInclude Include="Game_ObjectBase.h" />

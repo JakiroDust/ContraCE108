@@ -35,9 +35,9 @@ void Scene_Battle::Render()
 
     vector<Game_ObjectBase*> RenderQueue;
     // layers
-    for (int i = 0; i < _layers.size(); i++)
+    for (int i = 0; i < _effects.size(); i++)
     {
-        Game_ObjectBase* obj = _layers[i].get();
+        Game_ObjectBase* obj = _effects[i].get();
         if (obj->NeedRender() == false) {
             continue;
         }
@@ -105,9 +105,9 @@ void Scene_Battle::Update(DWORD dt)
         _controller->Update(dt);
 
     // Map Update
-    for (int i = 0; i < _layers.size(); i++)
+    for (int i = 0; i < _effects.size(); i++)
     {
-        Game_ObjectBase* obj = _layers[i].get();
+        Game_ObjectBase* obj = _effects[i].get();
         screen->CheckObjectIfNeedRender(obj);
     }
 
@@ -152,6 +152,17 @@ void Scene_Battle::Update(DWORD dt)
         screen->CheckObjectIfNeedRender(obj);
     }
 
+    // Terminate effects have Delete flag
+    for (int i = 0; i < _effects.size(); i++)
+    {
+        if (_effects[i]->IsDeleted())
+        {
+            _effects[i]->Execute_BeforeDelete();
+            std::vector<unique_ptr<Game_Effect>>::iterator it = _effects.begin();
+            _effects.erase(it + i);
+            i--;
+        }
+    }
     // Terminate objects have Delete flag
     for (auto& i : id_list)
     {
@@ -159,6 +170,7 @@ void Scene_Battle::Update(DWORD dt)
         if (obj->IsDeleted())
         {
             DebugOut(L"deleted id=%d\n", i);
+            obj->Execute_BeforeDelete();
             delete_object(i);
         }
     }
@@ -209,6 +221,11 @@ void Scene_Battle::addPlayer1()
     Game_KeyInput::GetInstance()->AddObjectControl(p1());
 }
 
+void Scene_Battle::AddEffect(unique_ptr<Game_Effect>&& obj)
+{
+    _effects.push_back(obj);
+}
+
 
 int Scene_Battle::add_object(unique_ptr<Game_ObjectBase>&& object)
 {
@@ -228,25 +245,11 @@ int Scene_Battle::add_object(unique_ptr<Game_ObjectBase>&& object)
     object->GetBoundingBox(l, t, r, b);
     __objects[id] =move(object);
     
- 
-    
    // DebugOut(L"id %d l=%d t=%d r=%d b=%d\n", id_nth, l, t, r, b);
     spatial->insert(id, l, b, r, t);
     return id;
-    
-
 }
 
-/*void Scene_Battle::delete_object(unique_ptr<Game_ObjectBase>& object)
-{
-    int id = object->id();
-    float left, top, right, bottom;
-    object->GetBoundingBox(left, top, right, bottom);
-    spatial->del_object(id, left, top, right, bottom);
-    __objects.erase(id);
-    id_recycle_bin.push_back(id);
-}
-*/
 void Scene_Battle::delete_object(int id)
 {
     Game_ObjectBase* object = __objects[id].get();

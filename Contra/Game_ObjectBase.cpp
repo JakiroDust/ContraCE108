@@ -108,8 +108,6 @@ void Game_ObjectBase::_Render(int aniId, float x, float y)
 	if (aniId > 0)
 	{
 		CAnimations* animations = CAnimations::GetInstance();
-		if(x==-1&&y==-1)
-		GetCenterPoint(x, y);
 		if (curAni != aniId)
 		{
 			curFrameTime = 0;
@@ -117,6 +115,23 @@ void Game_ObjectBase::_Render(int aniId, float x, float y)
 			curAni = aniId;
 		}
 		animations->Get(aniId)->Render(x, y,curFrameTime,curFrame);
+	}
+}
+
+void Game_ObjectBase::_Render(int aniId)
+{
+	float x, y;
+	GetCenterPoint(x, y);
+	if (aniId > 0)
+	{
+		CAnimations* animations = CAnimations::GetInstance();
+		if (curAni != aniId)
+		{
+			curFrameTime = 0;
+			curFrame = 0;
+			curAni = aniId;
+		}
+		animations->Get(aniId)->Render(x, y, curFrameTime, curFrame);
 	}
 }
 

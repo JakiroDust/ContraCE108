@@ -5,7 +5,7 @@
 #include "Game_Player.h"
 #include "Scene_Battle.h"
 #include "State_Contra_Base.h"
-
+#include "Game_Effect.h"
 
 int Enemy_Infary::CharID()
 {
@@ -82,6 +82,18 @@ void Enemy_Infary::Execute_DieAction()
 {
 	Game_MovableEnemy::Execute_DieAction();
 	jump();
+}
+
+void Enemy_Infary::Execute_BeforeDelete()
+{
+	if (_die)
+	{
+		Scene_Battle* scene = (Scene_Battle*)ScreenManager::GetInstance()->Scene();
+		float x, y;
+		GetCenterPoint(x, y);
+		unique_ptr<Game_Effect> explosion (new Game_Effect(x, y, Z_INDEX_ANIMATION, ANI_EXPLOSION_ARMY));
+		scene->AddEffect(move(explosion));
+	}
 }
 
 void Enemy_Infary::GetCustomSize(int state, int& width, int& height)

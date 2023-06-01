@@ -6,7 +6,7 @@
 #include "debug.h"
 
 // Terrains
-#include "Game_Layer.h"
+#include "Game_Effect.h"
 #include "Game_Blocker.h"
 #include "Game_Terrain.h"
 #include "Game_Platform.h"
@@ -32,7 +32,6 @@
 #include "StageEventHandler_S1.h"
 
 // DEMO
-#include "Demo_Layer.h"
 #include "Spatial.h"
 #include "QuadTree/QuadTree.h"
 #include "MusicManager.h"
@@ -61,7 +60,7 @@ class Scene_Battle : public Scene_Base
 		int _p2_id=-1;
 		unique_ptr<Game_Player> _p1 ;
 		Game_Player* _p2 = NULL;
-		vector<unique_ptr<Game_Layer>> _layers;
+		vector<unique_ptr<Game_Effect>> _effects;
 		//vector<Game_ObjectBase*> _objects;
 		unordered_map<int,unique_ptr<Game_ObjectBase>> __objects;
 		int _mapWidth = 1;
@@ -81,6 +80,8 @@ class Scene_Battle : public Scene_Base
 		int MapWidth() { return _mapWidth; }
 		int MapHeight() { return _mapHeight; }
 		void SetMapSize(int width, int height) { _mapWidth = width; _mapHeight = height; }
+
+		void AddEffect(unique_ptr<Game_Effect>&& obj);
 
 		void Render() override;
 		void Update(DWORD dt) override;

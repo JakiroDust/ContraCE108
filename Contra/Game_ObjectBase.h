@@ -89,7 +89,7 @@ class Game_ObjectBase
 		virtual void Update(DWORD dt) {}
 		virtual void Update(DWORD dt, vector< Game_ObjectBase*>* coObjects) {}
 		virtual void Update(DWORD dt, unordered_map<int, Game_ObjectBase*>* coObjects) {}
-		virtual void Execute_AfterUpdating(DWORD dt) {}
+		//virtual void Execute_AfterUpdating(DWORD dt) {}
 
 		// COLLISION
 
@@ -123,12 +123,15 @@ class Game_ObjectBase
 
 		virtual void DeleteThis() { _isDeleted = true; }
 		bool IsDeleted() { return _isDeleted; }
+		virtual void Execute_BeforeDelete() {}
+
 	private:
 		int curFrame;
 		ULONGLONG curFrameTime;
 		int curAni;
 	public:
-		void _Render(int aniId, float x=-1, float y=-1);
+		void _Render(int aniId, float x, float y);
+		void _Render(int aniId);
 		bool atFinalFrame(int curAni=-99);
 };
 
