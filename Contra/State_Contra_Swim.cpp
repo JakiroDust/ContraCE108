@@ -17,6 +17,8 @@ void State_Contra_Swim::Render()
 			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_LEFT_LOOK_UP), x, y);
 		else if (HoldKeyUp)
 			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_LOOK_UP_STAND_LEFT), x, y);
+		else if (HoldKeyShoot)
+			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_SHOOT_LEFT), x, y);
 		else 
 			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_LEFT),x,y);
 	}
