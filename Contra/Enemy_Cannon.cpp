@@ -15,6 +15,14 @@ void Enemy_Cannon::Execute_DieAction()
 	Game_StationEnemy::Execute_DieAction();
 }
 
+void Enemy_Cannon::Execute_BeforeDelete()
+{
+	if (_die)
+	{
+		CreateDieAnimation(ANI_EXPLOSION_CONSTRUCT);
+	}
+}
+
 void Enemy_Cannon::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());

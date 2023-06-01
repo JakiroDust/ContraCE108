@@ -88,11 +88,7 @@ void Enemy_Infary::Execute_BeforeDelete()
 {
 	if (_die)
 	{
-		Scene_Battle* scene = (Scene_Battle*)ScreenManager::GetInstance()->Scene();
-		float x, y;
-		GetCenterPoint(x, y);
-		unique_ptr<Game_Effect> explosion (new Game_Effect(x, y, Z_INDEX_ANIMATION, ANI_EXPLOSION_ARMY));
-		scene->AddEffect(move(explosion));
+		CreateDieAnimation(ANI_EXPLOSION_ARMY);
 	}
 }
 

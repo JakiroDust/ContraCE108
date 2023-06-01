@@ -23,6 +23,14 @@ void Enemy_SneakSniper::Execute_DieAction()
 	jump();
 }
 
+void Enemy_SneakSniper::Execute_BeforeDelete()
+{
+	if (_die)
+	{
+		CreateDieAnimation(ANI_EXPLOSION_ARMY);
+	}
+}
+
 void Enemy_SneakSniper::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 	if (_ActionQueue.size() > 0)

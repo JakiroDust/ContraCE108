@@ -275,3 +275,12 @@ void Game_Enemy::Execute_DieAction()
 	_ghost = true;
 	GameManager::GetInstance()->GainScore_P1(RewardScore());
 }
+
+void Game_Enemy::CreateDieAnimation(int aniId)
+{
+	Scene_Battle* scene = (Scene_Battle*)ScreenManager::GetInstance()->Scene();
+	float x, y;
+	GetCenterPoint(x, y);
+	unique_ptr<Game_Effect> explosion(new Game_Effect(x, y, Z_INDEX_ANIMATION, aniId));
+	scene->AddEffect(move(explosion));
+}

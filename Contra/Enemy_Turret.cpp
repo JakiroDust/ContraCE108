@@ -16,6 +16,14 @@ void Enemy_Turret::Execute_DieAction()
 	Game_StationEnemy::Execute_DieAction();
 }
 
+void Enemy_Turret::Execute_BeforeDelete()
+{
+	if (_die)
+	{
+		CreateDieAnimation(ANI_EXPLOSION_CONSTRUCT);
+	}
+}
+
 void Enemy_Turret::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 	Game_StationEnemy::Update(dt, coObjects);

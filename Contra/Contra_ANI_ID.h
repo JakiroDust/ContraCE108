@@ -2,7 +2,7 @@
 
 #pragma region CONTRA
 
-#define EMPTY_ANI 0
+#define ANI_EMPTY 0
 
 #define CONTRA_ANI_IDLE_RIGHT 10000
 #define CONTRA_ANI_IDLE_LEFT CONTRA_ANI_IDLE_RIGHT+1

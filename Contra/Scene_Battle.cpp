@@ -107,8 +107,9 @@ void Scene_Battle::Update(DWORD dt)
     // Map Update
     for (int i = 0; i < _effects.size(); i++)
     {
-        Game_ObjectBase* obj = _effects[i].get();
+        Game_Effect* obj = _effects[i].get();
         screen->CheckObjectIfNeedRender(obj);
+        obj->Update(dt);
     }
 
     if (__objects.empty())

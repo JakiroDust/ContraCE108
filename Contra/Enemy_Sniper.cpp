@@ -14,6 +14,14 @@ void Enemy_Sniper::Execute_DieAction()
 	jump();
 }
 
+void Enemy_Sniper::Execute_BeforeDelete()
+{
+	if (_die)
+	{
+		CreateDieAnimation(ANI_EXPLOSION_ARMY);
+	}
+}
+
 void Enemy_Sniper::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
