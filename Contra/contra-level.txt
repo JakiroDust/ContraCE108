@@ -22,3 +22,5 @@ bb.txt
 turret.txt
 red_turret.txt
 sneak_sniper.txt
+army_destroyed.txt
+construct_destroyed.txt
