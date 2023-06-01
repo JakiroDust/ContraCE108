@@ -3,8 +3,8 @@
 
 class Equip_Gun_S;
 
-#define BULLET_S_WIDTH 10
-#define BULLET_S_HEIGHT 10
+#define BULLET_S_WIDTH 8
+#define BULLET_S_HEIGHT 8
 
 class Obj_Bullet_S : public Game_Bullet
 {
