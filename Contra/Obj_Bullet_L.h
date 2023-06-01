@@ -26,7 +26,6 @@ private:
 		_Damage = 5;
 		_SpriteId = CONTRA_BULLET_ANI_BULLET_N;
 	}
-
 public:
 	// If type = true, use point (x,y) instead of vx, vy
 	// vx, vy will be caculated so that bullet can move toward that point. 

@@ -21,6 +21,9 @@ void Game_Bullet::SetTargetPos(float x, float y)
 
 	_vx = _moveSpd * sideX / hypotenuse;
 	_vy = _moveSpd * sideY / hypotenuse;
+
+	_vx = round(_vx * 10000) / 10000;
+	_vy = round(_vy * 10000) / 10000;
 }
 
 void Game_Bullet::SetVector(float vx, float vy)
@@ -29,6 +32,8 @@ void Game_Bullet::SetVector(float vx, float vy)
 
 	_vx = _moveSpd * vx / hypotenuse;
 	_vy = _moveSpd * vy / hypotenuse;
+	_vx = round(_vx * 10000) / 10000;
+	_vy = round(_vy * 10000) / 10000;
 }
 
 //void Game_Bullet::Render()
@@ -44,4 +49,12 @@ void Game_Bullet::Update(DWORD dt)
 {
 	_x += _vx * dt;
 	_y += _vy * dt;
+}
+
+bool Game_Bullet::IsEqual(float a, float b, int decimal)
+{
+	float base = pow(10, -decimal);
+	if (abs(a - b) <= base)
+		return true;
+	return false;
 }

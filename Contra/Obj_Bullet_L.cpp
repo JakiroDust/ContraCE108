@@ -41,28 +41,28 @@ void Obj_Bullet_L::Render()
 	if (_delay == 0)
 	{
 		// top
-		if (_vy > 0 && _vx == 0)
+		if (_vy > 0.0f && IsEqual(_vx, 0.0f))
 			_SpriteId = CONTRA_BULLET_ANI_BULLET_L_UP;
 		// bottom
-		else if (_vy < 0 && _vx == 0)
+		else if (_vy < 0.0f && IsEqual(_vx, 0.0f))
 			_SpriteId = CONTRA_BULLET_ANI_BULLET_L_DOWN;
 		// left
-		else if (_vy == 0 && _vx < 0)
+		else if (IsEqual(_vy, 0.0f) && _vx < 0.0f)
 			_SpriteId = CONTRA_BULLET_ANI_BULLET_L_LEFT;
 		// right
-		else if (_vy == 0 && _vx > 0)
+		else if (IsEqual(_vy, 0.0f) && _vx > 0.0f)
 			_SpriteId = CONTRA_BULLET_ANI_BULLET_L_RIGHT;
 		// top left
-		else if (_vy > 0 && _vx < 0)
+		else if (_vy > 0.0f && _vx < 0.0f)
 			_SpriteId = CONTRA_BULLET_ANI_BULLET_L_UP_LEFT;
 		// top right
-		else if (_vy > 0 && _vx > 0)
+		else if (_vy > 0.0f && _vx > 0.0f)
 			_SpriteId = CONTRA_BULLET_ANI_BULLET_L_UP_RIGHT;
 		// bottom left
-		else if (_vy < 0 && _vx < 0)
+		else if (_vy < 0.0f && _vx < 0.0f)
 			_SpriteId = CONTRA_BULLET_ANI_BULLET_L_DOWN_LEFT;
 		// bottom right
-		else if (_vy < 0 && _vx > 0)
+		else if (_vy < 0.0f && _vx > 0.0f)
 			_SpriteId = CONTRA_BULLET_ANI_BULLET_L_DOWN_RIGHT;
 		else
 			_SpriteId = ANI_EMPTY;

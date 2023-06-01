@@ -27,6 +27,7 @@
 #include "Spawner_Infary_Stage1.h"
 #include "Spawner_FallingStone.h"
 #include "Obj_MovingStone.h"
+#include "Obj_Flame.h"
 #include "Game_PlayerBlocker.h"
 // EventHandler
 #include "StageEventHandler_S1.h"
