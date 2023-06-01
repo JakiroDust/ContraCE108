@@ -6,6 +6,16 @@
 void StageEventHandler_Base::Update(DWORD dt)
 {
     Game_Player* player = _srcScene->p1();
+    GameManager* gm = GameManager::GetInstance();
+
+    // STAGE CLEAR
+    if (gm->Test_IfPassStage() == CAN_PASS_STAGE)
+    {
+        Perform_StageClearEvent(dt);
+        return;
+    }
+
+    // GAME OVER
     if (player != NULL && player->Hp() <= 0)
     {
         if (_WaitForEndGame >= WAIT_ENDGAME_MAXVALUE)

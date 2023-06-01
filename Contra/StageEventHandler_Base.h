@@ -5,8 +5,8 @@ class Scene_Battle;
 class Game_ObjectBase;
 
 #define STAGE_DEBUG_ALLOW true
-#define WAIT_ENDGAME_MAXVALUE 100000
-#define ENDGAME_INTERVAL 2000
+#define WAIT_ENDGAME_MAXVALUE 1000000
+#define ENDGAME_INTERVAL 1600
 
 class StageEventHandler_Base
 {
@@ -14,9 +14,9 @@ class StageEventHandler_Base
 		Scene_Battle* _srcScene=NULL;
 		bool _toggleFreeCam = false;
 		DWORD _WaitForEndGame = WAIT_ENDGAME_MAXVALUE;
-		
 		void Set_Camera_Focus_Player();
 		void Debug_KeyDownEventHandler(int KeyCode);
+		virtual void Perform_StageClearEvent(DWORD dt) {}
 	public:
 		StageEventHandler_Base(Scene_Battle* src);
 

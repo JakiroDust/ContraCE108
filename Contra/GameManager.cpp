@@ -245,7 +245,7 @@ void GameManager::InitGame()
 {
 	_coin = 3;
 	_P1_score = 0;
-	_P2_score = 0;
+	//_P2_score = 0;
 	InitNewLife();
 }
 
@@ -288,6 +288,7 @@ void GameManager::Create_Stage_1()
 	scene->SetStageEventHandler(Get_StageEventHandler(SCENE_STAGE_1, scene));
 
 	_currentStage = SCENE_STAGE_1;
+	_stagePasscard = -1;
 
 	scene->Load();
 }
@@ -299,6 +300,7 @@ void GameManager::Create_Stage_3()
 	Scene_Battle* scene = (Scene_Battle*)(screenManager->Scene());
 
 	_currentStage = SCENE_STAGE_3;
+	_stagePasscard = -1;
 
 	scene->SetStageEventHandler(Get_StageEventHandler(SCENE_STAGE_3, scene));
 

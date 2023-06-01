@@ -12,17 +12,24 @@ void State_Contra_Die::Render()
 	y += oy;
 	if (obj->IsFaceLeft())
 	{
-		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_DIE_LEFT),x,y);
+		if (obj->IsAffectedByGravity() && !_isOnGround)
+			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_DIE_JUMPING_LEFT), x, y);
+		else 
+			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_DIE_LEFT),x,y);
 	}
 	else
 	{
-		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_DIE_RIGHT),x,y);
+		if (obj->IsAffectedByGravity() && !_isOnGround)
+			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_DIE_JUMPING_RIGHT), x, y);
+		else
+			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_DIE_RIGHT),x,y);
 	}
 }
 
 void State_Contra_Die::Update(DWORD dt)
 {
 	Game_Character* obj = (Game_Character*)_srcObj;
+	_isOnGround = obj->IsOnGround();
 
 	if (_trigger)
 	{

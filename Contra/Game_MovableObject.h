@@ -104,6 +104,7 @@ class Game_MovableObject : public Game_ObjectBase
 		void SetFaceLeft(bool b) { _faceLeft = b; }
 
 		float GetJumpForce() { return _jumpHeight; }
+		bool IsAffectedByGravity() { return _gravity; }
 
 		bool IsImmortal() { return _immortal; }
 		bool IsGhost() { return _ghost; }

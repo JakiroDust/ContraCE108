@@ -58,6 +58,8 @@ int Get_CharANI_ID(int character, int behavior)
 		arr[ACT_LYING_LEFT] = INFARY_ANI_AIM_LEFT;
 		arr[ACT_DIE_LEFT] = INFARY_ANI_DIE_LEFT;
 		arr[ACT_DIE_RIGHT] = INFARY_ANI_DIE_RIGHT;
+		arr[ACT_DIE_JUMPING_LEFT] = INFARY_ANI_DIE_LEFT;
+		arr[ACT_DIE_JUMPING_RIGHT] = INFARY_ANI_DIE_RIGHT;
 		break;
 	}
 
@@ -75,6 +77,8 @@ int Get_CharANI_ID(int character, int behavior)
 		arr[ACT_WALK_RIGHT_LOOK_DOWN] = SNIPER_ANI_AIM_DOWN_RIGHT;
 		arr[ACT_DIE_LEFT] = SNIPER_ANI_AIM_LEFT;
 		arr[ACT_DIE_RIGHT] = SNIPER_ANI_AIM_RIGHT;
+		arr[ACT_DIE_JUMPING_LEFT] = SNIPER_ANI_AIM_LEFT;
+		arr[ACT_DIE_JUMPING_RIGHT] = SNIPER_ANI_AIM_RIGHT;
 		break;
 	}
 
@@ -84,6 +88,7 @@ int Get_CharANI_ID(int character, int behavior)
 		arr[ACT_WALK_LEFT] = ANI_BUSH_SNIPER_WIND_UP;
 		arr[ACT_IDLE_LEFT] = ANI_BUSH_SNIPER_HIDE;
 		arr[ACT_DIE_LEFT] = SNIPER_ANI_AIM_LEFT;
+		arr[ACT_DIE_JUMPING_LEFT] = SNIPER_ANI_AIM_LEFT;
 		break;
 	}
 
@@ -107,6 +112,8 @@ int Get_CharANI_ID(int character, int behavior)
 		arr[ACT_ANGLE_12_OCLOCK] = ANI_TURRET_360_12;
 		arr[ACT_DIE_LEFT] = ANI_TURRET_360_DIE;
 		arr[ACT_DIE_RIGHT] = ANI_TURRET_360_DIE;
+		arr[ACT_DIE_JUMPING_LEFT] = ANI_TURRET_360_DIE;
+		arr[ACT_DIE_JUMPING_RIGHT] = ANI_TURRET_360_DIE;
 		break;
 	}
 
@@ -121,6 +128,8 @@ int Get_CharANI_ID(int character, int behavior)
 		arr[ACT_ANGLE_11_OCLOCK] = ANI_CANNON_11;
 		arr[ACT_DIE_LEFT] = ANI_CANNON_9;
 		arr[ACT_DIE_RIGHT] = ANI_CANNON_9;
+		arr[ACT_DIE_JUMPING_LEFT] = ANI_CANNON_9;
+		arr[ACT_DIE_JUMPING_RIGHT] = ANI_CANNON_9;
 		break;
 	}
 
