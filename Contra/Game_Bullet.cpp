@@ -31,14 +31,14 @@ void Game_Bullet::SetVector(float vx, float vy)
 	_vy = _moveSpd * vy / hypotenuse;
 }
 
-void Game_Bullet::Render()
-{
-	RenderHitbox();
-	CAnimations* animations = CAnimations::GetInstance();
-	float x, y;
-	GetCenterPoint(x, y);
-	_Render(getAni(),x, y);
-}
+//void Game_Bullet::Render()
+//{
+//	RenderHitbox();
+//	CAnimations* animations = CAnimations::GetInstance();
+//	float x, y;
+//	GetCenterPoint(x, y);
+//	_Render(_SpriteId,x, y);
+//}
 
 void Game_Bullet::Update(DWORD dt)
 {

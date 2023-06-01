@@ -18,12 +18,12 @@ class Enemy_Cannon : public Game_StationEnemy
 		DWORD _rotate_CD = 0;
 		void Cleaning() override { Game_StationEnemy::Cleaning(); }
 	public:
-		Enemy_Cannon(float x, float y, int z, bool faceLeft = true) : Game_StationEnemy(x, y, z, CANNON_BASE_WIDTH, CANNON_BASE_HEIGHT)
+		Enemy_Cannon(float x, float y, int z) : Game_StationEnemy(x, y, z, CANNON_BASE_WIDTH, CANNON_BASE_HEIGHT)
 		{
 			_weapon = new Equip_EnemyGun_Cannon();
 			_hp = 20;
 			_station_12DIR = true;
-			_faceLeft = faceLeft;
+			_faceLeft = true;
 			_gravity = false;
 		}
 		~Enemy_Cannon() {
