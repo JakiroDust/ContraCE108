@@ -155,6 +155,7 @@
 #pragma region BUSH_SNIPER
 #define ANI_BUSH_SNIPER_WIND_UP 50000
 #define ANI_BUSH_SNIPER_SHOOT	50010
+#define ANI_BUSH_SNIPER_HIDE	50020
 #pragma endregion
 
 #pragma region EXPLO
