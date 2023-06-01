@@ -1,4 +1,4 @@
-#Công trình bị hủy (style đạn, ô style đạn cũng tương tự):
+
 #turret
 805501	520	260	585	325	101
 805502	390	325	455	390	101
