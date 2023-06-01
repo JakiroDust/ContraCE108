@@ -22,7 +22,7 @@ class Obj_Bullet_F : public Game_Bullet
 			_moveSpd = 0.2f;
 			_OwnerID = B_OWNER_PLAYER;
 			_Damage = 4;
-			_SpriteId = CONTRA_BULLET_ANI_BASE_LEFT;
+			_SpriteId = CONTRA_BULLET_ANI_BULLET_E_N;
 		}
 		void SetupMovement();
 		static float Vector_to_Rad(float vx, float vy);
