@@ -13,11 +13,21 @@ void State_Contra_Swim::Render()
 	y += oy;
 	if (obj->IsFaceLeft())
 	{
-		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_LEFT),x,y);
+		if (HoldKeyUp && HoldKeyLeft)
+			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_LEFT_LOOK_UP), x, y);
+		else if (HoldKeyUp)
+			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_LOOK_UP_STAND_LEFT), x, y);
+		else 
+			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_LEFT),x,y);
 	}
 	else
 	{
-		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_RIGHT),x,y);
+		if (HoldKeyUp && HoldKeyRight)
+			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_RIGHT_LOOK_UP), x, y);
+		else if (HoldKeyUp)
+			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_LOOK_UP_STAND_RIGHT), x, y);
+		else
+			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_RIGHT), x, y);
 	}
 }
 

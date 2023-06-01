@@ -80,7 +80,7 @@ int Get_CharANI_ID(int character, int behavior)
 	{
 		arr[ACT_LOOK_DOWN_LEFT] = ANI_BUSH_SNIPER_SHOOT;
 		arr[ACT_WALK_LEFT] = ANI_BUSH_SNIPER_WIND_UP;
-		arr[ACT_IDLE_LEFT] = SNIPER_ANI_AIM_LEFT;
+		arr[ACT_IDLE_LEFT] = ANI_EMPTY;
 		arr[ACT_DIE_LEFT] = SNIPER_ANI_AIM_LEFT;
 		break;
 	}
