@@ -128,7 +128,8 @@ class Game_ObjectBase
 		ULONGLONG curFrameTime;
 		int curAni;
 	public:
-		void _Render(int aniId, float x=-1, float y=-1);
+		void _Render(int aniId);
+		void _Render(int aniId, float x, float y);
 		bool atFinalFrame(int curAni=-99);
 };
 
