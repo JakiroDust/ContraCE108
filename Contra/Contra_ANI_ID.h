@@ -175,6 +175,17 @@
 
 #define ANI_FLAME	95990
 
+#pragma region UPGREADE
+#define ANI_UPGRADE_BOX_WINDUP	959800
+#define ANI_UPGRADE_BOX_LOOP	958810
+#define ANI_UPGRADE_BOX_FLYING	958820
+#define ANI_UPGRADE_M	958830
+#define ANI_UPGRADE_B	958840
+#define ANI_UPGRADE_F	958850
+#define ANI_UPGRADE_S	958860
+#define ANI_UPGRADE_L	958870
+#define ANI_UPGRADE_R	958880
+#pragma endregion
 #pragma region TERRAIN
 #define BLACK_BOX_ANI 99990
 #pragma endregion
