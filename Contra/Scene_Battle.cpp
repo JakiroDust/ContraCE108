@@ -10,22 +10,6 @@ float BG_color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 
 Scene_Battle::~Scene_Battle()
 {
-    //delete _p1;
-    //delete _p2;
-
-    //for (int i = 0; i < _layers.size(); i++)
-    //{
-    //    delete  _layers.at(i);
-    //}
-    //_layers.clear();
-
-    /*  for (int i = 0; i < _objects.size(); i++)
-    {
-        delete  _objects.at(i);
-    }
-    _objects.clear();*/
-    //_delete_spatial();
-    //__objects.clear();
     Unload();
 }
 
@@ -443,6 +427,8 @@ void Scene_Battle::_ParseOBject(string line)
                 case TURRET: obj.reset(new Enemy_Turret(x, y, Z_INDEX_ENEMY, param1));
                     break;
                 case CANNON: obj.reset(new Enemy_Cannon(x, y, Z_INDEX_ENEMY));
+                    break;
+                case FLAME: obj.reset(new Obj_Flame(x, y, Z_INDEX_ENEMY, param1, param2));
                     break;
                 case CAMERA:
                     ScreenManager::GetInstance()->Screen()->SetPosition(x, y);

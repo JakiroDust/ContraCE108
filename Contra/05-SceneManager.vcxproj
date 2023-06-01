@@ -211,6 +211,7 @@
     <ClCompile Include="Obj_Bullet_S.cpp" />
     <ClCompile Include="Obj_EnemyBullet_N.cpp" />
     <ClCompile Include="Obj_FallingStone.cpp" />
+    <ClCompile Include="Obj_Flame.cpp" />
     <ClCompile Include="Obj_MovingStone.cpp" />
     <ClCompile Include="QuadTree\QuadTree.cpp" />
     <ClCompile Include="QuadTree\SimpleVector.cpp" />
@@ -327,6 +328,7 @@
     <ClInclude Include="Obj_Bullet_S.h" />
     <ClInclude Include="Obj_EnemyBullet_N.h" />
     <ClInclude Include="Obj_FallingStone.h" />
+    <ClInclude Include="Obj_Flame.h" />
     <ClInclude Include="Obj_MovingStone.h" />
     <ClInclude Include="QuadTree\QuadTree.h" />
     <ClInclude Include="QuadTree\SimpleVector.h" />

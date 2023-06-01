@@ -314,6 +314,7 @@
     <ClCompile Include="Equip_EnemyGun_SneakSniper.cpp">
       <Filter>Source Files\Equip</Filter>
     </ClCompile>
+    <ClCompile Include="Obj_Flame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -667,6 +668,7 @@
     <ClInclude Include="Equip_EnemyGun_SneakSniper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Obj_Flame.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

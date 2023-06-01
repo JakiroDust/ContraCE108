@@ -124,6 +124,13 @@ int Get_CharANI_ID(int character, int behavior)
 		break;
 	}
 
+	case FLAME:
+	{
+		arr[ACT_ACTIVE_LEFT] = ANI_FLAME;
+		arr[ACT_ACTIVE_RIGHT] = ANI_FLAME;
+		break;
+	}
+
 	case FALLING_STONE:
 	{
 		arr[ACT_STANDBY_LEFT] = ANI_FALLING_ROCK;
