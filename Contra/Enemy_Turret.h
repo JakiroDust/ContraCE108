@@ -43,5 +43,6 @@ class Enemy_Turret : public Game_StationEnemy
 
 		void GetCustomSize(int state, int& width, int& height) override;
 		void Execute_DieAction() override;
+		void Execute_BeforeDelete() override;
 		virtual int RewardScore() override { return 300; };
 };

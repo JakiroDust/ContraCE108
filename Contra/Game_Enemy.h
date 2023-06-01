@@ -11,6 +11,7 @@ class Game_Enemy : public Game_Character
 		void UpdateState() override;
 		virtual void UpdateBehavior(DWORD dt, vector<Game_ObjectBase*>* coObjects = NULL);
 		void KeyReleaseAll() override;
+		void CreateDieAnimation(int aniID);
 	public:
 		Game_Enemy(float x, float y, int z, int width, int height) : Game_Character(x, y, z, width, height)
 		{

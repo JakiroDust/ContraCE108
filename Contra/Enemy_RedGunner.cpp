@@ -159,6 +159,14 @@ void Enemy_RedGunner::Execute_DieAction()
 		jump();
 }
 
+void Enemy_RedGunner::Execute_BeforeDelete()
+{
+	if (_die)
+	{
+		CreateDieAnimation(ANI_EXPLOSION_ARMY);
+	}
+}
+
 void Enemy_RedGunner::GetCustomSize(int state, int &width, int &height)
 {
 	switch (state)

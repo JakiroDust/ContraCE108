@@ -129,9 +129,10 @@ bool Game_ObjectBase::atFinalFrame(int curAni)
 {
 	if (curAni == -99)
 		curAni = this->curAni;
-	else
-		if (curAni != this->curAni)
-			return false;
+	else if (curAni != this->curAni)
+		return false;
+	else if (curAni == 0)
+		return true;
 	return CAnimations::GetInstance()->Get(curAni)->checkFinalFrame(curFrame);
 }
 

@@ -38,6 +38,15 @@ void Game_Bridge_S1::StartExplosion()
 	_finishExplosion = true;
 
 	// animation
+	Scene_Battle* scene = (Scene_Battle*)ScreenManager::GetInstance()->Scene();
+	float x, y;
+	GetCenterPoint(x, y);
+	unique_ptr<Game_Effect> explosion1(new Game_Effect(x - 10, y - 5, Z_INDEX_ANIMATION, ANI_EXPLOSION_CONSTRUCT));
+	unique_ptr<Game_Effect> explosion2(new Game_Effect(x + 10, y - 7, Z_INDEX_ANIMATION, ANI_EXPLOSION_CONSTRUCT, 100));
+	unique_ptr<Game_Effect> explosion3(new Game_Effect(x, y + 5, Z_INDEX_ANIMATION, ANI_EXPLOSION_CONSTRUCT, 200));
+	scene->AddEffect(move(explosion1));
+	scene->AddEffect(move(explosion2));
+	scene->AddEffect(move(explosion3));
 }
 
 void Game_Bridge_S1::TriggerExplosion(int ID)
