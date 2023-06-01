@@ -16,7 +16,7 @@ void StageEventHandler_S1::Update(DWORD dt)
 		return;
 	}
 	// Example for stage clear event
-	else if (_srcScene->p1()->x() > 3200)
+	else if (_srcScene->p1()->x() > 3168)
 	{
 		gm->Gain_StagePasscard();
 	}
@@ -186,7 +186,7 @@ void StageEventHandler_S1::Perform_StageClearEvent(DWORD dt)
 	Game_Player* player = _srcScene->p1();
 	player->SetAuto(true);
 	player->SetImmortal(true);
-	if (player->x() < 3200)
+	if (player->x() < 3196)
 	{
 		if (!player->Test_IfHaveAction())
 			player->AddAction(DIK_RIGHT);
