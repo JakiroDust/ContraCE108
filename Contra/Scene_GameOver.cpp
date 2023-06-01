@@ -22,7 +22,8 @@ void Scene_GameOver::KeyDownEventHandler(int KeyCode)
 				startTimer = true;
 				break;
 			case END:
-				exit(0);
+				startTimer = true;
+				endGame = true;
 				break;
 			}
 			
@@ -32,6 +33,8 @@ void Scene_GameOver::KeyDownEventHandler(int KeyCode)
 		break;
 		case DIK_W: location = CONTINUE; _images[selection_id].get()->MoveToPoint(65, 135, 0); break;
 		case DIK_S: location = END;		_images[selection_id].get()->MoveToPoint(65, 150, 0);  break;
+		case DIK_UP: location = CONTINUE; _images[selection_id].get()->MoveToPoint(65, 135, 0); break;
+		case DIK_DOWN: location = END;		_images[selection_id].get()->MoveToPoint(65, 150, 0);  break;
 	}
 
 	
@@ -146,7 +149,26 @@ void Scene_GameOver::Unload()
 
 void Scene_GameOver::nextScene()
 {
-	_NextScene(SIG_LOADING_STAGE_1);
+	GameManager* gm = GameManager::GetInstance();
+	if (endGame || gm->GetCoin() <= 0)
+	{
+		_NextScene(SIG_PLAY_INTRO);
+		return;
+	}
+
+	gm->UseCoin();
+	int currentStage = gm->GetCurrentStage();
+
+	switch (currentStage)
+	{
+	case SCENE_STAGE_1:
+		_NextScene(SIG_LOADING_STAGE_1);
+		break;
+	case SCENE_STAGE_3:
+		_NextScene(SIG_LOADING_STAGE_3);
+		break;
+	}
+
 }
 
 

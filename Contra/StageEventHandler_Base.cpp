@@ -1,6 +1,38 @@
 #include "StageEventHandler_Base.h"
 #include "Scene_Battle.h"
 #include "ScreenManager.h"
+#include "GameManager.h"
+
+void StageEventHandler_Base::Update(DWORD dt)
+{
+    Game_Player* player = _srcScene->p1();
+    GameManager* gm = GameManager::GetInstance();
+
+    // STAGE CLEAR
+    if (gm->Test_IfPassStage() == CAN_PASS_STAGE)
+    {
+        Perform_StageClearEvent(dt);
+        return;
+    }
+
+    // GAME OVER
+    if (player != NULL && player->Hp() <= 0)
+    {
+        if (_WaitForEndGame >= WAIT_ENDGAME_MAXVALUE)
+        {
+            _WaitForEndGame = ENDGAME_INTERVAL;
+        }
+        else if (_WaitForEndGame > dt)
+        {
+            _WaitForEndGame -= dt;
+        }
+        else
+        {
+            GameOver();
+        }
+    }
+
+}
 
 void StageEventHandler_Base::Set_Camera_Focus_Player()
 {
@@ -85,6 +117,47 @@ StageEventHandler_Base::StageEventHandler_Base(Scene_Battle* src)
         delete _srcScene;
     }
     _srcScene = src;
+}
+
+void StageEventHandler_Base::Load()
+{
+    GameManager* gm = GameManager::GetInstance();
+    
+    Equip_GunBase* gun = NULL;
+
+    switch (gm->GetSavedGun_P1())
+    {
+    case GUN_N:
+        gun = new Equip_Gun_N();
+        break;
+    case GUN_R:
+        gun = new Equip_Gun_R();
+        break;
+    case GUN_S:
+        gun = new Equip_Gun_S();
+        break;
+    case GUN_L:
+        gun = new Equip_Gun_L();
+        break;
+    case GUN_F:
+        gun = new Equip_Gun_F();
+        break;
+    }
+    _srcScene->p1()->ChangeWeapon(gun);
+
+    _srcScene->p1()->SetHp(gm->GetSavedLife_P1());
+}
+
+void StageEventHandler_Base::CompleteStage()
+{
+    GameManager::GetInstance()->SaveGun_P1(_srcScene->p1()->GunID());
+    GameManager::GetInstance()->SaveLife_P1(_srcScene->p1()->Hp());
+}
+
+void StageEventHandler_Base::GameOver()
+{
+    GameManager::GetInstance()->ReceiveSignal(SIG_PLAY_GAME_OVER, _srcScene);
+    _srcScene->PAUSE();
 }
 
 void StageEventHandler_Base::KeyDownEventHandler(int KeyCode)

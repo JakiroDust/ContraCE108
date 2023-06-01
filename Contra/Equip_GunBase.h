@@ -6,6 +6,16 @@ using namespace std;
 #define GUN_SPAWNMODE_VECTOR 0
 #define GUN_SPAWNMODE_TARGETPOS 1
 
+enum GunID
+{
+	GUN_E,
+	GUN_N,
+	GUN_R,
+	GUN_S,
+	GUN_L,
+	GUN_F
+};
+
 class Equip_GunBase
 {
 	protected:
@@ -17,6 +27,7 @@ class Equip_GunBase
 	public:
 		Equip_GunBase() { _isAuto = false; }
 		bool IsAuto() { return _isAuto; }
+		virtual int GunID() { return -1; }
 		virtual DWORD FireRate()
 		{
 			if (_maxAmmo <= 0)

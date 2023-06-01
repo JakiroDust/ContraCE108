@@ -1,7 +1,6 @@
 #pragma once
 #include "Scene_Base.h"
 
-
 #define SCENE_LOADING_STAGE_WAIT_INTERVAL 1500
 
 class Scene_LoadingStage : public Scene_Base

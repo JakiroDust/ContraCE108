@@ -7,6 +7,8 @@
 
 void StageEventHandler_S1::Update(DWORD dt)
 {
+	StageEventHandler_Base::Update(dt);
+
 	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
 
 	// Fix camera position
@@ -87,10 +89,17 @@ void StageEventHandler_S1::Load()
 	// Add sweeper block
 	unique_ptr<Game_SweeperBlock> sweeper(new Game_SweeperBlock(-32, GAMESCREEN_HEIGHT, Z_INDEX_TERRAIN, 32, GAMESCREEN_HEIGHT));
 	_sweeperID =  _srcScene->add_object(move(sweeper));
+
+	// setOther game params
+
+
+	// default load
+	StageEventHandler_Base::Load();
 }
 
 void StageEventHandler_S1::CompleteStage()
 {
+	StageEventHandler_Base::CompleteStage();
 	GameManager::GetInstance()->ReceiveSignal(SIG_LOADING_STAGE_3, _srcScene);
 	_srcScene->PAUSE();
 }
@@ -156,4 +165,15 @@ void StageEventHandler_S1::HelpGetRevivePoint(float& posX, float& posY)
 		posX = sweeper->x() + sweeper->width() + 16;
 		posY = _srcScene->MapHeight() - 16;
 	}
+}
+
+void StageEventHandler_S1::Perform_StageClearEvent(DWORD dt)
+{
+	Game_Player* player = _srcScene->p1();
+
+	if (player->x() < 3264)
+	{
+
+	}
+
 }

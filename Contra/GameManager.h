@@ -37,6 +37,11 @@ enum STAGE
 	SCENE_STAGE_3,
 	SCENE_STAGE_4
 };
+
+#define CAN_PASS_STAGE 1
+#define CANT_PASS_STAGE 0
+#define PASSCARD_NOT_INIT -1
+
 typedef unsigned int UINT;
 
 class GameManager
@@ -51,14 +56,15 @@ class GameManager
 		void SignalHandler();
 
 		// stage
-
+		int _currentStage = -1;
 		UINT _coin = 0;
 		UINT _P1_score = 0;
-		UINT _P2_score = 0;
-		int _stagePasscard = 0;
-
+		//UINT _P2_score = 0;
+		int _stagePasscard = -1;
+		int _saved_P1_Gun = GUN_N;
+		int _saved_P1_Life = 0;
 		void InitGame();
-
+		void InitNewLife();
 		
 
 		// scene
@@ -91,12 +97,33 @@ class GameManager
 		// Game control
 		
 		void GainScore_P1(UINT score) { _P1_score += score; }
-		void GainScore_P2(UINT score) { _P2_score += score; }
-		void UseCoin() { _coin > 0 ? _coin-- : 0 ; }
+		//void GainScore_P2(UINT score) { _P2_score += score; }
+		void UseCoin() 
+		{
+			if (_coin > 0)
+			{
+				_coin--;
+				InitNewLife();
+			}
+		}
+		void SaveGun_P1(int gunID) { _saved_P1_Gun = gunID; }
+		void SaveLife_P1(int hp) { _saved_P1_Life = hp; }
 
 		UINT GetScore_P1() { return _P1_score; }
-		UINT GetScore_P2() { return _P2_score; }
+		//UINT GetScore_P2() { return _P2_score; }
 		UINT GetCoin() { return _coin; }
+		int GetSavedGun_P1() { return _saved_P1_Gun; }
+		int GetSavedLife_P1() { return _saved_P1_Life; }
+		int GetCurrentStage() { return _currentStage; }
+		void Set_StagePasscardAmount(int amount) { _stagePasscard = amount; }
+		int Test_IfPassStage() 
+		{
+			if (_stagePasscard == 0)
+				return CAN_PASS_STAGE;
+			else if (_stagePasscard < 0)
+				return CANT_PASS_STAGE;
+			return PASSCARD_NOT_INIT;
+		}
 
 		void Gain_StagePasscard(int amount = 1) { _stagePasscard -= amount; }
 		StageEventHandler_Base* Get_StageEventHandler(int stage, Scene_Battle* scene);

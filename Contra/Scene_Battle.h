@@ -58,9 +58,9 @@ class Scene_Battle : public Scene_Base
 {
 	private:
 		int _p1_id=-1;
-		int _p2_id=-1;
+		//int _p2_id=-1;
 		unique_ptr<Game_Player> _p1 ;
-		Game_Player* _p2 = NULL;
+		//Game_Player* _p2 = NULL;
 		vector<unique_ptr<Game_Effect>> _effects;
 		//vector<Game_ObjectBase*> _objects;
 		unordered_map<int,unique_ptr<Game_ObjectBase>> __objects;
@@ -76,8 +76,8 @@ class Scene_Battle : public Scene_Base
 		//vector<Game_ObjectBase*>* objects() { return &_objects; }
 		Game_Player* p1() { return dynamic_cast<Game_Player*>(__objects[_p1_id].get()); }
 		void addPlayer1();
-		Game_Player* p2() { return dynamic_cast<Game_Player*>(__objects[_p2_id].get()); }
-		void addPlayer2();
+		//Game_Player* p2() { return dynamic_cast<Game_Player*>(__objects[_p2_id].get()); }
+		//void addPlayer2();
 		int MapWidth() { return _mapWidth; }
 		int MapHeight() { return _mapHeight; }
 		void SetMapSize(int width, int height) { _mapWidth = width; _mapHeight = height; }

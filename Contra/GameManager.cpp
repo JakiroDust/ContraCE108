@@ -245,27 +245,31 @@ void GameManager::InitGame()
 {
 	_coin = 3;
 	_P1_score = 0;
-	_P2_score = 0;
+	//_P2_score = 0;
+	InitNewLife();
+}
+
+void GameManager::InitNewLife()
+{
+	_saved_P1_Gun = GUN_N;
+	_saved_P1_Life = 3;
 }
 
 void GameManager::StartApplication()
 {
 	ScreenManager* screenManager = ScreenManager::GetInstance();
-
-
-	// currently Intro 've not implemented yet . So start STAGE 1 instead.
-	//Create_LoadingStage(SCENE_STAGE_1);
 	Create_Start_Screen();
-	//Create_GAME_OVER_Screen();
 }
 
 //======================================================================================
 // CREATE SCENE
 void GameManager::Create_Start_Screen()
 {
+	InitGame();
+
 	ScreenManager* screenManager = ScreenManager::GetInstance();
 	screenManager->Create_Scene_Start();
-	
+
 	screenManager->Scene()->Load();
 }
 void GameManager::Create_GAME_OVER_Screen()
@@ -283,9 +287,8 @@ void GameManager::Create_Stage_1()
 
 	scene->SetStageEventHandler(Get_StageEventHandler(SCENE_STAGE_1, scene));
 
-	// create stage 1 mean just at the beginning of the game
-	// init game
-	InitGame();
+	_currentStage = SCENE_STAGE_1;
+	_stagePasscard = -1;
 
 	scene->Load();
 }
@@ -295,6 +298,9 @@ void GameManager::Create_Stage_3()
 	ScreenManager* screenManager = ScreenManager::GetInstance();
 	screenManager->Create_Scene_Battle();
 	Scene_Battle* scene = (Scene_Battle*)(screenManager->Scene());
+
+	_currentStage = SCENE_STAGE_3;
+	_stagePasscard = -1;
 
 	scene->SetStageEventHandler(Get_StageEventHandler(SCENE_STAGE_3, scene));
 
