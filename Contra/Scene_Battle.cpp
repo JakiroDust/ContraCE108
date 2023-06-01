@@ -223,7 +223,7 @@ void Scene_Battle::addPlayer1()
 
 void Scene_Battle::AddEffect(unique_ptr<Game_Effect>&& obj)
 {
-    _effects.push_back(obj);
+    _effects.push_back(move(obj));
 }
 
 
