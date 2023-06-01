@@ -16,6 +16,7 @@ class Game_Bullet : public Game_MovableObject
 		// Base on OwnerID, objects will ignore this bullet or not.
 		int _OwnerID = 0;
 		int _Damage = 1;
+		static bool IsEqual(float a, float b, int decimal = 5);
 	public:
 		Game_Bullet(float x, float y, int z, int width, int height) : Game_MovableObject(0, 0, z, width, height)
 		{
