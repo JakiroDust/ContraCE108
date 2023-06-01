@@ -54,15 +54,19 @@ void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 		}
 	}
 	// Wait for revive
-	if (_die && _revive_interval > dt)
+	if (_hp > 0)
 	{
-		_ghost = true;
-		_revive_interval -= dt;
+		if (_die && _revive_interval > dt)
+		{
+			_ghost = true;
+			_revive_interval -= dt;
+		}
+		else if (_die)
+		{
+			PerformRevive();
+		}
 	}
-	else if (_die)
-	{
-		PerformRevive();
-	}
+
 
 	// Check Collision event
 	Game_Collision::GetInstance()->Process(this, dt, coObjects);
@@ -457,8 +461,7 @@ void Game_Player::DieEvent()
 {
 	forceDie();
 	
-	// implement limited life later
-	//_hp--;
+	_hp--;
 	
 	_revive_interval = PLAYER_WAIT_FOR_REVIVE_TIME;
 }

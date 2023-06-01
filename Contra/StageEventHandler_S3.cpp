@@ -7,6 +7,8 @@
 
 void StageEventHandler_S3::Update(DWORD dt)
 {
+	StageEventHandler_Base::Update(dt);
+
 	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
 
 	// Fix camera position
@@ -56,17 +58,18 @@ void StageEventHandler_S3::Load()
 	_srcScene->init_spatial();
 	_srcScene->parseMap("textures\\MAP3");
 
-	//_srcScene->_ParseSection_DICT("textures\\MAP1");
-	//_srcScene->_ParseOBject("textures\\MAP1");
-
 	// Add sweeper block
 	unique_ptr<Game_SweeperBlock> sweeper(new Game_SweeperBlock(0, 0, Z_INDEX_TERRAIN, GAMESCREEN_WIDTH, 32, true));
 	_sweeperID = _srcScene->add_object(move(sweeper));
+
+	// default load
+	StageEventHandler_Base::Load();
 }
 
 void StageEventHandler_S3::CompleteStage()
 {
-	GameManager::GetInstance()->ReceiveSignal(SIG_LOADING_STAGE_1, _srcScene);
+	StageEventHandler_Base::CompleteStage();
+	GameManager::GetInstance()->ReceiveSignal(SIG_PLAY_INTRO, _srcScene);
 	_srcScene->PAUSE();
 }
 

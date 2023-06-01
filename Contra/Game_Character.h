@@ -68,7 +68,11 @@ public:
 	void moveLeft() override;
 	void moveRight() override;
 	void jumpDown();
+	
 	// GET & SET
+
+	int Hp() { return _hp; }
+	void SetHp(int hp) { _hp = hp; }
 
 	bool IsJumpDown() { return _jumpDown; }
 	void SetJumpDown(bool b) { _jumpDown = b; }
@@ -76,7 +80,7 @@ public:
 	virtual void GetCustomSize(int state, int& width, int& height) { width = _width; height = _height; }
 	virtual void GetSpriteOffset(int state, float& x, float& y) { x = 0; y = 0; }
 	virtual int CharID() { return -1; }
-
+	int GunID() { return _weapon->GunID(); }
 	void ChangeWeapon(Equip_GunBase* newWep)
 	{
 		if (_weapon != NULL)

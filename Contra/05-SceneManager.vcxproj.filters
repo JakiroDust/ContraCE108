@@ -67,12 +67,6 @@
     <ClCompile Include="State_Station_Hide.cpp">
       <Filter>Source Files\CharState</Filter>
     </ClCompile>
-    <ClCompile Include="Scene_Base.cpp">
-      <Filter>Source Files\GameCore</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene_Battle.cpp">
-      <Filter>Source Files\GameCore</Filter>
-    </ClCompile>
     <ClCompile Include="ScreenManager.cpp">
       <Filter>Source Files\GameCore</Filter>
     </ClCompile>
@@ -209,9 +203,6 @@
     <ClCompile Include="Spawner_Infary_Stage1.cpp">
       <Filter>Source Files\Object\StaticObject</Filter>
     </ClCompile>
-    <ClCompile Include="Scene_LoadingStage.cpp">
-      <Filter>Source Files\GameCore</Filter>
-    </ClCompile>
     <ClCompile Include="StageEventHandler_Base.cpp">
       <Filter>Source Files\GameCore</Filter>
     </ClCompile>
@@ -315,6 +306,15 @@
       <Filter>Source Files\Equip</Filter>
     </ClCompile>
     <ClCompile Include="Obj_Flame.cpp" />
+    <ClCompile Include="Scene_Battle.cpp">
+      <Filter>Source Files\GameCore\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Base.cpp">
+      <Filter>Source Files\GameCore\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_LoadingStage.cpp">
+      <Filter>Source Files\GameCore\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -602,12 +602,6 @@
     <ClInclude Include="Spawner_Infary_Stage1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scene_GameOver.h">
-      <Filter>Source Files\GameCore\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene_Start.h">
-      <Filter>Source Files\GameCore\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="Obj_FallingStone.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -669,6 +663,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Obj_Flame.h" />
+    <ClInclude Include="Scene_Start.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_GameOver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

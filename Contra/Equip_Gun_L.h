@@ -17,7 +17,7 @@ public:
 		_maxAmmo = 0;
 		_ammo = _maxAmmo;
 	}
-
+	int GunID() override { return GUN_L; }
 	BYTE CurrentWaveID() { return _CurrentWaveID; }
 	void Fire(float& x, float& y, float& vx, float& vy, bool type = false) override;
 	void Fire(float& x, float& y, int DIR) override;

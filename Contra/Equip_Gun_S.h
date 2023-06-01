@@ -21,7 +21,7 @@ class Equip_Gun_S : public Equip_GunBase
 			_maxAmmo = 0;
 			_ammo = _maxAmmo;
 		}
-
+		int GunID() override { return GUN_S; }
 		void Recharge_Bullet() { _TotalShooted -= 1; }
 		void Use_Bullet() { _TotalShooted += 1; }
 		void Fire(float& x, float& y, float& vx, float& vy, bool type = false) override;

@@ -11,7 +11,7 @@ class Equip_Gun_F : public Equip_GunBase
 			_isAuto = false;
 			_FireRate = 250;
 		}
-
+		int GunID() override { return GUN_F; }
 		void Fire(float& x, float& y, float& vx, float& vy, bool type = false) override;
 		void Fire(float& x, float& y, int DIR) override;
 };

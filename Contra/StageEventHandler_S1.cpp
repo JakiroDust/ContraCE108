@@ -7,6 +7,8 @@
 
 void StageEventHandler_S1::Update(DWORD dt)
 {
+	StageEventHandler_Base::Update(dt);
+
 	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
 
 	// Fix camera position
@@ -87,10 +89,14 @@ void StageEventHandler_S1::Load()
 	// Add sweeper block
 	unique_ptr<Game_SweeperBlock> sweeper(new Game_SweeperBlock(-32, GAMESCREEN_HEIGHT, Z_INDEX_TERRAIN, 32, GAMESCREEN_HEIGHT));
 	_sweeperID =  _srcScene->add_object(move(sweeper));
+
+	// default load
+	StageEventHandler_Base::Load();
 }
 
 void StageEventHandler_S1::CompleteStage()
 {
+	StageEventHandler_Base::CompleteStage();
 	GameManager::GetInstance()->ReceiveSignal(SIG_LOADING_STAGE_3, _srcScene);
 	_srcScene->PAUSE();
 }

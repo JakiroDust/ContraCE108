@@ -13,7 +13,7 @@ class Equip_Gun_R : public Equip_GunBase
 			_ammo = _maxAmmo;
 
 		}
-
+		int GunID() override { return GUN_R; }
 		void Fire(float& x, float& y, float& vx, float& vy, bool type = false) override;
 		void Fire(float& x, float& y, int DIR) override;
 };
