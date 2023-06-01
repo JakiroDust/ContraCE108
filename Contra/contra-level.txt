@@ -9,6 +9,7 @@
 101	textures\enemies_sprites\1.png
 102	textures\Contra-start.png
 103	textures\ContraSheet4.png
+104	textures\laser-bullet.png
 #20	textures\misc.png
 
 
