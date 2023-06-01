@@ -40,6 +40,32 @@ void Obj_Bullet_L::Render()
 {
 	if (_delay == 0)
 	{
+		// top
+		if (_vy > 0 && _vx == 0)
+			_SpriteId = CONTRA_BULLET_ANI_BULLET_L_UP;
+		// bottom
+		else if (_vy < 0 && _vx == 0)
+			_SpriteId = CONTRA_BULLET_ANI_BULLET_L_DOWN;
+		// left
+		else if (_vy == 0 && _vx < 0)
+			_SpriteId = CONTRA_BULLET_ANI_BULLET_L_LEFT;
+		// right
+		else if (_vy == 0 && _vx > 0)
+			_SpriteId = CONTRA_BULLET_ANI_BULLET_L_RIGHT;
+		// top left
+		else if (_vy > 0 && _vx < 0)
+			_SpriteId = CONTRA_BULLET_ANI_BULLET_L_UP_LEFT;
+		// top right
+		else if (_vy > 0 && _vx > 0)
+			_SpriteId = CONTRA_BULLET_ANI_BULLET_L_UP_RIGHT;
+		// bottom left
+		else if (_vy < 0 && _vx < 0)
+			_SpriteId = CONTRA_BULLET_ANI_BULLET_L_DOWN_LEFT;
+		// bottom right
+		else if (_vy < 0 && _vx > 0)
+			_SpriteId = CONTRA_BULLET_ANI_BULLET_L_DOWN_RIGHT;
+		else
+			_SpriteId = ANI_EMPTY;
 		Game_Bullet::Render();
 	}
 }
