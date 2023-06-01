@@ -21,7 +21,6 @@ protected:
 	vector<pair<int, int>> _ActionQueue; // save keycode list
 
 	virtual void UpdateState() {}
-	void AddAction(int KeyCode1, int KeyCode2 = -1);
 	virtual void KeyReleaseAll() {}
 	void ExecuteAction();
 	void ResetStateParams() override;
@@ -69,6 +68,8 @@ public:
 	void moveRight() override;
 	void jumpDown();
 	
+	void AddAction(int KeyCode1, int KeyCode2 = -1);
+	bool Test_IfHaveAction() { return _ActionQueue.size() > 0; }
 	// GET & SET
 
 	int Hp() { return _hp; }

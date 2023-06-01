@@ -21,6 +21,9 @@ int Game_Player::CharID()
 
 void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
+	if (_auto)
+		ExecuteAction();
+
 	Game_Character::Update(dt, coObjects);
 
 	// UPDATE SOME PARAMS
@@ -217,7 +220,7 @@ void Game_Player::KeyDownEventHandler(int KeyCode)
 
 void Game_Player::KeyUpEventHandler(int KeyCode)
 {
-	if (_state.get() == NULL || !_auto)
+	if (_state.get() == NULL)
 		return;
 
 	State_Contra_Base* state = (State_Contra_Base*)_state.get();
@@ -243,6 +246,7 @@ void Game_Player::KeyUpEventHandler(int KeyCode)
 		state->KeyReleased_Jump();
 		break;
 	}
+
 }
 
 void Game_Player::KeyReleaseAll()
@@ -264,6 +268,10 @@ void Game_Player::KeyStateHandler(BYTE* state)
 	if (_ForceX != 0)
 		return;
 	
+	// Disable when player's character in auto control mode
+	if (_auto)
+		return;
+
 	LPGAME game = CGame::GetInstance();
 	State_Contra_Base* CharState = (State_Contra_Base*)_state.get();
 	if (game->IsKeyDown(DIK_UP))
@@ -339,7 +347,7 @@ void Game_Player::OnCollisionWith(PCOLLISIONEVENT e)
 	{
 		Game_Enemy* enemy = (Game_Enemy*)(e->obj);
 		//enemy->forceDie();
-		if (enemy->BodyDamage())
+		if (enemy->BodyDamage() && !_immortal)
 		{
 			DieEvent();
 			return;

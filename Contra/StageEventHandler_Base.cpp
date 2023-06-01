@@ -12,6 +12,18 @@ void StageEventHandler_Base::Update(DWORD dt)
     if (gm->Test_IfPassStage() == CAN_PASS_STAGE)
     {
         Perform_StageClearEvent(dt);
+        if (_WaitForClearStage < WAIT_STAGECLEAR_MAXVALUE)
+        {
+            if (_WaitForClearStage > dt)
+            {
+                _WaitForClearStage -= dt;
+            }
+            else
+            {
+                CompleteStage();
+            }
+        }
+
         return;
     }
 

@@ -8,6 +8,20 @@
 void StageEventHandler_S1::Update(DWORD dt)
 {
 	StageEventHandler_Base::Update(dt);
+	
+	// STAGE CLEAR
+	GameManager* gm = GameManager::GetInstance();
+	if (gm->Test_IfPassStage() == CAN_PASS_STAGE)
+	{
+		return;
+	}
+	// Example for stage clear event
+	else if (_srcScene->p1()->x() > 3200)
+	{
+		gm->Gain_StagePasscard();
+	}
+
+	//-----------------------------------------------------
 
 	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
 
@@ -91,7 +105,7 @@ void StageEventHandler_S1::Load()
 	_sweeperID =  _srcScene->add_object(move(sweeper));
 
 	// setOther game params
-
+	GameManager::GetInstance()->Set_StagePasscardAmount(1);
 
 	// default load
 	StageEventHandler_Base::Load();
@@ -170,10 +184,33 @@ void StageEventHandler_S1::HelpGetRevivePoint(float& posX, float& posY)
 void StageEventHandler_S1::Perform_StageClearEvent(DWORD dt)
 {
 	Game_Player* player = _srcScene->p1();
-
-	if (player->x() < 3264)
+	player->SetAuto(true);
+	player->SetImmortal(true);
+	if (player->x() < 3200)
 	{
-
+		if (!player->Test_IfHaveAction())
+			player->AddAction(DIK_RIGHT);
+	}
+	else if (player->x() < 3296)
+	{
+		if (!player->Test_IfHaveAction())
+		{
+			if (!S1_firstJump)
+			{
+				player->AddAction(DIK_P);
+				S1_firstJump = true;
+			}
+			else
+				player->AddAction(DIK_RIGHT);
+		}
+	}
+	else
+	{
+		player->teleport(_srcScene->MapWidth() + 100, _srcScene->MapHeight());
+		if (_WaitForClearStage >= WAIT_STAGECLEAR_MAXVALUE)
+		{
+			_WaitForClearStage = 1000;
+		}
 	}
 
 }
