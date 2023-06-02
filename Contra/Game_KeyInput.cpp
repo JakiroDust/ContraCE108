@@ -38,7 +38,14 @@ void Game_KeyInput::OnKeyDown(int KeyCode)
 {
 	for (int i = 0; i < _objects.size(); i++)
 	{
-		_objects[i]->KeyDownEventHandler(KeyCode);
+		if (dynamic_cast<Game_Player*>(_objects[i]))
+		{
+			Game_Player* player = (Game_Player*)_objects[i];
+			if (!player->IsAuto())
+				_objects[i]->KeyDownEventHandler(KeyCode);
+		}
+		else
+			_objects[i]->KeyDownEventHandler(KeyCode);
 	}
 	if (_scene != NULL)
 		_scene->KeyDownEventHandler(KeyCode);
@@ -48,7 +55,14 @@ void Game_KeyInput::OnKeyUp(int KeyCode)
 {
 	for (int i = 0; i < _objects.size(); i++)
 	{
-		_objects[i]->KeyUpEventHandler(KeyCode);
+		if (dynamic_cast<Game_Player*>(_objects[i]))
+		{
+			Game_Player* player = (Game_Player*)_objects[i];
+			if (!player->IsAuto())
+				_objects[i]->KeyUpEventHandler(KeyCode);
+		}
+		else 
+			_objects[i]->KeyUpEventHandler(KeyCode);
 	}
 	if (_scene != NULL)
 		_scene->KeyUpEventHandler(KeyCode);

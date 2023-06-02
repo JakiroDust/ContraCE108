@@ -125,7 +125,7 @@ class GameManager
 			return PASSCARD_NOT_INIT;
 		}
 
-		void Gain_StagePasscard(int amount = 1) { _stagePasscard -= amount; }
+		void Gain_StagePasscard() { _stagePasscard --; }
 		StageEventHandler_Base* Get_StageEventHandler(int stage, Scene_Battle* scene);
 
 };
