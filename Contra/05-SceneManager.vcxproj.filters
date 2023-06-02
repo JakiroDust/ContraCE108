@@ -315,6 +315,8 @@
     <ClCompile Include="Scene_LoadingStage.cpp">
       <Filter>Source Files\GameCore\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Game_UpgradeBase.cpp" />
+    <ClCompile Include="Game_Upgrade.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -669,6 +671,8 @@
     <ClInclude Include="Scene_GameOver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Game_UpgradeBase.h" />
+    <ClInclude Include="Game_Upgrade.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -2,7 +2,7 @@
 #include "Scene_Battle.h"
 #include "ScreenManager.h"
 #include "GameManager.h"
-
+#include "Game_Upgrade.h"
 void StageEventHandler_Base::Update(DWORD dt)
 {
     Game_Player* player = _srcScene->p1();
@@ -50,6 +50,10 @@ void StageEventHandler_Base::Debug_KeyDownEventHandler(int KeyCode)
 {
     if (STAGE_DEBUG_ALLOW)
     {
+        float x, y;
+        
+        _srcScene->p1()->GetCenterPoint(x, y);
+        unique_ptr<Game_UpgradeBase> a(new Game_Upgrade_M(x, y, 0, 10,10));
         switch (KeyCode)
         {
         case DIK_1:
@@ -68,6 +72,7 @@ void StageEventHandler_Base::Debug_KeyDownEventHandler(int KeyCode)
             _srcScene->p1()->ChangeWeapon(new Equip_Gun_F());
             break;
         case DIK_6:
+            _srcScene->add_object(move(a));
             break;
         case DIK_7:
             CompleteStage();

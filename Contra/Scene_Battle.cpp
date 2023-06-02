@@ -7,7 +7,7 @@ using namespace std;
 #define MAP_TEXU_WIDTH 16
 #define MAP_TEXU_HEIGHT 8
 float BG_color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
-
+Scene_Battle* Scene_Battle::__instance = NULL;
 Scene_Battle::~Scene_Battle()
 {
     Unload();
@@ -184,6 +184,7 @@ void Scene_Battle::Unload()
     //_p2.reset(NULL);
     if (_controller != NULL)
         delete _controller;
+     __instance = NULL;
 }
 
 void Scene_Battle::KeyDownEventHandler(int KeyCode)
@@ -230,7 +231,7 @@ int Scene_Battle::add_object(unique_ptr<Game_ObjectBase>&& object)
     object->GetBoundingBox(l, t, r, b);
     __objects[id] =move(object);
     
-   // DebugOut(L"id %d l=%d t=%d r=%d b=%d\n", id_nth, l, t, r, b);
+    //DebugOut(L"id %d l=%d t=%d r=%d b=%d\n", id_nth, (int)l, (int)t, (int)r, (int)b);
     spatial->insert(id, l, b, r, t);
     return id;
 }
@@ -511,4 +512,13 @@ vector<int> Scene_Battle::getNearByIDwithWH(int x, int y, int width, int height)
         top = y + height;
     return spatial->search(left, bottom, right, top,-100);
 }
-
+Scene_Battle* Scene_Battle::GetInstance()
+{
+    if (__instance == NULL) __instance = new Scene_Battle();
+    return __instance;
+}
+Scene_Battle* Scene_Battle::GenInstance()
+{
+    __instance = new Scene_Battle();
+    return __instance;
+}

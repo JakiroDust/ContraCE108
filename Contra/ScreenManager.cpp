@@ -52,7 +52,7 @@ void ScreenManager::Unload_Scene()
 void ScreenManager::Create_Scene_Battle()
 {
 	Unload_Scene();
-	Scene_Battle* scene = new Scene_Battle();
+	Scene_Battle* scene = Scene_Battle::GenInstance();
 	//scene->Create_Stage_Demo();
 	_scene = scene;
 	Game_KeyInput::GetInstance()->AddSceneControl(_scene);

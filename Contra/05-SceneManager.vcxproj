@@ -201,6 +201,8 @@
     <ClCompile Include="Game_SweeperBlock.cpp" />
     <ClCompile Include="Game_Terrain.cpp" />
     <ClCompile Include="Game_TestBox.cpp" />
+    <ClCompile Include="Game_Upgrade.cpp" />
+    <ClCompile Include="Game_UpgradeBase.cpp" />
     <ClCompile Include="Game_Water.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MusicManager.cpp" />
@@ -318,6 +320,8 @@
     <ClInclude Include="Game_SweeperBlock.h" />
     <ClInclude Include="Game_Terrain.h" />
     <ClInclude Include="Game_TestBox.h" />
+    <ClInclude Include="Game_Upgrade.h" />
+    <ClInclude Include="Game_UpgradeBase.h" />
     <ClInclude Include="Game_Water.h" />
     <ClInclude Include="KeyEventHandler.h" />
     <ClInclude Include="MusicManager.h" />

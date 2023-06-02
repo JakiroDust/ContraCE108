@@ -55,11 +55,12 @@ void CSprite::Draw(float x, float y, BYTE RenderMode)
 
 	float _width, _height;
 	getWH(_width, _height);
-
+	_width = round(_width);
+	_height = round(_height);
 	if (RenderMode == RENDER_MODE_TOP_LEFT)
 	{
-		x = (floor(x - _width / 2.0f));
-		y = (floor(y - _height / 2.0f));
+		x = ((x - _width / 2.0f));
+		y = ((y - _height / 2.0f));
 	}
 
 	x = floorf(x);
@@ -95,10 +96,10 @@ void CSprite::DrawOnScreen(float x, float y, BYTE RenderMode,float ratiox,float 
 		y = y - _height / 2.0f;
 	}
 
-	x = floorf(x);
-	y = floorf(y);
+	x = floor(x);
+	y = floor(y);
 
-	D3DXMatrixTranslation(&matTranslation, x, g->GetBackBufferHeight() - y, 0.1f);
+	D3DXMatrixTranslation(&matTranslation, x, round(g->GetBackBufferHeight()) - y, 0.1f);
 	D3DXMATRIX matScaling;
 
 	D3DXMatrixScaling(&matScaling, _width, _height, 1.0f);

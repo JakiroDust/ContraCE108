@@ -143,7 +143,11 @@ class Scene_Battle : public Scene_Base
 		// Delete later
 		void init_spatial() { _init_spatial(); }
 
-		//quadTree
+private:
+	static Scene_Battle* __instance;
+public:
+	static Scene_Battle* GetInstance();
+	static Scene_Battle* GenInstance();
 
 };
 
