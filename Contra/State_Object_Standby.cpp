@@ -22,3 +22,9 @@ void State_Object_Standby::KeyPressed_Active()
 	if (_nextState == -1)
 		_nextState = STATE_OBJ_HIDE;
 }
+
+void State_Object_Standby::KeyPressed_Emerge()
+{
+	if (_nextState == -1)
+		_nextState = STATE_OBJ_EMERGE;
+}

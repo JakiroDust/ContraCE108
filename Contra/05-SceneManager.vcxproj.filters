@@ -317,6 +317,8 @@
     </ClCompile>
     <ClCompile Include="Game_UpgradeBase.cpp" />
     <ClCompile Include="Game_Upgrade.cpp" />
+    <ClCompile Include="Game_UpgradeBoxBase.cpp" />
+    <ClCompile Include="Game_UpgradeBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -673,6 +675,8 @@
     </ClInclude>
     <ClInclude Include="Game_UpgradeBase.h" />
     <ClInclude Include="Game_Upgrade.h" />
+    <ClInclude Include="Game_UpgradeBoxBase.h" />
+    <ClInclude Include="Game_UpgradeBox.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

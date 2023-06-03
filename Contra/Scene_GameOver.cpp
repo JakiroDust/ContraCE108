@@ -19,6 +19,7 @@ void Scene_GameOver::KeyDownEventHandler(int KeyCode)
 			{
 
 			case CONTINUE:
+				GameManager::GetInstance()->reset_player_parameter();
 				startTimer = true;
 				break;
 			case END:

@@ -17,5 +17,6 @@ class State_Object_Base : public State_Base
 
 		virtual void KeyPressed_Active() {}
 		virtual void KeyPressed_Hide() {}
+		virtual void KeyPressed_Emerge() {}
 };
 

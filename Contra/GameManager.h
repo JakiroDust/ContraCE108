@@ -95,7 +95,7 @@ class GameManager
 		void StartApplication();
 
 		// Game control
-		
+		void ResetScore_P1() { _P1_score = 0; }
 		void GainScore_P1(UINT score) { _P1_score += score; }
 		//void GainScore_P2(UINT score) { _P2_score += score; }
 		void UseCoin() 
@@ -128,5 +128,13 @@ class GameManager
 		void Gain_StagePasscard() { _stagePasscard --; }
 		StageEventHandler_Base* Get_StageEventHandler(int stage, Scene_Battle* scene);
 
+
+		//SPEED upgrade
+		float _Speed_Upgrade = 1;
+public:
+	void reset_Speed_Upgrade();
+	void add_Speed_Upgrade();
+	float& Speed_Upgrade();
+	void reset_player_parameter();
 };
 

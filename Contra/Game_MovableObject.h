@@ -120,7 +120,7 @@ class Game_MovableObject : public Game_ObjectBase
 
 		/// UPDATE
 	
-		void Update(DWORD dt) override;
+		virtual void Update(DWORD dt) override;
 		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;
 
 		void ApplyExternalForce();

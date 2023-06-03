@@ -9,6 +9,6 @@ class State_Object_Emerge : public State_Object_Base
 
 		int StateId() override { return STATE_OBJ_EMERGE; }
 		void Render() override;
-		void Update(DWORD dt) override {}
+		void Update(DWORD dt) override;
 };
 

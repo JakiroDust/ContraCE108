@@ -203,6 +203,8 @@
     <ClCompile Include="Game_TestBox.cpp" />
     <ClCompile Include="Game_Upgrade.cpp" />
     <ClCompile Include="Game_UpgradeBase.cpp" />
+    <ClCompile Include="Game_UpgradeBoxBase.cpp" />
+    <ClCompile Include="Game_UpgradeBox.cpp" />
     <ClCompile Include="Game_Water.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MusicManager.cpp" />
@@ -322,6 +324,8 @@
     <ClInclude Include="Game_TestBox.h" />
     <ClInclude Include="Game_Upgrade.h" />
     <ClInclude Include="Game_UpgradeBase.h" />
+    <ClInclude Include="Game_UpgradeBoxBase.h" />
+    <ClInclude Include="Game_UpgradeBox.h" />
     <ClInclude Include="Game_Water.h" />
     <ClInclude Include="KeyEventHandler.h" />
     <ClInclude Include="MusicManager.h" />

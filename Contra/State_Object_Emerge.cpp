@@ -16,3 +16,10 @@ void State_Object_Emerge::Render()
 	else
 		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_EMERGE_RIGHT),x,y);
 }
+
+void State_Object_Emerge::Update(DWORD dt)
+{
+	Game_Character* obj = (Game_Character*)_srcObj;
+	if (obj->atFinalFrame())
+	_nextState = STATE_OBJ_ACTIVE;
+}

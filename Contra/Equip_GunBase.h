@@ -24,25 +24,12 @@ class Equip_GunBase
 		DWORD _ammo = 0;
 		DWORD _maxAmmo = 0;
 		DWORD _FireRate = 0;
+		static float* modifier;
 	public:
 		Equip_GunBase() { _isAuto = false; }
 		bool IsAuto() { return _isAuto; }
 		virtual int GunID() { return -1; }
-		virtual DWORD FireRate()
-		{
-			if (_maxAmmo <= 0)
-				return _FireRate;
-			if (_ammo > 1)
-			{
-				_ammo--;
-				return _FireRate;
-			}
-			else
-			{
-				_ammo = _maxAmmo;
-				return _reloadTime;
-			}
-		}
+		virtual DWORD FireRate();
 		virtual void Fire(float& x, float& y, float& vx, float& vy, bool type = false) {}
 		virtual void Fire(float& x, float& y, int DIR) {}
 };

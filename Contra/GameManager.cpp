@@ -241,6 +241,27 @@ StageEventHandler_Base* GameManager::Get_StageEventHandler(int stage, Scene_Batt
 	}
 }
 
+void GameManager::reset_Speed_Upgrade()
+{
+	_Speed_Upgrade = 1;
+}
+
+void GameManager::add_Speed_Upgrade()
+{
+	_Speed_Upgrade+=0.15;
+}
+
+float& GameManager::Speed_Upgrade()
+{
+	return _Speed_Upgrade;
+}
+
+void GameManager::reset_player_parameter()
+{
+	ResetScore_P1();
+	reset_Speed_Upgrade();
+}
+
 void GameManager::InitGame()
 {
 	_coin = 3;

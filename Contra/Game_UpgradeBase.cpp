@@ -1,6 +1,15 @@
 #include "Game_UpgradeBase.h"
 #include "Game_DeadlyBlock.h"
 #include "Game_Player.h"
+#include "State_Contra_Jump.h"
+
+Game_UpgradeBase::Game_UpgradeBase(float x, float y, int z, int width, int height) : Game_SpecialObject(x, y, z, width, height)
+{
+	_state.reset(new State_Contra_Jump(this));
+	_ForceX = 64;
+	_ForceY = _jumpHeight;
+
+};
 void Game_UpgradeBase::OnCollisionWith(PCOLLISIONEVENT e)
 {
 	if (e->obj->IsDeleted())

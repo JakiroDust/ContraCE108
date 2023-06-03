@@ -52,6 +52,9 @@ void Game_SpecialObject::KeyDownEventHandler(int KeyCode)
 		State_Object_Base* state = (State_Object_Base*)_state.get();
 		switch (KeyCode)
 		{
+		case DIK_E:
+			state->KeyPressed_Emerge();
+			break;
 		case DIK_O:
 			state->KeyPressed_Active();
 			break;
