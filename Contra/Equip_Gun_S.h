@@ -1,10 +1,10 @@
 #pragma once
-#include "Equip_GunBase.h"
+#include "Equip_PlayerGunBase.h"
 #include "Obj_Bullet_S.h"
 
 #define EQUIP_GUN_S_MAX_BULLETS_EXIST 10
 
-class Equip_Gun_S : public Equip_GunBase
+class Equip_Gun_S : public Equip_PlayerGunBase
 {
 	private:
 		UINT _TotalShooted = 0;

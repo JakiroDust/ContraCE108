@@ -24,7 +24,7 @@ class Equip_GunBase
 		DWORD _ammo = 0;
 		DWORD _maxAmmo = 0;
 		DWORD _FireRate = 0;
-		static float* modifier;
+		
 	public:
 		Equip_GunBase() { _isAuto = false; }
 		bool IsAuto() { return _isAuto; }

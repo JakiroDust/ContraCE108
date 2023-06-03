@@ -1,6 +1,6 @@
 #pragma once
-#include "Equip_GunBase.h"
-class Equip_Gun_R : public Equip_GunBase
+#include "Equip_PlayerGunBase.h"
+class Equip_Gun_R : public Equip_PlayerGunBase
 {
 	private:
 	public:

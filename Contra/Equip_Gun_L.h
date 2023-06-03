@@ -1,10 +1,10 @@
 #pragma once
-#include "Equip_GunBase.h"
+#include "Equip_PlayerGunBase.h"
 #include "Obj_Bullet_L.h"
 
 #define EQUIP_GUN_L_MAX_ID 20
 
-class Equip_Gun_L : public Equip_GunBase
+class Equip_Gun_L : public Equip_PlayerGunBase
 {
 private:
 	BYTE _CurrentWaveID = 0;
