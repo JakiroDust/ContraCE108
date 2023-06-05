@@ -7,6 +7,9 @@
 #define STANDARD_JUMP_HEIGHT 54.0f
 #define GRAVITY 0.15f
 
+#define TP_NO_CHANGE_X -999000
+#define TP_NO_CHANGE_Y -999000
+
 class Game_MovableObject : public Game_ObjectBase
 {
 	protected:

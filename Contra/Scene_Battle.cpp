@@ -110,30 +110,20 @@ void Scene_Battle::Update(DWORD dt)
     for(auto& i : id_list)
     {
         Game_ObjectBase* obj = __objects[i].get();
-        //obj->Update(dt);
 
+        if (obj->NeedScanCollision())
+            obj->Update(dt, nearbyObject);
+        else
+            obj->Update(dt);
+        if (_controller != NULL)
+            _controller->SpecificUpdate(dt, obj);
 
-        if (obj->baseType() == TYPE_STATIC)
+        if (obj->baseType() != TYPE_STATIC)
         {
-            if (obj->NeedScanCollision())
-                obj->Update(dt, nearbyObject);
-            else
-                obj->Update(dt);
-            if (_controller != NULL)
-                _controller->SpecificUpdate(dt, obj);
-        }
-        else {
-
-
-            if (obj->NeedScanCollision())
-                obj->Update(dt, nearbyObject);
-            else
-                obj->Update(dt);
-            if (_controller != NULL)
-                _controller->SpecificUpdate(dt, obj);
             obj->GetBoundingBox(new_l, new_top, new_right, new_bottom);
             spatial->update(i,(int)new_l, (int)new_bottom, (int)new_right, (int)new_top);
         }
+
         screen->CheckObjectIfNeedRender(obj);
     }
 
@@ -430,6 +420,10 @@ void Scene_Battle::_ParseOBject(string line)
                 case CANNON: obj.reset(new Enemy_Cannon(x, y, Z_INDEX_ENEMY));
                     break;
                 case FLAME: obj.reset(new Obj_Flame(x, y, Z_INDEX_ENEMY, param1, param2));
+                    break;
+                case UP_BOX_STATION: obj.reset(new Obj_StationUpgradeBox(x, y, Z_INDEX_ITEM, param1, param2));
+                    break;
+                case UP_BOX_FLYING: obj.reset(new Obj_FlyingUpgradeBox(x, y, Z_INDEX_ITEM, param1, param2));
                     break;
                 case CAMERA:
                     ScreenManager::GetInstance()->Screen()->SetPosition(x, y);

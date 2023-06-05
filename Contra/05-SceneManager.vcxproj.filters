@@ -315,11 +315,18 @@
     <ClCompile Include="Scene_LoadingStage.cpp">
       <Filter>Source Files\GameCore\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Game_UpgradeBase.cpp" />
-    <ClCompile Include="Game_Upgrade.cpp" />
-    <ClCompile Include="Game_UpgradeBoxBase.cpp" />
-    <ClCompile Include="Game_UpgradeBox.cpp" />
+    <ClCompile Include="Obj_StationUpgradeBox.cpp" />
+    <ClCompile Include="Obj_FlyingUpgradeBox.cpp" />
     <ClCompile Include="Equip_PlayerGunBase.cpp" />
+    <ClCompile Include="Obj_UpgradeBase.cpp">
+      <Filter>Source Files\Object\MoveObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_Upgrade.cpp">
+      <Filter>Source Files\Object\MoveObject</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Object_Hide.cpp">
+      <Filter>Source Files\CharState</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -674,11 +681,18 @@
     <ClInclude Include="Scene_GameOver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game_UpgradeBase.h" />
-    <ClInclude Include="Game_Upgrade.h" />
-    <ClInclude Include="Game_UpgradeBoxBase.h" />
-    <ClInclude Include="Game_UpgradeBox.h" />
+    <ClInclude Include="Obj_StationUpgradeBox.h" />
+    <ClInclude Include="Obj_FlyingUpgradeBox.h" />
     <ClInclude Include="Equip_PlayerGunBase.h" />
+    <ClInclude Include="Obj_UpgradeBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj_Upgrade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Object_Hide.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
