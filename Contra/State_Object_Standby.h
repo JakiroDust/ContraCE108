@@ -11,6 +11,5 @@ class State_Object_Standby : public State_Object_Base
 		void Update(DWORD dt) override {}
 
 		virtual void KeyPressed_Active() override;
-		virtual void KeyPressed_Emerge() override;
 };
 

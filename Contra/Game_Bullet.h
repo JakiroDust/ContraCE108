@@ -7,8 +7,6 @@
 #define B_SPAWN_MODE_TARGETPOS 1
 #define B_SPAWN_MODE_SETSPEED 0
 
-#define B_VALUE_Z 2
-
 class Game_Bullet : public Game_MovableObject
 {
 	protected:

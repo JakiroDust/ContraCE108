@@ -179,8 +179,10 @@ void Game_MovableObject::UpdateDefault(DWORD dt)
 	// perform teleport
 	if (_tele_X != 0 || _tele_Y != 0)
 	{
-		_x = _tele_X;
-		_y = _tele_Y;
+		if (_tele_X != TP_NO_CHANGE_X)
+			_x = _tele_X;
+		if (_tele_Y != TP_NO_CHANGE_Y)
+			_y = _tele_Y;
 		_tele_X = 0;
 		_tele_Y = 0;
 	}

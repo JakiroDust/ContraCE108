@@ -1,7 +1,7 @@
 #pragma once
 #include "Game_Character.h"
 #include "Equip_Gun_N.h"
-#include "Equip_Gun_R.h"
+#include "Equip_Gun_M.h"
 #include "Equip_Gun_S.h"
 #include "Equip_Gun_L.h"
 #include "Equip_Gun_F.h"

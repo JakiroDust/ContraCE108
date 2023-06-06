@@ -10,8 +10,8 @@ class StageEventHandler_S1 : public StageEventHandler_Base
 {
 	private:
 
-		int _sweeperID;
-		float _maxMovedLength;
+		int _sweeperID = -1;
+		float _maxMovedLength = 0;
 		void Perform_StageClearEvent(DWORD dt) override;
 		// param for stage clear event
 		bool S1_firstJump = false;

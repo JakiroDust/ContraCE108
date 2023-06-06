@@ -48,7 +48,7 @@ void Equip_EnemyGun_Turret::Fire(float& x, float& y, int DIR)
 	default:
 		break;
 	}
-	bullet = unique_ptr<Obj_EnemyBullet_N>(new Obj_EnemyBullet_N(x, y, B_VALUE_Z, angle));
+	bullet = unique_ptr<Obj_EnemyBullet_N>(new Obj_EnemyBullet_N(x, y, Z_INDEX_BULLET, angle));
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
 
 	scene->add_object(move(bullet));

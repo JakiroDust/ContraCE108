@@ -29,6 +29,8 @@
 #include "Obj_MovingStone.h"
 #include "Obj_Flame.h"
 #include "Game_PlayerBlocker.h"
+#include "Obj_FlyingUpgradeBox.h"
+#include "Obj_StationUpgradeBox.h"
 // EventHandler
 #include "StageEventHandler_S1.h"
 
@@ -45,12 +47,14 @@ using namespace std;
 #define BRIDGE_BLOCK 2
 #define NOTHING 999
 
-#define Z_INDEX_PLAYER 5
-#define Z_INDEX_ENEMY 4
-#define Z_INDEX_BULLET 3
+#define Z_INDEX_PLAYER 8
+#define Z_INDEX_ENEMY 6
+#define Z_INDEX_STATION 5
+#define Z_INDEX_BULLET 7
 #define Z_INDEX_BACKGROUND 1
-#define Z_INDEX_ANIMATION 6
+#define Z_INDEX_ANIMATION 10
 #define Z_INDEX_TERRAIN 2
+#define Z_INDEX_ITEM 3
 
 #define GET_OBJECTS_RANGE 1.4f
 

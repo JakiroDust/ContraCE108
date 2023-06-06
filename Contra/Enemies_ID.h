@@ -49,6 +49,7 @@
 #define FALLING_STONE 140 
 #define FLAME 150
 #define UP_BOX_STATION 160
+#define UP_BOX_FLYING 170
 
 // Spawner
 #define SPAWNER_INFARY 11020
