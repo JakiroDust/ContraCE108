@@ -28,3 +28,4 @@ army_destroyed.txt
 construct_destroyed.txt
 laser.txt
 upgrade.txt
+BOSS.txt

@@ -100,3 +100,58 @@ void spawnBulletHelper::initTurret(unordered_map<int, vector<float>>& map)
     map[DIR_12_OCLOCK][X] = 0;
     map[DIR_12_OCLOCK][Y] = 0;
 }
+/*
+
+    {
+        switch (state)
+        {
+        default:
+            break;
+        }
+        break;
+    }
+*/
+namespace BULLETHELPER
+{
+    void getContraCor(float& x, float& y)
+    {
+
+    }
+    void getSpawnCor(float& x, float& y, int CHAR_ID, int state, int& DIR)
+    {
+        float _x = 0,
+            _y = 0;
+        switch (CHAR_ID)
+        {
+        case CHAR_CONTRA:
+        {
+            switch (state)
+            {
+            default:
+                break;
+            }
+            break;
+        }
+        case INFARY:
+        {
+            switch (state)
+            {
+            default:
+                break;
+            }
+            break;
+        }
+        default:
+        {
+            switch (state)
+            {
+            default:
+                break;
+            }
+            break;
+        }
+        }
+        x += _x;
+        y += _y;
+    }
+}

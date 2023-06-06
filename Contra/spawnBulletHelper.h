@@ -61,4 +61,7 @@ public:
     }
 
 };
-
+namespace BULLETHELPER
+{
+    void getSpawnCor(float& x, float& y, int CHAR_ID, int state, int& DIR);
+}
