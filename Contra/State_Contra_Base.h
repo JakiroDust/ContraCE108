@@ -2,14 +2,6 @@
 #include "State_Base.h"
 #include "Contra_ANI_ID.h"
 
-#define STATE_IDLE 0
-#define STATE_WALK 1
-#define STATE_JUMP 2
-#define STATE_SWIM 3
-#define STATE_LIE 4
-#define STATE_FALL 5
-#define STATE_DIVE 6
-#define STATE_DIE 7
 
 
 class State_Contra_Base : public State_Base

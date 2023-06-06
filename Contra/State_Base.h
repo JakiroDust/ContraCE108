@@ -3,7 +3,7 @@
 using namespace std;
 #include "Game_ObjectBase.h"
 #include "Game_Collision.h"
-
+#include "State_CONST.h"
 class State_Base
 {
 	protected:

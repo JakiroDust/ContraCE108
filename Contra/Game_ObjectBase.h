@@ -7,7 +7,7 @@ using namespace std;
 #include "Game_Collision.h"
 #include "Animations.h"
 #include "debug.h"
-
+#include "Contra_GET_ANI.h"
 class Game_ObjectBase
 {
 	protected:

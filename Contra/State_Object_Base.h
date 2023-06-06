@@ -1,10 +1,6 @@
 #pragma once
 #include "State_Base.h"
 
-#define STATE_OBJ_STANDBY 20
-#define STATE_OBJ_ACTIVE 21
-#define STATE_OBJ_HIDE 22
-#define STATE_OBJ_EMERGE 23
 
 class State_Object_Base : public State_Base
 {

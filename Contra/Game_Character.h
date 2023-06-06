@@ -60,10 +60,11 @@ public:
 
 	// Character action
 	virtual void Shoot(int DIR);
+	//virtual void getBulletLoc(float& x, float& y);
 	virtual void Shoot(float x, float y);
 	virtual bool IsFullAutomaticGun() { return _weapon != NULL && _weapon->IsAuto();}
 	void Execute_DieAction() override { Game_MovableObject::Execute_DieAction(); }
-
+	int state();
 	void moveLeft() override;
 	void moveRight() override;
 	void jumpDown();

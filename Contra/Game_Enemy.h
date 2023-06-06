@@ -1,6 +1,6 @@
 #pragma once
 #include "Game_Character.h"
-
+#include "Enemies_ID.h"
 class Game_Enemy : public Game_Character
 {
 	protected:

@@ -359,6 +359,7 @@
     <ClInclude Include="StageEventHandler_S1.h" />
     <ClInclude Include="StageEventHandler_S3.h" />
     <ClInclude Include="State_Base.h" />
+    <ClInclude Include="State_CONST.h" />
     <ClInclude Include="State_Contra_Base.h" />
     <ClInclude Include="State_Contra_Die.h" />
     <ClInclude Include="State_Contra_Dive.h" />

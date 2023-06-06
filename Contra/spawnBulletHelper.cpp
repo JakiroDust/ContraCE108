@@ -1,157 +1,151 @@
 #include "spawnBulletHelper.h"
-spawnBulletHelper*  spawnBulletHelper::instance = nullptr;
-
-unordered_map<int, vector<float>> spawnBulletHelper::initHelper()
-{
-    unordered_map<int, vector<float>> map;
-    for (int i = 1; i <= 21; i++)
-        map[i] = vector<float>(2, 0);
-    map[DIR_TOP][X] = 0;
-    map[DIR_TOP][Y] = 10;
-
-    map[DIR_TOP_RIGHT][X] = 7;
-    map[DIR_TOP_RIGHT][Y] = 7;
-
-    map[DIR_RIGHT][X] = 10;
-    map[DIR_RIGHT][Y] = 5;
-
-    map[DIR_BOTTOM_RIGHT][X] = 7;
-    map[DIR_BOTTOM_RIGHT][Y] = -7;
-
-    map[DIR_BOTTOM][X] = 0;
-    map[DIR_BOTTOM][Y] = -10;
-
-    map[DIR_BOTTOM_LEFT][X] = -7;
-    map[DIR_BOTTOM_LEFT][Y] = -7;
-
-    map[DIR_LEFT][X] = -10;
-    map[DIR_LEFT][Y] = 5;
-
-    map[DIR_TOP_LEFT][X] = -7;
-    map[DIR_TOP_LEFT][Y] = 7;
-
-    initTurret(map);
-
-    return map;
-}
-spawnBulletHelper::spawnBulletHelper()
-{
-    _spawnBulletHelper[CHAR_CONTRA] = initHelper();
-    _spawnBulletHelper[CHAR_CONTRA_SIT] = initHelper();
-    _spawnBulletHelper[INFARY] = initHelper();
-    _spawnBulletHelper[INFARY_BASE] = initHelper();
-    _spawnBulletHelper[RED_GUNNER] = initHelper();
-    _spawnBulletHelper[RED_GUNNER_BASE] = initHelper();
-    _spawnBulletHelper[BLUE_GUNNER] = initHelper();
-    _spawnBulletHelper[SNIPER] = initHelper();
-    _spawnBulletHelper[SNEAKY_SNIPER] = initHelper();
-    _spawnBulletHelper[SCUBA_DRIVER] = initHelper();
-    _spawnBulletHelper[BOMB_TOSSER] = initHelper();
-    _spawnBulletHelper[BOMB_TOSSER_BASE] = initHelper();
-    _spawnBulletHelper[TURRET] = initHelper();
-    _spawnBulletHelper[ELITE_TURRET] = initHelper();
-    _spawnBulletHelper[TURRET_BASE] = initHelper();
-    _spawnBulletHelper[ELITE_TURRET_BASE] = initHelper();
-    _spawnBulletHelper[CANNON] = initHelper();
-    _spawnBulletHelper[Mine] = initHelper();
-    _spawnBulletHelper[Mine_BASE] = initHelper();
-    _spawnBulletHelper[FLY_DEF_ROBOT] = initHelper();
-    _spawnBulletHelper[STAND_ROBOT] = initHelper();
-    _spawnBulletHelper[MACHINE_GUNNER] = initHelper();
-    _spawnBulletHelper[SHIELD_MACHINE_GUNNER] = initHelper();
-
-}
-
-void spawnBulletHelper::initTurret(unordered_map<int, vector<float>>& map)
-{
-    map[DIR_1_OCLOCK][X] = 0;
-    map[DIR_1_OCLOCK][Y] = 0;
-
-    map[DIR_2_OCLOCK][X] = 0;
-    map[DIR_2_OCLOCK][Y] = 0;
-
-    map[DIR_3_OCLOCK][X] = 0;
-    map[DIR_3_OCLOCK][Y] = 0;
-
-    map[DIR_4_OCLOCK][X] = 0;
-    map[DIR_4_OCLOCK][Y] = 0;
-
-    map[DIR_5_OCLOCK][X] = 0;
-    map[DIR_5_OCLOCK][Y] = 0;
-
-    map[DIR_6_OCLOCK][X] = 0;
-    map[DIR_6_OCLOCK][Y] = 0;
-
-    map[DIR_7_OCLOCK][X] = 0;
-    map[DIR_7_OCLOCK][Y] = 0;
-
-    map[DIR_8_OCLOCK][X] = 0;
-    map[DIR_8_OCLOCK][Y] = 0;
-
-    map[DIR_9_OCLOCK][X] = 0;
-    map[DIR_9_OCLOCK][Y] = 0;
-
-    map[DIR_10_OCLOCK][X] = 0;
-    map[DIR_10_OCLOCK][Y] = 0;
-
-    map[DIR_11_OCLOCK][X] = 0;
-    map[DIR_11_OCLOCK][Y] = 0;
-
-    map[DIR_12_OCLOCK][X] = 0;
-    map[DIR_12_OCLOCK][Y] = 0;
-}
+#include "State_Contra_Base.h"
+#include "Contra_GET_ANI.h"
 /*
 
+    bool getContraCor(float& x, float& y,int&state,int&DIR)
     {
+
+
         switch (state)
         {
-        default:
+        case STATE_IDLE:
+        case STATE_WALK:
+        case STATE_JUMP:
+        case STATE_SWIM:
+        case STATE_FALL:
+        case STATE_DIVE:
+        case STATE_ACTIVE:
+            switch (DIR)
+            {
+            case DIR_TOP_LEFT:
+            case DIR_TOP:
+            case DIR_TOP_RIGHT:
+            case DIR_LEFT:
+            case DIR_RIGHT:
+            case DIR_BOTTOM_LEFT:
+            case DIR_BOTTOM:
+            case DIR_BOTTOM_RIGHT:
+            default:
+                break;
+            }
             break;
+        case STATE_LIE:
+            break;
+        default:
+
+            return false;
+            break;
+
         }
-        break;
+        return true;
+
     }
 */
 namespace BULLETHELPER
 {
-    void getContraCor(float& x, float& y)
+    bool getTurretCor(float& x, float& y, int& DIR)
+    {
+        const float x_dis=13;
+        const float y_dis=13;
+        const float xxx_dis=7,xxy_dis=6;
+        const float xyx_dis = 6, xyy_dis = 7;
+        const float xy_dis=7;
+        bool applyNegativeX = false;
+        bool applyNegativeY = false;
+
+        switch (DIR)
+        {
+        case DIR_2_OCLOCK: y *= -1;
+        case DIR_4_OCLOCK: x *= -1;
+        case DIR_8_OCLOCK: y *= -1;
+        case DIR_10_OCLOCK:x *= -1*xxx_dis; y *= xxy_dis; break;
+
+        case DIR_1_OCLOCK:  y *= -1;
+        case DIR_5_OCLOCK:  x *= -1;
+        case DIR_7_OCLOCK:  y *= -1;
+        case DIR_11_OCLOCK: x *= -1 * xyx_dis; y *= xyy_dis; break;
+        
+        
+        case DIR_3_OCLOCK: x = x_dis; y = 0; break;
+        case DIR_6_OCLOCK: y = y_dis; x = 0; break;
+        case DIR_9_OCLOCK: x = -x_dis; y = 0;break;
+        case DIR_12_OCLOCK: x = 0; y = 0; break;
+        default:
+            x = 0;
+            y = 0;
+            return false;
+        }
+        return true;
+    }
+    bool getContraCor(float& x, float& y,int&state,int&DIR)
     {
 
+
+        switch (state)
+        {
+        case STATE_IDLE:
+        case STATE_WALK:
+        case STATE_JUMP:
+        case STATE_SWIM:
+        case STATE_FALL:
+        case STATE_DIVE:
+        case STATE_ACTIVE:
+            switch (DIR)
+            {
+            case DIR_TOP_LEFT:      x = -1; y = 1; 
+            case DIR_TOP_RIGHT:     x *= 7; y *= 7; break;
+
+            case DIR_BOTTOM:        y =-1;
+            case DIR_TOP:           y *= 10; break;
+
+            case DIR_LEFT:          x = -1;
+            case DIR_RIGHT:         x *= 12; y = 5; break;
+
+            case DIR_BOTTOM_LEFT:   x = -1;
+            case DIR_BOTTOM_RIGHT:  x *= 7; y *= 7; break;
+            default:
+                                    x = 0; y = 0;return false;
+            }break;
+        case STATE_LIE:
+        {
+            switch (DIR)
+            {
+            case DIR_LEFT:          x = -1;
+            case DIR_RIGHT:         x *= 10; break;
+            }
+        }
+            break;
+        default:
+            x = 0;
+            y = 0;
+            return false;
+            break;
+
+        }
+        return true;
+        
     }
-    void getSpawnCor(float& x, float& y, int CHAR_ID, int state, int& DIR)
+    void getSpawnCor(float& _x, float& _y, int CHAR_ID, int state, int& DIR)
     {
-        float _x = 0,
-            _y = 0;
+        float x = 1,
+            y = 1;
+
         switch (CHAR_ID)
         {
         case CHAR_CONTRA:
-        {
-            switch (state)
-            {
-            default:
-                break;
-            }
-            break;
-        }
         case INFARY:
-        {
-            switch (state)
-            {
-            default:
-                break;
-            }
-            break;
+        case RED_GUNNER:
+        case SNEAKY_SNIPER:
+        case SNIPER:
+            getContraCor(x, y, state, DIR);break;
+        case TURRET_BASE:
+        case CANNON:
+        case TURRET: getTurretCor(x, y, DIR); break;
+
+        default:getContraCor(x, y, state, DIR);
         }
-        default:
-        {
-            switch (state)
-            {
-            default:
-                break;
-            }
-            break;
-        }
-        }
-        x += _x;
-        y += _y;
+        _x += x;
+        _y += y;
     }
-}
+};

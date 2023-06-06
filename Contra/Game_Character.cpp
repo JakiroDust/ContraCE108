@@ -81,7 +81,7 @@ void Game_Character::Shoot(int DIR)
 		return;
 	float x, y;
 	GetCenterPoint(x, y);
-	spawnBulletHelper::getInstance()->getSpawnCor(x, y,CharID(),DIR);
+	BULLETHELPER::getSpawnCor(x, y,CharID(),state(), DIR);
 	
 	/* GET OFFSET
 	int dir = DIR_TOP;
@@ -108,6 +108,16 @@ void Game_Character::Shoot(float x, float y)
 
 	_GunReloadInterval = _weapon->FireRate();
 	_weapon->Fire(cx, cy, x, y, GUN_SPAWNMODE_TARGETPOS);
+}
+
+int Game_Character::state()
+{
+	if(_state.get()==NULL)
+	return 0;
+	else
+	{
+		return _state.get()->StateId();
+	}
 }
 
 void Game_Character::moveLeft()

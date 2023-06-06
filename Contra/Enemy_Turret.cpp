@@ -132,7 +132,7 @@ void Enemy_Turret::Shoot(int DIR)
 		return;
 	float x, y;
 	GetCenterPoint(x, y);
-	spawnBulletHelper::getInstance()->getSpawnCor(x, y, CharID(), DIR);
+	BULLETHELPER::getSpawnCor(x, y, CharID(), state(), DIR);
 
 	_GunReloadInterval = _weapon->FireRate();
 
