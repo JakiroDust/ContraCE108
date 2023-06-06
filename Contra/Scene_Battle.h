@@ -49,7 +49,8 @@ using namespace std;
 
 #define Z_INDEX_PLAYER 8
 #define Z_INDEX_ENEMY 6
-#define Z_INDEX_BULLET 4
+#define Z_INDEX_STATION 5
+#define Z_INDEX_BULLET 7
 #define Z_INDEX_BACKGROUND 1
 #define Z_INDEX_ANIMATION 10
 #define Z_INDEX_TERRAIN 2

@@ -224,7 +224,7 @@
     <ClCompile Include="Equip_Gun_N.cpp">
       <Filter>Source Files\Equip</Filter>
     </ClCompile>
-    <ClCompile Include="Equip_Gun_R.cpp">
+    <ClCompile Include="Equip_Gun_M.cpp">
       <Filter>Source Files\Equip</Filter>
     </ClCompile>
     <ClCompile Include="Equip_Gun_S.cpp">
@@ -305,7 +305,6 @@
     <ClCompile Include="Equip_EnemyGun_SneakSniper.cpp">
       <Filter>Source Files\Equip</Filter>
     </ClCompile>
-    <ClCompile Include="Obj_Flame.cpp" />
     <ClCompile Include="Scene_Battle.cpp">
       <Filter>Source Files\GameCore\Scene</Filter>
     </ClCompile>
@@ -315,9 +314,6 @@
     <ClCompile Include="Scene_LoadingStage.cpp">
       <Filter>Source Files\GameCore\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Obj_StationUpgradeBox.cpp" />
-    <ClCompile Include="Obj_FlyingUpgradeBox.cpp" />
-    <ClCompile Include="Equip_PlayerGunBase.cpp" />
     <ClCompile Include="Obj_UpgradeBase.cpp">
       <Filter>Source Files\Object\MoveObject</Filter>
     </ClCompile>
@@ -326,6 +322,18 @@
     </ClCompile>
     <ClCompile Include="State_Object_Hide.cpp">
       <Filter>Source Files\CharState</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_PlayerGunBase.cpp">
+      <Filter>Source Files\Equip</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_Flame.cpp">
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_StationUpgradeBox.cpp">
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_FlyingUpgradeBox.cpp">
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -530,7 +538,7 @@
     <ClInclude Include="Obj_EnemyBullet_N.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Equip_Gun_R.h">
+    <ClInclude Include="Equip_Gun_M.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Equip_EnemyGun_Sniper.h">
@@ -542,7 +550,7 @@
     <ClInclude Include="MusicManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Obj_Bullet_R.h">
+    <ClInclude Include="Obj_Bullet_M.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameManager.h">
@@ -674,16 +682,12 @@
     <ClInclude Include="Equip_EnemyGun_SneakSniper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Obj_Flame.h" />
     <ClInclude Include="Scene_Start.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Scene_GameOver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Obj_StationUpgradeBox.h" />
-    <ClInclude Include="Obj_FlyingUpgradeBox.h" />
-    <ClInclude Include="Equip_PlayerGunBase.h" />
     <ClInclude Include="Obj_UpgradeBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -691,6 +695,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="State_Object_Hide.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Equip_PlayerGunBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj_Flame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj_FlyingUpgradeBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj_StationUpgradeBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -15,7 +15,7 @@ void Obj_StationUpgradeBox::Update(DWORD dt, vector<Game_ObjectBase*>* coObjects
 	{
 		_ghost = true;
 	}
-	if (_state == NULL)
+	else if (_state == NULL)
 	{
 		_ghost = true;
 	}
@@ -47,6 +47,11 @@ void Obj_StationUpgradeBox::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObje
 
 	if (!_needRender || !player->NeedRender())
 		return;
+
+	if (_state->StateId() == STATE_OBJ_EMERGE)
+	{
+		return;
+	}
 
 	// Wait to change state
 	if (_waitToChangeState > dt)

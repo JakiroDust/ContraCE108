@@ -1,10 +1,10 @@
 #pragma once
 #include "Equip_PlayerGunBase.h"
-class Equip_Gun_R : public Equip_PlayerGunBase
+class Equip_Gun_M : public Equip_PlayerGunBase
 {
 	private:
 	public:
-		Equip_Gun_R()
+		Equip_Gun_M()
 		{
 			_isAuto = true;
 			_FireRate = 120;

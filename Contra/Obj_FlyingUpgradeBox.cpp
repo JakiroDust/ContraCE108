@@ -27,7 +27,7 @@ void Obj_FlyingUpgradeBox::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 		return;
 
 	// If out of camera zone
-	if (sx > screen->width() && !_needRender)
+	if ((sx > screen->width() || sy < 0) && !_needRender)
 	{
 		DeleteThis();
 	}
@@ -78,14 +78,4 @@ void Obj_FlyingUpgradeBox::Render()
 {
 	if (_trigger)
 		Game_SpecialObject::Render();
-}
-
-bool Obj_FlyingUpgradeBox::CollideBlockerCondition(DWORD dt, PCOLLISIONEVENT e)
-{
-	// Ignore sweeper block
-	if (dynamic_cast<Game_SweeperBlock*>(e->obj))
-	{
-		return 0;
-	}
-	return 1;
 }

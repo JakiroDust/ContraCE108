@@ -3,8 +3,8 @@
 
 #define STATION_UPGRADEBOX_WIDTH 32
 #define STATION_UPGRADEBOX_HEIGHT 32
-#define STATION_UP_HIDE_INTERVAL 1000
-#define STATION_UP_SHOW_INTERVAL 500
+#define STATION_UP_HIDE_INTERVAL 2000
+#define STATION_UP_SHOW_INTERVAL 2000
 
 class Obj_StationUpgradeBox : public Game_SpecialObject
 {
@@ -19,6 +19,7 @@ class Obj_StationUpgradeBox : public Game_SpecialObject
             _faceLeft = FaceLeft;
             _type = type;
             _BodyDamage = false;
+            _HardBody = true;
             _gravity = false;
             _hp = 10;
         }

@@ -52,7 +52,7 @@ void Equip_Gun_F::Fire(float &x, float &y, int DIR)
 	default:
 		break;
 	}
-	unique_ptr<Obj_Bullet_F> bullet(new Obj_Bullet_F(dir, x, y, B_VALUE_Z, vx, vy, B_SPAWN_MODE_SETSPEED));
+	unique_ptr<Obj_Bullet_F> bullet(new Obj_Bullet_F(dir, x, y, Z_INDEX_BULLET, vx, vy, B_SPAWN_MODE_SETSPEED));
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
 	scene->add_object(move(bullet));
 

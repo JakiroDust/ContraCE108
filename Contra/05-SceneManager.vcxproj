@@ -171,7 +171,7 @@
     <ClCompile Include="Equip_Gun_F.cpp" />
     <ClCompile Include="Equip_Gun_L.cpp" />
     <ClCompile Include="Equip_Gun_N.cpp" />
-    <ClCompile Include="Equip_Gun_R.cpp" />
+    <ClCompile Include="Equip_Gun_M.cpp" />
     <ClCompile Include="Equip_Gun_S.cpp" />
     <ClCompile Include="Equip_PlayerGunBase.cpp" />
     <ClCompile Include="Font.cpp" />
@@ -285,7 +285,7 @@
     <ClInclude Include="Equip_GunBase.h" />
     <ClInclude Include="Equip_Gun_F.h" />
     <ClInclude Include="Equip_Gun_L.h" />
-    <ClInclude Include="Equip_Gun_R.h" />
+    <ClInclude Include="Equip_Gun_M.h" />
     <ClInclude Include="Equip_Gun_S.h" />
     <ClInclude Include="Equip_PlayerGunBase.h" />
     <ClInclude Include="fmod\fmod.h" />
@@ -335,7 +335,7 @@
     <ClInclude Include="Obj_Bullet_F.h" />
     <ClInclude Include="Obj_Bullet_L.h" />
     <ClInclude Include="Obj_Bullet_N.h" />
-    <ClInclude Include="Obj_Bullet_R.h" />
+    <ClInclude Include="Obj_Bullet_M.h" />
     <ClInclude Include="Obj_Bullet_S.h" />
     <ClInclude Include="Obj_EnemyBullet_N.h" />
     <ClInclude Include="Obj_FallingStone.h" />

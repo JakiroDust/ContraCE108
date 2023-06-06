@@ -52,8 +52,8 @@ void Equip_Gun_L::Fire(float& x, float& y, int DIR)
 	default:
 		break;
 	}
-	bullets.push_back(unique_ptr<Obj_Bullet_L>(new Obj_Bullet_L(this, _CurrentWaveID, 0, x, y, B_VALUE_Z, baseAngle)));
-	bullets.push_back(unique_ptr<Obj_Bullet_L>(new Obj_Bullet_L(this, _CurrentWaveID, 80, x, y, B_VALUE_Z, baseAngle)));
+	bullets.push_back(unique_ptr<Obj_Bullet_L>(new Obj_Bullet_L(this, _CurrentWaveID, 0, x, y, Z_INDEX_BULLET, baseAngle)));
+	bullets.push_back(unique_ptr<Obj_Bullet_L>(new Obj_Bullet_L(this, _CurrentWaveID, 80, x, y, Z_INDEX_BULLET, baseAngle)));
 
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
 

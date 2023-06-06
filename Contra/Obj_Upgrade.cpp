@@ -1,11 +1,11 @@
 #include "Obj_Upgrade.h"
-#include "Equip_Gun_R.h"
+#include "Equip_Gun_M.h"
 #include "Scene_Battle.h"
 #include "GameManager.h"
 
 void Obj_Upgrade_M::applyUpgrade()
 {
-	Scene_Battle::GetInstance()->p1()->ChangeWeapon(new Equip_Gun_R());
+	Scene_Battle::GetInstance()->p1()->ChangeWeapon(new Equip_Gun_M());
 }
 
 void Obj_Upgrade_B::applyUpgrade()

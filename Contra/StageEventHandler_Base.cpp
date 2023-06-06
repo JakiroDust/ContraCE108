@@ -72,7 +72,7 @@ void StageEventHandler_Base::Debug_KeyDownEventHandler(int KeyCode)
             _srcScene->p1()->ChangeWeapon(new Equip_Gun_N());
             break;
         case DIK_2:
-            _srcScene->p1()->ChangeWeapon(new Equip_Gun_R());
+            _srcScene->p1()->ChangeWeapon(new Equip_Gun_M());
             break;
         case DIK_3:
             _srcScene->p1()->ChangeWeapon(new Equip_Gun_S());
@@ -148,7 +148,7 @@ void StageEventHandler_Base::Load()
         gun = new Equip_Gun_N();
         break;
     case GUN_R:
-        gun = new Equip_Gun_R();
+        gun = new Equip_Gun_M();
         break;
     case GUN_S:
         gun = new Equip_Gun_S();

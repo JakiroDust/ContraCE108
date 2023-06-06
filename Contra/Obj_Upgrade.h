@@ -11,7 +11,7 @@ namespace UPGRADE
     #define UP_M 12
     #define UP_R 17
 
-    #define UPGRADE_DEFAULT_FORCE_X 32
+    #define UPGRADE_DEFAULT_FORCE_X 48
     #define UPGRADE_DEFAULT_FORCE_Y 48
 
     void spawnUpgradeIcon(int ICONTYPE, float centerX, float centerY, bool FlyToLeft);
@@ -85,7 +85,7 @@ protected:
 public:
     Obj_Upgrade_R(float x, float y, int z, float ForceX, float ForceY) : Obj_UpgradeBase(x, y, z, ForceX, ForceY)
     {
-        _SpriteId = ANI_UPGRADE_F;
+        _SpriteId = ANI_UPGRADE_R;
     }
     void applyUpgrade() override;
 

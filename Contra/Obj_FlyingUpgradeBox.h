@@ -50,7 +50,6 @@ class Obj_FlyingUpgradeBox : public Game_SpecialObject
         void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects);
         void Render() override;
         int baseType() override { return TYPE_MOVABLE; }
-        bool CollideBlockerCondition(DWORD dt, PCOLLISIONEVENT e) override;
         void Execute_BeforeDelete() override;
 };
 
