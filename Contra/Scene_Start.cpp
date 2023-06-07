@@ -18,7 +18,7 @@ void Scene_Start::KeyDownEventHandler(int KeyCode)
 void Scene_Start::init()
 {
 	AddImage_Static(GAMESCREEN_WIDTH / 2, GAMESCREEN_HEIGHT / 2, 0, 989900, 1, RENDER_MODE_CENTER);
-	AddImage(GAMESCREEN_WIDTH / 2, GAMESCREEN_HEIGHT / 2, 2, 160030, RENDER_MODE_CENTER);
+	AddImage(GAMESCREEN_WIDTH / 2, GAMESCREEN_HEIGHT / 2, 2, 1099060, RENDER_MODE_CENTER);
 }
 
 void Scene_Start::Update(DWORD dt)

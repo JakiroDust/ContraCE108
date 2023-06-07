@@ -89,6 +89,8 @@
 #define CONTRA_BULLET_ANI_BULLET_L_DOWN_RIGHT 10990550
 #define CONTRA_BULLET_ANI_BULLET_L_DOWN_LEFT 10990551
 #define CONTRA_BULLET_ANI_BULLET_L_DOWN 10990560
+
+#define	CONTRA_BULLET_ANI_BULLET_F 1099060
 #pragma endregion
 
 #pragma region INFARY
@@ -188,6 +190,13 @@
 #define ANI_UPGRADE_R	958880
 #pragma endregion
 
+
+
 #pragma region TERRAIN
 #define BLACK_BOX_ANI 99990
 #pragma endregion
+
+
+#define BASE_CANNON_LEFT 160010	
+#define BASE_CANNON_RIGHT 160020
+#define BASE_DOOR 160030
