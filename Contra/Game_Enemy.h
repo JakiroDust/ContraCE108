@@ -1,6 +1,11 @@
 #pragma once
 #include "Game_Character.h"
 #include "Enemies_ID.h"
+
+#define ENEMY_SOLDIER 1
+#define ENEMY_CONSTRUCTION 2
+#define ENEMY_OBJECT 3
+
 class Game_Enemy : public Game_Character
 {
 	protected:
@@ -26,7 +31,7 @@ class Game_Enemy : public Game_Character
 		void KeyDownEventHandler(int KeyCode) override;
 		void KeyUpEventHandler(int KeyCode) override;
 		void KeyStateHandler(BYTE* state) override;
-
+		virtual int EnemyType() { return 0; }
 		void Execute_DieAction() override;
 
 		//============================================================================================

@@ -10,6 +10,7 @@ void Obj_Upgrade_M::applyUpgrade()
 
 void Obj_Upgrade_B::applyUpgrade()
 {
+	Scene_Battle::GetInstance()->p1()->Apply_UpgradeB();
 }
 
 void Obj_Upgrade_F::applyUpgrade()

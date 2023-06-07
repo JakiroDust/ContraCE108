@@ -14,6 +14,7 @@
 #include "Game_Water.h"
 #include "Game_DeadlyBlock.h"
 #include "Game_Bridge_S1.h"
+#include "Game_SweeperBlock.h"
 
 // Objects
 #include "Game_Player.h"
@@ -26,14 +27,14 @@
 #include "Enemy_Cannon.h"
 #include "Spawner_Infary_Stage1.h"
 #include "Spawner_FallingStone.h"
+#include "Spawner_Infary_Stage3.h"
 #include "Obj_MovingStone.h"
 #include "Obj_Flame.h"
 #include "Game_PlayerBlocker.h"
 #include "Obj_FlyingUpgradeBox.h"
 #include "Obj_StationUpgradeBox.h"
 // EventHandler
-#include "StageEventHandler_S1.h"
-
+#include "StageEventHandler_Base.h"
 // DEMO
 #include "Spatial.h"
 #include "QuadTree/QuadTree.h"

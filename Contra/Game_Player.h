@@ -44,17 +44,32 @@
 #define PLAYER_REVIVE_INVINCIBLE_TIME 2000
 #define PLAYER_WAIT_FOR_REVIVE_TIME 900
 #define PLAYER_INVINCIBLE_ANI_INTERVAL 50
+#define PLAYER_UPGRADE_B_TIME 20000
+#define PLAYER_UPGRADE_B_ANI_INTERVAL 50 
 
 class Game_Player : public Game_Character
 {
 	protected:
 		bool _auto = false;
-		DWORD _invincible_interval = 0;
+
+		// revive
+
 		DWORD _revive_interval = 0;
-		DWORD _invincible_ani_interval = 0;
-		bool _invincible_ani_flash = false;
 		float _revive_pos_X = 0;
 		float _revive_pos_Y = 0;
+
+		// invincible after revive
+
+		DWORD _invincible_interval = 0;
+		bool _invincible_ani_flash = false;
+
+		// upgrade B
+
+		DWORD _upgradeB_interval = 0;
+		bool _upgradeB_ani_flash = false;
+
+		// functions
+
 		void UpdateState();
 		void KeyReleaseAll() override;
 		void DieEvent();
@@ -91,5 +106,7 @@ class Game_Player : public Game_Character
 		void GetCustomSize(int state, int& width, int& height) override;
 		void GetSpriteOffset(int state, float& x, float& y) override;
 		void Execute_DieAction() override;
+
+		void Apply_UpgradeB();
 };
 

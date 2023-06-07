@@ -435,6 +435,10 @@ void Scene_Battle::_ParseOBject(string line)
                     break;
                 case SPAWNER_FALLING_STONE: obj.reset(new Spawner_FallingStone(x, y, Z_INDEX_TERRAIN, param1, param2));
                     break;
+                case SPAWNER_INFARY_S3_LEFT: obj.reset(new Spawner_Infary_Stage3_Left(x, y, Z_INDEX_TERRAIN, param1, param2));
+                    break;
+                case SPAWNER_INFARY_S3_RIGHT: obj.reset(new Spawner_Infary_Stage3_Right(x, y, Z_INDEX_TERRAIN, param1, param2));
+                    break;
 
                 default:
                     obj.reset(NULL);

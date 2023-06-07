@@ -32,30 +32,47 @@ void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	{
 		_ghost = true;
 		_invincible_interval -= dt;
+		int ani_frame = _invincible_interval / PLAYER_INVINCIBLE_ANI_INTERVAL;
+		if (ani_frame % 2 == 1)
+		{
+			_invincible_ani_flash = true;
+		}
+		else
+		{
+			_invincible_ani_flash = false;
+		}
 	}
 	else
 	{
 		_invincible_interval = 0;
+		_invincible_ani_flash = false;
 		if (_state != NULL && _state.get()->StateId() != STATE_DIVE)
 			_ghost = false;
 	}
-	// invincible ani
-	if (_invincible_interval > 0)
+
+	// UpgradeB mode
+	if (_upgradeB_interval >= dt)
 	{
-		if (_invincible_ani_interval > dt)
+		_immortal = true;
+		_upgradeB_interval -= dt;
+		// update frame
+		int ani_frame = _upgradeB_interval / PLAYER_UPGRADE_B_ANI_INTERVAL;
+		if (ani_frame % 2 == 1)
 		{
-			_invincible_ani_interval -= dt;
+			_upgradeB_ani_flash = true;
 		}
-		else if (_invincible_ani_interval > 0)
+		else
 		{
-			_invincible_ani_interval = 0;
-		}
-		else 
-		{
-			_invincible_ani_interval = PLAYER_INVINCIBLE_ANI_INTERVAL;
-			_invincible_ani_flash = !_invincible_ani_flash;
+			_upgradeB_ani_flash = false;
 		}
 	}
+	else
+	{
+		_upgradeB_interval = 0;
+		_immortal = false;
+		_upgradeB_ani_flash = false;
+	}
+
 	// Wait for revive
 	if (_hp > 0)
 	{
@@ -69,7 +86,6 @@ void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 			PerformRevive();
 		}
 	}
-
 
 	// Check Collision event
 	Game_Collision::GetInstance()->Process(this, dt, coObjects);
@@ -86,7 +102,10 @@ void Game_Player::Render()
 
 	if (_invincible_interval > 0 && _invincible_ani_flash)
 		return;
-	
+
+	if (_upgradeB_interval > 0 && _upgradeB_ani_flash)
+		return;
+
 	if (_state != NULL)
 		_state->Render();
 }
@@ -346,8 +365,15 @@ void Game_Player::OnCollisionWith(PCOLLISIONEVENT e)
 	if (!_die && !_ghost && dynamic_cast<Game_Enemy*>(e->obj))
 	{
 		Game_Enemy* enemy = (Game_Enemy*)(e->obj);
-		//enemy->forceDie();
-		if (enemy->BodyDamage() && !_immortal)
+		
+		// Upgrade B effect
+		if (_immortal && !enemy->IsGhost() && !enemy->IsImmortal() && enemy->EnemyType() == ENEMY_SOLDIER)
+		{
+			enemy->forceDie();
+			return;
+		}
+		
+		if (!_immortal && enemy->BodyDamage())
 		{
 			DieEvent();
 			return;
@@ -479,7 +505,6 @@ void Game_Player::PerformRevive()
 	_die = false;
 	_revive_interval = 0;
 	_invincible_ani_flash = false;
-	_invincible_ani_interval = PLAYER_INVINCIBLE_ANI_INTERVAL;
 	_invincible_interval = PLAYER_REVIVE_INVINCIBLE_TIME;
 	_lockFace = false;
 	
@@ -497,4 +522,10 @@ void Game_Player::PerformRevive()
 	_state.reset(new State_Contra_Idle(this));
 	// Reset to normal gun
 	ChangeWeapon(new Equip_Gun_N());
+}
+
+void Game_Player::Apply_UpgradeB()
+{
+	_upgradeB_interval = PLAYER_UPGRADE_B_TIME;
+	_upgradeB_ani_flash = false;
 }
