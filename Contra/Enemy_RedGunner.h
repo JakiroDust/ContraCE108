@@ -36,6 +36,7 @@ class Enemy_RedGunner : public Game_MovableEnemy
 		};
 		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;
 		int CharID() override;
+		int EnemyType() override { return ENEMY_SOLDIER; }
 		// When no collision has been detected (triggered by CCollision::Process)
 		void OnNoCollision(DWORD dt) override { Game_MovableObject::OnNoCollision(dt); }
 		// When collision with an object has been detected (triggered by CCollision::Process)

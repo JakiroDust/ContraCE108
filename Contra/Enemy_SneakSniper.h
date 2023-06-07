@@ -39,6 +39,7 @@ class Enemy_SneakSniper : public Game_StationEnemy
 
 		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;
 		int CharID() override;
+		int EnemyType() override { return ENEMY_SOLDIER; }
 		// When no collision has been detected (triggered by CCollision::Process)
 		void OnNoCollision(DWORD dt) override { Game_StationEnemy::OnNoCollision(dt); }
 		// When collision with an object has been detected (triggered by CCollision::Process)

@@ -230,6 +230,7 @@
     <ClCompile Include="spawnBulletHelper.cpp" />
     <ClCompile Include="Spawner_FallingStone.cpp" />
     <ClCompile Include="Spawner_Infary_Stage1.cpp" />
+    <ClCompile Include="Spawner_Infary_Stage3.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Sprites.cpp" />
     <ClCompile Include="StageEventHandler_Base.cpp" />
@@ -353,6 +354,7 @@
     <ClInclude Include="spawnBulletHelper.h" />
     <ClInclude Include="Spawner_FallingStone.h" />
     <ClInclude Include="Spawner_Infary_Stage1.h" />
+    <ClInclude Include="Spawner_Infary_Stage3.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Sprites.h" />
     <ClInclude Include="StageEventHandler_Base.h" />

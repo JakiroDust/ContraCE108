@@ -84,7 +84,7 @@ void StageEventHandler_Base::Debug_KeyDownEventHandler(int KeyCode)
             _srcScene->p1()->ChangeWeapon(new Equip_Gun_F());
             break;
         case DIK_6:
-
+            _srcScene->p1()->Apply_UpgradeB();
             break;
         case DIK_7:
             CompleteStage();
