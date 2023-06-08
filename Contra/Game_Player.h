@@ -84,6 +84,7 @@ class Game_Player : public Game_Character
 
 		void SetAuto(bool b) { _auto = b; }
 		bool IsAuto() { return _auto; }
+		void _Render(int aniId, float x, float y) override;
 
 		void Render() override;
 		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;

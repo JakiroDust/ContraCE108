@@ -152,6 +152,7 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Animations.cpp" />
     <ClCompile Include="CAnimation_OneLoop.cpp" />
+    <ClCompile Include="CharacterEffect.cpp" />
     <ClCompile Include="Contra_GET_ANI.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Enemy_Cannon.cpp" />
@@ -183,6 +184,7 @@
     <ClCompile Include="Game_Character.cpp" />
     <ClCompile Include="Game_Collision.cpp" />
     <ClCompile Include="Game_DeadlyBlock.cpp" />
+    <ClCompile Include="CharacterEffect_Base.cpp" />
     <ClCompile Include="Game_Enemy.cpp" />
     <ClCompile Include="Game_KeyInput.cpp" />
     <ClCompile Include="Game_Effect.cpp" />
@@ -266,6 +268,7 @@
     <ClInclude Include="AnimationFrame.h" />
     <ClInclude Include="Animations.h" />
     <ClInclude Include="CAnimation_OneLoop.h" />
+    <ClInclude Include="CharacterEffect.h" />
     <ClInclude Include="Contra_ANI_ID.h" />
     <ClInclude Include="Contra_GET_ANI.h" />
     <ClInclude Include="debug.h" />
@@ -307,6 +310,7 @@
     <ClInclude Include="Game_Character.h" />
     <ClInclude Include="Game_Collision.h" />
     <ClInclude Include="Game_DeadlyBlock.h" />
+    <ClInclude Include="CharacterEffect_Base.h" />
     <ClInclude Include="Game_Enemy.h" />
     <ClInclude Include="Game_KeyInput.h" />
     <ClInclude Include="Game_Effect.h" />

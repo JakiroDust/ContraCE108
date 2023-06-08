@@ -1,6 +1,7 @@
 [TEXTURES]
 -100	textures\bbox.png
 0	textures\contra2-transparent.png
+1	textures\contra2-red.png
 9	textures\bullet.png
 10	textures\foes.png
 20	textures\font2-2.png
@@ -16,6 +17,7 @@
 
 [ASSETS]
 contra.txt
+contra-B.txt
 CONTRA_BULLET.txt
 INFARY.txt
 SNIPER.txt

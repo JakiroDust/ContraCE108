@@ -56,15 +56,18 @@ void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 		_immortal = true;
 		_upgradeB_interval -= dt;
 		// update frame
-		int ani_frame = _upgradeB_interval / PLAYER_UPGRADE_B_ANI_INTERVAL;
-		if (ani_frame % 2 == 1)
-		{
-			_upgradeB_ani_flash = true;
-		}
-		else
-		{
-			_upgradeB_ani_flash = false;
-		}
+		//int ani_frame = _upgradeB_interval / PLAYER_UPGRADE_B_ANI_INTERVAL;
+		//
+		//if (ani_frame % 2 == 1)
+		//{
+		//	_upgradeB_ani_flash = true;
+		//}
+		//else
+		//{
+		//	_upgradeB_ani_flash = false;
+		//}^/
+		_upgradeB_ani_flash = ((_upgradeB_interval % 250) > 125);
+		_invincible_ani_flash = false;
 	}
 	else
 	{
@@ -96,6 +99,22 @@ void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	ResetStateParams();
 }
 
+void Game_Player::_Render(int aniId, float x, float y)
+{
+	if (aniId > 0)
+	{
+		CAnimations* animations = CAnimations::GetInstance();
+		if (curAni != aniId)
+		{
+			curFrameTime = 0;
+			curFrame = 0;
+			curAni = aniId;
+		}
+		aniId += _upgradeB_ani_flash ? 160000 : 0;
+		animations->Get(aniId)->Render(x, y, curFrameTime, curFrame);
+	}
+}
+
 void Game_Player::Render()
 {
 	RenderHitbox();
@@ -103,8 +122,8 @@ void Game_Player::Render()
 	if (_invincible_interval > 0 && _invincible_ani_flash)
 		return;
 
-	if (_upgradeB_interval > 0 && _upgradeB_ani_flash)
-		return;
+	//if (_upgradeB_interval > 0 && _upgradeB_ani_flash)
+	//	return;
 
 	if (_state != NULL)
 		_state->Render();

@@ -335,6 +335,9 @@
     <ClCompile Include="Obj_FlyingUpgradeBox.cpp">
       <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="Spawner_Infary_Stage3.cpp" />
+    <ClCompile Include="CharacterEffect_Base.cpp" />
+    <ClCompile Include="CharacterEffect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -709,6 +712,10 @@
     <ClInclude Include="Obj_StationUpgradeBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Spawner_Infary_Stage3.h" />
+    <ClInclude Include="State_CONST.h" />
+    <ClInclude Include="CharacterEffect_Base.h" />
+    <ClInclude Include="CharacterEffect.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

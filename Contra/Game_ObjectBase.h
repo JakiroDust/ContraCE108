@@ -125,12 +125,12 @@ class Game_ObjectBase
 		bool IsDeleted() { return _isDeleted; }
 		virtual void Execute_BeforeDelete() {}
 
-	private:
+	protected:
 		int curFrame;
 		ULONGLONG curFrameTime;
 		int curAni;
 	public:
-		void _Render(int aniId, float x, float y);
+		virtual void _Render(int aniId, float x, float y);
 		void _Render(int aniId);
 		bool atFinalFrame(int curAni=-99);
 };
