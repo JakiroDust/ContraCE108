@@ -3,31 +3,35 @@
 #include "Scene_Battle.h"
 #include "GameManager.h"
 
-void Obj_Upgrade_M::applyUpgrade()
+void Obj_Upgrade_M::applyUpgrade(Game_Character*target)
 {
-	Scene_Battle::GetInstance()->p1()->ChangeWeapon(new Equip_Gun_M());
+	target->ChangeWeapon(new Equip_Gun_M());
 }
 
-void Obj_Upgrade_B::applyUpgrade()
+void Obj_Upgrade_B::applyUpgrade(Game_Character* target)
 {
-	Scene_Battle::GetInstance()->p1()->Apply_UpgradeB();
+	if (dynamic_cast<Game_Player*>(target))
+	{
+		Game_Player *ptr=(Game_Player*)target;
+		ptr->Apply_UpgradeB();
+	}
 }
 
-void Obj_Upgrade_F::applyUpgrade()
+void Obj_Upgrade_F::applyUpgrade(Game_Character*target)
 {
-	Scene_Battle::GetInstance()->p1()->ChangeWeapon(new Equip_Gun_F());
+	target->ChangeWeapon(new Equip_Gun_F());
 }
 
-void Obj_Upgrade_S::applyUpgrade()
+void Obj_Upgrade_S::applyUpgrade(Game_Character*target)
 {
-	Scene_Battle::GetInstance()->p1()->ChangeWeapon(new Equip_Gun_S());
+	target->ChangeWeapon(new Equip_Gun_S());
 }
 
-void Obj_Upgrade_L::applyUpgrade()
+void Obj_Upgrade_L::applyUpgrade(Game_Character*target)
 {
-	Scene_Battle::GetInstance()->p1()->ChangeWeapon(new Equip_Gun_L());
+	target->ChangeWeapon(new Equip_Gun_L());
 }
-void Obj_Upgrade_R::applyUpgrade()
+void Obj_Upgrade_R::applyUpgrade(Game_Character*target)
 {
 	GameManager::GetInstance()->add_Speed_Upgrade();
 }

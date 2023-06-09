@@ -25,7 +25,7 @@ class Obj_Upgrade_M : public Obj_UpgradeBase
         {
             _SpriteId = ANI_UPGRADE_M;
         }
-        void applyUpgrade() override;
+        void applyUpgrade(Game_Character*target) override;
     
 };
 
@@ -38,7 +38,7 @@ class Obj_Upgrade_B : public Obj_UpgradeBase
         {
             _SpriteId = ANI_UPGRADE_B;
         }
-        void applyUpgrade() override;
+        void applyUpgrade(Game_Character*target) override;
 
 };
 
@@ -51,7 +51,7 @@ public:
     {
         _SpriteId = ANI_UPGRADE_F;
     }
-    void applyUpgrade() override;
+    void applyUpgrade(Game_Character*target) override;
 };
 
 class Obj_Upgrade_S : public Obj_UpgradeBase
@@ -63,7 +63,7 @@ public:
     {
         _SpriteId = ANI_UPGRADE_S;
     }
-    void applyUpgrade() override;
+    void applyUpgrade(Game_Character*target) override;
 
 };
 class Obj_Upgrade_L : public Obj_UpgradeBase
@@ -75,7 +75,7 @@ public:
     {
         _SpriteId = ANI_UPGRADE_L;
     }
-    void applyUpgrade() override;
+    void applyUpgrade(Game_Character*target) override;
 
 };
 class Obj_Upgrade_R : public Obj_UpgradeBase
@@ -87,7 +87,7 @@ public:
     {
         _SpriteId = ANI_UPGRADE_R;
     }
-    void applyUpgrade() override;
+    void applyUpgrade(Game_Character*target) override;
 
 };
 

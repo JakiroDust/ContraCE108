@@ -1,5 +1,6 @@
 #pragma once
 #include "Game_SpecialObject.h"
+#include "Game_Character.h"
 namespace UPGRADE
 {
 #define UPGRADE_ICON_WIDTH 23
@@ -21,6 +22,6 @@ public:
     void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;
     void Render() override;
     void OnCollisionWith(PCOLLISIONEVENT e) override;
-    virtual void applyUpgrade() {}
+    virtual void applyUpgrade(Game_Character*target) {}
 };
 

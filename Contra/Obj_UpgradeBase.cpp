@@ -14,7 +14,7 @@ void Obj_UpgradeBase::OnCollisionWith(PCOLLISIONEVENT e)
 	Game_SpecialObject::OnCollisionWith(e);
 	if (!_die && dynamic_cast<Game_Player*>(e->obj))
 	{
-		applyUpgrade();
+		applyUpgrade((Game_Character*)e->obj);
 		forceDie();
 	}
 }
