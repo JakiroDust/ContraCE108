@@ -2,7 +2,7 @@
 #include "Scene_Battle.h"
 #include "ScreenManager.h"
 #include "GameManager.h"
-
+#include "CharacterEffect.h"
 void StageEventHandler_Base::Update(DWORD dt)
 {
     Game_Player* player = _srcScene->p1();
@@ -84,7 +84,7 @@ void StageEventHandler_Base::Debug_KeyDownEventHandler(int KeyCode)
             _srcScene->p1()->ChangeWeapon(new Equip_Gun_F());
             break;
         case DIK_6:
-            _srcScene->p1()->Apply_UpgradeB();
+            CHARACTER_EFFECT::applyEffect(Scene_Battle::GetInstance()->p1(), CHARACTER_EFFECT::DEFAULT_IMORTAL, 5000);
             break;
         case DIK_7:
             CompleteStage();

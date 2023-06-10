@@ -185,7 +185,7 @@ void StageEventHandler_S1::Perform_StageClearEvent(DWORD dt)
 {
 	Game_Player* player = _srcScene->p1();
 	player->SetAuto(true);
-	player->SetImmortal(true);
+	//player->SetImmortal(true);
 	if (player->x() < 3196)
 	{
 		if (!player->Test_IfHaveAction())

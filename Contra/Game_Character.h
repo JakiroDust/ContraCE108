@@ -2,6 +2,7 @@
 #include "Game_MovableObject.h"
 #include "Equip_GunBase.h"
 #include "spawnBulletHelper.h"
+#include "CharacterEffect_Base.h"
 //#include "Contra_GET_ANI.h"
 
 #define CHARACTER_JUMP_ON_HEIGHT 12
@@ -19,13 +20,15 @@ protected:
 	DWORD _GunReloadInterval = 0;
 	// Auto control
 	vector<pair<int, int>> _ActionQueue; // save keycode list
-
-	virtual void UpdateState() {}
+	
+	
+	virtual void UpdateState() {}	
 	virtual void KeyReleaseAll() {}
 	void ExecuteAction();
 	void ResetStateParams() override;
 
 	void Cleaning() override;
+
 public:
 	//static unordered_map<int, vector<float>> _spawnBulletHelper;
 	Game_Character(float x, float y, int z, int width, int height) ;	
@@ -90,6 +93,18 @@ public:
 		_weapon = newWep;
 	}
 	virtual int RewardScore() { return 0; }
+
+	//effect
+protected:
+	unordered_map<int, unique_ptr<CharacterEffect_Base>> _effect_lists;
+
+	virtual void _startCharacterEffect(int _effect) {};
+	virtual void _updateCharacterEffect(int _effect) {};
+	virtual void _expireCharacterEffect(int _effect) {};
+	void _addtoEffectList(unique_ptr<CharacterEffect_Base>&& _effect);
+public:
+	void _handle_CharacterEffect(DWORD& dt);
+	void addEffect(CharacterEffect_Base*);
 };
 
 

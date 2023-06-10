@@ -6,9 +6,10 @@
 #include "Scene_Battle.h"
 #include "Game_DeadlyBlock.h"
 #include "Obj_MovingStone.h"
-
+#include "CharacterEffect_Base.h"
 void Game_Character::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
+	_handle_CharacterEffect(dt);
 	Game_MovableObject::Update(dt, coObjects);
 
 	if (_GunReloadInterval > dt)
@@ -177,6 +178,7 @@ void Game_Character::AddAction(int KeyCode1, int KeyCode2)
 	_ActionQueue.push_back(p);
 }
 
+
 void Game_Character::ExecuteAction()
 {
 	if (_ActionQueue.size() == 0)
@@ -224,3 +226,42 @@ void Game_Character::Cleaning()
 	Game_MovableObject::Cleaning();
 }
 
+
+
+void Game_Character::_addtoEffectList(unique_ptr<CharacterEffect_Base>&& _effect)
+{
+	int type = _effect.get()->effectID();
+	_effect.get()->starting_Effect();
+	if (_effect_lists.find(type) != _effect_lists.end())
+	{
+		_expireCharacterEffect(type);
+		_effect_lists[type]->forceExpire();
+	}
+	_effect_lists[type] = move(_effect);
+}
+
+void Game_Character::_handle_CharacterEffect(DWORD& dt)
+{
+	for (auto& i : _effect_lists)
+	{
+		if (i.second.get()->isExpired())
+		{
+			_expireCharacterEffect(i.second.get()->effectID());
+			_effect_lists.erase(i.first);
+		}
+		if (_effect_lists.size() == 0)
+			break;
+	}
+	for (auto& i : _effect_lists)
+	{
+		i.second.get()->update(dt);
+	}
+
+}
+
+void Game_Character::addEffect(CharacterEffect_Base* _effect)
+{
+	int type = _effect->effectID();
+	_addtoEffectList(move(unique_ptr<CharacterEffect_Base>(_effect)));
+	_startCharacterEffect(type);
+}

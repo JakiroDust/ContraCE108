@@ -13,7 +13,8 @@
 #include "Game_DeadlyBlock.h"
 #include "ScreenManager.h"
 #include "StageEventHandler_Base.h"
-
+#include "CharacterEffect.h"
+using namespace CHARACTER_EFFECT;
 int Game_Player::CharID()
 {
 	return CHAR_CONTRA;
@@ -28,54 +29,24 @@ void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 
 	// UPDATE SOME PARAMS
 	// invincible mode
-	if (_invincible_interval >= dt)
+	if (_havingInvinicble_effect)
 	{
 		_ghost = true;
-		_invincible_interval -= dt;
-		int ani_frame = _invincible_interval / PLAYER_INVINCIBLE_ANI_INTERVAL;
-		if (ani_frame % 2 == 1)
-		{
-			_invincible_ani_flash = true;
-		}
-		else
-		{
-			_invincible_ani_flash = false;
-		}
+		_invincible_interval += dt;
+		_invincible_ani_flash= !(_invincible_interval / PLAYER_INVINCIBLE_ANI_INTERVAL%2);
 	}
 	else
 	{
-		_invincible_interval = 0;
-		_invincible_ani_flash = false;
+		//_invincible_interval = 0;
+		//_invincible_ani_flash = false;
 		if (_state != NULL && _state.get()->StateId() != STATE_DIVE)
 			_ghost = false;
 	}
-
-	// UpgradeB mode
-	if (_upgradeB_interval >= dt)
+	if (_havingB_effect)
 	{
-		_immortal = true;
-		_upgradeB_interval -= dt;
-		// update frame
-		//int ani_frame = _upgradeB_interval / PLAYER_UPGRADE_B_ANI_INTERVAL;
-		//
-		//if (ani_frame % 2 == 1)
-		//{
-		//	_upgradeB_ani_flash = true;
-		//}
-		//else
-		//{
-		//	_upgradeB_ani_flash = false;
-		//}^/
+		_upgradeB_interval += dt;
 		_upgradeB_ani_flash = ((_upgradeB_interval % 250) > 125);
-		_invincible_ani_flash = false;
 	}
-	else
-	{
-		_upgradeB_interval = 0;
-		_immortal = false;
-		_upgradeB_ani_flash = false;
-	}
-
 	// Wait for revive
 	if (_hp > 0)
 	{
@@ -386,13 +357,13 @@ void Game_Player::OnCollisionWith(PCOLLISIONEVENT e)
 		Game_Enemy* enemy = (Game_Enemy*)(e->obj);
 		
 		// Upgrade B effect
-		if (_immortal && !enemy->IsGhost() && !enemy->IsImmortal() && enemy->EnemyType() == ENEMY_SOLDIER)
+		if (_havingB_effect && !enemy->IsGhost() && !enemy->IsImmortal() && enemy->EnemyType() == ENEMY_SOLDIER)
 		{
 			enemy->forceDie();
 			return;
 		}
 		
-		if (!_immortal && enemy->BodyDamage())
+		if (!IsImmortal() && enemy->BodyDamage())
 		{
 			DieEvent();
 			return;
@@ -523,8 +494,8 @@ void Game_Player::PerformRevive()
 {
 	_die = false;
 	_revive_interval = 0;
-	_invincible_ani_flash = false;
-	_invincible_interval = PLAYER_REVIVE_INVINCIBLE_TIME;
+	//_invincible_ani_flash = false;
+	//_invincible_interval = PLAYER_REVIVE_INVINCIBLE_TIME;
 	_lockFace = false;
 	
 	// Get Respawn point
@@ -541,10 +512,50 @@ void Game_Player::PerformRevive()
 	_state.reset(new State_Contra_Idle(this));
 	// Reset to normal gun
 	ChangeWeapon(new Equip_Gun_N());
+	CHARACTER_EFFECT::applyEffect(this, CHARACTER_EFFECT::DEFAULT_IMORTAL, PLAYER_REVIVE_INVINCIBLE_TIME);
 }
 
-void Game_Player::Apply_UpgradeB()
+void Game_Player::Apply_UpgradeB(bool state)
 {
-	_upgradeB_interval = PLAYER_UPGRADE_B_TIME;
-	_upgradeB_ani_flash = false;
+	_havingB_effect = state;
+	//_upgradeB_ani_flash = false;
+}
+
+void Game_Player::_startCharacterEffect(int _effect)
+{
+	switch (_effect)
+	{
+	case BARRIER: _havingB_effect = true; _upgradeB_ani_flash = false; break;
+	case DEFAULT_IMORTAL: _havingInvinicble_effect = true; _invincible_ani_flash = false; break;
+	default:
+		break;
+	}
+}
+
+void Game_Player::_updateCharacterEffect(int _effect)
+{
+	switch (_effect)
+	{
+	case BARRIER: _upgradeB_ani_flash = _effect_lists[_effect].get()->getDuration() % 500 > 250; break;
+	case DEFAULT_IMORTAL: _invincible_ani_flash = _effect_lists[_effect].get()->getDuration() % 500 > 250; break;
+	default:
+		break;
+	}
+}
+
+void Game_Player::_expireCharacterEffect(int _effect)
+{
+	switch (_effect)
+	{
+	case BARRIER: 
+		_havingB_effect = false; 
+		_upgradeB_ani_flash = false;
+		break;
+	case DEFAULT_IMORTAL: 
+		_havingInvinicble_effect=false;
+		_invincible_ani_flash = false;
+		break;
+	default:
+		break;
+	}
 }

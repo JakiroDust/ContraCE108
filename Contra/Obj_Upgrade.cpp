@@ -13,7 +13,7 @@ void Obj_Upgrade_B::applyUpgrade(Game_Character* target)
 	if (dynamic_cast<Game_Player*>(target))
 	{
 		Game_Player *ptr=(Game_Player*)target;
-		ptr->Apply_UpgradeB();
+		//ptr->Apply_UpgradeB();
 	}
 }
 

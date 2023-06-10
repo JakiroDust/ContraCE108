@@ -32,7 +32,7 @@ class Game_MovableObject : public Game_ObjectBase
 		bool _faceLeft = false;
 		bool _lockFace = false;
 		bool _swim = false;
-		bool _immortal = false;
+		int _immortal = 0;
 		bool _ghost = false;
 		bool _onGround = false;
 		bool _die = false;
@@ -109,9 +109,11 @@ class Game_MovableObject : public Game_ObjectBase
 		float GetJumpForce() { return _jumpHeight; }
 		bool IsAffectedByGravity() { return _gravity; }
 
-		bool IsImmortal() { return _immortal; }
+		bool IsImmortal() { return _immortal>0; }
 		bool IsGhost() { return _ghost; }
-		void SetImmortal(bool b) { _immortal = b; }
+		//void SetImmortal(bool b) { _immortal = b; }
+		void IncImmortal() { _immortal++; }
+		void DecImmortal() { _immortal--; }
 		void SetGhost(bool b) { _ghost = b; }
 
 		/// STATE

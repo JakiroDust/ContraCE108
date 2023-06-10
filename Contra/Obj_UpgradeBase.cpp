@@ -22,4 +22,4 @@ void Obj_UpgradeBase::OnCollisionWith(PCOLLISIONEVENT e)
 void Obj_UpgradeBase::Render()
 {
 	Game_ObjectBase::Render();
-}
+}	

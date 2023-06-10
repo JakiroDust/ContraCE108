@@ -59,13 +59,14 @@ class Game_Player : public Game_Character
 		float _revive_pos_Y = 0;
 
 		// invincible after revive
-
+		bool _havingInvinicble_effect = false;
 		DWORD _invincible_interval = 0;
 		bool _invincible_ani_flash = false;
 
 		// upgrade B
 
 		DWORD _upgradeB_interval = 0;
+		bool _havingB_effect = false;
 		bool _upgradeB_ani_flash = false;
 
 		// functions
@@ -108,6 +109,11 @@ class Game_Player : public Game_Character
 		void GetSpriteOffset(int state, float& x, float& y) override;
 		void Execute_DieAction() override;
 
-		void Apply_UpgradeB();
+		void Apply_UpgradeB(bool state);
+
+protected:
+	 void _startCharacterEffect(int _effect) override;
+	 void _updateCharacterEffect(int _effect) override;
+	 void _expireCharacterEffect(int _effect) override;
 };
 
