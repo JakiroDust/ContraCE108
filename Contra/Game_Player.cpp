@@ -484,7 +484,7 @@ void Game_Player::Execute_DieAction()
 void Game_Player::DieEvent()
 {
 	forceDie();
-	
+	_cleanEffect();
 	_hp--;
 	
 	_revive_interval = PLAYER_WAIT_FOR_REVIVE_TIME;

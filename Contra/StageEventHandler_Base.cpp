@@ -81,7 +81,8 @@ void StageEventHandler_Base::Debug_KeyDownEventHandler(int KeyCode)
             _srcScene->p1()->ChangeWeapon(new Equip_Gun_L());
             break;
         case DIK_5:
-            _srcScene->p1()->ChangeWeapon(new Equip_Gun_F());
+            //_srcScene->p1()->ChangeWeapon(new Equip_Gun_F());
+            CHARACTER_EFFECT::applyEffect(Scene_Battle::GetInstance()->p1(), CHARACTER_EFFECT::BARRIER, 5000);
             break;
         case DIK_6:
             CHARACTER_EFFECT::applyEffect(Scene_Battle::GetInstance()->p1(), CHARACTER_EFFECT::DEFAULT_IMORTAL, 5000);
