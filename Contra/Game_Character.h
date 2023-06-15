@@ -102,6 +102,7 @@ protected:
 	virtual void _updateCharacterEffect(int _effect) {};
 	virtual void _expireCharacterEffect(int _effect) {};
 	void _addtoEffectList(unique_ptr<CharacterEffect_Base>&& _effect);
+	void _cleanEffect();
 public:
 	void _handle_CharacterEffect(DWORD& dt);
 	void addEffect(CharacterEffect_Base*);

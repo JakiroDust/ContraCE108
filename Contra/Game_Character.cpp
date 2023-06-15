@@ -240,17 +240,27 @@ void Game_Character::_addtoEffectList(unique_ptr<CharacterEffect_Base>&& _effect
 	_effect_lists[type] = move(_effect);
 }
 
+void Game_Character::_cleanEffect()
+{
+	for (auto i = _effect_lists.begin(); i != _effect_lists.end();) {
+		auto* ptr = i->second.get();
+		_expireCharacterEffect(ptr->effectID());
+		i = _effect_lists.erase(i);
+		ptr = nullptr;
+	}
+}
+
 void Game_Character::_handle_CharacterEffect(DWORD& dt)
 {
-	for (auto& i : _effect_lists)
-	{
-		if (i.second.get()->isExpired())
-		{
-			_expireCharacterEffect(i.second.get()->effectID());
-			_effect_lists.erase(i.first);
+	for (auto i = _effect_lists.begin(); i != _effect_lists.end();) {
+		auto* ptr = i->second.get();
+		if (ptr->isExpired()) {
+			_expireCharacterEffect(ptr->effectID());
+			i = _effect_lists.erase(i);
+			ptr = nullptr;
+			continue;
 		}
-		if (_effect_lists.size() == 0)
-			break;
+		++i;
 	}
 	for (auto& i : _effect_lists)
 	{
