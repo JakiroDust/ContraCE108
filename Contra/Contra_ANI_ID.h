@@ -190,7 +190,8 @@
 #define ANI_UPGRADE_R	958880
 #pragma endregion
 
-
+#define ANI_SCUBA_IDLE	60000
+#define ANI_SCUBA_SHOOT	60220
 
 #pragma region TERRAIN
 #define BLACK_BOX_ANI 99990

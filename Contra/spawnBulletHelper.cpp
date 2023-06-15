@@ -70,7 +70,7 @@ namespace BULLETHELPER
         case DIR_3_OCLOCK: x = x_dis; y = 0; break;
         case DIR_6_OCLOCK: y = y_dis; x = 0; break;
         case DIR_9_OCLOCK: x = -x_dis; y = 0;break;
-        case DIR_12_OCLOCK: x = 0; y = 0; break;
+        case DIR_12_OCLOCK: x = 0; y = y_dis; break;
         default:
             x = 0;
             y = 0;
