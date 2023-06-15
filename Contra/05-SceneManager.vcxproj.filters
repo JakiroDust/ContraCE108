@@ -22,7 +22,7 @@
     <ClCompile Include="Enemy_RedGunner.cpp">
       <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_ScubaDriver.cpp">
+    <ClCompile Include="Enemy_ScubaDiver.cpp">
       <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_SneakSniper.cpp">
@@ -335,9 +335,19 @@
     <ClCompile Include="Obj_FlyingUpgradeBox.cpp">
       <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="Spawner_Infary_Stage3.cpp" />
-    <ClCompile Include="CharacterEffect_Base.cpp" />
-    <ClCompile Include="CharacterEffect.cpp" />
+    <ClCompile Include="Spawner_Infary_Stage3.cpp">
+      <Filter>Source Files\Object\StaticObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_EnemyGun_ScubaDiver.cpp">
+      <Filter>Source Files\Equip</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterEffect_Base.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterEffect.cpp">
+      <Filter>Source Files\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_EnemyBullet_SBomb.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -466,7 +476,7 @@
     <ClInclude Include="Enemy_RedGunner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_ScubaDriver.h">
+    <ClInclude Include="Enemy_ScubaDiver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_SneakSniper.h">
@@ -712,10 +722,20 @@
     <ClInclude Include="Obj_StationUpgradeBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Spawner_Infary_Stage3.h" />
     <ClInclude Include="State_CONST.h" />
-    <ClInclude Include="CharacterEffect_Base.h" />
-    <ClInclude Include="CharacterEffect.h" />
+    <ClInclude Include="Spawner_Infary_Stage3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Equip_EnemyGun_ScubaDiver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterEffect_Base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterEffect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj_EnemyBullet_SBomb.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

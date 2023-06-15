@@ -159,20 +159,6 @@ PCOLLISIONEVENT Game_Collision::SweptAABB(PGAMEOBJECT objSrc, DWORD dt, PGAMEOBJ
 	objSrc->GetBoundingBox(ml, mt, mr, mb);
 	objDest->GetBoundingBox(sl, st, sr, sb);
 
-	//Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
-	//Game_Screen* screen = ScreenManager::GetInstance()->Screen();
-	//mt = scene->MapHeight()  - mt;
-	//mb = scene->MapHeight() - mb;
-	//st = scene->MapHeight() - st;
-	//sb = scene->MapHeight() - sb;
-	//dy = -dy;
-
-	//// These codes are used to debug Player collision
-	//if (dynamic_cast<Game_Player*>(objSrc) && dynamic_cast<Game_SweeperBlock*>(objDest))
-	//{
-	//	int a = 2;
-	//}
-
 	SweptAABB(
 		ml, mt, mr, mb,
 		dx, dy,
@@ -196,7 +182,7 @@ void Game_Collision::Scan(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* obj
 	{
 		PCOLLISIONEVENT e = SweptAABB(objSrc, dt, objDests->at(i));
 
-		if (e->WasCollided() == 1 && e->obj->BlockingCondition(dt, e) && e->src_obj->CollideBlockerCondition(dt, e))
+		if (e->WasCollided() == 1 && e->src_obj->CollideBlockerCondition(dt, e) && e->obj->BlockingCondition(dt, e))
 			coEvents.push_back(e);
 		else
 			delete e;

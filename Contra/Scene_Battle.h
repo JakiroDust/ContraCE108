@@ -23,6 +23,7 @@
 #include "Game_Bullet.h"
 #include "Enemy_Sniper.h"
 #include "Enemy_SneakSniper.h"
+#include "Enemy_ScubaDiver.h"
 #include "Enemy_Turret.h"
 #include "Enemy_Cannon.h"
 #include "Spawner_Infary_Stage1.h"

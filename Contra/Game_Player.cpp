@@ -378,6 +378,8 @@ void Game_Player::OnCollisionWith(PCOLLISIONEVENT e)
 		{
 			if (!_immortal)
 				DieEvent();
+			if (bullet->IsExplosive())
+				bullet->Execute_ExplodingEffect();
 			bullet->DeleteThis();
 		}
 	}

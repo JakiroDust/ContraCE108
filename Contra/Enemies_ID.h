@@ -25,7 +25,7 @@
 
 #define SNEAKY_SNIPER 50
 
-#define SCUBA_DRIVER 60
+#define SCUBA_DIVER 60
 
 #define BOMB_TOSSER 70
 #define BOMB_TOSSER_BASE 71
