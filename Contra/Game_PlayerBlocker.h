@@ -8,5 +8,4 @@ class Game_PlayerBlocker : public Game_Terrain
 		bool IsBlocking() { return 1; }
 		bool BlockingCondition(DWORD dt, PCOLLISIONEVENT e) override;
 };
-
  

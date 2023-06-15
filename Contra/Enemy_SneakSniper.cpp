@@ -2,6 +2,7 @@
 #include "Scene_Battle.h"
 #include "Contra_GET_ANI.h"
 #include "State_Station.h"
+#include "GameManager.h"
 
 int Enemy_SneakSniper::CharID()
 {
@@ -120,4 +121,26 @@ void Enemy_SneakSniper::UpdateState()
 	if (_state == NULL)
 		_state.reset(new State_Station(this));
 	Game_StationEnemy::UpdateState();
+}
+
+void Enemy_SneakSniper_Base::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
+{
+	Game_StationEnemy::Update(dt, coObjects);
+		
+	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
+	Game_Player* player = scene->p1();
+
+	if (GameManager::GetInstance()->Get_StagePasscardRemain() > 4 || _state->StateId() == STATE_IDLE)
+		_ghost = true;
+	else if (_state->StateId() != STATE_DIE)
+		_ghost = false;
+}
+
+
+void Enemy_SneakSniper_Base::Execute_DieAction()
+{
+	Game_StationEnemy::Execute_DieAction();
+	jump();
+	_ForceX = 50;
+	GameManager::GetInstance()->Gain_StagePasscard();
 }

@@ -34,6 +34,11 @@
 #include "Game_PlayerBlocker.h"
 #include "Obj_FlyingUpgradeBox.h"
 #include "Obj_StationUpgradeBox.h"
+// Boss 1
+#include "Enemy_Cannon_Base.h"
+#include "Enemy_Base_Door.h"
+#include "Obj_BossBase_S1.h"
+
 // EventHandler
 #include "StageEventHandler_Base.h"
 // DEMO
@@ -75,6 +80,7 @@ class Scene_Battle : public Scene_Base
 
 		// Stage controller
 		StageEventHandler_Base* _controller = NULL;
+		bool _massKilling = false;
 
 	public:
 		Scene_Battle() : Scene_Base() { height = 0; map_id = 0; width = 0; }
@@ -94,7 +100,7 @@ class Scene_Battle : public Scene_Base
 		void Update(DWORD dt) override;
 		void Load() override;
 		void Unload() override;
-		
+		void MassKilling() { _massKilling = true; }
 		//void Create_Stage_Demo();
 
 		// Key event handler
@@ -149,11 +155,6 @@ class Scene_Battle : public Scene_Base
 		// Delete later
 		void init_spatial() { _init_spatial(); }
 
-private:
-	static Scene_Battle* __instance;
-public:
-	static Scene_Battle* GetInstance();
-	static Scene_Battle* GenInstance();
 
 };
 

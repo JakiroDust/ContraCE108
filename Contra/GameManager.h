@@ -115,6 +115,7 @@ class GameManager
 		int GetSavedGun_P1() { return _saved_P1_Gun; }
 		int GetSavedLife_P1() { return _saved_P1_Life; }
 		int GetCurrentStage() { return _currentStage; }
+		int Get_StagePasscardRemain() { return _stagePasscard; }
 		void Set_StagePasscardAmount(int amount) { _stagePasscard = amount; }
 		int Test_IfPassStage() 
 		{

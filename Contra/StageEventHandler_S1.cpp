@@ -15,11 +15,6 @@ void StageEventHandler_S1::Update(DWORD dt)
 	{
 		return;
 	}
-	// Example for stage clear event
-	else if (_srcScene->p1()->x() > 3168)
-	{
-		gm->Gain_StagePasscard();
-	}
 
 	//-----------------------------------------------------
 
@@ -43,6 +38,11 @@ void StageEventHandler_S1::Update(DWORD dt)
 	else if (_maxMovedLength >= MAX_MOVEABLE_LENGTH_STAGE_1)
 	{
 		_maxMovedLength = MAX_MOVEABLE_LENGTH_STAGE_1;
+		// start boss fight
+		if (GameManager::GetInstance()->Get_StagePasscardRemain() > 4)
+		{
+			GameManager::GetInstance()->Set_StagePasscardAmount(4);
+		}
 	}
 	
 	if (!_toggleFreeCam)
@@ -105,7 +105,7 @@ void StageEventHandler_S1::Load()
 	_sweeperID =  _srcScene->add_object(move(sweeper));
 
 	// setOther game params
-	GameManager::GetInstance()->Set_StagePasscardAmount(1);
+	GameManager::GetInstance()->Set_StagePasscardAmount(5);
 
 	// default load
 	StageEventHandler_Base::Load();
@@ -186,12 +186,27 @@ void StageEventHandler_S1::Perform_StageClearEvent(DWORD dt)
 	Game_Player* player = _srcScene->p1();
 	player->SetAuto(true);
 	//player->SetImmortal(true);
-	if (player->x() < 3196)
+	// SCENE: boss die
+	if (!S1_BossDie)
+	{
+		S1_BossDie = true;
+		_srcScene->MassKilling();
+		_WaitForBossDie = S1_WAIT_FOR_BOSS_DIE;
+	}
+
+	if (_WaitForBossDie > dt)
+	{
+		_WaitForBossDie -= dt;
+		return;
+	}
+
+	// SCENE: player move to base 
+	if (player->x() < 3208)
 	{
 		if (!player->Test_IfHaveAction())
 			player->AddAction(DIK_RIGHT);
 	}
-	else if (player->x() < 3296)
+	else if (player->x() <= 3308)
 	{
 		if (!player->Test_IfHaveAction())
 		{

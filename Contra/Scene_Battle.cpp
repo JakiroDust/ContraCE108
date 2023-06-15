@@ -7,7 +7,7 @@ using namespace std;
 #define MAP_TEXU_WIDTH 16
 #define MAP_TEXU_HEIGHT 8
 float BG_color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
-Scene_Battle* Scene_Battle::__instance = NULL;
+//Scene_Battle* Scene_Battle::__instance = NULL;
 Scene_Battle::~Scene_Battle()
 {
     Unload();
@@ -138,6 +138,22 @@ void Scene_Battle::Update(DWORD dt)
             i--;
         }
     }
+
+    // If MassKilling flag turn on, kill all enemies
+    if (_massKilling)
+    {
+        for (auto& i : id_list)
+        {
+            Game_ObjectBase* obj = __objects[i].get();
+            if (dynamic_cast<Game_Enemy*>(obj))
+            {
+                Game_Enemy* enemy = (Game_Enemy*)obj;
+                enemy->forceDie();
+            }
+            _massKilling = false;
+        }
+    }
+
     // Terminate objects have Delete flag
     for (auto& i : id_list)
     {
@@ -174,7 +190,7 @@ void Scene_Battle::Unload()
     //_p2.reset(NULL);
     if (_controller != NULL)
         delete _controller;
-     __instance = NULL;
+     //__instance = NULL;
 }
 
 void Scene_Battle::KeyDownEventHandler(int KeyCode)
@@ -421,6 +437,16 @@ void Scene_Battle::_ParseOBject(string line)
                     break;
                 case CANNON: obj.reset(new Enemy_Cannon(x, y, Z_INDEX_STATION));
                     break;
+                case BASE_SNIPER: obj.reset(new Enemy_SneakSniper_Base(x, y, Z_INDEX_ENEMY));
+                    break;
+                case BASE_CANNON_LEFT: obj.reset(new Enemy_Cannon_Base(x, y, Z_INDEX_ENEMY, 1));
+                    break;
+                case BASE_CANNON_RIGHT: obj.reset(new Enemy_Cannon_Base(x, y, Z_INDEX_ENEMY, 0));
+                    break;
+                case BASE_DOOR: obj.reset(new Enemy_Base_Door(x, y, Z_INDEX_ENEMY));
+                    break;
+                case BASE_BODY: obj.reset(new Obj_BossBase_S1(x, y, Z_INDEX_TERRAIN, param1));
+                    break;
                 case FLAME: obj.reset(new Obj_Flame(x, y, Z_INDEX_STATION, param1, param2));
                     break;
                 case UP_BOX_STATION: obj.reset(new Obj_StationUpgradeBox(x, y, Z_INDEX_ITEM, param1, param2));
@@ -511,14 +537,4 @@ vector<int> Scene_Battle::getNearByIDwithWH(int x, int y, int width, int height)
         bottom = y - height / 2,
         top = y + height;
     return spatial->search(left, bottom, right, top,-100);
-}
-Scene_Battle* Scene_Battle::GetInstance()
-{
-    if (__instance == NULL) __instance = new Scene_Battle();
-    return __instance;
-}
-Scene_Battle* Scene_Battle::GenInstance()
-{
-    __instance = new Scene_Battle();
-    return __instance;
 }
