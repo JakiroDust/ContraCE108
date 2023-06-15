@@ -1,7 +1,7 @@
 #include "Enemy_ScubaDiver.h"
 #include "Scene_Battle.h"
 #include "Contra_GET_ANI.h"
-#include "State_Station.h"
+#include "State_Station_Hide.h"
 
 int Enemy_ScubaDiver::CharID()
 {
@@ -102,6 +102,6 @@ void Enemy_ScubaDiver::Shoot(int DIR)
 void Enemy_ScubaDiver::UpdateState()
 {
 	if (_state == NULL)
-		_state.reset(new State_Station(this));
+		_state.reset(new State_Station_Hide(this));
 	Game_StationEnemy::UpdateState();
 }
