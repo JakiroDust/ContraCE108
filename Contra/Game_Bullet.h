@@ -15,6 +15,7 @@ class Game_Bullet : public Game_MovableObject
 		int _OwnerID = 0;
 		int _Damage = 1;
 		static bool IsEqual(float a, float b, int decimal = 5);
+		void Cleaning() override { Game_MovableObject::Cleaning(); }
 	public:
 		Game_Bullet(float x, float y, int z, int width, int height) : Game_MovableObject(0, 0, z, width, height)
 		{
@@ -28,17 +29,21 @@ class Game_Bullet : public Game_MovableObject
 		// Base on OwnerID, objects will ignore this bullet or not.
 		int OwnerID() { return _OwnerID; }
 		int Damage() { return _Damage; }
-		//int getAni() { return CONTRA_BULLET_ANI_BULLET_N; }
-		//int getExplodeAni() {return CONTRA_BULLET_ANI_BULLET_N;}
+
 		// Can this object ingore blocking object and move through it?
 		// If YES, collision framework will skip this collision event.
 		bool IgnoreBlocking() override { return 1; }
 
 		void Update(DWORD dt) override;
+		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override { Game_MovableObject::Update(dt, coObjects); }
+		void OnNoCollision(DWORD dt) override { Game_MovableObject::OnNoCollision(dt); }
 		void SetAngle(float degree);	
 		void SetTargetPos(float x, float y);
 		void SetVector(float vx, float vy);
 		void Render() override { Game_MovableObject::Render(); }
+
+		virtual bool IsExplosive() { return false; }
+		virtual void Execute_ExplodingEffect() {}
 
 		void DeleteThis() override { Game_MovableObject::DeleteThis(); }
 };

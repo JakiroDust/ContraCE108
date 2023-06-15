@@ -169,6 +169,11 @@
 #define ANI_BUSH_SNIPER_HIDE	50020
 #pragma endregion
 
+#pragma region SCUBA_DIVER
+#define ANI_SCUBA_DIVER_SHOOT	60220
+#define ANI_SCUBA_DIVER_HIDE	60000
+#pragma endregion
+
 #pragma region EXPLO
 #define ANI_EXPLOSION_CONSTRUCT	80550
 #define ANI_EXPLOSION_BULLET	80550

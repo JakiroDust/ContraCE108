@@ -81,7 +81,7 @@ void Game_Player::_Render(int aniId, float x, float y)
 			curFrame = 0;
 			curAni = aniId;
 		}
-		aniId += _upgradeB_ani_flash ? 160000 : 0;
+		aniId += _upgradeB_ani_flash && !_die? 160000 : 0;
 		animations->Get(aniId)->Render(x, y, curFrameTime, curFrame);
 	}
 }
@@ -378,6 +378,8 @@ void Game_Player::OnCollisionWith(PCOLLISIONEVENT e)
 		{
 			if (!_immortal)
 				DieEvent();
+			if (bullet->IsExplosive())
+				bullet->Execute_ExplodingEffect();
 			bullet->DeleteThis();
 		}
 	}

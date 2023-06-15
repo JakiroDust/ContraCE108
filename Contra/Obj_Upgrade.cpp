@@ -2,6 +2,7 @@
 #include "Equip_Gun_M.h"
 #include "Scene_Battle.h"
 #include "GameManager.h"
+#include "CharacterEffect.h"
 
 void Obj_Upgrade_M::applyUpgrade(Game_Character*target)
 {
@@ -13,7 +14,7 @@ void Obj_Upgrade_B::applyUpgrade(Game_Character* target)
 	if (dynamic_cast<Game_Player*>(target))
 	{
 		Game_Player *ptr=(Game_Player*)target;
-		//ptr->Apply_UpgradeB();
+		CHARACTER_EFFECT::applyEffect(ptr, CHARACTER_EFFECT::BARRIER, 20000);
 	}
 }
 

@@ -85,7 +85,7 @@ void StageEventHandler_Base::Debug_KeyDownEventHandler(int KeyCode)
             CHARACTER_EFFECT::applyEffect(Scene_Battle::GetInstance()->p1(), CHARACTER_EFFECT::BARRIER, 5000);
             break;
         case DIK_6:
-            CHARACTER_EFFECT::applyEffect(Scene_Battle::GetInstance()->p1(), CHARACTER_EFFECT::DEFAULT_IMORTAL, 5000);
+            CHARACTER_EFFECT::applyEffect(_srcScene->p1(), CHARACTER_EFFECT::BARRIER, 20000);
             break;
         case DIK_7:
             CompleteStage();

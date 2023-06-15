@@ -31,4 +31,4 @@ construct_destroyed.txt
 laser.txt
 upgrade.txt
 BOSS.txt
-scuba-driver.txt
+scuba_diver.txt

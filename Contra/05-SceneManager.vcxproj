@@ -159,12 +159,13 @@
     <ClCompile Include="Enemy_Infary.cpp" />
     <ClCompile Include="Enemy_Jumper.cpp" />
     <ClCompile Include="Enemy_RedGunner.cpp" />
-    <ClCompile Include="Enemy_ScubaDriver.cpp" />
+    <ClCompile Include="Enemy_ScubaDiver.cpp" />
     <ClCompile Include="Enemy_SneakSniper.cpp" />
     <ClCompile Include="Enemy_Sniper.cpp" />
     <ClCompile Include="Enemy_Turret.cpp" />
     <ClCompile Include="Equip_EnemyGun_Cannon.cpp" />
     <ClCompile Include="Equip_EnemyGun_N.cpp" />
+    <ClCompile Include="Equip_EnemyGun_ScubaDiver.cpp" />
     <ClCompile Include="Equip_EnemyGun_SneakSniper.cpp" />
     <ClCompile Include="Equip_EnemyGun_Sniper.cpp" />
     <ClCompile Include="Equip_EnemyGun_Turret.cpp" />
@@ -204,6 +205,7 @@
     <ClCompile Include="Game_SweeperBlock.cpp" />
     <ClCompile Include="Game_Terrain.cpp" />
     <ClCompile Include="Game_TestBox.cpp" />
+    <ClCompile Include="Obj_EnemyBullet_SBomb.cpp" />
     <ClCompile Include="Obj_Upgrade.cpp" />
     <ClCompile Include="Obj_UpgradeBase.cpp" />
     <ClCompile Include="Obj_StationUpgradeBox.cpp" />
@@ -277,12 +279,13 @@
     <ClInclude Include="Enemy_Infary.h" />
     <ClInclude Include="Enemy_Jumper.h" />
     <ClInclude Include="Enemy_RedGunner.h" />
-    <ClInclude Include="Enemy_ScubaDriver.h" />
+    <ClInclude Include="Enemy_ScubaDiver.h" />
     <ClInclude Include="Enemy_SneakSniper.h" />
     <ClInclude Include="Enemy_Sniper.h" />
     <ClInclude Include="Enemy_Turret.h" />
     <ClInclude Include="Equip_EnemyGun_Cannon.h" />
     <ClInclude Include="Equip_EnemyGun_N.h" />
+    <ClInclude Include="Equip_EnemyGun_ScubaDiver.h" />
     <ClInclude Include="Equip_EnemyGun_SneakSniper.h" />
     <ClInclude Include="Equip_EnemyGun_Sniper.h" />
     <ClInclude Include="Equip_EnemyGun_Turret.h" />
@@ -330,6 +333,7 @@
     <ClInclude Include="Game_SweeperBlock.h" />
     <ClInclude Include="Game_Terrain.h" />
     <ClInclude Include="Game_TestBox.h" />
+    <ClInclude Include="Obj_EnemyBullet_SBomb.h" />
     <ClInclude Include="Obj_Upgrade.h" />
     <ClInclude Include="Obj_UpgradeBase.h" />
     <ClInclude Include="Obj_StationUpgradeBox.h" />
