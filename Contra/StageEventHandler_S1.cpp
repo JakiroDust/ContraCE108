@@ -201,16 +201,20 @@ void StageEventHandler_S1::Perform_StageClearEvent(DWORD dt)
 	}
 
 	// SCENE: player move to base 
-	if (player->x() < 3208)
+	if (player->x() < 3218)
 	{
 		if (!player->Test_IfHaveAction())
 			player->AddAction(DIK_RIGHT);
 	}
-	else if (player->x() <= 3308)
+	else if (player->x() <= 3290)
 	{
 		if (!player->Test_IfHaveAction())
 		{
-			if (!S1_firstJump)
+			if (!S1_firstJump && !player->IsOnGround())
+			{
+				// do nothing, wait to player stand on ground
+			}
+			if (!S1_firstJump && player->IsOnGround())
 			{
 				player->AddAction(DIK_P);
 				S1_firstJump = true;

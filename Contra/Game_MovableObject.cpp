@@ -90,8 +90,8 @@ void Game_MovableObject::teleport(float x, float y)
 void Game_MovableObject::ResetStateParams()
 {
 	Game_ObjectBase::ResetStateParams();
-	_swim = false;
-	_onGround = false;
+	//_swim = false;
+	//_onGround = false;
 }
 
 void Game_MovableObject::Update(DWORD dt)
@@ -200,7 +200,7 @@ void Game_MovableObject::OnCollisionWith(PCOLLISIONEVENT e)
 	if (e->ny != 0 && e->obj->IsBlocking())
 	{
 		if (e->ny > 0) _onGround = true;
-		if (e->ny < 0) _jumpForce = 0; 
+		if (e->ny < 0) _jumpForce = 0;
 	}
 }
 

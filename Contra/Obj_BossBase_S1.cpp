@@ -68,4 +68,3 @@ bool Obj_BossBase_S1::BlockingCondition(DWORD dt, PCOLLISIONEVENT e)
 	}
 	return 0;
 }
-

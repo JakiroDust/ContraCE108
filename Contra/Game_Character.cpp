@@ -36,11 +36,15 @@ void Game_Character::OnNoCollision(DWORD dt)
 void Game_Character::OnCollisionWith(PCOLLISIONEVENT e)
 {
 	Game_MovableObject::OnCollisionWith(e);
-	if (_onGround && dynamic_cast<Game_Water*>(e->obj))
+	if (dynamic_cast<Game_Water*>(e->obj))
 	{
 		_swim = true;
 		return;
 	} 
+	else
+	{
+		_swim = false;
+	}
 
 	//if (dynamic_cast<Game_Platform*>(e->obj)
 	//	&& footerY() >= e->obj->y()
