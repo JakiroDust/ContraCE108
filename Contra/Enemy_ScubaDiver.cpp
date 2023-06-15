@@ -2,6 +2,7 @@
 #include "Scene_Battle.h"
 #include "Contra_GET_ANI.h"
 #include "State_Station_Hide.h"
+#include "State_CONST.h"
 
 int Enemy_ScubaDiver::CharID()
 {
@@ -52,13 +53,18 @@ void Enemy_ScubaDiver::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 		// wait for player moving to attack range
 		_waitToChangeState = 1;
 	}
+	else if (_state->StateId() != STATE_WALK)
+	{
+		AddAction(DIK_O);
+		AddAction(DIK_PAUSE, 10);
+	}
 	else
 	{
 		// attack
 		_waitToChangeState = SCUBADIVER_HIDING_INTERVAL - (dt - _waitToChangeState);
+		AddAction(DIK_NUMPAD6);
+		AddAction(DIK_PAUSE, 10);
 		AddAction(DIK_O);
-		AddAction(DIK_PAUSE, 2);
-		AddAction(DIK_0);
 		AddAction(DIK_PAUSE, 10);
 		AddAction(DIK_P);
 	}
@@ -95,8 +101,7 @@ void Enemy_ScubaDiver::Shoot(int DIR)
 
 	_GunReloadInterval = _weapon->FireRate();
 
-	// SneakSniper only shoot left
-	_weapon->Fire(x, y, DIR_LEFT);
+	_weapon->Fire(x, y, DIR_TOP);
 }
 
 void Enemy_ScubaDiver::UpdateState()

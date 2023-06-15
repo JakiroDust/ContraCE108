@@ -5,7 +5,7 @@
 #define ENEMYBULLET_SBOMB_HEIGHT 8
 #define SBOMB_MAX_TRAVEL_DISTANCE 250
 #define SBOMB_SPREAD_X 200
-#define SBOMB_SPREAD_Y 100
+#define SBOMB_SPREAD_Y 32
 
 class Obj_EnemyBullet_SBomb : public Game_Bullet
 {
@@ -15,10 +15,11 @@ class Obj_EnemyBullet_SBomb : public Game_Bullet
 		bool _explodeFlag = false;
 		void Init()
 		{
-			_moveSpd = 0.08f;
+			_moveSpd = 0.2f;
 			_OwnerID = B_OWNER_ENEMY;
 			_Damage = 1;
 			_SpriteId = CONTRA_BULLET_ANI_BULLET_S;
+			_gravity = false;
 		}
 
 		void Create_ExplodeAnimation();
@@ -40,6 +41,8 @@ class Obj_EnemyBullet_SBomb : public Game_Bullet
 
 		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;
 		bool CollideBlockerCondition(DWORD dt, PCOLLISIONEVENT e) override;
+		void OnNoCollision(DWORD dt) override { Game_Bullet::OnNoCollision(dt); }
+		bool IgnoreBlocking() override { return false; }
 		bool IsExplosive() override { return true; }
 		void Execute_BeforeDelete() override;
 		void Execute_ExplodingEffect() override;
@@ -48,21 +51,24 @@ class Obj_EnemyBullet_SBomb : public Game_Bullet
 class Obj_EnemyBullet_SBomb_Phase2 : public Obj_EnemyBullet_SBomb
 {
 	private:
+		int _firstBypassPlatform = -1;
 		void Init()
 		{
-			_moveSpd = 0.1f;
+			_moveSpd = 0.06f;
 			_OwnerID = B_OWNER_ENEMY;
 			_Damage = 1;
 			_SpriteId = CONTRA_BULLET_ANI_BULLET_M;
+			_gravity = true;
 		}
 	public:
-		Obj_EnemyBullet_SBomb_Phase2(float x, float y, int z, float ForceX, float ForceY) : Obj_EnemyBullet_SBomb(x, y, z)
+		Obj_EnemyBullet_SBomb_Phase2(float x, float y, int z, int firstBypassPlatform, float ForceX, float ForceY) : Obj_EnemyBullet_SBomb(x, y, z)
 		{
 			Init();
 			_vy = _moveSpd;
 			_ForceX = ForceX;
 			_ForceY = ForceY;
 			_needScanCollision = true;
+			_firstBypassPlatform = firstBypassPlatform;
 		}
 
 		~Obj_EnemyBullet_SBomb_Phase2()
@@ -70,6 +76,7 @@ class Obj_EnemyBullet_SBomb_Phase2 : public Obj_EnemyBullet_SBomb
 			Cleaning();
 		}
 
+		bool CollideBlockerCondition(DWORD dt, PCOLLISIONEVENT e) override;
 		void Execute_BeforeDelete() override;
 };
 

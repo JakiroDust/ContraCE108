@@ -7,7 +7,6 @@
 void Obj_EnemyBullet_SBomb::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 	// always move up
-	_vy = _moveSpd;
 
 	if (!_isDeleted && _explodeFlag)
 	{
@@ -16,6 +15,8 @@ void Obj_EnemyBullet_SBomb::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	}
 
 	Game_Bullet::Update(dt, coObjects);
+	if (!_gravity)
+		_vy = _moveSpd;
 	Game_Collision::GetInstance()->Process(this, dt, coObjects);
 	ResetStateParams();
 }
@@ -71,14 +72,40 @@ void Obj_EnemyBullet_SBomb::Execute_BeforeDelete()
 		float x, y;
 		GetCenterPoint(x, y);
 		unique_ptr<Obj_EnemyBullet_SBomb_Phase2> bullets[3];
-		bullets[0].reset(new Obj_EnemyBullet_SBomb_Phase2(x, y, Z_INDEX_ANIMATION, -SBOMB_SPREAD_X, SBOMB_SPREAD_Y));
-		bullets[1].reset(new Obj_EnemyBullet_SBomb_Phase2(x, y, Z_INDEX_ANIMATION, 0, SBOMB_SPREAD_Y));
-		bullets[1].reset(new Obj_EnemyBullet_SBomb_Phase2(x, y, Z_INDEX_ANIMATION, SBOMB_SPREAD_X, SBOMB_SPREAD_Y));
+		bullets[0] = unique_ptr<Obj_EnemyBullet_SBomb_Phase2>(new Obj_EnemyBullet_SBomb_Phase2(x, y, Z_INDEX_ANIMATION, _bypassPlatformID, -SBOMB_SPREAD_X, SBOMB_SPREAD_Y));
+		bullets[1] = unique_ptr<Obj_EnemyBullet_SBomb_Phase2>(new Obj_EnemyBullet_SBomb_Phase2(x, y, Z_INDEX_ANIMATION, _bypassPlatformID, 0, SBOMB_SPREAD_Y));
+		bullets[2] = unique_ptr<Obj_EnemyBullet_SBomb_Phase2>(new Obj_EnemyBullet_SBomb_Phase2(x, y, Z_INDEX_ANIMATION, _bypassPlatformID, SBOMB_SPREAD_X, SBOMB_SPREAD_Y));
 		for (int i = 0; i < 3; i++)
 		{
 			scene->add_object(move(bullets[i]));
 		}
 	}
+}
+
+bool Obj_EnemyBullet_SBomb_Phase2::CollideBlockerCondition(DWORD dt, PCOLLISIONEVENT e)
+{
+	// if collide object is platform or moving stone
+	if (!_explodeFlag && (dynamic_cast<Game_Platform*>(e->obj)
+		|| dynamic_cast<Obj_MovingStone*>(e->obj)))
+	{
+		// old platform
+		if (_firstBypassPlatform == e->obj->id() || _bypassPlatformID == e->obj->id())
+		{
+			return false;
+		}
+		// new platform
+		else if (_bypassPlatformID < 0)
+		{
+			_bypassPlatformID = e->obj->id();
+			return false;
+		}
+		else
+		{
+			Execute_ExplodingEffect();
+			return true;
+		}
+	}
+	return true;
 }
 
 void Obj_EnemyBullet_SBomb_Phase2::Execute_BeforeDelete()

@@ -36,6 +36,7 @@ class Game_Bullet : public Game_MovableObject
 
 		void Update(DWORD dt) override;
 		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override { Game_MovableObject::Update(dt, coObjects); }
+		void OnNoCollision(DWORD dt) override { Game_MovableObject::OnNoCollision(dt); }
 		void SetAngle(float degree);	
 		void SetTargetPos(float x, float y);
 		void SetVector(float vx, float vy);
