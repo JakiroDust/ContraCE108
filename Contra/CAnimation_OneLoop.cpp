@@ -58,7 +58,7 @@ LPANIMATION CAnimation_OneLoop::Clone_Flip()
 	LPANIMATION clone = new CAnimation_OneLoop(this->defaultTime); // create a new instance of the CAnimation class with the same default time
 
 	// copy the frames vector
-	for (auto& frame : this->frames)
+	for (const auto& frame : this->frames)
 	{
 		LPANIMATION_FRAME cloneFrame = new CAnimationFrame(_Clone_Flip_CSprite(frame->GetSprite()), frame->GetTime());
 		clone->frames.push_back(cloneFrame);
