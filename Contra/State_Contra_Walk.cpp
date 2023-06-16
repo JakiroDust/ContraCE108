@@ -14,26 +14,27 @@ void State_Contra_Walk::Render()
 	y += oy;
 	if (obj->IsFaceLeft())
 	{
-		if(HoldKeyUp)
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_WALK_LEFT_LOOK_UP),x,y);
-		else if(HoldKeyDown)
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_WALK_LEFT_LOOK_DOWN),x,y);
-		else if(HoldKeyShoot)
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SHOOT_WALK_LEFT),x,y);
+		if (HoldKeyUp)
+			_currentActID = ACT_WALK_LEFT_LOOK_UP;
+		else if (HoldKeyDown)
+			_currentActID = ACT_WALK_LEFT_LOOK_DOWN;
+		else if (HoldKeyShoot)
+			_currentActID = ACT_SHOOT_WALK_LEFT;
 		else
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_WALK_LEFT),x,y);
+			_currentActID = ACT_WALK_LEFT;
 	}
 	else
 	{
 		if (HoldKeyUp)
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_WALK_RIGHT_LOOK_UP),x,y);
+			_currentActID = ACT_WALK_RIGHT_LOOK_UP;
 		else if (HoldKeyDown)
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_WALK_RIGHT_LOOK_DOWN),x,y);
+			_currentActID = ACT_WALK_RIGHT_LOOK_DOWN;
 		else if (HoldKeyShoot)
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SHOOT_WALK_RIGHT),x,y);
+			_currentActID = ACT_SHOOT_WALK_RIGHT;
 		else
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_WALK_RIGHT),x,y);
+			_currentActID = ACT_WALK_RIGHT;
 	}
+	obj->_Render(Get_CharANI_ID(obj->CharID(), _currentActID), x, y);
 }
 
 void State_Contra_Walk::Update(DWORD dt)

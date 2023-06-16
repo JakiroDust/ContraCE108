@@ -12,9 +12,10 @@ void State_Turret_Hide::Render()
 	x += ox;
 	y += oy;
 	if (obj->IsFaceLeft())
-		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_HIDE_LEFT),x,y);
+		_currentActID = ACT_HIDE_LEFT;
 	else
-		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_HIDE_RIGHT),x,y);
+		_currentActID = ACT_HIDE_RIGHT;
+	obj->_Render(Get_CharANI_ID(obj->CharID(), _currentActID), x, y);
 }
 
 void State_Turret_Hide::KeyPressed_Shoot()

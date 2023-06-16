@@ -44,6 +44,12 @@ bool Obj_EnemyBullet_SBomb::CollideBlockerCondition(DWORD dt, PCOLLISIONEVENT e)
 			return true;
 		}
 	}
+
+	if (dynamic_cast<Game_Terrain*>(e->obj))
+	{
+		return false;
+	}
+
 	return true;
 }
 
@@ -105,6 +111,12 @@ bool Obj_EnemyBullet_SBomb_Phase2::CollideBlockerCondition(DWORD dt, PCOLLISIONE
 			return true;
 		}
 	}
+
+	if (dynamic_cast<Game_Terrain*>(e->obj))
+	{
+		return false;
+	}
+
 	return true;
 }
 

@@ -12,9 +12,10 @@ void State_Object_Active::Render()
 	y += oy;
 
 	if (obj->IsFaceLeft())
-		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_ACTIVE_LEFT),x,y);
-	else 
-		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_ACTIVE_RIGHT),x,y);
+		_currentActID = ACT_ACTIVE_LEFT;
+	else
+		_currentActID = ACT_ACTIVE_RIGHT;
+	obj->_Render(Get_CharANI_ID(obj->CharID(), _currentActID), x, y);
 }
 
 void State_Object_Active::KeyPressed_Hide()

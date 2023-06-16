@@ -171,8 +171,8 @@ int Get_CharANI_ID(int character, int behavior)
 
 	case FLAME:
 	{
-		arr[ACT_ACTIVE_LEFT] = ANI_FLAME;
-		arr[ACT_ACTIVE_RIGHT] = ANI_FLAME;
+		arr[ACT_ACTIVE_LEFT] = ANI_FLAME_LEFT;
+		arr[ACT_ACTIVE_RIGHT] = ANI_FLAME_RIGHT;
 		break;
 	}
 

@@ -13,17 +13,18 @@ void State_Contra_Die::Render()
 	if (obj->IsFaceLeft())
 	{
 		if (obj->IsAffectedByGravity() && !_isOnGround)
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_DIE_JUMPING_LEFT), x, y);
+			_currentActID = ACT_DIE_JUMPING_LEFT;
 		else 
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_DIE_LEFT),x,y);
+			_currentActID = ACT_DIE_LEFT;
 	}
 	else
 	{
 		if (obj->IsAffectedByGravity() && !_isOnGround)
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_DIE_JUMPING_RIGHT), x, y);
+			_currentActID = ACT_DIE_JUMPING_RIGHT;
 		else
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_DIE_RIGHT),x,y);
+			_currentActID = ACT_DIE_RIGHT;
 	}
+	obj->_Render(Get_CharANI_ID(obj->CharID(), _currentActID), x, y);
 }
 
 void State_Contra_Die::Update(DWORD dt)

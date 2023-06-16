@@ -23,17 +23,18 @@ void State_Contra_Idle::Render()
 	if (obj->IsFaceLeft())
 	{
 		if (HoldKeyUp)
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_LOOK_UP_LEFT),x,y);
+			_currentActID = ACT_LOOK_UP_LEFT;
 		else
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_IDLE_LEFT),x,y);
+			_currentActID = ACT_IDLE_LEFT;
 	}
 	else
 	{
 		if (HoldKeyUp)
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_LOOK_UP_RIGHT),x,y);
+			_currentActID = ACT_LOOK_UP_RIGHT;
 		else
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_IDLE_RIGHT),x,y);
+			_currentActID = ACT_IDLE_RIGHT;
 	}
+	obj->_Render(Get_CharANI_ID(obj->CharID(), _currentActID), x, y);
 }
 
 void State_Contra_Idle::Update(DWORD dt)

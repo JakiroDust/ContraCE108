@@ -34,4 +34,13 @@ void Obj_Flame::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 			_moveToLeft = true;
 	}
 
+	if (_changeDir > dt)
+	{
+		_changeDir -= dt;
+	}
+	else
+	{
+		_faceLeft = !_faceLeft;
+		_changeDir = FLAME_CHANGE_DIR_INTERVAL - (dt - _changeDir);
+	}
 }

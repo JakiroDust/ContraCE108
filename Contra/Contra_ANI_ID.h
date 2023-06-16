@@ -180,7 +180,8 @@
 #define ANI_EXPLOSION_ARMY	20550
 #pragma endregion
 
-#define ANI_FLAME	95990
+#define ANI_FLAME_LEFT	95990 
+#define ANI_FLAME_RIGHT 95991
 
 #pragma region UPGRADE
 #define ANI_UPGRADE_BOX_HIDE 959810

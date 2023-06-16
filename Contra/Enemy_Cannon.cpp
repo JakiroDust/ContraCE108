@@ -138,7 +138,7 @@ void Enemy_Cannon::Shoot(int DIR)
 		return;
 	float x, y;
 	GetCenterPoint(x, y);
-	BULLETHELPER::getSpawnCor(x, y, CharID(), state(), DIR);
+	BULLETHELPER::getSpawnCor(x, y, CharID(), Sprite_ActID(), DIR);
 
 	_GunReloadInterval = _weapon->FireRate();
 

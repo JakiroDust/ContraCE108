@@ -13,12 +13,13 @@ void State_Contra_Jump::Render()
 	y += oy;
 	if (obj->IsFaceLeft())
 	{
-		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_JUMP_LEFT),x,y);
+		_currentActID = ACT_JUMP_LEFT;
 	}
 	else
 	{
-		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_JUMP_RIGHT),x,y);
+		_currentActID = ACT_JUMP_RIGHT;
 	}
+	obj->_Render(Get_CharANI_ID(obj->CharID(), _currentActID), x, y);
 }
 
 void State_Contra_Jump::Update(DWORD dt)

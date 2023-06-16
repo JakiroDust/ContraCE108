@@ -12,7 +12,8 @@ void State_Contra_Dive::Render()
 	obj->GetSpriteOffset(StateId(), ox, oy);
 	x += ox;
 	y += oy;
-	obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_DIVE),x,y);
+	_currentActID = ACT_DIVE;
+	obj->_Render(Get_CharANI_ID(obj->CharID(), _currentActID),x,y);
 }
 
 void State_Contra_Dive::Update(DWORD dt)

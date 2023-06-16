@@ -13,12 +13,13 @@ void State_Station_Hide::Render()
 	y += oy;
 	if (obj->IsFaceLeft())
 	{
-		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_IDLE_LEFT),x,y);
+		_currentActID = ACT_IDLE_LEFT;
 	}
 	else
 	{
-		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_IDLE_RIGHT),x,y);
+		_currentActID = ACT_IDLE_RIGHT;
 	}
+	obj->_Render(Get_CharANI_ID(obj->CharID(), _currentActID), x, y);
 }
 
 void State_Station_Hide::Update(DWORD dt)
