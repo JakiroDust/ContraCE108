@@ -101,6 +101,33 @@ int Get_CharANI_ID(int character, int behavior)
 		break;
 	}
 
+	case BASE_CANNON_LEFT:
+	{
+		arr[ACT_WALK_LEFT] = ANI_BASE_CANNON_LEFT;
+		arr[ACT_IDLE_LEFT] = ANI_BASE_CANNON_LEFT;
+		arr[ACT_DIE_LEFT] = ANI_EMPTY;
+		arr[ACT_DIE_JUMPING_LEFT] = ANI_EMPTY;
+		break;
+	}
+
+	case BASE_CANNON_RIGHT:
+	{
+		arr[ACT_WALK_LEFT] = ANI_BASE_CANNON_RIGHT;
+		arr[ACT_IDLE_LEFT] = ANI_BASE_CANNON_RIGHT;
+		arr[ACT_DIE_LEFT] = ANI_EMPTY;
+		arr[ACT_DIE_JUMPING_LEFT] = ANI_EMPTY;
+		break;
+	}
+
+	case BASE_DOOR:
+	{
+		arr[ACT_ACTIVE_LEFT] = ANI_BASE_DOOR;
+		arr[ACT_ACTIVE_RIGHT] = ANI_BASE_DOOR;
+		arr[ACT_DIE_LEFT] = ANI_BASE_DOOR;
+		arr[ACT_DIE_RIGHT] = ANI_BASE_DOOR;
+		break;
+	}
+
 	case TURRET:
 	{
 		arr[ACT_HIDE_LEFT] = ANI_TURRET_360_IDLE;
@@ -144,8 +171,8 @@ int Get_CharANI_ID(int character, int behavior)
 
 	case FLAME:
 	{
-		arr[ACT_ACTIVE_LEFT] = ANI_FLAME;
-		arr[ACT_ACTIVE_RIGHT] = ANI_FLAME;
+		arr[ACT_ACTIVE_LEFT] = ANI_FLAME_LEFT;
+		arr[ACT_ACTIVE_RIGHT] = ANI_FLAME_RIGHT;
 		break;
 	}
 

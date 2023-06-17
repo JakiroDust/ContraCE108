@@ -36,17 +36,18 @@ void Game_Character::OnNoCollision(DWORD dt)
 void Game_Character::OnCollisionWith(PCOLLISIONEVENT e)
 {
 	Game_MovableObject::OnCollisionWith(e);
-	if (_onGround && dynamic_cast<Game_Water*>(e->obj))
+
+	// on ground state already handled, only used to check swim state
+	if (dynamic_cast<Game_Terrain*>(e->obj) && !dynamic_cast<Game_Water*>(e->obj) && e->ny > 0)
+	{
+		_swim = false;
+		return;
+	}
+	else if (dynamic_cast<Game_Water*>(e->obj))
 	{
 		_swim = true;
 		return;
-	} 
-
-	//if (dynamic_cast<Game_Platform*>(e->obj)
-	//	&& footerY() >= e->obj->y()
-	//){
-	//	_onGround = true;
-	//}
+	}
 
 	if (dynamic_cast<Obj_MovingStone*>(e->obj)
 		&& footerY() >= e->obj->y()
@@ -55,6 +56,7 @@ void Game_Character::OnCollisionWith(PCOLLISIONEVENT e)
 		e->obj->GetSpeed(vx, vy);
 		_external_vx += vx;
 		_external_vy += vy;
+		_swim = false;
 		return;
 	}
 
@@ -82,7 +84,7 @@ void Game_Character::Shoot(int DIR)
 		return;
 	float x, y;
 	GetCenterPoint(x, y);
-	BULLETHELPER::getSpawnCor(x, y,CharID(),state(), DIR);
+	BULLETHELPER::getSpawnCor(x, y,CharID(),Sprite_ActID(), DIR);
 	
 	/* GET OFFSET
 	int dir = DIR_TOP;
@@ -111,13 +113,13 @@ void Game_Character::Shoot(float x, float y)
 	_weapon->Fire(cx, cy, x, y, GUN_SPAWNMODE_TARGETPOS);
 }
 
-int Game_Character::state()
+int Game_Character::Sprite_ActID()
 {
 	if(_state.get()==NULL)
-	return 0;
+		return 0;
 	else
 	{
-		return _state.get()->StateId();
+		return _state.get()->CurrentActID();
 	}
 }
 

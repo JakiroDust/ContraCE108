@@ -15,7 +15,7 @@
 
 class Enemy_SneakSniper : public Game_StationEnemy
 {
-	private:
+	protected:
 		void UpdateState() override;
 		void UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects = NULL) override;
 		DWORD _waitToChangeState = SNEAKSNIPER_HIDING_INTERVAL;
@@ -33,6 +33,7 @@ class Enemy_SneakSniper : public Game_StationEnemy
 		}
 		~Enemy_SneakSniper() {
 			Game_StationEnemy::~Game_StationEnemy();
+			Cleaning();
 		};
 
 		void Shoot(int DIR) override;
@@ -51,3 +52,11 @@ class Enemy_SneakSniper : public Game_StationEnemy
 		virtual int RewardScore() override { return 500; };
 };
 
+
+class Enemy_SneakSniper_Base : public Enemy_SneakSniper
+{
+	public:
+		Enemy_SneakSniper_Base(float x, float y, int z) : Enemy_SneakSniper(x, y, z) {}
+		void Execute_DieAction() override;
+		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;
+};

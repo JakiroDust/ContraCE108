@@ -12,7 +12,7 @@ void Obj_UpgradeBase::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 void Obj_UpgradeBase::OnCollisionWith(PCOLLISIONEVENT e)
 {
 	Game_SpecialObject::OnCollisionWith(e);
-	if (!_die && dynamic_cast<Game_Player*>(e->obj))
+	if (!_die && dynamic_cast<Game_Player*>(e->obj) && !((Game_Player*)(e->obj))->isDie())
 	{
 		applyUpgrade((Game_Character*)e->obj);
 		forceDie();

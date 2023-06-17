@@ -12,9 +12,10 @@ void State_Object_Standby::Render()
 	y += oy;
 
 	if (obj->IsFaceLeft())
-		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_STANDBY_LEFT),x,y);
+		_currentActID = ACT_STANDBY_LEFT;
 	else
-		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_STANDBY_RIGHT),x,y);
+		_currentActID = ACT_STANDBY_RIGHT;
+	obj->_Render(Get_CharANI_ID(obj->CharID(), _currentActID), x, y);
 }
 
 void State_Object_Standby::KeyPressed_Active()

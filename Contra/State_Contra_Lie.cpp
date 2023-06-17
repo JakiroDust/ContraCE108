@@ -14,12 +14,13 @@ void State_Contra_Lie::Render()
 	y += oy;
 	if (obj->IsFaceLeft())
 	{
-		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_LYING_LEFT),x,y);
+		_currentActID = ACT_LYING_LEFT;
 	}
 	else
 	{
-		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_LYING_RIGHT),x,y);
+		_currentActID = ACT_LYING_RIGHT;
 	}
+	obj->_Render(Get_CharANI_ID(obj->CharID(), _currentActID), x, y);
 }
 
 void State_Contra_Lie::Update(DWORD dt)

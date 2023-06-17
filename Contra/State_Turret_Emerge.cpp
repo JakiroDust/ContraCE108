@@ -12,9 +12,11 @@ void State_Turret_Emerge::Render()
 	x += ox;
 	y += oy;
 	if (obj->IsFaceLeft())
-		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_EMERGE_LEFT),x,y);
-	else 
-		obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_EMERGE_RIGHT),x,y);
+		_currentActID = ACT_EMERGE_LEFT;
+	else
+		_currentActID = ACT_EMERGE_RIGHT;
+	obj->_Render(Get_CharANI_ID(obj->CharID(), _currentActID), x, y);
+
 }
 
 void State_Turret_Emerge::Update(DWORD dt)

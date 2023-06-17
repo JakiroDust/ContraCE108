@@ -8,7 +8,7 @@ class State_Base
 {
 	protected:
 		Game_ObjectBase* _srcObj = NULL;
-		
+		int _currentActID = -1;
 		// If this param is not NULL, source object
 		// will change next state base on this param.
 		int _nextState = -1;
@@ -16,6 +16,7 @@ class State_Base
 		State_Base(Game_ObjectBase* src) { _srcObj = src; }
 		Game_ObjectBase* srcObj() { return _srcObj; }
 		int NextState() { return _nextState; }
+		int CurrentActID() { return _currentActID; }
 		virtual int StateId() { return -1; }
 
 		// When no collision has been detected (triggered by CCollision::Process)

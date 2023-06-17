@@ -3,6 +3,7 @@
 
 #define FLAME_WIDTH 12
 #define FLAME_HEIGHT 12
+#define FLAME_CHANGE_DIR_INTERVAL 200
 
 class Obj_Flame : public Game_SpecialObject
 {
@@ -10,6 +11,7 @@ class Obj_Flame : public Game_SpecialObject
 		float _maxRangeL = 0;
 		float _maxRangeR = 0;
 		bool _moveToLeft = false;
+		DWORD _changeDir = 0;
 		void UpdateState() override;
 		void UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects = NULL) override;
 	public:
@@ -20,6 +22,7 @@ class Obj_Flame : public Game_SpecialObject
 			_BodyDamage = true;
 			_faceLeft = true;
 			_ghost = true;
+			_lockFace = true;
 			_gravity = true;
 			if (_maxRangeL <= _maxRangeR)
 			{

@@ -67,7 +67,7 @@ public:
 	virtual void Shoot(float x, float y);
 	virtual bool IsFullAutomaticGun() { return _weapon != NULL && _weapon->IsAuto();}
 	void Execute_DieAction() override { Game_MovableObject::Execute_DieAction(); }
-	int state();
+	int Sprite_ActID();
 	void moveLeft() override;
 	void moveRight() override;
 	void jumpDown();

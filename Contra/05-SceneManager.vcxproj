@@ -155,7 +155,9 @@
     <ClCompile Include="CharacterEffect.cpp" />
     <ClCompile Include="Contra_GET_ANI.cpp" />
     <ClCompile Include="debug.cpp" />
+    <ClCompile Include="Enemy_Base_Door.cpp" />
     <ClCompile Include="Enemy_Cannon.cpp" />
+    <ClCompile Include="Enemy_Cannon_Base.cpp" />
     <ClCompile Include="Enemy_Infary.cpp" />
     <ClCompile Include="Enemy_Jumper.cpp" />
     <ClCompile Include="Enemy_RedGunner.cpp" />
@@ -163,6 +165,7 @@
     <ClCompile Include="Enemy_SneakSniper.cpp" />
     <ClCompile Include="Enemy_Sniper.cpp" />
     <ClCompile Include="Enemy_Turret.cpp" />
+    <ClCompile Include="Equip_EnemyGun_Bomber.cpp" />
     <ClCompile Include="Equip_EnemyGun_Cannon.cpp" />
     <ClCompile Include="Equip_EnemyGun_N.cpp" />
     <ClCompile Include="Equip_EnemyGun_ScubaDiver.cpp" />
@@ -189,6 +192,7 @@
     <ClCompile Include="Game_Enemy.cpp" />
     <ClCompile Include="Game_KeyInput.cpp" />
     <ClCompile Include="Game_Effect.cpp" />
+    <ClCompile Include="Game_Layer.cpp" />
     <ClCompile Include="Game_MovableEnemy.cpp" />
     <ClCompile Include="Game_MovableObject.cpp" />
     <ClCompile Include="Game_ObjectBase.cpp" />
@@ -205,6 +209,8 @@
     <ClCompile Include="Game_SweeperBlock.cpp" />
     <ClCompile Include="Game_Terrain.cpp" />
     <ClCompile Include="Game_TestBox.cpp" />
+    <ClCompile Include="Obj_BossBase_S1.cpp" />
+    <ClCompile Include="Obj_EnemyBullet_Bomb.cpp" />
     <ClCompile Include="Obj_EnemyBullet_SBomb.cpp" />
     <ClCompile Include="Obj_Upgrade.cpp" />
     <ClCompile Include="Obj_UpgradeBase.cpp" />
@@ -275,7 +281,9 @@
     <ClInclude Include="Contra_GET_ANI.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="Enemies_ID.h" />
+    <ClInclude Include="Enemy_Base_Door.h" />
     <ClInclude Include="Enemy_Cannon.h" />
+    <ClInclude Include="Enemy_Cannon_Base.h" />
     <ClInclude Include="Enemy_Infary.h" />
     <ClInclude Include="Enemy_Jumper.h" />
     <ClInclude Include="Enemy_RedGunner.h" />
@@ -283,6 +291,7 @@
     <ClInclude Include="Enemy_SneakSniper.h" />
     <ClInclude Include="Enemy_Sniper.h" />
     <ClInclude Include="Enemy_Turret.h" />
+    <ClInclude Include="Equip_EnemyGun_Bomber.h" />
     <ClInclude Include="Equip_EnemyGun_Cannon.h" />
     <ClInclude Include="Equip_EnemyGun_N.h" />
     <ClInclude Include="Equip_EnemyGun_ScubaDiver.h" />
@@ -317,6 +326,7 @@
     <ClInclude Include="Game_Enemy.h" />
     <ClInclude Include="Game_KeyInput.h" />
     <ClInclude Include="Game_Effect.h" />
+    <ClInclude Include="Game_Layer.h" />
     <ClInclude Include="Game_MovableEnemy.h" />
     <ClInclude Include="Game_MovableObject.h" />
     <ClInclude Include="Game_ObjectBase.h" />
@@ -333,6 +343,8 @@
     <ClInclude Include="Game_SweeperBlock.h" />
     <ClInclude Include="Game_Terrain.h" />
     <ClInclude Include="Game_TestBox.h" />
+    <ClInclude Include="Obj_BossBase_S1.h" />
+    <ClInclude Include="Obj_EnemyBullet_Bomb.h" />
     <ClInclude Include="Obj_EnemyBullet_SBomb.h" />
     <ClInclude Include="Obj_Upgrade.h" />
     <ClInclude Include="Obj_UpgradeBase.h" />

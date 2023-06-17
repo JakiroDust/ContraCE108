@@ -37,7 +37,7 @@ struct Game_CollisionEvent
 		this->isDeleted = false;
 	}
 
-	int WasCollided() { return t >= 0.0f && t <= 1.0f; }
+	int WasCollided() { return t >= -1.0f && t <= 1.0f; }
 
 	static bool compare(const PCOLLISIONEVENT& a, PCOLLISIONEVENT& b)
 	{

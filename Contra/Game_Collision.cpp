@@ -28,7 +28,7 @@ void Game_Collision::SweptAABB(
 	float t_entry;
 	float t_exit;
 
-	t = -1.0f;			// no collision
+	t = -2.0f;			// no collision
 	nx = ny = 0;
 
 	 //check if move object has already intersected with static object. 
@@ -69,8 +69,8 @@ void Game_Collision::SweptAABB(
 
 	if (dy > 0)
 	{
-		dy_entry = mt - st;
-		dy_exit = mt - sb;
+		dy_entry = sb - mt;
+		dy_exit = st - mb;
 	}
 	else if (dy < 0)
 	{
@@ -101,7 +101,7 @@ void Game_Collision::SweptAABB(
 	}
 
 
-	if ((tx_entry < 0.0f && ty_entry < 0.0f) || tx_entry > 1.0f || ty_entry > 1.0f) return;
+	if ((tx_entry < -1.0f && ty_entry < -1.0f) || tx_entry > 1.0f || ty_entry > 1.0f) return;
 
 	t_entry = max(tx_entry, ty_entry);
 	t_exit = min(tx_exit, ty_exit);
@@ -134,7 +134,7 @@ PCOLLISIONEVENT Game_Collision::SweptAABB(PGAMEOBJECT objSrc, DWORD dt, PGAMEOBJ
 {
 	// ignore if objSrc is also objDest
 	if (objSrc == objDest)
-		return new Game_CollisionEvent(-1, 0, 0, 0, 0, objDest, objSrc);
+		return new Game_CollisionEvent(-2, 0, 0, 0, 0, objDest, objSrc);
 
 	float sl, st, sr, sb;		// static object bbox
 	float ml, mt, mr, mb;		// moving object bbox
@@ -260,7 +260,7 @@ void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* 
 
 		float x, y, vx, vy, dx, dy;
 		// Fixed
-		objSrc->GetCenterPoint(x, y);
+		objSrc->GetPosition(x, y);
 		objSrc->GetSpeed(vx, vy);
 		dx = vx * dt;
 		dy = vy * dt;
@@ -271,7 +271,7 @@ void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* 
 			{
 				y += colY->t * dy + colY->ny * BLOCK_PUSH_FACTOR;
 				// Fixed
-				objSrc->SetCenterPoint(x, y);
+				objSrc->SetPosition(x, y);
 
 				objSrc->OnCollisionWith(colY);
 
@@ -305,7 +305,7 @@ void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* 
 			{
 				x += colX->t * dx + colX->nx * BLOCK_PUSH_FACTOR;
 				// Fixed
-				objSrc->SetCenterPoint(x, y);
+				objSrc->SetPosition(x, y);
 
 				objSrc->OnCollisionWith(colX);
 
@@ -356,7 +356,7 @@ void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* 
 					y += dy;
 				}
 		// Fixed
-		objSrc->SetCenterPoint(x, y);
+		objSrc->SetPosition(x, y);
 	}
 
 	//

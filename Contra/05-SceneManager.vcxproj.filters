@@ -347,7 +347,15 @@
     <ClCompile Include="CharacterEffect.cpp">
       <Filter>Source Files\GameCore</Filter>
     </ClCompile>
-    <ClCompile Include="Obj_EnemyBullet_SBomb.cpp" />
+    <ClCompile Include="Obj_EnemyBullet_SBomb.cpp">
+      <Filter>Source Files\Object\MoveObject\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Cannon_Base.cpp" />
+    <ClCompile Include="Equip_EnemyGun_Bomber.cpp" />
+    <ClCompile Include="Obj_EnemyBullet_Bomb.cpp" />
+    <ClCompile Include="Enemy_Base_Door.cpp" />
+    <ClCompile Include="Game_Layer.cpp" />
+    <ClCompile Include="Obj_BossBase_S1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -735,7 +743,15 @@
     <ClInclude Include="CharacterEffect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Obj_EnemyBullet_SBomb.h" />
+    <ClInclude Include="Obj_EnemyBullet_SBomb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Cannon_Base.h" />
+    <ClInclude Include="Equip_EnemyGun_Bomber.h" />
+    <ClInclude Include="Obj_EnemyBullet_Bomb.h" />
+    <ClInclude Include="Enemy_Base_Door.h" />
+    <ClInclude Include="Game_Layer.h" />
+    <ClInclude Include="Obj_BossBase_S1.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -14,25 +14,26 @@ void State_Contra_Swim::Render()
 	if (obj->IsFaceLeft())
 	{
 		if (HoldKeyUp && HoldKeyLeft)
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_LEFT_LOOK_UP), x, y);
+			_currentActID = ACT_SWIM_LEFT_LOOK_UP;
 		else if (HoldKeyUp)
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_LOOK_UP_STAND_LEFT), x, y);
+			_currentActID = ACT_SWIM_LOOK_UP_STAND_LEFT;
 		else if (HoldKeyShoot)
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_SHOOT_LEFT), x, y);
-		else 
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_LEFT),x,y);
+			_currentActID = ACT_SWIM_SHOOT_LEFT;
+		else
+			_currentActID = ACT_SWIM_LEFT;
 	}
 	else
 	{
 		if (HoldKeyUp && HoldKeyRight)
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_RIGHT_LOOK_UP), x, y);
+			_currentActID = ACT_SWIM_RIGHT_LOOK_UP;
 		else if (HoldKeyUp)
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_LOOK_UP_STAND_RIGHT), x, y);
+			_currentActID = ACT_SWIM_LOOK_UP_STAND_RIGHT;
 		else if (HoldKeyShoot)
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_SHOOT_RIGHT), x, y);
+			_currentActID = ACT_SWIM_SHOOT_RIGHT;
 		else
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_SWIM_RIGHT), x, y);
+			_currentActID = ACT_SWIM_RIGHT;
 	}
+	obj->_Render(Get_CharANI_ID(obj->CharID(), _currentActID), x, y);
 }
 
 void State_Contra_Swim::Update(DWORD dt)

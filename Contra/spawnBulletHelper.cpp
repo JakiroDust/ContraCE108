@@ -85,7 +85,9 @@ namespace BULLETHELPER
         switch (state)
         {
         case STATE_IDLE:
-        case STATE_WALK:
+            x = -6;
+            y = 10;
+            break;
         case STATE_JUMP:
         case STATE_SWIM:
         case STATE_FALL:

@@ -72,5 +72,6 @@ void UPGRADE::spawnUpgradeIcon(int ICONTYPE, float centerX, float centerY, bool 
 	}
 	rtn->SetCenterPoint(centerX, centerY);
 	unique_ptr<Obj_UpgradeBase> _rtn(rtn);
-	Scene_Battle::GetInstance()->add_object(move(_rtn));
+	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
+	scene->add_object(move(_rtn));
 }

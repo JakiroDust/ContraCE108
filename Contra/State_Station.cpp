@@ -16,57 +16,58 @@ void State_Station::Render()
 	case DIR_TOP:
 		{
 			if (obj->IsFaceLeft())
-				obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_LOOK_UP_LEFT),x,y);
+				_currentActID = ACT_LOOK_UP_LEFT;
 			else
-				obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_LOOK_UP_RIGHT),x,y);
+				_currentActID = ACT_LOOK_UP_RIGHT;
 			break;
 		}
 	case DIR_BOTTOM:
 		{
 			if (obj->IsFaceLeft())
-				obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_LOOK_DOWN_LEFT),x,y);
+				_currentActID = ACT_LOOK_DOWN_LEFT;
 			else
-				obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_LOOK_DOWN_RIGHT),x,y);
+				_currentActID = ACT_LOOK_DOWN_RIGHT;
 			break;
 		}
 	case DIR_LEFT:
 		{
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_WALK_LEFT),x,y);
+			_currentActID = ACT_WALK_LEFT;
 			break;
 		}
 	case DIR_RIGHT:
 		{
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_WALK_RIGHT),x,y);
+			_currentActID = ACT_WALK_RIGHT;
 			break;
 		}
 	case DIR_TOP_LEFT:
 		{
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_WALK_LEFT_LOOK_UP),x,y);
+			_currentActID = ACT_WALK_LEFT_LOOK_UP;
 			break;
 		}
 	case DIR_TOP_RIGHT:
 		{
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_WALK_RIGHT_LOOK_UP),x,y);
+			_currentActID = ACT_WALK_RIGHT_LOOK_UP;
 			break;
 		}
 	case DIR_BOTTOM_LEFT:
 		{
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_WALK_LEFT_LOOK_DOWN),x,y);
+			_currentActID = ACT_WALK_LEFT_LOOK_DOWN;
 			break;
 		}
 	case DIR_BOTTOM_RIGHT:
 		{
-			obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_WALK_RIGHT_LOOK_DOWN),x,y);
+			_currentActID = ACT_WALK_RIGHT_LOOK_DOWN;
 			break;
 		}
 	default:
 		{
 			if (obj->IsFaceLeft())
-				obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_WALK_LEFT),x,y);
+				_currentActID = ACT_WALK_LEFT;
 			else
-				obj->_Render(Get_CharANI_ID(obj->CharID(), ACT_WALK_RIGHT),x,y);
+				_currentActID = ACT_WALK_RIGHT;
 		}
 	}
+	obj->_Render(Get_CharANI_ID(obj->CharID(), _currentActID), x, y);
 }
 
 void State_Station::Update(DWORD dt)
