@@ -43,39 +43,10 @@ void Scene_Start::Update(DWORD dt)
 	}
 }
 
-void Scene_Start::Render()
+/*void Scene_Start::Render()
 {
-	vector<Game_Picture*> RenderQueue;
-
-	for (auto& pic : _images)
-	{
-		Game_Picture* obj = pic.second.get();
-
-		if (obj == NULL)
-			continue;
-
-		if (RenderQueue.size() == 0)
-		{
-			RenderQueue.push_back(obj);
-			continue;
-		}
-		int j = int(RenderQueue.size());
-		while (j > 0 && obj->z() < RenderQueue[j - 1]->z())
-		{
-			j--;
-		}
-		std::vector<Game_Picture*>::iterator it = RenderQueue.begin();
-		RenderQueue.insert(it + j, obj);
-	}
-	float BG_color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
-	CGame::GetInstance()->GetDirect3DDevice()->ClearRenderTargetView(CGame::GetInstance()->GetRenderTargetView(), BG_color);
-	float x, y;
-	ScreenManager::GetInstance()->Screen()->GetCenterPoint(x, y);
-	for (int i = 0; i < RenderQueue.size(); i++)
-	{
-		RenderQueue[i]->Render();
-	}
-}
+	RenderImagePhase();
+/}*/
 
 void Scene_Start::Load()
 {

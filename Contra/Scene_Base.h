@@ -24,7 +24,9 @@ class Scene_Base
 		// Key event handler
 		virtual void KeyUpEventHandler(int KeyCode) {};
 
-		virtual void Render() {}
+		virtual void Render();
+		virtual void RenderFILLER();
+		virtual void RenderImagePhase();
 		virtual void Update(DWORD dt) {}
 		virtual void Load() {}
 		virtual void Unload() {}

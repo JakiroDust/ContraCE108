@@ -12,6 +12,7 @@
 103	textures\ContraSheet4.png
 104	textures\laser-bullet.png
 105	textures\ContraSheet8.png
+106	textures\boss2.png
 #20	textures\misc.png
 
 

@@ -77,7 +77,7 @@ class Scene_Battle : public Scene_Base
 		StageEventHandler_Base* _controller = NULL;
 
 	public:
-		Scene_Battle() : Scene_Base() { height = 0; map_id = 0; width = 0; }
+		Scene_Battle();
 		~Scene_Battle();
 		//vector<Game_ObjectBase*>* objects() { return &_objects; }
 		Game_Player* p1() { return dynamic_cast<Game_Player*>(__objects[_p1_id].get()); }
@@ -151,6 +151,8 @@ class Scene_Battle : public Scene_Base
 
 private:
 	static Scene_Battle* __instance;
+	int curHP=0;
+	void HUB_HP_handler();
 public:
 	static Scene_Battle* GetInstance();
 	static Scene_Battle* GenInstance();

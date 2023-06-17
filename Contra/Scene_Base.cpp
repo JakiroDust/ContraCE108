@@ -1,6 +1,48 @@
 #include "Scene_Base.h"
 #include "Word.h"
 #include "GameManager.h"
+void Scene_Base::Render()
+{
+	RenderFILLER();
+	RenderImagePhase();
+}
+void Scene_Base::RenderFILLER()
+{
+	float BG_color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
+	CGame::GetInstance()->GetDirect3DDevice()->ClearRenderTargetView(CGame::GetInstance()->GetRenderTargetView(), BG_color);
+}
+void Scene_Base::RenderImagePhase()
+{
+	vector<Game_Picture*> RenderQueue;
+
+	for (auto& pic : _images)
+	{
+		Game_Picture* obj = pic.second.get();
+
+		if (obj == NULL)
+			continue;
+
+		if (RenderQueue.size() == 0)
+		{
+			RenderQueue.push_back(obj);
+			continue;
+		}
+		int j = int(RenderQueue.size());
+		while (j > 0 && obj->z() < RenderQueue[j - 1]->z())
+		{
+			j--;
+		}
+		std::vector<Game_Picture*>::iterator it = RenderQueue.begin();
+		RenderQueue.insert(it + j, obj);
+	}
+
+	float x, y;
+	ScreenManager::GetInstance()->Screen()->GetCenterPoint(x, y);
+	for (int i = 0; i < RenderQueue.size(); i++)
+	{
+		RenderQueue[i]->Render();
+	}
+}
 void Scene_Base::_NextScene(int signal)
 {
 	GameManager::GetInstance()->ReceiveSignal(signal, this);

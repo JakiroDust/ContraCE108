@@ -101,7 +101,7 @@ void Scene_GameOver::Update(DWORD dt)
 	}
 }
 
-void Scene_GameOver::Render()
+/*void Scene_GameOver::Render()
 {
 	vector<Game_Picture*> RenderQueue;
 
@@ -134,7 +134,7 @@ void Scene_GameOver::Render()
 		RenderQueue[i]->Render();
 	}
 }
-
+*/
 void Scene_GameOver::Load()
 {
 	SoundSystem* SS = SoundSystem::getInstance();

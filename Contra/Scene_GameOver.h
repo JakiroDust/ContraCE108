@@ -12,7 +12,7 @@ class Scene_GameOver : public Scene_Base
         Scene_GameOver() : Scene_Base() { location = 0; };
         void KeyDownEventHandler(int KeyCode) override;
         void Update(DWORD dt) override;
-        void Render() override;
+        //void Render() override;
         void Load() override;
         void Unload() override;
         void nextScene() override;

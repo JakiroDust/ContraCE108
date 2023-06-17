@@ -106,6 +106,7 @@ protected:
 public:
 	void _handle_CharacterEffect(DWORD& dt);
 	void addEffect(CharacterEffect_Base*);
+	int getHP() { return _hp; }
 };
 
 

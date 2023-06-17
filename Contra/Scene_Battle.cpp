@@ -8,6 +8,9 @@ using namespace std;
 #define MAP_TEXU_HEIGHT 8
 float BG_color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 Scene_Battle* Scene_Battle::__instance = NULL;
+Scene_Battle::Scene_Battle(): Scene_Base() {
+    height = 0; map_id = 0; width = 0;
+}
 Scene_Battle::~Scene_Battle()
 {
     Unload();
@@ -61,8 +64,8 @@ void Scene_Battle::Render()
     }
 
     // Start render
-
-    CGame::GetInstance()->GetDirect3DDevice()->ClearRenderTargetView(CGame::GetInstance()->GetRenderTargetView(), BG_color);
+    RenderFILLER();
+   //CGame::GetInstance()->GetDirect3DDevice()->ClearRenderTargetView(CGame::GetInstance()->GetRenderTargetView(), BG_color);
     float x, y;
     ScreenManager::GetInstance()->Screen()->GetCenterPoint(x, y);
     renderBG(x, y);
@@ -70,9 +73,10 @@ void Scene_Battle::Render()
     {
         RenderQueue[i]->Render();
     }
+    RenderImagePhase();
     // Render HUD
-    if (_controller != NULL)
-        _controller->RenderHUD();
+//if (_controller != NULL)
+ //       _controller->RenderHUD();
 }
 
 void Scene_Battle::Update(DWORD dt)
@@ -488,6 +492,11 @@ void Scene_Battle::renderBG(int& x, int& y)
 void Scene_Battle::addMapPart( int partID, int x, int y)
 {
     mapTexSpatial->init_object_ONLYONCE(partID, x, y );
+}
+
+void Scene_Battle::HUB_HP_handler()
+{
+
 }
 
 //vector<int> Scene_Battle::getNearbyIDFast()
