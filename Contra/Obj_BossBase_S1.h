@@ -19,7 +19,7 @@ class Obj_BossBase_S1 : public Game_Terrain
 		Obj_BossBase_S1(float x, float y, int z, DWORD TimeOffset) : Game_Terrain(x, y, z, BOSSBASE_CELL_WIDTH, BOSSBASE_CELL_HEIGHT)
 		{
 			_explosionOffset = TimeOffset;
-			_SpriteId = BLACK_BOX_ANI;
+			_SpriteId = ANI_BLACK_BOX;
 		}
 		bool IsBlocking() { return 1; }
 		bool BlockingCondition(DWORD dt, PCOLLISIONEVENT e) override;

@@ -20,7 +20,7 @@ class Game_Bridge_S1 : public Game_Terrain
 		{
 			_triggerID = triggerID;
 			_explosionOffset = TimeOffset;
-			_SpriteId = BLACK_BOX_ANI;
+			_SpriteId = ANI_BLACK_BOX;
 		}
 		bool IsBlocking() { return 1; }
 		bool BlockingCondition(DWORD dt, PCOLLISIONEVENT e) override;

@@ -14,6 +14,6 @@ class Game_Layer : public Game_Terrain
 class Layer_BlackBox : Game_Layer
 {
 	public:
-		Layer_BlackBox(float x, float y, int z) : Game_Layer(x, y, z, 32, 32, BLACK_BOX_ANI) {}
+		Layer_BlackBox(float x, float y, int z) : Game_Layer(x, y, z, 32, 32, ANI_BLACK_BOX) {}
 };
 

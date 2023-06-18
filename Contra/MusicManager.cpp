@@ -26,7 +26,7 @@
 #define SFX_ENEMY_SHOOT_2_PATH SFX_PATH "enemy-gun-2.mp3"
 
 #define SFX_ENEMY_HIT_PATH SFX_PATH "enemy-hit.mp3"
-#define SFX_ENEMY_EXPLODE_1_PATH SFX_PATH "explode.mp3"
+#define SFX_ENEMY_EXPLODE_1_PATH SFX_PATH "flame-gun.mp3"//"explode.mp3"
 #define SFX_ENEMY_EXPLODE_2_PATH SFX_PATH "explode-2.mp3"
 
 #define SFX_MAJOR_EXPLODE_PATH SFX_PATH "major-explosion.mp3"
@@ -62,10 +62,10 @@ SoundSystem::SoundSystem() {
 #pragma endregion
 
     system->createStream(BGM_JUNGLE_PATH, FMOD_LOOP_NORMAL, nullptr, &bgm[BGM_JUNGLE]);
-    system->createStream(BGM_TITLE_PATH, FMOD_LOOP_NORMAL, nullptr, &bgm[BGM_TITLE]);
+    system->createStream(BGM_TITLE_PATH, FMOD_DEFAULT, nullptr, &bgm[BGM_TITLE]);
     system->createStream(BGM_WATERFALL_PATH, FMOD_LOOP_NORMAL, nullptr, &bgm[BGM_WATERFALL]);
     system->createStream(BGM_GAMEOVER_PATH, FMOD_LOOP_NORMAL, nullptr, &bgm[BGM_GAME_OVER]);
-    system->createStream(BGM_ENDING_PATH, FMOD_LOOP_NORMAL, nullptr, &bgm[BGM_ENDING]);
+    system->createStream(BGM_ENDING_PATH, FMOD_DEFAULT, nullptr, &bgm[BGM_ENDING]);
     bgmChannel = nullptr;
     sfxChannel_Contra = nullptr;
     sfxChannel_ContraMisc = nullptr;

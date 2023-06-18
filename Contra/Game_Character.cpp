@@ -7,6 +7,7 @@
 #include "Game_DeadlyBlock.h"
 #include "Obj_MovingStone.h"
 #include "CharacterEffect_Base.h"
+#include "MusicManager.h"
 void Game_Character::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 	_handle_CharacterEffect(dt);
@@ -111,6 +112,12 @@ void Game_Character::Shoot(float x, float y)
 
 	_GunReloadInterval = _weapon->FireRate();
 	_weapon->Fire(cx, cy, x, y, GUN_SPAWNMODE_TARGETPOS);
+}
+
+void Game_Character::Execute_DieAction()
+{
+	Game_MovableObject::Execute_DieAction();
+	playSFXexplode();
 }
 
 int Game_Character::Sprite_ActID()
@@ -276,4 +283,29 @@ void Game_Character::addEffect(CharacterEffect_Base* _effect)
 	int type = _effect->effectID();
 	_addtoEffectList(move(unique_ptr<CharacterEffect_Base>(_effect)));
 	_startCharacterEffect(type);
+}
+
+int Game_Character::getSFXCHANNEL()
+{
+	return CHANNEL_SFX_ENEMY;
+}
+
+int Game_Character::getSFXexplodeID()
+{
+	return -1;
+}
+
+int Game_Character::getSFXhitedID()
+{
+	return -1;
+}
+
+void Game_Character::playSFXexplode()
+{
+	SoundSystem::getInstance()->playSFX(getSFXexplodeID(), getSFXCHANNEL(), 0);
+}
+
+void Game_Character::playSFXhited()
+{
+	SoundSystem::getInstance()->playSFX(getSFXhitedID(), getSFXCHANNEL(), 0);
 }

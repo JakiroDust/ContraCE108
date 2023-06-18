@@ -66,7 +66,7 @@ public:
 	//virtual void getBulletLoc(float& x, float& y);
 	virtual void Shoot(float x, float y);
 	virtual bool IsFullAutomaticGun() { return _weapon != NULL && _weapon->IsAuto();}
-	void Execute_DieAction() override { Game_MovableObject::Execute_DieAction(); }
+	void Execute_DieAction() override;
 	int Sprite_ActID();
 	void moveLeft() override;
 	void moveRight() override;
@@ -107,6 +107,11 @@ public:
 	void _handle_CharacterEffect(DWORD& dt);
 	void addEffect(CharacterEffect_Base*);
 	int getHP() { return _hp; }
+	virtual int getSFXCHANNEL();
+	virtual int getSFXexplodeID();
+	virtual int getSFXhitedID();
+	void playSFXexplode();
+	void playSFXhited();
 };
 
 
