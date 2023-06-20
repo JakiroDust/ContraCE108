@@ -162,6 +162,8 @@ private:
 public:
 	static Scene_Battle* GetInstance();
 	static Scene_Battle* GenInstance();
-
+	void addHPinUI();
+	void remHPinUI();
+	vector<int> HPid;
 };
 

@@ -27,7 +27,7 @@
 
 #define SFX_ENEMY_HIT_PATH SFX_PATH "enemy-hit.mp3"
 #define SFX_ENEMY_EXPLODE_1_PATH SFX_PATH "flame-gun.mp3"//"explode.mp3"
-#define SFX_ENEMY_EXPLODE_2_PATH SFX_PATH "explode-2.mp3"
+#define SFX_ENEMY_EXPLODE_2_PATH SFX_PATH "Contra SFX (29).mp3"//"explode-2.mp3"
 
 #define SFX_MAJOR_EXPLODE_PATH SFX_PATH "major-explosion.mp3"
 

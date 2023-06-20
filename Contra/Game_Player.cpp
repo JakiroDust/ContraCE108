@@ -501,10 +501,10 @@ void Game_Player::PerformRevive()
 	_lockFace = false;
 	
 	// Get Respawn point
-
-	StageEventHandler_Base* helper = ((Scene_Battle*)(ScreenManager::GetInstance()->Scene()))->GetStageEventHandler();
-
+	Scene_Battle* curSB = ((Scene_Battle*)(ScreenManager::GetInstance()->Scene()));
+	StageEventHandler_Base* helper = curSB->GetStageEventHandler();
 	helper->HelpGetRevivePoint(_revive_pos_X, _revive_pos_Y);
+	curSB->remHPinUI();
 	// --------------
 	_ForceX = 0;
 	_x = _revive_pos_X;

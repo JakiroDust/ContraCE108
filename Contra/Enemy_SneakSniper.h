@@ -50,6 +50,7 @@ class Enemy_SneakSniper : public Game_StationEnemy
 		void Execute_DieAction() override;
 		void Execute_BeforeDelete() override;
 		virtual int RewardScore() override { return 500; };
+		int getSFXexplodeID() override;
 };
 
 
