@@ -1,6 +1,6 @@
 #include "Game_Bridge_S1.h"
 #include "ScreenManager.h"
-
+#include "MusicManager.h"
 void Game_Bridge_S1::Update(DWORD dt)
 {
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
@@ -14,6 +14,7 @@ void Game_Bridge_S1::Update(DWORD dt)
 		}
 		else if (!_finishExplosion)
 		{
+			SoundSystem::getInstance()->playSFX(SFX_ENEMY_EXPLODE_3, CHANNEL_SFX_ENV, 0);
 			StartExplosion();
 		}
 	}
@@ -41,7 +42,7 @@ void Game_Bridge_S1::StartExplosion()
 	Scene_Battle* scene = (Scene_Battle*)ScreenManager::GetInstance()->Scene();
 	float x, y;
 	GetCenterPoint(x, y);
-	unique_ptr<Game_Effect> explosion1(new Game_Effect(x - 10, y - 5, Z_INDEX_ANIMATION, ANI_EXPLOSION_CONSTRUCT));
+	unique_ptr<Game_Effect> explosion1(new Game_Effect(x - 10, y - 5, Z_INDEX_ANIMATION, ANI_EXPLOSION_CONSTRUCT,0));
 	unique_ptr<Game_Effect> explosion2(new Game_Effect(x + 10, y - 7, Z_INDEX_ANIMATION, ANI_EXPLOSION_CONSTRUCT, 100));
 	unique_ptr<Game_Effect> explosion3(new Game_Effect(x, y + 5, Z_INDEX_ANIMATION, ANI_EXPLOSION_CONSTRUCT, 200));
 	scene->AddEffect(move(explosion1));
