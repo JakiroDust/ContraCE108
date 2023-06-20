@@ -25,5 +25,9 @@ class Enemy_Base_Door : public Game_SpecialObject
         void Execute_DieAction() override;
         void Execute_BeforeDelete() override;
         virtual int RewardScore() override { return 1000; };
+        int getSFXhitedID() override
+        {
+            return 40;
+        }
 };
 

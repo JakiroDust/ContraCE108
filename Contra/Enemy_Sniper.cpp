@@ -22,6 +22,11 @@ void Enemy_Sniper::Execute_BeforeDelete()
 	}
 }
 
+int Enemy_Sniper::getSFXexplodeID()
+{
+	return 41;
+}
+
 void Enemy_Sniper::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());

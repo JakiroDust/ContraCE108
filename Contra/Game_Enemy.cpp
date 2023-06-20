@@ -229,6 +229,7 @@ void Game_Enemy::OnCollisionWith(PCOLLISIONEVENT e)
 
 		if (bullet->OwnerID() == B_OWNER_PLAYER && bullet->Test_InternalCollision(this))
 		{
+			playSFXhited();
 			if (!_immortal)
 				_hp -= bullet->Damage();
 			if (_HardBody)
@@ -244,6 +245,7 @@ void Game_Enemy::OnCollisionWith(PCOLLISIONEVENT e)
 
 		if (bullet->OwnerID() == B_OWNER_PLAYER)
 		{
+			playSFXhited();
 			if (!_immortal)
 				_hp -= bullet->Damage();
 			bullet->DeleteThis();
