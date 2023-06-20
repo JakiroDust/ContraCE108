@@ -72,6 +72,12 @@ void State_Contra_Idle::Update(DWORD dt)
 		_nextState = STATE_FALL;
 		return;
 	}
+
+	if (obj->IsSwimming())
+	{
+		_nextState = STATE_SWIM;
+		return;
+	}
 }
 
 void State_Contra_Idle::KeyHold_Left()
