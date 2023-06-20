@@ -27,7 +27,8 @@
 
 #define SFX_ENEMY_HIT_PATH SFX_PATH "enemy-hit.mp3"
 #define SFX_ENEMY_EXPLODE_1_PATH SFX_PATH "flame-gun.mp3"//"explode.mp3"
-#define SFX_ENEMY_EXPLODE_2_PATH SFX_PATH "explode-2.mp3"
+#define SFX_ENEMY_EXPLODE_2_PATH SFX_PATH "Contra SFX (29).mp3"//"explode-2.mp3"
+#define SFX_ENEMY_EXPLODE_3_PATH SFX_PATH "Contra SFX (26).mp3"
 
 #define SFX_MAJOR_EXPLODE_PATH SFX_PATH "major-explosion.mp3"
 
@@ -56,6 +57,7 @@ SoundSystem::SoundSystem() {
     system->createStream(SFX_ENEMY_HIT_PATH, FMOD_DEFAULT, nullptr, &sfx[SFX_ENEMY_HIT]);
     system->createStream(SFX_ENEMY_EXPLODE_1_PATH, FMOD_DEFAULT, nullptr, &sfx[SFX_ENEMY_EXPLODE_1]);
     system->createStream(SFX_ENEMY_EXPLODE_2_PATH, FMOD_DEFAULT, nullptr, &sfx[SFX_ENEMY_EXPLODE_2]);
+    system->createStream(SFX_ENEMY_EXPLODE_3_PATH, FMOD_DEFAULT, nullptr, &sfx[SFX_ENEMY_EXPLODE_3]);
     system->createStream(SFX_MAJOR_EXPLODE_PATH, FMOD_DEFAULT, nullptr, &sfx[SFX_MAJOR_EXPLODE]);
     system->createStream(SFX_NEXTROUND_PATH, FMOD_DEFAULT, nullptr, &sfx[SFX_NEXTROUND]);
     system->createStream(SFX_GAMEOVER_PATH, FMOD_DEFAULT, nullptr, &sfx[SFX_GAMEOVER]);

@@ -6,11 +6,13 @@ class Game_Effect : public Game_StaticObject
 
 		// wait before start render
 		DWORD _DelayTick = 0;
+		int _startSFX = 0;
 	public:
-		Game_Effect(float x, float y, int z, int aniID, DWORD offset = 0) : Game_StaticObject(x, y, z, 1, 1)
+		Game_Effect(float x, float y, int z, int aniID, DWORD offset = 0,int ENDSFX=-1) : Game_StaticObject(x, y, z, 1, 1)
 		{
 			_SpriteId = aniID;
 			_DelayTick = offset;
+			_startSFX = ENDSFX;
 		}
 		int objectType() { return TYPE_LAYER; }
 
@@ -20,6 +22,6 @@ class Game_Effect : public Game_StaticObject
 		}
 
 		void Update(DWORD dt) override;
-		void Render() override;
+		void Render() override;;
 };
 

@@ -1,7 +1,7 @@
 #include "Scene_Battle.h"
 #include "ScreenManager.h"
 #include "Game_KeyInput.h"
-
+#include "GameManager.h"
 #include <fstream>
 using namespace std;
 #define MAP_TEXU_WIDTH 16
@@ -10,6 +10,11 @@ float BG_color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 Scene_Battle* Scene_Battle::__instance = NULL;
 Scene_Battle::Scene_Battle(): Scene_Base() {
     height = 0; map_id = 0; width = 0;
+    int curHP = GameManager::GetInstance()->GetSavedLife_P1();
+    for (int i = curHP - 2; i >= 0; i--)
+    {
+        addHPinUI();
+    }
 }
 //Scene_Battle* Scene_Battle::__instance = NULL;
 Scene_Battle::~Scene_Battle()
@@ -524,6 +529,34 @@ void Scene_Battle::addMapPart( int partID, int x, int y)
 void Scene_Battle::HUB_HP_handler()
 {
 
+}
+
+void Scene_Battle::addHPinUI()
+{
+    int curX, curY;
+    if (HPid.size() == 0)
+    {
+        curX = 10;
+        curY = 20;
+    }
+    else
+    {
+        int curID = HPid.back();
+        curX = _images[curID].get()->screenX()+12;
+        curY = _images[curID].get()->screenY();
+    }
+    HPid.push_back(id);
+    AddImage_Static(curX, curY, id, 989901,1, RENDER_MODE_CENTER);
+    id++;
+}
+
+void Scene_Battle::remHPinUI()
+{
+    if (HPid.size() == 0)
+        return;
+    int curID=HPid.back();
+    HPid.pop_back();
+    _images.erase(curID);
 }
 
 //vector<int> Scene_Battle::getNearbyIDFast()

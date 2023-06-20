@@ -37,7 +37,7 @@ constexpr auto SFX_ENEMY_SHOOT_2 = 301;
 constexpr auto SFX_ENEMY_HIT = 40;
 constexpr auto SFX_ENEMY_EXPLODE_1 = 41;
 constexpr auto SFX_ENEMY_EXPLODE_2 = 411;
-
+constexpr auto SFX_ENEMY_EXPLODE_3 = 4111;
 constexpr auto SFX_MAJOR_EXPLODE = 50;
 
 constexpr auto SFX_NEXTROUND = 98;

@@ -30,5 +30,6 @@ class Game_StationEnemy : public Game_Enemy
 
 		void Execute_DieAction() override { Game_Enemy::Execute_DieAction(); }
 		int getSFXexplodeID() override;
+		int getSFXhitedID() override;
 };
 

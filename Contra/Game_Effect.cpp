@@ -1,5 +1,5 @@
 #include "Game_Effect.h"
-
+#include "MusicManager.h"
 void Game_Effect::Update(DWORD dt)
 {
 	Game_StaticObject::Update(dt);
@@ -11,6 +11,7 @@ void Game_Effect::Update(DWORD dt)
 	}
 	else if (_DelayTick > 0)
 	{
+		SoundSystem::getInstance()->playSFX(_startSFX, CHANNEL_SFX_ENV, 0);
 		_DelayTick = 0;
 	}
 
@@ -26,3 +27,4 @@ void Game_Effect::Render()
 		return;
 	Game_StaticObject::Render();
 }
+

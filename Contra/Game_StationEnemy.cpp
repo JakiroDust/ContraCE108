@@ -144,6 +144,11 @@ int Game_StationEnemy::getSFXexplodeID()
 	return SFX_ENEMY_EXPLODE_2;
 }
 
+int Game_StationEnemy::getSFXhitedID()
+{
+	return SFX_ENEMY_HIT;
+}
+
 #define SLOPE_DIR8_D1 0.41421f
 #define SLOPE_DIR8_D2 2.41421f
 #define SLOPE_DIR8_D3 -2.41421f

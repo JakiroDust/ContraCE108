@@ -32,6 +32,11 @@ void Enemy_ScubaDiver::Execute_BeforeDelete()
 	}
 }
 
+int Enemy_ScubaDiver::getSFXexplodeID()
+{
+	return 41;
+}
+
 void Enemy_ScubaDiver::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 	if (_ActionQueue.size() > 0)
