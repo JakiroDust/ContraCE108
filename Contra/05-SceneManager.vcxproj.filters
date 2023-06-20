@@ -350,14 +350,30 @@
     <ClCompile Include="Obj_EnemyBullet_SBomb.cpp">
       <Filter>Source Files\Object\MoveObject\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_Cannon_Base.cpp" />
-    <ClCompile Include="Equip_EnemyGun_Bomber.cpp" />
-    <ClCompile Include="Obj_EnemyBullet_Bomb.cpp" />
-    <ClCompile Include="Enemy_Base_Door.cpp" />
-    <ClCompile Include="Game_Layer.cpp" />
-    <ClCompile Include="Obj_BossBase_S1.cpp" />
-    <ClCompile Include="Enemy_AlienBase_Body.cpp" />
-    <ClCompile Include="Enemy_AlienBase_HandCell.cpp" />
+    <ClCompile Include="Enemy_AlienBase_Body.cpp">
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_AlienBase_HandCell.cpp">
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Base_Door.cpp">
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Cannon_Base.cpp">
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_EnemyGun_Bomber.cpp">
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Layer.cpp">
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_EnemyBullet_Bomb.cpp">
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_BossBase_S1.cpp">
+      <Filter>Source Files\Object\StaticObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -769,7 +785,9 @@
     <ClInclude Include="Enemy_AlienBase_Body.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_AlienBase_HandCell.h" />
+    <ClInclude Include="Enemy_AlienBase_HandCell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -98,7 +98,5 @@ class Enemy_AlienBase_HandCell_Main : public Enemy_AlienBase_HandCell
 			Cleaning();
 		};
 
-		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;
-		void Render() override;
 		int CharID() override;
 };

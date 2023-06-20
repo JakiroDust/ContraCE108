@@ -30,6 +30,8 @@ void Game_Character::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 void Game_Character::OnNoCollision(DWORD dt)
 {
 	Game_MovableObject::OnNoCollision(dt);
+	_swim = false;
+	_onGround = false;
 }
 
 #define CLIMP_UP_TERRAIN_SCALE_Y_X 0.25f

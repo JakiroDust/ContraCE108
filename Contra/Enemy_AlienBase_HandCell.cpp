@@ -7,6 +7,11 @@ int Enemy_AlienBase_HandCell::CharID()
 	return ALIEN_BASE_HANDCELL;
 }
 
+int Enemy_AlienBase_HandCell_Main::CharID()
+{
+	return ALIEN_BASE_HANDCELL_MAIN;
+}
+
 void Enemy_AlienBase_HandCell::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 	Game_SpecialObject::Update(dt, coObjects);

@@ -103,6 +103,7 @@ class Game_Player : public Game_Character
 		void OnNoCollision(DWORD dt);
 		// When collision with an object has been detected (triggered by CCollision::Process)
 		void OnCollisionWith(PCOLLISIONEVENT e) override;
+		bool CollideBlockerCondition(DWORD dt, PCOLLISIONEVENT e) override;
 
 		int CharID();
 		void GetCustomSize(int state, int& width, int& height) override;

@@ -385,6 +385,17 @@ void Game_Player::OnCollisionWith(PCOLLISIONEVENT e)
 	}
 }
 
+bool Game_Player::CollideBlockerCondition(DWORD dt, PCOLLISIONEVENT e)
+{
+	if (_die &&
+		(dynamic_cast<Game_DeadlyBlock*>(e->obj)
+		|| dynamic_cast<Game_Water*>(e->obj)))
+	{
+		return false;
+	}
+	return true;
+}
+
 void Game_Player::GetCustomSize(int state, int& width, int& height)
 {
 	switch (state)
