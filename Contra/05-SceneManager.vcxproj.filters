@@ -356,6 +356,8 @@
     <ClCompile Include="Enemy_Base_Door.cpp" />
     <ClCompile Include="Game_Layer.cpp" />
     <ClCompile Include="Obj_BossBase_S1.cpp" />
+    <ClCompile Include="Enemy_AlienBase_Body.cpp" />
+    <ClCompile Include="Enemy_AlienBase_HandCell.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -746,12 +748,28 @@
     <ClInclude Include="Obj_EnemyBullet_SBomb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_Cannon_Base.h" />
-    <ClInclude Include="Equip_EnemyGun_Bomber.h" />
-    <ClInclude Include="Obj_EnemyBullet_Bomb.h" />
-    <ClInclude Include="Enemy_Base_Door.h" />
-    <ClInclude Include="Game_Layer.h" />
-    <ClInclude Include="Obj_BossBase_S1.h" />
+    <ClInclude Include="Enemy_Base_Door.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Cannon_Base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Equip_EnemyGun_Bomber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj_BossBase_S1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj_EnemyBullet_Bomb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_AlienBase_Body.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_AlienBase_HandCell.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

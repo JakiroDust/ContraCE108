@@ -155,6 +155,8 @@
     <ClCompile Include="CharacterEffect.cpp" />
     <ClCompile Include="Contra_GET_ANI.cpp" />
     <ClCompile Include="debug.cpp" />
+    <ClCompile Include="Enemy_AlienBase_Body.cpp" />
+    <ClCompile Include="Enemy_AlienBase_HandCell.cpp" />
     <ClCompile Include="Enemy_Base_Door.cpp" />
     <ClCompile Include="Enemy_Cannon.cpp" />
     <ClCompile Include="Enemy_Cannon_Base.cpp" />
@@ -281,6 +283,8 @@
     <ClInclude Include="Contra_GET_ANI.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="Enemies_ID.h" />
+    <ClInclude Include="Enemy_AlienBase_Body.h" />
+    <ClInclude Include="Enemy_AlienBase_HandCell.h" />
     <ClInclude Include="Enemy_Base_Door.h" />
     <ClInclude Include="Enemy_Cannon.h" />
     <ClInclude Include="Enemy_Cannon_Base.h" />

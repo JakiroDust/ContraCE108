@@ -128,7 +128,7 @@ class Scene_Battle : public Scene_Base
 		//vector<int> getNearbyIDFast();
 		
 		Game_ObjectBase* getObjectByID(int id) { return __objects[id].get(); }
-		vector<Game_ObjectBase*>* getObjectById(vector<int>& vtr);
+		vector<Game_ObjectBase*>* getObjectByIDList(vector<int>& vtr);
 
 		int add_object(unique_ptr<Game_ObjectBase>&& object);
 		void delete_object(int id);

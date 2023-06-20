@@ -148,7 +148,7 @@ void Game_Character::jumpDown()
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
 
 	vector<int> id_list = ScreenManager::GetInstance()->Screen()->Get_ObjectsID_InsideScreen(scene->spatial.get(), GET_OBJECTS_RANGE);
-	vector<PGAMEOBJECT>* coObjects = scene->getObjectById(id_list);
+	vector<PGAMEOBJECT>* coObjects = scene->getObjectByIDList(id_list);
 
 	bool canJumpDown = false;
 
