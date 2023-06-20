@@ -21,6 +21,7 @@ public:
     }
     void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;
     void Render() override;
+    int getSFXexplodeID() override;
     void OnCollisionWith(PCOLLISIONEVENT e) override;
     virtual void applyUpgrade(Game_Character*target) {}
 };

@@ -15,28 +15,28 @@ void Equip_Gun_M::Fire(float& x, float& y, int DIR)
 	switch (DIR)
 	{
 	case DIR_TOP:
-		bullet = unique_ptr<Obj_Bullet_M>(new Obj_Bullet_M(x, y, Z_INDEX_BULLET, 0, 1));
+		bullet.reset(new Obj_Bullet_M(x, y, Z_INDEX_BULLET, 0, 1));
 		break;
 	case DIR_BOTTOM:
-		bullet = unique_ptr<Obj_Bullet_M>(new Obj_Bullet_M(x, y, Z_INDEX_BULLET, 0, -1));
+		bullet.reset(new Obj_Bullet_M(x, y, Z_INDEX_BULLET, 0, -1));
 		break;
 	case DIR_LEFT:
-		bullet = unique_ptr<Obj_Bullet_M>(new Obj_Bullet_M(x, y, Z_INDEX_BULLET, -1, 0));
+		bullet.reset(new Obj_Bullet_M(x, y, Z_INDEX_BULLET, -1, 0));
 		break;
 	case DIR_RIGHT:
-		bullet = unique_ptr<Obj_Bullet_M>(new Obj_Bullet_M(x, y, Z_INDEX_BULLET, 1, 0));
+		bullet.reset(new Obj_Bullet_M(x, y, Z_INDEX_BULLET, 1, 0));
 		break;
 	case DIR_TOP_LEFT:
-		bullet = unique_ptr<Obj_Bullet_M>(new Obj_Bullet_M(x, y, Z_INDEX_BULLET, -1, 1));
+		bullet.reset(new Obj_Bullet_M(x, y, Z_INDEX_BULLET, -1, 1));
 		break;
 	case DIR_TOP_RIGHT:
-		bullet = unique_ptr<Obj_Bullet_M>(new Obj_Bullet_M(x, y, Z_INDEX_BULLET, 1, 1));
+		bullet.reset(new Obj_Bullet_M(x, y, Z_INDEX_BULLET, 1, 1));
 		break;
 	case DIR_BOTTOM_LEFT:
-		bullet = unique_ptr<Obj_Bullet_M>(new Obj_Bullet_M(x, y, Z_INDEX_BULLET, -1, -1));
+		bullet.reset(new Obj_Bullet_M(x, y, Z_INDEX_BULLET, -1, -1));
 		break;
 	case DIR_BOTTOM_RIGHT:
-		bullet = unique_ptr<Obj_Bullet_M>(new Obj_Bullet_M(x, y, Z_INDEX_BULLET, 1, -1));
+		bullet.reset(new Obj_Bullet_M(x, y, Z_INDEX_BULLET, 1, -1));
 		break;
 	default:
 		break;

@@ -41,7 +41,6 @@ class Game_Bullet : public Game_MovableObject
 		void SetTargetPos(float x, float y);
 		void SetVector(float vx, float vy);
 		void Render() override { Game_MovableObject::Render(); }
-
 		virtual bool IsExplosive() { return false; }
 		virtual void Execute_ExplodingEffect() {}
 

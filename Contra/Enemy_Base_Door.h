@@ -21,7 +21,7 @@ class Enemy_Base_Door : public Game_SpecialObject
         int CharID() override;
         int EnemyType() override { return ENEMY_CONSTRUCTION; }
         void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;
-
+        int  getSFXexplodeID() override;
         void Execute_DieAction() override;
         void Execute_BeforeDelete() override;
         virtual int RewardScore() override { return 1000; };

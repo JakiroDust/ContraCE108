@@ -5,7 +5,7 @@
 #include "State_Turret_Active.h"
 #include "State_Turret_Emerge.h"
 #include "State_Turret_Hide.h"
-
+#include "MusicManager.h"
 void Game_StationEnemy::UpdateState()
 {
 	if (_state == NULL)
@@ -137,6 +137,11 @@ void Game_StationEnemy::KeyUpEventHandler(int KeyCode)
 		Game_Enemy::KeyUpEventHandler(KeyCode);
 	}
 	// Station_12DIR doesn't have KeyUpEventHandler
+}
+
+int Game_StationEnemy::getSFXexplodeID()
+{
+	return SFX_ENEMY_EXPLODE_2;
 }
 
 #define SLOPE_DIR8_D1 0.41421f
