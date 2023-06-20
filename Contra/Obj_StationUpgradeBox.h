@@ -29,6 +29,10 @@ class Obj_StationUpgradeBox : public Game_SpecialObject
         void Execute_BeforeDelete() override;
         void UpdateState() override;
         void Update(DWORD dt, vector<Game_ObjectBase*>* coObjects);
+        int getSFXhitedID() override
+        {
+            return 40;
+        }
 
 };
 

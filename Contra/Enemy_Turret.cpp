@@ -24,6 +24,11 @@ void Enemy_Turret::Execute_BeforeDelete()
 	}
 }
 
+int Enemy_Turret::getSFXhitedID()
+{
+	return 40;
+}
+
 void Enemy_Turret::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 	Game_StationEnemy::Update(dt, coObjects);
