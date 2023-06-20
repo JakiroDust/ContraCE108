@@ -72,6 +72,12 @@ void State_Contra_Walk::Update(DWORD dt)
 	{
 		_nextState = STATE_FALL;
 	}
+
+	if (obj->IsSwimming())
+	{
+		_nextState = STATE_SWIM;
+		return;
+	}
 }
 
 void State_Contra_Walk::KeyHold_Left()
