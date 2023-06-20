@@ -30,6 +30,8 @@ void Game_Character::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 void Game_Character::OnNoCollision(DWORD dt)
 {
 	Game_MovableObject::OnNoCollision(dt);
+	_swim = false;
+	_onGround = false;
 }
 
 #define CLIMP_UP_TERRAIN_SCALE_Y_X 0.25f
@@ -148,7 +150,7 @@ void Game_Character::jumpDown()
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
 
 	vector<int> id_list = ScreenManager::GetInstance()->Screen()->Get_ObjectsID_InsideScreen(scene->spatial.get(), GET_OBJECTS_RANGE);
-	vector<PGAMEOBJECT>* coObjects = scene->getObjectById(id_list);
+	vector<PGAMEOBJECT>* coObjects = scene->getObjectByIDList(id_list);
 
 	bool canJumpDown = false;
 

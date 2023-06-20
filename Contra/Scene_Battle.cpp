@@ -110,7 +110,7 @@ void Scene_Battle::Update(DWORD dt)
         return;
 
     vector<int> id_list= screen->Get_ObjectsID_InsideScreen(spatial.get(), GET_OBJECTS_RANGE);
-    vector<PGAMEOBJECT>* nearbyObject = getObjectById(id_list);
+    vector<PGAMEOBJECT>* nearbyObject = getObjectByIDList(id_list);
     //for (int i = 0; i < _objects.size(); i++)
     //float old_l, old_right, old_bottom, old_top,
     float   new_l, new_right, new_bottom, new_top;
@@ -280,7 +280,7 @@ void Scene_Battle::_init_spatial()
 
 
 /// REMBER TO DELETE AFTER USE
-vector<Game_ObjectBase*>* Scene_Battle::getObjectById(vector<int>& vtr)
+vector<Game_ObjectBase*>* Scene_Battle::getObjectByIDList(vector<int>& vtr)
 {
     vector<Game_ObjectBase*>* objects= new vector<Game_ObjectBase*>;
     for (auto& id : vtr)

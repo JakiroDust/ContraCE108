@@ -17,3 +17,9 @@ class Layer_BlackBox : Game_Layer
 		Layer_BlackBox(float x, float y, int z) : Game_Layer(x, y, z, 32, 32, ANI_BLACK_BOX) {}
 };
 
+class Layer_HalfBlackBox : Game_Layer
+{
+public:
+	Layer_HalfBlackBox(float x, float y, int z) : Game_Layer(x, y, z, 32, 16, ANI_BLACK_BOX) {}
+};
+

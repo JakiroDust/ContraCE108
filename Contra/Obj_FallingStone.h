@@ -20,6 +20,7 @@ class Obj_FallingStone : public Game_SpecialObject
 		vector<int> _touchList;
 		void Cleaning() override
 		{
+			Game_SpecialObject::Cleaning();
 			_touchList.clear();
 		}
 	public:
