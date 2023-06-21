@@ -2,8 +2,8 @@
 #include "Game_StationEnemy.h"
 #include "Equip_EnemyGun_Turret.h"
 
-#define TURRET_BASE_WIDTH 32
-#define TURRET_BASE_HEIGHT 32
+#define TURRET_BASE_WIDTH 24
+#define TURRET_BASE_HEIGHT 24
 #define TURRET_TRIGGER_RANGE_X 200
 #define TURRET_TRIGGER_RANGE_Y 200
 #define TURRET_ROTATE_CD 400
