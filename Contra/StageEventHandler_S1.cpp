@@ -214,7 +214,7 @@ void StageEventHandler_S1::Perform_StageClearEvent(DWORD dt)
 			{
 				// do nothing, wait to player stand on ground
 			}
-			if (!S1_firstJump && player->IsOnGround())
+			else if (!S1_firstJump && player->IsOnGround())
 			{
 				player->AddAction(DIK_P);
 				S1_firstJump = true;

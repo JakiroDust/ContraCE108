@@ -155,5 +155,55 @@ void StageEventHandler_S3::HelpGetRevivePoint(float& posX, float& posY)
 
 void StageEventHandler_S3::Perform_StageClearEvent(DWORD dt)
 {
+	Game_Player* player = _srcScene->p1();
+	player->SetAuto(true);
+	//player->SetImmortal(true);
+	// SCENE: boss die
+	if (!S3_BossDie)
+	{
+		S3_BossDie = true;
+		_WaitForBossDie = S3_WAIT_FOR_BOSS_DIE;
+	}
 
+	if (_WaitForBossDie > dt)
+	{
+		_WaitForBossDie -= dt;
+		return;
+	}
+
+	// SCENE: player move to base 
+	if (abs(player->x() - _srcScene->MapWidth()/2.0f) > 32)
+	{
+		if (!player->Test_IfHaveAction())
+		{
+			if (player->x() <= _srcScene->MapWidth() / 2.0f)
+				player->AddAction(DIK_RIGHT);
+			else
+				player->AddAction(DIK_LEFT);
+		}
+	}
+	else if (player->y() < 2036)
+	{
+		if (!player->Test_IfHaveAction())
+		{
+			player->AddAction(-1);
+			if (!S3_firstJump && !player->IsOnGround())
+			{
+				// do nothing, wait to player stand on ground
+			}
+			else if (!S3_firstJump && player->IsOnGround())
+			{
+				player->AddAction(DIK_P);
+				S3_firstJump = true;
+			}
+		}
+	}
+	else
+	{
+		player->teleport(_srcScene->MapWidth() + 100, _srcScene->MapHeight());
+		if (_WaitForClearStage >= WAIT_STAGECLEAR_MAXVALUE)
+		{
+			_WaitForClearStage = 1000;
+		}
+	}
 }
