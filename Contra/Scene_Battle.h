@@ -38,7 +38,9 @@
 #include "Enemy_Cannon_Base.h"
 #include "Enemy_Base_Door.h"
 #include "Obj_BossBase_S1.h"
-
+// Boss 3
+#include "Enemy_AlienBase_Body.h"
+#include "Obj_BossAlienBase_S3.h"
 // EventHandler
 #include "StageEventHandler_Base.h"
 // DEMO

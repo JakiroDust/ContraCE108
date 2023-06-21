@@ -1,11 +1,12 @@
 #pragma once
 #include "Game_SpecialObject.h"
+#include "Equip_EnemyGun_AlienBase.h"
 
 #define AB_HANDCELL_WIDTH 12
 #define AB_HANDCELL_HEIGHT 12
 #define AB_HANDCELL_MAIN_WIDTH 15
 #define AB_HANDCELL_MAIN_HEIGHT 15
-#define AB_HANDCELL_RAD_SPEED 5.0f
+#define AB_HANDCELL_RAD_SPEED 4.0f
 
 #define ABC_ACT_MOVE_TO_REAR 0
 #define ABC_ACT_MOVE_CLOCKWISE 1
@@ -48,13 +49,13 @@ class Enemy_AlienBase_HandCell : public Game_SpecialObject
 			_centerY = y;
 			_radius = radius;
 			_immortal = true;
-			_moveSpd = 0;
-			_haveStandby = true;
+			_moveSpd = 0.15f;
+			_haveStandby = false;
 			_HardBody = true;
 			_BodyDamage = false;
 			_faceLeft = true;
-			_ghost = true;
 			_gravity = false;
+			_ghost = false;
 			_WaitForInit = wait;
 		}
 		~Enemy_AlienBase_HandCell() {
@@ -66,13 +67,22 @@ class Enemy_AlienBase_HandCell : public Game_SpecialObject
 		void Render() override;
 		int CharID() override;
 		// When no collision has been detected (triggered by CCollision::Process)
-		void OnNoCollision(DWORD dt) override { Game_MovableObject::OnNoCollision(dt); }
+		void OnNoCollision(DWORD dt) override { Game_SpecialObject::OnNoCollision(dt); }
 		// When collision with an object has been detected (triggered by CCollision::Process)
-		void OnCollisionWith(PCOLLISIONEVENT e) override { Game_MovableObject::OnCollisionWith(e); }
-
+		void OnCollisionWith(PCOLLISIONEVENT e) override { Game_SpecialObject::OnCollisionWith(e); }
+		
 		void ABC_AddAction(int typeID, int value) { _ABC_ActionQueue.push_back(ABCell_Action(typeID, value)); }
 		bool ABC_IsIdle() { return _ABC_ActionQueue.size() == 0; }
-
+		void ABC_Set_Center(float x, float y)
+		{
+			SetCenterPoint(x, y);
+			_centerX = _x;
+			_centerY = _y;
+		}
+		int getSFXhitedID() override
+		{
+			return 40;
+		}
 		void Execute_BeforeDelete() override;
 		void Execute_DieAction() override {}
 };
@@ -80,23 +90,30 @@ class Enemy_AlienBase_HandCell : public Game_SpecialObject
 class Enemy_AlienBase_HandCell_Main : public Enemy_AlienBase_HandCell
 {
 	private:
+		bool _isLeftHand;
+		int _bodyID;
 		void Cleaning() override
 		{
 			Enemy_AlienBase_HandCell::Cleaning();
 		}
 	public:
-		Enemy_AlienBase_HandCell_Main(float x, float y, int z, float radius, DWORD wait) : Enemy_AlienBase_HandCell(x, y, z, radius, wait)
+		Enemy_AlienBase_HandCell_Main(float x, float y, int z, float radius, DWORD wait, int bodyID, bool isLeftHand) : Enemy_AlienBase_HandCell(x, y, z, radius, wait)
 		{
+			_weapon = new Equip_EnemyGun_AlienBase();
 			_width = AB_HANDCELL_MAIN_WIDTH;
 			_height = AB_HANDCELL_MAIN_HEIGHT;
 			_hp = 30;
 			_immortal = false;
+			_isLeftHand = isLeftHand;
+			_bodyID = bodyID;
 		}
 
-		~Enemy_AlienBase_HandCell_Main() {
-			Game_SpecialObject::~Game_SpecialObject();
+		~Enemy_AlienBase_HandCell_Main()
+		{
 			Cleaning();
 		};
 
 		int CharID() override;
+
+		void Execute_DieAction() override;
 };

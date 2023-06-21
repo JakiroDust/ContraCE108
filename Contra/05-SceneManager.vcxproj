@@ -157,6 +157,7 @@
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Enemy_AlienBase_Body.cpp" />
     <ClCompile Include="Enemy_AlienBase_HandCell.cpp" />
+    <ClCompile Include="Enemy_AlienBase_Head.cpp" />
     <ClCompile Include="Enemy_Base_Door.cpp" />
     <ClCompile Include="Enemy_Cannon.cpp" />
     <ClCompile Include="Enemy_Cannon_Base.cpp" />
@@ -167,6 +168,7 @@
     <ClCompile Include="Enemy_SneakSniper.cpp" />
     <ClCompile Include="Enemy_Sniper.cpp" />
     <ClCompile Include="Enemy_Turret.cpp" />
+    <ClCompile Include="Equip_EnemyGun_AlienBase.cpp" />
     <ClCompile Include="Equip_EnemyGun_Bomber.cpp" />
     <ClCompile Include="Equip_EnemyGun_Cannon.cpp" />
     <ClCompile Include="Equip_EnemyGun_N.cpp" />
@@ -211,7 +213,9 @@
     <ClCompile Include="Game_SweeperBlock.cpp" />
     <ClCompile Include="Game_Terrain.cpp" />
     <ClCompile Include="Game_TestBox.cpp" />
+    <ClCompile Include="Obj_BossAlienBase_S3.cpp" />
     <ClCompile Include="Obj_BossBase_S1.cpp" />
+    <ClCompile Include="Obj_EnemyBullet_Blast.cpp" />
     <ClCompile Include="Obj_EnemyBullet_Bomb.cpp" />
     <ClCompile Include="Obj_EnemyBullet_SBomb.cpp" />
     <ClCompile Include="Obj_Upgrade.cpp" />
@@ -285,6 +289,7 @@
     <ClInclude Include="Enemies_ID.h" />
     <ClInclude Include="Enemy_AlienBase_Body.h" />
     <ClInclude Include="Enemy_AlienBase_HandCell.h" />
+    <ClInclude Include="Enemy_AlienBase_Head.h" />
     <ClInclude Include="Enemy_Base_Door.h" />
     <ClInclude Include="Enemy_Cannon.h" />
     <ClInclude Include="Enemy_Cannon_Base.h" />
@@ -295,6 +300,7 @@
     <ClInclude Include="Enemy_SneakSniper.h" />
     <ClInclude Include="Enemy_Sniper.h" />
     <ClInclude Include="Enemy_Turret.h" />
+    <ClInclude Include="Equip_EnemyGun_AlienBase.h" />
     <ClInclude Include="Equip_EnemyGun_Bomber.h" />
     <ClInclude Include="Equip_EnemyGun_Cannon.h" />
     <ClInclude Include="Equip_EnemyGun_N.h" />
@@ -347,7 +353,9 @@
     <ClInclude Include="Game_SweeperBlock.h" />
     <ClInclude Include="Game_Terrain.h" />
     <ClInclude Include="Game_TestBox.h" />
+    <ClInclude Include="Obj_BossAlienBase_S3.h" />
     <ClInclude Include="Obj_BossBase_S1.h" />
+    <ClInclude Include="Obj_EnemyBullet_Blast.h" />
     <ClInclude Include="Obj_EnemyBullet_Bomb.h" />
     <ClInclude Include="Obj_EnemyBullet_SBomb.h" />
     <ClInclude Include="Obj_Upgrade.h" />

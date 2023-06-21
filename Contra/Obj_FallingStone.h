@@ -6,7 +6,7 @@
 #define STONE_EMERGE_INTERVAL 800
 #define STONE_SHAKE_RANGE 2
 #define STONE_BOUNCE_HEIGHT 4
-#define STONE_FALLING_SPEED -0.0125f
+#define STONE_FALLING_SPEED -0.15f
 
 class Obj_FallingStone : public Game_SpecialObject
 {

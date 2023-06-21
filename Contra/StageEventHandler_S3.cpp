@@ -9,6 +9,15 @@ void StageEventHandler_S3::Update(DWORD dt)
 {
 	StageEventHandler_Base::Update(dt);
 
+	// STAGE CLEAR
+	GameManager* gm = GameManager::GetInstance();
+	if (gm->Test_IfPassStage() == CAN_PASS_STAGE)
+	{
+		return;
+	}
+
+	//-----------------------------------------------------
+
 	Game_Screen* screen = ScreenManager::GetInstance()->Screen();
 
 	// Fix camera position
@@ -29,6 +38,11 @@ void StageEventHandler_S3::Update(DWORD dt)
 	else if (_maxMovedLength >= MAX_MOVEABLE_LENGTH_STAGE_3)
 	{
 		_maxMovedLength = MAX_MOVEABLE_LENGTH_STAGE_3;
+		// start boss fight
+		if (GameManager::GetInstance()->Get_StagePasscardRemain() > 1)
+		{
+			GameManager::GetInstance()->Set_StagePasscardAmount(1);
+		}
 	}
 
 	if (!_toggleFreeCam)
@@ -61,6 +75,9 @@ void StageEventHandler_S3::Load()
 	// Add sweeper block
 	unique_ptr<Game_SweeperBlock> sweeper(new Game_SweeperBlock(0, 0, Z_INDEX_TERRAIN, GAMESCREEN_WIDTH, 32, true));
 	_sweeperID = _srcScene->add_object(move(sweeper));
+
+	// setOther game params
+	GameManager::GetInstance()->Set_StagePasscardAmount(2);
 
 	// default load
 	StageEventHandler_Base::Load();
@@ -134,4 +151,9 @@ void StageEventHandler_S3::HelpGetRevivePoint(float& posX, float& posY)
 		posX = screen->width()/2;
 		posY = _maxMovedLength;
 	}
+}
+
+void StageEventHandler_S3::Perform_StageClearEvent(DWORD dt)
+{
+
 }

@@ -10,7 +10,8 @@ class StageEventHandler_S3 : public StageEventHandler_Base
 {
 	private:
 		int _sweeperID = -1;
-		float _maxMovedLength;
+		float _maxMovedLength = 0;
+		void Perform_StageClearEvent(DWORD dt) override;
 	public:
 		StageEventHandler_S3(Scene_Battle* src) : StageEventHandler_Base(src)
 		{

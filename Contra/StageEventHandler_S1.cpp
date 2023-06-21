@@ -39,9 +39,9 @@ void StageEventHandler_S1::Update(DWORD dt)
 	{
 		_maxMovedLength = MAX_MOVEABLE_LENGTH_STAGE_1;
 		// start boss fight
-		if (GameManager::GetInstance()->Get_StagePasscardRemain() > 4)
+		if (GameManager::GetInstance()->Get_StagePasscardRemain() > 1)
 		{
-			GameManager::GetInstance()->Set_StagePasscardAmount(4);
+			GameManager::GetInstance()->Set_StagePasscardAmount(1);
 		}
 	}
 	
@@ -105,7 +105,7 @@ void StageEventHandler_S1::Load()
 	_sweeperID =  _srcScene->add_object(move(sweeper));
 
 	// setOther game params
-	GameManager::GetInstance()->Set_StagePasscardAmount(5);
+	GameManager::GetInstance()->Set_StagePasscardAmount(2);
 
 	// default load
 	StageEventHandler_Base::Load();

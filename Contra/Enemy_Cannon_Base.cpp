@@ -15,7 +15,7 @@ int Enemy_Cannon_Base::CharID()
 void Enemy_Cannon_Base::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
 	Game_StationEnemy::Update(dt, coObjects);
-	if (GameManager::GetInstance()->Get_StagePasscardRemain() > 3)
+	if (GameManager::GetInstance()->Get_StagePasscardRemain() > 1)
 		_immortal = true;
 	else
 		_immortal = false;
@@ -24,8 +24,6 @@ void Enemy_Cannon_Base::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 void Enemy_Cannon_Base::Execute_DieAction()
 {
 	Game_StationEnemy::Execute_DieAction();
-	GameManager::GetInstance()->Gain_StagePasscard();
-	jump();
 }
 
 void Enemy_Cannon_Base::Execute_BeforeDelete()

@@ -144,30 +144,42 @@ void State_Station::KeyPressed_FaceDown()
 
 void State_Station::KeyPressed_FaceLeft()
 {
+	Game_Character* obj = (Game_Character*)_srcObj;
+	obj->SetFaceLeft(true);
 	_DIR = DIR_LEFT;
 }
 
 void State_Station::KeyPressed_FaceRight()
 {
+	Game_Character* obj = (Game_Character*)_srcObj;
+	obj->SetFaceLeft(false);
 	_DIR = DIR_RIGHT;
 }
 
 void State_Station::KeyPressed_FaceUpLeft()
 {
+	Game_Character* obj = (Game_Character*)_srcObj;
+	obj->SetFaceLeft(true);
 	_DIR = DIR_TOP_LEFT;
 }
 
 void State_Station::KeyPressed_FaceUpRight()
 {
+	Game_Character* obj = (Game_Character*)_srcObj;
+	obj->SetFaceLeft(false);
 	_DIR = DIR_TOP_RIGHT;
 }
 
 void State_Station::KeyPressed_FaceDownLeft()
 {
+	Game_Character* obj = (Game_Character*)_srcObj;
+	obj->SetFaceLeft(true);
 	_DIR = DIR_BOTTOM_LEFT;
 }
 
 void State_Station::KeyPressed_FaceDownRight()
 {
+	Game_Character* obj = (Game_Character*)_srcObj;
+	obj->SetFaceLeft(false);
 	_DIR = DIR_BOTTOM_RIGHT;
 }
