@@ -17,6 +17,7 @@ class Enemy_AlienBase_Head : public Game_SpecialObject
             _gravity = false;
             _HardBody = true;
             _faceLeft = true;
+            _ghost = true;
             _haveStandby = false;
             _hp = 40;
             _BodyID = BodyID;

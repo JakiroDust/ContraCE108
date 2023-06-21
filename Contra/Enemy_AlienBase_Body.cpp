@@ -74,6 +74,8 @@ void Enemy_AlienBase_Body::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjec
 		else if (_state->StateId() == STATE_OBJ_STANDBY)
 		{
 			_state.reset(new State_Object_Active(this));
+			Enemy_AlienBase_Head* head = (Enemy_AlienBase_Head*)(scene->getObjectByID(_head));
+			head->SetGhost(true);
 		}
 		else if (_Mouth_WaitToShoot == AB_WAIT_INFINITE && _leftHand_Die && _rightHand_Die)
 		{
@@ -88,6 +90,7 @@ void Enemy_AlienBase_Body::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjec
 		{
 			_state.reset(new State_Object_Standby(this));
 			Enemy_AlienBase_Head* head = (Enemy_AlienBase_Head*)(scene->getObjectByID(_head));
+			head->SetGhost(false);
 			head->Shoot(DIR_BOTTOM);
 			head->Shoot(DIR_BOTTOM_LEFT);
 			head->Shoot(DIR_BOTTOM_RIGHT);
