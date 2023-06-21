@@ -380,8 +380,12 @@
     <ClCompile Include="Obj_EnemyBullet_Blast.cpp">
       <Filter>Source Files\Object\MoveObject\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="Equip_EnemyGun_AlienBase.cpp" />
-    <ClCompile Include="Obj_BossAlienBase_S3.cpp" />
+    <ClCompile Include="Obj_BossAlienBase_S3.cpp">
+      <Filter>Source Files\Object\StaticObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_EnemyGun_AlienBase.cpp">
+      <Filter>Source Files\Equip</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -802,8 +806,12 @@
     <ClInclude Include="Enemy_AlienBase_Head.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Equip_EnemyGun_AlienBase.h" />
-    <ClInclude Include="Obj_BossAlienBase_S3.h" />
+    <ClInclude Include="Obj_BossAlienBase_S3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Equip_EnemyGun_AlienBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

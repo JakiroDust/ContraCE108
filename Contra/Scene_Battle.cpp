@@ -479,10 +479,13 @@ void Scene_Battle::_ParseOBject(string line)
                     break;
                 case SPAWNER_INFARY_S3_RIGHT: obj.reset(new Spawner_Infary_Stage3_Right(x, y, Z_INDEX_TERRAIN, param1, param2));
                     break;
-
+                case 0:
+                    obj.reset(NULL);
+                    DebugOut(L"End file.\n");
+                    break;
                 default:
                     obj.reset(NULL);
-                    DebugOut(L"Unknown id=%d", id);
+                    DebugOut(L"Unknown id=%d\n", id);
                     break;
                 }
                 if (obj.get() != NULL)
