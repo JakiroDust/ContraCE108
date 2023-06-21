@@ -11,7 +11,7 @@ class Obj_Bullet_M : public Game_Bullet
 		{
 			_moveSpd = 0.25f;
 			_OwnerID = B_OWNER_PLAYER;
-			_Damage = 2;
+			_Damage = 1;
 			_SpriteId = CONTRA_BULLET_ANI_BULLET_M;
 		}
 

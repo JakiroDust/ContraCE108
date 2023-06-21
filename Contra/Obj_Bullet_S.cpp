@@ -6,7 +6,7 @@ void Obj_Bullet_S::Init()
 	_owner->Use_Bullet();
 	_moveSpd = 0.25f;
 	_OwnerID = B_OWNER_PLAYER;
-	_Damage = 3;
+	_Damage = 2;
 	_SpriteId = CONTRA_BULLET_ANI_BULLET_S;
 }
 
