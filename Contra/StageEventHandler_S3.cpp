@@ -86,7 +86,7 @@ void StageEventHandler_S3::Load()
 void StageEventHandler_S3::CompleteStage()
 {
 	StageEventHandler_Base::CompleteStage();
-	GameManager::GetInstance()->ReceiveSignal(SIG_PLAY_INTRO, _srcScene);
+	GameManager::GetInstance()->ReceiveSignal(SIG_PLAY_CREDIT, _srcScene);
 	_srcScene->PAUSE();
 }
 
@@ -200,6 +200,10 @@ void StageEventHandler_S3::Perform_StageClearEvent(DWORD dt)
 	}
 	else
 	{
+		if (_WaitForClearStage < WAIT_STAGECLEAR_MAXVALUE)
+		{
+			return;
+		}
 		player->teleport(_srcScene->MapWidth() + 100, _srcScene->MapHeight());
 		if (_WaitForClearStage >= WAIT_STAGECLEAR_MAXVALUE)
 		{
