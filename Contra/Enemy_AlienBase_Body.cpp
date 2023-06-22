@@ -60,6 +60,10 @@ void Enemy_AlienBase_Body::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjec
 		Act_Init();
 		return;
 	}
+	else if (!_init)
+	{
+		return;
+	}
 
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
 

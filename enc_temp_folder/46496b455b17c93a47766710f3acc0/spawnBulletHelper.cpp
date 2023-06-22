@@ -267,8 +267,6 @@ namespace BULLETHELPER
 			x = -12; y = 11; break;
 		case ACT_WALK_LEFT_LOOK_DOWN:
 			x = -13; y = -4; break;
-		case ACT_LOOK_DOWN_LEFT:
-			x = -13; y = -4; break;
 			//RIGHT
 		case ACT_LOOK_UP_RIGHT:
 			x = 14; y = 28;
@@ -280,8 +278,6 @@ namespace BULLETHELPER
 			x = 13; y = 10;
 			break;
 		case ACT_WALK_RIGHT_LOOK_DOWN:
-			x = 13; y = -4; break;
-		case ACT_LOOK_DOWN_RIGHT:
 			x = 13; y = -4; break;
 		default: x = 0; y = 0; return false; break;
 		}
