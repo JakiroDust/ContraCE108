@@ -457,11 +457,17 @@ void Scene_Battle::_ParseOBject(string line)
                     break;
                 case BASE_BODY: obj.reset(new Obj_BossBase_S1(x, y, Z_INDEX_TERRAIN, param1));
                     break;
+                case BASE_BODY_HALF: obj.reset(new Obj_BossBase_S1_half(x, y, Z_INDEX_TERRAIN, param1));
+                    break;
                 case FLAME: obj.reset(new Obj_Flame(x, y, Z_INDEX_STATION, param1, param2));
                     break;
                 case UP_BOX_STATION: obj.reset(new Obj_StationUpgradeBox(x, y, Z_INDEX_ITEM, param1, param2));
                     break;
                 case UP_BOX_FLYING: obj.reset(new Obj_FlyingUpgradeBox(x, y, Z_INDEX_ITEM, param1, param2));
+                    break;
+                case ALIEN_BASE: obj.reset(new Enemy_AlienBase_Body(x, y, Z_INDEX_TERRAIN));
+                    break;
+                case ALIEN_BASE_BODYCELL: obj.reset(new Obj_BossAlienBase_S3(x, y, Z_INDEX_TERRAIN, param1));
                     break;
                 case CAMERA:
                     ScreenManager::GetInstance()->Screen()->SetPosition(x, y);
@@ -477,10 +483,13 @@ void Scene_Battle::_ParseOBject(string line)
                     break;
                 case SPAWNER_INFARY_S3_RIGHT: obj.reset(new Spawner_Infary_Stage3_Right(x, y, Z_INDEX_TERRAIN, param1, param2));
                     break;
-
+                case 0:
+                    obj.reset(NULL);
+                    DebugOut(L"End file.\n");
+                    break;
                 default:
                     obj.reset(NULL);
-                    DebugOut(L"Unknown id=%d", id);
+                    DebugOut(L"Unknown id=%d\n", id);
                     break;
                 }
                 if (obj.get() != NULL)

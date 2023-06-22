@@ -1,17 +1,17 @@
 #pragma once
-#include "Equip_PlayerGunBase.h"
-#include "Obj_Bullet_F.h"
-
-class Equip_Gun_F : public Equip_PlayerGunBase
+#include "Equip_EnemyGun_N.h"
+class Equip_EnemyGun_AlienBase : public Equip_EnemyGun_N
 {
 	private:
 	public:
-		Equip_Gun_F()
+		Equip_EnemyGun_AlienBase()
 		{
 			_isAuto = false;
-			_FireRate = 300;
+			_FireRate = 0;
+			_reloadTime = 0;
+			_maxAmmo = 0;
 		}
-		int GunID() override { return GUN_F; }
+
 		void Fire(float& x, float& y, float& vx, float& vy, bool type = false) override;
 		void Fire(float& x, float& y, int DIR) override;
 };

@@ -91,7 +91,8 @@ void Game_MovableObject::ResetStateParams()
 {
 	Game_ObjectBase::ResetStateParams();
 	//_swim = false;
-	//_onGround = false;
+	_onGround = _detectOnGround;
+	_detectOnGround = false;
 }
 
 void Game_MovableObject::Update(DWORD dt)
@@ -191,7 +192,6 @@ void Game_MovableObject::UpdateDefault(DWORD dt)
 void Game_MovableObject::OnNoCollision(DWORD dt)
 {
 	Game_ObjectBase::OnNoCollision(dt);
-	_onGround = false;
 }
 
 void Game_MovableObject::OnCollisionWith(PCOLLISIONEVENT e) 
@@ -199,7 +199,7 @@ void Game_MovableObject::OnCollisionWith(PCOLLISIONEVENT e)
 	Game_ObjectBase::OnCollisionWith(e);
 	if (e->ny != 0 && e->obj->IsBlocking())
 	{
-		if (e->ny > 0) _onGround = true;
+		if (e->ny > 0) _detectOnGround = true;
 		if (e->ny < 0) _jumpForce = 0;
 	}
 }

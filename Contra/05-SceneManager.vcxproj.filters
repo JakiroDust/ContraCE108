@@ -375,6 +375,18 @@
       <Filter>Source Files\Object\StaticObject</Filter>
     </ClCompile>
     <ClCompile Include="Scene_Credit.cpp" />
+    <ClCompile Include="Enemy_AlienBase_Head.cpp">
+      <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_EnemyBullet_Blast.cpp">
+      <Filter>Source Files\Object\MoveObject\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj_BossAlienBase_S3.cpp">
+      <Filter>Source Files\Object\StaticObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip_EnemyGun_AlienBase.cpp">
+      <Filter>Source Files\Equip</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -790,6 +802,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Scene_Credit.h" />
+    <ClInclude Include="Obj_EnemyBullet_Blast.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_AlienBase_Head.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj_BossAlienBase_S3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Equip_EnemyGun_AlienBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

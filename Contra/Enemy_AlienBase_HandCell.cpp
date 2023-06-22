@@ -1,4 +1,7 @@
 #include "Enemy_AlienBase_HandCell.h"
+#include "Enemy_AlienBase_Body.h"
+#include "Scene_Battle.h"
+#include "GameManager.h"
 
 #define DEGREE_TO_RAD 0.0174533f
 
@@ -27,6 +30,17 @@ void Enemy_AlienBase_HandCell::Render()
 	if (_WaitForInit > 0)
 		return;
 	Game_SpecialObject::Render();
+}
+
+void Enemy_AlienBase_HandCell_Main::Execute_DieAction()
+{
+	Enemy_AlienBase_HandCell::Execute_DieAction();
+	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
+	Enemy_AlienBase_Body* body = (Enemy_AlienBase_Body*)(scene->getObjectByID(_bodyID));
+	if (_isLeftHand)
+		body->Kill_LeftHand();
+	else
+		body->Kill_RightHand();
 }
 
 void Enemy_AlienBase_HandCell::Execute_BeforeDelete()
@@ -82,8 +96,8 @@ void Enemy_AlienBase_HandCell::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coO
 			float x, y;
 			x = cos(_currentDegree * DEGREE_TO_RAD) * _radius;
 			y = sin(_currentDegree * DEGREE_TO_RAD) * _radius;
-			_ForceX = x - _x;
-			_ForceY = y - _y;
+			_ForceX = x;
+			_ForceY = y;
 			_ABC_ActionQueue.erase(_ABC_ActionQueue.begin());
 			break;
 		}
@@ -91,8 +105,9 @@ void Enemy_AlienBase_HandCell::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coO
 		case ABC_ACT_MOVE_CLOCKWISE:
 		{
 			changePosFlag = true;
-			if ((_currentDegree >= action.value && _currentDegree - AB_HANDCELL_RAD_SPEED <= action.value)
-				|| abs(_currentDegree - action.value) < 1.0f)
+			float offset = _currentDegree < action.value ? -360 : 0;
+			if ((_currentDegree >= action.value + offset && _currentDegree - AB_HANDCELL_RAD_SPEED <= action.value + offset)
+				|| abs(_currentDegree - action.value - offset) < 1.0f)
 			{
 				_currentDegree = action.value;
 				_ABC_ActionQueue.erase(_ABC_ActionQueue.begin());
@@ -107,8 +122,9 @@ void Enemy_AlienBase_HandCell::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coO
 		case ABC_ACT_MOVE_COUNTERCLOCKWISE:
 		{
 			changePosFlag = true;
-			if ((_currentDegree <= action.value && _currentDegree - AB_HANDCELL_RAD_SPEED >= action.value)
-				|| abs(_currentDegree - action.value) < 1.0f)
+			float offset = _currentDegree > action.value ? 360 : 0;
+			if ((_currentDegree <= action.value + offset && _currentDegree + AB_HANDCELL_RAD_SPEED >= action.value + offset)
+				|| abs(_currentDegree - action.value - offset) < 1.0f)
 			{
 				_currentDegree = action.value;
 				_ABC_ActionQueue.erase(_ABC_ActionQueue.begin());
@@ -132,7 +148,7 @@ void Enemy_AlienBase_HandCell::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coO
 			{
 				_ABC_ActionQueue[0].typeID = ABC_ACT_MOVE_COUNTERCLOCKWISE;
 			}
-			break;
+			return;
 		}
 	}
 
@@ -149,8 +165,9 @@ void Enemy_AlienBase_HandCell::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coO
 	if (changePosFlag)
 	{
 		float x, y;
-		x = cos(_currentDegree * DEGREE_TO_RAD) * _radius;
-		y = sin(_currentDegree * DEGREE_TO_RAD) * _radius;
-		teleport(x, y);
+		x = cosf(_currentDegree * DEGREE_TO_RAD) * _radius;
+		y = sinf(_currentDegree * DEGREE_TO_RAD) * _radius;
+		teleport(_centerX + x, _centerY + y);
 	}
 }
+

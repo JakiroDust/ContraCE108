@@ -135,7 +135,7 @@ void Enemy_SneakSniper_Base::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
 	Game_Player* player = scene->p1();
 
-	if (GameManager::GetInstance()->Get_StagePasscardRemain() > 4 || _state->StateId() == STATE_IDLE)
+	if (GameManager::GetInstance()->Get_StagePasscardRemain() > 1 || _state->StateId() == STATE_IDLE)
 		_ghost = true;
 	else if (_state->StateId() != STATE_DIE)
 		_ghost = false;
@@ -147,5 +147,4 @@ void Enemy_SneakSniper_Base::Execute_DieAction()
 	Game_StationEnemy::Execute_DieAction();
 	jump();
 	_ForceX = 50;
-	GameManager::GetInstance()->Gain_StagePasscard();
 }

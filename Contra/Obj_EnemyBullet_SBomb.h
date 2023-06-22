@@ -12,6 +12,7 @@ class Obj_EnemyBullet_SBomb : public Game_Bullet
 	protected:
 		float _travelled_Distance = 0;
 		int _bypassPlatformID = -1;
+		int _hitPlatformID = -1;
 		bool _explodeFlag = false;
 		void Init()
 		{

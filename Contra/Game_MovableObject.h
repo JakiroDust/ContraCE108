@@ -35,6 +35,7 @@ class Game_MovableObject : public Game_ObjectBase
 		int _immortal = 0;
 		bool _ghost = false;
 		bool _onGround = false;
+		bool _detectOnGround = false;
 		bool _die = false;
 		bool _gravity = true;
 		bool _moveFlag = false;
@@ -100,7 +101,7 @@ class Game_MovableObject : public Game_ObjectBase
 		float footerY();
 
 		bool IsFaceLeft() { return _faceLeft; }
-		bool IsOnGround() { return _onGround; }
+		bool IsOnGround() { return _onGround || _detectOnGround; }
 
 		void SetLockFace(bool b) { _lockFace = b; }
 		bool LockFace() { return _lockFace; }

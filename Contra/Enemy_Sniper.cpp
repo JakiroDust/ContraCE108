@@ -11,6 +11,7 @@ int Enemy_Sniper::CharID()
 void Enemy_Sniper::Execute_DieAction()
 {
 	Game_StationEnemy::Execute_DieAction();
+	_lockFace = true;
 	jump();
 }
 

@@ -63,6 +63,15 @@ void Obj_FlyingUpgradeBox::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjec
 
 }
 
+bool Obj_FlyingUpgradeBox::CollideBlockerCondition(DWORD dt, PCOLLISIONEVENT e)
+{
+	if (dynamic_cast<Game_Blocker*>(e->src_obj))
+	{
+		return false;
+	}
+	return true;
+}
+
 void Obj_FlyingUpgradeBox::Execute_BeforeDelete()
 {
 	if (_die)

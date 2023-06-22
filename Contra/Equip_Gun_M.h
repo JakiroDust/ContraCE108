@@ -7,7 +7,7 @@ class Equip_Gun_M : public Equip_PlayerGunBase
 		Equip_Gun_M()
 		{
 			_isAuto = true;
-			_FireRate = 120;
+			_FireRate = 180;
 			_reloadTime = 0;
 			_maxAmmo = 0;
 			_ammo = _maxAmmo;

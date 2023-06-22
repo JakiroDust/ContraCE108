@@ -31,7 +31,7 @@ class Obj_FlyingUpgradeBox : public Game_SpecialObject
             _haveStandby = false;
             _SpriteId = 958890;
             _gravity = false;
-            _moveSpd = 0.115f;
+            _moveSpd = 0.15f;
             _type = type;
             _baseX = x;
             _baseY = y;
@@ -50,6 +50,7 @@ class Obj_FlyingUpgradeBox : public Game_SpecialObject
         void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects);
         void Render() override;
         int baseType() override { return TYPE_MOVABLE; }
+        bool CollideBlockerCondition(DWORD dt, PCOLLISIONEVENT e) override;
         void Execute_BeforeDelete() override;
 };
 

@@ -31,7 +31,6 @@ void Game_Character::OnNoCollision(DWORD dt)
 {
 	Game_MovableObject::OnNoCollision(dt);
 	_swim = false;
-	_onGround = false;
 }
 
 #define CLIMP_UP_TERRAIN_SCALE_Y_X 0.25f
@@ -64,7 +63,7 @@ void Game_Character::OnCollisionWith(PCOLLISIONEVENT e)
 	}
 
 	// climb up
-	if (e->nx != 0 && _onGround && dynamic_cast<Game_Terrain*>(e->obj)
+	if (e->nx != 0 && _detectOnGround && dynamic_cast<Game_Terrain*>(e->obj)
 		&& e->obj->y() - footerY() <= CHARACTER_JUMP_ON_HEIGHT)
 	{
 		// character is under water
@@ -223,6 +222,10 @@ void Game_Character::ExecuteAction()
 void Game_Character::ResetStateParams()
 {
 	Game_MovableObject::ResetStateParams();
+	if (!_gravity && _ForceY == 0)
+	{
+		_vy = 0;
+	}
 }
 
 Game_Character::Game_Character(float x, float y, int z, int width, int height) : Game_MovableObject(x, y, z, width, height)
