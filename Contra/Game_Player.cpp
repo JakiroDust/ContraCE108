@@ -14,6 +14,7 @@
 #include "ScreenManager.h"
 #include "StageEventHandler_Base.h"
 #include "CharacterEffect.h"
+#include "GameManager.h"
 using namespace CHARACTER_EFFECT;
 int Game_Player::CharID()
 {
@@ -371,6 +372,14 @@ void Game_Player::OnCollisionWith(PCOLLISIONEVENT e)
 	}
 
 	// Hit bullet
+	
+	//if STAGE CLEAR, no need to check bullet collision
+	GameManager* gm = GameManager::GetInstance();
+	if (gm->Test_IfPassStage() == CAN_PASS_STAGE)
+	{
+		return;
+	}
+
 	if (!_ghost && dynamic_cast<Game_Bullet*>(e->obj))
 	{
 		Game_Bullet* bullet = ((Game_Bullet*)e->obj);

@@ -233,6 +233,10 @@ void StageEventHandler_S1::Perform_StageClearEvent(DWORD dt)
 	}
 	else
 	{
+		if (_WaitForClearStage < WAIT_STAGECLEAR_MAXVALUE)
+		{
+			return;
+		}
 		player->teleport(_srcScene->MapWidth() + 100, _srcScene->MapHeight());
 		if (_WaitForClearStage >= WAIT_STAGECLEAR_MAXVALUE)
 		{
