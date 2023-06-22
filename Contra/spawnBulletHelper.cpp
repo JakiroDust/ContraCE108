@@ -35,7 +35,7 @@
 			return false;
 			break;
 		}
-		return true;                       
+		return true;
 	}
 */
 namespace BULLETHELPER
@@ -109,7 +109,7 @@ namespace BULLETHELPER
 		case ACT_SWIM_RIGHT_LOOK_UP:
 			x = 10;
 			y = 10;
-			break; 
+			break;
 		case ACT_WALK_LEFT:
 			x = -3;
 			y = 3;
@@ -142,32 +142,32 @@ namespace BULLETHELPER
 			x = 6;
 			y = 10;
 			break;
-		/*case STATE_ACTIVE:
-			switch (DIR)
+			/*case STATE_ACTIVE:
+				switch (DIR)
+				{
+				case DIR_TOP_LEFT:      x = -1; y = 1;
+				case DIR_TOP_RIGHT:     x *= 7; y *= 7; break;
+
+				case DIR_BOTTOM:        y = -1;
+				case DIR_TOP:           y *= 10; break;
+
+				case DIR_LEFT:          x = -1;
+				case DIR_RIGHT:         x *= 12; y = 5; break;
+
+				case DIR_BOTTOM_LEFT:   x = -1;
+				case DIR_BOTTOM_RIGHT:  x *= 7; y *= 7; break;
+				default:
+					x = 0; y = 0; return false;
+				}break;
+			case STATE_LIE:
 			{
-			case DIR_TOP_LEFT:      x = -1; y = 1;
-			case DIR_TOP_RIGHT:     x *= 7; y *= 7; break;
-
-			case DIR_BOTTOM:        y = -1;
-			case DIR_TOP:           y *= 10; break;
-
-			case DIR_LEFT:          x = -1;
-			case DIR_RIGHT:         x *= 12; y = 5; break;
-
-			case DIR_BOTTOM_LEFT:   x = -1;
-			case DIR_BOTTOM_RIGHT:  x *= 7; y *= 7; break;
-			default:
-				x = 0; y = 0; return false;
-			}break;
-		case STATE_LIE:
-		{
-			switch (DIR)
-			{
-			case DIR_LEFT:          x = -1;
-			case DIR_RIGHT:         x *= 10; break;
-			}
-		}*/
-		break;
+				switch (DIR)
+				{
+				case DIR_LEFT:          x = -1;
+				case DIR_RIGHT:         x *= 10; break;
+				}
+			}*/
+			break;
 		default:
 			x = 0;
 			y = 0;
