@@ -13,7 +13,8 @@ void Equip_Gun_S::Fire(float& x, float& y, int DIR)
 	int remain_bullet = CanShoot();
 	if (remain_bullet <= 0)
 		return;
-
+	else
+		playShootSFX();
 	vector<unique_ptr<Obj_Bullet_S>> bullets;
 
 	float baseAngle = 0.0f;
@@ -82,4 +83,9 @@ void Equip_Gun_S::Fire(float& x, float& y, int DIR)
 
 	for (int i = 0; i < bullets.size(); i++)
 		scene->add_object(move(bullets[i]));
+}
+
+int Equip_Gun_S::getShootSFX()
+{
+	return 12;
 }

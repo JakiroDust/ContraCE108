@@ -59,4 +59,10 @@ void Equip_Gun_L::Fire(float& x, float& y, int DIR)
 
 	for (int i = 0; i < bullets.size(); i++)
 		scene->add_object(move(bullets[i]));
+	playShootSFX();
+}
+
+int Equip_Gun_L::getShootSFX()
+{
+	return 14;
 }

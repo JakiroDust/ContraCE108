@@ -55,5 +55,11 @@ void Equip_Gun_F::Fire(float &x, float &y, int DIR)
 	unique_ptr<Obj_Bullet_F> bullet(new Obj_Bullet_F(dir, x, y, Z_INDEX_BULLET, vx, vy, B_SPAWN_MODE_SETSPEED));
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
 	scene->add_object(move(bullet));
+	playShootSFX();
 
+}
+
+int Equip_Gun_F::getShootSFX()
+{
+	return 13;
 }

@@ -32,5 +32,7 @@ class Equip_GunBase
 		virtual DWORD FireRate();
 		virtual void Fire(float& x, float& y, float& vx, float& vy, bool type = false) {}
 		virtual void Fire(float& x, float& y, int DIR) {}
+		virtual int getShootSFX();
+		void playShootSFX();
 };
 

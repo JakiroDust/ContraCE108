@@ -93,37 +93,6 @@ public:
             cn = nullptr;
         }
     }
-    void playSFX(const int& fileName, int mode, int type) {
-        if (fileName == -1)
-            return;
-        switch (mode)
-        {
-        case CHANNEL_SFX_CONTRA:
-            stopChannel(sfxChannel_Contra);
-            system->playSound(sfx[fileName], nullptr, false, &sfxChannel_Contra);
-            break;
-        case CHANNEL_SFX_CONTRA_MISC:
-            stopChannel(sfxChannel_ContraMisc);
-            system->playSound(sfx[fileName], nullptr, false, &sfxChannel_ContraMisc);
-            break;
-        case CHANNEL_SFX_ENEMY:
-            stopChannel(sfxChannel_Enemy);
-            system->playSound(sfx[fileName], nullptr, false, &sfxChannel_Enemy);
-            break;
-        case CHANNEL_SFX_ENV:
-            stopChannel(sfxChannel_Env);
-            system->playSound(sfx[fileName], nullptr, false, &sfxChannel_Env);
-            break;
-        }
-      /*  if (type == 0)
-        {
-            
-        }
-        if (type == 1)
-        {
-            system->playSound(sfx1, nullptr, false, &sfxChannel_Enemy);
-        }
-        */
-    }
+    void playSFX(const int& fileName, int mode, int type);
 };
 

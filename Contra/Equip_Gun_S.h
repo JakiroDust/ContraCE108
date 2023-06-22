@@ -26,5 +26,6 @@ class Equip_Gun_S : public Equip_PlayerGunBase
 		void Use_Bullet() { _TotalShooted += 1; }
 		void Fire(float& x, float& y, float& vx, float& vy, bool type = false) override;
 		void Fire(float& x, float& y, int DIR) override;
+		int getShootSFX() override;
 };
 

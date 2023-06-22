@@ -21,5 +21,6 @@ public:
 	BYTE CurrentWaveID() { return _CurrentWaveID; }
 	void Fire(float& x, float& y, float& vx, float& vy, bool type = false) override;
 	void Fire(float& x, float& y, int DIR) override;
+	int getShootSFX() override;
 };
 

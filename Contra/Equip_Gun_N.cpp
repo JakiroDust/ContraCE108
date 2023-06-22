@@ -42,6 +42,11 @@ void Equip_Gun_N::Fire(float& x, float& y, int DIR)
 	}
 
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
-
+	playShootSFX();
 	scene->add_object(move(bullet));
+}
+
+int Equip_Gun_N::getShootSFX()
+{
+	return 10;
 }

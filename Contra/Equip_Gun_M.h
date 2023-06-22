@@ -16,5 +16,6 @@ class Equip_Gun_M : public Equip_PlayerGunBase
 		int GunID() override { return GUN_R; }
 		void Fire(float& x, float& y, float& vx, float& vy, bool type = false) override;
 		void Fire(float& x, float& y, int DIR) override;
+		int getShootSFX() override;
 };
 

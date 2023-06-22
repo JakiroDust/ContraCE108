@@ -74,3 +74,44 @@ SoundSystem::SoundSystem() {
     sfxChannel_Enemy = nullptr;
     sfxChannel_Env = nullptr;
 }
+
+void SoundSystem::playSFX(const int& fileName, int mode, int type)
+{
+    if (fileName == -1)
+        return;
+    switch (mode)
+    {
+    case CHANNEL_SFX_CONTRA:
+        if (type == 0)
+            stopChannel(sfxChannel_Contra);
+        else
+        {
+            FMOD::Sound** temp=NULL;
+            sfxChannel_Contra->getCurrentSound(temp);
+            if (!(temp == NULL))
+            {
+                if (*temp == sfx[fileName])
+                {
+
+                }
+                else
+                    stopChannel(sfxChannel_Contra);
+            }
+
+        }
+        system->playSound(sfx[fileName], nullptr, false, &sfxChannel_Contra);
+        break;
+    case CHANNEL_SFX_CONTRA_MISC:
+        stopChannel(sfxChannel_ContraMisc);
+        system->playSound(sfx[fileName], nullptr, false, &sfxChannel_ContraMisc);
+        break;
+    case CHANNEL_SFX_ENEMY:
+        stopChannel(sfxChannel_Enemy);
+        system->playSound(sfx[fileName], nullptr, false, &sfxChannel_Enemy);
+        break;
+    case CHANNEL_SFX_ENV:
+        stopChannel(sfxChannel_Env);
+        system->playSound(sfx[fileName], nullptr, false, &sfxChannel_Env);
+        break;
+    }
+}

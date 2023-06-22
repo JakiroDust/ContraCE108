@@ -1,5 +1,5 @@
 #include "Equip_GunBase.h"
-
+#include "MusicManager.h"
 
 DWORD Equip_GunBase::FireRate()
 {
@@ -16,3 +16,15 @@ DWORD Equip_GunBase::FireRate()
 		return _reloadTime ;
 	}
 }
+
+int Equip_GunBase::getShootSFX()
+{
+	return -1;
+}
+
+void Equip_GunBase::playShootSFX()
+{
+	SoundSystem::getInstance()->playSFX(getShootSFX(), CHANNEL_SFX_CONTRA, 1);
+}
+
+

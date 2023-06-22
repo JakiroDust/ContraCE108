@@ -12,6 +12,7 @@ void Equip_Gun_M::Fire(float& x, float& y, float& vx, float& vy, bool type)
 void Equip_Gun_M::Fire(float& x, float& y, int DIR)
 {
 	unique_ptr<Obj_Bullet_M> bullet;
+	playShootSFX();
 	switch (DIR)
 	{
 	case DIR_TOP:
@@ -45,4 +46,9 @@ void Equip_Gun_M::Fire(float& x, float& y, int DIR)
 	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
 
 	scene->add_object(move(bullet));
+}
+
+int Equip_Gun_M::getShootSFX()
+{
+	return 11;
 }
