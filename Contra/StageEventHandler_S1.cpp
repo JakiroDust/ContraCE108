@@ -202,10 +202,10 @@ void StageEventHandler_S1::Perform_StageClearEvent(DWORD dt)
 		_WaitForBossDie -= dt;
 		return;
 	}
-	else if (_WaitForBossDie > 0)
+	else if (!S1_PlayBGS)
 	{
 		SoundSystem::getInstance()->playSFX(SFX_NEXTROUND, CHANNEL_SFX_ENV, 0);
-		_WaitForBossDie -= dt;
+		S1_PlayBGS = true;
 	}
 
 	// SCENE: player move to base 
@@ -237,7 +237,7 @@ void StageEventHandler_S1::Perform_StageClearEvent(DWORD dt)
 		{
 			return;
 		}
-		player->teleport(_srcScene->MapWidth() + 100, _srcScene->MapHeight());
+		player->teleport(_srcScene->MapWidth() + 300, _srcScene->MapHeight());
 		if (_WaitForClearStage >= WAIT_STAGECLEAR_MAXVALUE)
 		{
 			_WaitForClearStage = 1000;

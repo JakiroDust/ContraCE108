@@ -266,7 +266,7 @@ void GameManager::reset_player_parameter()
 
 void GameManager::InitGame()
 {
-	_coin = 3;
+	//_coin = 3;
 	_P1_score = 0;
 	//_P2_score = 0;
 	InitNewLife();
