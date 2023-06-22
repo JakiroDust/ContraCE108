@@ -28,7 +28,7 @@ void Game_Collision::SweptAABB(
 	float t_entry;
 	float t_exit;
 
-	t = -2.0f;			// no collision
+	t = -1.0f;			// no collision
 	nx = ny = 0;
 
 	 //check if move object has already intersected with static object. 
@@ -212,7 +212,7 @@ void Game_Collision::Filter(PGAMEOBJECT objSrc,
 		if (c->isDeleted) continue;
 		if (c->obj->IsDeleted()) continue;
 
-		// ignore collision event with object having IsBlocking = 0 (like coin, mushroom, etc)
+		// ignore collision event with object having IsBlocking = 0
 		if (filterBlock == 1 && !c->obj->IsBlocking())
 		{
 			continue;
@@ -232,8 +232,7 @@ void Game_Collision::Filter(PGAMEOBJECT objSrc,
 }
 
 /*
-*  Simple/Sample collision framework
-*  NOTE: Student might need to improve this based on game logic
+*  collision framework
 */
 void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* coObjects)
 {
@@ -259,7 +258,6 @@ void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* 
 		Filter(objSrc, coEvents, colX, colY);
 
 		float x, y, vx, vy, dx, dy;
-		// Fixed
 		objSrc->GetPosition(x, y);
 		objSrc->GetSpeed(vx, vy);
 		dx = vx * dt;
@@ -270,9 +268,7 @@ void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* 
 			if (colY->t < colX->t)	// was collision on Y first ?
 			{
 				y += colY->t * dy + colY->ny * BLOCK_PUSH_FACTOR;
-				// Fixed
 				objSrc->SetPosition(x, y);
-
 				objSrc->OnCollisionWith(colY);
 
 				//
@@ -355,7 +351,6 @@ void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* 
 					x += dx;
 					y += dy;
 				}
-		// Fixed
 		objSrc->SetPosition(x, y);
 	}
 
@@ -378,7 +373,4 @@ void Game_Collision::Process(PGAMEOBJECT objSrc, DWORD dt, vector<PGAMEOBJECT>* 
 		objSrc->OnCollisionWith(e);
 		delete e;
 	}
-
-
-	//for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 }

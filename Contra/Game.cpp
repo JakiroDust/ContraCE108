@@ -423,8 +423,6 @@ void CGame::ProcessKeyboard()
 		}
 	}
 
-	//keyHandler->KeyState((BYTE*)&keyStates);
-	// Modified
 	Game_KeyInput::GetInstance()->KeyState((BYTE*)&keyStates);
 
 	// Collect all buffered events
@@ -442,15 +440,9 @@ void CGame::ProcessKeyboard()
 		int KeyCode = keyEvents[i].dwOfs;
 		int KeyState = keyEvents[i].dwData;
 		if ((KeyState & 0x80) > 0) {
-			// Modified
 			Game_KeyInput::GetInstance()->OnKeyDown(KeyCode);
-
-			//keyHandler->OnKeyDown(KeyCode);
 		} else {
-			// Modified
 			Game_KeyInput::GetInstance()->OnKeyUp(KeyCode);
-
-			//keyHandler->OnKeyUp(KeyCode);
 		}
 
 	}
