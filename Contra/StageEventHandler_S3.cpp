@@ -66,7 +66,7 @@ void StageEventHandler_S3::Load()
 	_srcScene->SetMapSize(GAMESCREEN_WIDTH, 2176);
 
 	SoundSystem* SS = SoundSystem::getInstance();
-	SS->playBGM(BGM_JUNGLE);
+	SS->playBGM(BGM_WATERFALL);
 
 	// Parse map
 	_srcScene->init_spatial();
