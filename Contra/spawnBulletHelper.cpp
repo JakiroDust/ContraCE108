@@ -243,6 +243,17 @@ namespace BULLETHELPER
 		}
 		return true;
 	}
+	bool getCannonBaseCor(float& x, float& y, int& state, int& DIR) {
+		switch (state)
+		{
+		case ACT_WALK_LEFT:
+			x = -8;
+			break;
+
+		default: x = 0; y = 0; return false; break;
+		}
+		return true;
+	}
 	bool getSniperCor(float& x, float& y, int& state, int& DIR) {
 		switch (state)
 		{
@@ -281,10 +292,10 @@ namespace BULLETHELPER
 		{
 		case CHAR_CONTRA:getContraCor(x, y, state, DIR); break;
 		case RED_GUNNER: getRedGunnerCor(x, y, state, DIR); break;
-		case SNEAKY_SNIPER:
-			getSneakyCor(x, y, state, DIR); break;
+		case SNEAKY_SNIPER: getSneakyCor(x, y, state, DIR); break;
 		case SNIPER: getSniperCor(x, y, state, DIR); break;
-		case TURRET_BASE:
+		case BASE_CANNON_LEFT: getCannonBaseCor(x, y, state, DIR); break;
+		case BASE_CANNON_RIGHT: getCannonBaseCor(x, y, state, DIR); break;
 		case CANNON:  getCannonCor(x, y, state, DIR); break;
 		case TURRET: getTurretCor(x, y, DIR); break;
 		case SCUBA_DIVER: getScubaCor(x, y,state, DIR); break;

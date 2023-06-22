@@ -23,6 +23,7 @@ class Enemy_Cannon : public Game_StationEnemy
 			_weapon = new Equip_EnemyGun_Cannon();
 			_hp = 20;
 			_station_12DIR = true;
+			_BodyDamage = true;
 			_faceLeft = true;
 			_gravity = false;
 		}

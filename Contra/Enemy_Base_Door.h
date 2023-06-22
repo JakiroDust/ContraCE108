@@ -1,8 +1,8 @@
 #pragma once
 #include "Game_SpecialObject.h"
 
-#define BASEDOOR_WIDTH 32
-#define BASEDOOR_HEIGHT 32
+#define BASEDOOR_WIDTH 24
+#define BASEDOOR_HEIGHT 24
 
 class Enemy_Base_Door : public Game_SpecialObject
 {
