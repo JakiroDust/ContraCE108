@@ -187,7 +187,6 @@ void StageEventHandler_S1::Perform_StageClearEvent(DWORD dt)
 	Game_Player* player = _srcScene->p1();
 	player->SetAuto(true);
 	
-	//player->SetImmortal(true);
 	// SCENE: boss die
 	if (!S1_BossDie)
 	{

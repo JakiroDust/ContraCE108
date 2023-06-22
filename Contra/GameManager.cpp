@@ -282,7 +282,6 @@ void GameManager::StartApplication()
 {
 	ScreenManager* screenManager = ScreenManager::GetInstance();
 	Create_Start_Screen();
-	//Create_GAME_CREDIT_Screen();
 }
 
 //======================================================================================

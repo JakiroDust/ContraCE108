@@ -27,9 +27,6 @@ void Scene_GameOver::KeyDownEventHandler(int KeyCode)
 				endGame = true;
 				break;
 			}
-			
-			//int id = 1;
-			//AddBlinkingDarkEffect(90, 165, 70.0f, 12.0f, id);
 		}
 		break;
 		case DIK_W: location = CONTINUE; _images[selection_id].get()->MoveToPoint(65, 135, 0); break;
@@ -101,40 +98,6 @@ void Scene_GameOver::Update(DWORD dt)
 	}
 }
 
-/*void Scene_GameOver::Render()
-{
-	vector<Game_Picture*> RenderQueue;
-
-	for (auto& pic : _images)
-	{
-		Game_Picture* obj = pic.second.get();
-
-		if (obj == NULL)
-			continue;
-
-		if (RenderQueue.size() == 0)
-		{
-			RenderQueue.push_back(obj);
-			continue;
-		}
-		int j = int(RenderQueue.size());
-		while (j > 0 && obj->z() < RenderQueue[j - 1]->z())
-		{
-			j--;
-		}
-		std::vector<Game_Picture*>::iterator it = RenderQueue.begin();
-		RenderQueue.insert(it + j, obj);
-	}
-	float BG_color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
-	CGame::GetInstance()->GetDirect3DDevice()->ClearRenderTargetView(CGame::GetInstance()->GetRenderTargetView(), BG_color);
-	float x, y;
-	ScreenManager::GetInstance()->Screen()->GetCenterPoint(x, y);
-	for (int i = 0; i < RenderQueue.size(); i++)
-	{
-		RenderQueue[i]->Render();
-	}
-}
-*/
 void Scene_GameOver::Load()
 {
 	SoundSystem* SS = SoundSystem::getInstance();
@@ -151,11 +114,6 @@ void Scene_GameOver::Unload()
 void Scene_GameOver::nextScene()
 {
 	GameManager* gm = GameManager::GetInstance();
-	//if (endGame || gm->GetCoin() <= 0)
-	//{
-	//	_NextScene(SIG_PLAY_INTRO);
-	//	return;
-	//}
 
 	gm->UseCoin();
 	int currentStage = gm->GetCurrentStage();
