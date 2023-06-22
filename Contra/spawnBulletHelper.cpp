@@ -95,13 +95,91 @@ namespace BULLETHELPER
 			y = 10;
 			break;
 		case ACT_JUMP_RIGHT:
-			x = 6;
-			y = 0;
-			break;
+			{
+				switch (DIR)
+				{
+				case DIR_LEFT:
+					x = -6;
+					y = 0;
+					break;
+				case DIR_RIGHT:
+					x = 6;
+					y = 0;
+					break;
+				case DIR_TOP:
+					x = 0;
+					y = 6;
+					break;
+				case DIR_BOTTOM:
+					x = 0;
+					y = -6;
+					break;
+				case DIR_TOP_LEFT:
+					x = -6;
+					y = 6;
+					break;
+				case DIR_TOP_RIGHT:
+					x = 6;
+					y = 6;
+					break;
+				case DIR_BOTTOM_LEFT:
+					x = -6;
+					y = -6;
+					break;
+				case DIR_BOTTOM_RIGHT:
+					x = 6;
+					y = -6;
+					break;
+				default:
+					x = 0;
+					y = 0;
+					break;
+				}		
+				break;
+			}
 		case ACT_JUMP_LEFT:
-			x = 6;
-			y = 0;
-			break;
+			{
+				switch (DIR)
+				{
+				case DIR_LEFT:
+					x = -6;
+					y = 0;
+					break;
+				case DIR_RIGHT:
+					x = 6;
+					y = 0;
+					break;
+				case DIR_TOP:
+					x = 0;
+					y = 6;
+					break;
+				case DIR_BOTTOM:
+					x = 0;
+					y = -6;
+					break;
+				case DIR_TOP_LEFT:
+					x = -6;
+					y = 6;
+					break;
+				case DIR_TOP_RIGHT:
+					x = 6;
+					y = 6;
+					break;
+				case DIR_BOTTOM_LEFT:
+					x = -6;
+					y = -6;
+					break;
+				case DIR_BOTTOM_RIGHT:
+					x = 6;
+					y = -6;
+					break;
+				default:
+					x = 0;
+					y = 0;
+					break;
+				}
+				break;
+			}
 		case ACT_SWIM_LEFT_LOOK_UP:
 			x = -10;
 			y = 10;
