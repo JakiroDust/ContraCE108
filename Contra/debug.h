@@ -13,7 +13,7 @@
 #include <fstream>
 #define DEBUGOUT true
 #define MEMCHECK false
-#define RENDER_HITBOX true
+#define RENDER_HITBOX false
 #define _W(x)  __W(x)
 #define __W(x)  L##x
 

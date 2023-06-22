@@ -61,6 +61,8 @@ void Game_ObjectBase::Render()
 void Game_ObjectBase::RenderHitbox()
 {
 	//D3DXVECTOR3 p(_x, _y, 0);
+	if (!RENDER_HITBOX)
+		return;
 	RECT rect;
 
 	LPTEXTURE bbox = CTextures::GetInstance()->Get(-100);

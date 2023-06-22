@@ -5,7 +5,7 @@ class Scene_Credit :
 {
     void init();
     bool startTimer = false;
-    DWORD _waitingTick = 20000;
+    DWORD _waitingTick = 24000;
 public:
     Scene_Credit() : Scene_Base() {};
     void KeyDownEventHandler(int KeyCode) override;
