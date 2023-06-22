@@ -54,7 +54,7 @@ void Enemy_AlienBase_Body::UpdateBehavior(DWORD dt, vector<PGAMEOBJECT>* coObjec
 		AddAction(DIK_O);
 		return;
 	}
-	else if (!_init)
+	else if (!_init && _state->StateId() == STATE_OBJ_ACTIVE)
 	{
 		_init = true;
 		Act_Init();

@@ -60,4 +60,5 @@ class Enemy_SneakSniper_Base : public Enemy_SneakSniper
 		Enemy_SneakSniper_Base(float x, float y, int z) : Enemy_SneakSniper(x, y, z) {}
 		void Execute_DieAction() override;
 		void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;
+		void Shoot(int DIR) override;
 };

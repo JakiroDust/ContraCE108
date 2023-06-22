@@ -31,7 +31,7 @@ class Obj_FlyingUpgradeBox : public Game_SpecialObject
             _haveStandby = false;
             _SpriteId = 958890;
             _gravity = false;
-            _moveSpd = 0.15f;
+            _moveSpd = 0.175f;
             _type = type;
             _baseX = x;
             _baseY = y;

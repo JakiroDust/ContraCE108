@@ -141,6 +141,23 @@ void Enemy_SneakSniper_Base::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 		_ghost = false;
 }
 
+void Enemy_SneakSniper_Base::Shoot(int DIR)
+{
+	if (_weapon == NULL || _GunReloadInterval > 0)
+		return;
+	float x, y;
+	GetCenterPoint(x, y);
+	BULLETHELPER::getSpawnCor(x, y, CharID(), Sprite_ActID(), DIR);
+
+	_GunReloadInterval = _weapon->FireRate();
+
+	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
+	Game_Player* player = scene->p1();
+
+	float tarX, tarY;
+	player->GetCenterPoint(tarX, tarY);
+	_weapon->Fire(x, y, tarX, tarY, B_SPAWN_MODE_TARGETPOS);
+}
 
 void Enemy_SneakSniper_Base::Execute_DieAction()
 {

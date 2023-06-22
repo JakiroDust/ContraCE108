@@ -6,6 +6,7 @@
 #define BOSS_TRIGGER_RANGE_STAGE_1 3072
 #define SWEEPER_TRIGGERED_SPEED_S1 0.1f 
 #define S1_WAIT_FOR_BOSS_DIE 2000
+#define S1_WAIT_FOR_CLEARSTAGE 3000
 
 class StageEventHandler_S1 : public StageEventHandler_Base
 {
