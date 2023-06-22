@@ -31,9 +31,8 @@ class Game_Enemy : public Game_Character
 		void KeyDownEventHandler(int KeyCode) override;
 		void KeyUpEventHandler(int KeyCode) override;
 		void KeyStateHandler(BYTE* state) override;
-		virtual int EnemyType() { return 0; }
-		void Execute_DieAction() override;
-
+		void getPlayerLoc(float&, float&);
+		void spawnBullet();
 		//============================================================================================
 		// INHERITED
 

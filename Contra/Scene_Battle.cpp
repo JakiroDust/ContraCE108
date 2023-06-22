@@ -243,13 +243,12 @@ int Scene_Battle::add_object(unique_ptr<Game_ObjectBase>&& object)
         id_nth++;
     }
     float l, t, r, b;
-    object->SetId(id);
-    object->GetBoundingBox(l, t, r, b);
-    __objects[id] =move(object);
+    object->GetLTRB(l, t, r, b);
+    //DebugOut(L"id %d l=%d t=%d r=%d b=%d\n", id_nth, l, t, r, b);
+    spatial->init_object(id_nth, l, t, r, b);
+    id_nth++;
     
-    //DebugOut(L"id %d l=%d t=%d r=%d b=%d\n", id_nth, (int)l, (int)t, (int)r, (int)b);
-    spatial->insert(id, l, b, r, t);
-    return id;
+
 }
 
 void Scene_Battle::delete_object(int id)

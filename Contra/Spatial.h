@@ -46,7 +46,7 @@
 			auto it = find(ptr.begin(), ptr.end(), id);
 			if (it == ptr.end())
 			{
-				DebugOut(L"[ERROR] ID %d NOT EXIST \n", id);
+			//	DebugOut(L"[ERROR] ID %d NOT EXIST \n", id);
 			}
 			else
 			{

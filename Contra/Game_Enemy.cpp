@@ -202,6 +202,13 @@ void Game_Enemy::KeyStateHandler(BYTE* state)
 	}
 }
 
+void Game_Enemy::getPlayerLoc(float& x, float& y)
+{
+	Scene_Battle* scene = (Scene_Battle*)(ScreenManager::GetInstance()->Scene());
+	scene->p1()->GetCenterPoint(x,y);
+
+}
+
 void Game_Enemy::OnNoCollision(DWORD dt)
 {
 	Game_Character::OnNoCollision(dt);
