@@ -3,6 +3,7 @@
 #include "Game_KeyInput.h"
 #include "Scene_Start.h"
 #include "Scene_GameOver.h"
+#include "Scene_Credit.h"
 ScreenManager* ScreenManager::__instance = NULL;
 
 ScreenManager* ScreenManager::GetInstance()
@@ -76,6 +77,13 @@ void ScreenManager::Create_Scene_GAME_OVER()
 {
 	Unload_Scene();
 	Scene_Base* scene = new Scene_GameOver();
+	_scene = scene;
+	Game_KeyInput::GetInstance()->AddSceneControl(_scene);
+}
+void ScreenManager::Create_Scene_GAME_CREDIT()
+{
+	Unload_Scene();
+	Scene_Base* scene = new Scene_Credit();
 	_scene = scene;
 	Game_KeyInput::GetInstance()->AddSceneControl(_scene);
 }

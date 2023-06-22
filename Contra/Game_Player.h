@@ -116,5 +116,7 @@ protected:
 	 void _startCharacterEffect(int _effect) override;
 	 void _updateCharacterEffect(int _effect) override;
 	 void _expireCharacterEffect(int _effect) override;
+	 int getSFXexplodeID() override;
+	 int getSFXCHANNEL() override;
 };
 

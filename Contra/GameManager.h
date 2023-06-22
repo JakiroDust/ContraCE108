@@ -70,6 +70,7 @@ class GameManager
 		// scene
 		void Create_Start_Screen();
 		void Create_GAME_OVER_Screen();
+		void Create_GAME_CREDIT_Screen();
 		void Create_Stage_1();
 		void Create_Stage_3();
 		void Create_LoadingStage(int stageID);

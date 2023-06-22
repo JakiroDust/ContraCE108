@@ -29,5 +29,6 @@ class Enemy_Base_Door : public Game_SpecialObject
         {
             return 40;
         }
+
 };
 

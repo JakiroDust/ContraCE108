@@ -194,6 +194,7 @@ void GameManager::SignalHandler()
 	case SIG_PlAY_END_GAME:
 		break;
 	case SIG_PLAY_CREDIT:
+		Create_GAME_CREDIT_Screen();
 		break;
 	case SIG_PLAY_STAGE_1:
 		Create_Stage_1();
@@ -209,6 +210,7 @@ void GameManager::SignalHandler()
 		break;
 	case SIG_PLAY_GAME_OVER:
 		Create_GAME_OVER_Screen();
+		
 	default:
 		break;
 	}
@@ -280,6 +282,7 @@ void GameManager::StartApplication()
 {
 	ScreenManager* screenManager = ScreenManager::GetInstance();
 	Create_Start_Screen();
+	//Create_GAME_CREDIT_Screen();
 }
 
 //======================================================================================
@@ -297,6 +300,13 @@ void GameManager::Create_GAME_OVER_Screen()
 {
 	ScreenManager* screenManager = ScreenManager::GetInstance();
 	screenManager->Create_Scene_GAME_OVER();
+
+	screenManager->Scene()->Load();
+}
+void GameManager::Create_GAME_CREDIT_Screen()
+{
+	ScreenManager* screenManager = ScreenManager::GetInstance();
+	screenManager->Create_Scene_GAME_CREDIT();
 
 	screenManager->Scene()->Load();
 }

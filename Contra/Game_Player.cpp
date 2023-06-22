@@ -496,6 +496,7 @@ void Game_Player::Execute_DieAction()
 
 void Game_Player::DieEvent()
 {
+	playSFXexplode();
 	forceDie();
 	_cleanEffect();
 	_hp--;
@@ -571,4 +572,13 @@ void Game_Player::_expireCharacterEffect(int _effect)
 	default:
 		break;
 	}
+}
+
+int Game_Player::getSFXexplodeID()
+{
+	return 1;
+}
+int Game_Player::getSFXCHANNEL()
+{
+	return CHANNEL_SFX_CONTRA;
 }

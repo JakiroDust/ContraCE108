@@ -270,7 +270,7 @@ void Scene_Battle::_init_spatial()
         n= _mapHeight / width+1,
         m= _mapWidth/ height+1;
     spatial.reset();
-    spatial.reset(move( new QuadTree(0, 0, width, height,8,5)));
+    spatial.reset(move( new QuadTree(-1000, -1000, 4000, 4000,8,5)));
 
 
 

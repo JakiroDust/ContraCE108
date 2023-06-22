@@ -374,6 +374,7 @@
     <ClCompile Include="Obj_BossBase_S1.cpp">
       <Filter>Source Files\Object\StaticObject</Filter>
     </ClCompile>
+    <ClCompile Include="Scene_Credit.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -788,6 +789,7 @@
     <ClInclude Include="Enemy_AlienBase_HandCell.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Scene_Credit.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
