@@ -172,8 +172,13 @@ void StageEventHandler_S3::Perform_StageClearEvent(DWORD dt)
 	}
 	else if (_WaitForBossDie > 0)
 	{
-		SoundSystem::getInstance()->playSFX(SFX_NEXTROUND, CHANNEL_SFX_ENV, 0);
+
 		_WaitForBossDie -= dt;
+	}
+	else if (!S3_PlayBGS)
+	{
+		SoundSystem::getInstance()->playSFX(SFX_NEXTROUND, CHANNEL_SFX_ENV, 0);
+		S3_PlayBGS = true;
 	}
 
 	// SCENE: player move to base 
@@ -209,10 +214,10 @@ void StageEventHandler_S3::Perform_StageClearEvent(DWORD dt)
 		{
 			return;
 		}
-		player->teleport(_srcScene->MapWidth() + 100, _srcScene->MapHeight());
+		player->teleport(_srcScene->MapWidth() + 300, _srcScene->MapHeight());
 		if (_WaitForClearStage >= WAIT_STAGECLEAR_MAXVALUE)
 		{
-			_WaitForClearStage = 1000;
+			_WaitForClearStage = S3_WAIT_FOR_CLEARSTAGE;
 		}
 	}
 }

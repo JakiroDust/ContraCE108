@@ -57,7 +57,7 @@ class GameManager
 
 		// stage
 		int _currentStage = -1;
-		UINT _coin = 0;
+		//UINT _coin = 0;
 		UINT _P1_score = 0;
 		//UINT _P2_score = 0;
 		int _stagePasscard = -1;
@@ -101,18 +101,14 @@ class GameManager
 		//void GainScore_P2(UINT score) { _P2_score += score; }
 		void UseCoin() 
 		{
-			if (_coin > 0)
-			{
-				_coin--;
-				InitNewLife();
-			}
+			InitNewLife();
 		}
 		void SaveGun_P1(int gunID) { _saved_P1_Gun = gunID; }
 		void SaveLife_P1(int hp) { _saved_P1_Life = hp; }
 
 		UINT GetScore_P1() { return _P1_score; }
 		//UINT GetScore_P2() { return _P2_score; }
-		UINT GetCoin() { return _coin; }
+		//UINT GetCoin() { return _coin; }
 		int GetSavedGun_P1() { return _saved_P1_Gun; }
 		int GetSavedLife_P1() { return _saved_P1_Life; }
 		int GetCurrentStage() { return _currentStage; }

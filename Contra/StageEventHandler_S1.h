@@ -18,6 +18,7 @@ class StageEventHandler_S1 : public StageEventHandler_Base
 		// param for stage clear event
 		bool S1_firstJump = false;
 		bool S1_BossDie = false;
+		bool S1_PlayBGS = false;
 	public:
 		StageEventHandler_S1(Scene_Battle* src) : StageEventHandler_Base(src)
 		{

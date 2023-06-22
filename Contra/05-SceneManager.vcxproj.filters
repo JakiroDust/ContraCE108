@@ -374,7 +374,6 @@
     <ClCompile Include="Obj_BossBase_S1.cpp">
       <Filter>Source Files\Object\StaticObject</Filter>
     </ClCompile>
-    <ClCompile Include="Scene_Credit.cpp" />
     <ClCompile Include="Enemy_AlienBase_Head.cpp">
       <Filter>Source Files\Object\MoveObject\Character\Enemy</Filter>
     </ClCompile>
@@ -386,6 +385,9 @@
     </ClCompile>
     <ClCompile Include="Equip_EnemyGun_AlienBase.cpp">
       <Filter>Source Files\Equip</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Credit.cpp">
+      <Filter>Source Files\GameCore\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -801,7 +803,6 @@
     <ClInclude Include="Enemy_AlienBase_HandCell.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scene_Credit.h" />
     <ClInclude Include="Obj_EnemyBullet_Blast.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -812,6 +813,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Equip_EnemyGun_AlienBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Credit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
