@@ -52,19 +52,19 @@ namespace BULLETHELPER
 
 		switch (DIR)
 		{
-		case DIR_2_OCLOCK: y *= -1;
-		case DIR_4_OCLOCK: x *= -1;
-		case DIR_8_OCLOCK: y *= -1;
-		case DIR_10_OCLOCK:x *= -1 * xxx_dis; y *= xxy_dis; break;
+		case DIR_2_OCLOCK:x = 12; y = 8; break;
+		case DIR_4_OCLOCK:x = 12; y = -8; break;
+		case DIR_8_OCLOCK: x = -12; y = -8; break;
+		case DIR_10_OCLOCK: x = -12; y = 8; break;
 
-		case DIR_1_OCLOCK:  y *= -1;
-		case DIR_5_OCLOCK:  x *= -1;
-		case DIR_7_OCLOCK:  y *= -1;
-		case DIR_11_OCLOCK: x *= -1 * xyx_dis; y *= xyy_dis; break;
+		case DIR_1_OCLOCK: x = 6; y = 12; break;
+		case DIR_5_OCLOCK: x = 6; y = -12; break;
+		case DIR_7_OCLOCK: x = -6; y = -12; break;
+		case DIR_11_OCLOCK:x = -6; y = 12; break;
 
-		case DIR_3_OCLOCK: x = x_dis; y = 0; break;
-		case DIR_6_OCLOCK: y = y_dis; x = 0; break;
-		case DIR_9_OCLOCK: x = -x_dis; y = 0; break;
+		case DIR_3_OCLOCK: x = 12; y = 0; break;
+		case DIR_6_OCLOCK: y = -12; x = 0; break;
+		case DIR_9_OCLOCK: x = -12; y = 0; break;
 		case DIR_12_OCLOCK: x = 0; y = y_dis; break;
 		default:
 			x = 0;
@@ -73,6 +73,7 @@ namespace BULLETHELPER
 		}
 		return true;
 	}
+
 	bool getContraCor(float& x, float& y, int& state, int& DIR)
 	{
 		switch (state)
@@ -175,6 +176,41 @@ namespace BULLETHELPER
 		}
 		return true;
 	}
+	bool getSneakyCor(float& x, float& y, int& state, int& DIR) {
+		switch (state)
+		{
+		case ACT_LOOK_DOWN_LEFT:
+			x = -20;
+			break;
+		default: x = 0; y = 0; return false; break;
+		}
+		return true;
+	}
+	bool getSniperCor(float& x, float& y, int& state, int& DIR) {
+		switch (state)
+		{
+		case ACT_LOOK_UP_LEFT:
+			x = -14; y = 28;
+			break;
+		case ACT_WALK_LEFT_LOOK_UP:
+			x = -14; y = 28;
+			break;
+		case ACT_WALK_LEFT:
+			x = -14; y = 8; break;
+			//RIGHT
+		case ACT_LOOK_UP_RIGHT:
+			x = 14; y = 28;
+			break;
+		case ACT_WALK_RIGHT_LOOK_UP:
+			x = 14; y = 28;
+			break;
+		case ACT_WALK_RIGHT:
+			x = 14; y = 8;
+			break;
+		default: x = 0; y = 0; return false; break;
+		}
+		return true;
+	}
 	void getSpawnCor(float& _x, float& _y, int CHAR_ID, int state, int& DIR)
 	{
 		float x = 1,
@@ -182,12 +218,12 @@ namespace BULLETHELPER
 
 		switch (CHAR_ID)
 		{
-		case CHAR_CONTRA:
+		case CHAR_CONTRA:getContraCor(x, y, state, DIR); break;
 		case INFARY:
 		case RED_GUNNER:
 		case SNEAKY_SNIPER:
-		case SNIPER:
-			getContraCor(x, y, state, DIR); break;
+			getSneakyCor(x, y, state, DIR); break;
+		case SNIPER: getSniperCor(x, y, state, DIR); break;
 		case TURRET_BASE:
 		case CANNON:
 		case TURRET: getTurretCor(x, y, DIR); break;
