@@ -380,7 +380,7 @@ void Game_Player::OnCollisionWith(PCOLLISIONEVENT e)
 		return;
 	}
 
-	if (!_ghost && dynamic_cast<Game_Bullet*>(e->obj))
+	if (!_die && !_ghost && dynamic_cast<Game_Bullet*>(e->obj))
 	{
 		Game_Bullet* bullet = ((Game_Bullet*)e->obj);
 		if (bullet->OwnerID() == B_OWNER_ENEMY)

@@ -1,43 +1,7 @@
 #include "spawnBulletHelper.h"
 #include "State_Contra_Base.h"
 #include "Contra_GET_ANI.h"
-/*
 
-	bool getContraCor(float& x, float& y,int&state,int&DIR)
-	{
-		switch (state)
-		{
-		case STATE_IDLE:
-		case STATE_WALK:
-		case STATE_JUMP:
-		case STATE_SWIM:
-		case STATE_FALL:
-		case STATE_DIVE:
-		case STATE_ACTIVE:
-			switch (DIR)
-			{
-			case DIR_TOP_LEFT:
-			case DIR_TOP:
-			case DIR_TOP_RIGHT:
-			case DIR_LEFT:
-			case DIR_RIGHT:
-			case DIR_BOTTOM_LEFT:
-			case DIR_BOTTOM:
-			case DIR_BOTTOM_RIGHT:
-			default:
-				break;
-			}
-			break;
-		case STATE_LIE:
-			break;
-		default:
-
-			return false;
-			break;
-		}
-		return true;
-	}
-*/
 namespace BULLETHELPER
 {
 	bool getTurretCor(float& x, float& y, int& DIR)
@@ -142,32 +106,6 @@ namespace BULLETHELPER
 			x = 6;
 			y = 10;
 			break;
-			/*case STATE_ACTIVE:
-				switch (DIR)
-				{
-				case DIR_TOP_LEFT:      x = -1; y = 1;
-				case DIR_TOP_RIGHT:     x *= 7; y *= 7; break;
-
-				case DIR_BOTTOM:        y = -1;
-				case DIR_TOP:           y *= 10; break;
-
-				case DIR_LEFT:          x = -1;
-				case DIR_RIGHT:         x *= 12; y = 5; break;
-
-				case DIR_BOTTOM_LEFT:   x = -1;
-				case DIR_BOTTOM_RIGHT:  x *= 7; y *= 7; break;
-				default:
-					x = 0; y = 0; return false;
-				}break;
-			case STATE_LIE:
-			{
-				switch (DIR)
-				{
-				case DIR_LEFT:          x = -1;
-				case DIR_RIGHT:         x *= 10; break;
-				}
-			}*/
-			break;
 		default:
 			x = 0;
 			y = 0;
@@ -219,7 +157,6 @@ namespace BULLETHELPER
 		switch (CHAR_ID)
 		{
 		case CHAR_CONTRA:getContraCor(x, y, state, DIR); break;
-		case INFARY:
 		case RED_GUNNER:
 		case SNEAKY_SNIPER:
 			getSneakyCor(x, y, state, DIR); break;
