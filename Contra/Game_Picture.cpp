@@ -66,6 +66,16 @@ void Game_Picture::MoveToPoint(float x, float y, DWORD duration)
 	_movePosX = x;
 	_movePosY = y;
 }
+void Game_Picture::MoveToPointADD(float x, float y, DWORD duration)
+{
+	float sideX = x + _screenX;
+	float sideY = y + _screenY;
+	_vy =  y/ duration ;
+	_moveSpeed = 10;
+	_moveDuration = duration;
+	_movePosX = sideX;
+	_movePosY = sideY;
+}
 
 void Game_Picture::Flash(DWORD duration, DWORD flashInterval)
 {

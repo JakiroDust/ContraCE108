@@ -42,6 +42,8 @@ class Game_Picture
 		int z() { return _z; }
 		void MoveToPoint(float x, float y, DWORD duration);
 
+		void MoveToPointADD(float x, float y, DWORD duration);
+
 		void Update(DWORD dt);
 		virtual void Render();
 
