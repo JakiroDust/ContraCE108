@@ -191,7 +191,6 @@ void StageEventHandler_S1::Perform_StageClearEvent(DWORD dt)
 	// SCENE: boss die
 	if (!S1_BossDie)
 	{
-		
 		S1_BossDie = true;
 		_srcScene->MassKilling();
 		_WaitForBossDie = S1_WAIT_FOR_BOSS_DIE;
