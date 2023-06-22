@@ -1,7 +1,43 @@
 #include "spawnBulletHelper.h"
 #include "State_Contra_Base.h"
 #include "Contra_GET_ANI.h"
+/*
 
+	bool getContraCor(float& x, float& y,int&state,int&DIR)
+	{
+		switch (state)
+		{
+		case STATE_IDLE:
+		case STATE_WALK:
+		case STATE_JUMP:
+		case STATE_SWIM:
+		case STATE_FALL:
+		case STATE_DIVE:
+		case STATE_ACTIVE:
+			switch (DIR)
+			{
+			case DIR_TOP_LEFT:
+			case DIR_TOP:
+			case DIR_TOP_RIGHT:
+			case DIR_LEFT:
+			case DIR_RIGHT:
+			case DIR_BOTTOM_LEFT:
+			case DIR_BOTTOM:
+			case DIR_BOTTOM_RIGHT:
+			default:
+				break;
+			}
+			break;
+		case STATE_LIE:
+			break;
+		default:
+
+			return false;
+			break;
+		}
+		return true;
+	}
+*/
 namespace BULLETHELPER
 {
 	bool getTurretCor(float& x, float& y, int& DIR)
@@ -118,8 +154,49 @@ namespace BULLETHELPER
 		switch (state)
 		{
 		case ACT_LOOK_DOWN_LEFT:
-			x = -20;
+			x = -17;
+			y = -4;
 			break;
+		default: x = 0; y = 0; return false; break;
+		}
+		return true;
+	}
+	bool getRedGunnerCor(float& x, float& y, int& state, int& DIR) {
+		switch (state)
+		{
+		case ACT_LYING_LEFT:
+			y = 10; x = -12;
+			break;
+		case ACT_LYING_RIGHT:
+			y = 10; x = 12;
+			break;
+		default: x = 0; y = 0; return false; break;
+		}
+		return true;
+	}
+	bool getCannonCor(float& x, float& y, int& state, int& DIR) {
+		switch (state)
+		{
+		case ACT_ANGLE_10_OCLOCK:
+			y = 9; x = -17;
+			break;
+		case ACT_ANGLE_11_OCLOCK:
+			y = 17; x = -9;
+			break;
+		case ACT_ANGLE_9_OCLOCK:
+			x = -17;
+			break;
+		default: x = 0; y = 0; return false; break;
+		}
+		return true;
+	}
+	bool getScubaCor(float& x, float& y, int& state, int& DIR) {
+		switch (state)
+		{
+		case ACT_WALK_RIGHT:
+			y = 18;
+			break;
+		
 		default: x = 0; y = 0; return false; break;
 		}
 		return true;
@@ -128,23 +205,27 @@ namespace BULLETHELPER
 		switch (state)
 		{
 		case ACT_LOOK_UP_LEFT:
-			x = -14; y = 28;
+			x = -12; y = 24;
 			break;
 		case ACT_WALK_LEFT_LOOK_UP:
-			x = -14; y = 28;
+			x = -12; y = 24;
 			break;
 		case ACT_WALK_LEFT:
-			x = -14; y = 8; break;
+			x = -12; y = 11; break;
+		case ACT_WALK_LEFT_LOOK_DOWN:
+			x = -13; y = -4; break;
 			//RIGHT
 		case ACT_LOOK_UP_RIGHT:
 			x = 14; y = 28;
 			break;
 		case ACT_WALK_RIGHT_LOOK_UP:
-			x = 14; y = 28;
+			x = 10; y = 23;
 			break;
 		case ACT_WALK_RIGHT:
-			x = 14; y = 8;
+			x = 13; y = 10;
 			break;
+		case ACT_WALK_RIGHT_LOOK_DOWN:
+			x = 13; y = -4; break;
 		default: x = 0; y = 0; return false; break;
 		}
 		return true;
@@ -157,13 +238,15 @@ namespace BULLETHELPER
 		switch (CHAR_ID)
 		{
 		case CHAR_CONTRA:getContraCor(x, y, state, DIR); break;
-		case RED_GUNNER:
+		case INFARY:
+		case RED_GUNNER: getRedGunnerCor(x, y, state, DIR); break;
 		case SNEAKY_SNIPER:
 			getSneakyCor(x, y, state, DIR); break;
 		case SNIPER: getSniperCor(x, y, state, DIR); break;
 		case TURRET_BASE:
-		case CANNON:
+		case CANNON:  getCannonCor(x, y, state, DIR); break;
 		case TURRET: getTurretCor(x, y, DIR); break;
+		case SCUBA_DIVER: getScubaCor(x, y,state, DIR); break;
 
 		default:getContraCor(x, y, state, DIR);
 		}
