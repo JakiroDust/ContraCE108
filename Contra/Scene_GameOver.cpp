@@ -115,6 +115,12 @@ void Scene_GameOver::nextScene()
 {
 	GameManager* gm = GameManager::GetInstance();
 
+	if (endGame)
+	{
+		_NextScene(SIG_PLAY_INTRO);
+		return;
+	}
+
 	gm->UseCoin();
 	int currentStage = gm->GetCurrentStage();
 
