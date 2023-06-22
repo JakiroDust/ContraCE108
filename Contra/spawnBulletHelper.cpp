@@ -169,12 +169,12 @@ namespace BULLETHELPER
 			y = 2;
 			break;
 		case ACT_WALK_LEFT_LOOK_DOWN:
-			x = -8;
-			y = -4;
+			x = -14;
+			y = -3;
 			break;
 		case ACT_WALK_RIGHT_LOOK_DOWN:
-			x = 8;
-			y = -4;
+			x = 14;
+			y = -3;
 			break;
 		case ACT_SWIM_LOOK_UP_STAND_LEFT:
 			x = -6;
@@ -208,18 +208,27 @@ namespace BULLETHELPER
 		{
 		case ACT_LOOK_UP_LEFT:
 			x = -14; y = 28;
+		case ACT_LOOK_DOWN_LEFT:
+			x = -14; y = -28;
 			break;
 		case ACT_WALK_LEFT_LOOK_UP:
 			x = -14; y = 28;
+			break;
+		case ACT_WALK_LEFT_LOOK_DOWN:
+			x = -14; y = -28;
 			break;
 		case ACT_WALK_LEFT:
 			x = -14; y = 8; break;
 			//RIGHT
 		case ACT_LOOK_UP_RIGHT:
 			x = 14; y = 28;
+		case ACT_LOOK_DOWN_RIGHT:
+			x = 14; y = -28;
 			break;
 		case ACT_WALK_RIGHT_LOOK_UP:
 			x = 14; y = 28;
+		case ACT_WALK_RIGHT_LOOK_DOWN:
+			x = 14; y = -28;
 			break;
 		case ACT_WALK_RIGHT:
 			x = 14; y = 8;
