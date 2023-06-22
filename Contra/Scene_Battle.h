@@ -72,10 +72,9 @@ class Scene_Battle : public Scene_Base
 	private:
 		int _p1_id=-1;
 		//int _p2_id=-1;
-		unique_ptr<Game_Player> _p1 ;
+		unique_ptr<Game_Player> _p1;
 		//Game_Player* _p2 = NULL;
 		vector<unique_ptr<Game_Effect>> _effects;
-		//vector<Game_ObjectBase*> _objects;
 		unordered_map<int,unique_ptr<Game_ObjectBase>> __objects;
 		int _mapWidth = 1;
 		int _mapHeight = 1;
@@ -103,12 +102,10 @@ class Scene_Battle : public Scene_Base
 		void Load() override;
 		void Unload() override;
 		void MassKilling() { _massKilling = true; }
-		//void Create_Stage_Demo();
 
 		// Key event handler
 		virtual void KeyDownEventHandler(int KeyCode) override;
 
-		/// from this is protype
 		void SetStageEventHandler(StageEventHandler_Base* handler)
 		{
 			if (_controller != NULL)
@@ -123,18 +120,15 @@ class Scene_Battle : public Scene_Base
 		void _init_spatial();
 		void _delete_spatial();
 	public:
-		//Spatial *spatial=NULL;
 		unique_ptr<QuadTree> spatial;
 		vector<int> getNearByIDwithWH(int x, int y, int width, int height);
 		vector<int> getNearByID(int left, int bottom, int right, int top);
-		//vector<int> getNearbyIDFast();
 		
 		Game_ObjectBase* getObjectByID(int id) { return __objects[id].get(); }
 		vector<Game_ObjectBase*>* getObjectByIDList(vector<int>& vtr);
 
 		int add_object(unique_ptr<Game_ObjectBase>&& object);
 		void delete_object(int id);
-		//void delete_object(unique_ptr<Game_ObjectBase>& object);
 
 		// from here is MAP SPATIAL
 		void parseMap(string line);

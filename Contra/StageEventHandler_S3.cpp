@@ -157,7 +157,6 @@ void StageEventHandler_S3::Perform_StageClearEvent(DWORD dt)
 {
 	Game_Player* player = _srcScene->p1();
 	player->SetAuto(true);
-	//player->SetImmortal(true);
 	// SCENE: boss die
 	if (!S3_BossDie)
 	{
@@ -169,11 +168,6 @@ void StageEventHandler_S3::Perform_StageClearEvent(DWORD dt)
 	{
 		_WaitForBossDie -= dt;
 		return;
-	}
-	else if (_WaitForBossDie > 0)
-	{
-
-		_WaitForBossDie -= dt;
 	}
 	else if (!S3_PlayBGS)
 	{
@@ -214,7 +208,7 @@ void StageEventHandler_S3::Perform_StageClearEvent(DWORD dt)
 		{
 			return;
 		}
-		player->teleport(_srcScene->MapWidth() + 300, _srcScene->MapHeight());
+		player->teleport(_srcScene->MapWidth() + 600, _srcScene->MapHeight());
 		if (_WaitForClearStage >= WAIT_STAGECLEAR_MAXVALUE)
 		{
 			_WaitForClearStage = S3_WAIT_FOR_CLEARSTAGE;

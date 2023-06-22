@@ -16,7 +16,7 @@ Scene_Battle::Scene_Battle(): Scene_Base() {
         addHPinUI();
     }
 }
-//Scene_Battle* Scene_Battle::__instance = NULL;
+
 Scene_Battle::~Scene_Battle()
 {
     Unload();
@@ -80,9 +80,6 @@ void Scene_Battle::Render()
         RenderQueue[i]->Render();
     }
     RenderImagePhase();
-    // Render HUD
-//if (_controller != NULL)
- //       _controller->RenderHUD();
 }
 
 void Scene_Battle::Update(DWORD dt)
@@ -111,11 +108,8 @@ void Scene_Battle::Update(DWORD dt)
 
     vector<int> id_list= screen->Get_ObjectsID_InsideScreen(spatial.get(), GET_OBJECTS_RANGE);
     vector<PGAMEOBJECT>* nearbyObject = getObjectByIDList(id_list);
-    //for (int i = 0; i < _objects.size(); i++)
-    //float old_l, old_right, old_bottom, old_top,
-    float   new_l, new_right, new_bottom, new_top;
 
-    //vector<Game_ObjectBase*>* colObjects = objects();
+    float   new_l, new_right, new_bottom, new_top;
 
     for(auto& i : id_list)
     {
@@ -200,7 +194,6 @@ void Scene_Battle::Unload()
     //_p2.reset(NULL);
     if (_controller != NULL)
         delete _controller;
-     //__instance = NULL;
 }
 
 void Scene_Battle::KeyDownEventHandler(int KeyCode)
@@ -215,7 +208,7 @@ void Scene_Battle::KeyDownEventHandler(int KeyCode)
 
 
 //=====================================================================================================================
-// DEMO
+
 void Scene_Battle::addPlayer1()
 {
     _p1_id = add_object(move(_p1));
@@ -231,7 +224,6 @@ void Scene_Battle::AddEffect(unique_ptr<Game_Effect>&& obj)
 
 int Scene_Battle::add_object(unique_ptr<Game_ObjectBase>&& object)
 {
-    //_objects.push_back(object);
     int id = id_nth;
     if (!id_recycle_bin.empty())
     {
@@ -271,13 +263,7 @@ void Scene_Battle::_init_spatial()
         m= _mapWidth/ height+1;
     spatial.reset();
     spatial.reset(move( new QuadTree(-1000, -1000, 4000, 4000,8,5)));
-
-
-
-
 }
-
-
 
 /// REMBER TO DELETE AFTER USE
 vector<Game_ObjectBase*>* Scene_Battle::getObjectByIDList(vector<int>& vtr)
@@ -294,9 +280,6 @@ void Scene_Battle::_delete_spatial()
     spatial.release();
     mapTexSpatial.release();
 }
-
-
-///PROTYPE
 
 //=====================================================================================================
 // PARSE
@@ -386,7 +369,6 @@ void Scene_Battle::_ParseSection_DICT(string line)
     {
         for (curM = 0; curM < width; curM++)
         {
-
              addMapPart(curID,(curM)*MAP_TEXU_WIDTH,MapHeight() - curN * MAP_TEXU_HEIGHT- MAP_TEXU_HEIGHT);
                 curID++;
         }
@@ -567,15 +549,6 @@ void Scene_Battle::remHPinUI()
     HPid.pop_back();
     _images.erase(curID);
 }
-
-//vector<int> Scene_Battle::getNearbyIDFast()
-//{
-//    float x, y;
-//    ScreenManager::GetInstance()->Screen()->GetCenterPoint(x, y);
-//    int width =(int) (GAMESCREEN_WIDTH * 1.3),
-//        height = (int)(GAMESCREEN_HEIGHT * 1.3);
-//    return getNearByIDwithWH(x, y, width, height);
-//}
 
 vector<int> Scene_Battle::getNearByID(int left, int bottom, int right, int top)
 {

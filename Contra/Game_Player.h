@@ -5,12 +5,6 @@
 #include "Equip_Gun_S.h"
 #include "Equip_Gun_L.h"
 #include "Equip_Gun_F.h"
-//#define KEY_UP 0
-//#define KEY_DOWN 1
-//#define KEY_LEFT 2
-//#define KEY_RIGHT 3
-//#define KEY_SHOOT 4
-//#define KEY_JUMP 5
 
 #define PLAYER_BASE_WIDTH 14
 #define PLAYER_BASE_HEIGHT 28

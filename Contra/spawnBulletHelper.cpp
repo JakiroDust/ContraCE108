@@ -59,13 +59,91 @@ namespace BULLETHELPER
 			y = 10;
 			break;
 		case ACT_JUMP_RIGHT:
-			x = 6;
-			y = 0;
-			break;
+			{
+				switch (DIR)
+				{
+				case DIR_LEFT:
+					x = -6;
+					y = 0;
+					break;
+				case DIR_RIGHT:
+					x = 6;
+					y = 0;
+					break;
+				case DIR_TOP:
+					x = 0;
+					y = 6;
+					break;
+				case DIR_BOTTOM:
+					x = 0;
+					y = -6;
+					break;
+				case DIR_TOP_LEFT:
+					x = -6;
+					y = 6;
+					break;
+				case DIR_TOP_RIGHT:
+					x = 6;
+					y = 6;
+					break;
+				case DIR_BOTTOM_LEFT:
+					x = -6;
+					y = -6;
+					break;
+				case DIR_BOTTOM_RIGHT:
+					x = 6;
+					y = -6;
+					break;
+				default:
+					x = 0;
+					y = 0;
+					break;
+				}		
+				break;
+			}
 		case ACT_JUMP_LEFT:
-			x = 6;
-			y = 0;
-			break;
+			{
+				switch (DIR)
+				{
+				case DIR_LEFT:
+					x = -6;
+					y = 0;
+					break;
+				case DIR_RIGHT:
+					x = 6;
+					y = 0;
+					break;
+				case DIR_TOP:
+					x = 0;
+					y = 6;
+					break;
+				case DIR_BOTTOM:
+					x = 0;
+					y = -6;
+					break;
+				case DIR_TOP_LEFT:
+					x = -6;
+					y = 6;
+					break;
+				case DIR_TOP_RIGHT:
+					x = 6;
+					y = 6;
+					break;
+				case DIR_BOTTOM_LEFT:
+					x = -6;
+					y = -6;
+					break;
+				case DIR_BOTTOM_RIGHT:
+					x = 6;
+					y = -6;
+					break;
+				default:
+					x = 0;
+					y = 0;
+					break;
+				}
+				break;
+			}
 		case ACT_SWIM_LEFT_LOOK_UP:
 			x = -10;
 			y = 10;
@@ -91,12 +169,12 @@ namespace BULLETHELPER
 			y = 2;
 			break;
 		case ACT_WALK_LEFT_LOOK_DOWN:
-			x = -8;
-			y = -4;
+			x = -14;
+			y = -3;
 			break;
 		case ACT_WALK_RIGHT_LOOK_DOWN:
-			x = 8;
-			y = -4;
+			x = 14;
+			y = -3;
 			break;
 		case ACT_SWIM_LOOK_UP_STAND_LEFT:
 			x = -6;
@@ -118,8 +196,60 @@ namespace BULLETHELPER
 		switch (state)
 		{
 		case ACT_LOOK_DOWN_LEFT:
-			x = -20;
+			x = -17;
+			y = -4;
 			break;
+		default: x = 0; y = 0; return false; break;
+		}
+		return true;
+	}
+	bool getRedGunnerCor(float& x, float& y, int& state, int& DIR) {
+		switch (state)
+		{
+		case ACT_LYING_LEFT:
+			y = 10; x = -12;
+			break;
+		case ACT_LYING_RIGHT:
+			y = 10; x = 12;
+			break;
+		default: x = 0; y = 0; return false; break;
+		}
+		return true;
+	}
+	bool getCannonCor(float& x, float& y, int& state, int& DIR) {
+		switch (state)
+		{
+		case ACT_ANGLE_10_OCLOCK:
+			y = 9; x = -17;
+			break;
+		case ACT_ANGLE_11_OCLOCK:
+			y = 17; x = -9;
+			break;
+		case ACT_ANGLE_9_OCLOCK:
+			x = -17;
+			break;
+		default: x = 0; y = 0; return false; break;
+		}
+		return true;
+	}
+	bool getScubaCor(float& x, float& y, int& state, int& DIR) {
+		switch (state)
+		{
+		case ACT_WALK_RIGHT:
+			y = 18;
+			break;
+		
+		default: x = 0; y = 0; return false; break;
+		}
+		return true;
+	}
+	bool getCannonBaseCor(float& x, float& y, int& state, int& DIR) {
+		switch (state)
+		{
+		case ACT_WALK_LEFT:
+			x = -8;
+			break;
+
 		default: x = 0; y = 0; return false; break;
 		}
 		return true;
@@ -128,23 +258,27 @@ namespace BULLETHELPER
 		switch (state)
 		{
 		case ACT_LOOK_UP_LEFT:
-			x = -14; y = 28;
+			x = -12; y = 24;
 			break;
 		case ACT_WALK_LEFT_LOOK_UP:
-			x = -14; y = 28;
+			x = -12; y = 24;
 			break;
 		case ACT_WALK_LEFT:
-			x = -14; y = 8; break;
+			x = -12; y = 11; break;
+		case ACT_WALK_LEFT_LOOK_DOWN:
+			x = -13; y = -4; break;
 			//RIGHT
 		case ACT_LOOK_UP_RIGHT:
 			x = 14; y = 28;
 			break;
 		case ACT_WALK_RIGHT_LOOK_UP:
-			x = 14; y = 28;
+			x = 10; y = 23;
 			break;
 		case ACT_WALK_RIGHT:
-			x = 14; y = 8;
+			x = 13; y = 10;
 			break;
+		case ACT_WALK_RIGHT_LOOK_DOWN:
+			x = 13; y = -4; break;
 		default: x = 0; y = 0; return false; break;
 		}
 		return true;
@@ -157,13 +291,14 @@ namespace BULLETHELPER
 		switch (CHAR_ID)
 		{
 		case CHAR_CONTRA:getContraCor(x, y, state, DIR); break;
-		case RED_GUNNER:
-		case SNEAKY_SNIPER:
-			getSneakyCor(x, y, state, DIR); break;
+		case RED_GUNNER: getRedGunnerCor(x, y, state, DIR); break;
+		case SNEAKY_SNIPER: getSneakyCor(x, y, state, DIR); break;
 		case SNIPER: getSniperCor(x, y, state, DIR); break;
-		case TURRET_BASE:
-		case CANNON:
+		case BASE_CANNON_LEFT: getCannonBaseCor(x, y, state, DIR); break;
+		case BASE_CANNON_RIGHT: getCannonBaseCor(x, y, state, DIR); break;
+		case CANNON:  getCannonCor(x, y, state, DIR); break;
 		case TURRET: getTurretCor(x, y, DIR); break;
+		case SCUBA_DIVER: getScubaCor(x, y,state, DIR); break;
 
 		default:getContraCor(x, y, state, DIR);
 		}

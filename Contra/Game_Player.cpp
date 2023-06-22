@@ -32,7 +32,6 @@ void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	// invincible mode
 	if (_havingInvinicble_effect)
 	{
-		_ghost = true;
 		_invincible_interval += dt;
 		_invincible_ani_flash= !(_invincible_interval / PLAYER_INVINCIBLE_ANI_INTERVAL%2);
 	}
@@ -40,8 +39,6 @@ void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	{
 		//_invincible_interval = 0;
 		//_invincible_ani_flash = false;
-		if (_state != NULL && _state.get()->StateId() != STATE_DIVE)
-			_ghost = false;
 	}
 	if (_havingB_effect)
 	{
@@ -53,7 +50,6 @@ void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 	{
 		if (_die && _revive_interval > dt)
 		{
-			_ghost = true;
 			_revive_interval -= dt;
 		}
 		else if (_die)
@@ -61,6 +57,19 @@ void Game_Player::Update(DWORD dt, vector<PGAMEOBJECT>* coObjects)
 			PerformRevive();
 		}
 	}
+
+	// reset ghost state
+	if (_revive_interval > 0 || _havingInvinicble_effect
+		|| (_state != NULL && _state.get()->StateId() == STATE_DIVE))
+		_ghost = true;
+	else
+		_ghost = false;
+
+	// reset immortal state
+	if (_havingB_effect)
+		_immortal = true;
+	else
+		_immortal = false;
 
 	// Check Collision event
 	Game_Collision::GetInstance()->Process(this, dt, coObjects);
