@@ -96,7 +96,7 @@ void Scene_LoadingStage::Init_Stage(int& id, int stage, const wchar_t* str)
 	start_dis = 10;
 	height = 45;
 	AddText(start_dis, height, L"REST ", id, 2, RENDER_MODE_CENTER);
-	AddNumber(start_dis, height, GameManager::GetInstance()->GetCoin(), id, 2, RENDER_MODE_CENTER);
+	AddNumber(start_dis, height, GameManager::GetInstance()->GetSavedLife_P1(), id, 2, RENDER_MODE_CENTER);
 	start_dis = 80;
 	height = 60;
 	AddText(start_dis, height, L"HI 00000", id, 2, RENDER_MODE_CENTER);

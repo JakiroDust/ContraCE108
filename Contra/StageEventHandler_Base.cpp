@@ -84,7 +84,7 @@ void StageEventHandler_Base::Debug_KeyDownEventHandler(int KeyCode)
             _srcScene->p1()->ChangeWeapon(new Equip_Gun_F());
             break;
         case DIK_6:
-            CHARACTER_EFFECT::applyEffect(_srcScene->p1(), CHARACTER_EFFECT::BARRIER, 20000);
+            CHARACTER_EFFECT::applyEffect(_srcScene->p1(), CHARACTER_EFFECT::BARRIER, 2000000);
             break;
         case DIK_7:
             CompleteStage();

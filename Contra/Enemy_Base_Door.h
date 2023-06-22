@@ -23,6 +23,7 @@ class Enemy_Base_Door : public Game_SpecialObject
         void Update(DWORD dt, vector<PGAMEOBJECT>* coObjects) override;
         int  getSFXexplodeID() override;
         void Execute_DieAction() override;
+        int getSFXCHANNEL() override;
         void Execute_BeforeDelete() override;
         virtual int RewardScore() override { return 1000; };
         int getSFXhitedID() override

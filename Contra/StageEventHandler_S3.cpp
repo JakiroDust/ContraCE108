@@ -4,7 +4,7 @@
 #include "Enemy_Infary.h"
 #include "Game_TestBox.h"
 #include "GameManager.h"
-
+#include "MusicManager.h"
 void StageEventHandler_S3::Update(DWORD dt)
 {
 	StageEventHandler_Base::Update(dt);
@@ -169,6 +169,11 @@ void StageEventHandler_S3::Perform_StageClearEvent(DWORD dt)
 	{
 		_WaitForBossDie -= dt;
 		return;
+	}
+	else if (_WaitForBossDie > 0)
+	{
+		SoundSystem::getInstance()->playSFX(SFX_NEXTROUND, CHANNEL_SFX_ENV, 0);
+		_WaitForBossDie -= dt;
 	}
 
 	// SCENE: player move to base 
